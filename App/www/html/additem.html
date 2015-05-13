@@ -1,0 +1,36 @@
+<div ng-controller="additemController" class="pager">
+
+    <div class="add_item_top">
+        <md-button class="md-raised md-primary" ng-click="capturePhoto()">Capture Photo</md-button>
+        <md-button class="md-raised" ng-click="getPhoto(0);">Photo Library</md-button>
+        <br/>
+
+        <img ng-src="assets/profile.jpg" id="smallImage" style="max-width: 90%; max-height: 90%" data-rotate="90" />
+
+        <md-select placeholder="Category" ng-model="selectedItem0" style="width:90%">
+        <div ng-repeat="item in data.items">
+          <md-option value="{{item}}"> {{item}}
+          </md-option>
+        </div>
+        </md-select>
+        <md-select placeholder="Category" ng-model="selectedItem1" style="width:90%">
+          <div ng-repeat="item in data.items">
+            <md-option value="{{item}}"> {{item}}
+            </md-option>
+          </div>
+        </md-select>
+        <md-select placeholder="Category" ng-model="selectedItem2" style="width:90%">
+          <div ng-repeat="item in data.items">
+            <md-option value="{{item}}"> {{item}}
+            </md-option>
+          </div>
+        </md-select>
+        <md-select placeholder="Category" ng-model="selectedItem3" style="width:90%">
+          <div ng-repeat="item in data.items">
+            <md-option value="{{item}}"> {{item}}
+            </md-option>
+          </div>
+        </md-select>
+    </div>
+
+</div>

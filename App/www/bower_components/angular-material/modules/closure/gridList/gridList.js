@@ -496,7 +496,7 @@ function GridLayoutFactory($mdUtil) {
    *
    *    If the end of a row has been reached without finding space for the
    *    tile, spaceTracker's elements are each decremented by 1 to a minimum
-   *    of 0. Rows are searched in this fashion until space is found.
+   *    of 0. Rows are searched in this inspection until space is found.
    */
   function calculateGridFor(colCount, tileSpans) {
     var curCol = 0,

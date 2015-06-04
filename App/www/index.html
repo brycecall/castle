@@ -21,14 +21,10 @@
         <!-- Application Scripts -->
         <script src="js/index.js"></script>
         <script src="js/createController.js"></script>
-        <script src="js/socialController.js"></script>
-        <script src="js/marketplaceController.js"></script>
-        <script src="js/additemController.js"></script>
-        <script src="js/closetController.js"></script>
-        <script src="js/accountController.js"></script>
-        <script src="js/addpostController.js"></script>
-        <script src="js/pushWoosh.js"></script>
-
+        <script src="js/savedController.js"></script>
+        <script src="js/leftController.js"></script>
+        <script src="js/rightController.js"></script>
+       
         <!-- Stylesheets -->
         <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
         <link type="text/css" rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css" />
@@ -38,10 +34,10 @@
         <!-- overrides should always go last, just fyi -->
         <link type="text/css" rel="stylesheet" href="css/override.css" />
 
-        <title>FashionMe</title>
+        <title>Inspector Pro</title>
     </head>
     <body>
-        <div ng-app="fashionApp">
+        <div ng-app="fbiApp">
 
             <div ng-controller="indexController">
                 <header>
@@ -62,7 +58,7 @@
                 
                 <md-sidenav class="md-sidenav-left md-whiteframe-z2 main_menu" md-component-id="main">
                     <md-content style="height: 100%;">
-                        <img src="assets/fashion_me_logo.png" width="100%"/>
+                        <img id="menuFavicon" src="img/Favicon.gif" /><br />
                         <md-list>
                             <a href="{{page.link}}" ng-repeat="page in navigationPages" ng-click="toggleNavigation()">
                           <md-list-item class="md-3-line">
@@ -79,7 +75,8 @@
                 </md-sidenav>
                 
                 <md-content>
-                    <div ng-view class="ng-view-window"></div>
+                         
+                          <div ng-view class="ng-view-window"></div>
                 </md-content>
                 <footer>
 
@@ -110,18 +107,6 @@
                         <i class="fa fa-plus"></i>
                     </md-button>
                 </footer>
-                
-                <!--
-                <footer>
-                    <div class="container">
-                    <a href="#"><i class="fa fa-3x fa-pencil-square"></i>Create</a>
-                    <a href="#social"><i class="fa fa-3x fa-share-alt-square"></i>Social</a>
-                    <a href="#marketplace"><i class="fa fa-3x fa-share-square"></i>Shop</a>
-                    <a href="#additem"><i class="fa fa-3x fa-check-square"></i>Add Item</a>
-                    <a href="#closet"><i class="fa fa-3x fa-th-large"></i>Closet</a>
-                    </div>
-                </footer>
-                -->
             </div>
         </div>
     </body>

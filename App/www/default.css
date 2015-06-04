@@ -161,3 +161,10 @@ footer .container {
 #smallImage {
     padding-top: 5px;
 }
+
+#menuFavicon {
+    display: block;
+    height: 5%;
+    margin: auto;
+    text-align: center;
+}

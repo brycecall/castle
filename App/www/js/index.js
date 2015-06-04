@@ -1,8 +1,8 @@
 // Create the main module
-var fashion = angular.module('fashionApp', ['ngRoute', 'ngTouch', 'ngMaterial']);
+var inspection = angular.module('fbiApp', ['ngRoute', 'ngTouch', 'ngMaterial']);
 
 // Config - take care of URL routes
-fashion.config(['$routeProvider',
+inspection.config(['$routeProvider',
     function ($routeProvider) {
         $routeProvider
             .when('/create', {
@@ -10,49 +10,25 @@ fashion.config(['$routeProvider',
                 controller: 'createController'
             })
 
-            .when('/social', {
-                templateUrl: 'html/social.html',
-                controller: 'socialController'
+            .when('/saved', {
+                templateUrl: 'html/saved.html',
+                controller: 'savedController'
             })
 
-            .when('/marketplace', {
-                templateUrl: 'html/marketplace.html',
-                controller: 'marketplaceController'
-            })
-        
-            .when('/additem', {
-                templateUrl: 'html/additem.html',
-                controller: 'additemController'
-            })
-        
-            .when('/closet', {
-                templateUrl: 'html/closet.html',
-                controller: 'closetController'
-            })
-        
-            .when('/account', {
-                templateUrl: 'html/account.html',
-                controller: 'accountController'
-            })
-        
-            .when('/addpost', {
-                templateUrl: 'html/addpost.html',
-                controller: 'addpostController'
-            })
             .otherwise({
                 redirectTo: "/create"
             });
   }]);
 
 // Config - the material design theme
-fashion.config(function($mdThemingProvider) {
+inspection.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
-    .primaryPalette('cyan')
-    .accentPalette('green');
+    .primaryPalette('green')
+    .accentPalette('blue');
 });
 
 // Controller for the index page
-fashion.controller('indexController', ['$scope', 'fashionService', '$mdUtil', '$mdSidenav', function($scope, service, $mdUtil, $mdSidenav) {
+inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUtil', '$mdSidenav', function($scope, service, $mdUtil, $mdSidenav) {
     // This is a little hacky, bit it works alright, maybe fix latter
     $scope.service = service;
     
@@ -68,40 +44,30 @@ fashion.controller('indexController', ['$scope', 'fashionService', '$mdUtil', '$
     
     $scope.navigationPages = [
         {
-            title: "Style Studio",
+            title: "New Report",
             icon: "pencil",
             link: "#create"
         },
         {
-            title: "My Closet",
+            title: "Saved Reports",
             icon: "heart",
             link: "#closet"
-        },
-        {
-            title: "Fashion Market",
-            icon: "shopping-cart",
-            link: "#marketplace"
-        },
-        {
-            title: "Social Stream",
-            icon: "share-square",
-            link: "#social"
         },
         ];
 }]);
 
 // Create the factory / service that is shared among all the controllers
-fashion.factory('fashionService', ['$http', '$cacheFactory', '$route',
+inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
     function ($http, $cacheFactory, $route) {
         var factory = {},
-            cache = $cacheFactory('fashionCache'), // TODO - do we need the cache?
-            baseUrl = '', /* 'http://api.thedealio.org:443/bond/'   TODO - change to URL to FashionMe server */
-            imageBaseUrl = '', /* http://api.thedealio.org'   TODO - change to URL to FashionMe server */
+            cache = $cacheFactory('inspectionCache'), // TODO - do we need the cache?
+            baseUrl = '', /* 'http://api.thedealio.org:443/bond/'   TODO - change to URL to inspectionMe server */
+            imageBaseUrl = '', /* http://api.thedealio.org'   TODO - change to URL to inspectionMe server */
             notificationId = 0; /* 132479809,    TODO - what is this? is this for PushWoosh? */
         
         // Current page information
         factory.currentPage = {
-            title: "Fashion",
+            title: "Inspection",
             preventNavigation: false,
         };
 
@@ -165,3 +131,6 @@ fashion.factory('fashionService', ['$http', '$cacheFactory', '$route',
         
         return factory;
   }]);
+
+
+ 

@@ -1,5 +1,11 @@
 // Create the main module
 var inspection = angular.module('fbiApp', ['ngRoute', 'ngTouch', 'ngMaterial']);
+var express= require('express');
+var mongoose = require('mongoose');
+var config = require('config');
+mongoose.connect(config.mongoUri);
+var userService = require('../services/user-service');
+
 
 // Config - take care of URL routes
 inspection.config(['$routeProvider',

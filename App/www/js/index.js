@@ -1,11 +1,27 @@
 // Create the main module
-var inspection = angular.module('fbiApp', ['ngRoute', 'ngTouch', 'ngMaterial']);
-var express= require('express');
-var mongoose = require('mongoose');
-var config = require('config');
-mongoose.connect(config.mongoUri);
-var userService = require('../services/user-service');
+var inspection = angular.module('fbiApp', ['ngRoute', 'ngTouch', 'ngMaterial', 'ngMdIcons']);
 
+//var express = require('express');
+//var mongoose = require('mongoose');
+//var config = require('config');
+//var passport = require('passport');
+//var expressSession = require('express-session');
+//mongoose.connect(config.mongoUri);
+//var userService = require('./services/user-service');
+//var passportConfig = require('./auth/passport-config');
+//passportConfig();
+//
+//
+//inspection.use(passport.initialize());
+//inspection.use(passport.session());
+//inspection.use(express.static(path.join(__dirname, 'public')));
+//inspection.user(expressSession()
+//                {
+//                    secret: 'getting hungry',
+//                    saveUninitialized: false,
+//                    resave: false
+//                }
+//               ));
 
 // Config - take care of URL routes
 inspection.config(['$routeProvider',
@@ -84,7 +100,7 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
             user_name: "natashia23",
             first_name: "Natashia",
             last_name: "Rominos",
-            profile_image: "assets/profile.jpg"
+            profile_image: "img/Favicon.gif"
         };
 
         // Refresh the cache every hour

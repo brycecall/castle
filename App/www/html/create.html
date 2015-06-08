@@ -1,4 +1,4 @@
-    <div ng-controller="createController" layout="column" style="height:500px;" class="sidenavdemoBasicUsage">
+    <div ng-controller="createController" layout="column" style="height:100%;" class="sidenavdemoBasicUsage">
 
     
 
@@ -6,79 +6,45 @@
   <section layout="row" flex="">
 <!-- class="md-primary md-hue-9"-->
 
-    <md-checkbox aria-label="stuff">1</md-checkbox>
-    <md-checkbox>2</md-checkbox>
-    <md-checkbox>3</md-checkbox>
-    <md-checkbox>money</md-checkbox>
-    
- <md-button class="md-fab md-fab-top-right right" aria-label="Photos">
-      <md-icon md-svg-src="img/icons/ic_photo_24px.svg" style="width: 24px; height: 24px;"></md-icon>
-      <md-tooltip>
-        Photos
-      </md-tooltip>
-    </md-button>
-   
-    <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+       <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" >
       <md-toolbar class="md-theme-indigo">
         <h1 class="md-toolbar-tools">Sidenav Left</h1>
       </md-toolbar>
-      <md-content layout-padding="" ng-controller="leftController">
-        <md-button ng-click="close()" class="md-primary" hide-gt-md="">
+      <md-content layout-padding="" ng-controller="leftController" >
+        <md-button aria-label="close" ng-click="close()" class="md-primary" hide-gt-md="">
           Close Sidenav Left
         </md-button>
+<!--
         <p hide-md="" show-gt-md="">
           This sidenav is locked open on your device. To go back to the default behavior,
           narrow your display.
         </p>
+-->
       </md-content>
 
     </md-sidenav>
-
+   
     <md-content flex="" layout-padding="">
-
       <div layout="column" layout-fill="" layout-align="top center">
-        <p>
-        Cool stuff here
-        </p>
-        <p>
-        Cooler stuff here
-        </p>
-
+        <p>Cool stuff here</p>
+        <p>Cooler stuff here</p>
         <div>
-          <md-button ng-click="toggleLeft()" class="md-primary" hide-gt-md="">
+          <md-button aria-label="toggle left nav" ng-click="toggleLeft()" class="md-primary" hide-gt-md="">
             Toggle left
           </md-button>
         </div>
-
-        <div>
-          <md-button ng-click="toggleRight()" class="md-primary">
-            Toggle right
-          </md-button>
-        </div>
       </div>
-
+      
       <div flex=""></div>
+<!--        <md-checkbox aria-label="stuff" ng-repeat="()" >1</md-checkbox>-->
 
+         <md-button class="md-fab" aria-label="Photos" >
+<!--            <ng-md-icon icon="camera" alt="send" style="fill:white; margin-top:15px;" size="24"></ng-md-icon>-->
+           <i class="fa fa-camera"></i>
+        </md-button>
     </md-content>
 
-    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="right">
 
-      <md-toolbar class="md-theme-light">
-        <h1 class="md-toolbar-tools">Sidenav Right</h1>
-      </md-toolbar>
-      <md-content ng-controller="rightController" layout-padding="">
-        <form>
-          <md-input-container>
-            <label for="testInput">Test input</label>
-            <input type="text" id="testInput" ng-model="data" md-sidenav-focus="">
-          </md-input-container>
-        </form>
-        <md-button ng-click="close()" class="md-primary">
-          Close Sidenav Right
-        </md-button>
-      </md-content>
-
-    </md-sidenav>
 
   </section>
 

@@ -18,6 +18,9 @@
 
       return debounceFn;
     }
+     
+     
+     $scope.test = {}
 
   });
   

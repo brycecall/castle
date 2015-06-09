@@ -1,14 +1,12 @@
     <div ng-controller="createController" layout="column" style="height:100%;" class="page">
 
     
-
-
-  <section layout="row" flex="">
+  <section layout="column" flex="">
 <!-- class="md-primary md-hue-9"-->
-
+ <md-content flex="" layout-padding="" >
        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" >
       <md-toolbar class="md-theme-indigo">
-        <h2 class="md-toolbar-tools">{{currentPage.title}}</h2>
+        <h2 class="md-toolbar-tools">{{items[currentPage].title}}</h2>
 
       </md-toolbar>
       <md-content layout-padding="" >
@@ -25,7 +23,7 @@
         </md-list>
 
 <!--
-        <p hide-md="" show-gt-md="">
+        <p hide-md="" show-gt-md=""> <-- good to know
           This sidenav is locked open on your device. To go back to the default behavior,
           narrow your display.
         </p>
@@ -34,7 +32,7 @@
 
     </md-sidenav>
    
-    <md-content flex="" layout-padding="">
+    <div ng-repeat="subPage in items[currentPage].subpage"  class="md-whiteframe-z1">
 <!--
              <md-select ng-model="subMenu">
             <md-option ng-repeat="item in items" ng-value="item.title">{{item.title}}</md-option>
@@ -44,36 +42,34 @@
                   <md-button aria-label="toggle left nav" ng-click="toggleLeft()" class="md-primary" hide-gt-md="">
             Toggle Menu
           </md-button>
-         <md-switch ng-model="items[currentPage].showconditions" aria-label="Show Conditions">
-            Show conditions message: {{items[currentPage].showconditions}}
+         <md-switch ng-model="subPage.showconditions" aria-label="Show Conditions">
+            Show conditions message: {{subPage.showconditions}}
           </md-switch>
-         <md-switch ng-model="items[currentPage].showlimitations" aria-label="Show limitations">
-            Show limitations message: {{items[currentPage].showlimitations}}
+          <md-switch ng-model="subPage.showlimitations" aria-label="Show limitations">
+            Show limitations message: {{subPage.showlimitations}}
           </md-switch>
 
       </div>
       
       <div flex=""></div>
 
-    <md-list ng-repeat="checklist in currentPage.checkboxes">
+    <md-list ng-repeat="checklist in subPage.checkboxes">
     <md-subheader class="md-no-sticky">{{checklist.title}}</md-subheader>
-     <md-list-item ng-repeat="checkbox in checklist" role="listitem" class="md-proxy-focus md-ink-ripple md-clickable ng-scope" >
+     <md-list-item ng-repeat="(checkboxkey, checkboxvalue) in checklist" role="listitem" class="md-proxy-focus md-ink-ripple md-clickable ng-scope" >
 
-            <md-checkbox class="md-secondary"  aria-label="{{checkbox}}" >{{checkbox}} </md-checkbox>
+            <md-checkbox class="md-secondary" ng-model="checkboxvalue" aria-label="{{checkboxkey}}" >{{checkboxkey}} </md-checkbox>
 
       </md-list-item>
     </md-list>
 
 
 
-         <md-button class="md-fab" aria-label="Photos" >
-<!--            <ng-md-icon icon="camera" alt="send" style="fill:white; margin-top:15px;" size="24"></ng-md-icon>-->
+         <md-button class="md-fab " aria-label="Photos" >
+<!--            <ng-md-icon icon="camera" alt="send" style="fill:white; vertical-align:center" size="24"></ng-md-icon>-->
            <i class="fa fa-camera"></i>
         </md-button>
+        </div>
     </md-content>
-
-
-
   </section>
 
 </div>

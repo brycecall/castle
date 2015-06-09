@@ -50,29 +50,27 @@
              'subpage': [
                  {
                      'subtitle': 'Site',
-                     'conditions': 'The inspection of the site includes...',
+                     'conditions': 'The inspection of the site includes the building perimeter',
                      'showconditions': true,
                      'limitations': 'According to the Home Inspection Standards of Practice WAC 308-408C-170...',
                      'showlimitations': true,
-                     'checkboxes': [
-                         {
-                             'title': 'driveway',
+                     'checkboxes': {
+                         'driveway': {
+                             'n/a': false,
+                             'Concrete': false,
+                             'Asphalt': false,
+                             'Pavers/stone/brick': false,
+                             'Dirt/gravel': false
+
+                         },
+                         'Patio' : {
                              'n/a': false,
                              'Concrete': false,
                              'Asphalt': false,
                              'Pavers/stone/brick': false,
                              'Dirt/gravel': false
                          },
-                         {
-                             'title': 'Patio',
-                             'n/a': false,
-                             'Concrete': false,
-                             'Asphalt': false,
-                             'Pavers/stone/brick': false,
-                             'Dirt/gravel': false
-                         },
-                         {
-                             'title': 'Walkways and Steps',
+                         'Walkways and Steps' : {
                              'n/a': false,
                              'Uneven': false,
                              'Large cracks': false,
@@ -84,7 +82,7 @@
                              'Missing handrails': false,
                              'Missing safety glass': false
                          }
-          ]
+                 }
                  },
                  {
                      'subtitle': 'Attached Decks/Balconies/Porches/Steps',

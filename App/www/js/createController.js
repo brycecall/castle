@@ -63,14 +63,14 @@
                              'Dirt/gravel': false
 
                          },
-                         'Patio' : {
+                         'Patio': {
                              'n/a': false,
                              'Concrete': false,
                              'Asphalt': false,
                              'Pavers/stone/brick': false,
                              'Dirt/gravel': false
                          },
-                         'Walkways and Steps' : {
+                         'Walkways and Steps': {
                              'n/a': false,
                              'Uneven': false,
                              'Large cracks': false,
@@ -82,7 +82,15 @@
                              'Missing handrails': false,
                              'Missing safety glass': false
                          }
-                 }
+                     },
+                     'images': [
+                         {
+                             'title': 'default title',
+                             'url': 'path',
+                             'required':false
+                             }
+                     ]
+
                  },
                  {
                      'subtitle': 'Attached Decks/Balconies/Porches/Steps',

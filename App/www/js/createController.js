@@ -49,7 +49,7 @@
              'title': 'Site',
              'subpage': [
                  {
-                     'subtitle': 'Site',
+                     'title': 'Site',
                      'conditions': 'The inspection of the site includes the building perimeter',
                      'showconditions': true,
                      'limitations': 'According to the Home Inspection Standards of Practice WAC 308-408C-170...',
@@ -87,36 +87,34 @@
                          {
                              'title': 'default title',
                              'url': 'path',
-                             'required':false
+                             'required': false
                              }
                      ]
 
                  },
                  {
-                     'subtitle': 'Attached Decks/Balconies/Porches/Steps',
+                     'title': 'Attached Decks/Balconies/Porches/Steps',
                      'conditions': 'The inspection of the site includes...',
                      'showconditions': true,
                      'limitations': 'According to the Home Inspection Standards of Practice WAC 308-408C-170....',
                      'showlimitations': true,
-                     'checkboxes': [
-                         {
-                             'title': 'driveway',
+                     'checkboxes': {
+                         'driveway': {
+                             'n/a': false,
+                             'Concrete': false,
+                             'Asphalt': false,
+                             'Pavers/stone/brick': false,
+                             'Dirt/gravel': false
+
+                         },
+                         'Patio': {
                              'n/a': false,
                              'Concrete': false,
                              'Asphalt': false,
                              'Pavers/stone/brick': false,
                              'Dirt/gravel': false
                          },
-                         {
-                             'title': 'Patio',
-                             'n/a': false,
-                             'Concrete': false,
-                             'Asphalt': false,
-                             'Pavers/stone/brick': false,
-                             'Dirt/gravel': false
-                         },
-                         {
-                             'title': 'Walkways and Steps',
+                         'Walkways and Steps': {
                              'n/a': false,
                              'Uneven': false,
                              'Large cracks': false,
@@ -128,7 +126,15 @@
                              'Missing handrails': false,
                              'Missing safety glass': false
                          }
-          ]
+                     },
+                     'images': [
+                         {
+                             'title': 'default title',
+                             'url': 'path',
+                             'required': false
+                             }
+                     ]
+
                  }
           ]
          },
@@ -137,28 +143,47 @@
              'title': 'Exterior',
              'subpage': [
                  {
+                     'title': 'Exterior Wall Cladding',
                      'conditions': 'The inspection of the site includes....',
                      'showconditions': true,
                      'limitations': 'According to the Home Inspection Standards of Practice WAC 308-408C-170...',
                      'showlimitations': true,
-                     'checkboxes': [
-                         {
-                             'title': 'driveway',
+                     'checkboxes': {
+                         'driveway': {
+                             'n/a': false,
+                             'Concrete': false,
+                             'Asphalt': false,
+                             'Pavers/stone/brick': false,
+                             'Dirt/gravel': false
+
+                         },
+                         'Patio': {
                              'n/a': false,
                              'Concrete': false,
                              'Asphalt': false,
                              'Pavers/stone/brick': false,
                              'Dirt/gravel': false
                          },
-                         {
-                             'title': 'Patio',
+                         'Walkways and Steps': {
                              'n/a': false,
-                             'Concrete': false,
-                             'Asphalt': false,
-                             'Pavers/stone/brick': false,
-                             'Dirt/gravel': false
+                             'Uneven': false,
+                             'Large cracks': false,
+                             'Root heaving': false,
+                             'Moss build-up': false,
+                             'Missing spacers': false,
+                             'Settled': false,
+                             'Trip hazard': false,
+                             'Missing handrails': false,
+                             'Missing safety glass': false
                          }
-          ]
+                     },
+                     'images': [
+                         {
+                             'title': 'default title',
+                             'url': 'path',
+                             'required': false
+                             }
+                     ]
                  }
          ]
          }

@@ -9,7 +9,7 @@
         <h2 class="md-toolbar-tools">{{items[currentPage].title}}</h2>
 
       </md-toolbar>
-      <md-content layout-padding="" >
+      <md-content >
         <md-button aria-label="close" ng-click="close()" class="md-primary" hide-gt-md="">
           Close Sidenav Left
         </md-button>
@@ -32,7 +32,9 @@
 
     </md-sidenav>
    
-    <div ng-repeat="subPage in items[currentPage].subpage"  class="md-whiteframe-z1">
+
+    <div ng-repeat="subPage in items[currentPage].subpage"  class="md-whiteframe-z1 subPage">
+        <md-subheader class="subHeader md-primary">{{subPage.title}}</md-subheader>
 <!--
              <md-select ng-model="subMenu">
             <md-option ng-repeat="item in items" ng-value="item.title">{{item.title}}</md-option>
@@ -53,8 +55,8 @@
       
       <div flex=""></div>
 
-    <md-list ng-repeat="checklist in subPage.checkboxes">
-    <md-subheader class="md-no-sticky">{{checklist.title}}</md-subheader>
+    <md-list ng-repeat="(checklistkey, checklist) in subPage.checkboxes">
+    <h3 class="subsubmenu">{{checklistkey}}:</h3>
      <md-list-item ng-repeat="(checkboxkey, checkboxvalue) in checklist" role="listitem" class="md-proxy-focus md-ink-ripple md-clickable ng-scope" >
 
             <md-checkbox class="md-secondary" ng-model="checkboxvalue" aria-label="{{checkboxkey}}" >{{checkboxkey}} </md-checkbox>

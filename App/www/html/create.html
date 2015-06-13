@@ -4,7 +4,8 @@
   <section layout="column" flex="">
 <!-- class="md-primary md-hue-9"-->
  <md-content >
-       <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" >
+       <md-sidenav class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" style="height:100%">
+
        
       <md-toolbar class="md-theme-indigo">
         <h2 class="md-toolbar-tools">{{items[currentPage].title}}</h2>
@@ -23,17 +24,16 @@
               </md-list-item>
         </md-list>
 
+      </md-content>
+
+    </md-sidenav>
+
 <!--
         <p hide-md="" show-gt-md=""> <-- good to know
           This sidenav is locked open on your device. To go back to the default behavior,
           narrow your display.
         </p>
 -->
-      </md-content>
-
-    </md-sidenav>
-   
-
     <div ng-repeat="subPage in items[currentPage].subpage"  class="md-whiteframe-z1 subPage">
 
        
@@ -48,19 +48,55 @@
             Toggle Menu
           </md-button>
           
-         <md-switch ng-model="subPage.showconditions" aria-label="Show Conditions">
-            Show conditions message: {{subPage.showconditions}}
-          </md-switch>
+          <div>
+          <md-list >
           
-<!--          TODO:-->
+          <md-list-item style="position: relative">
+            <div style="display:flex">
+             <md-switch ng-model="subPage.showconditions" aria-label="Show Conditions" style="display:flex">
+                Show conditions message: {{subPage.showconditions}}  </md-switch>
+                                               <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_24px.svg" class="md-accent iconRight" ng-click="showMessage($event)"></md-icon>
+</div>
 
-            <md-button ng-click="showMessage($event)" ><md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_24px.svg" class="md-accent"  >asd</md-icon></md-button>
+
+        </md-list-item>
+
+          <md-list-item style="position: relative">
+            <div style="display:flex">
+            <md-switch ng-model="subPage.showlimitations" aria-label="Show limitations">
+                Show limitations message: {{subPage.showlimitations}}</md-switch>
+                           <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_24px.svg" class="md-accent iconRight" ng-click="showMessage($event)"></md-icon>
+                           </div>
+                    </md-list-item>
 
 
 
-          <md-switch ng-model="subPage.showlimitations" aria-label="Show limitations">
-            Show limitations message: {{subPage.showlimitations}}
-          </md-switch>
+
+                     </md-list>
+
+
+        </div>
+
+
+<!--
+<md-list>
+    <md-list-item role="listitem" class="md-proxy-focus md-with-secondary ng-scope md-clickable" tabindex="-1"><div class="md-no-style md-list-item-inner">
+        <md-checkbox ng-model="message.selected" aria-label="Toggle Message A" role="checkbox" class=" md-default-theme" tabindex="0" aria-checked="false" aria-invalid="false">
+        <div class="md-container" md-ink-ripple="" md-ink-ripple-checkbox="">
+             <div class="md-icon"></div>
+        </div>
+        <div ng-transclude="" class="md-label"></div>
+        </md-checkbox>
+        <p class="ng-binding">Message A</p>
+
+      </div>
+       <button class="md-secondary-container md-icon-button md-button md-default-theme" ng-transclude="" ng-click="doSecondaryAction($event)" tabindex="0">
+           <md-icon class="ng-scope ng-isolate-scope md-default-theme" aria-label="Chat"md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_24px.svg" tabindex="-1" aria-hidden="true"></md-icon>
+        </button>
+    </md-list-item>
+</md-list>
+
+-->
 
       </div>
       

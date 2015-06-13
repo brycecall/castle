@@ -196,18 +196,18 @@
      //        
      //     }
 
-     function showMessage(event) {
-         alert('hello!');
+     $scope.alert = '';
+     $scope.showMessage = function(event) {
          $mdDialog.show(
              $mdDialog.alert()
-             .title('Message')
-             .content($scope.items[0].subPage.conditions)
+             .title('Conditions Message')
+             .content( $scope.items[0].subpage[0].conditions )
              .ariaLabel('')
-             .ok('Neat!')
+             .ok('Close!')
              .targetEvent(event)
          );
-     }
-     
+     };
+
      
      function navigatePage(title) {
      

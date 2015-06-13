@@ -1477,6 +1477,392 @@ $scope.items = [
 
             } //This is where you start a new "SubPage Title" Section OR Image Section
             ]
-    } //This is where you start a new "Title" Section.
+    },
+    {
+            'title': 'Plumbing',
+            'subpage': [
+                {
+                    'title': 'Plumbing System',
+                    'conditions': 'An inspection of the plumbing system includes visible water supply lines; visible drain/waste / soil and vent lines; fixtures and faucets; domestic hot water system and fuel source, and includes operating fixtures in order to observe functional flow, check for functional drainage from fixtures, and describe the visible water supply and distribution piping materials; drain, waste and vent materials; water-heating equipment, and any deficiencies of these systems or components. This section reports: (1)The presence and location of the main water shutoff valve and/or fuel shutoff valve(s), or reports that they were not found, (2)The presence and functionality of sump pumps/waste ejector pumps when visible or confirms the float switch activates the pump when the sump is dry, and (3)Whether or not the water temperature was tested, and the presence of the temperature and pressure relief (TPR) valve and associated piping. The generally accepted maximum safe water temperature is one hundred twenty degrees (120°) Fahrenheit.',
+                    'showconditions': true,
+                    'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-100 of the Washington State Dept. of Licensing, the inspector is not required to operate any valves, including faucets of freestanding or built-in appliances or fixtures, (if the outlet end of the valve or faucet is connected or intended to be connected to an appliance), any plumbing components not readily accessible, or inspect any system that is shut down or winterized; or determine the quantity of water from on-site water supplies, the condition and operation of private water supply systems or water wells and related pressure tanks and pumps, the potability of any water supply whether public or private, or water-conditioning equipment, including softeners and filter systems; or test pressure or temperature/pressure relief valves, gas supply systems, ignite pilot lights, test fire sprinkler systems, or ancillary systems or components such as, but not limited to, those related to solar water heating and hot water circulation; or test shower pans for leaks, or use special equipment to test/scan shower or tub surrounds for moisture in surrounding substrate materials; or test exterior drain systems or floor drains, including but not limited to, exterior stairwell drains and driveway drains; or test interior components of exterior pumps, or sealed sanitary waste lift systems, or the quality or the condition and operation of on-site sewage disposal systems such as waste ejector pumps, cesspools, septic tanks, drain fields, related underground piping, conduit, cisterns, and related equipment.',
+                    'showlimitations': true,
+                    'checkboxes': {
+                        'Water Supply Source': {
+                            'Public Water': false, //
+                            'Public Well': false,
+                            'Private Well': false,
+                            'OTHER (NEED MORE DATA)': false
+                        },
+                        'Main Water Shut Off Valve Location': {//THIS REQUIRES MORE DATA.
+                            'Closet': false,
+                            'Bathroom': false,
+                            'OTHER (NEED MORE DATA)': false
+                        },
+                        'Water Pressure': {//THIS REQUIRES MORE DATA.
+                            'Less than 45': false,
+                            'Approximately 45-55': false,
+                            'Approximately 55-65': false,
+                            'Approximately 65-75': false,
+                            'Approximately 75-85': false,
+                            'OTHER (NEED MORE DATA)': false
+                        },
+                        'Water Temperature': {//THIS REQUIRES MORE DATA.
+                            'Varies Per Unit': false,
+                            'OTHER (NEED MORE DATA)': false
+                        },
+                        'Water System': {//THIS REQUIRES MORE DATA.
+                            'Public Sewer': false,
+                            'OTHER (NEED MORE DATA)': false
+                        },
+                        'Main Entry Piping': {
+                            'Copper': false,
+                            'Galvanized': false,
+                            'Plastic/CPVC': false,
+                            'Polybutylene': false,
+                            'PEX': false
+                        },
+                        'Condition': {
+                            'Not Visible': false,
+                            'Leaking': false,
+                            'Unprotected/Freezing': false,
+                            'Discolered Water': false,
+                            'Odor': false
+                        },
+                        'Pressure': {
+                            'LIST PRESSURE?': false,
+                            'Low': false,
+                            'High': false,
+                            'Normal': false,
+                            'Inoperable': false,
+                            'Shut-Off': false,
+                            'Winterized': false
+                        },
+                        'Water Lines': {
+                            'Copper': false,
+                            'Galvanized': false,
+                            'Plastic/CPVC': false,
+                            'Polybutylene': false,
+                            'PEX': false
+                        },
+                        'Condition': {
+                            'Not Fully Visible': false,
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Cross Connections': false,
+                            'Leaks': false
+                        },
+                        'Lead (other than solder joints)': {
+                            'Service Entry': false,
+                            'Unknown': false,
+                            'Unlikely': false
+                        },
+                        'Disimilar Metal Connection (Potential Electrolysis)': {
+                            'Yes': false,
+                            'No': false,
+                            'Not Visible': false
+                        },
+                        'DMV Piping': {
+                            'Copper': false,
+                            'Cast Iron': false,
+                            'Galvanized': false,
+                            'Plastic/ABS/PVC': false
+                        },
+                        'Condition': {
+                            'Not Fully Visible': false,
+                            'Satisfactory': false,
+                            'Maginal': false,
+                            'Poor': false,
+                            'Leaks': false,
+                            'Unsupported': false
+                        }
+                    },
+                    'images': [
+                        {
+                            'title': 'Tested Water Pressure',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Main Water Shut-Off Valve',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Typical ABS Drain to Sewer',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Typical View of Kitchen Sink Plumbing & Drain Pipes',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Typical View of Laundry Sink Plumbing & Drain Pipes',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             }
+                     ]
+
+                 },
+                {
+                    'title': 'Faucets/Fixtures',
+                    'conditions': 'None',
+                    'showconditions': true,
+                    'limitations': 'None',
+                    'showlimitations': true,
+                    'checkboxes': {
+                        'Faucets': {
+                            'Functional': false,
+                            'Intermittent Function': false,
+                            'Inoperable': false,
+                            'Missing/Incomplete': false,
+                            'Loose': false,
+                            'Broken/Damaged': false
+                        },
+                        'Leaking': {
+                            'Hose Bibb': false,
+                            'Wall Stop': false,
+                            'Faucet': false,
+                            'Sprayer': false
+                        },
+                        'Location': {
+                            'Kitchen': false,
+                            'Master Bath': false,
+                            'Main Bath': false,
+                            'Half Bath': false,
+                            'Laundry': false,
+                            'Bar': false
+                        },
+                        'Accessories': {
+                            'Vegetable Sink': false,
+                            'Insta-Hot': false,
+                            'Water Filter': false,
+                            'Ice Maker': false
+                        },
+                        'Disposer': {
+                                'Noisy': false,
+                                'Defective': false,
+                        },
+                        'Dishwasher': {
+                            'Airgap': false
+                        },
+                        'Condition': {
+                            'Functional': false,
+                            'Inoperable': false,
+                            'Intermittent Function': false,
+                            'Defects/Damage': false
+                        },
+                        'Sinks/Fixtures': {
+                            'Functional': false,
+                            'Surface Damage': false,
+                            'Cabinet Damage': false,
+                            'Cross Connection': false,
+                            'Improve Caulking at Sink, Back-Splash, Tub Deck, Shower Surround, Floor, Wood or MDF Molding': false,
+                        },
+                        'Grout Condition': {
+                            'Unsealed (Recommend Sealing)': false,
+                            'Cracked/Loose/Missing Grout': false
+                        },
+                        'Drainage': {
+                            'Functional': false,
+                            'Missing Stopper': false,
+                            'Missing/Inoperable Overflow': false,
+                            'Clog/Slow Drain': false,
+                            'Stained Drainpipe': false,
+                            'Drips/Leaks': false,
+                            'Defects/Damage': false,
+                            'Unsafe': false,
+                            'Re-Evaluate': false
+                        },
+                        'Location': {
+                            'Kitchen': false,
+                            'Master Bath': false,
+                            'Main Bath': false,
+                            'Half Bath': false,
+                            'Laundry': false,
+                            'Bar': false
+                        },
+                        'Toilet': {
+                            'Satisfactory': false,
+                            'Inoperable': false,
+                            'Runs Continuously': false,
+                            'Leaks': false,
+                            'Loose Bowl': false,
+                            'Damage': false
+                        },
+                        'Tub/Shower Surround(s)': {
+                            'Ceramic': false,
+                            'FG': false,
+                            'Masonite/Laminate': false,
+                            'Slab': false,
+                            'Jacuzzi': false
+                        },
+                        'Condition': {
+                            'Functional': false,
+                            'Inoperable': false,
+                            'Stains': false,
+                            'Cross Connection': false,
+                            'Defective': false,
+                            'Loose Tile': false,
+                            'Cracked/Broken': false,
+                            'Leaky Shower Head': false,
+                            'Leaky Faucet': false,
+                            'Leaky Sprayer': false
+                        },
+                    },
+                    'images': [
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        ]
+
+                 },
+                {
+                    'title': 'Water Heater',
+                    'conditions': 'None',
+                    'showconditions': true,
+                    'limitations': 'None',
+                    'showlimitations': true,
+                    'checkboxes': {
+                        'Energy Source': {
+                            'Gas/Propane': false,
+                            'Electric': false,
+                            'Oil': false,
+                            'Solar': false,
+                            'Geo Thermal': false
+                        },
+                        'Brand Name': {//NEEDS MORE DATA.
+                            'American': false,
+                            'OTHER (NEEDS MORE DATA)': false
+                        },
+                        'Approximate Age (Years Old)': {//NEEDS MORE DATA.
+                            '1': false,
+                            '2': false,
+                            '3': false,
+                            '4': false,
+                            '5': false,
+                            '6': false,
+                            '7': false,
+                            '8': false,
+                            '9': false,
+                            '10': false,
+                            'OTHER (NEEDS MORE DATA)': false
+                        },
+                        'Capacity (in Gallons)': {
+                            '10': false,
+                            '20': false,
+                            '30': false,
+                            '40': false,
+                            '50': false,
+                            'OTHER (NEEDS MORE DATA)': false
+                        },
+                        'Model #': {//THIS IS A TEXT ENTRY FIELD
+                            'TEXT ENTRY FIELD': false
+                        },
+                        'Serial #': {//THIS IS A TEXT ENTRY FIELD
+                            'TEXT ENTRY FIELD': false
+                        },
+                        'Water Temperature': {
+                            'OTHER (NEEDS MORE DATA)': false
+                        },
+                        'Condition': {
+                            'Inoperable': false,
+                            'Data Plate Inaccessible/Illegible': false,
+                            'Missing/Loose Seismic Restraints': false
+                        },
+                        'TPRV Connection': {
+                            'Satisfactory': false,
+                            'Missing': false,
+                            'Reduced Extension': false,
+                            'Poor Extension Termination': false
+                        },
+                        'Exhaust': {
+                            'n/a': false,
+                            'Metal': false,
+                            'Flex Ducting': false,
+                            'PVC': false,
+                            'Condensate': false,
+                            'Rust': false,
+                            'Corrosion': false,
+                            'Verify Proper Pitch': false,
+                            'Disconnected': false,
+                            'Into Masonry Chase': false,
+                            'Missing Liner': false,
+                            'Back-Drafting': false,
+                            'Unsafe': false,
+                            'Recommend Professional Re-Evaluation and/or Remediation': false
+                        },
+                    },
+                    'images': [
+                        {
+                            'title': 'Water Heater Location',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Water Heater Data Plate',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                                'title': 'Kitchen Water Temperature',
+                                'url': 'path',
+                                'required': false
+                             },
+                        {
+                                'title': 'Laundry Machines NOT Evaluated',
+                                'url': 'path',
+                                'required': false
+                             },
+                        ]
+
+                 }//This is where you start a new Subpage "Title" Section.
+        ]
+    },//This is where you start a new "Title" Section.
 ]
 }];

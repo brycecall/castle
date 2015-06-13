@@ -1,4 +1,4 @@
- angular.module('fbiApp').controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log) {
+ angular.module('fbiApp').controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog) {
 
      $scope.toggleLeft = buildToggler('left');
 
@@ -191,207 +191,29 @@
 
      $scope.subMenu = $scope.items[0].title;
      $scope.currentPage = 0;
-     //     function() {
-     //
+
+     //     function navigatePage(page) {
+     //        
      //     }
 
+     function showMessage(event) {
+         alert('hello!');
+         $mdDialog.show(
+             $mdDialog.alert()
+             .title('Message')
+             .content($scope.items[0].subPage.conditions)
+             .ariaLabel('')
+             .ok('Neat!')
+             .targetEvent(event)
+         );
+     }
+     
+     
+     function navigatePage(title) {
+     
+     }
 
  });
-
- //Condition: Satisfactory Marginal Poor Pitched towards home
- //Typical cracks Large cracks Root heaving Uneven Trip / falling hazard
- //
- //		Driveway
- //		Patio
- //		Walkways & Steps
- //		Retaining Wall
- //		Safety Fence at
- //		Landscaping
- //		Porch / Stoop
- //		Yard Steps
- //		Deck / Balcony
- //	Safety Concerns
- //		Pre-composed text possibilities
- //	Pictures
- //	Moisture / Pest-Conducive Conditions
- //		Pre-composed text possibilities
- //
- //Exterior
- //	Pre-composed Exterior Components and Limitations
- //	pre-set list to be checked
- //		Exterior Wall Cladding (siding or exterior wall coverings)
- //			Types
- //			Flashing
- //			Trim / Soffit / Fascia
- //		Wall Fenestrations (penetrations through exterior wall)
- //			Window Frame / Trim
- //			Exterior Doors
- //			Caulking
- //	Pictures
- //	Pre-composed Attacked Garage / Carport and Inspection Limitations
- //	pre-set list to be checked
- //		Vehicle Parking
- //			Floor
- //		ATTACHED GARAGE / STORAGE or CARPORT
- //			Firewall
- //			Exterior Service Door
- //			Car Door
- //			Automatic Door Opener
- //Roofing
- //	Pre-composed Roof Covering and Limitations
- //	pre-set list to be checked
- //		Roof Coverings
- //			Style
- //			Roof Covering
- //			Valley(s)
- //			Condition
- //		Fenestrations
- //			Perforations
- //			Skylights / skywalls
- //			Flashings
- //		Gutters & Down-spouts
- //			Type
- //			Down-spout Discharge
- //Structural
- //	Pre-composed Structural Components and Inspection Limitations
- //	pre-set list to be checked
- //		Roof framing (visible in attic)
- //			Roof system
- //			Diaphragm Sheathing
- //		Floor Framing
- //			Sub-Floor System
- //			Joists & Sheathing
- //			Posts (Columns)
- //			Stairs
- //			Basement / Crawl Floor
- //		Foundation
- //			Type
- //			Limited by
- //			WDI / WDO
- //			Cracks
- //			Drainage
- //Thermal
- //	Pre-composed Insulation / ventilation and inspection limitations
- //	pre-set list to be checked
- //		Attic
- //			Access
- //			Insulation
- //			Ventilation
- //			Humidity
- //			Infestation
- //		Crawl Spaces / Unfinished Basements
- //			Access
- //			Viewed
- //			Sub-floor Insulation
- //			Crawl-space Ventilation
- //			Vapor Barrier
- //			Moisture
- //			Infestation
- //		Interior Mechanical Ventilation / Exhaust Fans
- //Plumbing
- //	Pre-composed Plumbing Components and inspection limitations
- //		Plumbing Data
- //			Water Supply Source
- //			Main Water Shut off
- //			Water Pressure
- //			Water Temperature
- //			Waste System
- //	pre-set list to be checked
- //		Plumbing System
- //			Main entry piping
- //			Water lines
- //			Disimilar Metal Connection
- //			DWV Piping
- //		Faucents / Fixtures
- //			Faucets
- //			Accessories
- //			Sinks / Fixtures
- //			Grout condition
- //			Drainage
- //			Toilet
- //			Tub / Shower Surround
- //		Water Heater #1 electric
- //			Exhaust
- //		Water Heater #2 gas
- //			Exhaust
- //Heating / Cooling
- //	Pre-composed Heating System and inspection limitations
- //	pre-set list to be checked
- //		Heating System
- //			Energy Source
- //			Central Furnace or Heat Pump
- //			Ducting
- //	Pre-composed fireplaces / stoves and inspection limitations
- //	pre-set list to be checked
- //		Type
- //		Chimney
- //	Pre-composed Cooling systems and inspection limitations
- //	pre-set list to be checked
- //		Air Conditioning Systems
- //			A/C Type
- //			Energy Source
- //			Evaporative Coil or Heat Pump (inside)
- //			Compressor / Condenser (outside)
- //Electrical
- //	Pre-composed electrical system and inspection limitations
- //	pre-set list to be checked
- //		Electrical System
- //			Main Service Entry
- //			Service Size
- //			Meter locations
- //			Grounding
- //			Main electrical disconnect locations
- //			Main Panel
- //			Branch Wiring
- //			Condition
- //			Fixtures
- //			Switches / Receptacles
- //			Carbon Monoxide Detectors
- //			Smoke Detectors
- //Interior
- //	Pre-composed Interior Components and limitations
- //	pre-set list to be checked
- //		Living Room
- //			Entry Doors
- //			Window(s)
- //			Ceiling Fans
- //			Lights / Switches / Receptacles
- //		Kitchen(s)
- //			Appliances
- //			Cabinets
- //			Countertops
- //			Caulking
- //			Grout
- //			Exhaust Fan
- //			Lights / Switches / Receptacles
- //		Laundry
- //			Appliances
- //			Dryer
- //			Exhaust Fan
- //		Bathroom(s)
- //			Walls / Ceilings
- //			Floors
- //			Caulking
- //			Heat
- //			Exhaust Fan
- //			Lights / Switches / Receptacles
- //		Interior
- //			Walls / Ceilings
- //			Floor Coverings
- //			Interior Doors
- //			Window Types
- //			Lights / Switches / Receptacles
- //Life Safety
- //	Pre-composed life / safety and inspection limitations
- //	pre-set list to be checked
- //		Potential Safety Concerns
- //			Tripping / falling Hazards
- //			Fire Hazards
- //			Pest-related
- //			Building materials
-
-
-
 
  angular.module('fbiApp').controller('leftController', function ($scope, $timeout, $mdSidenav, $log) {
      $scope.close = function () {

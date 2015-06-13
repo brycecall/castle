@@ -136,3 +136,11 @@ body {
 .subHeader {
     font-size: 15px;
 }
+
+.headNavIcon {
+    padding: 0 0 0 8px;
+    margin: 0;
+    vertical-align: center;
+    position: relative;
+    top: 3px;
+}

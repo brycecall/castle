@@ -111,7 +111,7 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
             user_name: "natashia23",
             first_name: "Natashia",
             last_name: "Rominos",
-            profile_image: "img/Favicon.gif"
+            profile_image: "img/Studphen.png"
         };
 
         // Refresh the cache every hour

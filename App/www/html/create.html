@@ -3,7 +3,7 @@
     
   <section layout="column" flex="">
 <!-- class="md-primary md-hue-9"-->
- <md-content layout="column" flex="" style="height:100%" layout-padding="" >
+ <md-content >
        <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" >
        
       <md-toolbar class="md-theme-indigo">
@@ -35,8 +35,7 @@
    
 
     <div ng-repeat="subPage in items[currentPage].subpage"  class="md-whiteframe-z1 subPage">
-      asdasd <i class="material-icons">face</i>
-      <md-icon md-svg-icon="./bower_components/material-design-icons/maps/svg/design/ic_local_airport_24px.svg" class="md-primary"></md-icon>
+
        
         <md-subheader class="subHeader md-primary">{{items[currentPage].title}}  <md-icon md-font-icon="fa-chevron-right" class="fa headNavIcon" ></md-icon>{{subPage.title}}</md-subheader>
 <!--
@@ -51,13 +50,12 @@
           
          <md-switch ng-model="subPage.showconditions" aria-label="Show Conditions">
             Show conditions message: {{subPage.showconditions}}
-
           </md-switch>
           
 <!--          TODO:-->
-           <md-button ng-click="showMessage($event)">
-            <md-icon md-font-icon="fa-plus-square" class="fa md-accent fa-lg"  style=""></md-icon>
-          </md-button>
+
+            <md-button ng-click="showMessage($event)" ><md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_24px.svg" class="md-accent"  >asd</md-icon></md-button>
+
 
 
           <md-switch ng-model="subPage.showlimitations" aria-label="Show limitations">
@@ -83,8 +81,9 @@
 
 
          <md-button class="md-fab " aria-label="Photos">
-<!--            <ng-md-icon icon="camera" alt="send" style="fill:white; vertical-align:center" size="24"></ng-md-icon>-->
-           <i class="fa fa-camera"></i>
+<!--<ng-md-icon icon="camera" alt="send" style="fill:white; vertical-align:center" size="24"></ng-md-icon>-->
+        <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_24px.svg" class=""></md-icon>
+
         </md-button>
         </div>
     </md-content>

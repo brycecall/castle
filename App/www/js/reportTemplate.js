@@ -1471,7 +1471,7 @@ $scope.items = [
                              }
                      ]
 
-                 },
+                 }, //This is "Checkboxes" Close Curly-Bracket.
 
                      ]
 

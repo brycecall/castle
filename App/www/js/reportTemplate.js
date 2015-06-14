@@ -1863,6 +1863,371 @@ $scope.items = [
 
                  }//This is where you start a new Subpage "Title" Section.
         ]
-    },//This is where you start a new "Title" Section.
+    },
+    {
+            'title': 'Heating/Cooling',
+            'subpage': [
+                {
+                    'title': 'Heating System',
+                    'conditions': 'The inspection of the heating system includes the fuel source; heating equipment; heating distribution; operating controls; visible portions of flue pipes, chimneys and venting, installed auxiliary heating units, deficiencies of the systems or components, and reports any evidence that indicates the possible presence of an underground storage tank. Each habitable space in the home was inspected to determine whether or not there was a functioning heat source present and operable, using normal readily accessible control devices. Access panels or covers provided by the manufacturer or installer, if readily accessible and detachable, were opened. The report describes the existing operation of: electric baseboard and in-wall heaters to ensure they are functional, central heating units and distribution systems, visible flue pipes and related components to ensure functional operation and proper clearance from combustibles, spaces where fossil fuel burning heating devices are located to ensure there is air for combustion.',
+                    'showconditions': true,
+                    'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-120 of the Washington State Dept. of Licensing, the inspector is not required to determine adequacy of combustion air, or the capacity, adequacy, or efficiency of a heating system, or evaluate thermostats or controls other than to confirm that they actually turn a system on or off. The inspector did not remove covers or panels that were not readily accessible or removable, or dismantle any equipment, controls, or gauges except readily identifiable access covers designed to be removed by users. The inspector is not required to ignite pilot lights, or operate heating devices or systems that have been shut down, do not respond to normal controls, or any heating system when circumstances are not conducive to safe operation or when doing so will damage the equipment, inspect or evaluate heat exchangers concealed inside furnaces and boilers, the interior of chimneys and flues, and/or any heating equipment that is not readily accessible, or installed heating system accessories, such as humidifiers, air purifiers, motorized dampers, heat reclaimers; solar heating systems; or concealed distribution systems.',
+                    'showlimitations': true,
+                    'checkboxes': {
+                        'Energy Source': {
+                            'Gas': false,
+                            'LP': false,
+                            'Electric': false,
+                            'Oil': false,
+                            'Solar': false,
+                            'Wind': false,
+                            'Geo Thermal': false
+
+                        },
+                        'System Type': {
+                            'Central Forced Air': false,
+                            'In-Wall Space Heaters': false,
+                            'Baseboard Wall': false,
+                            'Radiant': false
+                        },
+                        'Boiler': {
+                            'Water': false,
+                            'Steam': false,
+                            'Radiator': false
+                        },
+                        'Heat Pump': {
+                            'Air': false,
+                            'Water': false,
+                            'Ground': false
+                        },
+                        'Stove': {
+                            'Wood': false,
+                            'Solid Fuel(Pellet)': false,
+                            'Gas Log': false,
+                            'Verify Clearance to Combustibles': false
+                        },
+                        'Solar': {
+                            'Passive': false,
+                            'Heat Sink': false,
+                            'Photo-Voltaic': false,
+                            'Panels': false,
+                            'Convection': false
+                        },
+                        //PRESET TITLE: Central Furnace or Heat Pump
+                        'Brand Name': {//NEED MORE DATA
+                            'Bryant': false,
+                            'OTHER (NEED MORE DATA)': false
+                        },
+                        'Capacity': {//NEED MORE DATA
+                            'Text Entry?': false,
+                            'OTHER (NEED MORE DATA)': false
+                        },
+                        'Year of Manufacture': {//NEEDS TO BE ABLE TO SELECT A YEAR
+                            'SELECT A YEAR?': false
+                        },
+                        'Model #': {//TEXT ENTRY FIELD HERE.
+                            'TEXT ENTRY REQUIRED': false
+                        },
+                        'Serial #': {//TEXT ENTRY FIELD HERE.
+                            'TEXT ENTRY REQUIRED': false
+                        },
+                        'Posted Service History': {
+                            'Satisfactory (Annual Safety)': false,
+                            'Missing/Old': false,
+                            'Last Serviced n/a': false
+                        },
+                        'Condition': {
+                            'Satisfactory': false,
+                            'Inoperable': false,
+                            'Dusty Cabinet': false,
+                            'Rust': false,
+                            'Corrosion': false,
+                            'Flame Distortion': false
+                        },
+                        'Ducting': {
+                            'Plenum & Cold Air Returns': false,
+                            'Metal Duct': false,
+                            'Insulated Flex Duct': false
+                        },
+                        'Reduced Vent': {
+                            'Metal': false,
+                            'PVC': false,
+                            'Verify Proper Pitch': false,
+                            'Rusted': false,
+                            'Deteriorated': false,
+                            'Disconnected': false,
+                            'n/a': false
+                        },
+                        'Filter': {
+                            'n/a': false,
+                            'Electrostatic': false,
+                            'Paper': false,
+                            'Filter Fabric': false,
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor/Dirty': false
+                        },
+                        'Disconnect or Typical Safety Controls': {
+                            'Functional': false,
+                            'Verify Location/Function': false,
+                            'Hazard': false,
+                            'Recommend Professional HVAC Re-Evaluation, Safety Inspection, and/or Remediation': false
+                        }
+                    },
+                    'images': [
+                        {
+                            'title': 'Gas Meter Location',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Main Gas Shut-Off Valve',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Typical View of Furnace',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Furnace Data Plate',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Furnace Open For Inspection',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Filter Condition',
+                            'url': 'path',
+                            'required': false
+                             },
+                     ]
+
+                 },
+                {
+                    'title': 'Fireplaces/Stoves',
+                    'conditions': 'The inspection of solid fuel and gas fireplaces, or heating stoves includes the readily visible components, the fuel source, damper, fire-box, and hearth. Each fireplace or heating stove in the home, including dampers, fire-boxes and hearths was inspected using normal readily accessible control devices to determine whether or not there was a functional and operable heat source present, and to ensure there was air for combustion in spaces where fossil fuel burning heating devices were located. The findings area describes the heating units, visible flue pipes and related components to ensure functional operation and proper clearance from combustibles, and describes any deficiencies of these systems or components.',
+                    'showconditions': true,
+                    'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-160 of the Washington State Dept. of Licensing, the inspector is not required to: (1)inspect flues or verify the presence of flue liners beyond what can be safely and readily seen from the roof or the firebox of a stove or fireplace, (2)inspect any solid fuel device being operated at the time of the inspection, (3)dismantle fireplaces or stoves to inspect fire-boxes or remove rain caps to inspect chimney flues, (3)evaluate the installation or adequacy of fireplace inserts, or modifications to a fireplace, stove, or chimney, or (4)ignite fires in a fireplace or stove, perform a chimney smoke test or determine the adequacy of draft.',
+                    'showlimitations': true,
+                    'checkboxes': {
+                        'Fireplace/Stove Type': {
+                            'Masonry Firebox': false,
+                            'Metal FP Insert': false,
+                            'Direct Vent Gas FP': false,
+                            'Wood/Pellet Stove': false,
+                            'Masonry Flue Liner': false,
+                            'Metal Flue Liner': false,
+                            'Unlined Chase': false,
+                            'Venting Into Chimney Chase': false
+                        },
+                        'Mantle/Hearth': {
+                            'Loose': false,
+                            'Settling Cracks': false,
+                            'Burned': false,
+                            'Verify Clearance to Combustibles': false
+                        },
+                        'Firebox': {
+                            'No Access': false,
+                            'Missing Liner': false,
+                            'Cracked Refractory Brick': false,
+                            'Missing/Loose Mortar': false
+                        },
+                        'Damper': {
+                            'Missing': false,
+                            'No Access': false,
+                            'Inoperable/DTO': false,
+                            'Rusted': false,
+                            'Damaged/Broken': false,
+                            'Creosote Build-Up': false,
+                            'Deterioration': false,
+                            'Recommend Cleaning/Re-Evaluation/Repairs': false
+                        },
+                        'Chimney': {
+                            'n/a': false,
+                            'Framed': false,
+                            'Masonry': false,
+                            'Metal': false,
+                            'Class B': false,
+                            'DV Wall Hood': false,
+                            'Cracked Wash': false,
+                            'Loose Mortar': false,
+                            'No Liner': false,
+                            'No Spark Arrestor': false,
+                            'Rust': false,
+                            'Creosote': false,
+                            'Missing Cricket': false,
+                            'Inadequate/Missing Flashing': false,
+                            'Damaged': false,
+                            'Missing Burn Guard': false,
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Recommend Professional Re-Evaluation/Remediation': false
+                        },
+                    },
+                    'images': [
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             }
+                     ]
+
+                 },
+                {
+                    'title': 'Cooling Systems',
+                    'conditions': 'The inspection of the air conditioning system includes the cooling equipment; cooling distribution equipment, the energy sources, and a description noted in this report of any deficiencies of these systems or components: (1)Where an air conditioning system is present, readily accessible access panels or covers provided by the manufacturer or installer were opened to inspect the air conditioning system. (2)Where conditions allowed use of normal control devices, function of the controls and operative components of the complete system were inspected, and temperature differential was measured and recorded. (3)Interior exhaust fans and/or furnace blower motors may be present and/or operational at the time of the inspection but do not provide cooling. (BOLD THIS)Heat pump cycles were NOT reversed, and if outdoor temperatures were below 60 degrees during the past 72hrs, A/C systems were NOT tested.(BOLD THIS)',
+                    'showconditions': true,
+                    'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-130 of the Washington State Dept. of Licensing, the inspector is not required to determine the efficiency, or adequacy of the system, activate cooling systems that have been shut down, or operate cooling system components if the exterior temperature is below sixty degrees Fahrenheit, when doing so might damage the equipment, or when other circumstances are not conducive to safe operation, remove covers or panels that are not readily accessible or dismantle any equipment, controls, or gauges except readily identifiable access covers designed to be removed by users, check the coolant pressure / charge, or inspect the system for refrigerant leaks, inspect gas-fired refrigeration systems, evaporative coolers, wall or window-mounted air-conditioning units, evaluate digital-type thermostats or controls, or determine how much current the unit is drawing.',
+                    'showlimitations': true,
+                    'checkboxes': {
+                        'Temperature Differential': {//NEEDS MORE DATA
+                            'TEXT ENTRY FIELD': false,
+                            'NOT Tested': false
+                        },
+                        'A/C Type': {//NEEDS MORE DATA
+                            'n/a': false,
+                            'Inoperable': false,
+                            'OTHER (NEEDS MORE DATA)': false
+                        },
+                        'Energy Source': {
+                            'Natural Gas': false,
+                            'Propane': false,
+                            'Electric': false,
+                            'Central Air': false,
+                            'Heat Pump': false,
+                            'Fan Cooled': false,
+                            'Water': false,
+                            'Gas Chiller': false,
+                            'Swamp Cooler': false
+                        },
+                        'Evaporative Coil or Heat Pump (Inside) Brand Name': { //NEEDS MORE DATA.
+                            'Bryant': false,
+                            'OTHER (NEEDS MORE DATA)': false
+                        },
+                        'Capacity': {
+                            'n/a': false,
+                            'OTHER (NEEDS MORE DATA)': false
+                        },
+                        'Year of Manufacture': {
+                            '1996': false,
+                            'YEAR ENTRY NEEDED': false
+                        },
+                        'Model #': {//NEED TEXT FIELD ENTRY HERE.
+                            'TEXT FIELD ENTRY': false
+                        },
+                        'Serial #': {//NEED TEXT FIELD ENTRY HERE.
+                            'TEXT FIELD ENTRY': false
+                        },
+                        'Compressor/Condenser (Outside) Brand Name': {
+                            'Bryant': false,
+                            'OTHER (NEEDS MORE DATA)': false
+                        },
+                        'Capacity': {
+                            'n/a': false,
+                            'OTHER (NEEDS MORE DATA)': false
+                        },
+                        'Year of Manufacture': {
+                            '1996': false,
+                            'YEAR ENTRY NEEDED': false
+                        },
+                        'Model #': {//NEED TEXT FIELD ENTRY HERE.
+                            'TEXT FIELD ENTRY': false
+                        },
+                        'Serial #': {//NEED TEXT FIELD ENTRY HERE.
+                            'TEXT FIELD ENTRY': false
+                        },
+                        'Condition': {
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Uneven Base': false,
+                            'Inadequate Base Height': false,
+                            'Obstructed Flow': false
+                        },
+                        'Refrigerant Lines': {
+                            'Satisfactory': false,
+                            'Leaking': false,
+                            'Damaged': false,
+                            'Worn': false,
+                            'Insulation Missing': false
+                        },
+                    },
+                    'images': [
+                        {
+                            'title': 'Exterior Compressor/Condensor Unit',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Exterior Compressor/Condensor Data Plate',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Interior Evaporative Coil or Heat Pump Unit',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Interior Evaporative Coil or Heat Pump Data Plate',
+                            'url': 'path',
+                            'required': false
+                             }
+                     ]
+
+                 }//This is where you start a new subpage "Title" Section
+        ]
+    }//This is where you start a new "Title" Section.
 ]
 }];

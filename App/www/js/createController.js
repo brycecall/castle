@@ -55,7 +55,7 @@
                      'limitations': 'According to the Home Inspection Standards of Practice WAC 308-408C-170...',
                      'showlimitations': true,
                      'checkboxes': {
-                         'driveway': {
+                         'Driveway': {
                              'n/a': false,
                              'Concrete': false,
                              'Asphalt': false,
@@ -99,7 +99,7 @@
                      'limitations': 'According to the Home Inspection Standards of Practice WAC 308-408C-170....',
                      'showlimitations': true,
                      'checkboxes': {
-                         'driveway': {
+                         'Driveway': {
                              'n/a': false,
                              'Concrete': false,
                              'Asphalt': false,
@@ -149,7 +149,7 @@
                      'limitations': 'According to the Home Inspection Standards of Practice WAC 308-408C-170...',
                      'showlimitations': true,
                      'checkboxes': {
-                         'driveway': {
+                         'Driveway': {
                              'n/a': false,
                              'Concrete': false,
                              'Asphalt': false,

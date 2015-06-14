@@ -129,7 +129,7 @@ body {
 }
 
 .subPage {
-    padding: 10px 5px;
+    padding: 10px 5px 15px 5px;
     margin-bottom: 10px;
 
 }
@@ -158,4 +158,21 @@ body {
 
 .cameraButton {
     margin-left: 7px;
+}
+
+.neutral {
+    color:rgba(0, 0, 0, 0.541176);
+}
+
+.fullSection {
+    margin-bottom: 25px;
+}
+
+.page {
+    height:100%;
+
+}
+
+.footerSpace {
+    height: 55px;
 }

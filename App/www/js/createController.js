@@ -213,6 +213,10 @@
      
      }
 
+     $scope.openCamera = function(checkboxkey) {
+
+     };
+
  });
 
  angular.module('fbiApp').controller('leftController', function ($scope, $timeout, $mdSidenav, $log) {

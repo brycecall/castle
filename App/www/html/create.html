@@ -1,7 +1,7 @@
-<div ng-controller="createController" layout="column" style="height:100%" class="page">
+<div ng-controller="createController" layout="column" class="page " >
 
 
-    <section layout="column" flex="">
+    <section layout="column" flex="" md-swipe-right="toggleLeft()">
         <!-- class="md-primary md-hue-9"-->
         <md-content>
             <md-sidenav class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" style="height:100%">
@@ -42,25 +42,23 @@
             <div ng-repeat="subPage in items[currentPage].subpage" class="md-whiteframe-z1 subPage">
 
 
-                <md-subheader class="subHeader md-primary">{{items[currentPage].title}}
-                    <md-icon md-svg-icon="./bower_components/material-design-icons/hardware/svg/design/ic_keyboard_arrow_right_48px.svg" class="headNavIcon"></md-icon>{{subPage.title}}</md-subheader>
+                <md-subheader ng-click="toggleLeft()" class="subHeader md-primary" style="cursor:pointer">{{items[currentPage].title}}
+                    <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_chevron_right_48px.svg" class="headNavIcon"></md-icon>{{subPage.title}}</md-subheader>
 
                 <div layout="column" layout-fill="" layout-align="top center">
-                    <md-button aria-label="toggle left nav" ng-click="toggleLeft()" class="md-primary" hide-gt-md="">
-                        Toggle Menu
-                    </md-button>
 
                     <div>
                         <md-list>
+
                             <md-list-item style="position: relative">
                                 <div style="display:flex">
-                                    <md-switch ng-model="subPage.showconditions" aria-label="Show Conditions" style="display:flex">
+                                    <md-switch ng-model="subPage.showconditions" aria-label="Show Conditions" flex="80" md-ink-ripple="">
                                         Show conditions message: {{subPage.showconditions}} </md-switch>
-                                    <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_24px.svg" class="md-accent iconRight" ng-click="showMessage($event)"></md-icon>
+                                    <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_24px.svg" class="md-accent" ng-click="showMessage($event)" flex="20"></md-icon>
+
                                 </div>
-
-
                             </md-list-item>
+<!--
 
                             <md-list-item style="position: relative">
                                 <div style="display:flex">
@@ -69,6 +67,7 @@
                                     <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_24px.svg" class="md-accent iconRight" ng-click="showMessage($event)"></md-icon>
                                 </div>
                             </md-list-item>
+-->
 
 
                             <md-list-item style="position: relative">
@@ -78,7 +77,6 @@
 
                                     <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_24px.svg" class="md-accent" ng-click="showMessage($event)" flex="20"></md-icon>
                                 </div>
-
                             </md-list-item>
 
                         </md-list>
@@ -87,11 +85,14 @@
 
                 <md-list ng-repeat="(checklistkey, checklist) in subPage.checkboxes">
                     <h3 class="subsubmenu">{{checklistkey}}:</h3>
-                    <md-list-item ng-repeat="(checkboxkey, checkboxvalue) in checklist"  style="position:relative; margin:0; padding:0;" flex="">
-                        <md-checkbox class="md-secondary" style="margin:0; padding:10px;" ng-model="checkboxvalue" aria-label="{{checkboxkey}}"  md-ink-ripple="" >{{checkboxkey}}
+                    <md-list-item ng-repeat="(checkboxkey, checkboxvalue) in checklist"  style="position:relative; margin:0; padding:0; display:flex" >
 
+                        <md-checkbox class="md-secondary" style="margin:0; padding:10px;" ng-model="checkboxvalue" aria-label="{{checkboxkey}}"  md-ink-ripple="" flex="90">{{checkboxkey}}
                         </md-checkbox>
+
+                        <md-icon ng-if="checkboxvalue" md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="openCamera(checkboxkey)" flex="10"></md-icon>
                     </md-list-item>
+
                 </md-list>
 
 
@@ -99,7 +100,9 @@
                 <md-button class="cameraButton md-accent" aria-label="Photos">
                     <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon> Add Photo
                 </md-button>
+                   <div ng-if="$last" class="footerSpace"></div>
             </div>
+
         </md-content>
     </section>
 

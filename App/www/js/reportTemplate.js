@@ -2514,6 +2514,465 @@ $scope.items = [
 
                  } //This is where start a new Subpage "Title" Section.
         ]
-    } //This is where you start a new "Title" Section.
+    },
+    {
+            'title': 'Interior',
+            'subpage': [
+                {
+                    'title': 'Living Room',
+                    'conditions': 'The inspection of the interior includes the walls, ceilings, floors, windows, and doors; steps, stairways, balconies and railings. The interior walls, ceilings, and floors were inspected for indications of concealed structural deficiencies, water infiltration, or major damage. The report verifies that steps, handrails, guard-rails, stairways and landings are installed wherever necessary, and indicates when they are missing or in need of repair, or when baluster spacing exceeds four inches, the condition and operation of a representative number of windows and doors, the overall general condition of cabinets and countertops, grout, and caulking at kitchen and bathroom counters, describes any non-cosmetic deficiencies of these systems or components, and comments on the presence or absence of smoke detectors.',
+                    'showconditions': true,
+                    'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-140 of the Washington State Dept. of Licensing, the inspector is not required to verify whether all walls, floors, ceilings, doorways, cabinets and window openings are square, straight, level or plumb, operate any system or component that is shut down, not connected or otherwise inoperable, or that does not respond to normal user controls, the strength, adequacy, effectiveness, or efficiency of any system or component; causes of any condition, or deficiency the remaining service life of any system or component; or the methods, materials, or cost of corrections; future conditions including, but not limited to, failure of systems and components or report on cosmetic conditions related to the condition of interior components.',
+                    'showlimitations': true,
+                    'checkboxes': {
+                        'Entry Door(s)': {
+                            'n/a': false,
+                            'Solid Wood': false,
+                            'Metal': false,
+                            'Fiberglass': false,
+                            'Panel': false,
+                            'Hollow Core': false
+                        },
+                        'Entry Door(s) Condition': {
+                            'Sagging/Settled': false,
+                            'Rubbing/Binding': false,
+                            'Damaged': false,
+                            'Hardware Issues': false,
+                            'Doorbell Inoperable': false
+                        },
+                        'Weatherstrip': {
+                            'Missing/Damaged': false,
+                            'Poor Seal': false,
+                            'Ineffective Threshold': false
+                        },
+                        'Window(s)': {
+                            'Satisfactory': false,
+                            'Inaccessible': false,
+                            'Difficult To Operate (Needs Adjustment/Lubrication)': false,
+                            'Missing Hardware': false,
+                            'Inadequate Security': false,
+                            'Failed Thermal Seals': false,
+                            'Broken Panes': false,
+                            'Stained': false,
+                            'Weathered Sills': false,
+                            'Mold/Mildew': false,
+                            'Damage': false,
+                            'Deterioration': false
+                        },
+                        'Ceiling Fan': {
+                            'n/a': false,
+                            'Inoperable': false,
+                            'Satisfactory': false
+                        },
+                        'Heat Source': {
+                            'Satisfactory': false,
+                            'Missing/Inadequate': false
+                        },
+                        'Lights/Switches/Receptacles (Refer To Electrical Section)': {
+                            'Appeared Functional': false,
+                            'Loose/Worn': false,
+                            'Missing': false,
+                            'Inoperable': false,
+                            'Missing Cover Plates': false,
+                            'Ungrounded 3-Prong': false,
+                            'Inoperable GFCI': false,
+                            'Missing GFCI Protection': false,
+                            'Reversed Polarity': false,
+                            'OG/RP Within 6 Feet': false,
+                            'Burned': false,
+                            'Exposed Wires': false,
+                            'Hazardous/Unsafe': false,
+                            'Recommend Professional Evaluation': false
+                        },
+                        //COMMENTS SECTION HERE.
+                    },
+                },
+                {
+                    'title': 'Kitchen',
+                    'conditions': '',
+                    'showconditions': true,
+                    'limitations': '',
+                    'showlimitations': true,
+                    'checkboxes': {
+                        'Appliances': {
+                            'Sink Disposer': false,
+                            'Fridge': false,
+                            'Dishwasher': false,
+                            'Oven': false,
+                            'Range': false,
+                            'Microwave': false,
+                            'Warmer': false,
+                            'Trash Compactor': false,
+                            'Cooler': false,
+                            'Water Filter': false,
+                            'Instant Hot': false
+                        },
+                        'Cabinets': {
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Damaged': false,
+                            'Worn Finish': false,
+                            'Loose Drawers/Hinges': false
+                        },
+                        'Countertops': {
+                            'Granite': false,
+                            'Laminate': false,
+                            'Tile': false,
+                            'Slab': false
+                        },
+                        'Countertops Condition': {
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Worn': false,
+                            'Damaged': false
+                        },
+                        'Backsplash & Self Edge': {
+                            'Satisfactory': false,
+                            'Marginal/Worn': false,
+                            'Poor': false
+                        },
+                        'Caulking': {
+                            'Satisfactory': false,
+                            'Worn/Cracked/Gaps': false,
+                            'Improve at Sink, Back-Splash, Counters, or Fixtures': false,
+                        },
+                        'Grout': {
+                            'Satisfactory': false,
+                            'Cracked/Missing': false,
+                            'Loose': false,
+                            'Water Damage': false,
+                            'Recommend Sealing': false
+                        },
+                        'Exhaust Fan': {
+                            'Satisfactory': false,
+                            'Missing': false,
+                            'Inoperable': false
+                        },
+                        'Heat Source': {
+                            'Satisfactory': false,
+                            'Missing/Inadequate': false
+                        },
+                        'Lights/Switches/Receptacles (Refer To Electrical Section)': {
+                            'Appeared Functional': false,
+                            'Loose/Worn': false,
+                            'Missing': false,
+                            'Inoperable': false,
+                            'Missing Cover Plates': false,
+                            'Ungrounded 3-Prong': false,
+                            'Inoperable GFCI': false,
+                            'Missing GFCI Protection': false,
+                            'Reversed Polarity': false,
+                            'OG/RP Within 6 Feet': false,
+                            'Burned': false,
+                            'Exposed Wires': false,
+                            'Hazardous/Unsafe': false,
+                            'Recommend Professional Evaluation': false
+                        }
+                    }
+
+                 },
+                {
+                    'title': 'Laundry',
+                    'conditions': 'None',
+                    'showconditions': true,
+                    'limitations': 'None',
+                    'showlimitations': true,
+                    'checkboxes': {
+                        'Appliances': {
+                            'None': false,
+                            'Inoperable': false,
+                            'Washer': false,
+                            'Dryer': false,
+                            'WH': false,
+                            'Furnace': false,
+                            'Conditioner': false
+                        },
+                        'Dryer': {
+                            'Electric': false,
+                            'Gas': false,
+                            'Inoperable/OFF': false,
+                            'Cap Needed': false,
+                            'Hazard(s)': false,
+                            'Recommend Re-Evaluation': false
+                        },
+                        'Exhausted': {
+                            'Wall': false,
+                            'Ceiling': false,
+                            'Floor': false
+                        },
+                        'Exhaust Appears': {
+                            'Satisfactory': false,
+                            'Clogged/Loose/Poor': false
+                        },
+                        'Exhaust Fan': {
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Weak/Noisy': false,
+                            'Inoperable': false,
+                            'Missing': false
+                        },
+                    },
+                },
+                {
+                    'title': 'Bathroom(s)',
+                    'conditions': 'None',
+                    'showconditions': true,
+                    'limitations': 'None',
+                    'showlimitations': true,
+                    'checkboxes': {
+                        'Walls/Ceilings': {
+                            'GWB': false,
+                            'Lath & Plaster': false,
+                            'Acoustic Tile': false,
+                            'Paneling': false,
+                            'Open Beam': false
+                        },
+                        'Condition': {
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Stains/Mildew': false,
+                            'Cracks': false,
+                            'Repairs': false,
+                            'PACM': false
+                        },
+                        'Floors': {
+                            'Covered': false,
+                            'Sloping': false,
+                            'Squeaks': false,
+                            'Damaged': false,
+                            'Fungal Rot': false
+                        },
+                        'Caulking': {
+                            'Worn/Cracked/Gaps': false,
+                            'Improve At Sink, Back-Splash, Tub/Shower Surround/ or Floor': false
+                        },
+                        'Heat': {
+                            'Yes': false,
+                            'No': false,
+                            'Inoperable': false
+                        },
+                        'Exhaust Fan': {
+                            'Yes': false,
+                            'No': false,
+                            'Inoperable': false
+                        },
+                        'Lights/Switches/Receptacles (Refer To Electrical Section)': {
+                            'Appeared Functional': false,
+                            'Loose/Worn': false,
+                            'Missing': false,
+                            'Inoperable': false,
+                            'Missing Cover Plates': false,
+                            'Ungrounded 3-Prong': false,
+                            'Inoperable GFCI': false,
+                            'Missing GFCI Protection': false,
+                            'Reversed Polarity': false,
+                            'OG/RP Within 6 Feet': false,
+                            'Burned': false,
+                            'Exposed Wires': false,
+                            'Hazardous/Unsafe': false,
+                            'Recommend Professional Evaluation': false
+                        }
+                    }
+                },
+                {
+                    'title': 'Interior',
+                    'conditions': 'None',
+                    'showconditions': true,
+                    'limitations': 'None',
+                    'showlimitations': true,
+                    'checkboxes': {
+                        'Walls/Ceilings': {
+                            'GWB': false,
+                            'Lath & Plaster': false,
+                            'Acoustic Tile': false,
+                            'Paneling': false,
+                            'Open Beam': false
+                        },
+                        'Condition': {
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Stains': false,
+                            'Moisture/Mildew': false,
+                            'Water Damage': false,
+                            'Settling': false,
+                            'Truss Uplift': false,
+                            'Nail Pops': false,
+                            'Holes': false,
+                            'Cracks': false,
+                            'Inadequate Repairs/Texture': false,
+                            'Sooting': false,
+                            'PACM': false,
+                            'Hazardous/Unsafe': false,
+                            'Recommend Professional Evaluation': false
+                        },
+                        'Floor Coverings': {
+                            'Hard Surfaces (Tile/Stone)': false,
+                            'Hardwood/Laminate': false,
+                            'Vinyl': false,
+                            'Carpet': false
+                        },
+                        'Condition': {
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Excessive Wear': false,
+                            'Squeaks': false,
+                            'Stains': false,
+                            'Damage': false,
+                            'Sloping': false,
+                            'Uneven Surfaces': false,
+                            'Holes': false,
+                            'Wrinkled Carpet': false,
+                            'Trip Hazard(s)': false,
+                            'Repair(s)': false
+                        },
+                        'Interior Doors': {
+                            'Passage': false,
+                            'Pocket': false,
+                            'Double': false,
+                            'Bi-Fold': false,
+                            'Bi-Pass': false,
+                            'Accordion': false
+                        },
+                        'Condition': {
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Inaccessible': false,
+                            'Inoperable': false,
+                            'Missing/Removed': false,
+                            'Missing Hardware': false,
+                            'Settled/Rubbing': false,
+                            'Improperly Hung/Sagging': false,
+                            'Holes': false,
+                            'Stains': false,
+                            'Cracked/Split Jambs': false,
+                            'Damage': false,
+                            'Inadequate Repairs': false,
+                            'Recommend Servicing/Adjusting': false
+                        },
+                        'Window Type(s)': {
+                            'Sliders': false,
+                            'Fixed': false,
+                            'Single Hung': false,
+                            'Double Hung': false,
+                            'Awning': false,
+                        },
+                        'Window(s) Condition': {
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Difficult To Operate': false,
+                            'Improve Security': false,
+                            'Missing Hardware': false,
+                            'Broken Panes': false,
+                            'Failed Thermal Seals': false,
+                            'Verify Bedroom Egress': false,
+                            'Stained': false,
+                            'Weathered Sills': false,
+                            'Mold/Mildew': false,
+                            'Damage': false,
+                            'Deterioration': false
+                        },
+                        //INSERT PRESET TEXT HERE:
+                        //Safety Concern: Where Bedrooms lack a door directly to the outside, a window should serve as an emergency egress.  Recommend regular evaluation and service (lubrication, adjustment) of bedroom windows to verify smooth operation and to ensure adequate emergency egress.
+                        'Lights/Switches/Receptacles (Refer To Electrical Section)': {
+                            'Appeared Functional': false,
+                            'Loose/Worn': false,
+                            'Missing': false,
+                            'Inoperable': false,
+                            'Missing Cover Plates': false,
+                            'Ungrounded 3-Prong': false,
+                            'Inoperable GFCI': false,
+                            'Missing GFCI Protection': false,
+                            'Reversed Polarity': false,
+                            'OG/RP Within 6 Feet': false,
+                            'Burned': false,
+                            'Exposed Wires': false,
+                            'Hazardous/Unsafe': false,
+                            'Recommend Professional Evaluation': false
+                        }
+                    },
+                    'images': [
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             }
+                        ]
+
+                 }//This is where you start a new Subpage "Title Section.
+        ]
+    }//This is where you start a new "Title" Section.
 ]
 }];

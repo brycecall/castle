@@ -1477,1046 +1477,1043 @@ $scope.items = [
 
             } //This is where you start a new "SubPage Title" Section OR Image Section
             ]
-    },
-    {
-            'title': 'Plumbing',
-            'subpage': [
-                {
-                    'title': 'Plumbing System',
-                    'conditions': 'An inspection of the plumbing system includes visible water supply lines; visible drain/waste / soil and vent lines; fixtures and faucets; domestic hot water system and fuel source, and includes operating fixtures in order to observe functional flow, check for functional drainage from fixtures, and describe the visible water supply and distribution piping materials; drain, waste and vent materials; water-heating equipment, and any deficiencies of these systems or components. This section reports: (1)The presence and location of the main water shutoff valve and/or fuel shutoff valve(s), or reports that they were not found, (2)The presence and functionality of sump pumps/waste ejector pumps when visible or confirms the float switch activates the pump when the sump is dry, and (3)Whether or not the water temperature was tested, and the presence of the temperature and pressure relief (TPR) valve and associated piping. The generally accepted maximum safe water temperature is one hundred twenty degrees (120°) Fahrenheit.',
-                    'showconditions': true,
-                    'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-100 of the Washington State Dept. of Licensing, the inspector is not required to operate any valves, including faucets of freestanding or built-in appliances or fixtures, (if the outlet end of the valve or faucet is connected or intended to be connected to an appliance), any plumbing components not readily accessible, or inspect any system that is shut down or winterized; or determine the quantity of water from on-site water supplies, the condition and operation of private water supply systems or water wells and related pressure tanks and pumps, the potability of any water supply whether public or private, or water-conditioning equipment, including softeners and filter systems; or test pressure or temperature/pressure relief valves, gas supply systems, ignite pilot lights, test fire sprinkler systems, or ancillary systems or components such as, but not limited to, those related to solar water heating and hot water circulation; or test shower pans for leaks, or use special equipment to test/scan shower or tub surrounds for moisture in surrounding substrate materials; or test exterior drain systems or floor drains, including but not limited to, exterior stairwell drains and driveway drains; or test interior components of exterior pumps, or sealed sanitary waste lift systems, or the quality or the condition and operation of on-site sewage disposal systems such as waste ejector pumps, cesspools, septic tanks, drain fields, related underground piping, conduit, cisterns, and related equipment.',
-                    'showlimitations': true,
-                    'checkboxes': {
-                        'Water Supply Source': {
-                            'Public Water': false, //
-                            'Public Well': false,
-                            'Private Well': false,
-                            'OTHER (NEED MORE DATA)': false
-                        },
-                        'Main Water Shut Off Valve Location': {//THIS REQUIRES MORE DATA.
-                            'Closet': false,
-                            'Bathroom': false,
-                            'OTHER (NEED MORE DATA)': false
-                        },
-                        'Water Pressure': {//THIS REQUIRES MORE DATA.
-                            'Less than 45': false,
-                            'Approximately 45-55': false,
-                            'Approximately 55-65': false,
-                            'Approximately 65-75': false,
-                            'Approximately 75-85': false,
-                            'OTHER (NEED MORE DATA)': false
-                        },
-                        'Water Temperature': {//THIS REQUIRES MORE DATA.
-                            'Varies Per Unit': false,
-                            'OTHER (NEED MORE DATA)': false
-                        },
-                        'Water System': {//THIS REQUIRES MORE DATA.
-                            'Public Sewer': false,
-                            'OTHER (NEED MORE DATA)': false
-                        },
-                        'Main Entry Piping': {
-                            'Copper': false,
-                            'Galvanized': false,
-                            'Plastic/CPVC': false,
-                            'Polybutylene': false,
-                            'PEX': false
-                        },
-                        'Condition': {
-                            'Not Visible': false,
-                            'Leaking': false,
-                            'Unprotected/Freezing': false,
-                            'Discolered Water': false,
-                            'Odor': false
-                        },
-                        'Pressure': {
-                            'LIST PRESSURE?': false,
-                            'Low': false,
-                            'High': false,
-                            'Normal': false,
-                            'Inoperable': false,
-                            'Shut-Off': false,
-                            'Winterized': false
-                        },
-                        'Water Lines': {
-                            'Copper': false,
-                            'Galvanized': false,
-                            'Plastic/CPVC': false,
-                            'Polybutylene': false,
-                            'PEX': false
-                        },
-                        'Condition': {
-                            'Not Fully Visible': false,
-                            'Satisfactory': false,
-                            'Marginal': false,
-                            'Poor': false,
-                            'Cross Connections': false,
-                            'Leaks': false
-                        },
-                        'Lead (other than solder joints)': {
-                            'Service Entry': false,
-                            'Unknown': false,
-                            'Unlikely': false
-                        },
-                        'Disimilar Metal Connection (Potential Electrolysis)': {
-                            'Yes': false,
-                            'No': false,
-                            'Not Visible': false
-                        },
-                        'DMV Piping': {
-                            'Copper': false,
-                            'Cast Iron': false,
-                            'Galvanized': false,
-                            'Plastic/ABS/PVC': false
-                        },
-                        'Condition': {
-                            'Not Fully Visible': false,
-                            'Satisfactory': false,
-                            'Maginal': false,
-                            'Poor': false,
-                            'Leaks': false,
-                            'Unsupported': false
-                        }
+    }, {
+        'title': 'Plumbing',
+        'subpage': [
+            {
+                'title': 'Plumbing System',
+                'conditions': 'An inspection of the plumbing system includes visible water supply lines; visible drain/waste / soil and vent lines; fixtures and faucets; domestic hot water system and fuel source, and includes operating fixtures in order to observe functional flow, check for functional drainage from fixtures, and describe the visible water supply and distribution piping materials; drain, waste and vent materials; water-heating equipment, and any deficiencies of these systems or components. This section reports: (1)The presence and location of the main water shutoff valve and/or fuel shutoff valve(s), or reports that they were not found, (2)The presence and functionality of sump pumps/waste ejector pumps when visible or confirms the float switch activates the pump when the sump is dry, and (3)Whether or not the water temperature was tested, and the presence of the temperature and pressure relief (TPR) valve and associated piping. The generally accepted maximum safe water temperature is one hundred twenty degrees (120°) Fahrenheit.',
+                'showconditions': true,
+                'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-100 of the Washington State Dept. of Licensing, the inspector is not required to operate any valves, including faucets of freestanding or built-in appliances or fixtures, (if the outlet end of the valve or faucet is connected or intended to be connected to an appliance), any plumbing components not readily accessible, or inspect any system that is shut down or winterized; or determine the quantity of water from on-site water supplies, the condition and operation of private water supply systems or water wells and related pressure tanks and pumps, the potability of any water supply whether public or private, or water-conditioning equipment, including softeners and filter systems; or test pressure or temperature/pressure relief valves, gas supply systems, ignite pilot lights, test fire sprinkler systems, or ancillary systems or components such as, but not limited to, those related to solar water heating and hot water circulation; or test shower pans for leaks, or use special equipment to test/scan shower or tub surrounds for moisture in surrounding substrate materials; or test exterior drain systems or floor drains, including but not limited to, exterior stairwell drains and driveway drains; or test interior components of exterior pumps, or sealed sanitary waste lift systems, or the quality or the condition and operation of on-site sewage disposal systems such as waste ejector pumps, cesspools, septic tanks, drain fields, related underground piping, conduit, cisterns, and related equipment.',
+                'showlimitations': true,
+                'checkboxes': {
+                    'Water Supply Source': {
+                        'Public Water': false, //
+                        'Public Well': false,
+                        'Private Well': false,
+                        'OTHER (NEED MORE DATA)': false
                     },
-                    'images': [
-                        {
-                            'title': 'Tested Water Pressure',
-                            'url': 'path',
-                            'required': false
+                    'Main Water Shut Off Valve Location': { //THIS REQUIRES MORE DATA.
+                        'Closet': false,
+                        'Bathroom': false,
+                        'OTHER (NEED MORE DATA)': false
+                    },
+                    'Water Pressure': { //THIS REQUIRES MORE DATA.
+                        'Less than 45': false,
+                        'Approximately 45-55': false,
+                        'Approximately 55-65': false,
+                        'Approximately 65-75': false,
+                        'Approximately 75-85': false,
+                        'OTHER (NEED MORE DATA)': false
+                    },
+                    'Water Temperature': { //THIS REQUIRES MORE DATA.
+                        'Varies Per Unit': false,
+                        'OTHER (NEED MORE DATA)': false
+                    },
+                    'Water System': { //THIS REQUIRES MORE DATA.
+                        'Public Sewer': false,
+                        'OTHER (NEED MORE DATA)': false
+                    },
+                    'Main Entry Piping': {
+                        'Copper': false,
+                        'Galvanized': false,
+                        'Plastic/CPVC': false,
+                        'Polybutylene': false,
+                        'PEX': false
+                    },
+                    'Condition': {
+                        'Not Visible': false,
+                        'Leaking': false,
+                        'Unprotected/Freezing': false,
+                        'Discolered Water': false,
+                        'Odor': false
+                    },
+                    'Pressure': {
+                        'LIST PRESSURE?': false,
+                        'Low': false,
+                        'High': false,
+                        'Normal': false,
+                        'Inoperable': false,
+                        'Shut-Off': false,
+                        'Winterized': false
+                    },
+                    'Water Lines': {
+                        'Copper': false,
+                        'Galvanized': false,
+                        'Plastic/CPVC': false,
+                        'Polybutylene': false,
+                        'PEX': false
+                    },
+                    'Condition': {
+                        'Not Fully Visible': false,
+                        'Satisfactory': false,
+                        'Marginal': false,
+                        'Poor': false,
+                        'Cross Connections': false,
+                        'Leaks': false
+                    },
+                    'Lead (other than solder joints)': {
+                        'Service Entry': false,
+                        'Unknown': false,
+                        'Unlikely': false
+                    },
+                    'Disimilar Metal Connection (Potential Electrolysis)': {
+                        'Yes': false,
+                        'No': false,
+                        'Not Visible': false
+                    },
+                    'DMV Piping': {
+                        'Copper': false,
+                        'Cast Iron': false,
+                        'Galvanized': false,
+                        'Plastic/ABS/PVC': false
+                    },
+                    'Condition': {
+                        'Not Fully Visible': false,
+                        'Satisfactory': false,
+                        'Maginal': false,
+                        'Poor': false,
+                        'Leaks': false,
+                        'Unsupported': false
+                    }
+                },
+                'images': [
+                    {
+                        'title': 'Tested Water Pressure',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Main Water Shut-Off Valve',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Main Water Shut-Off Valve',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Typical ABS Drain to Sewer',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Typical ABS Drain to Sewer',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Typical View of Kitchen Sink Plumbing & Drain Pipes',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Typical View of Kitchen Sink Plumbing & Drain Pipes',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Typical View of Laundry Sink Plumbing & Drain Pipes',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Typical View of Laundry Sink Plumbing & Drain Pipes',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              }
                      ]
 
                  },
-                {
-                    'title': 'Faucets/Fixtures',
-                    'conditions': 'None',
-                    'showconditions': true,
-                    'limitations': 'None',
-                    'showlimitations': true,
-                    'checkboxes': {
-                        'Faucets': {
-                            'Functional': false,
-                            'Intermittent Function': false,
-                            'Inoperable': false,
-                            'Missing/Incomplete': false,
-                            'Loose': false,
-                            'Broken/Damaged': false
-                        },
-                        'Leaking': {
-                            'Hose Bibb': false,
-                            'Wall Stop': false,
-                            'Faucet': false,
-                            'Sprayer': false
-                        },
-                        'Location': {
-                            'Kitchen': false,
-                            'Master Bath': false,
-                            'Main Bath': false,
-                            'Half Bath': false,
-                            'Laundry': false,
-                            'Bar': false
-                        },
-                        'Accessories': {
-                            'Vegetable Sink': false,
-                            'Insta-Hot': false,
-                            'Water Filter': false,
-                            'Ice Maker': false
-                        },
-                        'Disposer': {
-                                'Noisy': false,
-                                'Defective': false,
-                        },
-                        'Dishwasher': {
-                            'Airgap': false
-                        },
-                        'Condition': {
-                            'Functional': false,
-                            'Inoperable': false,
-                            'Intermittent Function': false,
-                            'Defects/Damage': false
-                        },
-                        'Sinks/Fixtures': {
-                            'Functional': false,
-                            'Surface Damage': false,
-                            'Cabinet Damage': false,
-                            'Cross Connection': false,
-                            'Improve Caulking at Sink, Back-Splash, Tub Deck, Shower Surround, Floor, Wood or MDF Molding': false,
-                        },
-                        'Grout Condition': {
-                            'Unsealed (Recommend Sealing)': false,
-                            'Cracked/Loose/Missing Grout': false
-                        },
-                        'Drainage': {
-                            'Functional': false,
-                            'Missing Stopper': false,
-                            'Missing/Inoperable Overflow': false,
-                            'Clog/Slow Drain': false,
-                            'Stained Drainpipe': false,
-                            'Drips/Leaks': false,
-                            'Defects/Damage': false,
-                            'Unsafe': false,
-                            'Re-Evaluate': false
-                        },
-                        'Location': {
-                            'Kitchen': false,
-                            'Master Bath': false,
-                            'Main Bath': false,
-                            'Half Bath': false,
-                            'Laundry': false,
-                            'Bar': false
-                        },
-                        'Toilet': {
-                            'Satisfactory': false,
-                            'Inoperable': false,
-                            'Runs Continuously': false,
-                            'Leaks': false,
-                            'Loose Bowl': false,
-                            'Damage': false
-                        },
-                        'Tub/Shower Surround(s)': {
-                            'Ceramic': false,
-                            'FG': false,
-                            'Masonite/Laminate': false,
-                            'Slab': false,
-                            'Jacuzzi': false
-                        },
-                        'Condition': {
-                            'Functional': false,
-                            'Inoperable': false,
-                            'Stains': false,
-                            'Cross Connection': false,
-                            'Defective': false,
-                            'Loose Tile': false,
-                            'Cracked/Broken': false,
-                            'Leaky Shower Head': false,
-                            'Leaky Faucet': false,
-                            'Leaky Sprayer': false
-                        },
+            {
+                'title': 'Faucets/Fixtures',
+                'conditions': 'None',
+                'showconditions': true,
+                'limitations': 'None',
+                'showlimitations': true,
+                'checkboxes': {
+                    'Faucets': {
+                        'Functional': false,
+                        'Intermittent Function': false,
+                        'Inoperable': false,
+                        'Missing/Incomplete': false,
+                        'Loose': false,
+                        'Broken/Damaged': false
                     },
-                    'images': [
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    'Leaking': {
+                        'Hose Bibb': false,
+                        'Wall Stop': false,
+                        'Faucet': false,
+                        'Sprayer': false
+                    },
+                    'Location': {
+                        'Kitchen': false,
+                        'Master Bath': false,
+                        'Main Bath': false,
+                        'Half Bath': false,
+                        'Laundry': false,
+                        'Bar': false
+                    },
+                    'Accessories': {
+                        'Vegetable Sink': false,
+                        'Insta-Hot': false,
+                        'Water Filter': false,
+                        'Ice Maker': false
+                    },
+                    'Disposer': {
+                        'Noisy': false,
+                        'Defective': false,
+                    },
+                    'Dishwasher': {
+                        'Airgap': false
+                    },
+                    'Condition': {
+                        'Functional': false,
+                        'Inoperable': false,
+                        'Intermittent Function': false,
+                        'Defects/Damage': false
+                    },
+                    'Sinks/Fixtures': {
+                        'Functional': false,
+                        'Surface Damage': false,
+                        'Cabinet Damage': false,
+                        'Cross Connection': false,
+                        'Improve Caulking at Sink, Back-Splash, Tub Deck, Shower Surround, Floor, Wood or MDF Molding': false,
+                    },
+                    'Grout Condition': {
+                        'Unsealed (Recommend Sealing)': false,
+                        'Cracked/Loose/Missing Grout': false
+                    },
+                    'Drainage': {
+                        'Functional': false,
+                        'Missing Stopper': false,
+                        'Missing/Inoperable Overflow': false,
+                        'Clog/Slow Drain': false,
+                        'Stained Drainpipe': false,
+                        'Drips/Leaks': false,
+                        'Defects/Damage': false,
+                        'Unsafe': false,
+                        'Re-Evaluate': false
+                    },
+                    'Location': {
+                        'Kitchen': false,
+                        'Master Bath': false,
+                        'Main Bath': false,
+                        'Half Bath': false,
+                        'Laundry': false,
+                        'Bar': false
+                    },
+                    'Toilet': {
+                        'Satisfactory': false,
+                        'Inoperable': false,
+                        'Runs Continuously': false,
+                        'Leaks': false,
+                        'Loose Bowl': false,
+                        'Damage': false
+                    },
+                    'Tub/Shower Surround(s)': {
+                        'Ceramic': false,
+                        'FG': false,
+                        'Masonite/Laminate': false,
+                        'Slab': false,
+                        'Jacuzzi': false
+                    },
+                    'Condition': {
+                        'Functional': false,
+                        'Inoperable': false,
+                        'Stains': false,
+                        'Cross Connection': false,
+                        'Defective': false,
+                        'Loose Tile': false,
+                        'Cracked/Broken': false,
+                        'Leaky Shower Head': false,
+                        'Leaky Faucet': false,
+                        'Leaky Sprayer': false
+                    },
+                },
+                'images': [
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
                         ]
 
                  },
-                {
-                    'title': 'Water Heater',
-                    'conditions': 'None',
-                    'showconditions': true,
-                    'limitations': 'None',
-                    'showlimitations': true,
-                    'checkboxes': {
-                        'Energy Source': {
-                            'Gas/Propane': false,
-                            'Electric': false,
-                            'Oil': false,
-                            'Solar': false,
-                            'Geo Thermal': false
-                        },
-                        'Brand Name': {//NEEDS MORE DATA.
-                            'American': false,
-                            'OTHER (NEEDS MORE DATA)': false
-                        },
-                        'Approximate Age (Years Old)': {//NEEDS MORE DATA.
-                            '1': false,
-                            '2': false,
-                            '3': false,
-                            '4': false,
-                            '5': false,
-                            '6': false,
-                            '7': false,
-                            '8': false,
-                            '9': false,
-                            '10': false,
-                            'OTHER (NEEDS MORE DATA)': false
-                        },
-                        'Capacity (in Gallons)': {
-                            '10': false,
-                            '20': false,
-                            '30': false,
-                            '40': false,
-                            '50': false,
-                            'OTHER (NEEDS MORE DATA)': false
-                        },
-                        'Model #': {//THIS IS A TEXT ENTRY FIELD
-                            'TEXT ENTRY FIELD': false
-                        },
-                        'Serial #': {//THIS IS A TEXT ENTRY FIELD
-                            'TEXT ENTRY FIELD': false
-                        },
-                        'Water Temperature': {
-                            'OTHER (NEEDS MORE DATA)': false
-                        },
-                        'Condition': {
-                            'Inoperable': false,
-                            'Data Plate Inaccessible/Illegible': false,
-                            'Missing/Loose Seismic Restraints': false
-                        },
-                        'TPRV Connection': {
-                            'Satisfactory': false,
-                            'Missing': false,
-                            'Reduced Extension': false,
-                            'Poor Extension Termination': false
-                        },
-                        'Exhaust': {
-                            'n/a': false,
-                            'Metal': false,
-                            'Flex Ducting': false,
-                            'PVC': false,
-                            'Condensate': false,
-                            'Rust': false,
-                            'Corrosion': false,
-                            'Verify Proper Pitch': false,
-                            'Disconnected': false,
-                            'Into Masonry Chase': false,
-                            'Missing Liner': false,
-                            'Back-Drafting': false,
-                            'Unsafe': false,
-                            'Recommend Professional Re-Evaluation and/or Remediation': false
-                        },
+            {
+                'title': 'Water Heater',
+                'conditions': 'None',
+                'showconditions': true,
+                'limitations': 'None',
+                'showlimitations': true,
+                'checkboxes': {
+                    'Energy Source': {
+                        'Gas/Propane': false,
+                        'Electric': false,
+                        'Oil': false,
+                        'Solar': false,
+                        'Geo Thermal': false
                     },
-                    'images': [
-                        {
-                            'title': 'Water Heater Location',
-                            'url': 'path',
-                            'required': false
+                    'Brand Name': { //NEEDS MORE DATA.
+                        'American': false,
+                        'OTHER (NEEDS MORE DATA)': false
+                    },
+                    'Approximate Age (Years Old)': { //NEEDS MORE DATA.
+                        '1': false,
+                        '2': false,
+                        '3': false,
+                        '4': false,
+                        '5': false,
+                        '6': false,
+                        '7': false,
+                        '8': false,
+                        '9': false,
+                        '10': false,
+                        'OTHER (NEEDS MORE DATA)': false
+                    },
+                    'Capacity (in Gallons)': {
+                        '10': false,
+                        '20': false,
+                        '30': false,
+                        '40': false,
+                        '50': false,
+                        'OTHER (NEEDS MORE DATA)': false
+                    },
+                    'Model #': { //THIS IS A TEXT ENTRY FIELD
+                        'TEXT ENTRY FIELD': false
+                    },
+                    'Serial #': { //THIS IS A TEXT ENTRY FIELD
+                        'TEXT ENTRY FIELD': false
+                    },
+                    'Water Temperature': {
+                        'OTHER (NEEDS MORE DATA)': false
+                    },
+                    'Condition': {
+                        'Inoperable': false,
+                        'Data Plate Inaccessible/Illegible': false,
+                        'Missing/Loose Seismic Restraints': false
+                    },
+                    'TPRV Connection': {
+                        'Satisfactory': false,
+                        'Missing': false,
+                        'Reduced Extension': false,
+                        'Poor Extension Termination': false
+                    },
+                    'Exhaust': {
+                        'n/a': false,
+                        'Metal': false,
+                        'Flex Ducting': false,
+                        'PVC': false,
+                        'Condensate': false,
+                        'Rust': false,
+                        'Corrosion': false,
+                        'Verify Proper Pitch': false,
+                        'Disconnected': false,
+                        'Into Masonry Chase': false,
+                        'Missing Liner': false,
+                        'Back-Drafting': false,
+                        'Unsafe': false,
+                        'Recommend Professional Re-Evaluation and/or Remediation': false
+                    },
+                },
+                'images': [
+                    {
+                        'title': 'Water Heater Location',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Water Heater Data Plate',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Water Heater Data Plate',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                                'title': 'Kitchen Water Temperature',
-                                'url': 'path',
-                                'required': false
+                    {
+                        'title': 'Kitchen Water Temperature',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                                'title': 'Laundry Machines NOT Evaluated',
-                                'url': 'path',
-                                'required': false
+                    {
+                        'title': 'Laundry Machines NOT Evaluated',
+                        'url': 'path',
+                        'required': false
                              },
                         ]
 
-                 }//This is where you start a new Subpage "Title" Section.
+                 } //This is where you start a new Subpage "Title" Section.
         ]
-    },
-    {
-            'title': 'Heating/Cooling',
-            'subpage': [
-                {
-                    'title': 'Heating System',
-                    'conditions': 'The inspection of the heating system includes the fuel source; heating equipment; heating distribution; operating controls; visible portions of flue pipes, chimneys and venting, installed auxiliary heating units, deficiencies of the systems or components, and reports any evidence that indicates the possible presence of an underground storage tank. Each habitable space in the home was inspected to determine whether or not there was a functioning heat source present and operable, using normal readily accessible control devices. Access panels or covers provided by the manufacturer or installer, if readily accessible and detachable, were opened. The report describes the existing operation of: electric baseboard and in-wall heaters to ensure they are functional, central heating units and distribution systems, visible flue pipes and related components to ensure functional operation and proper clearance from combustibles, spaces where fossil fuel burning heating devices are located to ensure there is air for combustion.',
-                    'showconditions': true,
-                    'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-120 of the Washington State Dept. of Licensing, the inspector is not required to determine adequacy of combustion air, or the capacity, adequacy, or efficiency of a heating system, or evaluate thermostats or controls other than to confirm that they actually turn a system on or off. The inspector did not remove covers or panels that were not readily accessible or removable, or dismantle any equipment, controls, or gauges except readily identifiable access covers designed to be removed by users. The inspector is not required to ignite pilot lights, or operate heating devices or systems that have been shut down, do not respond to normal controls, or any heating system when circumstances are not conducive to safe operation or when doing so will damage the equipment, inspect or evaluate heat exchangers concealed inside furnaces and boilers, the interior of chimneys and flues, and/or any heating equipment that is not readily accessible, or installed heating system accessories, such as humidifiers, air purifiers, motorized dampers, heat reclaimers; solar heating systems; or concealed distribution systems.',
-                    'showlimitations': true,
-                    'checkboxes': {
-                        'Energy Source': {
-                            'Gas': false,
-                            'LP': false,
-                            'Electric': false,
-                            'Oil': false,
-                            'Solar': false,
-                            'Wind': false,
-                            'Geo Thermal': false
+    }, {
+        'title': 'Heating/Cooling',
+        'subpage': [
+            {
+                'title': 'Heating System',
+                'conditions': 'The inspection of the heating system includes the fuel source; heating equipment; heating distribution; operating controls; visible portions of flue pipes, chimneys and venting, installed auxiliary heating units, deficiencies of the systems or components, and reports any evidence that indicates the possible presence of an underground storage tank. Each habitable space in the home was inspected to determine whether or not there was a functioning heat source present and operable, using normal readily accessible control devices. Access panels or covers provided by the manufacturer or installer, if readily accessible and detachable, were opened. The report describes the existing operation of: electric baseboard and in-wall heaters to ensure they are functional, central heating units and distribution systems, visible flue pipes and related components to ensure functional operation and proper clearance from combustibles, spaces where fossil fuel burning heating devices are located to ensure there is air for combustion.',
+                'showconditions': true,
+                'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-120 of the Washington State Dept. of Licensing, the inspector is not required to determine adequacy of combustion air, or the capacity, adequacy, or efficiency of a heating system, or evaluate thermostats or controls other than to confirm that they actually turn a system on or off. The inspector did not remove covers or panels that were not readily accessible or removable, or dismantle any equipment, controls, or gauges except readily identifiable access covers designed to be removed by users. The inspector is not required to ignite pilot lights, or operate heating devices or systems that have been shut down, do not respond to normal controls, or any heating system when circumstances are not conducive to safe operation or when doing so will damage the equipment, inspect or evaluate heat exchangers concealed inside furnaces and boilers, the interior of chimneys and flues, and/or any heating equipment that is not readily accessible, or installed heating system accessories, such as humidifiers, air purifiers, motorized dampers, heat reclaimers; solar heating systems; or concealed distribution systems.',
+                'showlimitations': true,
+                'checkboxes': {
+                    'Energy Source': {
+                        'Gas': false,
+                        'LP': false,
+                        'Electric': false,
+                        'Oil': false,
+                        'Solar': false,
+                        'Wind': false,
+                        'Geo Thermal': false
 
-                        },
-                        'System Type': {
-                            'Central Forced Air': false,
-                            'In-Wall Space Heaters': false,
-                            'Baseboard Wall': false,
-                            'Radiant': false
-                        },
-                        'Boiler': {
-                            'Water': false,
-                            'Steam': false,
-                            'Radiator': false
-                        },
-                        'Heat Pump': {
-                            'Air': false,
-                            'Water': false,
-                            'Ground': false
-                        },
-                        'Stove': {
-                            'Wood': false,
-                            'Solid Fuel(Pellet)': false,
-                            'Gas Log': false,
-                            'Verify Clearance to Combustibles': false
-                        },
-                        'Solar': {
-                            'Passive': false,
-                            'Heat Sink': false,
-                            'Photo-Voltaic': false,
-                            'Panels': false,
-                            'Convection': false
-                        },
-                        //PRESET TITLE: Central Furnace or Heat Pump
-                        'Brand Name': {//NEED MORE DATA
-                            'Bryant': false,
-                            'OTHER (NEED MORE DATA)': false
-                        },
-                        'Capacity': {//NEED MORE DATA
-                            'Text Entry?': false,
-                            'OTHER (NEED MORE DATA)': false
-                        },
-                        'Year of Manufacture': {//NEEDS TO BE ABLE TO SELECT A YEAR
-                            'SELECT A YEAR?': false
-                        },
-                        'Model #': {//TEXT ENTRY FIELD HERE.
-                            'TEXT ENTRY REQUIRED': false
-                        },
-                        'Serial #': {//TEXT ENTRY FIELD HERE.
-                            'TEXT ENTRY REQUIRED': false
-                        },
-                        'Posted Service History': {
-                            'Satisfactory (Annual Safety)': false,
-                            'Missing/Old': false,
-                            'Last Serviced n/a': false
-                        },
-                        'Condition': {
-                            'Satisfactory': false,
-                            'Inoperable': false,
-                            'Dusty Cabinet': false,
-                            'Rust': false,
-                            'Corrosion': false,
-                            'Flame Distortion': false
-                        },
-                        'Ducting': {
-                            'Plenum & Cold Air Returns': false,
-                            'Metal Duct': false,
-                            'Insulated Flex Duct': false
-                        },
-                        'Reduced Vent': {
-                            'Metal': false,
-                            'PVC': false,
-                            'Verify Proper Pitch': false,
-                            'Rusted': false,
-                            'Deteriorated': false,
-                            'Disconnected': false,
-                            'n/a': false
-                        },
-                        'Filter': {
-                            'n/a': false,
-                            'Electrostatic': false,
-                            'Paper': false,
-                            'Filter Fabric': false,
-                            'Satisfactory': false,
-                            'Marginal': false,
-                            'Poor/Dirty': false
-                        },
-                        'Disconnect or Typical Safety Controls': {
-                            'Functional': false,
-                            'Verify Location/Function': false,
-                            'Hazard': false,
-                            'Recommend Professional HVAC Re-Evaluation, Safety Inspection, and/or Remediation': false
-                        }
                     },
-                    'images': [
-                        {
-                            'title': 'Gas Meter Location',
-                            'url': 'path',
-                            'required': false
+                    'System Type': {
+                        'Central Forced Air': false,
+                        'In-Wall Space Heaters': false,
+                        'Baseboard Wall': false,
+                        'Radiant': false
+                    },
+                    'Boiler': {
+                        'Water': false,
+                        'Steam': false,
+                        'Radiator': false
+                    },
+                    'Heat Pump': {
+                        'Air': false,
+                        'Water': false,
+                        'Ground': false
+                    },
+                    'Stove': {
+                        'Wood': false,
+                        'Solid Fuel(Pellet)': false,
+                        'Gas Log': false,
+                        'Verify Clearance to Combustibles': false
+                    },
+                    'Solar': {
+                        'Passive': false,
+                        'Heat Sink': false,
+                        'Photo-Voltaic': false,
+                        'Panels': false,
+                        'Convection': false
+                    },
+                    //PRESET TITLE: Central Furnace or Heat Pump
+                    'Brand Name': { //NEED MORE DATA
+                        'Bryant': false,
+                        'OTHER (NEED MORE DATA)': false
+                    },
+                    'Capacity': { //NEED MORE DATA
+                        'Text Entry?': false,
+                        'OTHER (NEED MORE DATA)': false
+                    },
+                    'Year of Manufacture': { //NEEDS TO BE ABLE TO SELECT A YEAR
+                        'SELECT A YEAR?': false
+                    },
+                    'Model #': { //TEXT ENTRY FIELD HERE.
+                        'TEXT ENTRY REQUIRED': false
+                    },
+                    'Serial #': { //TEXT ENTRY FIELD HERE.
+                        'TEXT ENTRY REQUIRED': false
+                    },
+                    'Posted Service History': {
+                        'Satisfactory (Annual Safety)': false,
+                        'Missing/Old': false,
+                        'Last Serviced n/a': false
+                    },
+                    'Condition': {
+                        'Satisfactory': false,
+                        'Inoperable': false,
+                        'Dusty Cabinet': false,
+                        'Rust': false,
+                        'Corrosion': false,
+                        'Flame Distortion': false
+                    },
+                    'Ducting': {
+                        'Plenum & Cold Air Returns': false,
+                        'Metal Duct': false,
+                        'Insulated Flex Duct': false
+                    },
+                    'Reduced Vent': {
+                        'Metal': false,
+                        'PVC': false,
+                        'Verify Proper Pitch': false,
+                        'Rusted': false,
+                        'Deteriorated': false,
+                        'Disconnected': false,
+                        'n/a': false
+                    },
+                    'Filter': {
+                        'n/a': false,
+                        'Electrostatic': false,
+                        'Paper': false,
+                        'Filter Fabric': false,
+                        'Satisfactory': false,
+                        'Marginal': false,
+                        'Poor/Dirty': false
+                    },
+                    'Disconnect or Typical Safety Controls': {
+                        'Functional': false,
+                        'Verify Location/Function': false,
+                        'Hazard': false,
+                        'Recommend Professional HVAC Re-Evaluation, Safety Inspection, and/or Remediation': false
+                    }
+                },
+                'images': [
+                    {
+                        'title': 'Gas Meter Location',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Main Gas Shut-Off Valve',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Main Gas Shut-Off Valve',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Typical View of Furnace',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Typical View of Furnace',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Furnace Data Plate',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Furnace Data Plate',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Furnace Open For Inspection',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Furnace Open For Inspection',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Filter Condition',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Filter Condition',
+                        'url': 'path',
+                        'required': false
                              },
                      ]
 
                  },
-                {
-                    'title': 'Fireplaces/Stoves',
-                    'conditions': 'The inspection of solid fuel and gas fireplaces, or heating stoves includes the readily visible components, the fuel source, damper, fire-box, and hearth. Each fireplace or heating stove in the home, including dampers, fire-boxes and hearths was inspected using normal readily accessible control devices to determine whether or not there was a functional and operable heat source present, and to ensure there was air for combustion in spaces where fossil fuel burning heating devices were located. The findings area describes the heating units, visible flue pipes and related components to ensure functional operation and proper clearance from combustibles, and describes any deficiencies of these systems or components.',
-                    'showconditions': true,
-                    'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-160 of the Washington State Dept. of Licensing, the inspector is not required to: (1)inspect flues or verify the presence of flue liners beyond what can be safely and readily seen from the roof or the firebox of a stove or fireplace, (2)inspect any solid fuel device being operated at the time of the inspection, (3)dismantle fireplaces or stoves to inspect fire-boxes or remove rain caps to inspect chimney flues, (3)evaluate the installation or adequacy of fireplace inserts, or modifications to a fireplace, stove, or chimney, or (4)ignite fires in a fireplace or stove, perform a chimney smoke test or determine the adequacy of draft.',
-                    'showlimitations': true,
-                    'checkboxes': {
-                        'Fireplace/Stove Type': {
-                            'Masonry Firebox': false,
-                            'Metal FP Insert': false,
-                            'Direct Vent Gas FP': false,
-                            'Wood/Pellet Stove': false,
-                            'Masonry Flue Liner': false,
-                            'Metal Flue Liner': false,
-                            'Unlined Chase': false,
-                            'Venting Into Chimney Chase': false
-                        },
-                        'Mantle/Hearth': {
-                            'Loose': false,
-                            'Settling Cracks': false,
-                            'Burned': false,
-                            'Verify Clearance to Combustibles': false
-                        },
-                        'Firebox': {
-                            'No Access': false,
-                            'Missing Liner': false,
-                            'Cracked Refractory Brick': false,
-                            'Missing/Loose Mortar': false
-                        },
-                        'Damper': {
-                            'Missing': false,
-                            'No Access': false,
-                            'Inoperable/DTO': false,
-                            'Rusted': false,
-                            'Damaged/Broken': false,
-                            'Creosote Build-Up': false,
-                            'Deterioration': false,
-                            'Recommend Cleaning/Re-Evaluation/Repairs': false
-                        },
-                        'Chimney': {
-                            'n/a': false,
-                            'Framed': false,
-                            'Masonry': false,
-                            'Metal': false,
-                            'Class B': false,
-                            'DV Wall Hood': false,
-                            'Cracked Wash': false,
-                            'Loose Mortar': false,
-                            'No Liner': false,
-                            'No Spark Arrestor': false,
-                            'Rust': false,
-                            'Creosote': false,
-                            'Missing Cricket': false,
-                            'Inadequate/Missing Flashing': false,
-                            'Damaged': false,
-                            'Missing Burn Guard': false,
-                            'Satisfactory': false,
-                            'Marginal': false,
-                            'Poor': false,
-                            'Recommend Professional Re-Evaluation/Remediation': false
-                        },
+            {
+                'title': 'Fireplaces/Stoves',
+                'conditions': 'The inspection of solid fuel and gas fireplaces, or heating stoves includes the readily visible components, the fuel source, damper, fire-box, and hearth. Each fireplace or heating stove in the home, including dampers, fire-boxes and hearths was inspected using normal readily accessible control devices to determine whether or not there was a functional and operable heat source present, and to ensure there was air for combustion in spaces where fossil fuel burning heating devices were located. The findings area describes the heating units, visible flue pipes and related components to ensure functional operation and proper clearance from combustibles, and describes any deficiencies of these systems or components.',
+                'showconditions': true,
+                'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-160 of the Washington State Dept. of Licensing, the inspector is not required to: (1)inspect flues or verify the presence of flue liners beyond what can be safely and readily seen from the roof or the firebox of a stove or fireplace, (2)inspect any solid fuel device being operated at the time of the inspection, (3)dismantle fireplaces or stoves to inspect fire-boxes or remove rain caps to inspect chimney flues, (3)evaluate the installation or adequacy of fireplace inserts, or modifications to a fireplace, stove, or chimney, or (4)ignite fires in a fireplace or stove, perform a chimney smoke test or determine the adequacy of draft.',
+                'showlimitations': true,
+                'checkboxes': {
+                    'Fireplace/Stove Type': {
+                        'Masonry Firebox': false,
+                        'Metal FP Insert': false,
+                        'Direct Vent Gas FP': false,
+                        'Wood/Pellet Stove': false,
+                        'Masonry Flue Liner': false,
+                        'Metal Flue Liner': false,
+                        'Unlined Chase': false,
+                        'Venting Into Chimney Chase': false
                     },
-                    'images': [
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    'Mantle/Hearth': {
+                        'Loose': false,
+                        'Settling Cracks': false,
+                        'Burned': false,
+                        'Verify Clearance to Combustibles': false
+                    },
+                    'Firebox': {
+                        'No Access': false,
+                        'Missing Liner': false,
+                        'Cracked Refractory Brick': false,
+                        'Missing/Loose Mortar': false
+                    },
+                    'Damper': {
+                        'Missing': false,
+                        'No Access': false,
+                        'Inoperable/DTO': false,
+                        'Rusted': false,
+                        'Damaged/Broken': false,
+                        'Creosote Build-Up': false,
+                        'Deterioration': false,
+                        'Recommend Cleaning/Re-Evaluation/Repairs': false
+                    },
+                    'Chimney': {
+                        'n/a': false,
+                        'Framed': false,
+                        'Masonry': false,
+                        'Metal': false,
+                        'Class B': false,
+                        'DV Wall Hood': false,
+                        'Cracked Wash': false,
+                        'Loose Mortar': false,
+                        'No Liner': false,
+                        'No Spark Arrestor': false,
+                        'Rust': false,
+                        'Creosote': false,
+                        'Missing Cricket': false,
+                        'Inadequate/Missing Flashing': false,
+                        'Damaged': false,
+                        'Missing Burn Guard': false,
+                        'Satisfactory': false,
+                        'Marginal': false,
+                        'Poor': false,
+                        'Recommend Professional Re-Evaluation/Remediation': false
+                    },
+                },
+                'images': [
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              }
                      ]
 
                  },
-                {
-                    'title': 'Cooling Systems',
-                    'conditions': 'The inspection of the air conditioning system includes the cooling equipment; cooling distribution equipment, the energy sources, and a description noted in this report of any deficiencies of these systems or components: (1)Where an air conditioning system is present, readily accessible access panels or covers provided by the manufacturer or installer were opened to inspect the air conditioning system. (2)Where conditions allowed use of normal control devices, function of the controls and operative components of the complete system were inspected, and temperature differential was measured and recorded. (3)Interior exhaust fans and/or furnace blower motors may be present and/or operational at the time of the inspection but do not provide cooling. (BOLD THIS)Heat pump cycles were NOT reversed, and if outdoor temperatures were below 60 degrees during the past 72hrs, A/C systems were NOT tested.(BOLD THIS)',
-                    'showconditions': true,
-                    'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-130 of the Washington State Dept. of Licensing, the inspector is not required to determine the efficiency, or adequacy of the system, activate cooling systems that have been shut down, or operate cooling system components if the exterior temperature is below sixty degrees Fahrenheit, when doing so might damage the equipment, or when other circumstances are not conducive to safe operation, remove covers or panels that are not readily accessible or dismantle any equipment, controls, or gauges except readily identifiable access covers designed to be removed by users, check the coolant pressure / charge, or inspect the system for refrigerant leaks, inspect gas-fired refrigeration systems, evaporative coolers, wall or window-mounted air-conditioning units, evaluate digital-type thermostats or controls, or determine how much current the unit is drawing.',
-                    'showlimitations': true,
-                    'checkboxes': {
-                        'Temperature Differential': {//NEEDS MORE DATA
-                            'TEXT ENTRY FIELD': false,
-                            'NOT Tested': false
-                        },
-                        'A/C Type': {//NEEDS MORE DATA
-                            'n/a': false,
-                            'Inoperable': false,
-                            'OTHER (NEEDS MORE DATA)': false
-                        },
-                        'Energy Source': {
-                            'Natural Gas': false,
-                            'Propane': false,
-                            'Electric': false,
-                            'Central Air': false,
-                            'Heat Pump': false,
-                            'Fan Cooled': false,
-                            'Water': false,
-                            'Gas Chiller': false,
-                            'Swamp Cooler': false
-                        },
-                        'Evaporative Coil or Heat Pump (Inside) Brand Name': { //NEEDS MORE DATA.
-                            'Bryant': false,
-                            'OTHER (NEEDS MORE DATA)': false
-                        },
-                        'Capacity': {
-                            'n/a': false,
-                            'OTHER (NEEDS MORE DATA)': false
-                        },
-                        'Year of Manufacture': {
-                            '1996': false,
-                            'YEAR ENTRY NEEDED': false
-                        },
-                        'Model #': {//NEED TEXT FIELD ENTRY HERE.
-                            'TEXT FIELD ENTRY': false
-                        },
-                        'Serial #': {//NEED TEXT FIELD ENTRY HERE.
-                            'TEXT FIELD ENTRY': false
-                        },
-                        'Compressor/Condenser (Outside) Brand Name': {
-                            'Bryant': false,
-                            'OTHER (NEEDS MORE DATA)': false
-                        },
-                        'Capacity': {
-                            'n/a': false,
-                            'OTHER (NEEDS MORE DATA)': false
-                        },
-                        'Year of Manufacture': {
-                            '1996': false,
-                            'YEAR ENTRY NEEDED': false
-                        },
-                        'Model #': {//NEED TEXT FIELD ENTRY HERE.
-                            'TEXT FIELD ENTRY': false
-                        },
-                        'Serial #': {//NEED TEXT FIELD ENTRY HERE.
-                            'TEXT FIELD ENTRY': false
-                        },
-                        'Condition': {
-                            'Satisfactory': false,
-                            'Marginal': false,
-                            'Poor': false,
-                            'Uneven Base': false,
-                            'Inadequate Base Height': false,
-                            'Obstructed Flow': false
-                        },
-                        'Refrigerant Lines': {
-                            'Satisfactory': false,
-                            'Leaking': false,
-                            'Damaged': false,
-                            'Worn': false,
-                            'Insulation Missing': false
-                        },
+            {
+                'title': 'Cooling Systems',
+                'conditions': 'The inspection of the air conditioning system includes the cooling equipment; cooling distribution equipment, the energy sources, and a description noted in this report of any deficiencies of these systems or components: (1)Where an air conditioning system is present, readily accessible access panels or covers provided by the manufacturer or installer were opened to inspect the air conditioning system. (2)Where conditions allowed use of normal control devices, function of the controls and operative components of the complete system were inspected, and temperature differential was measured and recorded. (3)Interior exhaust fans and/or furnace blower motors may be present and/or operational at the time of the inspection but do not provide cooling. (BOLD THIS)Heat pump cycles were NOT reversed, and if outdoor temperatures were below 60 degrees during the past 72hrs, A/C systems were NOT tested.(BOLD THIS)',
+                'showconditions': true,
+                'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-130 of the Washington State Dept. of Licensing, the inspector is not required to determine the efficiency, or adequacy of the system, activate cooling systems that have been shut down, or operate cooling system components if the exterior temperature is below sixty degrees Fahrenheit, when doing so might damage the equipment, or when other circumstances are not conducive to safe operation, remove covers or panels that are not readily accessible or dismantle any equipment, controls, or gauges except readily identifiable access covers designed to be removed by users, check the coolant pressure / charge, or inspect the system for refrigerant leaks, inspect gas-fired refrigeration systems, evaporative coolers, wall or window-mounted air-conditioning units, evaluate digital-type thermostats or controls, or determine how much current the unit is drawing.',
+                'showlimitations': true,
+                'checkboxes': {
+                    'Temperature Differential': { //NEEDS MORE DATA
+                        'TEXT ENTRY FIELD': false,
+                        'NOT Tested': false
                     },
-                    'images': [
-                        {
-                            'title': 'Exterior Compressor/Condensor Unit',
-                            'url': 'path',
-                            'required': false
+                    'A/C Type': { //NEEDS MORE DATA
+                        'n/a': false,
+                        'Inoperable': false,
+                        'OTHER (NEEDS MORE DATA)': false
+                    },
+                    'Energy Source': {
+                        'Natural Gas': false,
+                        'Propane': false,
+                        'Electric': false,
+                        'Central Air': false,
+                        'Heat Pump': false,
+                        'Fan Cooled': false,
+                        'Water': false,
+                        'Gas Chiller': false,
+                        'Swamp Cooler': false
+                    },
+                    'Evaporative Coil or Heat Pump (Inside) Brand Name': { //NEEDS MORE DATA.
+                        'Bryant': false,
+                        'OTHER (NEEDS MORE DATA)': false
+                    },
+                    'Capacity': {
+                        'n/a': false,
+                        'OTHER (NEEDS MORE DATA)': false
+                    },
+                    'Year of Manufacture': {
+                        '1996': false,
+                        'YEAR ENTRY NEEDED': false
+                    },
+                    'Model #': { //NEED TEXT FIELD ENTRY HERE.
+                        'TEXT FIELD ENTRY': false
+                    },
+                    'Serial #': { //NEED TEXT FIELD ENTRY HERE.
+                        'TEXT FIELD ENTRY': false
+                    },
+                    'Compressor/Condenser (Outside) Brand Name': {
+                        'Bryant': false,
+                        'OTHER (NEEDS MORE DATA)': false
+                    },
+                    'Capacity': {
+                        'n/a': false,
+                        'OTHER (NEEDS MORE DATA)': false
+                    },
+                    'Year of Manufacture': {
+                        '1996': false,
+                        'YEAR ENTRY NEEDED': false
+                    },
+                    'Model #': { //NEED TEXT FIELD ENTRY HERE.
+                        'TEXT FIELD ENTRY': false
+                    },
+                    'Serial #': { //NEED TEXT FIELD ENTRY HERE.
+                        'TEXT FIELD ENTRY': false
+                    },
+                    'Condition': {
+                        'Satisfactory': false,
+                        'Marginal': false,
+                        'Poor': false,
+                        'Uneven Base': false,
+                        'Inadequate Base Height': false,
+                        'Obstructed Flow': false
+                    },
+                    'Refrigerant Lines': {
+                        'Satisfactory': false,
+                        'Leaking': false,
+                        'Damaged': false,
+                        'Worn': false,
+                        'Insulation Missing': false
+                    },
+                },
+                'images': [
+                    {
+                        'title': 'Exterior Compressor/Condensor Unit',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Exterior Compressor/Condensor Data Plate',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Exterior Compressor/Condensor Data Plate',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Interior Evaporative Coil or Heat Pump Unit',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Interior Evaporative Coil or Heat Pump Unit',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Interior Evaporative Coil or Heat Pump Data Plate',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Interior Evaporative Coil or Heat Pump Data Plate',
+                        'url': 'path',
+                        'required': false
                              }
                      ]
 
-                 }//This is where you start a new subpage "Title" Section
+                 } //This is where you start a new subpage "Title" Section
         ]
-    },
-    {
-            'title': 'Electrical',
-            'subpage': [
-                {
-                    'title': 'Electrical System',
-                    'conditions': 'The inspection of the readily visible electrical system includes the service drop through the main panel; sub- panels including feeders; branch circuits, connected devices, and lighting fixtures, and describes any deficiencies of these systems or components. The report defines the type of primary service, whether overhead or underground, voltage, amperage, over-current protection devices (fuses or breakers) by inspecting the main and branch circuit conductors for proper over-current protection and condition by visual observation after removal of the readily accessible electrical main and sub-panel cover(s) where applicable, any circuit breaker panel or sub-panel known within the home inspection profession to have safety concerns, identifies whether or not existence of a connected service- grounding conductor and service-grounding electrode can be confirmed, and the presence or absence of solid conductor aluminum branch circuits, verifies the operation of a representative number of accessible switches, receptacles and light fixtures, the grounding and polarity of a representative number of receptacles (particularly in close proximity to plumbing fixtures or at the exterior), the function or absence of ground fault circuit interrupter (GFCI) protection and arc-fault circuit interrupter (AFCI) protection where recommended by industry standards.',
-                    'showconditions': true,
-                    'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-110 of the Washington State Dept. of Licensing, the inspector is not required to: insert any tool, probe or testing device into the main or sub-panels, activate electrical systems or branch circuits that are not energized, operate circuit breakers, service disconnects or remove fuses, verify the continuity of connected service ground(s), or test every switch, receptacle, and fixture, move any objects, furniture, or appliances to gain access to any electrical component, remove switch and receptacle cover plates, dismantle any electrical device or control, except for the removal of the dead-front covers from the main service panel and sub-panels, or inspect electrical equipment thatAPOSTRPHEs not readily accessible, or ancillary systems, including but not limited to: timers, security systems, low voltage relays, smoke/heat detectors, antennas, intercoms, electrical de- icing tapes, lawn sprinkler wiring, swimming pool or spa wiring, central vacuum systems.(BOLD THIS) Solid conductor aluminum wiring may be hazardous and if reported, a licensed electrician should inspect the system to ensure itAPOSTROPHEs safe. Homes without ground fault protection should have GFCI devices installed, replaced, or upgraded where recommended by industry standards.(BOLD THIS)',
-                    'showlimitations': true,
-                    'checkboxes': {
-                        'Main Service Entry': {
-                            'Underground': false,
-                            'Yard Post': false,
-                            'Not Visible/Accessible': false,
-                            'In Conduit': false,
-                            'Overhead': false,
-                            'Pole Unstable': false,
-                            '3 Cables': false,
-                            '4 Cables': false,
-                            'Copper': false,
-                            'Aluminum': false
-                        },
-                        'Condition': {
-                            'Satisfactory': false,
-                            'Marginal': false,
-                            'Poor': false,
-                            'Inadequate Clearances': false,
-                            'Damage': false,
-                            'Hazard': false
-                        },
-                        'Service Size': {
-                            'AMPS (NEED MORE DATA)': false,
-                            'VOLTS (NEED MORE DATA)': false
-                        },
-                        'Ground Connection': {
-                            'Visible': false,
-                        },
-                        'Meter Location': {
-                            'Exterior Wall': false,
-                            'Yard Post': false,
-                            'Mechanical Closet': false,
-                            'Not Visible/Locked': false
-                        },
-                        'Meter Condition': {
-                            'Satisfactory': false,
-                            'Marginal': false,
-                            'Poor': false,
-                            'Inadequate Access': false,
-                            'Damage': false,
-                            'Hazard': false
-                        },
-                        'Grounding': {
-                            'Not Visible': false,
-                            'Ground Rods': false,
-                            'Ufer': false,
-                            'Bonded to Water/Gas Piping': false
-                        },
-                        'Ground Wiring': {
-                            'Copper': false,
-                            'Aluminum': false,
-                            'Missing': false,
-                            'Not Visible/Accessible': false
-                        },
-                        'Condition': {
-                            'Satisfactory': false,
-                            'Loose Clamp/Lug': false,
-                            'Missing': false,
-                            'Improper Bond': false,
-                            'Too Far From Entry': false
-                        },
-                        'Main Electrical Disconnect Location': {
-                            'With Meter': false,
-                            'Inside Main Panel': false,
-                            'Near Panel': false,
-                            'Fuse': false,
-                            'Breaker': false,
-                            'Switch': false,
-                            'Split-Bus': false,
-                            'Overloaded(>6 Hand Motions)': false
-                        },
-                        'Main Panel': {
-                            'Not Visible/Accessible': false,
-                            'Blocked': false,
-                            'Not Evaluated': false
-                        },
-                        'Reason for Non Evaluation': {
-                            'n/a': false,
-                            'OTHER (NEED MORE DATA)': false
-                        },
-                        'Breakers or Fuses': {
-                            'Breakers': false,
-                            'Fuses': false
-                        },
-                        'Amps': {//NEED MORE DATA
-                            'NEED MORE DATA': false
-                        },
-                        'Volts': {//NEED MORE DATA
-                            '240': false,
-                            'OTHER (NEED MORE DATA)': false
-                        },
-                        'Breaker(s)': {
-                            'GFCI Breakers': false,
-                            'AFCI Breakers': false,
-                            'n/a': false
-                        },
-                        'Location': {
-                            'Garage': false,
-                            'Basement': false,
-                            'With Meter': false,
-                            'Exterior Wall': false,
-                            'Yard Post': false,
-                            'Interior Wall': false,
-                            'Mechanical Room': false,
-                            'Laundry Room': false,
-                            'Utility Area': false,
-                            'Crawl Space': false
-                        },
-                        'Branch Wiring': {
-                            'Copper': false,
-                            'Almuninum': false,
-                            'Tin Clad Copper': false,
-                            'Copper Clad Aluminum': false,
-                            'Non-Metallic Sheathed': false,
-                            'BX Cable': false,
-                            'Condiut': false,
-                            'Cloth-Wrapped': false,
-                            'Knob & Tube': false
-                        },
-                        'Condition': {
-                            'Satisfactory': false,
-                            'Marginal': false,
-                            'Poor': false,
-                            'Inoperable': false,
-                            'Inadequate Access Clearances': false,
-                            'Dangling Wires': false,
-                            'Excessive Sheathing in Panel': false,
-                            'Double-Tapping': false,
-                            'Undersized Wiring': false,
-                            'Damage': false,
-                            'Rust': false,
-                            'Buried In Insulation': false,
-                            'Burned Breakers': false,
-                            'Dangerous Panel Type': false,
-                            'Improper Splicing': false,
-                            'Hazardous/Unsafe': false,
-                            'Recommend Professional Evaluation/Repairs': false
-                        }
+    }, {
+        'title': 'Electrical',
+        'subpage': [
+            {
+                'title': 'Electrical System',
+                'conditions': 'The inspection of the readily visible electrical system includes the service drop through the main panel; sub- panels including feeders; branch circuits, connected devices, and lighting fixtures, and describes any deficiencies of these systems or components. The report defines the type of primary service, whether overhead or underground, voltage, amperage, over-current protection devices (fuses or breakers) by inspecting the main and branch circuit conductors for proper over-current protection and condition by visual observation after removal of the readily accessible electrical main and sub-panel cover(s) where applicable, any circuit breaker panel or sub-panel known within the home inspection profession to have safety concerns, identifies whether or not existence of a connected service- grounding conductor and service-grounding electrode can be confirmed, and the presence or absence of solid conductor aluminum branch circuits, verifies the operation of a representative number of accessible switches, receptacles and light fixtures, the grounding and polarity of a representative number of receptacles (particularly in close proximity to plumbing fixtures or at the exterior), the function or absence of ground fault circuit interrupter (GFCI) protection and arc-fault circuit interrupter (AFCI) protection where recommended by industry standards.',
+                'showconditions': true,
+                'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-110 of the Washington State Dept. of Licensing, the inspector is not required to: insert any tool, probe or testing device into the main or sub-panels, activate electrical systems or branch circuits that are not energized, operate circuit breakers, service disconnects or remove fuses, verify the continuity of connected service ground(s), or test every switch, receptacle, and fixture, move any objects, furniture, or appliances to gain access to any electrical component, remove switch and receptacle cover plates, dismantle any electrical device or control, except for the removal of the dead-front covers from the main service panel and sub-panels, or inspect electrical equipment thatAPOSTRPHEs not readily accessible, or ancillary systems, including but not limited to: timers, security systems, low voltage relays, smoke/heat detectors, antennas, intercoms, electrical de- icing tapes, lawn sprinkler wiring, swimming pool or spa wiring, central vacuum systems.(BOLD THIS) Solid conductor aluminum wiring may be hazardous and if reported, a licensed electrician should inspect the system to ensure itAPOSTROPHEs safe. Homes without ground fault protection should have GFCI devices installed, replaced, or upgraded where recommended by industry standards.(BOLD THIS)',
+                'showlimitations': true,
+                'checkboxes': {
+                    'Main Service Entry': {
+                        'Underground': false,
+                        'Yard Post': false,
+                        'Not Visible/Accessible': false,
+                        'In Conduit': false,
+                        'Overhead': false,
+                        'Pole Unstable': false,
+                        '3 Cables': false,
+                        '4 Cables': false,
+                        'Copper': false,
+                        'Aluminum': false
                     },
-                    'images': [
-                        {
-                            'title': 'Electical Meter Location',
-                            'url': 'path',
-                            'required': false
+                    'Condition': {
+                        'Satisfactory': false,
+                        'Marginal': false,
+                        'Poor': false,
+                        'Inadequate Clearances': false,
+                        'Damage': false,
+                        'Hazard': false
+                    },
+                    'Service Size': {
+                        'AMPS (NEED MORE DATA)': false,
+                        'VOLTS (NEED MORE DATA)': false
+                    },
+                    'Ground Connection': {
+                        'Visible': false,
+                    },
+                    'Meter Location': {
+                        'Exterior Wall': false,
+                        'Yard Post': false,
+                        'Mechanical Closet': false,
+                        'Not Visible/Locked': false
+                    },
+                    'Meter Condition': {
+                        'Satisfactory': false,
+                        'Marginal': false,
+                        'Poor': false,
+                        'Inadequate Access': false,
+                        'Damage': false,
+                        'Hazard': false
+                    },
+                    'Grounding': {
+                        'Not Visible': false,
+                        'Ground Rods': false,
+                        'Ufer': false,
+                        'Bonded to Water/Gas Piping': false
+                    },
+                    'Ground Wiring': {
+                        'Copper': false,
+                        'Aluminum': false,
+                        'Missing': false,
+                        'Not Visible/Accessible': false
+                    },
+                    'Condition': {
+                        'Satisfactory': false,
+                        'Loose Clamp/Lug': false,
+                        'Missing': false,
+                        'Improper Bond': false,
+                        'Too Far From Entry': false
+                    },
+                    'Main Electrical Disconnect Location': {
+                        'With Meter': false,
+                        'Inside Main Panel': false,
+                        'Near Panel': false,
+                        'Fuse': false,
+                        'Breaker': false,
+                        'Switch': false,
+                        'Split-Bus': false,
+                        'Overloaded(>6 Hand Motions)': false
+                    },
+                    'Main Panel': {
+                        'Not Visible/Accessible': false,
+                        'Blocked': false,
+                        'Not Evaluated': false
+                    },
+                    'Reason for Non Evaluation': {
+                        'n/a': false,
+                        'OTHER (NEED MORE DATA)': false
+                    },
+                    'Breakers or Fuses': {
+                        'Breakers': false,
+                        'Fuses': false
+                    },
+                    'Amps': { //NEED MORE DATA
+                        'NEED MORE DATA': false
+                    },
+                    'Volts': { //NEED MORE DATA
+                        '240': false,
+                        'OTHER (NEED MORE DATA)': false
+                    },
+                    'Breaker(s)': {
+                        'GFCI Breakers': false,
+                        'AFCI Breakers': false,
+                        'n/a': false
+                    },
+                    'Location': {
+                        'Garage': false,
+                        'Basement': false,
+                        'With Meter': false,
+                        'Exterior Wall': false,
+                        'Yard Post': false,
+                        'Interior Wall': false,
+                        'Mechanical Room': false,
+                        'Laundry Room': false,
+                        'Utility Area': false,
+                        'Crawl Space': false
+                    },
+                    'Branch Wiring': {
+                        'Copper': false,
+                        'Almuninum': false,
+                        'Tin Clad Copper': false,
+                        'Copper Clad Aluminum': false,
+                        'Non-Metallic Sheathed': false,
+                        'BX Cable': false,
+                        'Condiut': false,
+                        'Cloth-Wrapped': false,
+                        'Knob & Tube': false
+                    },
+                    'Condition': {
+                        'Satisfactory': false,
+                        'Marginal': false,
+                        'Poor': false,
+                        'Inoperable': false,
+                        'Inadequate Access Clearances': false,
+                        'Dangling Wires': false,
+                        'Excessive Sheathing in Panel': false,
+                        'Double-Tapping': false,
+                        'Undersized Wiring': false,
+                        'Damage': false,
+                        'Rust': false,
+                        'Buried In Insulation': false,
+                        'Burned Breakers': false,
+                        'Dangerous Panel Type': false,
+                        'Improper Splicing': false,
+                        'Hazardous/Unsafe': false,
+                        'Recommend Professional Evaluation/Repairs': false
+                    }
+                },
+                'images': [
+                    {
+                        'title': 'Electical Meter Location',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Typical View of Wiring',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Typical View of Wiring',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Main Electical Panel(s)',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Main Electical Panel(s)',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'Panels Open For Inspection',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'Panels Open For Inspection',
+                        'url': 'path',
+                        'required': false
                              }
                      ]
 
                  },
-                {
-                    'title': 'Fixtures/Switches/Detectors',
-                    'conditions': 'None',
-                    'showconditions': true,
-                    'limitations': 'None',
-                    'showlimitations': true,
-                    'checkboxes': {
-                        'Fixtures': {
-                            'Missing/Removed': false,
-                            'Inoperable': false,
-                            'Missing Bulbs': false,
-                            'Missing Covers': false,
-                            'Gaps': false
-                        },
-                        'Fixtures Condition': {
-                            'Satisfactory': false,
-                            'Marginal': false,
-                            'Poor': false,
-                            'Inadequate Clearances': false,
-                            'Damage': false,
-                            'Hazard': false
-                        },
-                        'Switches/Receptacles': {
-                            'Typical Grounded': false,
-                            'Some Grounded': false,
-                            'Typical Un-Grounded': false
-                        },
-                        'Condition': {
-                            'Satisfactory': false,
-                            'Marginal': false,
-                            'Poor': false,
-                            'Inoperable': false,
-                            'Weak/Loose': false,
-                            'Missing/Removed': false,
-                            'Missing Cover Plates': false,
-                            'Dangling/Unmounted': false,
-                            'External Splicing': false,
-                            'Gaps Into Boxes': false,
-                            'Burned': false,
-                            'Open Ground': false,
-                            'Open Neutral': false,
-                            'Reverse Polarity': false,
-                            'Ungrounded 3-Prong': false,
-                            'Damaged': false,
-                            'Hazardous/Unsafe': false,
-                            'Recommend Repair/Evaluation by Professional Electrician': false
-                        },
-                        'Carbon Monoxide Detectors': {
-                            'Installed': false,
-                            'Missing/Recommended': false,
-                            'NOT Tested': false
-                        },
-                        'Smoke Detectors': {
-                            'Installed': false,
-                            'Inoperable': false,
-                            'Chirping/Low Batteries': false,
-                            'Missing': false
-                        }
-                        //PRESET TEXT HERE:
-                        //CAUTION: Testing Detectors by pushing test buttons may be inconclusive  
+            {
+                'title': 'Fixtures/Switches/Detectors',
+                'conditions': 'None',
+                'showconditions': true,
+                'limitations': 'None',
+                'showlimitations': true,
+                'checkboxes': {
+                    'Fixtures': {
+                        'Missing/Removed': false,
+                        'Inoperable': false,
+                        'Missing Bulbs': false,
+                        'Missing Covers': false,
+                        'Gaps': false
                     },
-                    'images': [
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    'Fixtures Condition': {
+                        'Satisfactory': false,
+                        'Marginal': false,
+                        'Poor': false,
+                        'Inadequate Clearances': false,
+                        'Damage': false,
+                        'Hazard': false
+                    },
+                    'Switches/Receptacles': {
+                        'Typical Grounded': false,
+                        'Some Grounded': false,
+                        'Typical Un-Grounded': false
+                    },
+                    'Condition': {
+                        'Satisfactory': false,
+                        'Marginal': false,
+                        'Poor': false,
+                        'Inoperable': false,
+                        'Weak/Loose': false,
+                        'Missing/Removed': false,
+                        'Missing Cover Plates': false,
+                        'Dangling/Unmounted': false,
+                        'External Splicing': false,
+                        'Gaps Into Boxes': false,
+                        'Burned': false,
+                        'Open Ground': false,
+                        'Open Neutral': false,
+                        'Reverse Polarity': false,
+                        'Ungrounded 3-Prong': false,
+                        'Damaged': false,
+                        'Hazardous/Unsafe': false,
+                        'Recommend Repair/Evaluation by Professional Electrician': false
+                    },
+                    'Carbon Monoxide Detectors': {
+                        'Installed': false,
+                        'Missing/Recommended': false,
+                        'NOT Tested': false
+                    },
+                    'Smoke Detectors': {
+                        'Installed': false,
+                        'Inoperable': false,
+                        'Chirping/Low Batteries': false,
+                        'Missing': false
+                    }
+                    //PRESET TEXT HERE:
+                    //CAUTION: Testing Detectors by pushing test buttons may be inconclusive  
+                },
+                'images': [
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              },
-                        {
-                            'title': 'default title',
-                            'url': 'path',
-                            'required': false
+                    {
+                        'title': 'default title',
+                        'url': 'path',
+                        'required': false
                              }
                      ]
 
-                 }//This is where start a new Subpage "Title" Section.
+                 } //This is where start a new Subpage "Title" Section.
         ]
-    }//This is where you start a new "Title" Section.
+    } //This is where you start a new "Title" Section.
 ]
 }];

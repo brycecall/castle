@@ -2228,6 +2228,295 @@ $scope.items = [
 
                  }//This is where you start a new subpage "Title" Section
         ]
+    },
+    {
+            'title': 'Electrical',
+            'subpage': [
+                {
+                    'title': 'Electrical System',
+                    'conditions': 'The inspection of the readily visible electrical system includes the service drop through the main panel; sub- panels including feeders; branch circuits, connected devices, and lighting fixtures, and describes any deficiencies of these systems or components. The report defines the type of primary service, whether overhead or underground, voltage, amperage, over-current protection devices (fuses or breakers) by inspecting the main and branch circuit conductors for proper over-current protection and condition by visual observation after removal of the readily accessible electrical main and sub-panel cover(s) where applicable, any circuit breaker panel or sub-panel known within the home inspection profession to have safety concerns, identifies whether or not existence of a connected service- grounding conductor and service-grounding electrode can be confirmed, and the presence or absence of solid conductor aluminum branch circuits, verifies the operation of a representative number of accessible switches, receptacles and light fixtures, the grounding and polarity of a representative number of receptacles (particularly in close proximity to plumbing fixtures or at the exterior), the function or absence of ground fault circuit interrupter (GFCI) protection and arc-fault circuit interrupter (AFCI) protection where recommended by industry standards.',
+                    'showconditions': true,
+                    'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-110 of the Washington State Dept. of Licensing, the inspector is not required to: insert any tool, probe or testing device into the main or sub-panels, activate electrical systems or branch circuits that are not energized, operate circuit breakers, service disconnects or remove fuses, verify the continuity of connected service ground(s), or test every switch, receptacle, and fixture, move any objects, furniture, or appliances to gain access to any electrical component, remove switch and receptacle cover plates, dismantle any electrical device or control, except for the removal of the dead-front covers from the main service panel and sub-panels, or inspect electrical equipment thatAPOSTRPHEs not readily accessible, or ancillary systems, including but not limited to: timers, security systems, low voltage relays, smoke/heat detectors, antennas, intercoms, electrical de- icing tapes, lawn sprinkler wiring, swimming pool or spa wiring, central vacuum systems.(BOLD THIS) Solid conductor aluminum wiring may be hazardous and if reported, a licensed electrician should inspect the system to ensure itAPOSTROPHEs safe. Homes without ground fault protection should have GFCI devices installed, replaced, or upgraded where recommended by industry standards.(BOLD THIS)',
+                    'showlimitations': true,
+                    'checkboxes': {
+                        'Main Service Entry': {
+                            'Underground': false,
+                            'Yard Post': false,
+                            'Not Visible/Accessible': false,
+                            'In Conduit': false,
+                            'Overhead': false,
+                            'Pole Unstable': false,
+                            '3 Cables': false,
+                            '4 Cables': false,
+                            'Copper': false,
+                            'Aluminum': false
+                        },
+                        'Condition': {
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Inadequate Clearances': false,
+                            'Damage': false,
+                            'Hazard': false
+                        },
+                        'Service Size': {
+                            'AMPS (NEED MORE DATA)': false,
+                            'VOLTS (NEED MORE DATA)': false
+                        },
+                        'Ground Connection': {
+                            'Visible': false,
+                        },
+                        'Meter Location': {
+                            'Exterior Wall': false,
+                            'Yard Post': false,
+                            'Mechanical Closet': false,
+                            'Not Visible/Locked': false
+                        },
+                        'Meter Condition': {
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Inadequate Access': false,
+                            'Damage': false,
+                            'Hazard': false
+                        },
+                        'Grounding': {
+                            'Not Visible': false,
+                            'Ground Rods': false,
+                            'Ufer': false,
+                            'Bonded to Water/Gas Piping': false
+                        },
+                        'Ground Wiring': {
+                            'Copper': false,
+                            'Aluminum': false,
+                            'Missing': false,
+                            'Not Visible/Accessible': false
+                        },
+                        'Condition': {
+                            'Satisfactory': false,
+                            'Loose Clamp/Lug': false,
+                            'Missing': false,
+                            'Improper Bond': false,
+                            'Too Far From Entry': false
+                        },
+                        'Main Electrical Disconnect Location': {
+                            'With Meter': false,
+                            'Inside Main Panel': false,
+                            'Near Panel': false,
+                            'Fuse': false,
+                            'Breaker': false,
+                            'Switch': false,
+                            'Split-Bus': false,
+                            'Overloaded(>6 Hand Motions)': false
+                        },
+                        'Main Panel': {
+                            'Not Visible/Accessible': false,
+                            'Blocked': false,
+                            'Not Evaluated': false
+                        },
+                        'Reason for Non Evaluation': {
+                            'n/a': false,
+                            'OTHER (NEED MORE DATA)': false
+                        },
+                        'Breakers or Fuses': {
+                            'Breakers': false,
+                            'Fuses': false
+                        },
+                        'Amps': {//NEED MORE DATA
+                            'NEED MORE DATA': false
+                        },
+                        'Volts': {//NEED MORE DATA
+                            '240': false,
+                            'OTHER (NEED MORE DATA)': false
+                        },
+                        'Breaker(s)': {
+                            'GFCI Breakers': false,
+                            'AFCI Breakers': false,
+                            'n/a': false
+                        },
+                        'Location': {
+                            'Garage': false,
+                            'Basement': false,
+                            'With Meter': false,
+                            'Exterior Wall': false,
+                            'Yard Post': false,
+                            'Interior Wall': false,
+                            'Mechanical Room': false,
+                            'Laundry Room': false,
+                            'Utility Area': false,
+                            'Crawl Space': false
+                        },
+                        'Branch Wiring': {
+                            'Copper': false,
+                            'Almuninum': false,
+                            'Tin Clad Copper': false,
+                            'Copper Clad Aluminum': false,
+                            'Non-Metallic Sheathed': false,
+                            'BX Cable': false,
+                            'Condiut': false,
+                            'Cloth-Wrapped': false,
+                            'Knob & Tube': false
+                        },
+                        'Condition': {
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Inoperable': false,
+                            'Inadequate Access Clearances': false,
+                            'Dangling Wires': false,
+                            'Excessive Sheathing in Panel': false,
+                            'Double-Tapping': false,
+                            'Undersized Wiring': false,
+                            'Damage': false,
+                            'Rust': false,
+                            'Buried In Insulation': false,
+                            'Burned Breakers': false,
+                            'Dangerous Panel Type': false,
+                            'Improper Splicing': false,
+                            'Hazardous/Unsafe': false,
+                            'Recommend Professional Evaluation/Repairs': false
+                        }
+                    },
+                    'images': [
+                        {
+                            'title': 'Electical Meter Location',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Typical View of Wiring',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Main Electical Panel(s)',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'Panels Open For Inspection',
+                            'url': 'path',
+                            'required': false
+                             }
+                     ]
+
+                 },
+                {
+                    'title': 'Fixtures/Switches/Detectors',
+                    'conditions': 'None',
+                    'showconditions': true,
+                    'limitations': 'None',
+                    'showlimitations': true,
+                    'checkboxes': {
+                        'Fixtures': {
+                            'Missing/Removed': false,
+                            'Inoperable': false,
+                            'Missing Bulbs': false,
+                            'Missing Covers': false,
+                            'Gaps': false
+                        },
+                        'Fixtures Condition': {
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Inadequate Clearances': false,
+                            'Damage': false,
+                            'Hazard': false
+                        },
+                        'Switches/Receptacles': {
+                            'Typical Grounded': false,
+                            'Some Grounded': false,
+                            'Typical Un-Grounded': false
+                        },
+                        'Condition': {
+                            'Satisfactory': false,
+                            'Marginal': false,
+                            'Poor': false,
+                            'Inoperable': false,
+                            'Weak/Loose': false,
+                            'Missing/Removed': false,
+                            'Missing Cover Plates': false,
+                            'Dangling/Unmounted': false,
+                            'External Splicing': false,
+                            'Gaps Into Boxes': false,
+                            'Burned': false,
+                            'Open Ground': false,
+                            'Open Neutral': false,
+                            'Reverse Polarity': false,
+                            'Ungrounded 3-Prong': false,
+                            'Damaged': false,
+                            'Hazardous/Unsafe': false,
+                            'Recommend Repair/Evaluation by Professional Electrician': false
+                        },
+                        'Carbon Monoxide Detectors': {
+                            'Installed': false,
+                            'Missing/Recommended': false,
+                            'NOT Tested': false
+                        },
+                        'Smoke Detectors': {
+                            'Installed': false,
+                            'Inoperable': false,
+                            'Chirping/Low Batteries': false,
+                            'Missing': false
+                        }
+                        //PRESET TEXT HERE:
+                        //CAUTION: Testing Detectors by pushing test buttons may be inconclusive  
+                    },
+                    'images': [
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             },
+                        {
+                            'title': 'default title',
+                            'url': 'path',
+                            'required': false
+                             }
+                     ]
+
+                 }//This is where start a new Subpage "Title" Section.
+        ]
     }//This is where you start a new "Title" Section.
 ]
 }];

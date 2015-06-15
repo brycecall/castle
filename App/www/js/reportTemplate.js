@@ -12,7 +12,6 @@ $scope.report = {
                     'Asphalt': false,
                     'Pavers/stone/brick': false,
                     'Dirt/gravel': false
-
                 },
                 'Driveway Condition': {
                     'Satisfactory': false,
@@ -101,19 +100,7 @@ $scope.report = {
                 }
                 //INCLUDE PRESET TEXT: "Safety Concerns: Uneven edges at settling cracks in concrete drives or walkways may pose potential trip hazards, and should be improved to provide a safe walking surface. Safe and secure handrails and guard rails are recommended at all stairways, and where landing heights pose a potential falling hazard."
             },
-            'images': [
-                {
-                    'title': 'Typical View of Driveway Condition',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical View of Walkway Condition',
-                    'url': 'path',
-                    'required': false
-                             }
-                     ]
-
+            'images': []
         },
         'Attached Decks/Balconies/Porches/Steps': {
             'conditions': 'None',
@@ -182,62 +169,11 @@ $scope.report = {
                 }
             },
             'images': [
-                {
-                    'title': 'Missing Handrails At Entry Steps',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Missing Handrails At Front Porch Steps',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Missing Earth-to-Wood Separation at Rear Deck Components', //There are two (2) pictures here.
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical View of Deck Framing',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Improve Loose Handrails',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical Soffit at Cantilevered Floor',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Pest & Water-Damaged Fence Components',
-                    'url': 'path',
-                    'required': false
-                             },
                         //INCLUDE PRESET TEXT:
                         //Title: Moisture / Pest-Conducive Conditions
                         //Sub-Title: Visible Conducive Conditions for WDI/WDO (wood-destroying insects/organisms)
                         //Text:  Undesirable exterior conditions conducive to pest and/or rot concerns may exist, develop, and/or worsen over time. Recommend identification and elimination of all exposed or unprotected wood in outdoor conditions or inadequate earth-to-wood separation (less than 6 to 8 inches), negative grade (ground surfaces sloping toward building), or overgrown foliage (vegetation touching wall surfaces) and maintain improved conditions to minimize risk of pest, moisture or other potential exterior concerns."
-                {
-                    'title': 'Verify Adequate Earth-to-Wood Separation at Perimeter',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Verity Adequate Foliage-to-Wood Separation at Perimeter',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Verify Positive Grade (Ground Surface Sloping Away From Building)', //There are two (2) pictures here.
-                    'url': 'path',
-                    'required': false
-                             }
-                     ]
-
+                ]
         }
     },
     'Exterior': {
@@ -266,7 +202,6 @@ $scope.report = {
                     'Pre 1996 EIFS': false,
                     'Recalled LP': false,
                     'Friable PACM': false
-
                 },
                 'Wall Cladding Condition': {
                     'Satisfactory': false,
@@ -327,32 +262,10 @@ $scope.report = {
                     'Foliage Contact': false,
                     'Potential Hidden Damage': false,
                     'Recommend Re-Evaluation': false
-                },
+                }
                 //COMMENTS SECTION HERE.
             },
-            'images': [
-                {
-                    'title': 'Typical View of Soffit & Wall Condition',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical View of Cladding & Trim Condition',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Unprotected Exterior Cladding',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Peeling Paint & Rust-Stained Trim',
-                    'url': 'path',
-                    'required': false
-                             }
-                     ]
-
+            'images': []
         },
         'Wall Fenestrations': {
             'conditions': 'None',
@@ -407,39 +320,7 @@ $scope.report = {
                     'Recommend sealing all perforations through the exterior wall surface': false
                 }
             },
-            'images': [
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title', //There are two (2) pictures here.
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             }
-                     ]
-
+            'images': []
         },
         'Attached Garage/Carport': {
             'conditions': 'The inspection of attached garages and carports includes their framing, siding, roof, doors, windows, and installed electrical / mechanical systems pertaining to the operation of the home, and describes any deficiencies of these systems or components. The report shows the condition and function of the overhead garage doors and associated hardware, the tested function of the garage door openers, their auto-reverse systems and secondary entrapment devices (photoelectric and edge sensors) when present, the condition and installation of any pedestrian door(s), and/or fire separation between the house and garage when applicable, and the presence of any fire hazard or ignition source (gas and electric water heaters, electrical receptacles, electronic air cleaners, motors of installed appliances, etc.) that is within eighteen inches of the garage floor.',
@@ -555,45 +436,11 @@ $scope.report = {
                     'Damaged': false,
                     'Needs Adjustment': false,
                     'Re-Evaluate': false
-                },
-
+                }
                 //COMMENT SECTION HERE.
             },
-            'images': [
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical View of Garage Interior',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             }
-                     ]
-
+            'images': []
         }
-
     },
     'Roofing': {
         'Roof Covering(s)': {
@@ -608,7 +455,7 @@ $scope.report = {
                     'NOT Inspected': false,
                     'Vulnerable to Traversing Damage': false,
                     'Unsafe Traversing Condition(s)': false,
-                    'Not Visible': false,
+                    'Not Visible': false
                 },
                 'Viewed Roof From': {
                     'Ground w/ Binoculars': false,
@@ -629,16 +476,17 @@ $scope.report = {
                 'Pitch': {
                     'Steep': false,
                     'Medium': false,
-                    'Low': false,
+                    'Low': false
                 },
-                'Approximate Age of Roof Covering': {
+                'Approximate Age of Roof Covering': {//NEED MORE DATA
                     '<5': false,
                     '5-10': false,
                     '10+': false,
-                    'Unknown': false
+                    'Unknown': false,
+                    'NEED MORE DATA': false
                         //These Options May Require Revising.
                 },
-                '# of Layers of Roof Covering': {
+                '# of Layers of Roof Covering': {//NEED MORE DATA
                     '1': false,
                     '2': false,
                     '3 or more': false
@@ -681,7 +529,7 @@ $scope.report = {
                     'Installation Defects': false,
                     'Vulnerable Areas': false
                 },
-                'Condition of (Something?)': {
+                'Condition of (Something?)': { //NEED MORE DATA
                     'Satisfactory': false,
                     'Marginal': false,
                     'Poor': false,
@@ -699,29 +547,7 @@ $scope.report = {
                 }
                 //COMMENTS SECTION HERE.
             },
-            'images': [
-                {
-                    'title': 'Typical View of Roof Covering Condition',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical View of Roof Covering Condition',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             }
-                     ]
-
+            'images': []
         },
         'Fenestrations': {
             'conditions': 'None',
@@ -791,7 +617,7 @@ $scope.report = {
                     'Vulnerable Areas': false,
                     'Repair or Re-Evaluate': false
                 }
-            },
+            }
         },
         'Gutters & Down-Spouts': {
             'conditions': 'None',
@@ -842,28 +668,7 @@ $scope.report = {
                     'Poor Extensions/Splash Blocks': false
                 }
             },
-            'images': [
-                {
-                    'title': 'Typical View of Gutter Condition',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical View of Gutter Condition',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             }
-                     ]
+            'images': []
         }
     },
     'Structural': {
@@ -873,8 +678,6 @@ $scope.report = {
             'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-070 of the Washington State Dept. of Licensing, The inspector is not required to enter: sub-floor crawl-spaces that require excavation or have an access opening less than eighteen inches by twenty-four inches or headroom less than eighteen inches beneath floor joists and twelve inches beneath girders (beams). Any areas that are not readily accessible due to obstructions, inadequate clearances or have conditions which, in the inspector\'s opinion, are hazardous to the health and safety of the inspector or will cause damage to components of the home, move stored items or debris or perform excavation to gain access. (BOLD THIS)Please refer to a licensed structural pest inspector (SPI) or pest control operator (PCO) to re-evaluate all issues that are suspected to be insect-related.(BOLD THIS)',
             'showlimitations': true,
             'checkboxes': {
-                //TITLE: STRUCTURE
-                //TITLE: ROOF FRAMING(Visible in Attic)
                 'Roof System': {
                     'n/a': false,
                     'Vaulted/No Attic': false,
@@ -911,42 +714,10 @@ $scope.report = {
                     'Deterioration': false,
                     'Hazardous/Unsafe': false,
                     'Recommend Professional Re-Evaluation': false
-                },
+                }
                 //COMMENTS SECTION HERE.
             },
-            'images': [
-                {
-                    'title': 'Typical View of Roof Framing and Structure',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical View of Roof Framing and Structure',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Roof Diaphragm Condition',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Exposed Sub-Floor Diaphragm',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical Sub-Floor Framing',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                     ]
-
+            'images': []
         },
         'Floor Framing': {
             'conditions': 'None',
@@ -1043,13 +814,13 @@ $scope.report = {
                     'Damage': false,
                     'Hazardous/Unsafe': false,
                     'Re-Evaluate': false
-                },
-            },
+                }
+            }
         },
         'Foundation': {
-            'conditions': 'None.',
+            'conditions': 'None',
             'showconditions': true,
-            'limitations': 'None.',
+            'limitations': 'None',
             'showlimitations': true,
             'checkboxes': {
                 'Type of Foundation': {
@@ -1134,10 +905,8 @@ $scope.report = {
                     'Operable': false,
                     'Inoperable': false,
                     'Re-Evaluate': false
-                },
-
+                }
                 //COMMENT SECTION GOES HERE.
-
             }
         }
     },
@@ -1240,44 +1009,11 @@ $scope.report = {
                     'Potential Points of Pest Entry': false,
                     'Hazardous/Unsafe': false,
                     'Recommend Professional Evaluation and/or Remediation': false
-                },
-
+                }
                 //PRESET TEXT:
                 //NOTE: Ventilation is important in maintaining healthy uninhabited areas (attics, crawl spaces), and a key consideration before adding or altering insulation quantity. Recommend frequent seasonal checks to be certain ventilation ports do not become inadvertently blocked by pests, wind currents, or the movement or addition of new insulation.
             },
-            'images': [
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'View From Inside Attic',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical Attic Insulation',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical Sub-Floor Insulation',
-                    'url': 'path',
-                    'required': false
-                             }
-                     ]
-
+            'images': []
         },
         'Crawl Spaces/Unfinished Basements': {
             'conditions': 'None',
@@ -1376,9 +1112,7 @@ $scope.report = {
                     'Hazardous/Unsafe': false,
                     'Recommend Professional Evaluation and/or Remediation': false
                 }
-
-
-            },
+            }
         },
         'Interior Mechanical Ventilation/Exhaust Fans': {
             'conditions': 'None.',
@@ -1420,30 +1154,11 @@ $scope.report = {
                     'Aimed at Gable, Eave, or Roof Vents': false,
                     'Fallen Loose': false,
                     'Re-Evaluate': false
-                },
-
+                }
                 //PRESET TEXT HERE:
                 //Note: To minimize unwanted moisture accumulation or humidity concerns, recommend regular use of adequate exhaust fans in kitchens, laundries, bathrooms, and other moisture producing areas with sealed venting to outside the building envelope. Routine maintenance is recommended to ensure that noisy, worn, or dirty fans are serviced or replaced as needed.
-
             },
-            'images': [
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical View of Kitchen Exhaust Fan',
-                    'url': 'path',
-                    'required': false
-                             }
-                     ]
-
+            'images': []
         }
     },
     'Plumbing': {
@@ -1453,10 +1168,10 @@ $scope.report = {
             'limitations': 'According to the Home Inspection Standards of Practice WAC § 308-408C-100 of the Washington State Dept. of Licensing, the inspector is not required to operate any valves, including faucets of freestanding or built-in appliances or fixtures, (if the outlet end of the valve or faucet is connected or intended to be connected to an appliance), any plumbing components not readily accessible, or inspect any system that is shut down or winterized; or determine the quantity of water from on-site water supplies, the condition and operation of private water supply systems or water wells and related pressure tanks and pumps, the potability of any water supply whether public or private, or water-conditioning equipment, including softeners and filter systems; or test pressure or temperature/pressure relief valves, gas supply systems, ignite pilot lights, test fire sprinkler systems, or ancillary systems or components such as, but not limited to, those related to solar water heating and hot water circulation; or test shower pans for leaks, or use special equipment to test/scan shower or tub surrounds for moisture in surrounding substrate materials; or test exterior drain systems or floor drains, including but not limited to, exterior stairwell drains and driveway drains; or test interior components of exterior pumps, or sealed sanitary waste lift systems, or the quality or the condition and operation of on-site sewage disposal systems such as waste ejector pumps, cesspools, septic tanks, drain fields, related underground piping, conduit, cisterns, and related equipment.',
             'showlimitations': true,
             'checkboxes': {
-                'Water Supply Source': {
-                    'Public Water': false, //
-                    'Public Well': false,
-                    'Private Well': false,
+                'Water Supply Source': {//NEED MORE DATA!
+                    'Public Water': false, 
+                    'Public Well': false,  //THIS IS MADE UP
+                    'Private Well': false, //THIS IS MADE UP
                     'OTHER (NEED MORE DATA)': false
                 },
                 'Main Water Shut Off Valve Location': { //THIS REQUIRES MORE DATA.
@@ -1543,69 +1258,7 @@ $scope.report = {
                     'Unsupported': false
                 }
             },
-            'images': [
-                {
-                    'title': 'Tested Water Pressure',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Main Water Shut-Off Valve',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical ABS Drain to Sewer',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical View of Kitchen Sink Plumbing & Drain Pipes',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical View of Laundry Sink Plumbing & Drain Pipes',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             }
-                     ]
-
+            'images': []
         },
         'Faucets/Fixtures': {
             'conditions': 'None',
@@ -1643,7 +1296,7 @@ $scope.report = {
                 },
                 'Disposer': {
                     'Noisy': false,
-                    'Defective': false,
+                    'Defective': false
                 },
                 'Dishwasher': {
                     'Airgap': false
@@ -1659,7 +1312,7 @@ $scope.report = {
                     'Surface Damage': false,
                     'Cabinet Damage': false,
                     'Cross Connection': false,
-                    'Improve Caulking at Sink, Back-Splash, Tub Deck, Shower Surround, Floor, Wood or MDF Molding': false,
+                    'Improve Caulking at Sink, Back-Splash, Tub Deck, Shower Surround, Floor, Wood or MDF Molding': false
                 },
                 'Grout Condition': {
                     'Unsealed (Recommend Sealing)': false,
@@ -1712,19 +1365,7 @@ $scope.report = {
                     'Leaky Sprayer': false
                 },
             },
-            'images': [
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                        ]
-
+            'images': []
         },
         'Water Heater': {
             'conditions': 'None',
@@ -1770,7 +1411,7 @@ $scope.report = {
                 'Serial #': { //THIS IS A TEXT ENTRY FIELD
                     'TEXT ENTRY FIELD': false
                 },
-                'Water Temperature': {
+                'Water Temperature': {//NEEDS MORE DATA
                     'OTHER (NEEDS MORE DATA)': false
                 },
                 'Condition': {
@@ -1799,31 +1440,9 @@ $scope.report = {
                     'Back-Drafting': false,
                     'Unsafe': false,
                     'Recommend Professional Re-Evaluation and/or Remediation': false
-                },
+                }
             },
-            'images': [
-                {
-                    'title': 'Water Heater Location',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Water Heater Data Plate',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Kitchen Water Temperature',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Laundry Machines NOT Evaluated',
-                    'url': 'path',
-                    'required': false
-                             },
-                        ]
-
+            'images': []
         }
     },
     'Heating/Cooling': {
@@ -1841,7 +1460,6 @@ $scope.report = {
                     'Solar': false,
                     'Wind': false,
                     'Geo Thermal': false
-
                 },
                 'System Type': {
                     'Central Forced Air': false,
@@ -1882,7 +1500,7 @@ $scope.report = {
                     'OTHER (NEED MORE DATA)': false
                 },
                 'Year of Manufacture': { //NEEDS TO BE ABLE TO SELECT A YEAR
-                    'SELECT A YEAR?': false
+                    'SELECT A YEAR': false
                 },
                 'Model #': { //TEXT ENTRY FIELD HERE.
                     'TEXT ENTRY REQUIRED': false
@@ -1933,38 +1551,7 @@ $scope.report = {
                     'Recommend Professional HVAC Re-Evaluation, Safety Inspection, and/or Remediation': false
                 }
             },
-            'images': [
-                {
-                    'title': 'Gas Meter Location',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Main Gas Shut-Off Valve',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical View of Furnace',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Furnace Data Plate',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Furnace Open For Inspection',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Filter Condition',
-                    'url': 'path',
-                    'required': false
-                             },
-                     ]
+            'images': []
 
         },
         'Fireplaces/Stoves': {
@@ -2028,48 +1615,7 @@ $scope.report = {
                     'Recommend Professional Re-Evaluation/Remediation': false
                 },
             },
-            'images': [
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             }
-                     ]
+            'images': []
 
         },
         'Cooling Systems': {
@@ -2148,43 +1694,10 @@ $scope.report = {
                     'Damaged': false,
                     'Worn': false,
                     'Insulation Missing': false
-                },
+                }
             },
-            'images': [
-                {
-                    'title': 'Exterior Compressor/Condensor Unit',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Exterior Compressor/Condensor Data Plate',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Interior Evaporative Coil or Heat Pump Unit',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Interior Evaporative Coil or Heat Pump Data Plate',
-                    'url': 'path',
-                    'required': false
-                             }
-                     ]
-
+            'images': []
         }
-
     },
     'Electrical': {
         'Electrical System': {
@@ -2218,7 +1731,7 @@ $scope.report = {
                     'VOLTS (NEED MORE DATA)': false
                 },
                 'Ground Connection': {
-                    'Visible': false,
+                    'Visible': false
                 },
                 'Meter Location': {
                     'Exterior Wall': false,
@@ -2331,29 +1844,7 @@ $scope.report = {
                     'Recommend Professional Evaluation/Repairs': false
                 }
             },
-            'images': [
-                {
-                    'title': 'Electical Meter Location',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Typical View of Wiring',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Main Electical Panel(s)',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'Panels Open For Inspection',
-                    'url': 'path',
-                    'required': false
-                             }
-                     ]
-
+            'images': []
         },
         'Fixtures/Switches/Detectors': {
             'conditions': 'None',
@@ -2415,59 +1906,7 @@ $scope.report = {
                 //PRESET TEXT HERE:
                 //CAUTION: Testing Detectors by pushing test buttons may be inconclusive  
             },
-            'images': [
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             }
-                     ]
-
+            'images': []
         }
     },
     'Interior': {
@@ -2587,7 +2026,7 @@ $scope.report = {
                 'Caulking': {
                     'Satisfactory': false,
                     'Worn/Cracked/Gaps': false,
-                    'Improve at Sink, Back-Splash, Counters, or Fixtures': false,
+                    'Improve at Sink, Back-Splash, Counters, or Fixtures': false
                 },
                 'Grout': {
                     'Satisfactory': false,
@@ -2622,7 +2061,6 @@ $scope.report = {
                     'Recommend Professional Evaluation': false
                 }
             }
-
         },
         'Laundry': {
             'conditions': 'None',
@@ -2809,7 +2247,7 @@ $scope.report = {
                     'Fixed': false,
                     'Single Hung': false,
                     'Double Hung': false,
-                    'Awning': false,
+                    'Awning': false
                 },
                 'Window(s) Condition': {
                     'Satisfactory': false,
@@ -2846,79 +2284,7 @@ $scope.report = {
                     'Recommend Professional Evaluation': false
                 }
             },
-            'images': [
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             }
-                        ]
-
+            'images': []
         }
     },
     'Life/Safety': {
@@ -2946,7 +2312,7 @@ $scope.report = {
                     'Low Guard/Handrail(s)': false,
                     'Root Heaving': false,
                     'Erosion': false,
-                    'Cracks/Gaps/Missing Dividers': false,
+                    'Cracks/Gaps/Missing Dividers': false
                 },
                 'Fire Hazards': {
                     'n/a': false,
@@ -2982,32 +2348,17 @@ $scope.report = {
                     'Lead': false,
                     'Airborne/VOCs': false,
                     'Potential Hidden Hazard(s)': false
-                },
+                }
                 //INSERT COMMENTS SECTION HERE
-
                 //INSERT CONSUMER NOTICE(S) CONCERNING HAZARDS OR DEFICIENCES, LEAD, AND ASBESTOS)
-
             }
-
         }
-
     },
     'Photo Appendix': {
         'Additional Photos for Further Clarification': {
-            'images': [
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             },
-                {
-                    'title': 'default title',
-                    'url': 'path',
-                    'required': false
-                             }
-                     ]
+            'images': []
 
-        },
+        }
 
     }
 };

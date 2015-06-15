@@ -192,11 +192,11 @@
      };
 
      $scope.alert = '';
-     $scope.showMessage = function (event) {
+     $scope.showMessage = function (event, type, message) {
          $mdDialog.show(
              $mdDialog.alert()
-             .title('Conditions Message')
-             .content($scope.items[0].subpage[0].conditions)
+             .title(type + ' Message')
+             .content(message)
              .ariaLabel('')
              .ok('Close!')
              .targetEvent(event)

@@ -8,7 +8,7 @@
 
 
                 <md-toolbar class="md-theme-indigo">
-                    <h2 class="md-toolbar-tools">{{items[currentPage].title}}</h2>
+                    <h2 class="md-toolbar-tools">{{currentPage}}</h2>
                 </md-toolbar>
 
                 <md-content>
@@ -17,9 +17,9 @@
                     </md-button>
 
                     <md-list class="subMenu">
-                        <md-list-item ng-repeat="item in items" role="listitem" class="md-proxy-focus md-ink-ripple">
+                        <md-list-item ng-repeat="(sectionkey, section) in report" role="listitem" class="md-proxy-focus md-ink-ripple">
 
-                            <md-button class="md-secondary menuButton" ng-click="navigatePage(item.title)" aria-label="{{item}}">{{item.title}}</md-button>
+                            <md-button class="md-secondary menuButton" ng-click="navigatePage(sectionkey)" aria-label="{{sectionkey}}">{{sectionkey}}</md-button>
                             <md-divider ng-if="!$last"></md-divider>
                         </md-list-item>
                     </md-list>
@@ -39,22 +39,22 @@
             </md-select>
 
 -->
-            <div ng-repeat="subPage in items[currentPage].subpage" class="md-whiteframe-z1 subPage">
+            <div ng-repeat="(pagekey, page) in report[currentPage]" class="md-whiteframe-z1 subPageStyle">
 
 
-                <md-subheader ng-click="toggleLeft()" class="subHeader md-primary" style="cursor:pointer">{{items[currentPage].title}}
-                    <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_chevron_right_48px.svg" class="headNavIcon"></md-icon>{{subPage.title}}</md-subheader>
+                <md-subheader ng-click="toggleLeft()" class="subHeader md-primary" style="cursor:pointer">{{currentPage}}
+                    <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_chevron_right_48px.svg" class="headNavIcon"></md-icon>{{pagekey}}</md-subheader>
 
                 <div layout="column" layout-fill="" layout-align="top center">
 
                     <div>
                         <md-list>
 
-                            <md-list-item style="position: relative">
+                            <md-list-item style="position: relative" ng-if="page.conditions != ''">
                                 <div style="display:flex">
-                                    <md-switch ng-model="subPage.showconditions" aria-label="Show Conditions" flex="80" md-ink-ripple="">
-                                        Show conditions message: {{subPage.showconditions}} </md-switch>
-                                    <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_24px.svg" class="md-accent" ng-click="showMessage($event)" flex="20"></md-icon>
+                                    <md-switch ng-model="page.showconditions" aria-label="Show Conditions" flex="80" md-ink-ripple="">
+                                        Show conditions message: {{page.showconditions}} </md-switch>
+                                    <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_24px.svg" class="md-accent" ng-click="showMessage($event, 'Conditions', page.conditions)" flex="20"></md-icon>
 
                                 </div>
                             </md-list-item>
@@ -70,12 +70,12 @@
 -->
 
 
-                            <md-list-item style="position: relative">
+                            <md-list-item style="position: relative" ng-if="page.limitations != ''">
                                 <div style="display:flex">
-                                    <md-switch ng-model="subPage.showlimitations" aria-label="Show limitations" flex="80" md-ink-ripple="">
-                                        Show limitations message: {{subPage.showlimitations}}</md-switch>
+                                    <md-switch ng-model="page.showlimitations" aria-label="Show limitations" flex="80" md-ink-ripple="">
+                                        Show limitations message: {{page.showlimitations}}</md-switch>
 
-                                    <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_24px.svg" class="md-accent" ng-click="showMessage($event)" flex="20"></md-icon>
+                                    <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_24px.svg" class="md-accent" ng-click="showMessage($event, 'Limitations', page.limitations)" flex="20"></md-icon>
                                 </div>
                             </md-list-item>
 
@@ -83,7 +83,7 @@
                     </div>
                 </div>
 
-                <md-list ng-repeat="(checklistkey, checklist) in subPage.checkboxes">
+                <md-list ng-repeat="(checklistkey, checklist) in page.checkboxes">
                     <h3 class="subsubmenu">{{checklistkey}}:</h3>
                     <md-list-item ng-repeat="(checkboxkey, checkboxvalue) in checklist"  style="position:relative; margin:0; padding:0; display:flex" >
 

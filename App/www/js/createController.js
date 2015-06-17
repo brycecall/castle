@@ -19,6 +19,29 @@
          return debounceFn;
      }
 
+
+//     Field Notes
+//         Property Description
+//             age
+//             square footage
+//             single or multi-family
+//             residential or commercial
+//             Stories/levels
+//             Frame
+//             crawl space or other spaces
+//             Utilities
+//                 on or off
+//                 locations
+//
+//         Inspection Conditions
+//             vacant or in-use
+//             inspection duration (begin and end time of inspection)
+//             Weather conditions
+//             Attenders
+//                 inspector, clients, agents
+//             Who provided access to the building
+//             Disclaimer of scope
+
     $scope.report = {
     'Site': {
         'Site': {
@@ -2389,28 +2412,28 @@
 
 
 
-     //
-     //Field Notes
-     //    Property Description
-     //        age
-     //        square footage
-     //        single or multi-family
-     //        residential or commercial
-     //        Stories/levels
-     //        Frame
-     //        crawl space or other spaces
-     //        Utilities
-     //            on or off
-     //            locations
-     //
-     //    Inspection Conditions
-     //        vacant or in-use
-     //        inspection duration (begin and end time of inspection)
-     //        Weather conditions
-     //        Attenders
-     //            inspector, clients, agents
-     //        Who provided access to the building
-     //        Disclaimer of scope
+//
+//     Field Notes
+//         Property Description
+//             age
+//             square footage
+//             single or multi-family
+//             residential or commercial
+//             Stories/levels
+//             Frame
+//             crawl space or other spaces
+//             Utilities
+//                 on or off
+//                 locations
+//
+//         Inspection Conditions
+//             vacant or in-use
+//             inspection duration (begin and end time of inspection)
+//             Weather conditions
+//             Attenders
+//                 inspector, clients, agents
+//             Who provided access to the building
+//             Disclaimer of scope
 
 
 
@@ -2589,10 +2612,7 @@
      };
 
      $scope.notSorted = function(obj){
-        if (!obj) {
-            return [];
-        }
-        return Object.keys(obj);
+        return obj? Object.keys(obj) : [];
      }
 
  });

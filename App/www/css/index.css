@@ -198,3 +198,7 @@ body {
 
 
 }
+
+.overFlow {
+    overflow-x:hidden;
+}

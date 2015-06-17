@@ -1,14 +1,6 @@
-<div ng-controller="createController" layout="column" class="page " >
+<div ng-controller="createController" layout="column" class="page ">
 
-
-
-    <section layout="column" flex="" md-swipe-right="toggleLeft()">
-
-        <md-content>
-
-            <md-sidenav class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open " md-component-id="left" md-is-locked-open="$mdMedia('gt-md')"   style="height:100%; position:fixed; left:0; top:60px">
-
-
+            <md-sidenav class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open " md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" style="height:100%; position:fixed; left:0; top:60px">
                 <md-toolbar class="md-theme-indigo" ng-click="close()">
                     <h2 class="md-toolbar-tools">{{currentPage}}</h2>
                 </md-toolbar>
@@ -18,7 +10,7 @@
                         <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" role="listitem" class="md-proxy-focus md-ink-ripple">
 
                             <md-button class="md-secondary menuButton" ng-click="navigatePage(section)" aria-label="{{section}}">{{section}}</md-button>
-<!--                            <md-divider ng-if="!$last"></md-divider>-->
+                            <!--                            <md-divider ng-if="!$last"></md-divider>-->
                         </md-list-item>
                     </md-list>
 
@@ -27,32 +19,14 @@
             </md-sidenav>
 
 
-              <!--
-        <p hide-md="" show-gt-md=""> <-- good to know
-          This sidenav is locked open on your device. To go back to the default behavior,
-          narrow your display.
-        </p>
+    <section layout="column" flex="" md-swipe-right="toggleLeft()">
+        <md-content >
 
-             <md-select ng-model="subMenu">
-            <md-option ng-repeat="item in items" ng-value="item.title">{{item.title}}</md-option>
-            </md-select>
-
--->
-
-<!--
-           <md-tabs md-dynamic-height md-border-bottom class="md-whiteframe-z1 subPageStyle">
-
-            <div ng-repeat="(pagekey, page) in report[currentPage]" >
-
-            <md-tab label="{{pagekey}}" >
--->
-
-
-               <div ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]">
+            <div ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]">
 
                 <md-subheader ng-click="toggleLeft()" class="subHeader md-primary" style="cursor:pointer">{{currentPage}}
                     <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_chevron_right_48px.svg" class="headNavIcon"></md-icon>{{pagetitle}}</md-subheader>
-                <div layout="column" layout-fill="" layout-align="top center" >
+                <div layout="column" layout-fill="" layout-align="top center">
 
                     <div>
                         <md-list>
@@ -81,11 +55,11 @@
 
                 <md-list ng-repeat="(checklistkey, checklist) in page.checkboxes">
 
-                   <md-divider></md-divider>
+                    <md-divider></md-divider>
                     <h3 class="subsubmenu">{{checklistkey}}:</h3>
-                    <md-list-item ng-repeat="(checkboxkey, checkboxvalue) in checklist"  style="position:relative; margin:0; padding:0; display:flex" >
+                    <md-list-item ng-repeat="(checkboxkey, checkboxvalue) in checklist" style="position:relative; margin:0; padding:0; display:flex">
 
-                        <md-checkbox class="md-secondary" style="margin:0; padding:10px;" ng-model="checkboxvalue" aria-label="{{checkboxkey}}"  md-ink-ripple="" flex="90">{{checkboxkey}}
+                        <md-checkbox class="md-secondary" style="margin:0; padding:10px;" ng-model="checkboxvalue" aria-label="{{checkboxkey}}" md-ink-ripple="" flex="90">{{checkboxkey}}
                         </md-checkbox>
 
                         <md-icon ng-if="checkboxvalue" md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="openCamera(checkboxkey)" flex="10"></md-icon>
@@ -93,14 +67,12 @@
 
                 </md-list>
 
-
-
                 <md-button class="cameraButton md-accent" aria-label="Photos">
                     <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon> Add Photo
                 </md-button>
-                   <div ng-if="$last" class="footerSpace"></div>
+                <div ng-if="$last" class="footerSpace"></div>
 
-           </div>
+            </div>
 
         </md-content>
 

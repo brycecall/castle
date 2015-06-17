@@ -1,4 +1,103 @@
 $scope.report = {
+    'Field Notes': {
+        'Field Notes From Site Evaluation': {
+            'conditions': 'The locations of the main utility controls, shut-off valves, and/or disconnects are noted in the applicable mechanical sections.',
+            'showconditions': true,
+            'limitations': 'Detached outbuildings, seasonally visible defects, poorly accessible components, areas that may have been hidden and/ or areas containing significant furnishings or storage are not included in the scope of this inspection.',
+            'showlimitations': true,
+            'checkboxes': {
+                'Age of Property': {//NEED MORE DATA
+                    '1': false,
+                    '2': false,
+                    '3': false,
+                    '4': false,
+                    'OTHER (NEED MORE DATA)': false
+                },
+                'Squarefeet of the Property': {//NEED MORE DATA
+                    '<1500': false,
+                    '1500-2000': false,
+                    '2000-2500': false,
+                    '2500-3000': false,
+                    '>3000': false,
+                    'OTHER (NEED MORE DATA)': false
+                },
+                'Type of Home': {
+                    'Single Family': false,
+                    'Multi-Family': false,
+                    'OTHER (NEED MORE DATA)': false
+                },
+                'Property Type': {
+                    'Residential': false,
+                    'Commercial': false
+                },
+                'Height of Home (In Stories)': {
+                    '1 Story': false,
+                    '2 Story': false,
+                    '3 Story': false,
+                    'More! (NEED MORE DATA)': false
+                },
+                'House Frame': {
+                    'Wood-Framed': false,
+                    'Brick & Mortar (Maybe?)': false,
+                    'OTHER (NEED MORE DATA)': false
+                },
+                'HOME?': {
+                    'Home': false,
+                    'OTHER (NEED MORE DATA)': false
+                },
+                'Crawlspace': {
+                    'Available': false
+                },
+                //ADD: "Built in 1987"
+                },
+                'House Faces': {
+                    'North': false,
+                    'South': false,
+                    'East': false,
+                    'West': false,
+                    'North-West': false,
+                    'North-East': false,
+                    'South-East': false,
+                    'South-West': false
+                },
+                'Electricity at Time Of Inspection': {
+                    'On': false,
+                    'Off': false
+                },
+                'Water at Time Of Inspection': {
+                    'On': false,
+                    'Off': false
+                },
+                'Gas at Time of Inspection': {
+                    'On': false,
+                    'Off': false,
+                    'n/a': false
+                },
+                'How is the Weather': {
+                    'Sunny': false,
+                    'Cloudy': false,
+                    'No Precipetation': false,
+                    'Light Precipitation': false,
+                    'Moderate Precipitation': false,
+                    'Heavy Precipitation': false,
+                    'Hail': false,
+                    'Snowing': false
+                },
+                'What Temperature is it': {
+                    'WE CAN DRAW THIS FROM ONLINE IF YOU WANT': false
+                },
+                'People(s) Present At Inspection': {
+                    'Client(s)': false,
+                    'Agent(s)': false
+                },
+                'Access To the Property was Obtained from': {
+                    'Agent': false,
+                    'Client': false,
+                    'Random Agent who made no money off the deal (NEED MORE DATA)':false
+                }
+            },
+            'images': []
+        },
     'Site': {
         'Site': {
             'conditions': 'The inspection of the site includes the building perimeter, land grade, and water drainage directly adjacent to the foundation; trees and vegetation that adversely affect the structure; walks, grade steps, driveways, patios, and retaining walls contiguous with the structure.  (NEW PARAGRAPH HERE) The report describes the material used for driveways, walkways, patios and other flatwork around the home, the serviceability of the driveways, steps, walkways, patios, flatwork and retaining walls contiguous with the structure, proper grading and drainage slope, vegetation in close proximity to the home, and a description of any deficiencies of these systems or components.',

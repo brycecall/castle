@@ -114,7 +114,7 @@
                     'Leaking/Drainage Concern': false,
                     'Trip/Falling Hazard': false
                 },
-                'Safety Fencing at:': {
+                'Safety Fencing at': {
                     'n/a': false,
                     'Water Feature': false,
                     'Drop-off/Retaining Wall': false,

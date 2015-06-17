@@ -53,16 +53,16 @@
                     </div>
                 </div>
 
-                <md-list ng-repeat="(checklistkey, checklist) in page.checkboxes">
+                <md-list ng-repeat="(checklistkey, checklist) in notSorted(page.checkboxes)">
 
                     <md-divider></md-divider>
-                    <h3 class="subsubmenu">{{checklistkey}}:</h3>
-                    <md-list-item ng-repeat="(checkboxkey, checkboxvalue) in checklist" style="position:relative; margin:0; padding:0; display:flex">
+                    <h3 class="subsubmenu">{{checklist}}:</h3>
+                    <md-list-item ng-repeat="(checkboxkey, checkboxval) in notSorted(page.checkboxes[checklist])" style="position:relative; margin:0; padding:0; display:flex" ng-init="checkboxvalue = page.checkboxes[checklist][checkboxval]">
 
-                        <md-checkbox class="md-secondary" style="margin:0; padding:10px;" ng-model="checkboxvalue" aria-label="{{checkboxkey}}" md-ink-ripple="" flex="90">{{checkboxkey}}
+                        <md-checkbox class="md-secondary" style="margin:0; padding:10px;" ng-model="checkboxvalue" aria-label="{{checkboxval}}" md-ink-ripple="" flex="90">{{checkboxval}}
                         </md-checkbox>
 
-                        <md-icon ng-if="checkboxvalue" md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="openCamera(checkboxkey)" flex="10"></md-icon>
+                        <md-icon ng-if="checkboxvalue" md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="openCamera(checkboxval)" flex="10"></md-icon>
                     </md-list-item>
 
                 </md-list>

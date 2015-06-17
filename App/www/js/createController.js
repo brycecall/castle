@@ -51,8 +51,14 @@
                          'showlimitations': true,
                          'checkboxes': {
                          },
-                         'button' : {
-
+                         'clientinfo' : {
+                             'firstName' : '',
+                             'lastName' : '',
+                             'address' : '',
+                             'addressTwo' : '',
+                             'city' : '',
+                             'state' : '',
+                             'postalCode' : ''
                          },
                          'images': []
                      }

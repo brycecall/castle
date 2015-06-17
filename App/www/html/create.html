@@ -53,8 +53,52 @@
                     </div>
                 </div>
 
-                <md-list ng-repeat="(checklistkey, checklist) in notSorted(page.checkboxes)">
+                <div ng-if="page.clientinfo" >
 
+                <md-divider></md-divider>
+                <h3 class="subsubmenu">Client Info</h3>
+                <div layout="row" layout-sm="column">
+
+                  <div layout="" layout-sm="column">
+                    <md-input-container flex="">
+                      <label>First name</label>
+                      <input ng-model="page.input.firstName">
+                    </md-input-container>
+                    <md-input-container flex="">
+                      <label>Last Name</label>
+                      <input ng-model="page.input.lastName">
+                    </md-input-container>
+                  </div>
+                </div>
+                  <md-input-container flex="">
+                    <label>Address</label>
+                    <input ng-model="page.input.address">
+                  </md-input-container>
+
+                  <md-input-container md-no-float="">
+                   <label>Address 2</label>
+                    <input ng-model="page.input.addressTwo">
+                  </md-input-container>
+
+                  <div layout="" layout-sm="column">
+                    <md-input-container flex="">
+                      <label>City</label>
+                      <input ng-model="page.input.city">
+                    </md-input-container>
+                    <md-input-container flex="">
+                      <label>State</label>
+                      <input ng-model="page.input.state">
+                    </md-input-container>
+                    <md-input-container flex="">
+                      <label>Postal Code</label>
+                      <input ng-model="page.input.postalCode">
+                    </md-input-container>
+                  </div>
+
+                </div>
+
+
+                <md-list ng-repeat="(checklistkey, checklist) in notSorted(page.checkboxes)">
                     <md-divider></md-divider>
                     <h3 class="subsubmenu">{{checklist}}:</h3>
                     <md-list-item ng-repeat="(checkboxkey, checkboxval) in notSorted(page.checkboxes[checklist])" style="position:relative; margin:0; padding:0; display:flex" ng-init="checkboxvalue = page.checkboxes[checklist][checkboxval]">

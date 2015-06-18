@@ -2641,8 +2641,8 @@
                  //         }
                  //     };
 
-                 $scope.currentPage = 'Site';
-                 $scope.subPage = 'Site';
+                 $scope.currentPage =  Object.keys($scope.report)[0];
+                 $scope.subPage = '';
 
                  $scope.close = function () {
                      $mdSidenav('left').close()

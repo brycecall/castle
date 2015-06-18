@@ -19,10 +19,6 @@
         <script src="bower_components/angular-material/angular-material.js">
             </script>
 
-        <script src="//cdn.jsdelivr.net/angular-material-icons/0.4.0/angular-material-icons.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/SVG-Morpheus/0.1.8/svg-morpheus.js"></script> 
-        
-
         <!-- Application Scripts -->
         <script src="js/index.js"></script>
         <script src="js/createController.js"></script>
@@ -57,7 +53,7 @@
                           <span>{{service.currentPage.title}}</span>
                         </h2>
                         <span flex></span>
-                          <md-button ng-href="#account" aria-label="Account" ><img class="profile_picture" style="background-image: url({{service.currentUser.profile_image}})" /></md-button>
+                          <md-button ng-href="#account" aria-label="Account" ><img class="profile_picture" style="background-image: url('{{service.currentUser.profile_image}}')" /></md-button>
                       </div>
                     </md-toolbar>
                 </header>

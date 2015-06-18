@@ -1,5 +1,5 @@
 // Create the main module
-var inspection = angular.module('fbiApp', ['ngRoute', 'ngTouch', 'ngMaterial', 'ngMdIcons']);
+var inspection = angular.module('fbiApp', ['ngRoute', 'ngTouch', 'ngMaterial']);
 
 //var express = require('express');
 //var mongoose = require('mongoose');
@@ -108,9 +108,9 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
         // Current user information
         factory.currentUser = {
             user_id: 1,
-            user_name: "natashia23",
-            first_name: "Natashia",
-            last_name: "Rominos",
+            user_name: "Rod",
+            first_name: "Rod",
+            last_name: "Beacham",
             profile_image: "img/rod.png"
         };
 

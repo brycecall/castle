@@ -92,7 +92,8 @@ footer .container {
     border-radius: 30px;
     background-position: center;
     background-size: cover;
-    border: solid #EEE 2px;
+    border: solid #EEE 1px;
+    background-color: #EEE;
 }
 
 .md-button .fa {

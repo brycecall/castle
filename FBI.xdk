@@ -6,7 +6,7 @@
       "projectTypeName": "com.intel.xdk.projecttype.jsapp",
       "src": "",
       "projectGuid": "1d8347a3-0607-4dfe-99ed-99e953672e4c",
-      "lastModifiedDate": 1433016945896,
+      "lastModifiedDate": 1434602947135,
       "creationDate": 1433016945821
     },
     "sourceDirectory": "App/www",
@@ -179,7 +179,7 @@
         "runtime_": "W3C on Chrome OS",
         "name_": "Chrome",
         "preferences_": {},
-        "isActive_": false,
+        "isActive_": true,
         "appName_": "FBI",
         "appID_": "not.yet.specified",
         "appAccess_": [

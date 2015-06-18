@@ -84,7 +84,7 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
         {
             title: "Saved Reports",
             icon: "heart",
-            link: "#closet"
+            link: "#saved"
         },
         ];
 }]);
@@ -111,7 +111,7 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
             user_name: "natashia23",
             first_name: "Natashia",
             last_name: "Rominos",
-            profile_image: "img/Studphen.png"
+            profile_image: "img/rod.png"
         };
 
         // Refresh the cache every hour

@@ -206,3 +206,14 @@ body {
 .circleBack {
        background-color: #EEE;
 }
+
+.listItem {
+    display:block;
+    position: relative;
+    padding: 5px;
+}
+
+.listHead {
+    display:inline;
+    vertical-align:middle
+}

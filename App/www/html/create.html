@@ -1,6 +1,7 @@
-<div ng-controller="createController" layout="column" class="page ">
+<div ng-controller="createController" flex=""  layout="row" class="page ">
 
-            <md-sidenav class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open " md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" style="height:100%; position:fixed; left:0; top:60px">
+            <md-sidenav class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open " md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+<!--                style="height:100%; position:fixed; left:0; top:60px">-->
                 <md-toolbar class="md-theme-indigo" ng-click="close()">
                     <h2 class="md-toolbar-tools">{{currentPage}}</h2>
                 </md-toolbar>
@@ -19,7 +20,7 @@
             </md-sidenav>
 
 
-    <section layout="column" flex="" md-swipe-right="toggleLeft()">
+    <section flex="" layout="column" md-swipe-right="toggleLeft()">
         <md-content  class="overFlow" >
 
             <div ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]">

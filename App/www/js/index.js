@@ -32,6 +32,11 @@ inspection.config(['$routeProvider',
                 controller: 'createController'
             })
 
+            .when('/account', {
+                templateUrl: 'html/account.html',
+                controller: 'savedController'
+            })
+
             .when('/saved', {
                 templateUrl: 'html/saved.html',
                 controller: 'savedController'
@@ -78,14 +83,14 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
     $scope.navigationPages = [
         {
             title: "New Report",
-            icon: "pencil",
+            icon: "./bower_components/material-design-icons/action/svg/design/ic_assignment_48px.svg",
             link: "#create"
         },
         {
             title: "Saved Reports",
-            icon: "heart",
+            icon: "./bower_components/material-design-icons/action/svg/design/ic_book_48px.svg",
             link: "#saved"
-        },
+        }
         ];
 }]);
 

@@ -48,12 +48,11 @@
                         <md-button class="md-icon-button" aria-label="Navigation" ng-click="toggleNavigation()" ng-model-options="{ debounce: 1000 }">
                                                  <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg"></md-icon>
                         </md-button>
-<!--                        <span flex></span>-->
                         <h2 class="page_header">
                           <span>{{service.currentPage.title}}</span>
                         </h2>
                         <span flex></span>
-                          <md-button ng-href="#account" aria-label="Account" ><img class="profile_picture" style="background-image: url(img/rod.png)" /></md-button>
+                        <md-button ng-href="#account" aria-label="Account" ><img class="profile_picture" style="background-image: url(img/rod.png)" /></md-button>
                       </div>
                     </md-toolbar>
                 </header>
@@ -61,16 +60,17 @@
                 <md-sidenav class="md-sidenav-left md-whiteframe-z2 main_menu" md-component-id="main">
                     <md-content style="height: 100%;">
                         <img id="menuFavicon" src="img/Favicon.gif" /><br />
-                        <md-list>
-                            <a href="{{page.link}}" ng-repeat="page in navigationPages" ng-click="toggleNavigation()">
-                          <md-list-item class="md-3-line">
-                            <i class="fa fa-{{page.icon}}"></i>
-                            <div class="md-list-item-text">
-                              <h2>{{page.title}}</h2>
-                            </div>
-                            <md-divider ng-if="!$last"></md-divider>
-                          </md-list-item>
-                            </a>
+                        <md-list flex="">
+                             <a href="{{page.link}}" ng-repeat="page in navigationPages"  flex="" ng-click="toggleNavigation()" >
+                          <md-list-item flex="" class="listItem" >
+                                <div md-ink-ripple="" >
+                            <md-icon md-svg-icon="{{page.icon}}"></md-icon>
+                              <h2 class="listHead" >{{page.title}}</h2>
+                              </div>
+                              </md-list-item>
+                              <md-divider ng-if="!$last"></md-divider>
+                          </a>
+
                         </md-list>
                         <md-button class="nav_button md-raised md-primary" ng-href="#account" ng-click="toggleNavigation()" arial-label="Sign in">Sign in</md-button>
                     </md-content>

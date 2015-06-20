@@ -138,7 +138,7 @@ body {
 
 .subPageStyle {
     padding: 10px 5px 15px 5px;
-/*    margin: 5px 5px 5px 5px;*/
+     margin: 0px 5px 30px 5px;
 
 }
 
@@ -216,4 +216,14 @@ body {
 .listHead {
     display:inline;
     vertical-align:middle
+}
+
+.marginAction {
+    margin: 0px 5px 20px 5px;
+
+}
+
+.firstPosition {
+    margin:0;
+    padding:10px;
 }

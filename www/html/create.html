@@ -1,110 +1,100 @@
-<div ng-controller="createController" flex=""  layout="row" class="page ">
+<div ng-controller="createController" flex="" layout="row" class="page ">
 
-            <md-sidenav class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open " md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
-<!--                style="height:100%; position:fixed; left:0; top:60px">-->
-                <md-toolbar class="md-theme-indigo" ng-click="close()">
-                    <h2 class="md-toolbar-tools">{{currentPage}}</h2>
-                </md-toolbar>
+    <md-sidenav class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-swipe-left="close()">
+        <md-toolbar class="md-theme-indigo" ng-click="close()">
+            <h2 class="md-toolbar-tools md-title">{{currentPage}}</h2>
+        </md-toolbar>
+        <md-content>
+            <md-list class="subMenu">
+                <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" role="listitem" class="md-proxy-focus md-ink-ripple">
 
-                <md-content>
-                    <md-list class="subMenu">
-                        <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" role="listitem" class="md-proxy-focus md-ink-ripple">
-
-                            <md-button class="md-secondary menuButton" ng-click="navigatePage(section)" aria-label="{{section}}">{{section}}</md-button>
-                            <!--                            <md-divider ng-if="!$last"></md-divider>-->
-                        </md-list-item>
-                    </md-list>
-
-                </md-content>
-
-            </md-sidenav>
+                    <md-button class="md-secondary menuButton" ng-click="navigatePage(section)" aria-label="{{section}}">{{section}}</md-button>
+                </md-list-item>
+            </md-list>
+        </md-content>
+    </md-sidenav>
 
 
     <section flex="" layout="column" md-swipe-right="toggleLeft()">
-        <md-content  class="overFlow" >
-
-            <div ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]">
+        <md-content class="overFlow">
+            <section ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]">
 
                 <md-subheader ng-click="toggleLeft()" class="subHeader md-primary" style="cursor:pointer">{{currentPage}}
                     <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_chevron_right_48px.svg" class="headNavIcon"></md-icon>{{pagetitle}}</md-subheader>
                 <div layout="column" layout-fill="" layout-align="top center">
-
-                    <div>
                         <md-list>
 
-                            <md-list-item style="position: relative" ng-if="page.conditions != ''">
-                                <div style="display:flex">
-                                    <md-switch ng-model="page.showconditions" aria-label="Show Conditions" flex="80" md-ink-ripple="">
-                                        Show Conditions Message </md-switch>
-                                    <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_24px.svg" class="md-accent" ng-click="showMessage($event, 'Conditions', page.conditions)" flex="20"></md-icon>
+                            <md-list-item style="position: relative;display:flex;" ng-if="page.conditions != ''">
 
-                                </div>
+                                <md-switch ng-model="page.showconditions" aria-label="Show Conditions" flex="90" md-ink-ripple="" class="firstPosition md-body-1">
+                                    Show Conditions Message </md-switch>
+                                <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_48px.svg" class="md-accent" ng-click="showMessage($event, 'Conditions', page.conditions)" flex="10"></md-icon>
+
+
                             </md-list-item>
 
-                            <md-list-item style="position: relative" ng-if="page.limitations != ''">
-                                <div style="display:flex">
-                                    <md-switch ng-model="page.showlimitations" aria-label="Show limitations" flex="80" md-ink-ripple="">
-                                        Show Limitations Message</md-switch>
+                            <md-list-item style="position: relative;display:flex" ng-if="page.limitations != ''">
+                                <md-switch ng-model="page.showlimitations" aria-label="Show limitations" flex="90" md-ink-ripple="" class="firstPosition md-body-1">
+                                    Show Limitations Message</md-switch>
 
-                                    <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_24px.svg" class="md-accent" ng-click="showMessage($event, 'Limitations', page.limitations)" flex="20"></md-icon>
-                                </div>
+                                <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_48px.svg" class="md-accent" ng-click="showMessage($event, 'Limitations', page.limitations)" flex="10"></md-icon>
                             </md-list-item>
 
                         </md-list>
+                </div>
+
+                <div ng-if="page.clientinfo">
+
+                    <md-divider></md-divider>
+                    <h3 class="md-headline">Client Info</h3>
+                    <div layout="row" layout-sm="column">
+
+                        <div layout="" layout-sm="column">
+                            <md-input-container flex="">
+                                <label>First name</label>
+                                <input ng-model="page.input.firstName">
+                            </md-input-container>
+                            <md-input-container flex="">
+                                <label>Last Name</label>
+                                <input ng-model="page.input.lastName">
+                            </md-input-container>
+                        </div>
                     </div>
-                </div>
-
-                <div ng-if="page.clientinfo" >
-
-                <md-divider></md-divider>
-                <h3 class="subsubmenu">Client Info</h3>
-                <div layout="row" layout-sm="column">
-
-                  <div layout="" layout-sm="column">
                     <md-input-container flex="">
-                      <label>First name</label>
-                      <input ng-model="page.input.firstName">
+                        <label>Address</label>
+                        <input ng-model="page.input.address">
                     </md-input-container>
-                    <md-input-container flex="">
-                      <label>Last Name</label>
-                      <input ng-model="page.input.lastName">
-                    </md-input-container>
-                  </div>
-                </div>
-                  <md-input-container flex="">
-                    <label>Address</label>
-                    <input ng-model="page.input.address">
-                  </md-input-container>
 
-                  <md-input-container md-no-float="">
-                   <label>Address 2</label>
-                    <input ng-model="page.input.addressTwo">
-                  </md-input-container>
+                    <md-input-container md-no-float="">
+                        <label>Address 2</label>
+                        <input ng-model="page.input.addressTwo">
+                    </md-input-container>
 
-                  <div layout="" layout-sm="column">
-                    <md-input-container flex="">
-                      <label>City</label>
-                      <input ng-model="page.input.city">
-                    </md-input-container>
-                    <md-input-container flex="">
-                      <label>State</label>
-                      <input ng-model="page.input.state">
-                    </md-input-container>
-                    <md-input-container flex="">
-                      <label>Postal Code</label>
-                      <input ng-model="page.input.postalCode">
-                    </md-input-container>
-                  </div>
+                    <div layout="" layout-sm="column">
+                        <md-input-container flex="">
+                            <label>City</label>
+                            <input ng-model="page.input.city">
+                        </md-input-container>
+                        <md-input-container flex="">
+                            <label>State</label>
+                            <input ng-model="page.input.state">
+                        </md-input-container>
+                        <md-input-container flex="">
+                            <label>Postal Code</label>
+                            <input ng-model="page.input.postalCode">
+                        </md-input-container>
+                    </div>
 
                 </div>
 
 
                 <md-list ng-repeat="(checklistkey, checklist) in notSorted(page.checkboxes)">
                     <md-divider></md-divider>
-                    <h3 class="subsubmenu">{{checklist}}:</h3>
+<!--                    class="subsubmenu"-->
+                    <h3 class="md-headline">{{checklist}}:</h3>
                     <md-list-item ng-repeat="(checkboxkey, checkboxval) in notSorted(page.checkboxes[checklist])" style="position:relative; margin:0; padding:0; display:flex" ng-init="checkboxvalue = page.checkboxes[checklist][checkboxval]">
 
-                        <md-checkbox class="md-secondary" style="margin:0; padding:10px;" ng-model="checkboxvalue" aria-label="{{checkboxval}}" md-ink-ripple="" flex="90">{{checkboxval}}
+                        <md-checkbox class="md-secondary"  ng-model="checkboxvalue" aria-label="{{checkboxval}}" md-ink-ripple="" flex="90" class="firstPosition md-body-1">{{checkboxval}}
                         </md-checkbox>
 
                         <md-icon ng-if="checkboxvalue" md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="openCamera(checkboxval)" flex="10"></md-icon>
@@ -116,11 +106,8 @@
                     <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon> Add Photo
                 </md-button>
                 <div ng-if="$last" class="footerSpace"></div>
-
-            </div>
-
         </md-content>
+        </section>
 
-    </section>
 
 </div>

@@ -51,12 +51,12 @@
                          'showlimitations': true,
                          'checkboxes': {
 
-                'Age of Property': {//NEED MORE DATA
+                'Year Built': {//Wants a "Spin the Dial"
                     '1': false,
                     '2': false,
                     '3': false,
                     '4': false,
-                    'OTHER (NEED MORE DATA)': false
+                    'Spin Dial': false
                 },
                 'Squarefeet of the Property': {//NEED MORE DATA
                     '<1500': false,

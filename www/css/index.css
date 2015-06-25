@@ -137,8 +137,10 @@ body {
 }
 
 .subPageStyle {
+/*
     padding: 10px 5px 15px 5px;
      margin: 0px 5px 30px 5px;
+*/
 
 }
 
@@ -210,7 +212,7 @@ body {
 .listItem {
     display:block;
     position: relative;
-    padding: 5px;
+    padding: 10px;
 }
 
 .listHead {

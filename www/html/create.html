@@ -92,9 +92,10 @@
                     <md-divider></md-divider>
 <!--                    class="subsubmenu"-->
                     <h3 class="md-headline">{{checklist}}:</h3>
+
                     <md-list-item ng-repeat="(checkboxkey, checkboxval) in notSorted(page.checkboxes[checklist])" style="position:relative; margin:0; padding:0; display:flex" ng-init="checkboxvalue = page.checkboxes[checklist][checkboxval]">
 
-                        <md-checkbox class="md-secondary"  ng-model="checkboxvalue" aria-label="{{checkboxval}}" md-ink-ripple="" flex="90" class="firstPosition md-body-1">{{checkboxval}}
+                        <md-checkbox class="md-secondary firstPosition md-body-1"  ng-model="checkboxvalue" aria-label="{{checkboxval}}" md-ink-ripple="" flex="90" >{{checkboxval}}
                         </md-checkbox>
 
                         <md-icon ng-if="checkboxvalue" md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="openCamera(checkboxval)" flex="10"></md-icon>

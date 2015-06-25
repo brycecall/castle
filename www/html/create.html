@@ -19,106 +19,93 @@
         <md-content class="overFlow">
 
             <md-card ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]">
-<!--<md-card>-->
-    <md-card-content>
+                <!--<md-card>-->
+                <md-card-content>
 
 
-                <md-subheader ng-click="toggleLeft()" class="subHeader md-primary" style="cursor:pointer">{{currentPage}}
-                    <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_chevron_right_48px.svg" class="headNavIcon"></md-icon>{{pagetitle}}</md-subheader>
+                    <md-subheader ng-click="toggleLeft()" class="subHeader md-primary" style="cursor:pointer">{{currentPage}}
+                        <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_chevron_right_48px.svg" class="headNavIcon"></md-icon>{{pagetitle}}</md-subheader>
 
-                <div ng-if="page.clientinfo">
+                    <div ng-if="page.clientinfo">
 
-                    <md-divider></md-divider>
-                    <h3 class="md-headline">Client Info</h3>
-                    <div layout="row" layout-sm="column">
+                        <md-divider></md-divider>
+                        <h3 class="md-headline">Client Info</h3>
+                        <div layout="row" layout-sm="column">
+
+                            <div layout="" layout-sm="column">
+                                <md-input-container flex="">
+                                    <label>First name</label>
+                                    <input ng-model="page.input.firstName">
+                                </md-input-container>
+                                <md-input-container flex="">
+                                    <label>Last Name</label>
+                                    <input ng-model="page.input.lastName">
+                                </md-input-container>
+                            </div>
+                        </div>
+                        <md-input-container flex="">
+                            <label>Address</label>
+                            <input ng-model="page.input.address">
+                        </md-input-container>
+
+                        <md-input-container md-no-float="">
+                            <label>Address 2</label>
+                            <input ng-model="page.input.addressTwo">
+                        </md-input-container>
 
                         <div layout="" layout-sm="column">
                             <md-input-container flex="">
-                                <label>First name</label>
-                                <input ng-model="page.input.firstName">
+                                <label>City</label>
+                                <input ng-model="page.input.city">
                             </md-input-container>
                             <md-input-container flex="">
-                                <label>Last Name</label>
-                                <input ng-model="page.input.lastName">
+                                <label>State</label>
+                                <input ng-model="page.input.state">
+                            </md-input-container>
+                            <md-input-container flex="">
+                                <label>Postal Code</label>
+                                <input ng-model="page.input.postalCode">
                             </md-input-container>
                         </div>
-                    </div>
-                    <md-input-container flex="">
-                        <label>Address</label>
-                        <input ng-model="page.input.address">
-                    </md-input-container>
 
-                    <md-input-container md-no-float="">
-                        <label>Address 2</label>
-                        <input ng-model="page.input.addressTwo">
-                    </md-input-container>
-
-                    <div layout="" layout-sm="column">
-                        <md-input-container flex="">
-                            <label>City</label>
-                            <input ng-model="page.input.city">
-                        </md-input-container>
-                        <md-input-container flex="">
-                            <label>State</label>
-                            <input ng-model="page.input.state">
-                        </md-input-container>
-                        <md-input-container flex="">
-                            <label>Postal Code</label>
-                            <input ng-model="page.input.postalCode">
-                        </md-input-container>
                     </div>
 
-                </div>
 
-                <div layout="column" layout-fill="" layout-align="top center">
-                        <md-list>
+                    <md-list layout="column" layout-fill="" layout-align="top center">
+                        <md-list-item ng-repeat="(presettextkey, presettext) in notSorted(page.presettext)" class="relFlex">
 
-                            <md-list-item style="position: relative;display:flex;" ng-if="page.conditions != ''">
-
-                                <md-switch ng-model="page.showconditions" aria-label="Show Conditions" flex="90" md-ink-ripple="" class="firstPosition md-body-1">
-                                    Show Conditions Message </md-switch>
-                                <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_48px.svg" class="md-accent" ng-click="showMessage($event, 'Conditions', page.conditions)" flex="10"></md-icon>
-
-
-                            </md-list-item>
-
-                            <md-list-item style="position: relative;display:flex" ng-if="page.limitations != ''">
-                                <md-switch ng-model="page.showlimitations" aria-label="Show limitations" flex="90" md-ink-ripple="" class="firstPosition md-body-1">
-                                    Show Limitations Message</md-switch>
-
-                                <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_48px.svg" class="md-accent" ng-click="showMessage($event, 'Limitations', page.limitations)" flex="10"></md-icon>
-                            </md-list-item>
-
-                        </md-list>
-                </div>
+                            <md-switch ng-model="page.presettext[presettext].showcontent" aria-label="Show Conditions" flex="90" md-ink-ripple="" class="firstPosition md-body-1">
+                                Show {{presettext}} Message </md-switch>
+                            <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_48px.svg" class="md-accent" ng-click="showMessage($event, presettext, page.presettext[presettext].content)" flex="10"></md-icon>
+                        </md-list-item>
+                    </md-list>
 
 
 
 
-                <md-list ng-repeat="(checklistkey, checklist) in notSorted(page.checkboxes)">
-                    <md-divider></md-divider>
-<!--                    class="subsubmenu"-->
-                    <h3 class="md-headline">{{checklist}}:</h3>
 
-                    <md-list-item ng-repeat="(checkboxkey, checkboxval) in notSorted(page.checkboxes[checklist])" style="position:relative; margin:0; padding:0; display:flex" ng-init="checkboxvalue = page.checkboxes[checklist][checkboxval]">
+                    <md-list ng-repeat="(checklistkey, checklist) in notSorted(page.checkboxes)">
+                        <md-divider></md-divider>
+                        <h3 class="md-headline">{{checklist}}:</h3>
 
-                        <md-checkbox class="md-secondary firstPosition md-body-1"  ng-model="checkboxvalue" aria-label="{{checkboxval}}" md-ink-ripple="" flex-gt-md="80" >{{checkboxval}}
-                        </md-checkbox>
-<div flex=""></div>
-                        <md-icon ng-if="checkboxvalue" md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="openCamera(checkboxval)" flex="10"></md-icon>
-                    </md-list-item>
+                        <md-list-item ng-repeat="(checkboxkey, checkboxval) in notSorted(page.checkboxes[checklist])" class="relFlex" ng-init="checkboxvalue = page.checkboxes[checklist][checkboxval]">
 
-                </md-list>
+                            <md-checkbox class="md-secondary firstPosition md-body-1" ng-model="checkboxvalue" aria-label="{{checkboxval}}" md-ink-ripple="" flex-gt-md="80">{{checkboxval}}
+                            </md-checkbox>
+                            <div flex=""></div>
+                            <md-icon ng-if="checkboxvalue" md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="openCamera(checkboxval)" flex="10"></md-icon>
+                        </md-list-item>
 
-                <md-button class="cameraButton md-accent" aria-label="Photos">
-                    <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon> Add Photo
-                </md-button>
-                <div ng-if="$last" class="footerSpace"></div>
-                    </md-card-content>
-</md-card>
-<!--            </section>-->
+                    </md-list>
+
+                    <md-button class="cameraButton md-accent" aria-label="Photos">
+                        <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon> Add Photo
+                    </md-button>
+                    <div ng-if="$last" class="footerSpace"></div>
+                </md-card-content>
+            </md-card>
         </md-content>
-        </section>
+    </section>
 
 
 </div>

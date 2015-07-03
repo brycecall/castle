@@ -239,3 +239,16 @@ body {
     position: relative;
     display:flex;
 }
+
+
+.mainList {
+    color: #333;
+}
+
+a {
+    color: #333;
+}
+
+a:hover {
+    color: #555;
+}

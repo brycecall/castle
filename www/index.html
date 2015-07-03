@@ -7,6 +7,7 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<!--        <script type="text/javascript" src="../platforms/android/assets/www/cordova.js"></script>-->
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/bootstrap/js/dropdown.js"></script>
         <script src="bower_components/angular/angular.js"></script>
@@ -56,11 +57,11 @@
                     <md-content style="height: 100%;">
                         <img id="menuFavicon" src="img/Favicon.gif" /><br />
                         <md-list flex="">
-                             <a href="{{page.link}}" ng-repeat="page in navigationPages"  flex="" ng-click="toggleNavigation()" >
-                          <md-list-item flex="" class="listItem" >
+                             <a href="{{page.link}}" ng-repeat="page in navigationPages"  flex="" ng-click="toggleNavigation()" class="md-headline">
+                          <md-list-item flex="" class="listItem " >
                                 <div md-ink-ripple="" >
-                            <md-icon md-svg-icon="{{page.icon}}"></md-icon>
-                              <h2 class="listHead" >{{page.title}}</h2>
+                            <md-icon md-svg-icon="{{page.icon}}" class=""></md-icon>
+                              <h2 class="listHead md-headline" >{{page.title}}</h2>
                               </div>
                               </md-list-item>
 <!--                              <md-divider ng-if="!$last"></md-divider>-->

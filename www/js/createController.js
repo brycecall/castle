@@ -2744,8 +2744,8 @@
 
 
      $scope.navigatePage = function (sectionkey) {
-         $scope.currentPage = sectionkey;
          $scope.close();
+         $scope.currentPage = sectionkey;
      }
 
      $scope.openCamera = function (checkboxkey) {

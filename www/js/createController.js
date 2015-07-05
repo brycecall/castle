@@ -47,7 +47,7 @@
                  'presettext': {
 
                      'Conditions': {
-                         'content': 'The locations of the main utility controls, shut-off valves, and/or disconnects are noted in the applicable mechanical sections.',
+                         'content': 'This Report concerns the visual [INSERT OPTION] inspection of an approximately [CALCULATE & INSERT AGE] old, [INSERT SQFT], [INSERT TYPE OF HOME],[INSERT PROPERTY USE],[INSERT NUMBER OF STORIES],[INSERT HOUSE FRAME],[INSERT PROPERTY TYPE],[INSERT CONFIGURATIONS], built in [INSERT YEAR].  The main entrance, driveway, or street access appeared to be facing predominantely toward the [INSERT PROPERTY ORIENTATION].  The street surface was [INSERT DRIVEWAY TYPE], and vehicle parking was available [INSERT VEHICLE PARKING]. ...   The locations of the main utility controls, shut-off valves, and/or disconnects are noted in the applicable mechanical sections.',
                          'showcontent': true
                      },
 
@@ -59,7 +59,15 @@
 
 
                  'checkboxes': {
-
+                     'Inspection Type': { //Wants a "Spin the Dial"
+                         'Full': false,
+                         'Partial': false,
+                         'Abbreviated': false,
+                         'Ancillary': false,
+                         'Limited': false,
+                         '203(k)': false,
+                         'Rehabilitation': false
+                     },
                      'Year Built': { //Wants a "Spin the Dial"
                          '1': false,
                          '2': false,
@@ -67,43 +75,126 @@
                          '4': false,
                          'Spin Dial': false
                      },
-                     'Squarefeet of the Property': { //NEED MORE DATA
-                         '<1500': false,
-                         '1500-2000': false,
-                         '2000-2500': false,
-                         '2500-3000': false,
-                         '>3000': false,
-                         'OTHER (NEED MORE DATA)': false
+                     'Squarefeet of the Property': { //NEEDS NUMBER ENTRY
+                         'NUMBER ENTRY FIELD': false
                      },
                      'Type of Home': {
                          'Single Family': false,
-                         'Multi-Family': false,
+                         'Single Use': false,
+                         'Multiple Use': false,
+                         'Duplex': false,
+                         'Triplex': false,
+                         'Multi Family': false,
+                         'Detatched': false,
                          'OTHER (NEED MORE DATA)': false
                      },
-                     'Property Type': {
+                     'Property Use': {
                          'Residential': false,
+                         'Apartment': false,
+                         'Retail Store': false,
+                         'Business': false,
+                         'Industrial': false,
                          'Commercial': false
                      },
-                     'Height of Home (In Stories)': {
-                         '1 Story': false,
-                         '2 Story': false,
-                         '3 Story': false,
-                         'More! (NEED MORE DATA)': false
+                     'Number of Stories': {
+                         'Rambler': false,
+                         'One Level': false,
+                         'Split-Entry': false,
+                         'Split-Level': false,
+                         'One Story': false,
+                         '1 1/2 Story': false,
+                         'Two-Story': false,
+                         'Three-Story': false,
+                         'Mid-Rise': false,
+                         'Multi-Level': false
                      },
-                     'House Frame': {
+                     'House Frame': {//RADIAL
                          'Wood-Framed': false,
-                         'Brick & Mortar (Maybe?)': false,
-                         'OTHER (NEED MORE DATA)': false
+                         'Steel-Framed': false,
+                         'Concrete': false,
+                         'CMU/Block': false,
+                         'Masonry': false,
+                         'Tilt-Up': false,
+                         'Wood-Frame on Steel Carriage': false,
+                         'ICF': false
                      },
-                     'HOME?': {
+                     'Property Type': {//RADIAL
                          'Home': false,
-                         'OTHER (NEED MORE DATA)': false
+                         'Twin Home': false,
+                         'Town Home': false,
+                         'Mobile Home': false,
+                         'Log Home': false,
+                         'Manufactured Home': false,
+                         'Prefabbed Structure': false,
+                         'Condominium': false,
+                         'Building': false,
+                         'Garage': false,
+                         'Low-Rise': false,
+                         'Mid-Rise': false,
+                         'High-Rise': false
                      },
-                     'Crawlspace': {
-                         'Available': false
+                     'Configurations': {//CHECKBOXES
+                         'w/ Lower Parking Garage': false,
+                         'w/ Basement & Garage': false,
+                         'w/ Garage': false,
+                         'w/ Garage & Crawlspace': false,
+                         'w/ Full Basement': false,
+                         'w/ Daylight Basement': false,
+                         'w/ Basement & Crawlspace(s)': false,
+                         'w/ Crawlspace': false,
+                         'w/ Slab-On-Grade': false,
+                         'Over Adjoining Unit(s)': false,
+                         'Over Adjoining Basement Unit': false
                      },
-                     //ADD: "Built in 1987"
-
+                     'Property Orientation': {//RADIAL
+                         'North': false,
+                         'East': false,
+                         'West': false,
+                         'South': false,
+                         'North-East': false,
+                         'North-West': false,
+                         'South-East': false,
+                         'South-West': false
+                     },
+                     'Vehicle Parking': {//CHECKBOXES
+                         'At Curbside': false,
+                         'In a Rear Alley': false,
+                         'In the Driveway': false,
+                         'In Attached Garage(s)': false,
+                         'In a Detached Garage': false,
+                         'In an Attached Carport': false,
+                         'In a Detached Carport': false,
+                         'In a Covered Parking Space': false,
+                         'In an Open Parking Space': false,
+                         'In a Secured Parking Garage': false,
+                         'In an Open Parking Garage': false,
+                         'In an Open,Striped Parking Lot': false
+                     },
+                     'Utilities': {//RADIAL
+                         'Electricity': false,
+                         'Electricity and Water': false,
+                         'Electricity, Water, and Gas': false,
+                         'Electricity, Water, and Oil': false,
+                         'Electricity and Propane': false,
+                         'Electricity, Water, and Propane': false
+                     },
+                     'Any Utilities OFF': {//Checkboxes
+                         'Electricity': false,
+                         'Water': false,
+                         'Gas': false,
+                         'Oil': false,
+                         'Propane': false
+                     },
+                     '': {//RADIAL
+                         'North': false,
+                         'East': false,
+                         'West': false,
+                         'South': false,
+                         'North-East': false,
+                         'North-West': false,
+                         'South-East': false,
+                         'South-West': false
+                     }
                  },
                  'clientinfo': {
                      'firstName': '',

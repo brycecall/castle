@@ -1,4 +1,4 @@
- angular.module('fbiApp').controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia) {
+ angular.module('fbiApp').controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window) {
 
      $scope.toggleLeft = buildToggler('left');
 
@@ -18,7 +18,6 @@
 
          return debounceFn;
      }
-
 
      //     Field Notes
      //         Property Description
@@ -238,8 +237,7 @@
                  'images': []
              },
              'Attached Decks/Balconies/Porches/Steps': {
-                 'presettext': {
-                 },
+                 'presettext': {},
                  'checkboxes': {
                      'Porch/Stoop': {
                          'n/a': false,
@@ -302,10 +300,7 @@
                      }
                  },
                  'images': [
-                        //INCLUDE PRESET TEXT:
-                        //Title: Moisture / Pest-Conducive Conditions
-                        //Sub-Title: Visible Conducive Conditions for WDI/WDO (wood-destroying insects/organisms)
-                        //Text:  Undesirable exterior conditions conducive to pest and/or rot concerns may exist, develop, and/or worsen over time. Recommend identification and elimination of all exposed or unprotected wood in outdoor conditions or inadequate earth-to-wood separation (less than 6 to 8 inches), negative grade (ground surfaces sloping toward building), or overgrown foliage (vegetation touching wall surfaces) and maintain improved conditions to minimize risk of pest, moisture or other potential exterior concerns."
+
                 ]
              }
          },
@@ -319,7 +314,14 @@
                      'Limitations': {
                          'content': 'According to the Home Inspection Standards of Practice WAC § 308-408C-080 of the Washington State Dept. of Licensing, the inspector is not required to inspect buildings, decks, patios, fences, retaining walls, and other structures detached from the dwelling, safety type glass or the integrity of thermal window seals, flues or verify the presence of flue liners beyond what can be safely and readily seen from the roof or the firebox of a stove or fireplace, test or evaluate the operation of security locks, devices or systems, enter areas beneath decks with less than five feet of clearance from the underside of joists to grade, evaluate the function or condition of shutters, awnings, storm doors, storm windows, screens, and similar accessories.',
                          'showcontent': true
-                     }
+                     },
+
+                        'Moisture/Pest-Conducive Conditions': {
+                             'content': 'Undesirable exterior conditions conducive to pest and/or rot concerns may exist, develop, and/or worsen over time. Recommend identification and elimination of all exposed or unprotected wood in outdoor conditions or inadequate earth-to-wood separation (less than 6 to 8 inches), negative grade (ground surfaces sloping toward building), or overgrown foliage (vegetation touching wall surfaces) and maintain improved conditions to minimize risk of pest, moisture or other potential exterior concerns.',
+                             'showcontent': true
+                         }
+
+
                  },
                  'checkboxes': {
                      'Type(s) of Wall Cladding': {
@@ -407,8 +409,7 @@
                  'images': []
              },
              'Wall Fenestrations': {
-                 'presettext': {
-                 },
+                 'presettext': {},
                  'checkboxes': {
                      'Window Frame/Trim': {
                          'Wood': false,
@@ -699,8 +700,7 @@
                  'images': []
              },
              'Fenestrations': {
-                 'presettext': {
-                 },
+                 'presettext': {},
                  'checkboxes': {
                      'Perforations (through-roof)': {
                          'n/a': false,
@@ -767,8 +767,7 @@
                  }
              },
              'Gutters & Down-Spouts': {
-                 'presettext': {
-                 },
+                 'presettext': {},
                  'checkboxes': {
                      'Type': {
                          'Eave-Mounted': false,
@@ -871,8 +870,7 @@
                  'images': []
              },
              'Floor Framing': {
-                 'presettext': {
-                 },
+                 'presettext': {},
                  'checkboxes': {
                      //PRESET TEXT HERE: Seismic (earthquake) evaluation is typically dictated by building codes, outside the scope of this inspection, and was NOT performed. For seismic evaluation or other desirable structural improvements, refer to a specialist.
                      'Sub-Floor System': {
@@ -967,8 +965,7 @@
                  }
              },
              'Foundation': {
-                 'presettext': {
-                 },
+                 'presettext': {},
                  'checkboxes': {
                      'Type of Foundation': {
                          'Perimeter Walls': false,
@@ -1169,8 +1166,7 @@
                  'images': []
              },
              'Crawl Spaces/Unfinished Basements': {
-                 'presettext': {
-                 },
+                 'presettext': {},
                  'checkboxes': {
                      'Access': {
                          'Door/Panel': false,
@@ -1424,8 +1420,7 @@
                  'images': []
              },
              'Faucets/Fixtures': {
-                 'presettext': {
-                 },
+                 'presettext': {},
                  'checkboxes': {
                      'Faucets': {
                          'Functional': false,
@@ -1529,8 +1524,7 @@
                  'images': []
              },
              'Water Heater': {
-                 'presettext': {
-                 },
+                 'presettext': {},
                  'checkboxes': {
                      'Energy Source': {
                          'Gas/Propane': false,
@@ -2030,8 +2024,7 @@
                  'images': []
              },
              'Fixtures/Switches/Detectors': {
-                 'presettext': {
-                 },
+                 'presettext': {},
                  'checkboxes': {
                      'Fixtures': {
                          'Missing/Removed': false,
@@ -2166,8 +2159,7 @@
                  },
              },
              'Kitchen': {
-                 'presettext': {
-                 },
+                 'presettext': {},
                  'checkboxes': {
                      'Appliances': {
                          'Sink Disposer': false,
@@ -2248,8 +2240,7 @@
                  }
              },
              'Laundry': {
-                 'presettext': {
-                 },
+                 'presettext': {},
                  'checkboxes': {
                      'Appliances': {
                          'None': false,
@@ -2288,8 +2279,7 @@
                  },
              },
              'Bathroom(s)': {
-                 'presettext': {
-                 },
+                 'presettext': {},
                  'checkboxes': {
                      'Walls/Ceilings': {
                          'GWB': false,
@@ -2347,8 +2337,7 @@
                  }
              },
              'Interior': {
-                 'presettext': {
-                 },
+                 'presettext': {},
                  'checkboxes': {
                      'Walls/Ceilings': {
                          'GWB': false,
@@ -2550,173 +2539,6 @@
 
 
 
-
-
-
-     //
-     //     Field Notes
-     //         Property Description
-     //             age
-     //             square footage
-     //             single or multi-family
-     //             residential or commercial
-     //             Stories/levels
-     //             Frame
-     //             crawl space or other spaces
-     //             Utilities
-     //                 on or off
-     //                 locations
-     //
-     //         Inspection Conditions
-     //             vacant or in-use
-     //             inspection duration (begin and end time of inspection)
-     //             Weather conditions
-     //             Attenders
-     //                 inspector, clients, agents
-     //             Who provided access to the building
-     //             Disclaimer of scope
-
-
-
-
-
-
-     //     $scope.report = {
-     //         'Site': {
-     //             'Site': {
-     //                                   'presettext': {                      'Conditions': {                          'content': 'The inspection of the site includes the building perimeter',
-     //                 'showcontent': true                      },
-     //                 'Limitations': {                          'content': 'According to the Home Inspection Standards of Practice WAC 308-408C-170...',
-     //                 'showcontent': true                      }                  },
-     //                 'checkboxes': {
-     //                     'Driveway': {
-     //                         'n/a': false,
-     //                         'Concrete': false,
-     //                         'Asphalt': false,
-     //                         'Pavers/stone/brick': false,
-     //                         'Dirt/gravel': false
-     //
-     //                     },
-     //                     'Patio': {
-     //                         'n/a': false,
-     //                         'Concrete': false,
-     //                         'Asphalt': false,
-     //                         'Pavers/stone/brick': false,
-     //                         'Dirt/gravel': false
-     //                     },
-     //                     'Walkways and Steps': {
-     //                         'n/a': false,
-     //                         'Uneven': false,
-     //                         'Large cracks': false,
-     //                         'Root heaving': false,
-     //                         'Moss build-up': false,
-     //                         'Missing spacers': false,
-     //                         'Settled': false,
-     //                         'Trip hazard': false,
-     //                         'Missing handrails': false,
-     //                         'Missing safety glass': false
-     //                     }
-     //                 },
-     //                 'images': [
-     //                     {
-     //                         'title': 'default title',
-     //                         'url': 'path',
-     //                         'required': false
-     //                         }
-     //                 ]
-     //
-     //             },
-     //             'Attached Decks/Balconies/Porches/Steps': {
-     //                                   'presettext': {                      'Conditions': {                          'content': 'The inspection of the site includes...',
-     //                 'showcontent': true                      },
-     //                 'Limitations': {                          'content': 'According to the Home Inspection Standards of Practice WAC 308-408C-170....',
-     //                 'showcontent': true                      }                  },
-     //                 'checkboxes': {
-     //                     'Driveway': {
-     //                         'n/a': false,
-     //                         'Concrete': false,
-     //                         'Asphalt': false,
-     //                         'Pavers/stone/brick': false,
-     //                         'Dirt/gravel': false
-     //
-     //                     },
-     //                     'Patio': {
-     //                         'n/a': false,
-     //                         'Concrete': false,
-     //                         'Asphalt': false,
-     //                         'Pavers/stone/brick': false,
-     //                         'Dirt/gravel': false
-     //                     },
-     //                     'Walkways and Steps': {
-     //                         'n/a': false,
-     //                         'Uneven': false,
-     //                         'Large cracks': false,
-     //                         'Root heaving': false,
-     //                         'Moss build-up': false,
-     //                         'Missing spacers': false,
-     //                         'Settled': false,
-     //                         'Trip hazard': false,
-     //                         'Missing handrails': false,
-     //                         'Missing safety glass': false
-     //                     }
-     //                 },
-     //                 'images': [
-     //                     {
-     //                         'title': 'default title',
-     //                         'url': 'path',
-     //                         'required': false
-     //                         }
-     //                 ]
-     //
-     //             }
-     //         },
-     //
-     //         'Exterior': {
-     //             'Exterior Wall Cladding': {
-     //                                   'presettext': {                      'Conditions': {                          'content': 'The inspection of the site includes....',
-     //                 'showcontent': true                      },
-     //                 'Limitations': {                          'content': 'According to the Home Inspection Standards of Practice WAC 308-408C-170...',
-     //                 'showcontent': true                      }                  },
-     //                 'checkboxes': {
-     //                     'Driveway': {
-     //                         'n/a': false,
-     //                         'Concrete': false,
-     //                         'Asphalt': false,
-     //                         'Pavers/stone/brick': false,
-     //                         'Dirt/gravel': false
-     //
-     //                     },
-     //                     'Patio': {
-     //                         'n/a': false,
-     //                         'Concrete': false,
-     //                         'Asphalt': false,
-     //                         'Pavers/stone/brick': false,
-     //                         'Dirt/gravel': false
-     //                     },
-     //                     'Walkways and Steps': {
-     //                         'n/a': false,
-     //                         'Uneven': false,
-     //                         'Large cracks': false,
-     //                         'Root heaving': false,
-     //                         'Moss build-up': false,
-     //                         'Missing spacers': false,
-     //                         'Settled': false,
-     //                         'Trip hazard': false,
-     //                         'Missing handrails': false,
-     //                         'Missing safety glass': false
-     //                     }
-     //                 },
-     //                 'images': [
-     //                     {
-     //                         'title': 'default title',
-     //                         'url': 'path',
-     //                         'required': false
-     //                         }
-     //                 ]
-     //             }
-     //         }
-     //     };
-
      $scope.currentPage = Object.keys($scope.report)[0];
      $scope.subPage = '';
 
@@ -2727,6 +2549,9 @@
              });
 
      };
+
+
+
 
      $scope.alert = '';
      $scope.showMessage = function (event, type, message) {
@@ -2742,11 +2567,19 @@
          );
      };
 
+     $scope.scrollToTop = function()
+     {
+        $timeout(function() {
+         document.getElementById("testAgain").scrollTop = 0;
+          console.log("called ");
+        });
+     };
 
      $scope.navigatePage = function (sectionkey) {
          $scope.close();
          $scope.currentPage = sectionkey;
-     }
+         document.getElementById("testAgain").scrollTop = 0;
+     };
 
      $scope.openCamera = function (checkboxkey) {
 
@@ -2754,6 +2587,6 @@
 
      $scope.notSorted = function (obj) {
          return obj ? Object.keys(obj) : [];
-     }
+     };
 
  });

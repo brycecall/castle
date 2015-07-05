@@ -23,9 +23,12 @@ var inspection = angular.module('fbiApp', ['ngRoute', 'ngTouch', 'ngMaterial']);
 //                }
 //               ));
 
+
+
 // Config - take care of URL routes
 inspection.config(['$routeProvider',
-    function ($routeProvider) {
+
+    function ($routeProvider, $anchorScroll) {
         $routeProvider
             .when('/create', {
                 templateUrl: 'html/create.html',
@@ -66,7 +69,7 @@ inspection.config(function($mdThemingProvider) {
 });
 
 // Controller for the index page
-inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUtil', '$mdSidenav', function($scope, service, $mdUtil, $mdSidenav) {
+inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUtil', '$mdSidenav', '$location', '$anchorScroll', function($scope, service, $mdUtil, $mdSidenav, $anchorScroll, $location) {
     // This is a little hacky, bit it works alright, maybe fix latter
     $scope.service = service;
     
@@ -80,6 +83,10 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
         $scope.show_add_icons = !$scope.show_add_icons;
     }
     
+    $scope.scrollToTop = function() {
+        $anchorScroll();
+    }
+
     $scope.navigationPages = [
         {
             title: "New Report",
@@ -129,24 +136,6 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
             $route.reload();
         };
 
-        /* TODO - ADD relavent functions needed to get/send the JSON we need from/to our server */
-        //TODO
-        factory.getCloset = function () {
-            
-            // TODO - first test with a dummy JSON object, then test getting the JSON from the endpoint
-            return "DUMMY JSON HERE";
-            
-            /* TODO
-            return $http.get(baseUrl + 'ENDPOINTTODO', {
-                cache: cache
-            });
-            */
-        };
-        //TODO
-        factory.addToCloset = function (item) {
-            
-        };
-        
 
         factory.openExternalUrl = function (url) {
             if (navigator.app) {

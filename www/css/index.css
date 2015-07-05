@@ -19,7 +19,9 @@
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
-
+html {
+    height: 100%;
+}
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
@@ -35,7 +37,8 @@ body {
         color-stop(0, #A7A7A7),
         color-stop(0.51, #E4E4E4)
     );
-
+    height: 100%;
+    overflow: auto;
 }
 
 /* Portrait layout (default) */
@@ -146,6 +149,7 @@ body {
 
 .subHeader {
     font-size: 15px;
+
 }
 
 .headNavIcon {
@@ -252,3 +256,40 @@ a {
 a:hover {
     color: #555;
 }
+
+
+
+.view-window {
+    margin: 64px 0 0 0;
+}
+
+.marginRight {
+    margin-right: 15px;
+}
+
+.subNavLeft {
+    display: block;
+    height: 100%;
+    position: fixed;
+    top:64px;
+    z-index: 60;
+    overflow: auto;
+}
+
+.mainHeaderBar {
+    position:fixed;
+    top:0;
+    z-index:61;
+    width:100%
+}
+
+
+.subHeader[sticky-state="active"] {
+
+    position: absolute;
+    left: 0px;
+
+
+}
+
+

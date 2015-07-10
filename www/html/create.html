@@ -99,6 +99,7 @@
                     </md-list>
                 <div ng-if="itemVal.type == 'radio'">
                 <md-divider></md-divider>
+                <h3 class="md-headline">{{listValue}}:</h3>
             <md-radio-group ng-model="itemVal.value" >
               <md-radio-button  ng-repeat="(radiokey, radiovalue) in notSorted(itemVal.content)"  ng-init="radioval = itemVal.content[radiovalue]" ng-value="radioval">{{radioval}}</md-radio-button>
             </md-radio-group>

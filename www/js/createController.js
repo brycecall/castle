@@ -44,7 +44,18 @@
              $scope.report = {
                  'Field Notes': {
                      'Field Notes From Site Evaluation': {
-
+                             'clientinfo': {
+                                 'type': 'clientinfo',
+                                 'value': {
+                                     'firstName': '',
+                                     'lastName': '',
+                                     'address': '',
+                                     'addressTwo': '',
+                                     'city': '',
+                                     'state': '',
+                                     'postalCode': ''
+                                 }
+                             },
                          'Conditions': {
                              'type': 'presettext',
                              'value': {
@@ -142,6 +153,7 @@
                              'type': 'checkbox',
                              'value': {
                                  'Available': false
+                             }
                              },
                              'Number of Stories': {
                                  'type': 'checkbox',
@@ -158,8 +170,8 @@
                                      'Multi-Level': false
                                  }
                              },
-                             'House Frame': { //RADIAL
-                                 'type': 'checkbox',
+                             'House Frame': { //radio
+                                 'type': 'radio',
                                  'value': {
                                      'Wood-Framed': false,
                                      'Steel-Framed': false,
@@ -171,23 +183,24 @@
                                      'ICF': false
                                  }
                              },
-                             'Property Type': { //RADIAL
-                                 'type': 'radial',
-                                 'value': {
-                                     'Home': false,
-                                     'Twin Home': false,
-                                     'Town Home': false,
-                                     'Mobile Home': false,
-                                     'Log Home': false,
-                                     'Manufactured Home': false,
-                                     'Prefabbed Structure': false,
-                                     'Condominium': false,
-                                     'Building': false,
-                                     'Garage': false,
-                                     'Low-Rise': false,
-                                     'Mid-Rise': false,
-                                     'High-Rise': false
-                                 }
+                             'Property Type': { //radio
+                                 'type': 'radio',
+                                 'content': {
+                                     '0':'Home',
+                                     '1':'Twin Home',
+                                     '2':'Town Home',
+                                     '3':'Mobile Home',
+                                     '4':'Log Home',
+                                     '5':'Manufactured Home',
+                                     '6':'Prefabbed Structure',
+                                     '7':'Condominium',
+                                     '8':'Building',
+                                     '9':'Garage',
+                                     '10':'Low-Rise',
+                                     '11':'Mid-Rise',
+                                     '12':'High-Rise'
+                                 },
+                                 'value':''
                              },
                              'Configurations': { //CHECKBOXES
                                  'type': 'checkbox',
@@ -205,8 +218,8 @@
                                      'Over Adjoining Basement Unit': false
                                  }
                              },
-                             'Property Orientation': { //RADIAL
-                                 'type': 'radial',
+                             'Property Orientation': { //radio
+                                 'type': 'radio',
                                  'value': {
                                      'North': false,
                                      'East': false,
@@ -235,8 +248,8 @@
                                      'In an Open,Striped Parking Lot': false
                                  }
                              },
-                             'Utilities': { //RADIAL
-                                 'type': 'radial',
+                             'Utilities': { //radio
+                                 'type': 'radio',
                                  'value': {
                                      'Electricity': false,
                                      'Electricity and Water': false,
@@ -256,8 +269,8 @@
                                      'Propane': false
                                  }
                              },
-                             'direction': { //RADIAL
-                                 'type': 'radial',
+                             'direction': { //radio
+                                 'type': 'radio',
                                  'value': {
                                      'North': false,
                                      'East': false,
@@ -269,23 +282,12 @@
                                      'South-West': false
                                  }
 
-                             },
+                             }
                              //ADD: "Built in 1987"
 
 
-                             'clientinfo': {
-                                 'type': 'clientinfo',
-                                 'value': {
-                                     'firstName': '',
-                                     'lastName': '',
-                                     'address': '',
-                                     'addressTwo': '',
-                                     'city': '',
-                                     'state': '',
-                                     'postalCode': ''
-                                 }
-                             },
-                         }
+
+
                      }
                  },
                      'Site': {

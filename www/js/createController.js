@@ -92,9 +92,8 @@
                  },
                  'Squarefeet of the Property': { //NEEDS NUMBER ENTRY
                      'type': 'number',
-                     value: {
-                         'squarefeet': ''
-                     }
+                     'label': 'Enter Squarefeet Here',
+                     'value:':''
                  },
                  'Type of Home': {
                      'type': 'checkbox',

@@ -105,8 +105,14 @@
             </md-radio-group>
                </div>
 
-
-
+             <div ng-if="itemVal.type == 'number'">
+                <md-divider></md-divider>
+                <h3 class="md-headline">{{listValue}}:</h3>
+                <md-input-container>
+                  <label>{{itemVal.label}}</label>
+                  <input ng-model="itemVal.value" type="number">
+                </md-input-container>
+            </div>
 
  </div>
  </div>

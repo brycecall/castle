@@ -49,8 +49,6 @@
                              'type': 'presettext',
                              'value': {
                                  'content': 'This Report concerns the visual [INSERT OPTION] inspection of an approximately [CALCULATE & INSERT AGE] old, [INSERT SQFT], [INSERT TYPE OF HOME],[INSERT PROPERTY USE],[INSERT NUMBER OF STORIES],[INSERT HOUSE FRAME],[INSERT PROPERTY TYPE],[INSERT CONFIGURATIONS], built in [INSERT YEAR].  The main entrance, driveway, or street access appeared to be facing predominantely toward the [INSERT PROPERTY ORIENTATION].  The street surface was [INSERT DRIVEWAY TYPE], and vehicle parking was available [INSERT VEHICLE PARKING]. ...   The locations of the main utility controls, shut-off valves, and/or disconnects are noted in the applicable mechanical sections.',
-                                 ,
-
                                  'showcontent': true
                              }
                          },
@@ -288,7 +286,8 @@
                                  }
                              },
                          }
-                     },
+                     }
+                 },
                      'Site': {
                          'Site': {
                              'Conditions': {
@@ -506,8 +505,8 @@
                              }
                          }
                      }
-                 };
 
+             };
 
 
                  $scope.currentPage = Object.keys($scope.report)[0];

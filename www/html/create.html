@@ -21,15 +21,15 @@
 
     <section flex="" layout="column" md-swipe-right="toggleLeft()" md-scroll-y>
         <md-content id="testAgain">
-<div ng-repeat="(sectionkey, sectiontitle) in notSorted(report)">
-            <md-card ng-repeat="(pagekey, pagetitle) in notSorted(report[sectiontitle])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[sectiontitle][pagetitle]" ng-show="sectiontitle == currentPage" >
+<!--<div ng-repeat="(sectionkey, sectiontitle) in notSorted(report)">-->
+            <md-card ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]"  >
                 <!--<md-card>-->
                 <md-card-content style="position:relative">
 
-                    <md-subheader ng-click="toggleLeft()" class="subHeader md-primary" style="cursor:pointer" >{{sectiontitle}}
+                    <md-subheader ng-click="toggleLeft()" class="subHeader md-primary" style="cursor:pointer" >{{currentPage}}
                         <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_chevron_right_48px.svg" class="headNavIcon"></md-icon>{{pagetitle}}</md-subheader>
 
-                   <div ng-repeat="(listKey, listValue) in notSorted(page)"  ng-init="itemVal = report[sectiontitle][pagetitle][listValue]">
+                   <div ng-repeat="(listKey, listValue) in notSorted(page)"  ng-init="itemVal = report[currentPage][pagetitle][listValue]">
 
                     <div ng-if="itemVal.type == 'clientinfo'">
 
@@ -79,8 +79,8 @@
                     <md-list ng-if="itemVal.type == 'presettext'">
                         <md-list-item  >
                             <div  class="relFlex">
-                              <md-switch ng-model="" aria-label="Show Conditions" flex="90"  class="firstPosition md-body-1">Show {{listValue}} Message </md-switch>
-                                <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_48px.svg" class="md-accent" ng-click="showMessage($event, listValue, itemVal.value.content)" flex="10"></md-icon>
+                              <md-switch ng-model="itemVal.showcontent" aria-label="Show listValue" flex="90"  class="firstPosition md-body-1">Show {{listValue}} Message </md-switch>
+                                <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_48px.svg" class="md-accent" ng-click="showMessage($event, listValue, itemVal.content)" flex="10"></md-icon>
                             </div>
                         </md-list-item>
                     </md-list>
@@ -121,7 +121,7 @@
                 </md-card-content>
             </md-card>
 
-            </div>
+<!--            </div>-->
         </md-content>
 
     </section>

@@ -26,7 +26,6 @@
                 <!--<md-card>-->
                 <md-card-content style="position:relative">
 
-
                     <md-subheader ng-click="toggleLeft()" class="subHeader md-primary" style="cursor:pointer" >{{sectiontitle}}
                         <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_chevron_right_48px.svg" class="headNavIcon"></md-icon>{{pagetitle}}</md-subheader>
 
@@ -74,17 +73,35 @@
 
                     </div>
 
-
-                    <md-list layout="column" layout-fill="" layout-align="top center">
-                        <md-list-item ng-repeat="(presettextkey, presettext) in notSorted(page.presettext)" class="relFlex">
-
-                          <md-switch ng-model="page.presettext[presettext].showcontent" aria-label="Show Conditions" flex="90"  class="firstPosition md-body-1">
-                                Show {{presettext}} Message </md-switch>
-                            <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_48px.svg" class="md-accent" ng-click="showMessage($event, presettext, page.presettext[presettext].content)" flex="10"></md-icon>
+<div layout="column" layout-fill="" layout-align="top center" ng-repeat="(listKey, listValue) in notSorted(page)"  ng-init="itemVal = report[sectiontitle][pagetitle][listValue]">
+                    <md-list  >
+                        <md-list-item  >
+<!--                           <div>{{itemVal}}</div>-->
+                            <div ng-if="itemVal.type == 'presettext'" class="relFlex">
+                              <md-switch ng-model="" aria-label="Show Conditions" flex="90"  class="firstPosition md-body-1">Show {{listValue}} Message </md-switch>
+                                <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_48px.svg" class="md-accent" ng-click="showMessage($event, listValue, itemVal.content)" flex="10"></md-icon>
+                            </div>
                         </md-list-item>
                     </md-list>
 
+                    <div ng-if="itemVal.type == 'checkbox'" class="relFlex"  >
+                           <h3 class="md-headline">{{listValue}}:</h3>
+                          <br />
 
+                           <md-list>
+
+                               <md-list-item  ng-repeat="(k, v) in listValue">
+                                <span md-ink-ripple="">
+                                    <md-checkbox class="md-secondary firstPosition md-body-1" ng-model="checkboxvalue" aria-label="{{checkboxval}}"  md-no-ink  flex-gt-md="80">{{listValue}}
+                                    </md-checkbox>
+                                </span>
+                                <div flex=""></div>
+                                <md-icon ng-if="checkboxvalue" md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="openCamera(checkboxval)" flex="10"></md-icon>
+                            </md-list-item>
+                        </md-list>
+                    </div>
+
+                </div>
 
 
 
@@ -99,12 +116,12 @@
                             <div flex=""></div>
                             <md-icon ng-if="checkboxvalue" md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="openCamera(checkboxval)" flex="10"></md-icon>
                         </md-list-item>
-
                     </md-list>
 
                     <md-button class="cameraButton md-accent" aria-label="Photos">
                         <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon> Add Photo
                     </md-button>
+
                      <a ng-click="scrollToTop()">TOP</a>
                     <div ng-if="$last" class="footerSpace"></div>
 

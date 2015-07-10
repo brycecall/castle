@@ -284,12 +284,4 @@ a:hover {
 }
 
 
-.subHeader[sticky-state="active"] {
-
-    position: absolute;
-    left: 0px;
-
-
-}
-
 

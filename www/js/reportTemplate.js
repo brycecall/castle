@@ -19,7 +19,7 @@
                              'showcontent': true
                          }
                      },
-                     'Inspection Type': { //Wants a "Spin the Dial"
+                     'Inspection Type': {
                          'type': 'dial',
                          'value': {
                              'Full': false,
@@ -31,7 +31,7 @@
                              'Rehabilitation': false
                          }
                      },
-                     'Year Built': { //Wants a "Spin the Dial"
+                     'Year Built': { //NEED SPIN DIAL
                          'type': 'dial',
                          'value': {
                              '1': false,
@@ -49,8 +49,7 @@
                      },
                      'Type of Home': {
                          'type': 'radio',
-                         'value': {
-
+                         'content': [
                              'Single Family': false,
                              'Single Use': false,
                              'Multiple Use': false,
@@ -58,23 +57,25 @@
                              'Triplex': false,
                              'Multi Family': false,
                              'Detatched': false
-                         }
+                         ],
+                         'value': ''
                      },
 
                      'Property Use': {
                          'type': 'radio',
-                         'value': {
+                         'content': [
                              'Residential': false,
                              'Apartment': false,
                              'Retail Store': false,
                              'Business': false,
                              'Industrial': false,
                              'Commercial': false
-                         }
+                         ],
+                         'value': ''
                      },
                      'Number of Stories': {
                          'type': 'radio',
-                         'value': {
+                         'content': [
                              'Rambler': false,
                              'One Level': false,
                              'Split-Entry': false,
@@ -85,11 +86,12 @@
                              'Three-Story': false,
                              'Mid-Rise': false,
                              'Multi-Level': false
-                         }
+                         ],
+                         'value': ''
                      },
                      'House Frame': { //radio
                          'type': 'radio',
-                         'value': {
+                         'content': [
                              'Wood-Framed': false,
                              'Steel-Framed': false,
                              'Concrete': false,
@@ -98,11 +100,12 @@
                              'Tilt-Up': false,
                              'Wood-Frame on Steel Carriage': false,
                              'ICF': false
-                         }
+                         ],
+                         'value': ''
                      },
                      'Property Type': {
                          'type': 'radio',
-                         'value': {
+                         'content': [
                              'Home': false,
                              'Twin Home': false,
                              'Town Home': false,
@@ -116,7 +119,8 @@
                              'Low-Rise': false,
                              'Mid-Rise': false,
                              'High-Rise': false
-                         }
+                         ],
+                         'value': ''
                      },
                      'Configurations': {
                          'type': 'checkbox',
@@ -136,7 +140,7 @@
                      },
                      'Property Orientation': {
                          'type': 'radio',
-                         'value': {
+                         'content': [
                              'North': false,
                              'East': false,
                              'West': false,
@@ -145,7 +149,8 @@
                              'North-West': false,
                              'South-East': false,
                              'South-West': false
-                         }
+                         ],
+                         'value': ''
                      },
                      'Vehicle Parking': {
                          'type': 'checkbox',
@@ -153,8 +158,8 @@
                              'At Curbside': false,
                              'In a Rear Alley': false,
                              'In the Driveway': false,
-                             'In Attached Garage(s)': false,
-                             'In a Detached Garage': false,
+                             'In a Attached Garage(s)': false,
+                             'In a Detached Garage(s)': false,
                              'In an Attached Carport': false,
                              'In a Detached Carport': false,
                              'In a Covered Parking Space': false,
@@ -166,14 +171,15 @@
                      },
                      'Utilities': {
                          'type': 'radio',
-                         'value': {
+                         'content': [
                              'Electricity': false,
                              'Electricity and Water': false,
                              'Electricity, Water, and Gas': false,
                              'Electricity, Water, and Oil': false,
                              'Electricity and Propane': false,
                              'Electricity, Water, and Propane': false
-                         }
+                         ],
+                         'value': ''
                      },
                      'What Utilities were OFF': {
                          'type': 'checkbox',
@@ -187,7 +193,7 @@
                      },
                      'direction': {
                          'type': 'radio',
-                         'value': {
+                         'content': [
                              'North': false,
                              'East': false,
                              'West': false,
@@ -196,7 +202,8 @@
                              'North-West': false,
                              'South-East': false,
                              'South-West': false
-                         }
+                         ],
+                         'value': ''
 
                      },
                      'clientinfo': {
@@ -230,13 +237,15 @@
                          }
                      },
                      'Driveway': {
-                         'type': 'checkbox',
-                         'value': {
+                         'type': 'radio',
+                         'content': [
                              'n/a': false,
                              'Concrete': false,
                              'Asphalt': false,
                              'Pavers/stone/brick': false,
                              'Dirt/gravel': false
+                             ],
+                         'value': ''
                          }
                      },
                      'Driveway Condition': {
@@ -254,14 +263,15 @@
                          }
                      },
                      'Patio': {
-                         'type': 'checkbox',
-                         'value': {
+                         'type': 'radio',
+                         'content': [
                              'n/a': false,
                              'Concrete': false,
                              'Paver/stone/brick': false,
                              'Wood/Composite': false,
                              'Covered': false
-                         }
+                         ],
+                         'value': ''
                      },
                      'Patio Condition': {
                          'type': 'checkbox',
@@ -351,8 +361,11 @@
                              'Re-Evaluate': false
                          }
                      },
-                     //INCLUDE PRESET TEXT: "Safety Concerns: Uneven edges at settling cracks in concrete drives or walkways may pose potential trip hazards, and should be improved to provide a safe walking surface. Safe and secure handrails and guard rails are recommended at all stairways, and where landing heights pose a potential falling hazard."
-
+                 'Safety Concern': {
+                     'type': 'presettext',
+                     'value': {
+                         'content': 'Uneven edges at settling cracks in concrete drives or walkways may pose potential trip hazards, and should be improved to provide a safe walking surface. Safe and secure handrails and guard rails are recommended at all stairways, and where landing heights pose a potential falling hazard.'
+                     }
                  },
                  'Attached Decks/Balconies/Porches/Steps': {
                      'Porch/Stoop': {

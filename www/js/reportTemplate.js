@@ -43,13 +43,13 @@
                      'Type of Home': {
                          'type': 'radio',
                          'content': [
-                             'Single Family': false,
-                             'Single Use': false,
-                             'Multiple Use': false,
-                             'Duplex': false,
-                             'Triplex': false,
-                             'Multi Family': false,
-                             'Detatched': false
+                             'Single Family',
+                             'Single Use',
+                             'Multiple Use',
+                             'Duplex',
+                             'Triplex',
+                             'Multi Family',
+                             'Detatched'
                          ],
                          'value': ''
                      },
@@ -57,61 +57,61 @@
                      'Property Use': {
                          'type': 'radio',
                          'content': [
-                             'Residential': false,
-                             'Apartment': false,
-                             'Retail Store': false,
-                             'Business': false,
-                             'Industrial': false,
-                             'Commercial': false
+                             'Residential',
+                             'Apartment',
+                             'Retail Store',
+                             'Business',
+                             'Industrial',
+                             'Commercial'
                          ],
                          'value': ''
                      },
                      'Number of Stories': {
                          'type': 'radio',
                          'content': [
-                             'Rambler': false,
-                             'One Level': false,
-                             'Split-Entry': false,
-                             'Split-Level': false,
-                             'One Story': false,
-                             '1 1/2 Story': false,
-                             'Two-Story': false,
-                             'Three-Story': false,
-                             'Mid-Rise': false,
-                             'Multi-Level': false
+                             'Rambler',
+                             'One Level',
+                             'Split-Entry',
+                             'Split-Level',
+                             'One Story',
+                             '1 1/2 Story',
+                             'Two-Story',
+                             'Three-Story',
+                             'Mid-Rise',
+                             'Multi-Level'
                          ],
                          'value': ''
                      },
                      'House Frame': { //radio
                          'type': 'radio',
                          'content': [
-                             'Wood-Framed': false,
-                             'Steel-Framed': false,
-                             'Concrete': false,
-                             'CMU/Block': false,
-                             'Masonry': false,
-                             'Tilt-Up': false,
-                             'Wood-Frame on Steel Carriage': false,
-                             'ICF': false
+                             'Wood-Framed',
+                             'Steel-Framed',
+                             'Concrete',
+                             'CMU/Block',
+                             'Masonry',
+                             'Tilt-Up',
+                             'Wood-Frame on Steel Carriage',
+                             'ICF'
                          ],
                          'value': ''
                      },
                      'Property Type': {
                          'type': 'radio',
                          'content': [
-                             'Home': false,
-                             'Twin Home': false,
-                             'Town Home': false,
-                             'Mobile Home': false,
-                             'Log Home': false,
-                             'Manufactured Home': false,
-                             'Prefabbed Structure': false,
-                             'Condominium': false,
-                             'Building': false,
-                             'Garage': false,
-                             'Low-Rise': false,
-                             'Mid-Rise': false,
-                             'High-Rise': false
+                             'Home',
+                             'Twin Home',
+                             'Town Home',
+                             'Mobile Home',
+                             'Log Home',
+                             'Manufactured Home',
+                             'Prefabbed Structure',
+                             'Condominium',
+                             'Building',
+                             'Garage',
+                             'Low-Rise',
+                             'Mid-Rise',
+                             'High-Rise'
                          ],
                          'value': ''
                      },
@@ -134,14 +134,14 @@
                      'Property Orientation': {
                          'type': 'radio',
                          'content': [
-                             'North': false,
-                             'East': false,
-                             'West': false,
-                             'South': false,
-                             'North-East': false,
-                             'North-West': false,
-                             'South-East': false,
-                             'South-West': false
+                             'North',
+                             'East',
+                             'West',
+                             'South',
+                             'North-East',
+                             'North-West',
+                             'South-East',
+                             'South-West'
                          ],
                          'value': ''
                      },
@@ -165,12 +165,12 @@
                      'Utilities': {
                          'type': 'radio',
                          'content': [
-                             'Electricity': false,
-                             'Electricity and Water': false,
-                             'Electricity, Water, and Gas': false,
-                             'Electricity, Water, and Oil': false,
-                             'Electricity and Propane': false,
-                             'Electricity, Water, and Propane': false
+                             'Electricity',
+                             'Electricity and Water',
+                             'Electricity, Water, and Gas',
+                             'Electricity, Water, and Oil',
+                             'Electricity and Propane',
+                             'Electricity, Water, and Propane'
                          ],
                          'value': ''
                      },
@@ -187,14 +187,14 @@
                      'direction': {
                          'type': 'radio',
                          'content': [
-                             'North': false,
-                             'East': false,
-                             'West': false,
-                             'South': false,
-                             'North-East': false,
-                             'North-West': false,
-                             'South-East': false,
-                             'South-West': false
+                             'North',
+                             'East',
+                             'West',
+                             'South',
+                             'North-East',
+                             'North-West',
+                             'South-East',
+                             'South-West'
                          ],
                          'value': ''
 
@@ -228,11 +228,11 @@
                      'Driveway': {
                          'type': 'radio',
                          'content': [
-                             'n/a': false,
-                             'Concrete': false,
-                             'Asphalt': false,
-                             'Pavers/stone/brick': false,
-                             'Dirt/gravel': false
+                             'n/a',
+                             'Concrete',
+                             'Asphalt',
+                             'Pavers/stone/brick',
+                             'Dirt/gravel'
                              ],
                          'value': ''
                          }
@@ -254,11 +254,11 @@
                      'Patio': {
                          'type': 'radio',
                          'content': [
-                             'n/a': false,
-                             'Concrete': false,
-                             'Paver/stone/brick': false,
-                             'Wood/Composite': false,
-                             'Covered': false
+                             'n/a',
+                             'Concrete',
+                             'Paver/stone/brick',
+                             'Wood/Composite',
+                             'Covered'
                          ],
                          'value': ''
                      },

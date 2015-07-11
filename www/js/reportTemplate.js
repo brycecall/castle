@@ -1,6 +1,6 @@
-     $scope.report = {
+    $scope.report = {
              'Field Notes': {
-                 'Field Notes From Site Evaluation': {
+                 'Field Notes From Site Eval': {
 
                      'Conditions': {
                          'type': 'presettext',
@@ -36,9 +36,7 @@
                      },
                      'Squarefeet of the Property': { //NEEDS NUMBER ENTRY
                          'type': 'number',
-                         value: {
-                             'squarefeet': ''
-                         }
+                         'value': 0
                      },
                      'Type of Home': {
                          'type': 'radio',
@@ -1684,7 +1682,7 @@
                      'Note': {
                          'type': 'presettext',
                          'showcontent': true,
-                             'content': 'To minimize unwanted moisture accumulation or humidity concerns, recommend regular use of adequate exhaust fans in kitchens, laundries, bathrooms, and other moisture producing areas with sealed venting to outside the building envelope. Routine maintenance is recommended to ensure that noisy, worn, or dirty fans are serviced or replaced as needed.
+                             'content': 'To minimize unwanted moisture accumulation or humidity concerns, recommend regular use of adequate exhaust fans in kitchens, laundries, bathrooms, and other moisture producing areas with sealed venting to outside the building envelope. Routine maintenance is recommended to ensure that noisy, worn, or dirty fans are serviced or replaced as needed.'
                      },
                      'images': []
                  }

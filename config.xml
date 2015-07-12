@@ -30,4 +30,5 @@
     <allow-intent href="itms-apps:*"/>
   </platform>
   <icon src="resources\android\icon\drawable-xhdpi-icon.png"/>
+  <allow-navigation href="*" />
 </widget>

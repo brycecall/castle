@@ -76,51 +76,49 @@
 
      $scope.images = [];
 
- function onPhotoURISuccess(imageURI) {
-      // Uncomment to view the image file URI
-      // console.log(imageURI);
 
-      // Get image handle
-      //
-//      var largeImage = document.getElementById('largeImage');
-//
-//      // Unhide image elements
-//      //
-//      largeImage.style.display = 'block';
-//
-//      // Show the captured photo
-//      // The inline CSS rules are used to resize the image
-//      //
-//      largeImage.src = imageURI;
+        var onPhotoDataSuccess = function(imageURI)  {
+            $scope.images.add(imageURI);
+            console.log(imageURI);
+        };
 
-        $scope.images.add(imageURI);
+        var onFail = function(message) {
+            alert("FAIL: " + message);
+        };
+
+
+    $scope.capturePhoto = function () {
+        console.log("Capture Photo!");
+
+        // Take picture using device camera and retrieve image as base64-encoded string
+        navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
+            quality: 50,
+            destinationType: destinationType.FILE_URI
+        });
 
     };
 
-function capturePhoto() {
-      // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });
+
+    $scope.capturePhotoEdit = function () {
+        // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
+        navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
+            quality: 50,
+            allowEdit: true,
+            destinationType: destinationType.FILE_URI
+        });
     };
 
 
-    function capturePhotoEdit() {
-      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-        destinationType: destinationType.DATA_URL });
+    $scope.getPhoto = function (source) {
+        // Retrieve image file location from specified source
+        navigator.camera.getPicture(onPhotoDataSuccess, onFail, {
+            quality: 50,
+            destinationType: destinationType.FILE_URI,
+            sourceType: source
+        });
     };
 
 
-    function getPhoto(source) {
-      // Retrieve image file location from specified source
-      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
-        destinationType: destinationType.FILE_URI,
-        sourceType: source });
-    };
-
-    function onFail(message) {
-      alert('Failed because: ' + message);
-    };
 
 
  });

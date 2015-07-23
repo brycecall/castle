@@ -182,7 +182,7 @@
                         'Propane': false
                     }
                 },
-                'direction': {
+                'Direction': {
                     'type': 'radio',
                     'content': [
                              'North',
@@ -197,7 +197,7 @@
                     'value': ''
 
                 },
-                'clientinfo': {
+                'Clientinfo': {
                     'type': 'clientinfo',
                     'value': {
                         'firstName': '',

@@ -285,3 +285,10 @@ a:hover {
 
 
 
+
+.profileWrapper {
+    border-radius: 30px;
+    background-color: #FFFFFF;
+    height: 45px;
+    width: 45px;
+}

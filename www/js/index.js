@@ -153,7 +153,7 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
         document.addEventListener('deviceready', function () {
             console.log('Cordova Ready!');
             factory.clearCache();
-            pushWoosh.init();
+            //pushWoosh.init();
         }, false);
         
         return factory;

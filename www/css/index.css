@@ -283,7 +283,9 @@ a:hover {
     width:100%
 }
 
-
+md-radio-group {
+    border: none;
+}
 
 
 .profileWrapper {

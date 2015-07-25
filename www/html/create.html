@@ -133,6 +133,11 @@
                     </md-button>
                     <div ng-repeat="image in images">{{image}}</div>
 
+                               <img ng-src="img/icon.png" id="smallImage" style="max-height: 300px" data-rotate="90" />
+
+                                <md-button class="md-raised md-primary capture_button" ng-click="capturePhoto()" aria-label="Capture Photo">Capture Photo</md-button>
+        <md-button class="md-raised capture_button" ng-click="getPhoto(0);" aria-label="Select from Library">Photo Library</md-button>
+
                     <a ng-click="scrollToTop()">TOP</a>
                     <div ng-if="$last" class="footerSpace"></div>
 

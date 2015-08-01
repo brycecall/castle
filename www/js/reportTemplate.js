@@ -1,7 +1,18 @@
     var reportOne = {
         'Field Notes': {
-            'Field Notes From Site Eval': {
-
+            'Property Specifications': {
+                'Clientinfo': {
+                    'type': 'clientinfo',
+                    'value': {
+                        'firstName': '',
+                        'lastName': '',
+                        'address': '',
+                        'addressTwo': '',
+                        'city': '',
+                        'state': '',
+                        'postalCode': ''
+                    }
+                },
                 'Conditions': {
                     'type': 'presettext',
                     'showcontent': true,
@@ -15,23 +26,23 @@
                 'Inspection Type': {
                     'type': 'dial',
                     'value': {
-                        'Full': false,
-                        'Partial': false,
-                        'Abbreviated': false,
-                        'Ancillary': false,
-                        'Limited': false,
-                        '203(k)': false,
-                        'Rehabilitation': false
+                        'Full': {c:false, i:''},
+                        'Partial': {c:false, i:''},
+                        'Abbreviated': {c:false, i:''},
+                        'Ancillary': {c:false, i:''},
+                        'Limited': {c:false, i:''},
+                        '203(k)': {c:false, i:''},
+                        'Rehabilitation': {c:false, i:''}
                     }
                 },
                 'Year Built': { //NEED SPIN DIAL
                     'type': 'dial',
                     'value': {
-                        '1': false,
-                        '2': false,
-                        '3': false,
-                        '4': false,
-                        'Spin Dial': false
+                        '1': {c:false, i:''},
+                        '2': {c:false, i:''},
+                        '3': {c:false, i:''},
+                        '4': {c:false, i:''},
+                        'Spin Dial': {c:false, i:''}
                     }
                 },
                 'Squarefeet of the Property': { //NEEDS NUMBER ENTRY
@@ -116,17 +127,17 @@
                 'Configurations': {
                     'type': 'checkbox',
                     'value': {
-                        'w/ Lower Parking Garage': false,
-                        'w/ Basement & Garage': false,
-                        'w/ Garage': false,
-                        'w/ Garage & Crawlspace': false,
-                        'w/ Full Basement': false,
-                        'w/ Daylight Basement': false,
-                        'w/ Basement & Crawlspace(s)': false,
-                        'w/ Crawlspace': false,
-                        'w/ Slab-On-Grade': false,
-                        'Over Adjoining Unit(s)': false,
-                        'Over Adjoining Basement Unit': false
+                        'w/ Lower Parking Garage': {c:false, i:''},
+                        'w/ Basement & Garage': {c:false, i:''},
+                        'w/ Garage': {c:false, i:''},
+                        'w/ Garage & Crawlspace': {c:false, i:''},
+                        'w/ Full Basement': {c:false, i:''},
+                        'w/ Daylight Basement': {c:false, i:''},
+                        'w/ Basement & Crawlspace(s)': {c:false, i:''},
+                        'w/ Crawlspace': {c:false, i:''},
+                        'w/ Slab-On-Grade': {c:false, i:''},
+                        'Over Adjoining Unit(s)': {c:false, i:''},
+                        'Over Adjoining Basement Unit': {c:false, i:''}
                     }
                 },
                 'Property Orientation': {
@@ -146,19 +157,19 @@
                 'Vehicle Parking': {
                     'type': 'checkbox',
                     'value': {
-                        'At Curbside': false,
-                        'In a Rear Alley': false,
-                        'In the Driveway': false,
-                        'In a Attached Garage(s)': false,
-                        'In a Detached Garage(s)': false,
-                        'In an Attached Carport': false,
-                        'In a Detached Carport': false,
-                        'In a Covered Parking Space': false,
-                        'In an Open Parking Space': false,
-                        'In a Secured Parking Garage': false,
-                        'In an Open Parking Garage': false,
-                        'In an Open,Striped Parking Lot': false
-                    }
+                        'At Curbside': {c:{c:false, i:''}, i:''},
+                        'In a Rear Alley': {c:false, i:''},
+                        'In the Driveway': {c:false, i:''},
+                        'In an Attached Garage(s)': {c:false, i:''},
+                        'In a Detached Garage(s)': {c:false, i:''},
+                        'In an Attached Carport': {c:false, i:''},
+                        'In a Detached Carport': {c:false, i:''},
+                        'In a Covered Parking Space': {c:false, i:''},
+                        'In an Open Parking Space': {c:false, i:''},
+                        'In a Secured Parking Garage': {c:false, i:''},
+                        'In an Open Parking Garage': {c:false, i:''},
+                        'In an Open,Striped Parking Lot': {c:false, i:''}
+                    },
                 },
                 'Utilities': {
                     'type': 'radio',
@@ -175,11 +186,11 @@
                 'What Utilities were OFF': {
                     'type': 'checkbox',
                     'value': {
-                        'Electricity': false,
-                        'Water': false,
-                        'Gas': false,
-                        'Oil': false,
-                        'Propane': false
+                        'Electricity': {c:false, i:''},
+                        'Water': {c:false, i:''},
+                        'Gas': {c:false, i:''},
+                        'Oil': {c:false, i:''},
+                        'Propane': {c:false, i:''}
                     }
                 },
                 'Direction': {
@@ -196,23 +207,12 @@
                          ],
                     'value': ''
 
-                },
-                'Clientinfo': {
-                    'type': 'clientinfo',
-                    'value': {
-                        'firstName': '',
-                        'lastName': '',
-                        'address': '',
-                        'addressTwo': '',
-                        'city': '',
-                        'state': '',
-                        'postalCode': ''
-                    }
-                },
+                }
+
             }
         },
         'Site': {
-            'Site': {
+            'Evaluation': {
                 'Conditions': {
                     'type': 'presettext',
                     'showcontent': true,
@@ -238,15 +238,15 @@
             'Driveway Condition': {
                 'type': 'checkbox',
                 'value': {
-                    'Satisfactory': false,
-                    'Marginal': false,
-                    'Poor': false,
-                    'Pitched towards home': false,
-                    'Typical cracks': false,
-                    'Large cracks': false,
-                    'Root heaving': false,
-                    'Uneven': false,
-                    'Trip/Falling Hazard': false
+                    'Satisfactory': {c:false, i:''},
+                    'Marginal': {c:false, i:''},
+                    'Poor': {c:false, i:''},
+                    'Pitched towards home': {c:false, i:''},
+                    'Typical cracks': {c:false, i:''},
+                    'Large cracks': {c:false, i:''},
+                    'Root heaving': {c:false, i:''},
+                    'Uneven': {c:false, i:''},
+                    'Trip/Falling Hazard': {c:false, i:''}
                 }
             },
             'Patio': {
@@ -263,89 +263,89 @@
             'Patio Condition': {
                 'type': 'checkbox',
                 'value': {
-                    'Satisfactory': false,
-                    'Marginal': false,
-                    'Poor': false,
-                    'Typical cracks': false,
-                    'Large cracks': false,
-                    'Gaps': false,
-                    'Holes': false,
-                    'Mildew': false,
-                    'Damage': false,
-                    'Settled': false,
-                    'Uneven Surface': false,
-                    'Trip/Falling Hazard': false
+                    'Satisfactory': {c:false, i:''},
+                    'Marginal': {c:false, i:''},
+                    'Poor': {c:false, i:''},
+                    'Typical cracks': {c:false, i:''},
+                    'Large cracks': {c:false, i:''},
+                    'Gaps': {c:false, i:''},
+                    'Holes': {c:false, i:''},
+                    'Mildew': {c:false, i:''},
+                    'Damage': {c:false, i:''},
+                    'Settled': {c:false, i:''},
+                    'Uneven Surface': {c:false, i:''},
+                    'Trip/Falling Hazard': {c:false, i:''}
                 }
             },
             'Walkways and Steps': {
                 'type': 'checkbox',
                 'value': {
-                    'n/a': false,
-                    'Uneven': false,
-                    'Large cracks': false,
-                    'Root heaving': false,
-                    'Moss build-up': false,
-                    'Missing spacers': false,
-                    'Settled': false,
-                    'Trip hazard': false,
-                    'Missing handrails': false,
-                    'Missing safety glass': false
+                    'n/a': {c:false, i:''},
+                    'Uneven': {c:false, i:''},
+                    'Large cracks': {c:false, i:''},
+                    'Root heaving': {c:false, i:''},
+                    'Moss build-up': {c:false, i:''},
+                    'Missing spacers': {c:false, i:''},
+                    'Settled': {c:false, i:''},
+                    'Trip hazard': {c:false, i:''},
+                    'Missing handrails': {c:false, i:''},
+                    'Missing safety glass': {c:false, i:''}
                 }
             },
             'Retaining Wall': {
                 'type': 'checkbox',
                 'value': {
-                    'None': false,
-                    'TYPE (Needs Greater Definition)': false
+                    'None': {c:false, i:''},
+                    'TYPE (Needs Greater Definition)': {c:false, i:''}
                 }
             },
             'Retaining Wall Condition': {
                 'type': 'checkbox',
                 'value': {
-                    'Satisfactory': false,
-                    'Marginal': false,
-                    'Poor': false,
-                    'Damaged': false,
-                    'Leaning': false,
-                    'Leaking/Drainage Concern': false,
-                    'Trip/Falling Hazard': false
+                    'Satisfactory': {c:false, i:''},
+                    'Marginal': {c:false, i:''},
+                    'Poor': {c:false, i:''},
+                    'Damaged': {c:false, i:''},
+                    'Leaning': {c:false, i:''},
+                    'Leaking/Drainage Concern': {c:false, i:''},
+                    'Trip/Falling Hazard': {c:false, i:''}
                 }
             },
             'Safety Fencing at': {
                 'type': 'checkbox',
                 'value': {
-                    'n/a': false,
-                    'Water Feature': false,
-                    'Drop-off/Retaining Wall': false,
-                    'Steep Slope': false,
-                    'TYPE (Needs Greater Definition)': false
+                    'n/a': {c:false, i:''},
+                    'Water Feature': {c:false, i:''},
+                    'Drop-off/Retaining Wall': {c:false, i:''},
+                    'Steep Slope': {c:false, i:''},
+                    'TYPE (Needs Greater Definition)': {c:false, i:''}
                 }
             },
             'Safety Fencing Condition': {
                 'type': 'checkbox',
                 'value': {
-                    'Satisfactory': false,
-                    'Maginal': false,
-                    'Poor': false,
-                    'Missing': false,
-                    'Trip/Falling Hazard': false,
-                    'Leaning': false,
-                    'Damaged': false,
-                    'Verify Adequate Height': false,
-                    'Hazardous': false,
-                    'Re-Evaluate': false
+                    'Satisfactory': {c:false, i:''},
+                    'Maginal': {c:false, i:''},
+                    'Poor': {c:false, i:''},
+                    'Missing': {c:false, i:''},
+                    'Trip/Falling Hazard': {c:false, i:''},
+                    'Leaning': {c:false, i:''},
+                    'Damaged': {c:false, i:''},
+                    'Verify Adequate Height': {c:false, i:''},
+                    'Hazardous': {c:false, i:''},
+                    'Re-Evaluate': {c:false, i:''}
                 }
             },
             'Landscaping': {
                 'type': 'checkbox',
                 'value': {
-                    'Not Inspected': false,
-                    'Poor Earth-to-Wood Separation': false,
-                    'Yard Steps': false,
-                    'Drainage': false,
-                    'Negative Surrounding Grade (sloping toward building)': false,
-                    'Overgrown Foliage': false,
-                    'Re-Evaluate': false
+                    'Not Inspected': {c:false, i:''},
+                    'Poor Earth-to-Wood Separation': {c:false, i:''},
+                    'Yard Steps': {c:false, i:''},
+                    'Drainage': {c:false, i:''},
+                    'Negative Surrounding Grade (sloping toward building)': {c:false, i:''},
+                    'Overgrown Foliage': {c:false, i:''},
+                    'Re-Evaluate': {c:false, i:''}
                 }
             },
             'Safety Concern': {
@@ -357,74 +357,74 @@
                 'Porch/Stoop': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Concrete': false,
-                        'Pavers/Stone/Brick': false,
-                        'Wood/Composite': false,
-                        'Covered': false
+                        'n/a': {c:false, i:''},
+                        'Concrete': {c:false, i:''},
+                        'Pavers/Stone/Brick': {c:false, i:''},
+                        'Wood/Composite': {c:false, i:''},
+                        'Covered': {c:false, i:''}
                     }
                 },
                 'Porch/Stoop Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Verify Attachment': false,
-                        'Loose/Missing Railings': false,
-                        'Trip Hazard(s)': false,
-                        'Typical Cracks': false,
-                        'Large Cracks': false,
-                        'Gaps/Holes': false,
-                        'Weathered Finish': false,
-                        'Damaged': false,
-                        'Settled': false,
-                        'Earth Contact': false,
-                        'Mildew': false,
-                        'Fungal Rot/Probed': false,
-                        'Re-Evaluate': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Verify Attachment': {c:false, i:''},
+                        'Loose/Missing Railings': {c:false, i:''},
+                        'Trip Hazard(s)': {c:false, i:''},
+                        'Typical Cracks': {c:false, i:''},
+                        'Large Cracks': {c:false, i:''},
+                        'Gaps/Holes': {c:false, i:''},
+                        'Weathered Finish': {c:false, i:''},
+                        'Damaged': {c:false, i:''},
+                        'Settled': {c:false, i:''},
+                        'Earth Contact': {c:false, i:''},
+                        'Mildew': {c:false, i:''},
+                        'Fungal Rot/Probed': {c:false, i:''},
+                        'Re-Evaluate': {c:false, i:''}
                     }
                 },
                 'Yard Steps': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Concrete': false,
-                        'Uneven': false,
-                        'Large Cracks': false,
-                        'Root Heaving': false,
-                        'Moss Build-Up': false,
-                        'Missing Spacers': false,
-                        'Settled': false,
-                        'Trip Hazard': false,
-                        'Missing Handrails': false,
-                        'Missing Safety Glass': false
+                        'n/a': {c:false, i:''},
+                        'Concrete': {c:false, i:''},
+                        'Uneven': {c:false, i:''},
+                        'Large Cracks': {c:false, i:''},
+                        'Root Heaving': {c:false, i:''},
+                        'Moss Build-Up': {c:false, i:''},
+                        'Missing Spacers': {c:false, i:''},
+                        'Settled': {c:false, i:''},
+                        'Trip Hazard': {c:false, i:''},
+                        'Missing Handrails': {c:false, i:''},
+                        'Missing Safety Glass': {c:false, i:''}
                     }
                 },
                 'Deck/Balcony': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Raised': false,
-                        'Covered': false,
-                        'Wood/Composite': false,
-                        'Verity Attachment': false
+                        'n/a': {c:false, i:''},
+                        'Raised': {c:false, i:''},
+                        'Covered': {c:false, i:''},
+                        'Wood/Composite': {c:false, i:''},
+                        'Verity Attachment': {c:false, i:''}
                     }
                 },
                 'Deck/Balcony Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Loose/Missing Railings': false,
-                        'Weathered Finish': false,
-                        'Damaged': false,
-                        'Settled': false,
-                        'Earth Contact': false,
-                        'Mildew': false,
-                        'Fungal Rot/Probed': false,
-                        'Re-Evaluate': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Loose/Missing Railings': {c:false, i:''},
+                        'Weathered Finish': {c:false, i:''},
+                        'Damaged': {c:false, i:''},
+                        'Settled': {c:false, i:''},
+                        'Earth Contact': {c:false, i:''},
+                        'Mildew': {c:false, i:''},
+                        'Fungal Rot/Probed': {c:false, i:''},
+                        'Re-Evaluate': {c:false, i:''}
                     }
                 }
             }
@@ -450,96 +450,96 @@
                 'Type(s) of Wall Cladding': {
                     'type': 'checkbox',
                     'value': {
-                        'Brick': false,
-                        'Stone': false,
-                        'Stucco': false,
-                        'Metal': false,
-                        'Vinyl': false,
-                        'Cement Board': false,
-                        'Wood': false,
-                        'Fiberboard': false,
-                        'Hardi-Board/Plank': false,
-                        'Panels/Sheets': false,
-                        'T-111': false,
-                        'Lapped': false,
-                        'T&G': false,
-                        'Vertical Channel': false,
-                        'EIFS': false,
-                        'Pre 1996 EIFS': false,
-                        'Recalled LP': false,
-                        'Friable PACM': false
+                        'Brick': {c:false, i:''},
+                        'Stone': {c:false, i:''},
+                        'Stucco': {c:false, i:''},
+                        'Metal': {c:false, i:''},
+                        'Vinyl': {c:false, i:''},
+                        'Cement Board': {c:false, i:''},
+                        'Wood': {c:false, i:''},
+                        'Fiberboard': {c:false, i:''},
+                        'Hardi-Board/Plank': {c:false, i:''},
+                        'Panels/Sheets': {c:false, i:''},
+                        'T-111': {c:false, i:''},
+                        'Lapped': {c:false, i:''},
+                        'T&G': {c:false, i:''},
+                        'Vertical Channel': {c:false, i:''},
+                        'EIFS': {c:false, i:''},
+                        'Pre 1996 EIFS': {c:false, i:''},
+                        'Recalled LP': {c:false, i:''},
+                        'Friable PACM': {c:false, i:''}
                     }
                 },
                 'Wall Cladding Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Loose': false,
-                        'Gaps': false,
-                        'Missing Pieces': false,
-                        'Broken/Damaged': false,
-                        'Inadequate Coverage': false,
-                        'Peeling Paint': false,
-                        'Weathered': false,
-                        'Pest Issues': false,
-                        'Cracked/Bulging': false,
-                        'Mildew': false,
-                        'Deteriorated': false,
-                        'Fungal Rot/Probed': false,
-                        'Re-Evaluate': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Loose': {c:false, i:''},
+                        'Gaps': {c:false, i:''},
+                        'Missing Pieces': {c:false, i:''},
+                        'Broken/Damaged': {c:false, i:''},
+                        'Inadequate Coverage': {c:false, i:''},
+                        'Peeling Paint': {c:false, i:''},
+                        'Weathered': {c:false, i:''},
+                        'Pest Issues': {c:false, i:''},
+                        'Cracked/Bulging': {c:false, i:''},
+                        'Mildew': {c:false, i:''},
+                        'Deteriorated': {c:false, i:''},
+                        'Fungal Rot/Probed': {c:false, i:''},
+                        'Re-Evaluate': {c:false, i:''}
                     }
                 },
                 'Flashing': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Missing': false,
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Defective': false,
-                        'Re-Evaluate': false
+                        'n/a': {c:false, i:''},
+                        'Missing': {c:false, i:''},
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Defective': {c:false, i:''},
+                        'Re-Evaluate': {c:false, i:''}
                     }
                 },
                 'Trim/Soffit/Fascia': {
                     'type': 'checkbox',
                     'value': {
-                        'Wood': false,
-                        'Fiberboard': false,
-                        'Masonry': false,
-                        'EIFS': false,
-                        'Metal': false,
-                        'Vinyl': false,
-                        'Enclosed Soffit': false,
-                        'Open Eaves': false,
-                        'Screened Ventilation': false,
-                        'Unflashed BRT/OLook': false
+                        'Wood': {c:false, i:''},
+                        'Fiberboard': {c:false, i:''},
+                        'Masonry': {c:false, i:''},
+                        'EIFS': {c:false, i:''},
+                        'Metal': {c:false, i:''},
+                        'Vinyl': {c:false, i:''},
+                        'Enclosed Soffit': {c:false, i:''},
+                        'Open Eaves': {c:false, i:''},
+                        'Screened Ventilation': {c:false, i:''},
+                        'Unflashed BRT/OLook': {c:false, i:''}
                     }
                 },
                 'Trim/Soffit/Fascia Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Loose': false,
-                        'Gaps': false,
-                        'Missing Pieces': false,
-                        'Exposed Wood': false,
-                        'Loose/Missing Flashing': false,
-                        'Poor Protection/Coverage': false,
-                        'Stains': false,
-                        'Peeling Paint': false,
-                        'Weathered/Worn': false,
-                        'Deterioration': false,
-                        'Fungal Rot': false,
-                        'Broken/Damaged': false,
-                        'Pest Issues': false,
-                        'Foliage Contact': false,
-                        'Potential Hidden Damage': false,
-                        'Recommend Re-Evaluation': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Loose': {c:false, i:''},
+                        'Gaps': {c:false, i:''},
+                        'Missing Pieces': {c:false, i:''},
+                        'Exposed Wood': {c:false, i:''},
+                        'Loose/Missing Flashing': {c:false, i:''},
+                        'Poor Protection/Coverage': {c:false, i:''},
+                        'Stains': {c:false, i:''},
+                        'Peeling Paint': {c:false, i:''},
+                        'Weathered/Worn': {c:false, i:''},
+                        'Deterioration': {c:false, i:''},
+                        'Fungal Rot': {c:false, i:''},
+                        'Broken/Damaged': {c:false, i:''},
+                        'Pest Issues': {c:false, i:''},
+                        'Foliage Contact': {c:false, i:''},
+                        'Potential Hidden Damage': {c:false, i:''},
+                        'Recommend Re-Evaluation': {c:false, i:''}
                     }
                 },
                 //COMMENTS SECTION HERE.
@@ -550,62 +550,62 @@
                 'Window Frame/Trim': {
                     'type': 'checkbox',
                     'value': {
-                        'Wood': false,
-                        'Aluminum/Metal': false,
-                        'Clad': false,
-                        'Vinyl': false,
-                        'Fiberglass': false
+                        'Wood': {c:false, i:''},
+                        'Aluminum/Metal': {c:false, i:''},
+                        'Clad': {c:false, i:''},
+                        'Vinyl': {c:false, i:''},
+                        'Fiberglass': {c:false, i:''}
                     }
                 },
                 'Window Frame/Trim Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Gaps': false,
-                        'Missing Pieces': false,
-                        'Exposed Wood': false,
-                        'Missing Flashing': false,
-                        'Weathered/Worn Finish': false,
-                        'Peeling Paint/Inadequate Coverage': false,
-                        'Missing Caulking': false,
-                        'Broken Glass': false,
-                        'Damaged': false,
-                        'Deteriorated': false,
-                        'Fungal Rot': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Gaps': {c:false, i:''},
+                        'Missing Pieces': {c:false, i:''},
+                        'Exposed Wood': {c:false, i:''},
+                        'Missing Flashing': {c:false, i:''},
+                        'Weathered/Worn Finish': {c:false, i:''},
+                        'Peeling Paint/Inadequate Coverage': {c:false, i:''},
+                        'Missing Caulking': {c:false, i:''},
+                        'Broken Glass': {c:false, i:''},
+                        'Damaged': {c:false, i:''},
+                        'Deteriorated': {c:false, i:''},
+                        'Fungal Rot': {c:false, i:''}
                     }
                 },
                 'Exterior Doors': {
                     'type': 'checkbox',
                     'value': {
-                        'Metal': false,
-                        'Wood': false,
-                        'Fiberglass': false
+                        'Metal': {c:false, i:''},
+                        'Wood': {c:false, i:''},
+                        'Fiberglass': {c:false, i:''}
                     }
                 },
                 'Exterior Doors Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Missing or Inadequate': false,
-                        'Threshold': false,
-                        'Weather-Strip': false,
-                        'Hardware': false,
-                        'Repairs Needed': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Missing or Inadequate': {c:false, i:''},
+                        'Threshold': {c:false, i:''},
+                        'Weather-Strip': {c:false, i:''},
+                        'Hardware': {c:false, i:''},
+                        'Repairs Needed': {c:false, i:''}
                     }
                 },
                 'Caulking': {
                     'type': 'checkbox',
                     'value': {
-                        'Weathered': false,
-                        'Stretched': false,
-                        'Cracked': false,
-                        'Gaps': false,
-                        'Missing': false,
-                        'Recommend sealing all perforations through the exterior wall surface': false
+                        'Weathered': {c:false, i:''},
+                        'Stretched': {c:false, i:''},
+                        'Cracked': {c:false, i:''},
+                        'Gaps': {c:false, i:''},
+                        'Missing': {c:false, i:''},
+                        'Recommend sealing all perforations through the exterior wall surface': {c:false, i:''}
                     }
                 },
                 'images': []
@@ -624,146 +624,146 @@
                 'Vehicle Parking': {
                     'type': 'checkbox',
                     'value': {
-                        'Curbside': false,
-                        'Space': false,
-                        'Public Garage': false,
-                        'Carport': false,
-                        'Garage': false,
-                        'Attached': false,
-                        'Detached': false
+                        'Curbside': {c:false, i:''},
+                        'Space': {c:false, i:''},
+                        'Public Garage': {c:false, i:''},
+                        'Carport': {c:false, i:''},
+                        'Garage': {c:false, i:''},
+                        'Attached': {c:false, i:''},
+                        'Detached': {c:false, i:''}
                     }
                 },
                 'Floor': {
                     'type': 'checkbox',
                     'value': {
-                        'Concrete Slab': false,
-                        'Asphalt': false,
-                        'Pavers/Cobblestone': false,
-                        'Gravel': false,
-                        'Dirt': false
+                        'Concrete Slab': {c:false, i:''},
+                        'Asphalt': {c:false, i:''},
+                        'Pavers/Cobblestone': {c:false, i:''},
+                        'Gravel': {c:false, i:''},
+                        'Dirt': {c:false, i:''}
                     }
                 },
                 'Floor Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Sloping': false,
-                        'Typical Cracks': false,
-                        'Large Cracks': false,
-                        'Trip Hazards': false,
-                        'Efflorescence': false,
-                        'Not Visible': false,
-                        'Excessive Storage': false,
-                        'Re-Evaluate': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Sloping': {c:false, i:''},
+                        'Typical Cracks': {c:false, i:''},
+                        'Large Cracks': {c:false, i:''},
+                        'Trip Hazards': {c:false, i:''},
+                        'Efflorescence': {c:false, i:''},
+                        'Not Visible': {c:false, i:''},
+                        'Excessive Storage': {c:false, i:''},
+                        'Re-Evaluate': {c:false, i:''}
                     }
                 },
                 'Firewall': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Blocked or Inoperable': false,
-                        'Wood': false,
-                        'Metal': false,
-                        'Fiberglass': false
+                        'n/a': {c:false, i:''},
+                        'Blocked or Inoperable': {c:false, i:''},
+                        'Wood': {c:false, i:''},
+                        'Metal': {c:false, i:''},
+                        'Fiberglass': {c:false, i:''}
                     }
                 },
                 'Firewall Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Verify Door': false,
-                        'Threshod': false,
-                        'Hinges': false,
-                        'Seal': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Verify Door': {c:false, i:''},
+                        'Threshod': {c:false, i:''},
+                        'Hinges': {c:false, i:''},
+                        'Seal': {c:false, i:''}
                     }
                 },
                 'Exterior Service Door': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Blocked or Inoperable': false,
-                        'Wood': false,
-                        'Metal': false,
-                        'Fiberglass': false
+                        'n/a': {c:false, i:''},
+                        'Blocked or Inoperable': {c:false, i:''},
+                        'Wood': {c:false, i:''},
+                        'Metal': {c:false, i:''},
+                        'Fiberglass': {c:false, i:''}
                     }
                 },
                 'Exterior Service Door Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Damaged': false,
-                        'Needs Adjustment': false,
-                        'Re-Evaluate': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Damaged': {c:false, i:''},
+                        'Needs Adjustment': {c:false, i:''},
+                        'Re-Evaluate': {c:false, i:''}
                     }
                 },
                 'Car Door': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Overhead': false,
-                        'Sliding': false,
-                        'Roll-Up Panels': false,
-                        'Tilt-Up Slab': false,
-                        'Lites': false,
-                        'Wood': false,
-                        'Hardboard': false,
-                        'Metal': false,
-                        'Fiberglass': false,
-                        'Solid': false,
-                        'Insulated': false,
-                        'Hollow': false
+                        'n/a': {c:false, i:''},
+                        'Overhead': {c:false, i:''},
+                        'Sliding': {c:false, i:''},
+                        'Roll-Up Panels': {c:false, i:''},
+                        'Tilt-Up Slab': {c:false, i:''},
+                        'Lites': {c:false, i:''},
+                        'Wood': {c:false, i:''},
+                        'Hardboard': {c:false, i:''},
+                        'Metal': {c:false, i:''},
+                        'Fiberglass': {c:false, i:''},
+                        'Solid': {c:false, i:''},
+                        'Insulated': {c:false, i:''},
+                        'Hollow': {c:false, i:''}
                     }
                 },
                 'Car Door Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Inoperable': false,
-                        'Gaps': false,
-                        'Security Concerns': false,
-                        'Blocked/Inaccessible': false,
-                        'Locked Shut': false,
-                        'Stained': false,
-                        'De-Laminated': false,
-                        'Damaged': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Gaps': {c:false, i:''},
+                        'Security Concerns': {c:false, i:''},
+                        'Blocked/Inaccessible': {c:false, i:''},
+                        'Locked Shut': {c:false, i:''},
+                        'Stained': {c:false, i:''},
+                        'De-Laminated': {c:false, i:''},
+                        'Damaged': {c:false, i:''}
                     }
                 },
                 'Automatic Door Opener': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Inoperable': false,
-                        'Blocked': false,
-                        'No Access': false,
-                        'No Remote': false
+                        'n/a': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Blocked': {c:false, i:''},
+                        'No Access': {c:false, i:''},
+                        'No Remote': {c:false, i:''}
                     }
                 },
                 'Safety Reverse': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Disconnected/Inoperable': false,
-                        'Door Stops': false,
-                        'Intermittent Function': false
+                        'n/a': {c:false, i:''},
+                        'Disconnected/Inoperable': {c:false, i:''},
+                        'Door Stops': {c:false, i:''},
+                        'Intermittent Function': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Damaged': false,
-                        'Needs Adjustment': false,
-                        'Re-Evaluate': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Damaged': {c:false, i:''},
+                        'Needs Adjustment': {c:false, i:''},
+                        'Re-Evaluate': {c:false, i:''}
                     }
                 },
                 //COMMENT SECTION HERE.
@@ -785,127 +785,127 @@
                 'Roof Covering(s)': {
                     'type': 'checkbox',
                     'value': {
-                        'Inspected/Walked on (Traversed) Roof': false,
-                        'Inspected/NOT Traversed': false,
-                        'NOT Inspected': false,
-                        'Vulnerable to Traversing Damage': false,
-                        'Unsafe Traversing Condition(s)': false,
-                        'Not Visible': false
+                        'Inspected/Walked on (Traversed) Roof': {c:false, i:''},
+                        'Inspected/NOT Traversed': {c:false, i:''},
+                        'NOT Inspected': {c:false, i:''},
+                        'Vulnerable to Traversing Damage': {c:false, i:''},
+                        'Unsafe Traversing Condition(s)': {c:false, i:''},
+                        'Not Visible': {c:false, i:''}
                     }
                 },
                 'Viewed Roof From': {
                     'type': 'checkbox',
                     'value': {
-                        'Ground w/ Binoculars': false,
-                        'Ladder': false,
-                        'Eaves': false,
-                        'Interior': false,
-                        'Other Building': false
+                        'Ground w/ Binoculars': {c:false, i:''},
+                        'Ladder': {c:false, i:''},
+                        'Eaves': {c:false, i:''},
+                        'Interior': {c:false, i:''},
+                        'Other Building': {c:false, i:''}
                     }
                 },
                 'Style(s)': {
                     'type': 'checkbox',
                     'value': {
-                        'Gable': false,
-                        'Hip': false,
-                        'Mansard': false,
-                        'Shed': false,
-                        'Flat': false,
-                        'Dutch Hip': false,
-                        'Combination': false
+                        'Gable': {c:false, i:''},
+                        'Hip': {c:false, i:''},
+                        'Mansard': {c:false, i:''},
+                        'Shed': {c:false, i:''},
+                        'Flat': {c:false, i:''},
+                        'Dutch Hip': {c:false, i:''},
+                        'Combination': {c:false, i:''}
                     }
                 },
                 'Pitch': {
                     'type': 'checkbox',
                     'value': {
-                        'Steep': false,
-                        'Medium': false,
-                        'Low': false
+                        'Steep': {c:false, i:''},
+                        'Medium': {c:false, i:''},
+                        'Low': {c:false, i:''}
                     }
                 },
                 'Approximate Age of Roof Covering': { //NEED MORE DATA
                     'type': 'checkbox',
                     'value': {
-                        '<5': false,
-                        '5-10': false,
-                        '10+': false,
-                        'Unknown': false,
-                        'NEED MORE DATA': false
+                        '<5': {c:false, i:''},
+                        '5-10': {c:false, i:''},
+                        '10+': {c:false, i:''},
+                        'Unknown': {c:false, i:''},
+                        'NEED MORE DATA': {c:false, i:''}
                     }
                     //These Options May Require Revising.
                 },
                 '# of Layers of Roof Covering': { //NEED MORE DATA
                     'type': 'checkbox',
                     'value': {
-                        '1': false,
-                        '2': false,
-                        '3 or more': false
+                        '1': {c:false, i:''},
+                        '2': {c:false, i:''},
+                        '3 or more': {c:false, i:''}
                             //These Options May Require Revising.
                     }
                 },
                 'Roof Covering': {
                     'type': 'checkbox',
                     'value': {
-                        'Asphalt/Comp': false,
-                        'Rolled': false,
-                        '3-Tab': false,
-                        'Multiple Thickness': false,
-                        'Corrugated FG': false,
-                        'Modified Bitumen': false,
-                        'Torch-Down/Hot Tar': false,
-                        'Metal/Standing Seam': false,
-                        'Metal Shingle': false,
-                        'Wood Shingle': false,
-                        'Cedar Shake': false,
-                        'Clay Tile': false,
-                        'Concrete Tile': false,
-                        'Slate': false,
-                        'PVC Membrane': false
+                        'Asphalt/Comp': {c:false, i:''},
+                        'Rolled': {c:false, i:''},
+                        '3-Tab': {c:false, i:''},
+                        'Multiple Thickness': {c:false, i:''},
+                        'Corrugated FG': {c:false, i:''},
+                        'Modified Bitumen': {c:false, i:''},
+                        'Torch-Down/Hot Tar': {c:false, i:''},
+                        'Metal/Standing Seam': {c:false, i:''},
+                        'Metal Shingle': {c:false, i:''},
+                        'Wood Shingle': {c:false, i:''},
+                        'Cedar Shake': {c:false, i:''},
+                        'Clay Tile': {c:false, i:''},
+                        'Concrete Tile': {c:false, i:''},
+                        'Slate': {c:false, i:''},
+                        'PVC Membrane': {c:false, i:''}
                     }
                 },
                 'Valley(s)': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Metal': false,
-                        'Woven Asphalt': false,
-                        'Cut Asphalt': false,
-                        'Tile': false,
-                        'Concrete': false
+                        'n/a': {c:false, i:''},
+                        'Metal': {c:false, i:''},
+                        'Woven Asphalt': {c:false, i:''},
+                        'Cut Asphalt': {c:false, i:''},
+                        'Tile': {c:false, i:''},
+                        'Concrete': {c:false, i:''}
                     }
                 },
                 'Valley(s) Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Maginal': false,
-                        'Poor': false,
-                        'Defective': false,
-                        'Broken/Damaged': false,
-                        'Rusted': false,
-                        'Holes/Gaps': false,
-                        'Leaks': false,
-                        'Installation Defects': false,
-                        'Vulnerable Areas': false
+                        'Satisfactory': {c:false, i:''},
+                        'Maginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Defective': {c:false, i:''},
+                        'Broken/Damaged': {c:false, i:''},
+                        'Rusted': {c:false, i:''},
+                        'Holes/Gaps': {c:false, i:''},
+                        'Leaks': {c:false, i:''},
+                        'Installation Defects': {c:false, i:''},
+                        'Vulnerable Areas': {c:false, i:''}
                     }
                 },
                 'Condition of (Something?)': { //NEED MORE DATA
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Granule Loss': false,
-                        'Broken/Damaged': false,
-                        'Missing (Tabs)': false,
-                        'Cupping': false,
-                        'Aligned Gaps/Cracks': false,
-                        'Lifting': false,
-                        'Moss': false,
-                        'Fungal Rot': false,
-                        'Rusted': false,
-                        'Exposed Fasteners': false,
-                        'Recommend Professional Re-Evaluation/Remediation': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Granule Loss': {c:false, i:''},
+                        'Broken/Damaged': {c:false, i:''},
+                        'Missing (Tabs)': {c:false, i:''},
+                        'Cupping': {c:false, i:''},
+                        'Aligned Gaps/Cracks': {c:false, i:''},
+                        'Lifting': {c:false, i:''},
+                        'Moss': {c:false, i:''},
+                        'Fungal Rot': {c:false, i:''},
+                        'Rusted': {c:false, i:''},
+                        'Exposed Fasteners': {c:false, i:''},
+                        'Recommend Professional Re-Evaluation/Remediation': {c:false, i:''}
                     }
                 },
                 //COMMENTS SECTION HERE.
@@ -915,81 +915,81 @@
                 'Perforations (through-roof)': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'No Access': false,
-                        'Not Visible': false,
-                        'Walls/Dormers': false,
-                        'Chimney Chase(s)': false,
-                        'Class "B" Vent(s)': false,
-                        'Dryer Vent': false,
-                        'Fan Vent(s)': false,
-                        'Plumbing DMV Pipes': false,
-                        'Antennae/Satellite Dish': false,
-                        'Cable/Wiring': false,
-                        'Electical Mast': false
+                        'n/a': {c:false, i:''},
+                        'No Access': {c:false, i:''},
+                        'Not Visible': {c:false, i:''},
+                        'Walls/Dormers': {c:false, i:''},
+                        'Chimney Chase(s)': {c:false, i:''},
+                        'Class "B" Vent(s)': {c:false, i:''},
+                        'Dryer Vent': {c:false, i:''},
+                        'Fan Vent(s)': {c:false, i:''},
+                        'Plumbing DMV Pipes': {c:false, i:''},
+                        'Antennae/Satellite Dish': {c:false, i:''},
+                        'Cable/Wiring': {c:false, i:''},
+                        'Electical Mast': {c:false, i:''}
                     }
                 },
                 'Perforations Condition(s)': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Defective': false,
-                        'Broken/Damaged': false,
-                        'Rusted': false,
-                        'Raised/Holes/Gaps': false,
-                        'Leaks': false,
-                        'Installation Defects': false,
-                        'Vulnerable Areas': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Defective': {c:false, i:''},
+                        'Broken/Damaged': {c:false, i:''},
+                        'Rusted': {c:false, i:''},
+                        'Raised/Holes/Gaps': {c:false, i:''},
+                        'Leaks': {c:false, i:''},
+                        'Installation Defects': {c:false, i:''},
+                        'Vulnerable Areas': {c:false, i:''}
                     }
                 },
                 'Skylights/Skywalls': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'No Access': false,
-                        'Not Visible': false
+                        'n/a': {c:false, i:''},
+                        'No Access': {c:false, i:''},
+                        'Not Visible': {c:false, i:''}
                     }
                 },
                 'Skylights/Skywalls Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Defective': false,
-                        'Broken/Damaged': false,
-                        'Rusted': false,
-                        'Holes/Gaps': false,
-                        'Leaks': false,
-                        'Installation Defects': false,
-                        'Vulnerable Areas': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Defective': {c:false, i:''},
+                        'Broken/Damaged': {c:false, i:''},
+                        'Rusted': {c:false, i:''},
+                        'Holes/Gaps': {c:false, i:''},
+                        'Leaks': {c:false, i:''},
+                        'Installation Defects': {c:false, i:''},
+                        'Vulnerable Areas': {c:false, i:''}
                     }
                 },
                 'Flashing(s)': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Missing': false,
-                        'Installation Defects': false,
-                        'Rusted': false,
-                        'Potential Future Concern': false
+                        'n/a': {c:false, i:''},
+                        'Missing': {c:false, i:''},
+                        'Installation Defects': {c:false, i:''},
+                        'Rusted': {c:false, i:''},
+                        'Potential Future Concern': {c:false, i:''}
                     }
                 },
                 'Flashing(s) Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Defective': false,
-                        'Broken/Damaged': false,
-                        'Raised': false,
-                        'Holes/Gaps': false,
-                        'Leaks': false,
-                        'Vulnerable Areas': false,
-                        'Repair or Re-Evaluate': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Defective': {c:false, i:''},
+                        'Broken/Damaged': {c:false, i:''},
+                        'Raised': {c:false, i:''},
+                        'Holes/Gaps': {c:false, i:''},
+                        'Leaks': {c:false, i:''},
+                        'Vulnerable Areas': {c:false, i:''},
+                        'Repair or Re-Evaluate': {c:false, i:''}
                     }
                 }
             },
@@ -997,55 +997,55 @@
                 'Type': {
                     'type': 'checkbox',
                     'value': {
-                        'Eave-Mounted': false,
-                        'Internal with Scuppers': false,
-                        'Metal': false,
-                        'Plastic/Vinyl': false,
-                        'Wood': false
+                        'Eave-Mounted': {c:false, i:''},
+                        'Internal with Scuppers': {c:false, i:''},
+                        'Metal': {c:false, i:''},
+                        'Plastic/Vinyl': {c:false, i:''},
+                        'Wood': {c:false, i:''}
                     }
                 },
                 'Condition of Gutters & Down-Spouts': {
                     'type': 'checkbox',
                     'value': {
-                        'Missing': false,
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Loose/Sagging': false,
-                        'Fallen/Pulled Away': false,
-                        'Reversed Slope/Ponding': false,
-                        'Clogged': false,
-                        'Debris': false,
-                        'Granule Wash': false,
-                        'Spillover Stains': false,
-                        'Deteriorated Wood': false,
-                        'Cracked/Split': false,
-                        'Holes': false,
-                        'Leaking Joints': false,
-                        'Rust': false,
-                        'Moss': false
+                        'Missing': {c:false, i:''},
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Loose/Sagging': {c:false, i:''},
+                        'Fallen/Pulled Away': {c:false, i:''},
+                        'Reversed Slope/Ponding': {c:false, i:''},
+                        'Clogged': {c:false, i:''},
+                        'Debris': {c:false, i:''},
+                        'Granule Wash': {c:false, i:''},
+                        'Spillover Stains': {c:false, i:''},
+                        'Deteriorated Wood': {c:false, i:''},
+                        'Cracked/Split': {c:false, i:''},
+                        'Holes': {c:false, i:''},
+                        'Leaking Joints': {c:false, i:''},
+                        'Rust': {c:false, i:''},
+                        'Moss': {c:false, i:''}
                     }
                 },
                 'Down-Spout Discharge': {
                     'type': 'checkbox',
                     'value': {
-                        'No Down-Spouts': false,
-                        'Above Grade': false,
-                        'Below Grade': false,
-                        'Not Visible': false
+                        'No Down-Spouts': {c:false, i:''},
+                        'Above Grade': {c:false, i:''},
+                        'Below Grade': {c:false, i:''},
+                        'Not Visible': {c:false, i:''}
                     }
                 },
                 'Down-Spout Discharge Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Missing': false,
-                        'Loose/Disconnected': false,
-                        'Clogged': false,
-                        'Open Gaps Around Downspout-to-Drain Connections': false,
-                        'Poor Extensions/Splash Blocks': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Missing': {c:false, i:''},
+                        'Loose/Disconnected': {c:false, i:''},
+                        'Clogged': {c:false, i:''},
+                        'Open Gaps Around Downspout-to-Drain Connections': {c:false, i:''},
+                        'Poor Extensions/Splash Blocks': {c:false, i:''}
                     }
                 },
                 'images': []
@@ -1070,50 +1070,50 @@
                 'Roof System': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Vaulted/No Attic': false,
-                        'Partial Attic': false,
-                        'No Access': false,
-                        'Sealed Access': false,
-                        'Trusses': false,
-                        'Stick-Framed': false,
-                        'Rafters & Joists': false,
-                        'Beams & Purlins': false,
-                        'Hips': false,
-                        'Valleys': false
+                        'n/a': {c:false, i:''},
+                        'Vaulted/No Attic': {c:false, i:''},
+                        'Partial Attic': {c:false, i:''},
+                        'No Access': {c:false, i:''},
+                        'Sealed Access': {c:false, i:''},
+                        'Trusses': {c:false, i:''},
+                        'Stick-Framed': {c:false, i:''},
+                        'Rafters & Joists': {c:false, i:''},
+                        'Beams & Purlins': {c:false, i:''},
+                        'Hips': {c:false, i:''},
+                        'Valleys': {c:false, i:''}
                     }
                 },
                 'Diaphragm Sheathing': {
                     'type': 'checkbox',
                     'value': {
-                        'Plywood': false,
-                        'OSB': false,
-                        'H-Clipped': false,
-                        'Plank': false,
-                        '1X Skip Sheathing': false
+                        'Plywood': {c:false, i:''},
+                        'OSB': {c:false, i:''},
+                        'H-Clipped': {c:false, i:''},
+                        'Plank': {c:false, i:''},
+                        '1X Skip Sheathing': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Sagging/Over-Spanned': false,
-                        'Broken/Damaged': false,
-                        'Structural Defect (Design Related)': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Sagging/Over-Spanned': {c:false, i:''},
+                        'Broken/Damaged': {c:false, i:''},
+                        'Structural Defect (Design Related)': {c:false, i:''}
                     }
                 },
                 'Missing or Inadequate': {
                     'type': 'checkbox',
                     'value': {
-                        'Bracing': false,
-                        'Collar Ties': false,
-                        'Knee Walls': false,
-                        'Stains': false,
-                        'Deterioration': false,
-                        'Hazardous/Unsafe': false,
-                        'Recommend Professional Re-Evaluation': false
+                        'Bracing': {c:false, i:''},
+                        'Collar Ties': {c:false, i:''},
+                        'Knee Walls': {c:false, i:''},
+                        'Stains': {c:false, i:''},
+                        'Deterioration': {c:false, i:''},
+                        'Hazardous/Unsafe': {c:false, i:''},
+                        'Recommend Professional Re-Evaluation': {c:false, i:''}
                     }
                     //COMMENTS SECTION HERE.
                 },
@@ -1128,123 +1128,123 @@
                 'Sub-Floor System': {
                     'type': 'checkbox',
                     'value': {
-                        '4X Beams & Plank Diaphragm': false,
-                        '2X Joists & Diaphragm': false,
-                        'Flat Truss': false
+                        '4X Beams & Plank Diaphragm': {c:false, i:''},
+                        '2X Joists & Diaphragm': {c:false, i:''},
+                        'Flat Truss': {c:false, i:''}
                     }
                 },
                 'Beams (Girders)': {
                     'type': 'checkbox',
                     'value': {
-                        'Steel': false,
-                        'Concrete': false,
-                        'Laminated': false,
-                        'Dimensional Lumber': false
+                        'Steel': {c:false, i:''},
+                        'Concrete': {c:false, i:''},
+                        'Laminated': {c:false, i:''},
+                        'Dimensional Lumber': {c:false, i:''}
                     }
                 },
                 'Joists & Sheathing': {
                     'type': 'checkbox',
                     'value': {
-                        'Wood': false,
-                        'TJI (Wood I-Beams': false,
-                        'Sleepers': false,
-                        '"Foam-Crete"': false,
-                        'Diagonal': false,
-                        'Plank': false,
-                        'Shiplap': false,
-                        'Tongue & Groove': false,
-                        'Plywood': false,
-                        'OSB': false
+                        'Wood': {c:false, i:''},
+                        'TJI (Wood I-Beams': {c:false, i:''},
+                        'Sleepers': {c:false, i:''},
+                        '"Foam-Crete"': {c:false, i:''},
+                        'Diagonal': {c:false, i:''},
+                        'Plank': {c:false, i:''},
+                        'Shiplap': {c:false, i:''},
+                        'Tongue & Groove': {c:false, i:''},
+                        'Plywood': {c:false, i:''},
+                        'OSB': {c:false, i:''}
                     }
                 },
                 'Posts(Columns)': {
                     'type': 'checkbox',
                     'value': {
-                        'Covered/Not Visible': false,
-                        'Wood': false,
-                        'Steel': false,
-                        'Concrete': false,
-                        'CMU (block)': false
+                        'Covered/Not Visible': {c:false, i:''},
+                        'Wood': {c:false, i:''},
+                        'Steel': {c:false, i:''},
+                        'Concrete': {c:false, i:''},
+                        'CMU (block)': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Sagging/Over-Spanned': false,
-                        'Broken': false,
-                        'Damaged': false,
-                        'Structural Defects (Design Related)': false,
-                        'Missing or Inadequate Bracing': false,
-                        'Stains': false,
-                        'Deterioration': false,
-                        'Hazardous/Unsafe': false,
-                        'Recommend Professional Evaluation and/or Remediation': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Sagging/Over-Spanned': {c:false, i:''},
+                        'Broken': {c:false, i:''},
+                        'Damaged': {c:false, i:''},
+                        'Structural Defects (Design Related)': {c:false, i:''},
+                        'Missing or Inadequate Bracing': {c:false, i:''},
+                        'Stains': {c:false, i:''},
+                        'Deterioration': {c:false, i:''},
+                        'Hazardous/Unsafe': {c:false, i:''},
+                        'Recommend Professional Evaluation and/or Remediation': {c:false, i:''}
                     }
                 },
                 'Stairs': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Open': false
+                        'n/a': {c:false, i:''},
+                        'Open': {c:false, i:''}
                     }
                 },
                 'Enclosed On': {
                     'type': 'checkbox',
                     'value': {
-                        '1 Side': false,
-                        'Both Sides': false
+                        '1 Side': {c:false, i:''},
+                        'Both Sides': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Missing Handrail': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Missing Handrail': {c:false, i:''}
                     }
                 },
                 'Inadequate': {
                     'type': 'checkbox',
                     'value': {
-                        'Newels': false,
-                        'Baluster Spacing': false,
-                        'Rails': false,
-                        'Headroom': false,
-                        'Poor/Inadequate Support': false,
-                        'Uneven Risers': false,
-                        'Over-Height Step(s)': false,
-                        'Missing Firewall': false,
-                        'Hazardous/Unsafe': false,
-                        'Recommend Professional Evaluation and/or Remediation': false
+                        'Newels': {c:false, i:''},
+                        'Baluster Spacing': {c:false, i:''},
+                        'Rails': {c:false, i:''},
+                        'Headroom': {c:false, i:''},
+                        'Poor/Inadequate Support': {c:false, i:''},
+                        'Uneven Risers': {c:false, i:''},
+                        'Over-Height Step(s)': {c:false, i:''},
+                        'Missing Firewall': {c:false, i:''},
+                        'Hazardous/Unsafe': {c:false, i:''},
+                        'Recommend Professional Evaluation and/or Remediation': {c:false, i:''}
                     }
                 },
                 'Basement/Crawl Floor': {
                     'type': 'checkbox',
                     'value': {
-                        'Concrete': false,
-                        'Dirt/Gravel': false,
-                        'Wood': false,
-                        'Covered/Not Visible': false
+                        'Concrete': {c:false, i:''},
+                        'Dirt/Gravel': {c:false, i:''},
+                        'Wood': {c:false, i:''},
+                        'Covered/Not Visible': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Typical Settling Cracks': false,
-                        'Large Cracks': false,
-                        'Stains': false,
-                        'Efflorescence': false,
-                        'Storage': false,
-                        'Damage': false,
-                        'Hazardous/Unsafe': false,
-                        'Re-Evaluate': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Typical Settling Cracks': {c:false, i:''},
+                        'Large Cracks': {c:false, i:''},
+                        'Stains': {c:false, i:''},
+                        'Efflorescence': {c:false, i:''},
+                        'Storage': {c:false, i:''},
+                        'Damage': {c:false, i:''},
+                        'Hazardous/Unsafe': {c:false, i:''},
+                        'Re-Evaluate': {c:false, i:''}
                     }
                 }
             },
@@ -1252,108 +1252,108 @@
                 'Type of Foundation': {
                     'type': 'checkbox',
                     'value': {
-                        'Perimeter Walls': false,
-                        'Post/Beam': false,
-                        'Columns': false,
-                        'Poured Concrete': false,
-                        'CMU(Block)': false,
-                        'Masonry': false,
-                        'Unmortared Stone/Brick': false,
-                        'Logs': false,
-                        'Treated Wood': false,
-                        'Strip Footings': false
+                        'Perimeter Walls': {c:false, i:''},
+                        'Post/Beam': {c:false, i:''},
+                        'Columns': {c:false, i:''},
+                        'Poured Concrete': {c:false, i:''},
+                        'CMU(Block)': {c:false, i:''},
+                        'Masonry': {c:false, i:''},
+                        'Unmortared Stone/Brick': {c:false, i:''},
+                        'Logs': {c:false, i:''},
+                        'Treated Wood': {c:false, i:''},
+                        'Strip Footings': {c:false, i:''}
                     }
                 },
                 'Condition of Foundation': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Imbedded Wood': false,
-                        'Rock Pockets': false,
-                        'No Tie-Downs': false,
-                        'Stains': false,
-                        'Damage': false,
-                        'Deterioration': false,
-                        'Efflorescence': false,
-                        'EWC': false,
-                        'Fungal Rot/Probed': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Imbedded Wood': {c:false, i:''},
+                        'Rock Pockets': {c:false, i:''},
+                        'No Tie-Downs': {c:false, i:''},
+                        'Stains': {c:false, i:''},
+                        'Damage': {c:false, i:''},
+                        'Deterioration': {c:false, i:''},
+                        'Efflorescence': {c:false, i:''},
+                        'EWC': {c:false, i:''},
+                        'Fungal Rot/Probed': {c:false, i:''}
                     }
                 },
                 'Limited By': {
                     'type': 'checkbox',
                     'value': {
-                        'Storage': false,
-                        'Perimeter Cover': false,
-                        'Obstacles': false,
-                        'Inaccessible Area': false,
-                        'Pests': false,
-                        'Tight/Limited Mobility': false,
-                        'Hazards/Unsafe': false,
-                        'Recommend Re-Evaluation and/or Remediation': false
+                        'Storage': {c:false, i:''},
+                        'Perimeter Cover': {c:false, i:''},
+                        'Obstacles': {c:false, i:''},
+                        'Inaccessible Area': {c:false, i:''},
+                        'Pests': {c:false, i:''},
+                        'Tight/Limited Mobility': {c:false, i:''},
+                        'Hazards/Unsafe': {c:false, i:''},
+                        'Recommend Re-Evaluation and/or Remediation': {c:false, i:''}
                     }
                 },
                 'WDI/WDO (Wood-Destroying)': {
                     'type': 'checkbox',
                     'value': {
-                        'None': false,
-                        'Exit Holes': false,
-                        'Frass': false,
-                        'Galleries': false,
-                        'Damage': false,
-                        'Mildew/Bio-Growth': false,
-                        'Mold Sampled/Tested': false,
-                        'Fungal Rot/Probed': false,
-                        'Re-Evaluate': false
+                        'None': {c:false, i:''},
+                        'Exit Holes': {c:false, i:''},
+                        'Frass': {c:false, i:''},
+                        'Galleries': {c:false, i:''},
+                        'Damage': {c:false, i:''},
+                        'Mildew/Bio-Growth': {c:false, i:''},
+                        'Mold Sampled/Tested': {c:false, i:''},
+                        'Fungal Rot/Probed': {c:false, i:''},
+                        'Re-Evaluate': {c:false, i:''}
                     }
                 },
                 'Cracks': {
                     'type': 'checkbox',
                     'value': {
-                        'Typical Settling': false,
-                        'Vertical': false,
-                        'Step': false,
-                        'Horizontal': false,
-                        'V-Cracking': false,
-                        'Displaced': false,
-                        'Inactive': false,
-                        'Active': false,
-                        'Larger than 1/4 inch': false
+                        'Typical Settling': {c:false, i:''},
+                        'Vertical': {c:false, i:''},
+                        'Step': {c:false, i:''},
+                        'Horizontal': {c:false, i:''},
+                        'V-Cracking': {c:false, i:''},
+                        'Displaced': {c:false, i:''},
+                        'Inactive': {c:false, i:''},
+                        'Active': {c:false, i:''},
+                        'Larger than 1/4 inch': {c:false, i:''}
                     }
                 },
                 'Re-Evaluation Location': {
                     'type': 'checkbox',
                     'value': {
-                        'North': false,
-                        'South': false,
-                        'East': false,
-                        'West': false
+                        'North': {c:false, i:''},
+                        'South': {c:false, i:''},
+                        'East': {c:false, i:''},
+                        'West': {c:false, i:''}
                     }
                 },
                 'Drainage': {
                     'type': 'checkbox',
                     'value': {
-                        'Evidence of Flooding': false,
-                        'Not Visible': false,
-                        'Efflorescence': false,
-                        'Humidity': false,
-                        'Old Stains': false,
-                        'Silt Deposits': false,
-                        'Soil on Vapor Barrier': false,
-                        'Fresh Stains': false,
-                        'Standing Water': false
+                        'Evidence of Flooding': {c:false, i:''},
+                        'Not Visible': {c:false, i:''},
+                        'Efflorescence': {c:false, i:''},
+                        'Humidity': {c:false, i:''},
+                        'Old Stains': {c:false, i:''},
+                        'Silt Deposits': {c:false, i:''},
+                        'Soil on Vapor Barrier': {c:false, i:''},
+                        'Fresh Stains': {c:false, i:''},
+                        'Standing Water': {c:false, i:''}
                     }
                 },
                 'Sump Pump': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Missing': false,
-                        'Not Tested': false,
-                        'Operable': false,
-                        'Inoperable': false,
-                        'Re-Evaluate': false
+                        'n/a': {c:false, i:''},
+                        'Missing': {c:false, i:''},
+                        'Not Tested': {c:false, i:''},
+                        'Operable': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Re-Evaluate': {c:false, i:''}
                     }
                     //COMMENT SECTION GOES HERE.
                 }
@@ -1374,121 +1374,121 @@
                 'Access': {
                     'type': 'checkbox',
                     'value': {
-                        'No Attic': false,
-                        'No Access': false,
-                        'Door': false,
-                        'Pull Down Stair': false,
-                        'Scuttle-Hole(s)': false
+                        'No Attic': {c:false, i:''},
+                        'No Access': {c:false, i:''},
+                        'Door': {c:false, i:''},
+                        'Pull Down Stair': {c:false, i:''},
+                        'Scuttle-Hole(s)': {c:false, i:''}
                     }
                 },
                 'Location': {
                     'type': 'checkbox',
                     'value': {
-                        'Hall': false,
-                        'Bedroom': false,
-                        'Closet': false,
-                        'Laundry Room': false,
-                        'Garage': false,
-                        'Exterior': false
+                        'Hall': {c:false, i:''},
+                        'Bedroom': {c:false, i:''},
+                        'Closet': {c:false, i:''},
+                        'Laundry Room': {c:false, i:''},
+                        'Garage': {c:false, i:''},
+                        'Exterior': {c:false, i:''}
                     }
                 },
                 'Viewed': {
                     'type': 'checkbox',
                     'value': {
-                        'Near Access': false,
-                        'From Ladder': false,
-                        'At Roof Apex': false,
-                        'Limited Accessibility': false,
-                        'Inspected (Traversed) Attic': false,
-                        'Entered but NOT Traversed': false,
-                        'NOT Entered/NOT Inspected': false,
-                        'Vulnerable to Traversing Damage': false,
-                        'Unsafe Traversing Condition(s)': false,
-                        'Not Visible': false
+                        'Near Access': {c:false, i:''},
+                        'From Ladder': {c:false, i:''},
+                        'At Roof Apex': {c:false, i:''},
+                        'Limited Accessibility': {c:false, i:''},
+                        'Inspected (Traversed) Attic': {c:false, i:''},
+                        'Entered but NOT Traversed': {c:false, i:''},
+                        'NOT Entered/NOT Inspected': {c:false, i:''},
+                        'Vulnerable to Traversing Damage': {c:false, i:''},
+                        'Unsafe Traversing Condition(s)': {c:false, i:''},
+                        'Not Visible': {c:false, i:''}
                     }
                 },
                 'Attic Insulation': {
                     'type': 'checkbox',
                     'value': {
-                        'None': false,
-                        'TYPE(S) NEEDED': false, //THIS OPTION REQUIRES MORE INFORMATION.
-                        'Rafters': false,
-                        'Ceiling Joists': false,
-                        'FG': false,
-                        'Cellulose': false,
-                        'Vermiculite': false,
-                        'R Wool': false,
-                        'Batts': false,
-                        'Loose': false,
-                        'Wood Shavings': false
+                        'None': {c:false, i:''},
+                        'TYPE(S) NEEDED': {c:false, i:''}, //THIS OPTION REQUIRES MORE INFORMATION.
+                        'Rafters': {c:false, i:''},
+                        'Ceiling Joists': {c:false, i:''},
+                        'FG': {c:false, i:''},
+                        'Cellulose': {c:false, i:''},
+                        'Vermiculite': {c:false, i:''},
+                        'R Wool': {c:false, i:''},
+                        'Batts': {c:false, i:''},
+                        'Loose': {c:false, i:''},
+                        'Wood Shavings': {c:false, i:''}
                     }
                 },
                 'Attic Insulation Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Missing Areas': false,
-                        'Uneven Placement': false,
-                        'Damaged': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Missing Areas': {c:false, i:''},
+                        'Uneven Placement': {c:false, i:''},
+                        'Damaged': {c:false, i:''}
                     }
                 },
                 'Attic Ventilation': {
                     'type': 'checkbox',
                     'value': {
-                        'Eaves': false,
-                        'Gable': false,
-                        'Top': false,
-                        'Ridge': false,
-                        'Powered Vent(s)': false,
-                        'Attic Fan(s)': false
+                        'Eaves': {c:false, i:''},
+                        'Gable': {c:false, i:''},
+                        'Top': {c:false, i:''},
+                        'Ridge': {c:false, i:''},
+                        'Powered Vent(s)': {c:false, i:''},
+                        'Attic Fan(s)': {c:false, i:''}
                     }
                 },
                 'Condition of Ventilation': {
                     'type': 'checkbox',
                     'value': {
-                        'None': false,
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor/Missing': false,
-                        'Odors': false,
-                        'Excessive Heat': false,
-                        'Ventilation Appears Inadequate': false,
-                        'Effectiveness NOT Evaluated': false,
-                        'Re-Evaluate': false
+                        'None': {c:false, i:''},
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor/Missing': {c:false, i:''},
+                        'Odors': {c:false, i:''},
+                        'Excessive Heat': {c:false, i:''},
+                        'Ventilation Appears Inadequate': {c:false, i:''},
+                        'Effectiveness NOT Evaluated': {c:false, i:''},
+                        'Re-Evaluate': {c:false, i:''}
                     }
                 },
                 'Humidity': {
                     'type': 'checkbox',
                     'value': {
-                        'Yes': false,
-                        'Roof Leaks': false,
-                        'Old Stains/Inactive': false,
-                        'Fresh Stains/Active': false,
-                        'Mildew/Mold': false,
-                        'Stained Diaphragm': false,
-                        'Wet Insulation': false,
-                        'Damage': false,
-                        'Re-Evaluate': false
+                        'Yes': {c:false, i:''},
+                        'Roof Leaks': {c:false, i:''},
+                        'Old Stains/Inactive': {c:false, i:''},
+                        'Fresh Stains/Active': {c:false, i:''},
+                        'Mildew/Mold': {c:false, i:''},
+                        'Stained Diaphragm': {c:false, i:''},
+                        'Wet Insulation': {c:false, i:''},
+                        'Damage': {c:false, i:''},
+                        'Re-Evaluate': {c:false, i:''}
                     }
                 },
                 'Infestation': {
                     'type': 'checkbox',
                     'value': {
-                        'None': false,
-                        'Prior/Inactive': false,
-                        'Live/Active': false,
-                        'Nesting Materials': false,
-                        'Scat': false,
-                        'Insect': false,
-                        'Bee/Wasp': false,
-                        'Bird': false,
-                        'Rodent': false,
-                        'Racoon': false,
-                        'Potential Points of Pest Entry': false,
-                        'Hazardous/Unsafe': false,
-                        'Recommend Professional Evaluation and/or Remediation': false
+                        'None': {c:false, i:''},
+                        'Prior/Inactive': {c:false, i:''},
+                        'Live/Active': {c:false, i:''},
+                        'Nesting Materials': {c:false, i:''},
+                        'Scat': {c:false, i:''},
+                        'Insect': {c:false, i:''},
+                        'Bee/Wasp': {c:false, i:''},
+                        'Bird': {c:false, i:''},
+                        'Rodent': {c:false, i:''},
+                        'Racoon': {c:false, i:''},
+                        'Potential Points of Pest Entry': {c:false, i:''},
+                        'Hazardous/Unsafe': {c:false, i:''},
+                        'Recommend Professional Evaluation and/or Remediation': {c:false, i:''}
 
                     }
                     //PRESET TEXT:
@@ -1500,125 +1500,125 @@
                 'Access': {
                     'type': 'checkbox',
                     'value': {
-                        'Door/Panel': false,
-                        'Scuttle-Hole': false,
-                        'No Access': false,
-                        'No Crawl-Space': false,
-                        'Not Visible': false
+                        'Door/Panel': {c:false, i:''},
+                        'Scuttle-Hole': {c:false, i:''},
+                        'No Access': {c:false, i:''},
+                        'No Crawl-Space': {c:false, i:''},
+                        'Not Visible': {c:false, i:''}
                     }
                 },
                 'Location': {
                     'type': 'checkbox',
                     'value': {
-                        'Hall': false,
-                        'Bedroom': false,
-                        'Closet': false,
-                        'Laundry Room': false,
-                        'Garage': false,
-                        'Exterior': false,
-                        'Inspected Basement or Crawl': false,
-                        'NOT Entered/NOT Inspected': false,
-                        'Limited Accessibility': false
+                        'Hall': {c:false, i:''},
+                        'Bedroom': {c:false, i:''},
+                        'Closet': {c:false, i:''},
+                        'Laundry Room': {c:false, i:''},
+                        'Garage': {c:false, i:''},
+                        'Exterior': {c:false, i:''},
+                        'Inspected Basement or Crawl': {c:false, i:''},
+                        'NOT Entered/NOT Inspected': {c:false, i:''},
+                        'Limited Accessibility': {c:false, i:''}
                     }
                 },
                 'Viewed': {
                     'type': 'checkbox',
                     'value': {
-                        'Near Access': false,
-                        'From Exterior': false,
-                        'At Center Only': false,
-                        'Vulnerable': false,
-                        'Unsafe': false
+                        'Near Access': {c:false, i:''},
+                        'From Exterior': {c:false, i:''},
+                        'At Center Only': {c:false, i:''},
+                        'Vulnerable': {c:false, i:''},
+                        'Unsafe': {c:false, i:''}
                     }
                 },
                 'Sub-Floor Insulation': {
                     'type': 'checkbox',
                     'value': {
-                        'None Visible': false,
-                        'TYPE': false, //THIS OPTION REQUIRES MORE DATA.
-                        'Floor': false,
-                        'Rim Joists': false,
-                        'Fiberglass Batts': false,
-                        'Blown-in Cellulose': false,
-                        'Foam Board': false
+                        'None Visible': {c:false, i:''},
+                        'TYPE': {c:false, i:''}, //THIS OPTION REQUIRES MORE DATA.
+                        'Floor': {c:false, i:''},
+                        'Rim Joists': {c:false, i:''},
+                        'Fiberglass Batts': {c:false, i:''},
+                        'Blown-in Cellulose': {c:false, i:''},
+                        'Foam Board': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Missing Areas': false,
-                        'Fallen Down': false,
-                        'Damaged': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Missing Areas': {c:false, i:''},
+                        'Fallen Down': {c:false, i:''},
+                        'Damaged': {c:false, i:''}
                     }
                 },
                 'Crawl-Space Ventilation': {
                     'type': 'checkbox',
                     'value': {
-                        'None': false,
-                        'Foundation Vents': false,
-                        'Powered Vent(s)': false,
-                        'Fan(s)': false
+                        'None': {c:false, i:''},
+                        'Foundation Vents': {c:false, i:''},
+                        'Powered Vent(s)': {c:false, i:''},
+                        'Fan(s)': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Effectiveness NOT Evaluated': false,
-                        'Re-Evaluate': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Effectiveness NOT Evaluated': {c:false, i:''},
+                        'Re-Evaluate': {c:false, i:''}
                     }
                 },
                 'Vapor Barrier': {
                     'type': 'checkbox',
                     'value': {
-                        'None': false,
-                        'Satisfactory': false,
-                        'Damaged': false,
-                        'Gaps/Displaced Areas': false,
-                        'Exposed Earth': false
+                        'None': {c:false, i:''},
+                        'Satisfactory': {c:false, i:''},
+                        'Damaged': {c:false, i:''},
+                        'Gaps/Displaced Areas': {c:false, i:''},
+                        'Exposed Earth': {c:false, i:''}
                     }
                 },
                 'Moisture': {
                     'type': 'checkbox',
                     'value': {
-                        'Present': false,
-                        'Efflorescence': false,
-                        'Old Stains': false,
-                        'Fresh': false,
-                        'Standing Water': false,
+                        'Present': {c:false, i:''},
+                        'Efflorescence': {c:false, i:''},
+                        'Old Stains': {c:false, i:''},
+                        'Fresh': {c:false, i:''},
+                        'Standing Water': {c:false, i:''},
                     }
                 },
                 'Drainage': {
                     'type': 'checkbox',
                     'value': {
-                        'To Out-Fall': false,
-                        'Interior Plane': false,
-                        'None Apparent': false,
-                        'Sump Pump': false,
-                        'Functional': false
+                        'To Out-Fall': {c:false, i:''},
+                        'Interior Plane': {c:false, i:''},
+                        'None Apparent': {c:false, i:''},
+                        'Sump Pump': {c:false, i:''},
+                        'Functional': {c:false, i:''}
                     }
                 },
                 'Infestation': {
                     'type': 'checkbox',
                     'value': {
-                        'None': false,
-                        'Prior/Inactive': false,
-                        'Live/Active': false,
-                        'Nesting Materials': false,
-                        'Scat': false,
-                        'Insect': false,
-                        'Bee/Wasp': false,
-                        'Bird': false,
-                        'Rodent': false,
-                        'Racoon': false,
-                        'Potential Point Pest Entry': false,
-                        'Hazardous/Unsafe': false,
-                        'Recommend Professional Evaluation and/or Remediation': false
+                        'None': {c:false, i:''},
+                        'Prior/Inactive': {c:false, i:''},
+                        'Live/Active': {c:false, i:''},
+                        'Nesting Materials': {c:false, i:''},
+                        'Scat': {c:false, i:''},
+                        'Insect': {c:false, i:''},
+                        'Bee/Wasp': {c:false, i:''},
+                        'Bird': {c:false, i:''},
+                        'Rodent': {c:false, i:''},
+                        'Racoon': {c:false, i:''},
+                        'Potential Point Pest Entry': {c:false, i:''},
+                        'Hazardous/Unsafe': {c:false, i:''},
+                        'Recommend Professional Evaluation and/or Remediation': {c:false, i:''}
                     }
                 }
             },
@@ -1636,48 +1636,48 @@
                 'Interior Mechanical Ventilation (THIS SECTION NAME WAS MADE UP)': {
                     'type': 'checkbox',
                     'value': {
-                        'Whole House Fan(s)': false,
-                        'Make-Up Air Vent(s)': false,
-                        'Furnace Blower(s)': false,
-                        'Ceiling-Mounted Fan(s)': false
+                        'Whole House Fan(s)': {c:false, i:''},
+                        'Make-Up Air Vent(s)': {c:false, i:''},
+                        'Furnace Blower(s)': {c:false, i:''},
+                        'Ceiling-Mounted Fan(s)': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor/Missing': false,
-                        'Open Blade': false,
-                        'Caged': false,
-                        'Remote Control': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor/Missing': {c:false, i:''},
+                        'Open Blade': {c:false, i:''},
+                        'Caged': {c:false, i:''},
+                        'Remote Control': {c:false, i:''}
                     }
                 },
                 'Exhaust Fan(s) (THIS SECTION NAME WAS MADE UP)': {
                     'type': 'checkbox',
                     'value': {
-                        'Bathroom Exhaust Fan(s)': false,
-                        'Kitchen Fan(s)': false,
-                        'Inoperable': false,
-                        'Weak/Noisy': false,
-                        'Unsafe': false
+                        'Bathroom Exhaust Fan(s)': {c:false, i:''},
+                        'Kitchen Fan(s)': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Weak/Noisy': {c:false, i:''},
+                        'Unsafe': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor/Missing': false,
-                        'Vented Properly (Outside Building Envelope)': false,
-                        'Not Visible': false,
-                        'Recirculating-Only Type': false,
-                        'Clogged Grease Filter': false,
-                        'Restricted (Collapsed/Blocked)': false,
-                        'Venting Into Attic Space': false,
-                        'Aimed at Gable, Eave, or Roof Vents': false,
-                        'Fallen Loose': false,
-                        'Re-Evaluate': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor/Missing': {c:false, i:''},
+                        'Vented Properly (Outside Building Envelope)': {c:false, i:''},
+                        'Not Visible': {c:false, i:''},
+                        'Recirculating-Only Type': {c:false, i:''},
+                        'Clogged Grease Filter': {c:false, i:''},
+                        'Restricted (Collapsed/Blocked)': {c:false, i:''},
+                        'Venting Into Attic Space': {c:false, i:''},
+                        'Aimed at Gable, Eave, or Roof Vents': {c:false, i:''},
+                        'Fallen Loose': {c:false, i:''},
+                        'Re-Evaluate': {c:false, i:''}
                     }
                 },
                 'Note': {
@@ -1703,132 +1703,132 @@
                 'Water Supply Source': { //NEED MORE DATA!
                     'type': 'checkbox',
                     'value': {
-                        'Public Water': false,
-                        'Public Well': false, //THIS IS MADE UP
-                        'Private Well': false, //THIS IS MADE UP
-                        'OTHER (NEED MORE DATA)': false
+                        'Public Water': {c:false, i:''},
+                        'Public Well': {c:false, i:''}, //THIS IS MADE UP
+                        'Private Well': {c:false, i:''}, //THIS IS MADE UP
+                        'OTHER (NEED MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Main Water Shut Off Valve Location': { //THIS REQUIRES MORE DATA.
                     'type': 'checkbox',
                     'value': {
-                        'Closet': false,
-                        'Bathroom': false,
-                        'OTHER (NEED MORE DATA)': false
+                        'Closet': {c:false, i:''},
+                        'Bathroom': {c:false, i:''},
+                        'OTHER (NEED MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Water Pressure': { //THIS REQUIRES MORE DATA.
                     'type': 'checkbox',
                     'value': {
-                        'Less than 45': false,
-                        'Approximately 45-55': false,
-                        'Approximately 55-65': false,
-                        'Approximately 65-75': false,
-                        'Approximately 75-85': false,
-                        'OTHER (NEED MORE DATA)': false
+                        'Less than 45': {c:false, i:''},
+                        'Approximately 45-55': {c:false, i:''},
+                        'Approximately 55-65': {c:false, i:''},
+                        'Approximately 65-75': {c:false, i:''},
+                        'Approximately 75-85': {c:false, i:''},
+                        'OTHER (NEED MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Water Temperature': { //THIS REQUIRES MORE DATA.
                     'type': 'checkbox',
                     'value': {
-                        'Varies Per Unit': false,
-                        'OTHER (NEED MORE DATA)': false
+                        'Varies Per Unit': {c:false, i:''},
+                        'OTHER (NEED MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Water System': { //THIS REQUIRES MORE DATA.
                     'type': 'checkbox',
                     'value': {
-                        'Public Sewer': false,
-                        'OTHER (NEED MORE DATA)': false
+                        'Public Sewer': {c:false, i:''},
+                        'OTHER (NEED MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Main Entry Piping': {
                     'type': 'checkbox',
                     'value': {
-                        'Copper': false,
-                        'Galvanized': false,
-                        'Plastic/CPVC': false,
-                        'Polybutylene': false,
-                        'PEX': false
+                        'Copper': {c:false, i:''},
+                        'Galvanized': {c:false, i:''},
+                        'Plastic/CPVC': {c:false, i:''},
+                        'Polybutylene': {c:false, i:''},
+                        'PEX': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Not Visible': false,
-                        'Leaking': false,
-                        'Unprotected/Freezing': false,
-                        'Discolered Water': false,
-                        'Odor': false
+                        'Not Visible': {c:false, i:''},
+                        'Leaking': {c:false, i:''},
+                        'Unprotected/Freezing': {c:false, i:''},
+                        'Discolered Water': {c:false, i:''},
+                        'Odor': {c:false, i:''}
                     }
                 },
                 'Pressure': {
                     'type': 'checkbox',
                     'value': {
-                        'LIST PRESSURE?': false,
-                        'Low': false,
-                        'High': false,
-                        'Normal': false,
-                        'Inoperable': false,
-                        'Shut-Off': false,
-                        'Winterized': false
+                        'LIST PRESSURE?': {c:false, i:''},
+                        'Low': {c:false, i:''},
+                        'High': {c:false, i:''},
+                        'Normal': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Shut-Off': {c:false, i:''},
+                        'Winterized': {c:false, i:''}
                     }
                 },
                 'Water Lines': {
                     'type': 'checkbox',
                     'value': {
-                        'Copper': false,
-                        'Galvanized': false,
-                        'Plastic/CPVC': false,
-                        'Polybutylene': false,
-                        'PEX': false
+                        'Copper': {c:false, i:''},
+                        'Galvanized': {c:false, i:''},
+                        'Plastic/CPVC': {c:false, i:''},
+                        'Polybutylene': {c:false, i:''},
+                        'PEX': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Not Fully Visible': false,
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Cross Connections': false,
-                        'Leaks': false
+                        'Not Fully Visible': {c:false, i:''},
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Cross Connections': {c:false, i:''},
+                        'Leaks': {c:false, i:''}
                     }
                 },
                 'Lead (other than solder joints)': {
                     'type': 'checkbox',
                     'value': {
-                        'Service Entry': false,
-                        'Unknown': false,
-                        'Unlikely': false
+                        'Service Entry': {c:false, i:''},
+                        'Unknown': {c:false, i:''},
+                        'Unlikely': {c:false, i:''}
                     }
                 },
                 'Disimilar Metal Connection (Potential Electrolysis)': {
                     'type': 'checkbox',
                     'value': {
-                        'Yes': false,
-                        'No': false,
-                        'Not Visible': false
+                        'Yes': {c:false, i:''},
+                        'No': {c:false, i:''},
+                        'Not Visible': {c:false, i:''}
                     }
                 },
                 'DMV Piping': {
                     'type': 'checkbox',
                     'value': {
-                        'Copper': false,
-                        'Cast Iron': false,
-                        'Galvanized': false,
-                        'Plastic/ABS/PVC': false
+                        'Copper': {c:false, i:''},
+                        'Cast Iron': {c:false, i:''},
+                        'Galvanized': {c:false, i:''},
+                        'Plastic/ABS/PVC': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Not Fully Visible': false,
-                        'Satisfactory': false,
-                        'Maginal': false,
-                        'Poor': false,
-                        'Leaks': false,
-                        'Unsupported': false
+                        'Not Fully Visible': {c:false, i:''},
+                        'Satisfactory': {c:false, i:''},
+                        'Maginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Leaks': {c:false, i:''},
+                        'Unsupported': {c:false, i:''}
                     }
                 },
                 'images': []
@@ -1837,141 +1837,141 @@
                 'Faucets': {
                     'type': 'checkbox',
                     'value': {
-                        'Functional': false,
-                        'Intermittent Function': false,
-                        'Inoperable': false,
-                        'Missing/Incomplete': false,
-                        'Loose': false,
-                        'Broken/Damaged': false
+                        'Functional': {c:false, i:''},
+                        'Intermittent Function': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Missing/Incomplete': {c:false, i:''},
+                        'Loose': {c:false, i:''},
+                        'Broken/Damaged': {c:false, i:''}
                     }
                 },
                 'Leaking': {
                     'type': 'checkbox',
                     'value': {
-                        'Hose Bibb': false,
-                        'Wall Stop': false,
-                        'Faucet': false,
-                        'Sprayer': false
+                        'Hose Bibb': {c:false, i:''},
+                        'Wall Stop': {c:false, i:''},
+                        'Faucet': {c:false, i:''},
+                        'Sprayer': {c:false, i:''}
                     }
                 },
                 'Location': {
                     'type': 'checkbox',
                     'value': {
-                        'Kitchen': false,
-                        'Master Bath': false,
-                        'Main Bath': false,
-                        'Half Bath': false,
-                        'Laundry': false,
-                        'Bar': false
+                        'Kitchen': {c:false, i:''},
+                        'Master Bath': {c:false, i:''},
+                        'Main Bath': {c:false, i:''},
+                        'Half Bath': {c:false, i:''},
+                        'Laundry': {c:false, i:''},
+                        'Bar': {c:false, i:''}
                     }
                 },
                 'Accessories': {
                     'type': 'checkbox',
                     'value': {
-                        'Vegetable Sink': false,
-                        'Insta-Hot': false,
-                        'Water Filter': false,
-                        'Ice Maker': false
+                        'Vegetable Sink': {c:false, i:''},
+                        'Insta-Hot': {c:false, i:''},
+                        'Water Filter': {c:false, i:''},
+                        'Ice Maker': {c:false, i:''}
                     }
                 },
                 'Disposer': {
                     'type': 'checkbox',
                     'value': {
-                        'Noisy': false,
-                        'Defective': false
+                        'Noisy': {c:false, i:''},
+                        'Defective': {c:false, i:''}
                     }
                 },
                 'Dishwasher': {
                     'type': 'checkbox',
                     'value': {
-                        'Airgap': false
+                        'Airgap': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Functional': false,
-                        'Inoperable': false,
-                        'Intermittent Function': false,
-                        'Defects/Damage': false
+                        'Functional': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Intermittent Function': {c:false, i:''},
+                        'Defects/Damage': {c:false, i:''}
                     }
                 },
                 'Sinks/Fixtures': {
                     'type': 'checkbox',
                     'value': {
-                        'Functional': false,
-                        'Surface Damage': false,
-                        'Cabinet Damage': false,
-                        'Cross Connection': false,
-                        'Improve Caulking at Sink, Back-Splash, Tub Deck, Shower Surround, Floor, Wood or MDF Molding': false
+                        'Functional': {c:false, i:''},
+                        'Surface Damage': {c:false, i:''},
+                        'Cabinet Damage': {c:false, i:''},
+                        'Cross Connection': {c:false, i:''},
+                        'Improve Caulking at Sink, Back-Splash, Tub Deck, Shower Surround, Floor, Wood or MDF Molding': {c:false, i:''}
                     }
                 },
                 'Grout Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Unsealed (Recommend Sealing)': false,
-                        'Cracked/Loose/Missing Grout': false
+                        'Unsealed (Recommend Sealing)': {c:false, i:''},
+                        'Cracked/Loose/Missing Grout': {c:false, i:''}
                     }
                 },
                 'Drainage': {
                     'type': 'checkbox',
                     'value': {
-                        'Functional': false,
-                        'Missing Stopper': false,
-                        'Missing/Inoperable Overflow': false,
-                        'Clog/Slow Drain': false,
-                        'Stained Drainpipe': false,
-                        'Drips/Leaks': false,
-                        'Defects/Damage': false,
-                        'Unsafe': false,
-                        'Re-Evaluate': false
+                        'Functional': {c:false, i:''},
+                        'Missing Stopper': {c:false, i:''},
+                        'Missing/Inoperable Overflow': {c:false, i:''},
+                        'Clog/Slow Drain': {c:false, i:''},
+                        'Stained Drainpipe': {c:false, i:''},
+                        'Drips/Leaks': {c:false, i:''},
+                        'Defects/Damage': {c:false, i:''},
+                        'Unsafe': {c:false, i:''},
+                        'Re-Evaluate': {c:false, i:''}
                     }
                 },
                 'Location': {
                     'type': 'checkbox',
                     'value': {
-                        'Kitchen': false,
-                        'Master Bath': false,
-                        'Main Bath': false,
-                        'Half Bath': false,
-                        'Laundry': false,
-                        'Bar': false
+                        'Kitchen': {c:false, i:''},
+                        'Master Bath': {c:false, i:''},
+                        'Main Bath': {c:false, i:''},
+                        'Half Bath': {c:false, i:''},
+                        'Laundry': {c:false, i:''},
+                        'Bar': {c:false, i:''}
                     }
                 },
                 'Toilet': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Inoperable': false,
-                        'Runs Continuously': false,
-                        'Leaks': false,
-                        'Loose Bowl': false,
-                        'Damage': false
+                        'Satisfactory': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Runs Continuously': {c:false, i:''},
+                        'Leaks': {c:false, i:''},
+                        'Loose Bowl': {c:false, i:''},
+                        'Damage': {c:false, i:''}
                     }
                 },
                 'Tub/Shower Surround(s)': {
                     'type': 'checkbox',
                     'value': {
-                        'Ceramic': false,
-                        'FG': false,
-                        'Masonite/Laminate': false,
-                        'Slab': false,
-                        'Jacuzzi': false
+                        'Ceramic': {c:false, i:''},
+                        'FG': {c:false, i:''},
+                        'Masonite/Laminate': {c:false, i:''},
+                        'Slab': {c:false, i:''},
+                        'Jacuzzi': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Functional': false,
-                        'Inoperable': false,
-                        'Stains': false,
-                        'Cross Connection': false,
-                        'Defective': false,
-                        'Loose Tile': false,
-                        'Cracked/Broken': false,
-                        'Leaky Shower Head': false,
-                        'Leaky Faucet': false,
-                        'Leaky Sprayer': false
+                        'Functional': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Stains': {c:false, i:''},
+                        'Cross Connection': {c:false, i:''},
+                        'Defective': {c:false, i:''},
+                        'Loose Tile': {c:false, i:''},
+                        'Cracked/Broken': {c:false, i:''},
+                        'Leaky Shower Head': {c:false, i:''},
+                        'Leaky Faucet': {c:false, i:''},
+                        'Leaky Sprayer': {c:false, i:''}
                     }
                 },
                 'images': []
@@ -1980,99 +1980,99 @@
                 'Energy Source': {
                     'type': 'checkbox',
                     'value': {
-                        'Gas/Propane': false,
-                        'Electric': false,
-                        'Oil': false,
-                        'Solar': false,
-                        'Geo Thermal': false
+                        'Gas/Propane': {c:false, i:''},
+                        'Electric': {c:false, i:''},
+                        'Oil': {c:false, i:''},
+                        'Solar': {c:false, i:''},
+                        'Geo Thermal': {c:false, i:''}
                     }
                 },
                 'Brand Name': { //NEEDS MORE DATA.
                     'type': 'checkbox',
                     'value': {
-                        'American': false,
-                        'OTHER (NEEDS MORE DATA)': false
+                        'American': {c:false, i:''},
+                        'OTHER (NEEDS MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Approximate Age (Years Old)': { //NEEDS MORE DATA.
                     'type': 'checkbox',
                     'value': {
-                        '1': false,
-                        '2': false,
-                        '3': false,
-                        '4': false,
-                        '5': false,
-                        '6': false,
-                        '7': false,
-                        '8': false,
-                        '9': false,
-                        '10': false,
-                        'OTHER (NEEDS MORE DATA)': false
+                        '1': {c:false, i:''},
+                        '2': {c:false, i:''},
+                        '3': {c:false, i:''},
+                        '4': {c:false, i:''},
+                        '5': {c:false, i:''},
+                        '6': {c:false, i:''},
+                        '7': {c:false, i:''},
+                        '8': {c:false, i:''},
+                        '9': {c:false, i:''},
+                        '10': {c:false, i:''},
+                        'OTHER (NEEDS MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Capacity (in Gallons)': {
                     'type': 'checkbox',
                     'value': {
-                        '10': false,
-                        '20': false,
-                        '30': false,
-                        '40': false,
-                        '50': false,
-                        'OTHER (NEEDS MORE DATA)': false
+                        '10': {c:false, i:''},
+                        '20': {c:false, i:''},
+                        '30': {c:false, i:''},
+                        '40': {c:false, i:''},
+                        '50': {c:false, i:''},
+                        'OTHER (NEEDS MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Model #': { //THIS IS A TEXT ENTRY FIELD
                     'type': 'checkbox',
                     'value': {
-                        'TEXT ENTRY FIELD': false
+                        'TEXT ENTRY FIELD': {c:false, i:''}
                     }
                 },
                 'Serial #': { //THIS IS A TEXT ENTRY FIELD
                     'type': 'checkbox',
                     'value': {
-                        'TEXT ENTRY FIELD': false
+                        'TEXT ENTRY FIELD': {c:false, i:''}
                     }
                 },
                 'Water Temperature': { //NEEDS MORE DATA
                     'type': 'checkbox',
                     'value': {
-                        'OTHER (NEEDS MORE DATA)': false
+                        'OTHER (NEEDS MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Inoperable': false,
-                        'Data Plate Inaccessible/Illegible': false,
-                        'Missing/Loose Seismic Restraints': false
+                        'Inoperable': {c:false, i:''},
+                        'Data Plate Inaccessible/Illegible': {c:false, i:''},
+                        'Missing/Loose Seismic Restraints': {c:false, i:''}
                     }
                 },
                 'TPRV Connection': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Missing': false,
-                        'Reduced Extension': false,
-                        'Poor Extension Termination': false
+                        'Satisfactory': {c:false, i:''},
+                        'Missing': {c:false, i:''},
+                        'Reduced Extension': {c:false, i:''},
+                        'Poor Extension Termination': {c:false, i:''}
                     }
                 },
                 'Exhaust': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Metal': false,
-                        'Flex Ducting': false,
-                        'PVC': false,
-                        'Condensate': false,
-                        'Rust': false,
-                        'Corrosion': false,
-                        'Verify Proper Pitch': false,
-                        'Disconnected': false,
-                        'Into Masonry Chase': false,
-                        'Missing Liner': false,
-                        'Back-Drafting': false,
-                        'Unsafe': false,
-                        'Recommend Professional Re-Evaluation and/or Remediation': false
+                        'n/a': {c:false, i:''},
+                        'Metal': {c:false, i:''},
+                        'Flex Ducting': {c:false, i:''},
+                        'PVC': {c:false, i:''},
+                        'Condensate': {c:false, i:''},
+                        'Rust': {c:false, i:''},
+                        'Corrosion': {c:false, i:''},
+                        'Verify Proper Pitch': {c:false, i:''},
+                        'Disconnected': {c:false, i:''},
+                        'Into Masonry Chase': {c:false, i:''},
+                        'Missing Liner': {c:false, i:''},
+                        'Back-Drafting': {c:false, i:''},
+                        'Unsafe': {c:false, i:''},
+                        'Recommend Professional Re-Evaluation and/or Remediation': {c:false, i:''}
                     }
                 },
                 'images': []
@@ -2093,57 +2093,57 @@
                 'Energy Source': {
                     'type': 'checkbox',
                     'value': {
-                        'Gas': false,
-                        'LP': false,
-                        'Electric': false,
-                        'Oil': false,
-                        'Solar': false,
-                        'Wind': false,
-                        'Geo Thermal': false
+                        'Gas': {c:false, i:''},
+                        'LP': {c:false, i:''},
+                        'Electric': {c:false, i:''},
+                        'Oil': {c:false, i:''},
+                        'Solar': {c:false, i:''},
+                        'Wind': {c:false, i:''},
+                        'Geo Thermal': {c:false, i:''}
                     }
                 },
                 'System Type': {
                     'type': 'checkbox',
                     'value': {
-                        'Central Forced Air': false,
-                        'In-Wall Space Heaters': false,
-                        'Baseboard Wall': false,
-                        'Radiant': false
+                        'Central Forced Air': {c:false, i:''},
+                        'In-Wall Space Heaters': {c:false, i:''},
+                        'Baseboard Wall': {c:false, i:''},
+                        'Radiant': {c:false, i:''}
                     }
                 },
                 'Boiler': {
                     'type': 'checkbox',
                     'value': {
-                        'Water': false,
-                        'Steam': false,
-                        'Radiator': false
+                        'Water': {c:false, i:''},
+                        'Steam': {c:false, i:''},
+                        'Radiator': {c:false, i:''}
                     }
                 },
                 'Heat Pump': {
                     'type': 'checkbox',
                     'value': {
-                        'Air': false,
-                        'Water': false,
-                        'Ground': false
+                        'Air': {c:false, i:''},
+                        'Water': {c:false, i:''},
+                        'Ground': {c:false, i:''}
                     }
                 },
                 'Stove': {
                     'type': 'checkbox',
                     'value': {
-                        'Wood': false,
-                        'Solid Fuel(Pellet)': false,
-                        'Gas Log': false,
-                        'Verify Clearance to Combustibles': false
+                        'Wood': {c:false, i:''},
+                        'Solid Fuel(Pellet)': {c:false, i:''},
+                        'Gas Log': {c:false, i:''},
+                        'Verify Clearance to Combustibles': {c:false, i:''}
                     }
                 },
                 'Solar': {
                     'type': 'checkbox',
                     'value': {
-                        'Passive': false,
-                        'Heat Sink': false,
-                        'Photo-Voltaic': false,
-                        'Panels': false,
-                        'Convection': false
+                        'Passive': {c:false, i:''},
+                        'Heat Sink': {c:false, i:''},
+                        'Photo-Voltaic': {c:false, i:''},
+                        'Panels': {c:false, i:''},
+                        'Convection': {c:false, i:''}
                     }
                 },
                 'Central Furnace or Heat Pump': { //This is just meant to be a Title
@@ -2154,93 +2154,93 @@
                 'Brand Name': { //NEED MORE DATA
                     'type': 'checkbox',
                     'value': {
-                        'Bryant': false,
-                        'OTHER (NEED MORE DATA)': false
+                        'Bryant': {c:false, i:''},
+                        'OTHER (NEED MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Capacity': { //NEED MORE DATA
                     'type': 'checkbox',
                     'value': {
-                        'Text Entry?': false,
-                        'OTHER (NEED MORE DATA)': false
+                        'Text Entry?': {c:false, i:''},
+                        'OTHER (NEED MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Year of Manufacture': { //SPIN DIAL
                     'type': 'dial',
                     'value': {
-                        'SELECT A YEAR': false
+                        'SELECT A YEAR': {c:false, i:''}
                     }
                 },
                 'Model #': { //TEXT ENTRY FIELD HERE.
                     'type': 'textbox',
                     'value': {
-                        'TEXT ENTRY REQUIRED': false
+                        'TEXT ENTRY REQUIRED': {c:false, i:''}
                     }
                 },
                 'Serial #': { //TEXT ENTRY FIELD HERE.
                     'type': 'textbox',
                     'value': {
-                        'TEXT ENTRY REQUIRED': false
+                        'TEXT ENTRY REQUIRED': {c:false, i:''}
                     }
                 },
                 'Posted Service History': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory (Annual Safety)': false,
-                        'Missing/Old': false,
-                        'Last Serviced n/a': false
+                        'Satisfactory (Annual Safety)': {c:false, i:''},
+                        'Missing/Old': {c:false, i:''},
+                        'Last Serviced n/a': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Inoperable': false,
-                        'Dusty Cabinet': false,
-                        'Rust': false,
-                        'Corrosion': false,
-                        'Flame Distortion': false
+                        'Satisfactory': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Dusty Cabinet': {c:false, i:''},
+                        'Rust': {c:false, i:''},
+                        'Corrosion': {c:false, i:''},
+                        'Flame Distortion': {c:false, i:''}
                     }
                 },
                 'Ducting': {
                     'type': 'checkbox',
                     'value': {
-                        'Plenum & Cold Air Returns': false,
-                        'Metal Duct': false,
-                        'Insulated Flex Duct': false
+                        'Plenum & Cold Air Returns': {c:false, i:''},
+                        'Metal Duct': {c:false, i:''},
+                        'Insulated Flex Duct': {c:false, i:''}
                     }
                 },
                 'Reduced Vent': {
                     'type': 'checkbox',
                     'value': {
-                        'Metal': false,
-                        'PVC': false,
-                        'Verify Proper Pitch': false,
-                        'Rusted': false,
-                        'Deteriorated': false,
-                        'Disconnected': false,
-                        'n/a': false
+                        'Metal': {c:false, i:''},
+                        'PVC': {c:false, i:''},
+                        'Verify Proper Pitch': {c:false, i:''},
+                        'Rusted': {c:false, i:''},
+                        'Deteriorated': {c:false, i:''},
+                        'Disconnected': {c:false, i:''},
+                        'n/a': {c:false, i:''}
                     }
                 },
                 'Filter': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Electrostatic': false,
-                        'Paper': false,
-                        'Filter Fabric': false,
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor/Dirty': false
+                        'n/a': {c:false, i:''},
+                        'Electrostatic': {c:false, i:''},
+                        'Paper': {c:false, i:''},
+                        'Filter Fabric': {c:false, i:''},
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor/Dirty': {c:false, i:''}
                     }
                 },
                 'Disconnect or Typical Safety Controls': {
                     'type': 'checkbox',
                     'value': {
-                        'Functional': false,
-                        'Verify Location/Function': false,
-                        'Hazard': false,
-                        'Recommend Professional HVAC Re-Evaluation, Safety Inspection, and/or Remediation': false
+                        'Functional': {c:false, i:''},
+                        'Verify Location/Function': {c:false, i:''},
+                        'Hazard': {c:false, i:''},
+                        'Recommend Professional HVAC Re-Evaluation, Safety Inspection, and/or Remediation': {c:false, i:''}
                     }
                 },
                 'images': []
@@ -2264,70 +2264,70 @@
                 'Fireplace/Stove Type': {
                     'type': 'checkbox',
                     'value': {
-                        'Masonry Firebox': false,
-                        'Metal FP Insert': false,
-                        'Direct Vent Gas FP': false,
-                        'Wood/Pellet Stove': false,
-                        'Masonry Flue Liner': false,
-                        'Metal Flue Liner': false,
-                        'Unlined Chase': false,
-                        'Venting Into Chimney Chase': false
+                        'Masonry Firebox': {c:false, i:''},
+                        'Metal FP Insert': {c:false, i:''},
+                        'Direct Vent Gas FP': {c:false, i:''},
+                        'Wood/Pellet Stove': {c:false, i:''},
+                        'Masonry Flue Liner': {c:false, i:''},
+                        'Metal Flue Liner': {c:false, i:''},
+                        'Unlined Chase': {c:false, i:''},
+                        'Venting Into Chimney Chase': {c:false, i:''}
                     }
                 },
                 'Mantle/Hearth': {
                     'type': 'checkbox',
                     'value': {
-                        'Loose': false,
-                        'Settling Cracks': false,
-                        'Burned': false,
-                        'Verify Clearance to Combustibles': false
+                        'Loose': {c:false, i:''},
+                        'Settling Cracks': {c:false, i:''},
+                        'Burned': {c:false, i:''},
+                        'Verify Clearance to Combustibles': {c:false, i:''}
                     }
                 },
                 'Firebox': {
                     'type': 'checkbox',
                     'value': {
-                        'No Access': false,
-                        'Missing Liner': false,
-                        'Cracked Refractory Brick': false,
-                        'Missing/Loose Mortar': false
+                        'No Access': {c:false, i:''},
+                        'Missing Liner': {c:false, i:''},
+                        'Cracked Refractory Brick': {c:false, i:''},
+                        'Missing/Loose Mortar': {c:false, i:''}
                     }
                 },
                 'Damper': {
                     'type': 'checkbox',
                     'value': {
-                        'Missing': false,
-                        'No Access': false,
-                        'Inoperable/DTO': false,
-                        'Rusted': false,
-                        'Damaged/Broken': false,
-                        'Creosote Build-Up': false,
-                        'Deterioration': false,
-                        'Recommend Cleaning/Re-Evaluation/Repairs': false
+                        'Missing': {c:false, i:''},
+                        'No Access': {c:false, i:''},
+                        'Inoperable/DTO': {c:false, i:''},
+                        'Rusted': {c:false, i:''},
+                        'Damaged/Broken': {c:false, i:''},
+                        'Creosote Build-Up': {c:false, i:''},
+                        'Deterioration': {c:false, i:''},
+                        'Recommend Cleaning/Re-Evaluation/Repairs': {c:false, i:''}
                     }
                 },
                 'Chimney': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Framed': false,
-                        'Masonry': false,
-                        'Metal': false,
-                        'Class B': false,
-                        'DV Wall Hood': false,
-                        'Cracked Wash': false,
-                        'Loose Mortar': false,
-                        'No Liner': false,
-                        'No Spark Arrestor': false,
-                        'Rust': false,
-                        'Creosote': false,
-                        'Missing Cricket': false,
-                        'Inadequate/Missing Flashing': false,
-                        'Damaged': false,
-                        'Missing Burn Guard': false,
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Recommend Professional Re-Evaluation/Remediation': false
+                        'n/a': {c:false, i:''},
+                        'Framed': {c:false, i:''},
+                        'Masonry': {c:false, i:''},
+                        'Metal': {c:false, i:''},
+                        'Class B': {c:false, i:''},
+                        'DV Wall Hood': {c:false, i:''},
+                        'Cracked Wash': {c:false, i:''},
+                        'Loose Mortar': {c:false, i:''},
+                        'No Liner': {c:false, i:''},
+                        'No Spark Arrestor': {c:false, i:''},
+                        'Rust': {c:false, i:''},
+                        'Creosote': {c:false, i:''},
+                        'Missing Cricket': {c:false, i:''},
+                        'Inadequate/Missing Flashing': {c:false, i:''},
+                        'Damaged': {c:false, i:''},
+                        'Missing Burn Guard': {c:false, i:''},
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Recommend Professional Re-Evaluation/Remediation': {c:false, i:''}
                     }
                 },
                 'images': []
@@ -2351,117 +2351,117 @@
                 'Temperature Differential': { //NEEDS MORE DATA
                     'type': 'checkbox',
                     'value': {
-                        'TEXT ENTRY FIELD': false,
-                        'NOT Tested': false
+                        'TEXT ENTRY FIELD': {c:false, i:''},
+                        'NOT Tested': {c:false, i:''}
                     }
                 },
                 'A/C Type': { //NEEDS MORE DATA
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Inoperable': false,
-                        'OTHER (NEEDS MORE DATA)': false
+                        'n/a': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'OTHER (NEEDS MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Energy Source': {
                     'type': 'checkbox',
                     'value': {
-                        'Natural Gas': false,
-                        'Propane': false,
-                        'Electric': false,
-                        'Central Air': false,
-                        'Heat Pump': false,
-                        'Fan Cooled': false,
-                        'Water': false,
-                        'Gas Chiller': false,
-                        'Swamp Cooler': false
+                        'Natural Gas': {c:false, i:''},
+                        'Propane': {c:false, i:''},
+                        'Electric': {c:false, i:''},
+                        'Central Air': {c:false, i:''},
+                        'Heat Pump': {c:false, i:''},
+                        'Fan Cooled': {c:false, i:''},
+                        'Water': {c:false, i:''},
+                        'Gas Chiller': {c:false, i:''},
+                        'Swamp Cooler': {c:false, i:''}
                     }
                 },
                 'Evaporative Coil or Heat Pump (Inside) Brand Name': { //NEEDS MORE DATA.
                     'type': 'checkbox',
                     'value': {
-                        'Bryant': false,
-                        'OTHER (NEEDS MORE DATA)': false
+                        'Bryant': {c:false, i:''},
+                        'OTHER (NEEDS MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Capacity': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'OTHER (NEEDS MORE DATA)': false
+                        'n/a': {c:false, i:''},
+                        'OTHER (NEEDS MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Year of Manufacture': { //SPIN DIAL
                     'type': 'dial',
                     'value': {
-                        '1996': false,
-                        'YEAR ENTRY NEEDED': false
+                        '1996': {c:false, i:''},
+                        'YEAR ENTRY NEEDED': {c:false, i:''}
                     }
                 },
                 'Model #': { //NEED TEXT FIELD ENTRY HERE.
                     'type': 'textbox',
                     'value': {
-                        'TEXT FIELD ENTRY': false
+                        'TEXT FIELD ENTRY': {c:false, i:''}
                     }
                 },
                 'Serial #': { //NEED TEXT FIELD ENTRY HERE.
                     'type': 'checkbox',
                     'value': {
-                        'TEXT FIELD ENTRY': false
+                        'TEXT FIELD ENTRY': {c:false, i:''}
                     }
                 },
                 'Compressor/Condenser (Outside) Brand Name': {
                     'type': 'checkbox',
                     'value': {
-                        'Bryant': false,
-                        'OTHER (NEEDS MORE DATA)': false
+                        'Bryant': {c:false, i:''},
+                        'OTHER (NEEDS MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Capacity': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'OTHER (NEEDS MORE DATA)': false
+                        'n/a': {c:false, i:''},
+                        'OTHER (NEEDS MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Year of Manufacture': {
                     'type': 'dial',
                     'value': {
-                        '1996': false,
-                        'YEAR ENTRY NEEDED': false
+                        '1996': {c:false, i:''},
+                        'YEAR ENTRY NEEDED': {c:false, i:''}
                     }
                 },
                 'Model #': { //NEED TEXT FIELD ENTRY HERE.
                     'type': 'textbox',
                     'value': {
-                        'TEXT FIELD ENTRY': false
+                        'TEXT FIELD ENTRY': {c:false, i:''}
                     }
                 },
                 'Serial #': { //NEED TEXT FIELD ENTRY HERE.
                     'type': 'textbox',
                     'value': {
-                        'TEXT FIELD ENTRY': false
+                        'TEXT FIELD ENTRY': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Uneven Base': false,
-                        'Inadequate Base Height': false,
-                        'Obstructed Flow': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Uneven Base': {c:false, i:''},
+                        'Inadequate Base Height': {c:false, i:''},
+                        'Obstructed Flow': {c:false, i:''}
                     }
                 },
                 'Refrigerant Lines': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Leaking': false,
-                        'Damaged': false,
-                        'Worn': false,
-                        'Insulation Missing': false
+                        'Satisfactory': {c:false, i:''},
+                        'Leaking': {c:false, i:''},
+                        'Damaged': {c:false, i:''},
+                        'Worn': {c:false, i:''},
+                        'Insulation Missing': {c:false, i:''}
                     }
                 },
                 'images': []
@@ -2482,195 +2482,195 @@
                 'Main Service Entry': {
                     'type': 'checkbox',
                     'value': {
-                        'Underground': false,
-                        'Yard Post': false,
-                        'Not Visible/Accessible': false,
-                        'In Conduit': false,
-                        'Overhead': false,
-                        'Pole Unstable': false,
-                        '3 Cables': false,
-                        '4 Cables': false,
-                        'Copper': false,
-                        'Aluminum': false
+                        'Underground': {c:false, i:''},
+                        'Yard Post': {c:false, i:''},
+                        'Not Visible/Accessible': {c:false, i:''},
+                        'In Conduit': {c:false, i:''},
+                        'Overhead': {c:false, i:''},
+                        'Pole Unstable': {c:false, i:''},
+                        '3 Cables': {c:false, i:''},
+                        '4 Cables': {c:false, i:''},
+                        'Copper': {c:false, i:''},
+                        'Aluminum': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Inadequate Clearances': false,
-                        'Damage': false,
-                        'Hazard': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Inadequate Clearances': {c:false, i:''},
+                        'Damage': {c:false, i:''},
+                        'Hazard': {c:false, i:''}
                     }
                 },
                 'Service Size': {
                     'type': 'checkbox',
                     'value': {
-                        'AMPS (NEED MORE DATA)': false,
-                        'VOLTS (NEED MORE DATA)': false
+                        'AMPS (NEED MORE DATA)': {c:false, i:''},
+                        'VOLTS (NEED MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Ground Connection': {
                     'type': 'checkbox',
                     'value': {
-                        'Visible': false
+                        'Visible': {c:false, i:''}
                     }
                 },
                 'Meter Location': {
                     'type': 'checkbox',
                     'value': {
-                        'Exterior Wall': false,
-                        'Yard Post': false,
-                        'Mechanical Closet': false,
-                        'Not Visible/Locked': false
+                        'Exterior Wall': {c:false, i:''},
+                        'Yard Post': {c:false, i:''},
+                        'Mechanical Closet': {c:false, i:''},
+                        'Not Visible/Locked': {c:false, i:''}
                     }
                 },
                 'Meter Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Inadequate Access': false,
-                        'Damage': false,
-                        'Hazard': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Inadequate Access': {c:false, i:''},
+                        'Damage': {c:false, i:''},
+                        'Hazard': {c:false, i:''}
                     }
                 },
                 'Grounding': {
                     'type': 'checkbox',
                     'value': {
-                        'Not Visible': false,
-                        'Ground Rods': false,
-                        'Ufer': false,
-                        'Bonded to Water/Gas Piping': false
+                        'Not Visible': {c:false, i:''},
+                        'Ground Rods': {c:false, i:''},
+                        'Ufer': {c:false, i:''},
+                        'Bonded to Water/Gas Piping': {c:false, i:''}
                     }
                 },
                 'Ground Wiring': {
                     'type': 'checkbox',
                     'value': {
-                        'Copper': false,
-                        'Aluminum': false,
-                        'Missing': false,
-                        'Not Visible/Accessible': false
+                        'Copper': {c:false, i:''},
+                        'Aluminum': {c:false, i:''},
+                        'Missing': {c:false, i:''},
+                        'Not Visible/Accessible': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Loose Clamp/Lug': false,
-                        'Missing': false,
-                        'Improper Bond': false,
-                        'Too Far From Entry': false
+                        'Satisfactory': {c:false, i:''},
+                        'Loose Clamp/Lug': {c:false, i:''},
+                        'Missing': {c:false, i:''},
+                        'Improper Bond': {c:false, i:''},
+                        'Too Far From Entry': {c:false, i:''}
                     }
                 },
                 'Main Electrical Disconnect Location': {
                     'type': 'checkbox',
                     'value': {
-                        'With Meter': false,
-                        'Inside Main Panel': false,
-                        'Near Panel': false,
-                        'Fuse': false,
-                        'Breaker': false,
-                        'Switch': false,
-                        'Split-Bus': false,
-                        'Overloaded(>6 Hand Motions)': false
+                        'With Meter': {c:false, i:''},
+                        'Inside Main Panel': {c:false, i:''},
+                        'Near Panel': {c:false, i:''},
+                        'Fuse': {c:false, i:''},
+                        'Breaker': {c:false, i:''},
+                        'Switch': {c:false, i:''},
+                        'Split-Bus': {c:false, i:''},
+                        'Overloaded(>6 Hand Motions)': {c:false, i:''}
                     }
                 },
                 'Main Panel': {
                     'type': 'checkbox',
                     'value': {
-                        'Not Visible/Accessible': false,
-                        'Blocked': false,
-                        'Not Evaluated': false
+                        'Not Visible/Accessible': {c:false, i:''},
+                        'Blocked': {c:false, i:''},
+                        'Not Evaluated': {c:false, i:''}
                     }
                 },
                 'Reason for Non Evaluation': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'OTHER (NEED MORE DATA)': false
+                        'n/a': {c:false, i:''},
+                        'OTHER (NEED MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Breakers or Fuses': {
                     'type': 'checkbox',
                     'value': {
-                        'Breakers': false,
-                        'Fuses': false
+                        'Breakers': {c:false, i:''},
+                        'Fuses': {c:false, i:''}
                     }
                 },
                 'Amps': { //NEED MORE DATA
                     'type': 'checkbox',
                     'value': {
-                        'NEED MORE DATA': false
+                        'NEED MORE DATA': {c:false, i:''}
                     }
                 },
                 'Volts': { //NEED MORE DATA
                     'type': 'checkbox',
                     'value': {
-                        '240': false,
-                        'OTHER (NEED MORE DATA)': false
+                        '240': {c:false, i:''},
+                        'OTHER (NEED MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Breaker(s)': {
                     'type': 'checkbox',
                     'value': {
-                        'GFCI Breakers': false,
-                        'AFCI Breakers': false,
-                        'n/a': false
+                        'GFCI Breakers': {c:false, i:''},
+                        'AFCI Breakers': {c:false, i:''},
+                        'n/a': {c:false, i:''}
                     }
                 },
                 'Location': {
                     'type': 'checkbox',
                     'value': {
-                        'Garage': false,
-                        'Basement': false,
-                        'With Meter': false,
-                        'Exterior Wall': false,
-                        'Yard Post': false,
-                        'Interior Wall': false,
-                        'Mechanical Room': false,
-                        'Laundry Room': false,
-                        'Utility Area': false,
-                        'Crawl Space': false
+                        'Garage': {c:false, i:''},
+                        'Basement': {c:false, i:''},
+                        'With Meter': {c:false, i:''},
+                        'Exterior Wall': {c:false, i:''},
+                        'Yard Post': {c:false, i:''},
+                        'Interior Wall': {c:false, i:''},
+                        'Mechanical Room': {c:false, i:''},
+                        'Laundry Room': {c:false, i:''},
+                        'Utility Area': {c:false, i:''},
+                        'Crawl Space': {c:false, i:''}
                     }
                 },
                 'Branch Wiring': {
                     'type': 'checkbox',
                     'value': {
-                        'Copper': false,
-                        'Almuninum': false,
-                        'Tin Clad Copper': false,
-                        'Copper Clad Aluminum': false,
-                        'Non-Metallic Sheathed': false,
-                        'BX Cable': false,
-                        'Condiut': false,
-                        'Cloth-Wrapped': false,
-                        'Knob & Tube': false
+                        'Copper': {c:false, i:''},
+                        'Almuninum': {c:false, i:''},
+                        'Tin Clad Copper': {c:false, i:''},
+                        'Copper Clad Aluminum': {c:false, i:''},
+                        'Non-Metallic Sheathed': {c:false, i:''},
+                        'BX Cable': {c:false, i:''},
+                        'Condiut': {c:false, i:''},
+                        'Cloth-Wrapped': {c:false, i:''},
+                        'Knob & Tube': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Inoperable': false,
-                        'Inadequate Access Clearances': false,
-                        'Dangling Wires': false,
-                        'Excessive Sheathing in Panel': false,
-                        'Double-Tapping': false,
-                        'Undersized Wiring': false,
-                        'Damage': false,
-                        'Rust': false,
-                        'Buried In Insulation': false,
-                        'Burned Breakers': false,
-                        'Dangerous Panel Type': false,
-                        'Improper Splicing': false,
-                        'Hazardous/Unsafe': false,
-                        'Recommend Professional Evaluation/Repairs': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Inadequate Access Clearances': {c:false, i:''},
+                        'Dangling Wires': {c:false, i:''},
+                        'Excessive Sheathing in Panel': {c:false, i:''},
+                        'Double-Tapping': {c:false, i:''},
+                        'Undersized Wiring': {c:false, i:''},
+                        'Damage': {c:false, i:''},
+                        'Rust': {c:false, i:''},
+                        'Buried In Insulation': {c:false, i:''},
+                        'Burned Breakers': {c:false, i:''},
+                        'Dangerous Panel Type': {c:false, i:''},
+                        'Improper Splicing': {c:false, i:''},
+                        'Hazardous/Unsafe': {c:false, i:''},
+                        'Recommend Professional Evaluation/Repairs': {c:false, i:''}
                     }
                 },
                 'images': []
@@ -2679,70 +2679,70 @@
                 'Fixtures': {
                     'type': 'checkbox',
                     'value': {
-                        'Missing/Removed': false,
-                        'Inoperable': false,
-                        'Missing Bulbs': false,
-                        'Missing Covers': false,
-                        'Gaps': false
+                        'Missing/Removed': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Missing Bulbs': {c:false, i:''},
+                        'Missing Covers': {c:false, i:''},
+                        'Gaps': {c:false, i:''}
                     }
                 },
                 'Fixtures Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Inadequate Clearances': false,
-                        'Damage': false,
-                        'Hazard': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Inadequate Clearances': {c:false, i:''},
+                        'Damage': {c:false, i:''},
+                        'Hazard': {c:false, i:''}
                     }
                 },
                 'Switches/Receptacles': {
                     'type': 'checkbox',
                     'value': {
-                        'Typical Grounded': false,
-                        'Some Grounded': false,
-                        'Typical Un-Grounded': false
+                        'Typical Grounded': {c:false, i:''},
+                        'Some Grounded': {c:false, i:''},
+                        'Typical Un-Grounded': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Inoperable': false,
-                        'Weak/Loose': false,
-                        'Missing/Removed': false,
-                        'Missing Cover Plates': false,
-                        'Dangling/Unmounted': false,
-                        'External Splicing': false,
-                        'Gaps Into Boxes': false,
-                        'Burned': false,
-                        'Open Ground': false,
-                        'Open Neutral': false,
-                        'Reverse Polarity': false,
-                        'Ungrounded 3-Prong': false,
-                        'Damaged': false,
-                        'Hazardous/Unsafe': false,
-                        'Recommend Repair/Evaluation by Professional Electrician': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Weak/Loose': {c:false, i:''},
+                        'Missing/Removed': {c:false, i:''},
+                        'Missing Cover Plates': {c:false, i:''},
+                        'Dangling/Unmounted': {c:false, i:''},
+                        'External Splicing': {c:false, i:''},
+                        'Gaps Into Boxes': {c:false, i:''},
+                        'Burned': {c:false, i:''},
+                        'Open Ground': {c:false, i:''},
+                        'Open Neutral': {c:false, i:''},
+                        'Reverse Polarity': {c:false, i:''},
+                        'Ungrounded 3-Prong': {c:false, i:''},
+                        'Damaged': {c:false, i:''},
+                        'Hazardous/Unsafe': {c:false, i:''},
+                        'Recommend Repair/Evaluation by Professional Electrician': {c:false, i:''}
                     }
                 },
                 'Carbon Monoxide Detectors': {
                     'type': 'checkbox',
                     'value': {
-                        'Installed': false,
-                        'Missing/Recommended': false,
-                        'NOT Tested': false
+                        'Installed': {c:false, i:''},
+                        'Missing/Recommended': {c:false, i:''},
+                        'NOT Tested': {c:false, i:''}
                     }
                 },
                 'Smoke Detectors': {
                     'type': 'checkbox',
                     'value': {
-                        'Installed': false,
-                        'Inoperable': false,
-                        'Chirping/Low Batteries': false,
-                        'Missing': false
+                        'Installed': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Chirping/Low Batteries': {c:false, i:''},
+                        'Missing': {c:false, i:''}
                     }
                 },
                 'Caution Label': {
@@ -2768,81 +2768,81 @@
                 'Entry Door(s)': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Solid Wood': false,
-                        'Metal': false,
-                        'Fiberglass': false,
-                        'Panel': false,
-                        'Hollow Core': false
+                        'n/a': {c:false, i:''},
+                        'Solid Wood': {c:false, i:''},
+                        'Metal': {c:false, i:''},
+                        'Fiberglass': {c:false, i:''},
+                        'Panel': {c:false, i:''},
+                        'Hollow Core': {c:false, i:''}
                     }
                 },
                 'Entry Door(s) Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Sagging/Settled': false,
-                        'Rubbing/Binding': false,
-                        'Damaged': false,
-                        'Hardware Issues': false,
-                        'Doorbell Inoperable': false
+                        'Sagging/Settled': {c:false, i:''},
+                        'Rubbing/Binding': {c:false, i:''},
+                        'Damaged': {c:false, i:''},
+                        'Hardware Issues': {c:false, i:''},
+                        'Doorbell Inoperable': {c:false, i:''}
                     }
                 },
                 'Weatherstrip': {
                     'type': 'checkbox',
                     'value': {
-                        'Missing/Damaged': false,
-                        'Poor Seal': false,
-                        'Ineffective Threshold': false
+                        'Missing/Damaged': {c:false, i:''},
+                        'Poor Seal': {c:false, i:''},
+                        'Ineffective Threshold': {c:false, i:''}
                     }
                 },
                 'Window(s)': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Inaccessible': false,
-                        'Difficult To Operate (Needs Adjustment/Lubrication)': false,
-                        'Missing Hardware': false,
-                        'Inadequate Security': false,
-                        'Failed Thermal Seals': false,
-                        'Broken Panes': false,
-                        'Stained': false,
-                        'Weathered Sills': false,
-                        'Mold/Mildew': false,
-                        'Damage': false,
-                        'Deterioration': false
+                        'Satisfactory': {c:false, i:''},
+                        'Inaccessible': {c:false, i:''},
+                        'Difficult To Operate (Needs Adjustment/Lubrication)': {c:false, i:''},
+                        'Missing Hardware': {c:false, i:''},
+                        'Inadequate Security': {c:false, i:''},
+                        'Failed Thermal Seals': {c:false, i:''},
+                        'Broken Panes': {c:false, i:''},
+                        'Stained': {c:false, i:''},
+                        'Weathered Sills': {c:false, i:''},
+                        'Mold/Mildew': {c:false, i:''},
+                        'Damage': {c:false, i:''},
+                        'Deterioration': {c:false, i:''}
                     }
                 },
                 'Ceiling Fan': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Inoperable': false,
-                        'Satisfactory': false
+                        'n/a': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Satisfactory': {c:false, i:''}
                     }
                 },
                 'Heat Source': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Missing/Inadequate': false
+                        'Satisfactory': {c:false, i:''},
+                        'Missing/Inadequate': {c:false, i:''}
                     }
                 },
                 'Lights/Switches/Receptacles (Refer To Electrical Section)': {
                     'type': 'checkbox',
                     'value': {
-                        'Appeared Functional': false,
-                        'Loose/Worn': false,
-                        'Missing': false,
-                        'Inoperable': false,
-                        'Missing Cover Plates': false,
-                        'Ungrounded 3-Prong': false,
-                        'Inoperable GFCI': false,
-                        'Missing GFCI Protection': false,
-                        'Reversed Polarity': false,
-                        'OG/RP Within 6 Feet': false,
-                        'Burned': false,
-                        'Exposed Wires': false,
-                        'Hazardous/Unsafe': false,
-                        'Recommend Professional Evaluation': false
+                        'Appeared Functional': {c:false, i:''},
+                        'Loose/Worn': {c:false, i:''},
+                        'Missing': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Missing Cover Plates': {c:false, i:''},
+                        'Ungrounded 3-Prong': {c:false, i:''},
+                        'Inoperable GFCI': {c:false, i:''},
+                        'Missing GFCI Protection': {c:false, i:''},
+                        'Reversed Polarity': {c:false, i:''},
+                        'OG/RP Within 6 Feet': {c:false, i:''},
+                        'Burned': {c:false, i:''},
+                        'Exposed Wires': {c:false, i:''},
+                        'Hazardous/Unsafe': {c:false, i:''},
+                        'Recommend Professional Evaluation': {c:false, i:''}
                     }
                 },
                 'Comments': {
@@ -2854,107 +2854,107 @@
                 'Appliances': {
                     'type': 'checkbox',
                     'value': {
-                        'Sink Disposer': false,
-                        'Fridge': false,
-                        'Dishwasher': false,
-                        'Oven': false,
-                        'Range': false,
-                        'Microwave': false,
-                        'Warmer': false,
-                        'Trash Compactor': false,
-                        'Cooler': false,
-                        'Water Filter': false,
-                        'Instant Hot': false
+                        'Sink Disposer': {c:false, i:''},
+                        'Fridge': {c:false, i:''},
+                        'Dishwasher': {c:false, i:''},
+                        'Oven': {c:false, i:''},
+                        'Range': {c:false, i:''},
+                        'Microwave': {c:false, i:''},
+                        'Warmer': {c:false, i:''},
+                        'Trash Compactor': {c:false, i:''},
+                        'Cooler': {c:false, i:''},
+                        'Water Filter': {c:false, i:''},
+                        'Instant Hot': {c:false, i:''}
                     }
                 },
                 'Cabinets': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Damaged': false,
-                        'Worn Finish': false,
-                        'Loose Drawers/Hinges': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Damaged': {c:false, i:''},
+                        'Worn Finish': {c:false, i:''},
+                        'Loose Drawers/Hinges': {c:false, i:''}
                     }
                 },
                 'Countertops': {
                     'type': 'checkbox',
                     'value': {
-                        'Granite': false,
-                        'Laminate': false,
-                        'Tile': false,
-                        'Slab': false
+                        'Granite': {c:false, i:''},
+                        'Laminate': {c:false, i:''},
+                        'Tile': {c:false, i:''},
+                        'Slab': {c:false, i:''}
                     }
                 },
                 'Countertops Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Worn': false,
-                        'Damaged': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Worn': {c:false, i:''},
+                        'Damaged': {c:false, i:''}
                     }
                 },
                 'Backsplash & Self Edge': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal/Worn': false,
-                        'Poor': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal/Worn': {c:false, i:''},
+                        'Poor': {c:false, i:''}
                     }
                 },
                 'Caulking': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Worn/Cracked/Gaps': false,
-                        'Improve at Sink, Back-Splash, Counters, or Fixtures': false
+                        'Satisfactory': {c:false, i:''},
+                        'Worn/Cracked/Gaps': {c:false, i:''},
+                        'Improve at Sink, Back-Splash, Counters, or Fixtures': {c:false, i:''}
                     }
                 },
                 'Grout': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Cracked/Missing': false,
-                        'Loose': false,
-                        'Water Damage': false,
-                        'Recommend Sealing': false
+                        'Satisfactory': {c:false, i:''},
+                        'Cracked/Missing': {c:false, i:''},
+                        'Loose': {c:false, i:''},
+                        'Water Damage': {c:false, i:''},
+                        'Recommend Sealing': {c:false, i:''}
                     }
                 },
                 'Exhaust Fan': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Missing': false,
-                        'Inoperable': false
+                        'Satisfactory': {c:false, i:''},
+                        'Missing': {c:false, i:''},
+                        'Inoperable': {c:false, i:''}
                     }
                 },
                 'Heat Source': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Missing/Inadequate': false
+                        'Satisfactory': {c:false, i:''},
+                        'Missing/Inadequate': {c:false, i:''}
                     }
                 },
                 'Lights/Switches/Receptacles (Refer To Electrical Section)': {
                     'type': 'checkbox',
                     'value': {
-                        'Appeared Functional': false,
-                        'Loose/Worn': false,
-                        'Missing': false,
-                        'Inoperable': false,
-                        'Missing Cover Plates': false,
-                        'Ungrounded 3-Prong': false,
-                        'Inoperable GFCI': false,
-                        'Missing GFCI Protection': false,
-                        'Reversed Polarity': false,
-                        'OG/RP Within 6 Feet': false,
-                        'Burned': false,
-                        'Exposed Wires': false,
-                        'Hazardous/Unsafe': false,
-                        'Recommend Professional Evaluation': false
+                        'Appeared Functional': {c:false, i:''},
+                        'Loose/Worn': {c:false, i:''},
+                        'Missing': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Missing Cover Plates': {c:false, i:''},
+                        'Ungrounded 3-Prong': {c:false, i:''},
+                        'Inoperable GFCI': {c:false, i:''},
+                        'Missing GFCI Protection': {c:false, i:''},
+                        'Reversed Polarity': {c:false, i:''},
+                        'OG/RP Within 6 Feet': {c:false, i:''},
+                        'Burned': {c:false, i:''},
+                        'Exposed Wires': {c:false, i:''},
+                        'Hazardous/Unsafe': {c:false, i:''},
+                        'Recommend Professional Evaluation': {c:false, i:''}
                     }
                 }
             },
@@ -2962,50 +2962,50 @@
                 'Appliances': {
                     'type': 'checkbox',
                     'value': {
-                        'None': false,
-                        'Inoperable': false,
-                        'Washer': false,
-                        'Dryer': false,
-                        'WH': false,
-                        'Furnace': false,
-                        'Conditioner': false
+                        'None': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Washer': {c:false, i:''},
+                        'Dryer': {c:false, i:''},
+                        'WH': {c:false, i:''},
+                        'Furnace': {c:false, i:''},
+                        'Conditioner': {c:false, i:''}
                     }
                 },
                 'Dryer': {
                     'type': 'checkbox',
                     'value': {
-                        'Electric': false,
-                        'Gas': false,
-                        'Inoperable/OFF': false,
-                        'Cap Needed': false,
-                        'Hazard(s)': false,
-                        'Recommend Re-Evaluation': false
+                        'Electric': {c:false, i:''},
+                        'Gas': {c:false, i:''},
+                        'Inoperable/OFF': {c:false, i:''},
+                        'Cap Needed': {c:false, i:''},
+                        'Hazard(s)': {c:false, i:''},
+                        'Recommend Re-Evaluation': {c:false, i:''}
                     }
                 },
                 'Exhausted': {
                     'type': 'checkbox',
                     'value': {
-                        'Wall': false,
-                        'Ceiling': false,
-                        'Floor': false
+                        'Wall': {c:false, i:''},
+                        'Ceiling': {c:false, i:''},
+                        'Floor': {c:false, i:''}
                     }
                 },
                 'Exhaust Appears': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Clogged/Loose/Poor': false
+                        'Satisfactory': {c:false, i:''},
+                        'Clogged/Loose/Poor': {c:false, i:''}
                     }
                 },
                 'Exhaust Fan': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Weak/Noisy': false,
-                        'Inoperable': false,
-                        'Missing': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Weak/Noisy': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Missing': {c:false, i:''}
                     }
                 }
             },
@@ -3013,75 +3013,75 @@
                 'Walls/Ceilings': {
                     'type': 'checkbox',
                     'value': {
-                        'GWB': false,
-                        'Lath & Plaster': false,
-                        'Acoustic Tile': false,
-                        'Paneling': false,
-                        'Open Beam': false
+                        'GWB': {c:false, i:''},
+                        'Lath & Plaster': {c:false, i:''},
+                        'Acoustic Tile': {c:false, i:''},
+                        'Paneling': {c:false, i:''},
+                        'Open Beam': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Stains/Mildew': false,
-                        'Cracks': false,
-                        'Repairs': false,
-                        'PACM': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Stains/Mildew': {c:false, i:''},
+                        'Cracks': {c:false, i:''},
+                        'Repairs': {c:false, i:''},
+                        'PACM': {c:false, i:''}
                     }
                 },
                 'Floors': {
                     'type': 'checkbox',
                     'value': {
-                        'Covered': false,
-                        'Sloping': false,
-                        'Squeaks': false,
-                        'Damaged': false,
-                        'Fungal Rot': false
+                        'Covered': {c:false, i:''},
+                        'Sloping': {c:false, i:''},
+                        'Squeaks': {c:false, i:''},
+                        'Damaged': {c:false, i:''},
+                        'Fungal Rot': {c:false, i:''}
                     }
                 },
                 'Caulking': {
                     'type': 'checkbox',
                     'value': {
-                        'Worn/Cracked/Gaps': false,
-                        'Improve At Sink, Back-Splash, Tub/Shower Surround/ or Floor': false
+                        'Worn/Cracked/Gaps': {c:false, i:''},
+                        'Improve At Sink, Back-Splash, Tub/Shower Surround/ or Floor': {c:false, i:''}
                     }
                 },
                 'Heat': {
                     'type': 'checkbox',
                     'value': {
-                        'Yes': false,
-                        'No': false,
-                        'Inoperable': false
+                        'Yes': {c:false, i:''},
+                        'No': {c:false, i:''},
+                        'Inoperable': {c:false, i:''}
                     }
                 },
                 'Exhaust Fan': {
                     'type': 'checkbox',
                     'value': {
-                        'Yes': false,
-                        'No': false,
-                        'Inoperable': false
+                        'Yes': {c:false, i:''},
+                        'No': {c:false, i:''},
+                        'Inoperable': {c:false, i:''}
                     }
                 },
                 'Lights/Switches/Receptacles (Refer To Electrical Section)': {
                     'type': 'checkbox',
                     'value': {
-                        'Appeared Functional': false,
-                        'Loose/Worn': false,
-                        'Missing': false,
-                        'Inoperable': false,
-                        'Missing Cover Plates': false,
-                        'Ungrounded 3-Prong': false,
-                        'Inoperable GFCI': false,
-                        'Missing GFCI Protection': false,
-                        'Reversed Polarity': false,
-                        'OG/RP Within 6 Feet': false,
-                        'Burned': false,
-                        'Exposed Wires': false,
-                        'Hazardous/Unsafe': false,
-                        'Recommend Professional Evaluation': false
+                        'Appeared Functional': {c:false, i:''},
+                        'Loose/Worn': {c:false, i:''},
+                        'Missing': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Missing Cover Plates': {c:false, i:''},
+                        'Ungrounded 3-Prong': {c:false, i:''},
+                        'Inoperable GFCI': {c:false, i:''},
+                        'Missing GFCI Protection': {c:false, i:''},
+                        'Reversed Polarity': {c:false, i:''},
+                        'OG/RP Within 6 Feet': {c:false, i:''},
+                        'Burned': {c:false, i:''},
+                        'Exposed Wires': {c:false, i:''},
+                        'Hazardous/Unsafe': {c:false, i:''},
+                        'Recommend Professional Evaluation': {c:false, i:''}
                     }
                 }
             },
@@ -3089,119 +3089,119 @@
                 'Walls/Ceilings': {
                     'type': 'checkbox',
                     'value': {
-                        'GWB': false,
-                        'Lath & Plaster': false,
-                        'Acoustic Tile': false,
-                        'Paneling': false,
-                        'Open Beam': false
+                        'GWB': {c:false, i:''},
+                        'Lath & Plaster': {c:false, i:''},
+                        'Acoustic Tile': {c:false, i:''},
+                        'Paneling': {c:false, i:''},
+                        'Open Beam': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Stains': false,
-                        'Moisture/Mildew': false,
-                        'Water Damage': false,
-                        'Settling': false,
-                        'Truss Uplift': false,
-                        'Nail Pops': false,
-                        'Holes': false,
-                        'Cracks': false,
-                        'Inadequate Repairs/Texture': false,
-                        'Sooting': false,
-                        'PACM': false,
-                        'Hazardous/Unsafe': false,
-                        'Recommend Professional Evaluation': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Stains': {c:false, i:''},
+                        'Moisture/Mildew': {c:false, i:''},
+                        'Water Damage': {c:false, i:''},
+                        'Settling': {c:false, i:''},
+                        'Truss Uplift': {c:false, i:''},
+                        'Nail Pops': {c:false, i:''},
+                        'Holes': {c:false, i:''},
+                        'Cracks': {c:false, i:''},
+                        'Inadequate Repairs/Texture': {c:false, i:''},
+                        'Sooting': {c:false, i:''},
+                        'PACM': {c:false, i:''},
+                        'Hazardous/Unsafe': {c:false, i:''},
+                        'Recommend Professional Evaluation': {c:false, i:''}
                     }
                 },
                 'Floor Coverings': {
                     'type': 'checkbox',
                     'value': {
-                        'Hard Surfaces (Tile/Stone)': false,
-                        'Hardwood/Laminate': false,
-                        'Vinyl': false,
-                        'Carpet': false
+                        'Hard Surfaces (Tile/Stone)': {c:false, i:''},
+                        'Hardwood/Laminate': {c:false, i:''},
+                        'Vinyl': {c:false, i:''},
+                        'Carpet': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Excessive Wear': false,
-                        'Squeaks': false,
-                        'Stains': false,
-                        'Damage': false,
-                        'Sloping': false,
-                        'Uneven Surfaces': false,
-                        'Holes': false,
-                        'Wrinkled Carpet': false,
-                        'Trip Hazard(s)': false,
-                        'Repair(s)': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Excessive Wear': {c:false, i:''},
+                        'Squeaks': {c:false, i:''},
+                        'Stains': {c:false, i:''},
+                        'Damage': {c:false, i:''},
+                        'Sloping': {c:false, i:''},
+                        'Uneven Surfaces': {c:false, i:''},
+                        'Holes': {c:false, i:''},
+                        'Wrinkled Carpet': {c:false, i:''},
+                        'Trip Hazard(s)': {c:false, i:''},
+                        'Repair(s)': {c:false, i:''}
                     }
                 },
                 'Interior Doors': {
                     'type': 'checkbox',
                     'value': {
-                        'Passage': false,
-                        'Pocket': false,
-                        'Double': false,
-                        'Bi-Fold': false,
-                        'Bi-Pass': false,
-                        'Accordion': false
+                        'Passage': {c:false, i:''},
+                        'Pocket': {c:false, i:''},
+                        'Double': {c:false, i:''},
+                        'Bi-Fold': {c:false, i:''},
+                        'Bi-Pass': {c:false, i:''},
+                        'Accordion': {c:false, i:''}
                     }
                 },
                 'Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Inaccessible': false,
-                        'Inoperable': false,
-                        'Missing/Removed': false,
-                        'Missing Hardware': false,
-                        'Settled/Rubbing': false,
-                        'Improperly Hung/Sagging': false,
-                        'Holes': false,
-                        'Stains': false,
-                        'Cracked/Split Jambs': false,
-                        'Damage': false,
-                        'Inadequate Repairs': false,
-                        'Recommend Servicing/Adjusting': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Inaccessible': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Missing/Removed': {c:false, i:''},
+                        'Missing Hardware': {c:false, i:''},
+                        'Settled/Rubbing': {c:false, i:''},
+                        'Improperly Hung/Sagging': {c:false, i:''},
+                        'Holes': {c:false, i:''},
+                        'Stains': {c:false, i:''},
+                        'Cracked/Split Jambs': {c:false, i:''},
+                        'Damage': {c:false, i:''},
+                        'Inadequate Repairs': {c:false, i:''},
+                        'Recommend Servicing/Adjusting': {c:false, i:''}
                     }
                 },
                 'Window Type(s)': {
                     'type': 'checkbox',
                     'value': {
-                        'Sliders': false,
-                        'Fixed': false,
-                        'Single Hung': false,
-                        'Double Hung': false,
-                        'Awning': false
+                        'Sliders': {c:false, i:''},
+                        'Fixed': {c:false, i:''},
+                        'Single Hung': {c:false, i:''},
+                        'Double Hung': {c:false, i:''},
+                        'Awning': {c:false, i:''}
                     }
                 },
                 'Window(s) Condition': {
                     'type': 'checkbox',
                     'value': {
-                        'Satisfactory': false,
-                        'Marginal': false,
-                        'Poor': false,
-                        'Difficult To Operate': false,
-                        'Improve Security': false,
-                        'Missing Hardware': false,
-                        'Broken Panes': false,
-                        'Failed Thermal Seals': false,
-                        'Verify Bedroom Egress': false,
-                        'Stained': false,
-                        'Weathered Sills': false,
-                        'Mold/Mildew': false,
-                        'Damage': false,
-                        'Deterioration': false
+                        'Satisfactory': {c:false, i:''},
+                        'Marginal': {c:false, i:''},
+                        'Poor': {c:false, i:''},
+                        'Difficult To Operate': {c:false, i:''},
+                        'Improve Security': {c:false, i:''},
+                        'Missing Hardware': {c:false, i:''},
+                        'Broken Panes': {c:false, i:''},
+                        'Failed Thermal Seals': {c:false, i:''},
+                        'Verify Bedroom Egress': {c:false, i:''},
+                        'Stained': {c:false, i:''},
+                        'Weathered Sills': {c:false, i:''},
+                        'Mold/Mildew': {c:false, i:''},
+                        'Damage': {c:false, i:''},
+                        'Deterioration': {c:false, i:''}
                     }
                 },
                 'Safety Concern': {
@@ -3212,20 +3212,20 @@
                 'Lights/Switches/Receptacles (Refer To Electrical Section)': {
                     'type': 'checkbox',
                     'value': {
-                        'Appeared Functional': false,
-                        'Loose/Worn': false,
-                        'Missing': false,
-                        'Inoperable': false,
-                        'Missing Cover Plates': false,
-                        'Ungrounded 3-Prong': false,
-                        'Inoperable GFCI': false,
-                        'Missing GFCI Protection': false,
-                        'Reversed Polarity': false,
-                        'OG/RP Within 6 Feet': false,
-                        'Burned': false,
-                        'Exposed Wires': false,
-                        'Hazardous/Unsafe': false,
-                        'Recommend Professional Evaluation': false
+                        'Appeared Functional': {c:false, i:''},
+                        'Loose/Worn': {c:false, i:''},
+                        'Missing': {c:false, i:''},
+                        'Inoperable': {c:false, i:''},
+                        'Missing Cover Plates': {c:false, i:''},
+                        'Ungrounded 3-Prong': {c:false, i:''},
+                        'Inoperable GFCI': {c:false, i:''},
+                        'Missing GFCI Protection': {c:false, i:''},
+                        'Reversed Polarity': {c:false, i:''},
+                        'OG/RP Within 6 Feet': {c:false, i:''},
+                        'Burned': {c:false, i:''},
+                        'Exposed Wires': {c:false, i:''},
+                        'Hazardous/Unsafe': {c:false, i:''},
+                        'Recommend Professional Evaluation': {c:false, i:''}
                     }
                 },
                 'images': []
@@ -3246,71 +3246,71 @@
                 'Tripping/Falling Hazard(s)': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'Unsafe/Uneven Walking Surfaces': false,
+                        'n/a': {c:false, i:''},
+                        'Unsafe/Uneven Walking Surfaces': {c:false, i:''},
                         'Re-Evaluate': true,
-                        'Interior': false,
-                        'Exterior': false,
-                        'Steep Slope/Drop-Off': false,
-                        'Retaining Wall': false,
-                        'Driveway/Walkway(s)': false,
-                        'Landing': false,
-                        'Balcony': false,
-                        'Patio': false,
-                        'Deck': false,
-                        'Steps/Stairs': false,
-                        'Missing Guard/Handrail(s)': false,
-                        'Low Guard/Handrail(s)': false,
-                        'Root Heaving': false,
-                        'Erosion': false,
-                        'Cracks/Gaps/Missing Dividers': false
+                        'Interior': {c:false, i:''},
+                        'Exterior': {c:false, i:''},
+                        'Steep Slope/Drop-Off': {c:false, i:''},
+                        'Retaining Wall': {c:false, i:''},
+                        'Driveway/Walkway(s)': {c:false, i:''},
+                        'Landing': {c:false, i:''},
+                        'Balcony': {c:false, i:''},
+                        'Patio': {c:false, i:''},
+                        'Deck': {c:false, i:''},
+                        'Steps/Stairs': {c:false, i:''},
+                        'Missing Guard/Handrail(s)': {c:false, i:''},
+                        'Low Guard/Handrail(s)': {c:false, i:''},
+                        'Root Heaving': {c:false, i:''},
+                        'Erosion': {c:false, i:''},
+                        'Cracks/Gaps/Missing Dividers': {c:false, i:''}
                     }
                 },
                 'Fire Hazards': {
                     'type': 'checkbox',
                     'value': {
-                        'n/a': false,
-                        'None': false,
-                        'Missing/Inadequate Firewall': false,
-                        'Missing/Inadequate Fire-Door': false,
-                        'Excessive Storage': false,
-                        'Excessive Heat': false,
-                        'Cellulose Debris': false,
-                        'Roof Tear-Off Debris': false,
-                        'Entrapment/Locks': false,
-                        'Improve Bedroom Egress': false,
-                        'Verify Adequate CO & Fire Alarms': false
+                        'n/a': {c:false, i:''},
+                        'None': {c:false, i:''},
+                        'Missing/Inadequate Firewall': {c:false, i:''},
+                        'Missing/Inadequate Fire-Door': {c:false, i:''},
+                        'Excessive Storage': {c:false, i:''},
+                        'Excessive Heat': {c:false, i:''},
+                        'Cellulose Debris': {c:false, i:''},
+                        'Roof Tear-Off Debris': {c:false, i:''},
+                        'Entrapment/Locks': {c:false, i:''},
+                        'Improve Bedroom Egress': {c:false, i:''},
+                        'Verify Adequate CO & Fire Alarms': {c:false, i:''}
                     }
                 },
                 'Pest Related': {
                     'type': 'checkbox',
                     'value': {
-                        'None': false,
-                        'Ponding/Breeding Water': false,
-                        'Potential Points of Pest Entry': false,
-                        'Rat Droppings Toxins': false,
-                        'Bee/Wasp Nests': false,
-                        'Racoon': false
+                        'None': {c:false, i:''},
+                        'Ponding/Breeding Water': {c:false, i:''},
+                        'Potential Points of Pest Entry': {c:false, i:''},
+                        'Rat Droppings Toxins': {c:false, i:''},
+                        'Bee/Wasp Nests': {c:false, i:''},
+                        'Racoon': {c:false, i:''}
                     }
                 },
                 'Poisen Baits': {
                     'type': 'checkbox',
                     'value': {
-                        'Insect': false,
-                        'Rodent': false
+                        'Insect': {c:false, i:''},
+                        'Rodent': {c:false, i:''}
                     }
                 },
                 'Building Materials (Refer To Specific Sections': {
                     'type': 'checkbox',
                     'value': {
-                        'Missing Window Safety Glass': false,
-                        'Electrical Shock Hazard(s)': false,
-                        'Bio-Growth/Mold/Mildew': false,
-                        'PACM': false,
-                        'Friable ACM': false,
-                        'Lead': false,
-                        'Airborne/VOCs': false,
-                        'Potential Hidden Hazard(s)': false
+                        'Missing Window Safety Glass': {c:false, i:''},
+                        'Electrical Shock Hazard(s)': {c:false, i:''},
+                        'Bio-Growth/Mold/Mildew': {c:false, i:''},
+                        'PACM': {c:false, i:''},
+                        'Friable ACM': {c:false, i:''},
+                        'Lead': {c:false, i:''},
+                        'Airborne/VOCs': {c:false, i:''},
+                        'Potential Hidden Hazard(s)': {c:false, i:''}
                     }
                 },
                 'Comments': {

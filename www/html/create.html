@@ -21,6 +21,9 @@
 
     <section flex="" layout="column" md-swipe-right="toggleLeft()" md-scroll-y style="position:relative">
         <md-content id="testAgain">
+
+
+
             <!--<div ng-repeat="(sectionkey, sectiontitle) in notSorted(report)">-->
             <md-card ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]">
                 <!--<md-card>-->
@@ -92,12 +95,40 @@
                                 <h3 class="md-headline">{{listValue}}:</h3>
 
                                 <md-list-item ng-repeat="(checkboxkey, checkboxval) in notSorted(itemVal.value)" class="relFlex" ng-init="checkboxvalue = page.checkboxes[checklist][checkboxval]">
-                                    <span md-ink-ripple=""><md-checkbox class="md-secondary firstPosition md-body-1" ng-model="checkboxvalue" aria-label="{{checkboxval}}"  md-no-ink  flex-gt-md="80">{{checkboxval}}
+                                    <span md-ink-ripple=""><md-checkbox class="md-secondary firstPosition md-body-1" ng-model="checkboxvalue[c]" aria-label="{{checkboxval}}"  md-no-ink  flex-gt-md="80">{{checkboxval}}
                             </md-checkbox></span>
                                     <div flex=""></div>
-                                    <md-icon ng-if="checkboxvalue" md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent" ng-click="capturePhoto()" flex="10"></md-icon>
+<!--                                    ng-if="checkboxvalue.[i] != ''"-->
 
-                                    <md-icon ng-if="checkboxvalue" md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="openCamera(checkboxval)" flex="10"></md-icon>
+<!--
+                                    <md-menu >
+                                    <md-button ng-click="$mdOpenMenu()">
+                                    <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent" ng-click="$mdOpenMenu()" flex="10"></md-icon> </md-button>
+                                    <md-menu-content>
+                                       <md-menu-item>
+                                        <img ng-src="./img/icon.png" id="smallImage" style="max-height: 300px" />
+                                        </md-menu-item>
+
+                                    </md-menu-content>
+                                    </md-menu>
+-->
+
+<!--
+             <md-menu>
+              Trigger element is a md-button with an icon
+             <md-button ng-click="$mdOpenMenu()" class="md-icon-button" aria-label="Open sample menu">
+               <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent"></md-icon>
+             </md-button>
+             <md-menu-content>
+               <md-menu-item>
+                   <md-button ng-click="doSomething()">Do Something</md-button>
+               </md-menu-item>
+             </md-menu-content>
+            </md-menu>
+-->
+
+                                    <md-icon ng-if="checkboxvalue" md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="capturePhoto()" flex="10"></md-icon>
+
                                 </md-list-item>
                             </md-list>
 
@@ -128,15 +159,17 @@
                         <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon> Add Photo
                     </md-button>
 
+<!--
                     <md-button class="cameraButton md-accent" aria-label="Photos" ng-click="capturePhoto()">
                         <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg"></md-icon> View Photo
                     </md-button>
-                    <div ng-repeat="image in images">{{image}}</div>
+-->
 
-                               <img ng-src="img/icon.png" id="smallImage" style="max-height: 300px" data-rotate="90" />
+<!--                    <div ng-repeat="image in images">{{image}}</div>-->
 
-                                <md-button class="md-raised md-primary capture_button" ng-click="capturePhoto()" aria-label="Capture Photo">Capture Photo</md-button>
-        <md-button class="md-raised capture_button" ng-click="getPhoto(0);" aria-label="Select from Library">Photo Library</md-button>
+<!--                    <img ng-src="./img/icon.png" id="smallImage" style="max-height: 300px" data-rotate="90" />-->
+
+
 
                     <a ng-click="scrollToTop()">TOP</a>
                     <div ng-if="$last" class="footerSpace"></div>

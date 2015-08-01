@@ -95,10 +95,10 @@
                                 <h3 class="md-headline">{{listValue}}:</h3>
 
                                 <md-list-item ng-repeat="(checkboxkey, checkboxval) in notSorted(itemVal.value)" class="relFlex" ng-init="checkboxvalue = page.checkboxes[checklist][checkboxval]">
-                                    <span md-ink-ripple=""><md-checkbox class="md-secondary firstPosition md-body-1" ng-model="checkboxvalue[c]" aria-label="{{checkboxval}}"  md-no-ink  flex-gt-md="80">{{checkboxval}}
+                                    <span md-ink-ripple=""><md-checkbox class="md-secondary firstPosition md-body-1" ng-model="checkboxvalue.c" aria-label="{{checkboxval}}"  md-no-ink  flex-gt-md="80">{{checkboxval}}
                             </md-checkbox></span>
                                     <div flex=""></div>
-<!--                                    ng-if="checkboxvalue.[i] != ''"-->
+<!--                                    ng-if="checkboxvalue.i != ''"-->
 
 <!--
                                     <md-menu >

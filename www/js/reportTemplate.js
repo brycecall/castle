@@ -1492,7 +1492,7 @@
                 },
                 'images': []
             },
-            'Crawl Spaces/Basements': {
+            'Crawl Spaces/Unfinished Basements': {
                 'Access': {
                     'type': 'checkbox',
                     'value': {
@@ -1618,7 +1618,7 @@
                     }
                 }
             },
-            'Interior Mechanical Ventilation/Exhaust Fans': {
+            'Interior Ventilation/Exhaust Fans': {
                 'Conditions': {
                     'type': 'presettext',
                     'showcontent': true,
@@ -1629,7 +1629,7 @@
                     'showcontent': true,
                     'content': '.'
                 },
-                'Interior Mechanical Ventilation (THIS SECTION NAME WAS MADE UP)': {
+                'Interior Ventilation (THIS SECTION NAME WAS MADE UP)': {
                     'type': 'checkbox',
                     'value': {
                         'Whole House Fan(s)': {c:false, i:''},

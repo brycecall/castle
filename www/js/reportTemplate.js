@@ -1492,7 +1492,7 @@
                 },
                 'images': []
             },
-            'Crawl Spaces/Unfinished Basements': {
+            'Crawl Spaces/Basements': {
                 'Access': {
                     'type': 'checkbox',
                     'value': {

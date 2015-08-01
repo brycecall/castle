@@ -2228,7 +2228,7 @@
                         'Poor/Dirty': {c:false, i:''}
                     }
                 },
-                'Disconnect or Typical Safety Controls': {
+                'Disconnect/Typical Safety Controls': {
                     'type': 'checkbox',
                     'value': {
                         'Functional': {c:false, i:''},

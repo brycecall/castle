@@ -1004,7 +1004,7 @@
                         'Wood': {c:false, i:''}
                     }
                 },
-                'Condition of Gutters & Down-Spouts': {
+                'Gutters & Down-Spouts Condition': {
                     'type': 'checkbox',
                     'value': {
                         'Missing': {c:false, i:''},

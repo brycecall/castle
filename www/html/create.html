@@ -22,8 +22,6 @@
     <section flex="" layout="column" md-swipe-right="toggleLeft()" md-scroll-y style="position:relative">
         <md-content id="testAgain">
 
-
-
             <!--<div ng-repeat="(sectionkey, sectiontitle) in notSorted(report)">-->
             <md-card ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]">
                 <!--<md-card>-->
@@ -94,40 +92,23 @@
                                 <md-divider></md-divider>
                                 <h3 class="md-headline">{{listValue}}:</h3>
 
-                                <md-list-item ng-repeat="(checkboxkey, checkboxval) in notSorted(itemVal.value)" class="relFlex" ng-init="checkboxvalue = page.checkboxes[checklist][checkboxval]">
-                                    <span md-ink-ripple=""><md-checkbox class="md-secondary firstPosition md-body-1" ng-model="checkboxvalue.c" aria-label="{{checkboxval}}"  md-no-ink  flex-gt-md="80">{{checkboxval}}
-                            </md-checkbox></span>
+                                <md-list-item ng-repeat="(checkboxkey, checkboxval) in notSorted(itemVal.value)" ng-init="checkboxvalue = page.checkboxes[checklist][checkboxval]"  layout="row" style="position:relative">
+
+                       <p flex> <md-checkbox class="md-secondary checkboxery" ng-model="checkboxvalue.c"  md-no-ink style="position:relative; display:inline">
+                            </md-checkbox>{{checkboxval}}</p>
+
                                     <div flex=""></div>
 <!--                                    ng-if="checkboxvalue.i != ''"-->
 
-<!--
-                                    <md-menu >
-                                    <md-button ng-click="$mdOpenMenu()">
-                                    <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent" ng-click="$mdOpenMenu()" flex="10"></md-icon> </md-button>
+                                    <md-menu flex="10">
+                                    <md-icon ng-click="$mdOpenMenu()" md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent" ng-click="$mdOpenMenu()" ></md-icon>
                                     <md-menu-content>
-                                       <md-menu-item>
-                                        <img ng-src="./img/icon.png" id="smallImage" style="max-height: 300px" />
-                                        </md-menu-item>
+                                        <img ng-src="./img/icon.png" id="smallImage" style="height: 300px; width:300px" />
 
                                     </md-menu-content>
                                     </md-menu>
--->
 
-<!--
-             <md-menu>
-              Trigger element is a md-button with an icon
-             <md-button ng-click="$mdOpenMenu()" class="md-icon-button" aria-label="Open sample menu">
-               <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent"></md-icon>
-             </md-button>
-             <md-menu-content>
-               <md-menu-item>
-                   <md-button ng-click="doSomething()">Do Something</md-button>
-               </md-menu-item>
-             </md-menu-content>
-            </md-menu>
--->
-
-                                    <md-icon ng-if="checkboxvalue" md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="capturePhoto()" flex="10"></md-icon>
+                                    <md-icon  md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="capturePhoto()" aria-label="capture photo" flex=10></md-icon>
 
                                 </md-list-item>
                             </md-list>

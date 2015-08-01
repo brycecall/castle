@@ -1680,8 +1680,7 @@
                     'type': 'presettext',
                     'showcontent': true,
                     'content': 'To minimize unwanted moisture accumulation or humidity concerns, recommend regular use of adequate exhaust fans in kitchens, laundries, bathrooms, and other moisture producing areas with sealed venting to outside the building envelope. Routine maintenance is recommended to ensure that noisy, worn, or dirty fans are serviced or replaced as needed.'
-                },
-                'images': []
+                }
             }
         },
         'Plumbing': {
@@ -2142,11 +2141,8 @@
                         'Convection': {c:false, i:''}
                     }
                 },
-                'Central Furnace or Heat Pump': { //This is just meant to be a Title
-                    'type': 'presettext',
-                    'showcontent': true,
-                    'content': ''
-                },
+            },
+                'Central Furnace/Heat Pump': {
                 'Brand Name': { //NEED MORE DATA
                     'type': 'checkbox',
                     'value': {
@@ -2197,7 +2193,9 @@
                         'Corrosion': {c:false, i:''},
                         'Flame Distortion': {c:false, i:''}
                     }
+                }
                 },
+            'NEW SECTION?': {
                 'Ducting': {
                     'type': 'checkbox',
                     'value': {

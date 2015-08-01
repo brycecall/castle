@@ -1,6 +1,6 @@
     var reportOne = {
         'Field Notes': {
-            'Property Specifications': {
+            'Client Info': {
                 'Clientinfo': {
                     'type': 'clientinfo',
                     'value': {
@@ -12,7 +12,9 @@
                         'state': '',
                         'postalCode': ''
                     }
-                },
+                }
+            },
+            'Property Specifications': {
                 'Conditions': {
                     'type': 'presettext',
                     'showcontent': true,
@@ -2240,12 +2242,12 @@
             },
             'Fireplaces/Stoves': {
                 'Conditions': {
-                    'type': 'checkbox',
+                    'type': 'presettext',
                     'showcontent': true,
                     'content': 'The inspection of solid fuel and gas fireplaces, or heating stoves includes the readily visible components, the fuel source, damper, fire-box, and hearth. Each fireplace or heating stove in the home, including dampers, fire-boxes and hearths was inspected using normal readily accessible control devices to determine whether or not there was a functional and operable heat source present, and to ensure there was air for combustion in spaces where fossil fuel burning heating devices were located. The findings area describes the heating units, visible flue pipes and related components to ensure functional operation and proper clearance from combustibles, and describes any deficiencies of these systems or components.'
                     },
                 'Limitations': {
-                    'type': 'checkbox',
+                    'type': 'presettext',
                     'showcontent': true,
                     'content': 'According to the Home Inspection Standards of Practice WAC § 308-408C-160 of the Washington State Dept. of Licensing, the inspector is not required to: (1)inspect flues or verify the presence of flue liners beyond what can be safely and readily seen from the roof or the firebox of a stove or fireplace, (2)inspect any solid fuel device being operated at the time of the inspection, (3)dismantle fireplaces or stoves to inspect fire-boxes or remove rain caps to inspect chimney flues, (3)evaluate the installation or adequacy of fireplace inserts, or modifications to a fireplace, stove, or chimney, or (4)ignite fires in a fireplace or stove, perform a chimney smoke test or determine the adequacy of draft.'
                 },

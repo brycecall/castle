@@ -2360,16 +2360,18 @@
                         'Gas Chiller': {c:false, i:''},
                         'Swamp Cooler': {c:false, i:''}
                     }
-                },
-                'Evaporative Coil or Heat Pump (Inside) Brand Name': { //NEEDS MORE DATA.
-                    'type': 'checkbox',
+                }
+            },
+            'Evaporative Coil or Heat Pump (Inside)': { //NEEDS MORE DATA.
+                'Brand Name':{
+                    'type': 'textbox',
                     'value': {
                         'Bryant': {c:false, i:''},
                         'OTHER (NEEDS MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Capacity': {
-                    'type': 'checkbox',
+                    'type': 'textbox',
                     'value': {
                         'n/a': {c:false, i:''},
                         'OTHER (NEEDS MORE DATA)': {c:false, i:''}
@@ -2389,12 +2391,14 @@
                     }
                 },
                 'Serial #': { //NEED TEXT FIELD ENTRY HERE.
-                    'type': 'checkbox',
+                    'type': 'textbox',
                     'value': {
                         'TEXT FIELD ENTRY': {c:false, i:''}
                     }
+                }
                 },
-                'Compressor/Condenser (Outside) Brand Name': {
+            'Compressor/Condenser (Outside)': { //NEEDS MORE DATA.
+                'Brand Name': {
                     'type': 'checkbox',
                     'value': {
                         'Bryant': {c:false, i:''},

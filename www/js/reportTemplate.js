@@ -1,6 +1,6 @@
     var reportOne = {
         'Field Notes': {
-            'Property Specifications': {
+            'Client Info': {
                 'Clientinfo': {
                     'type': 'clientinfo',
                     'value': {
@@ -12,7 +12,9 @@
                         'state': '',
                         'postalCode': ''
                     }
-                },
+                }
+            },
+            'Property Specifications': {
                 'Conditions': {
                     'type': 'presettext',
                     'showcontent': true,
@@ -1004,7 +1006,7 @@
                         'Wood': {c:false, i:''}
                     }
                 },
-                'Condition of Gutters & Down-Spouts': {
+                'Gutters & Down-Spouts Condition': {
                     'type': 'checkbox',
                     'value': {
                         'Missing': {c:false, i:''},
@@ -1054,19 +1056,15 @@
         'Structural': {
             'Roof Framing (Visible In Attic)': {
                 'Conditions': {
-                    'type': 'checkbox',
-                    'value': {
-                        'content': 'An inspection of the structure includes traversing attics and subfloor crawl-spaces to inspect the building materials comprising the major structural components, the visible foundation; floor framing; roof framing and diaphragm; other support and substructure / superstructure components; stairs; ventilation (when applicable); and exposed concrete slabs in habitable areas, and describes any deficiencies of these systems or components. The report describes the condition and serviceability of visible, exposed foundations and grade slabs, walls, posts, piers, beams, joists, trusses, sub-floors, chimney foundations, stairs and the visible roof structure and attic components where readily and safely accessible, subfloor crawl-spaces and basements for indications of flooding and moisture penetration, and where deterioration is suspected or where clear indications of possible deterioration exist, a representative number of structural components were probed, and any pest-conducive conditions or wood-rot are reported. Probing is not required when probing will damage any finished surface or where no deterioration is suspected.',
-                        'showcontent': true
-                    }
-                },
+                    'type': 'presettext',
+                    'showcontent': true,
+                    'content': 'An inspection of the structure includes traversing attics and subfloor crawl-spaces to inspect the building materials comprising the major structural components, the visible foundation; floor framing; roof framing and diaphragm; other support and substructure / superstructure components; stairs; ventilation (when applicable); and exposed concrete slabs in habitable areas, and describes any deficiencies of these systems or components. The report describes the condition and serviceability of visible, exposed foundations and grade slabs, walls, posts, piers, beams, joists, trusses, sub-floors, chimney foundations, stairs and the visible roof structure and attic components where readily and safely accessible, subfloor crawl-spaces and basements for indications of flooding and moisture penetration, and where deterioration is suspected or where clear indications of possible deterioration exist, a representative number of structural components were probed, and any pest-conducive conditions or wood-rot are reported. Probing is not required when probing will damage any finished surface or where no deterioration is suspected.'
+                    },
                 'Limitations': {
-                    'type': 'checkbox',
-                    'value': {
-                        'content': 'According to the Home Inspection Standards of Practice WAC § 308-408C-070 of the Washington State Dept. of Licensing, The inspector is not required to enter: sub-floor crawl-spaces that require excavation or have an access opening less than eighteen inches by twenty-four inches or headroom less than eighteen inches beneath floor joists and twelve inches beneath girders (beams). Any areas that are not readily accessible due to obstructions, inadequate clearances or have conditions which, in the inspector\'s opinion, are hazardous to the health and safety of the inspector or will cause damage to components of the home, move stored items or debris or perform excavation to gain access. (BOLD THIS)Please refer to a licensed structural pest inspector (SPI) or pest control operator (PCO) to re-evaluate all issues that are suspected to be insect-related.(BOLD THIS)',
-                        'showcontent': true
-                    }
-                },
+                    'type': 'presettext',
+                    'showcontent': true,
+                    'content': 'According to the Home Inspection Standards of Practice WAC § 308-408C-070 of the Washington State Dept. of Licensing, The inspector is not required to enter: sub-floor crawl-spaces that require excavation or have an access opening less than eighteen inches by twenty-four inches or headroom less than eighteen inches beneath floor joists and twelve inches beneath girders (beams). Any areas that are not readily accessible due to obstructions, inadequate clearances or have conditions which, in the inspector\'s opinion, are hazardous to the health and safety of the inspector or will cause damage to components of the home, move stored items or debris or perform excavation to gain access. (BOLD THIS)Please refer to a licensed structural pest inspector (SPI) or pest control operator (PCO) to re-evaluate all issues that are suspected to be insect-related.(BOLD THIS)'
+                    },
                 'Roof System': {
                     'type': 'checkbox',
                     'value': {
@@ -1622,7 +1620,7 @@
                     }
                 }
             },
-            'Interior Mechanical Ventilation/Exhaust Fans': {
+            'Interior Ventilation/Exhaust Fans': {
                 'Conditions': {
                     'type': 'presettext',
                     'showcontent': true,
@@ -1633,7 +1631,7 @@
                     'showcontent': true,
                     'content': '.'
                 },
-                'Interior Mechanical Ventilation (THIS SECTION NAME WAS MADE UP)': {
+                'Interior Ventilation (THIS SECTION NAME WAS MADE UP)': {
                     'type': 'checkbox',
                     'value': {
                         'Whole House Fan(s)': {c:false, i:''},
@@ -1684,8 +1682,7 @@
                     'type': 'presettext',
                     'showcontent': true,
                     'content': 'To minimize unwanted moisture accumulation or humidity concerns, recommend regular use of adequate exhaust fans in kitchens, laundries, bathrooms, and other moisture producing areas with sealed venting to outside the building envelope. Routine maintenance is recommended to ensure that noisy, worn, or dirty fans are serviced or replaced as needed.'
-                },
-                'images': []
+                }
             }
         },
         'Plumbing': {
@@ -2078,7 +2075,7 @@
                 'images': []
             }
         },
-        'Heating/Cooling': {
+        'Heating': {
             'Heating System': {
                 'Conditions': {
                     'type': 'presettext',
@@ -2090,7 +2087,7 @@
                     'showcontent': true,
                     'content': 'According to the Home Inspection Standards of Practice WAC § 308-408C-120 of the Washington State Dept. of Licensing, the inspector is not required to determine adequacy of combustion air, or the capacity, adequacy, or efficiency of a heating system, or evaluate thermostats or controls other than to confirm that they actually turn a system on or off. The inspector did not remove covers or panels that were not readily accessible or removable, or dismantle any equipment, controls, or gauges except readily identifiable access covers designed to be removed by users. The inspector is not required to ignite pilot lights, or operate heating devices or systems that have been shut down, do not respond to normal controls, or any heating system when circumstances are not conducive to safe operation or when doing so will damage the equipment, inspect or evaluate heat exchangers concealed inside furnaces and boilers, the interior of chimneys and flues, and/or any heating equipment that is not readily accessible, or installed heating system accessories, such as humidifiers, air purifiers, motorized dampers, heat reclaimers; solar heating systems; or concealed distribution systems.'
                 },
-                'Energy Source': {
+                'Energy Source(s)': {
                     'type': 'checkbox',
                     'value': {
                         'Gas': {c:false, i:''},
@@ -2146,11 +2143,8 @@
                         'Convection': {c:false, i:''}
                     }
                 },
-                'Central Furnace or Heat Pump': { //This is just meant to be a Title
-                    'type': 'presettext',
-                    'showcontent': true,
-                    'content': ''
-                },
+            },
+                'Central Furnace/Heat Pump': {
                 'Brand Name': { //NEED MORE DATA
                     'type': 'checkbox',
                     'value': {
@@ -2201,7 +2195,9 @@
                         'Corrosion': {c:false, i:''},
                         'Flame Distortion': {c:false, i:''}
                     }
+                }
                 },
+            'NEW SECTION?': {
                 'Ducting': {
                     'type': 'checkbox',
                     'value': {
@@ -2234,7 +2230,7 @@
                         'Poor/Dirty': {c:false, i:''}
                     }
                 },
-                'Disconnect or Typical Safety Controls': {
+                'Disconnect/Typical Safety Controls': {
                     'type': 'checkbox',
                     'value': {
                         'Functional': {c:false, i:''},
@@ -2242,24 +2238,18 @@
                         'Hazard': {c:false, i:''},
                         'Recommend Professional HVAC Re-Evaluation, Safety Inspection, and/or Remediation': {c:false, i:''}
                     }
-                },
-                'images': []
-
+                }
             },
             'Fireplaces/Stoves': {
                 'Conditions': {
-                    'type': 'checkbox',
-                    'value': {
-                        'content': 'The inspection of solid fuel and gas fireplaces, or heating stoves includes the readily visible components, the fuel source, damper, fire-box, and hearth. Each fireplace or heating stove in the home, including dampers, fire-boxes and hearths was inspected using normal readily accessible control devices to determine whether or not there was a functional and operable heat source present, and to ensure there was air for combustion in spaces where fossil fuel burning heating devices were located. The findings area describes the heating units, visible flue pipes and related components to ensure functional operation and proper clearance from combustibles, and describes any deficiencies of these systems or components.',
-                        'showcontent': true
-                    }
-                },
+                    'type': 'presettext',
+                    'showcontent': true,
+                    'content': 'The inspection of solid fuel and gas fireplaces, or heating stoves includes the readily visible components, the fuel source, damper, fire-box, and hearth. Each fireplace or heating stove in the home, including dampers, fire-boxes and hearths was inspected using normal readily accessible control devices to determine whether or not there was a functional and operable heat source present, and to ensure there was air for combustion in spaces where fossil fuel burning heating devices were located. The findings area describes the heating units, visible flue pipes and related components to ensure functional operation and proper clearance from combustibles, and describes any deficiencies of these systems or components.'
+                    },
                 'Limitations': {
-                    'type': 'checkbox',
-                    'value': {
-                        'content': 'According to the Home Inspection Standards of Practice WAC § 308-408C-160 of the Washington State Dept. of Licensing, the inspector is not required to: (1)inspect flues or verify the presence of flue liners beyond what can be safely and readily seen from the roof or the firebox of a stove or fireplace, (2)inspect any solid fuel device being operated at the time of the inspection, (3)dismantle fireplaces or stoves to inspect fire-boxes or remove rain caps to inspect chimney flues, (3)evaluate the installation or adequacy of fireplace inserts, or modifications to a fireplace, stove, or chimney, or (4)ignite fires in a fireplace or stove, perform a chimney smoke test or determine the adequacy of draft.',
-                        'showcontent': true
-                    }
+                    'type': 'presettext',
+                    'showcontent': true,
+                    'content': 'According to the Home Inspection Standards of Practice WAC § 308-408C-160 of the Washington State Dept. of Licensing, the inspector is not required to: (1)inspect flues or verify the presence of flue liners beyond what can be safely and readily seen from the roof or the firebox of a stove or fireplace, (2)inspect any solid fuel device being operated at the time of the inspection, (3)dismantle fireplaces or stoves to inspect fire-boxes or remove rain caps to inspect chimney flues, (3)evaluate the installation or adequacy of fireplace inserts, or modifications to a fireplace, stove, or chimney, or (4)ignite fires in a fireplace or stove, perform a chimney smoke test or determine the adequacy of draft.'
                 },
                 'Fireplace/Stove Type': {
                     'type': 'checkbox',
@@ -2329,24 +2319,20 @@
                         'Poor': {c:false, i:''},
                         'Recommend Professional Re-Evaluation/Remediation': {c:false, i:''}
                     }
-                },
-                'images': []
-
-            },
+                }
+            }
+        },
+        'Cooling':{
             'Cooling Systems': {
                 'Conditions': {
-                    'type': 'checkbox',
-                    'value': {
-                        'content': 'The inspection of the air conditioning system includes the cooling equipment; cooling distribution equipment, the energy sources, and a description noted in this report of any deficiencies of these systems or components: (1)Where an air conditioning system is present, readily accessible access panels or covers provided by the manufacturer or installer were opened to inspect the air conditioning system. (2)Where conditions allowed use of normal control devices, function of the controls and operative components of the complete system were inspected, and temperature differential was measured and recorded. (3)Interior exhaust fans and/or furnace blower motors may be present and/or operational at the time of the inspection but do not provide cooling. (BOLD THIS)Heat pump cycles were NOT reversed, and if outdoor temperatures were below 60 degrees during the past 72hrs, A/C systems were NOT tested.(BOLD THIS)',
-                        'showcontent': true
-                    }
+                    'type': 'presettext',
+                    'showcontent': true,
+                    'content': 'The inspection of the air conditioning system includes the cooling equipment; cooling distribution equipment, the energy sources, and a description noted in this report of any deficiencies of these systems or components: (1)Where an air conditioning system is present, readily accessible access panels or covers provided by the manufacturer or installer were opened to inspect the air conditioning system. (2)Where conditions allowed use of normal control devices, function of the controls and operative components of the complete system were inspected, and temperature differential was measured and recorded. (3)Interior exhaust fans and/or furnace blower motors may be present and/or operational at the time of the inspection but do not provide cooling. (BOLD THIS)Heat pump cycles were NOT reversed, and if outdoor temperatures were below 60 degrees during the past 72hrs, A/C systems were NOT tested.(BOLD THIS)'
                 },
                 'Limitations': {
-                    'type': 'checkbox',
-                    'value': {
-                        'content': 'According to the Home Inspection Standards of Practice WAC § 308-408C-130 of the Washington State Dept. of Licensing, the inspector is not required to determine the efficiency, or adequacy of the system, activate cooling systems that have been shut down, or operate cooling system components if the exterior temperature is below sixty degrees Fahrenheit, when doing so might damage the equipment, or when other circumstances are not conducive to safe operation, remove covers or panels that are not readily accessible or dismantle any equipment, controls, or gauges except readily identifiable access covers designed to be removed by users, check the coolant pressure / charge, or inspect the system for refrigerant leaks, inspect gas-fired refrigeration systems, evaporative coolers, wall or window-mounted air-conditioning units, evaluate digital-type thermostats or controls, or determine how much current the unit is drawing.',
-                        'showcontent': true
-                    }
+                    'type': 'presettext',
+                    'showcontent': true,
+                    'content': 'According to the Home Inspection Standards of Practice WAC § 308-408C-130 of the Washington State Dept. of Licensing, the inspector is not required to determine the efficiency, or adequacy of the system, activate cooling systems that have been shut down, or operate cooling system components if the exterior temperature is below sixty degrees Fahrenheit, when doing so might damage the equipment, or when other circumstances are not conducive to safe operation, remove covers or panels that are not readily accessible or dismantle any equipment, controls, or gauges except readily identifiable access covers designed to be removed by users, check the coolant pressure / charge, or inspect the system for refrigerant leaks, inspect gas-fired refrigeration systems, evaporative coolers, wall or window-mounted air-conditioning units, evaluate digital-type thermostats or controls, or determine how much current the unit is drawing.'
                 },
                 'Temperature Differential': { //NEEDS MORE DATA
                     'type': 'checkbox',
@@ -2376,16 +2362,18 @@
                         'Gas Chiller': {c:false, i:''},
                         'Swamp Cooler': {c:false, i:''}
                     }
-                },
-                'Evaporative Coil or Heat Pump (Inside) Brand Name': { //NEEDS MORE DATA.
-                    'type': 'checkbox',
+                }
+            },
+            'Evaporative Coil or Heat Pump (Inside)': { //NEEDS MORE DATA.
+                'Brand Name':{
+                    'type': 'textbox',
                     'value': {
                         'Bryant': {c:false, i:''},
                         'OTHER (NEEDS MORE DATA)': {c:false, i:''}
                     }
                 },
                 'Capacity': {
-                    'type': 'checkbox',
+                    'type': 'textbox',
                     'value': {
                         'n/a': {c:false, i:''},
                         'OTHER (NEEDS MORE DATA)': {c:false, i:''}
@@ -2405,12 +2393,14 @@
                     }
                 },
                 'Serial #': { //NEED TEXT FIELD ENTRY HERE.
-                    'type': 'checkbox',
+                    'type': 'textbox',
                     'value': {
                         'TEXT FIELD ENTRY': {c:false, i:''}
                     }
+                }
                 },
-                'Compressor/Condenser (Outside) Brand Name': {
+            'Compressor/Condenser (Outside)': { //NEEDS MORE DATA.
+                'Brand Name': {
                     'type': 'checkbox',
                     'value': {
                         'Bryant': {c:false, i:''},
@@ -2576,7 +2566,7 @@
                         'Breaker': {c:false, i:''},
                         'Switch': {c:false, i:''},
                         'Split-Bus': {c:false, i:''},
-                        'Overloaded(>6 Hand Motions)': {c:false, i:''}
+                        'Overloaded (>6 Hand Motions)': {c:false, i:''}
                     }
                 },
                 'Main Panel': {
@@ -2761,7 +2751,7 @@
                     'content': 'The inspection of the interior includes the walls, ceilings, floors, windows, and doors; steps, stairways, balconies and railings. The interior walls, ceilings, and floors were inspected for indications of concealed structural deficiencies, water infiltration, or major damage. The report verifies that steps, handrails, guard-rails, stairways and landings are installed wherever necessary, and indicates when they are missing or in need of repair, or when baluster spacing exceeds four inches, the condition and operation of a representative number of windows and doors, the overall general condition of cabinets and countertops, grout, and caulking at kitchen and bathroom counters, describes any non-cosmetic deficiencies of these systems or components, and comments on the presence or absence of smoke detectors.'
                 },
                 'Limitations': {
-                    'type': 'checkbox',
+                    'type': 'presettext',
                     'showcontent': true,
                     'content': 'According to the Home Inspection Standards of Practice WAC § 308-408C-140 of the Washington State Dept. of Licensing, the inspector is not required to verify whether all walls, floors, ceilings, doorways, cabinets and window openings are square, straight, level or plumb, operate any system or component that is shut down, not connected or otherwise inoperable, or that does not respond to normal user controls, the strength, adequacy, effectiveness, or efficiency of any system or component; causes of any condition, or deficiency the remaining service life of any system or component; or the methods, materials, or cost of corrections; future conditions including, but not limited to, failure of systems and components or report on cosmetic conditions related to the condition of interior components.'
                 },
@@ -2826,7 +2816,7 @@
                         'Missing/Inadequate': {c:false, i:''}
                     }
                 },
-                'Lights/Switches/Receptacles (Refer To Electrical Section)': {
+                'Lights/Switches/Receptacles (Refer To Electrical Section/SUB-HEADING??/DO WE NEED THIS SECTION??)': {
                     'type': 'checkbox',
                     'value': {
                         'Appeared Functional': {c:false, i:''},
@@ -2842,6 +2832,7 @@
                         'Burned': {c:false, i:''},
                         'Exposed Wires': {c:false, i:''},
                         'Hazardous/Unsafe': {c:false, i:''},
+                        'Refer To Electrical Section': {c:true, i:''},
                         'Recommend Professional Evaluation': {c:false, i:''}
                     }
                 },
@@ -3085,7 +3076,7 @@
                     }
                 }
             },
-            'Interior': {
+            'General': {
                 'Walls/Ceilings': {
                     'type': 'checkbox',
                     'value': {
@@ -3209,7 +3200,7 @@
                     'showcontent': true,
                     'content': 'Where Bedrooms lack a door directly to the outside, a window should serve as an emergency egress.  Recommend regular evaluation and service (lubrication, adjustment) of bedroom windows to verify smooth operation and to ensure adequate emergency egress.'
                 },
-                'Lights/Switches/Receptacles (Refer To Electrical Section)': {
+                'Lights/Switches/Receptacles (Refer To Electrical Section)/DUPLICATE?!?!': {
                     'type': 'checkbox',
                     'value': {
                         'Appeared Functional': {c:false, i:''},

@@ -2566,7 +2566,7 @@
                         'Breaker': {c:false, i:''},
                         'Switch': {c:false, i:''},
                         'Split-Bus': {c:false, i:''},
-                        'Overloaded(>6 Hand Motions)': {c:false, i:''}
+                        'Overloaded (>6 Hand Motions)': {c:false, i:''}
                     }
                 },
                 'Main Panel': {
@@ -2751,7 +2751,7 @@
                     'content': 'The inspection of the interior includes the walls, ceilings, floors, windows, and doors; steps, stairways, balconies and railings. The interior walls, ceilings, and floors were inspected for indications of concealed structural deficiencies, water infiltration, or major damage. The report verifies that steps, handrails, guard-rails, stairways and landings are installed wherever necessary, and indicates when they are missing or in need of repair, or when baluster spacing exceeds four inches, the condition and operation of a representative number of windows and doors, the overall general condition of cabinets and countertops, grout, and caulking at kitchen and bathroom counters, describes any non-cosmetic deficiencies of these systems or components, and comments on the presence or absence of smoke detectors.'
                 },
                 'Limitations': {
-                    'type': 'checkbox',
+                    'type': 'presettext',
                     'showcontent': true,
                     'content': 'According to the Home Inspection Standards of Practice WAC § 308-408C-140 of the Washington State Dept. of Licensing, the inspector is not required to verify whether all walls, floors, ceilings, doorways, cabinets and window openings are square, straight, level or plumb, operate any system or component that is shut down, not connected or otherwise inoperable, or that does not respond to normal user controls, the strength, adequacy, effectiveness, or efficiency of any system or component; causes of any condition, or deficiency the remaining service life of any system or component; or the methods, materials, or cost of corrections; future conditions including, but not limited to, failure of systems and components or report on cosmetic conditions related to the condition of interior components.'
                 },
@@ -2816,7 +2816,7 @@
                         'Missing/Inadequate': {c:false, i:''}
                     }
                 },
-                'Lights/Switches/Receptacles (Refer To Electrical Section)': {
+                'Lights/Switches/Receptacles (Refer To Electrical Section/SUB-HEADING??/DO WE NEED THIS SECTION??)': {
                     'type': 'checkbox',
                     'value': {
                         'Appeared Functional': {c:false, i:''},
@@ -2832,6 +2832,7 @@
                         'Burned': {c:false, i:''},
                         'Exposed Wires': {c:false, i:''},
                         'Hazardous/Unsafe': {c:false, i:''},
+                        'Refer To Electrical Section': {c:true, i:''},
                         'Recommend Professional Evaluation': {c:false, i:''}
                     }
                 },
@@ -3075,7 +3076,7 @@
                     }
                 }
             },
-            'Interior': {
+            'General': {
                 'Walls/Ceilings': {
                     'type': 'checkbox',
                     'value': {
@@ -3199,7 +3200,7 @@
                     'showcontent': true,
                     'content': 'Where Bedrooms lack a door directly to the outside, a window should serve as an emergency egress.  Recommend regular evaluation and service (lubrication, adjustment) of bedroom windows to verify smooth operation and to ensure adequate emergency egress.'
                 },
-                'Lights/Switches/Receptacles (Refer To Electrical Section)': {
+                'Lights/Switches/Receptacles (Refer To Electrical Section)/DUPLICATE?!?!': {
                     'type': 'checkbox',
                     'value': {
                         'Appeared Functional': {c:false, i:''},

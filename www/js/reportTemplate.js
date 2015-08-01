@@ -2075,7 +2075,7 @@
                 'images': []
             }
         },
-        'Heating/Cooling': {
+        'Heating': {
             'Heating System': {
                 'Conditions': {
                     'type': 'presettext',
@@ -2087,7 +2087,7 @@
                     'showcontent': true,
                     'content': 'According to the Home Inspection Standards of Practice WAC § 308-408C-120 of the Washington State Dept. of Licensing, the inspector is not required to determine adequacy of combustion air, or the capacity, adequacy, or efficiency of a heating system, or evaluate thermostats or controls other than to confirm that they actually turn a system on or off. The inspector did not remove covers or panels that were not readily accessible or removable, or dismantle any equipment, controls, or gauges except readily identifiable access covers designed to be removed by users. The inspector is not required to ignite pilot lights, or operate heating devices or systems that have been shut down, do not respond to normal controls, or any heating system when circumstances are not conducive to safe operation or when doing so will damage the equipment, inspect or evaluate heat exchangers concealed inside furnaces and boilers, the interior of chimneys and flues, and/or any heating equipment that is not readily accessible, or installed heating system accessories, such as humidifiers, air purifiers, motorized dampers, heat reclaimers; solar heating systems; or concealed distribution systems.'
                 },
-                'Energy Source': {
+                'Energy Source(s)': {
                     'type': 'checkbox',
                     'value': {
                         'Gas': {c:false, i:''},
@@ -2319,8 +2319,10 @@
                         'Poor': {c:false, i:''},
                         'Recommend Professional Re-Evaluation/Remediation': {c:false, i:''}
                     }
-                },
-            },
+                }
+            }
+        },
+        'Cooling':{
             'Cooling Systems': {
                 'Conditions': {
                     'type': 'presettext',

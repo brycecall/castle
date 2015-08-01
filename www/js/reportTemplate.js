@@ -233,8 +233,7 @@
                              'Dirt/gravel'
                              ],
                     'value': ''
-                }
-            },
+                },
             'Driveway Condition': {
                 'type': 'checkbox',
                 'value': {
@@ -352,8 +351,9 @@
                 'type': 'presettext',
                 'showcontent': true,
                 'content': 'Uneven edges at settling cracks in concrete drives or walkways may pose potential trip hazards, and should be improved to provide a safe walking surface. Safe and secure handrails and guard rails are recommended at all stairways, and where landing heights pose a potential falling hazard.'
+            }
             },
-            'Attached Decks/Balconies/Porches/Steps': {
+            'Attached Steps/Platforms': {
                 'Porch/Stoop': {
                     'type': 'checkbox',
                     'value': {
@@ -430,7 +430,7 @@
             }
         },
         'Exterior': {
-            'Exterior Wall Cladding (Siding or Exterior Wall Coverings)': {
+            'Siding / Wall Cladding': {
                 'Conditions': {
                     'type': 'presettext',
                     'showcontent': true,
@@ -442,7 +442,7 @@
                     'content': 'According to the Home Inspection Standards of Practice WAC § 308-408C-080 of the Washington State Dept. of Licensing, the inspector is not required to inspect buildings, decks, patios, fences, retaining walls, and other structures detached from the dwelling, safety type glass or the integrity of thermal window seals, flues or verify the presence of flue liners beyond what can be safely and readily seen from the roof or the firebox of a stove or fireplace, test or evaluate the operation of security locks, devices or systems, enter areas beneath decks with less than five feet of clearance from the underside of joists to grade, evaluate the function or condition of shutters, awnings, storm doors, storm windows, screens, and similar accessories.'
                 },
 
-                'Moisture/Pest-Conducive Conditions': {
+                'Moisture Conditions': {
                     'type': 'presettext',
                     'showcontent': true,
                     'content': 'Undesirable exterior conditions conducive to pest and/or rot concerns may exist, develop, and/or worsen over time. Recommend identification and elimination of all exposed or unprotected wood in outdoor conditions or inadequate earth-to-wood separation (less than 6 to 8 inches), negative grade (ground surfaces sloping toward building), or overgrown foliage (vegetation touching wall surfaces) and maintain improved conditions to minimize risk of pest, moisture or other potential exterior concerns.'

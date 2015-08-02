@@ -81,7 +81,7 @@
   var pictureSource;
   var destinationType;
   var imageLocation;
-
+  var cameraDestination;
 
    // device APIs are available
   function onDeviceReady() {
@@ -91,20 +91,17 @@
     }
       document.addEventListener("deviceready",onDeviceReady,false);
 
+
   // Called when a photo is successfully retrieved
     function onPhotoDataSuccess(imageData) {
         //alert("Calls after photo is taken, returning to device");
 
-        // Get image handle
-        var smallImage = document.getElementById('smallImage');
-
-        // Unhide image elements
-        smallImage.style.display = 'block';
-
         // Show the captured photo
         // The inline CSS rules are used to resize the image
-        smallImage.src = "data:image/jpeg;base64," + imageData;
+        cameraDestination = "data:image/jpeg;base64," + imageData;
     }
+
+
 
   // Called when a photo is successfully retrieved
     function onPhotoURISuccess(imageURI) {
@@ -127,7 +124,7 @@
 
       // Take picture using device camera and retrieve image as base64-encoded string
       navigator.camera.getPicture(onPhotoDataSuccess, $scope.onFail(), { quality: 50,
-        destinationType: destinationType.DATA_URL });
+      destinationType: destinationType.DATA_URL });
 
     }
 
@@ -141,9 +138,15 @@
 
     }
 
+
+    $scope.initCameraAction = function(source) {
+        cameraDestination = source;
+        $scope.capturePhoto();
+    }
+
     // Called if something bad happens.
     $scope.onFail = function onFail(message) {
-       //alert('Failed because: ' + message);
+       alert('Failed because: ' + message);
     }
 
     //Cancel the add opperation

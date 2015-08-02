@@ -171,19 +171,4 @@ footer .container {
     text-align: center;
 
 }
-    height: 45px;
-    width: 45px;
-    background-position: center;
-    background-size: cover;
-    border-color: white;
-    border-style: solid;
-/*    border-radius: 30px;*/
-    border: 2px;
-    border-collapse: collapse;
-/*    background-color: #EEE;*/    height: 45px;
-    width: 45px;
-    border-radius: 30px;
-    background-position: center;
-    background-size: cover;
-    border: solid #EEE 1px;
-    background-color: #EEE;
+

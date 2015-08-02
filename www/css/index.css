@@ -120,6 +120,7 @@ body {
     color: #333;
 
 
+
 }
 
 
@@ -273,7 +274,7 @@ a:hover {
     position: fixed;
     top:64px;
     z-index: 60;
-    overflow: auto;
+    overflow: inherit;
 }
 
 .mainHeaderBar {
@@ -301,4 +302,22 @@ md-radio-group {
 .checkboxery {
     position: relative;
 
+}
+
+.lock_size {
+    height: 300px;
+    width: 101px;
+    position: relative;
+    right: 40px;
+}
+
+.padMe {
+
+}
+
+.list_item {
+    min-height: 48px;
+    padding: 0 0 0 8px;
+    vertical-align: middle;
+    align-items: center;
 }

@@ -2,22 +2,6 @@
         'Field Notes': {
 
             'Client Info': {
-                'Configurations': {
-                    'type': 'checkbox',
-                    'value': {
-                        'w/ Lower Parking Garage': {c:false, i:'img/icon.png'},
-                        'w/ Basement & Garage': {c:false, i:''},
-                        'w/ Garage': {c:false, i:''},
-                        'w/ Garage & Crawlspace': {c:false, i:''},
-                        'w/ Full Basement': {c:false, i:''},
-                        'w/ Daylight Basement': {c:false, i:''},
-                        'w/ Basement & Crawlspace(s)': {c:false, i:''},
-                        'w/ Crawlspace': {c:false, i:''},
-                        'w/ Slab-On-Grade': {c:false, i:''},
-                        'Over Adjoining Unit(s)': {c:false, i:''},
-                        'Over Adjoining Basement Unit': {c:false, i:''}
-                    }
-                },
                 'Clientinfo': {
                     'type': 'clientinfo',
                     'value': {

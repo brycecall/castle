@@ -97,10 +97,9 @@
         //alert("Calls after photo is taken, returning to device");
 
         // Show the captured photo
-        // The inline CSS rules are used to resize the image
-//        $scope.report[$scope.currentPage][$scope.page][$scope.list].value[$scope.checkBox].i = "data:image/jpeg;base64," + imageData;
-        cameraDestination.i = "data:image/jpeg;base64," + imageData;
-
+        $scope.$apply(function () {
+            cameraDestination.i = "data:image/jpeg;base64," + imageData;
+        });
     }
 
 
@@ -141,14 +140,14 @@
     }
 
 
-    $scope.initCameraAction = function(pCurrentPage, pPagetitle, pListValue, pCheckboxval) {
-        $scope.currentPage = pCurrentPage;
-        $scope.page = pPagetitle;
-        $scope.list = pListValue;
-        $scope.checkBox = pCheckboxval;
-        cameraDestination =  $scope.report[$scope.currentPage][$scope.page][$scope.list].value[$scope.checkBox];
-        $scope.capturePhoto();
-    }
+    $scope.initCameraAction = function(pCheckboxval) {
+        cameraDestination =  pCheckboxval;
+
+        $scope.capturePhoto()
+        //$scope.$apply();
+
+
+     }
 
     // Called if something bad happens.
     $scope.onFail = function onFail(message) {
@@ -158,17 +157,17 @@
     //Cancel the add opperation
     $scope.cancel = function() {
         window.history.back();
-    };
+    }
 
     //Complete the save operation
     $scope.save = function() {
         $scope.addItem();
         window.history.back();
-    };
+    }
 
      $scope.exportReport = function() {
 
-     };
+     }
 
 
  });

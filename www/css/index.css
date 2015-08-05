@@ -321,3 +321,11 @@ md-radio-group {
     vertical-align: middle;
     align-items: center;
 }
+
+.UpPicture {
+    height: 300px;
+    width: 300px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}

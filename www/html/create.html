@@ -98,17 +98,17 @@
                        </span>
                                     <div flex=""></div>
 
-                                    <md-menu  flex="10" style="text-align:center;" ng-if="checkboxvalue.i != '' && checkboxvalue.i !== undefined">
+                                    <md-menu  flex="10" style="text-align:center;" >
                                     <div ng-click="$mdOpenMenu()" style="padding:0 5px">
-                                    <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent"  ng-if="checkboxvalue.i != ''"></md-icon>
+                                    <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent" ng-show="checkboxvalue.i != '' && checkboxvalue.i !== undefined"></md-icon>
                                     </div>
                                     <md-menu-content>
-                                        <img ng-src="checkboxvalue.i" style="height: 300px; width:300px" />
+                                        <div  class="UpPicture" style="background-image: url('{{checkboxvalue.i}}')" />
                                     </md-menu-content>
 
                                     </md-menu>
 <!--report[currentPage][pagetitle][listValue].value[checkboxval].i-->
-                              <md-icon  md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="initCameraAction(report[currentPage][pagetitle][listValue].value[checkboxval].i)" aria-label="capture photo" flex="10"></md-icon>
+                              <md-icon ng-show="checkboxvalue.c"  md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="initCameraAction(currentPage, pagetitle, listValue, checkboxval)" aria-label="capture photo" flex="10"></md-icon>
 
                                 </div>
                             </div>

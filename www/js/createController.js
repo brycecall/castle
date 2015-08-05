@@ -61,9 +61,6 @@
          document.getElementById("testAgain").scrollTop = 0;
      };
 
-     $scope.openCamera = function (checkboxkey) {
-
-     };
 
      $scope.notSorted = function (obj) {
          return obj ? Object.keys(obj) : [];
@@ -78,10 +75,13 @@
 
 
 
-  var pictureSource;
-  var destinationType;
-  var imageLocation;
-  var cameraDestination;
+    var pictureSource;
+    var destinationType;
+    var imageLocation;
+    var cameraDestination;
+    $scope.page;
+    $scope.list;
+    $scope.checkBox;
 
    // device APIs are available
   function onDeviceReady() {
@@ -98,7 +98,9 @@
 
         // Show the captured photo
         // The inline CSS rules are used to resize the image
-        cameraDestination = "data:image/jpeg;base64," + imageData;
+//        $scope.report[$scope.currentPage][$scope.page][$scope.list].value[$scope.checkBox].i = "data:image/jpeg;base64," + imageData;
+        cameraDestination.i = "data:image/jpeg;base64," + imageData;
+
     }
 
 
@@ -139,14 +141,18 @@
     }
 
 
-    $scope.initCameraAction = function(source) {
-        cameraDestination = source;
+    $scope.initCameraAction = function(pCurrentPage, pPagetitle, pListValue, pCheckboxval) {
+        $scope.currentPage = pCurrentPage;
+        $scope.page = pPagetitle;
+        $scope.list = pListValue;
+        $scope.checkBox = pCheckboxval;
+        cameraDestination =  $scope.report[$scope.currentPage][$scope.page][$scope.list].value[$scope.checkBox];
         $scope.capturePhoto();
     }
 
     // Called if something bad happens.
     $scope.onFail = function onFail(message) {
-       alert('Failed because: ' + message);
+      // alert('Failed because: ' + message);
     }
 
     //Cancel the add opperation

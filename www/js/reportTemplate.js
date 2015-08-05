@@ -1,6 +1,23 @@
     var reportOne = {
         'Field Notes': {
+
             'Client Info': {
+                'Configurations': {
+                    'type': 'checkbox',
+                    'value': {
+                        'w/ Lower Parking Garage': {c:false, i:'img/icon.png'},
+                        'w/ Basement & Garage': {c:false, i:''},
+                        'w/ Garage': {c:false, i:''},
+                        'w/ Garage & Crawlspace': {c:false, i:''},
+                        'w/ Full Basement': {c:false, i:''},
+                        'w/ Daylight Basement': {c:false, i:''},
+                        'w/ Basement & Crawlspace(s)': {c:false, i:''},
+                        'w/ Crawlspace': {c:false, i:''},
+                        'w/ Slab-On-Grade': {c:false, i:''},
+                        'Over Adjoining Unit(s)': {c:false, i:''},
+                        'Over Adjoining Basement Unit': {c:false, i:''}
+                    }
+                },
                 'Clientinfo': {
                     'type': 'clientinfo',
                     'value': {
@@ -159,7 +176,7 @@
                 'Vehicle Parking': {
                     'type': 'checkbox',
                     'value': {
-                        'At Curbside': {c:{c:false, i:''}, i:''},
+                        'At Curbside': {c:false, i:''},
                         'In a Rear Alley': {c:false, i:''},
                         'In the Driveway': {c:false, i:''},
                         'In an Attached Garage(s)': {c:false, i:''},
@@ -2484,7 +2501,7 @@
                         'Aluminum': {c:false, i:''}
                     }
                 },
-                'Condition': {
+                'Condition 1': {
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {c:false, i:''},
@@ -2546,7 +2563,7 @@
                         'Not Visible/Accessible': {c:false, i:''}
                     }
                 },
-                'Condition': {
+                'Condition 2': {
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {c:false, i:''},
@@ -2641,7 +2658,7 @@
                         'Knob & Tube': {c:false, i:''}
                     }
                 },
-                'Condition': {
+                'Condition 3': {
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {c:false, i:''},
@@ -2695,7 +2712,7 @@
                         'Typical Un-Grounded': {c:false, i:''}
                     }
                 },
-                'Condition': {
+                'Condition 4': {
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {c:false, i:''},
@@ -3011,7 +3028,7 @@
                         'Open Beam': {c:false, i:''}
                     }
                 },
-                'Condition': {
+                'Condition 5': {
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {c:false, i:''},
@@ -3087,7 +3104,7 @@
                         'Open Beam': {c:false, i:''}
                     }
                 },
-                'Condition': {
+                'Condition 6': {
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {c:false, i:''},
@@ -3117,7 +3134,7 @@
                         'Carpet': {c:false, i:''}
                     }
                 },
-                'Condition': {
+                'Condition 7': {
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {c:false, i:''},
@@ -3146,7 +3163,7 @@
                         'Accordion': {c:false, i:''}
                     }
                 },
-                'Condition': {
+                'Condition 8': {
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {c:false, i:''},

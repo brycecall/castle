@@ -1,4 +1,4 @@
- angular.module('fbiApp').controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window) {
+ angular.module('fbiApp').controller('generateController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window) {
 
      $scope.toggleLeft = buildToggler('left');
 
@@ -19,7 +19,7 @@
          return debounceFn;
      }
 
-     $scope.report = reportOne;
+     $scope.report = savedReport;
 
 
      $scope.currentPage = Object.keys($scope.report)[0];
@@ -30,7 +30,6 @@
              .then(function () {
                  $log.debug("close LEFT is done");
              });
-
      };
 
 
@@ -108,9 +107,15 @@
     function onPhotoURISuccess(imageURI) {
         //alert("Calls when we change to add item page");
 
-        $scope.$apply(function () {
-            cameraDestination.i = imageURI;
-        });
+        // Get image handle
+        //
+        var smallImage = document.getElementById('smallImage');
+
+        // Show the captured photo
+        // The inline CSS rules are used to resize the image
+        //
+        smallImage.src = imageURI;
+        imageLocation = imageURI;
     }
 
   // Capture Photo button will call this function

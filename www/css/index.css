@@ -330,3 +330,8 @@ md-radio-group {
     background-position: center;
     background-repeat: no-repeat;
 }
+
+.sideListItem {
+    position:relative;
+    margin-left: 20px;
+}

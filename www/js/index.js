@@ -45,6 +45,11 @@ inspection.config(['$routeProvider',
                 controller: 'savedController'
             })
 
+            .when('/generate', {
+                templateUrl: 'html/generate.html',
+                controller: 'generateController'
+            })
+
             .otherwise({
                 redirectTo: '/create'
             });

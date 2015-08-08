@@ -3,6 +3,7 @@
     <md-content>
         <md-sidenav class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open subNavLeft" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-swipe-left="close()">
             <!--subNavLeft-->
+            <md-content>
             <div class="padMe">
                 <md-toolbar class="md-theme-indigo" ng-click="close()">
                     <h2 class="md-toolbar-tools md-title">{{currentPage}}</h2>
@@ -17,10 +18,11 @@
 
                 </md-list>
             </div>
+            </md-content>
         </md-sidenav>
     </md-content>
 
-    <section layout="column" md-swipe-right="toggleLeft()" md-scroll-y style="position:relative">
+    <section flex layout="column" md-swipe-right="toggleLeft()" md-scroll-y style="position:relative">
         <md-content id="testAgain">
             <md-card ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]">
                 <!--<md-card>-->

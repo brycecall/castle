@@ -65,6 +65,31 @@
          return obj ? Object.keys(obj) : [];
      };
 
+     $scope.filterExisting = function (items) {
+         var result = [];
+
+//         for (var i = 0; i < items.length; i++) {
+//             var value = items[i];
+//
+//                if (value.i != '') {
+//                    result.push(value);
+//                }
+//         }
+
+        angular.forEach(items, function(value, key) {
+
+            if (value.i != '') {
+                //result.push(value);
+                result[key] = value;
+                 console.log(result);
+            }
+        });
+
+
+         return result ? Object.keys(result) : [];
+
+       };
+
 //
 //     $scope.$watch(function() { return $mdMedia('gt-md'); }, function(big) {
 //        console.log(big);
@@ -167,6 +192,8 @@
      $scope.exportReport = function() {
 
      }
+
+
 
 
  });

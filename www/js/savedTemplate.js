@@ -125,21 +125,21 @@
                              'Mid-Rise',
                              'High-Rise'
                          ],
-                    'value': ''
+                    'value': 'High-Rise'
                 },
                 'Configurations': {
                     'type': 'checkbox',
                     'value': {
-                        'w/ Lower Parking Garage': {c:true, i:''},
+                        'w/ Lower Parking Garage': {c:true, i:'./img/icon.png'},
                         'w/ Basement & Garage': {c:true, i:''},
                         'w/ Garage': {c:false, i:''},
-                        'w/ Garage & Crawlspace': {c:true, i:''},
+                        'w/ Garage & Crawlspace': {c:true, i:'./img/rod.png'},
                         'w/ Full Basement': {c:false, i:''},
-                        'w/ Daylight Basement': {c:false, i:''},
+                        'w/ Daylight Basement': {c:true, i:'./img/icon.png'},
                         'w/ Basement & Crawlspace(s)': {c:false, i:''},
                         'w/ Crawlspace': {c:false, i:''},
                         'w/ Slab-On-Grade': {c:false, i:''},
-                        'Over Adjoining Unit(s)': {c:true, i:''},
+                        'Over Adjoining Unit(s)': {c:true, i:'./img/rod.png'},
                         'Over Adjoining Basement Unit': {c:false, i:''}
                     }
                 },

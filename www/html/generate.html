@@ -4,20 +4,20 @@
         <md-sidenav class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open subNavLeft" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-swipe-left="close()">
             <!--subNavLeft-->
             <md-content>
-            <div class="padMe">
-                <md-toolbar class="md-theme-indigo" ng-click="close()">
-                    <h2 class="md-toolbar-tools md-title">{{currentPage}}</h2>
-                </md-toolbar>
+                <div class="padMe">
+                    <md-toolbar class="md-theme-indigo" ng-click="close()">
+                        <h2 class="md-toolbar-tools md-title">{{currentPage}}</h2>
+                    </md-toolbar>
 
-                <md-list class="subMenu">
+                    <md-list class="subMenu">
 
-                    <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" role="listitem" class="md-proxy-focus md-ink-ripple " style="position:relative; margin-left: 20px">
+                        <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" role="listitem" class="md-proxy-focus md-ink-ripple " style="position:relative; margin-left: 20px">
 
-                        <md-button class="md-secondary menuButton" ng-click="navigatePage(section)" aria-label="{{section}}">{{section}}</md-button>
-                    </md-list-item>
+                            <md-button class="md-secondary menuButton" ng-click="navigatePage(section)" aria-label="{{section}}">{{section}}</md-button>
+                        </md-list-item>
 
-                </md-list>
-            </div>
+                    </md-list>
+                </div>
             </md-content>
         </md-sidenav>
     </md-content>
@@ -73,9 +73,23 @@
                                     </div>
                                 </div>
                                 <!--report[currentPage][pagetitle][listValue].value[checkboxval].i-->
-                                <div ng-repeat="(checkboxkey, checkboxval) in notSorted(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" class="list_item" ng-if="checkboxvalue.i != '' && checkboxvalue.i !== undefined">
-                                    <div class="UpPicture" style="background-image: url('{{checkboxvalue.i}}')" />
-                                </div>
+
+
+
+                                    <div  layout="row">
+                                      <div flex="50">
+                                       <div ng-repeat="(checkboxkey, checkboxval) in filterExisting(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" ng-if="checkboxvalue.i != ''  && $even" >
+                                        <div ng-if="checkboxvalue.i != '' && $even" class="UpPicture" style="background-image: url('{{checkboxvalue.i}}')" />
+                                        </div>
+                                        </div>
+                                        <div flex="50">
+                                        <div  ng-repeat="(checkboxkey, checkboxval) in filterExisting(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" ng-if="checkboxvalue.i != ''  && $odd" flex="50">
+                                        <div ng-if="checkboxvalue.i != '' && $odd" class="UpPicture" style="background-image: url('{{checkboxvalue.i}}')" />
+                                        </div>
+                                        </div>
+                                    </div>
+
+
                             </div>
 
 
@@ -83,10 +97,9 @@
                             <!--                           NUMBER-->
                             <div ng-if="itemVal.type == 'number'">
                                 <h3 class="md-headline">{{listValue}}:</h3>
-                                <md-input-container>
-                                    <label>{{itemVal.label}}</label>
-                                    <input ng-model="itemVal.value" type="number">
-                                </md-input-container>
+
+                                <p class="md-body-1">{{itemVal.value}}</p>
+
                             </div>
 
                         </div>

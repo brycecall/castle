@@ -79,9 +79,6 @@
     var destinationType;
     var imageLocation;
     var cameraDestination;
-    $scope.page;
-    $scope.list;
-    $scope.checkBox;
 
    // device APIs are available
   function onDeviceReady() {
@@ -136,11 +133,8 @@
 
     $scope.initCameraAction = function(pCheckboxval) {
         cameraDestination =  pCheckboxval;
-
-        $scope.capturePhoto()
-        //$scope.$apply();
-
-
+//        $scope.capturePhoto()
+        $scope.getPhoto(1);
      }
 
     // Called if something bad happens.

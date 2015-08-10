@@ -324,9 +324,14 @@ md-radio-group {
 }
 
 .UpPicture {
-    height: 300px;
+    height: 200px;
     width: 300px;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+.sideListItem {
+    position:relative;
+    margin-left: 20px;
 }

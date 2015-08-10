@@ -1,4 +1,4 @@
- angular.module('fbiApp').controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window) {
+ angular.module('fbiApp').controller('generateController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window) {
 
      $scope.toggleLeft = buildToggler('left');
 
@@ -19,7 +19,7 @@
          return debounceFn;
      }
 
-     $scope.report = reportOne;
+     $scope.report = savedReport;
 
 
      $scope.currentPage = Object.keys($scope.report)[0];
@@ -30,7 +30,6 @@
              .then(function () {
                  $log.debug("close LEFT is done");
              });
-
      };
 
 
@@ -66,6 +65,31 @@
          return obj ? Object.keys(obj) : [];
      };
 
+     $scope.filterExisting = function (items) {
+         var result = [];
+
+//         for (var i = 0; i < items.length; i++) {
+//             var value = items[i];
+//
+//                if (value.i != '') {
+//                    result.push(value);
+//                }
+//         }
+
+        angular.forEach(items, function(value, key) {
+
+            if (value.i != '') {
+                //result.push(value);
+                result[key] = value;
+                 console.log(result);
+            }
+        });
+
+
+         return result ? Object.keys(result) : [];
+
+       };
+
 //
 //     $scope.$watch(function() { return $mdMedia('gt-md'); }, function(big) {
 //        console.log(big);
@@ -79,6 +103,9 @@
     var destinationType;
     var imageLocation;
     var cameraDestination;
+    $scope.page;
+    $scope.list;
+    $scope.checkBox;
 
    // device APIs are available
   function onDeviceReady() {
@@ -105,9 +132,15 @@
     function onPhotoURISuccess(imageURI) {
         //alert("Calls when we change to add item page");
 
-        $scope.$apply(function () {
-            cameraDestination.i = imageURI;
-        });
+        // Get image handle
+        //
+        var smallImage = document.getElementById('smallImage');
+
+        // Show the captured photo
+        // The inline CSS rules are used to resize the image
+        //
+        smallImage.src = imageURI;
+        imageLocation = imageURI;
     }
 
   // Capture Photo button will call this function
@@ -133,8 +166,11 @@
 
     $scope.initCameraAction = function(pCheckboxval) {
         cameraDestination =  pCheckboxval;
-//        $scope.capturePhoto()
-        $scope.getPhoto(1);
+
+        $scope.capturePhoto()
+        //$scope.$apply();
+
+
      }
 
     // Called if something bad happens.
@@ -156,6 +192,8 @@
      $scope.exportReport = function() {
 
      }
+
+
 
 
  });

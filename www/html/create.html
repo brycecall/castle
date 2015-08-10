@@ -10,12 +10,14 @@
 
                 <md-list class="subMenu">
 
-                    <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" role="listitem" class="md-proxy-focus md-ink-ripple " style="position:relative; margin-left: 20px">
+                    <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" class=" sideListItem">
 
                         <md-button class="md-secondary menuButton" ng-click="navigatePage(section)" aria-label="{{section}}">{{section}}</md-button>
+
                     </md-list-item>
 
                 </md-list>
+                 <a href="#generate"><md-button class="md-secondary" aria-label="generate Report">Generate Report</md-button></a>
             </div>
         </md-sidenav>
     </md-content>

@@ -1,0 +1,135 @@
+<div ng-controller="generateController" flex="" layout="row" class="page" id="nav">
+
+    <md-content>
+        <md-sidenav class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open subNavLeft" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-swipe-left="close()">
+            <!--subNavLeft-->
+            <md-content>
+                <div class="padMe">
+                    <md-toolbar class="md-theme-indigo" ng-click="close()">
+                        <h2 class="md-toolbar-tools md-title">{{currentPage}}</h2>
+                    </md-toolbar>
+
+                    <md-list class="subMenu">
+
+                        <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" role="listitem" class="md-proxy-focus md-ink-ripple " style="position:relative; margin-left: 20px">
+
+                            <md-button class="md-secondary menuButton" ng-click="navigatePage(section)" aria-label="{{section}}">{{section}}</md-button>
+                        </md-list-item>
+
+                    </md-list>
+                </div>
+            </md-content>
+        </md-sidenav>
+    </md-content>
+
+    <section flex layout="column" md-swipe-right="toggleLeft()" md-scroll-y style="position:relative">
+        <md-content id="testAgain">
+            <md-card ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]">
+                <!--<md-card>-->
+                <md-card-content style="position:relative">
+                    <div layout="row" layout-align="space-between end">
+                        <div>
+                            <h2 ng-click="toggleLeft()" class="md-headline" style="cursor:pointer;">{{currentPage}}
+                            <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_chevron_right_48px.svg" class="headNavIcon"></md-icon>{{pagetitle}}
+                        </h2>
+
+
+                            <h4 ng-init="clientInfo = report['Field Notes']['Client Info'].Clientinfo.value" class="md-caption">{{clientInfo.address}}, {{clientInfo.city}},{{clientInfo.state}} {{clientInfo.postalCode}}</h4>
+                        </div>
+                        <div>
+                            <h4 class="md-caption">Report #: </h4>
+                            <h4 class="md-caption">8/7/2015</h4>
+                        </div>
+                    </div>
+                    <div ng-repeat="(listKey, listValue) in notSorted(page)" ng-init="itemVal = report[currentPage][pagetitle][listValue]">
+
+
+                        <div layout="column" layout-fill="" layout-align="top center">
+
+                            <!--                           PRE-SET TEXT-->
+                            <div ng-if="itemVal.type == 'presettext'">
+                                <h2 class="md-headline">Inspection {{listValue}}</h2>
+                                <md-divider></md-divider>
+                                <p class="md-body-1">{{itemVal.content}}</p>
+                            </div>
+
+
+                            <!--                           CHECKBOX-->
+                            <div ng-if="itemVal.type == 'checkbox'">
+                                <h3 class="md-headline">{{listValue}}:</h3>
+                                <div layout="row">
+                                    <div flex="50">
+                                        <div ng-repeat="(checkboxkey, checkboxval) in notSorted(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" class="list_item" ng-if="$even">
+                                            <md-checkbox class="md-secondary checkboxery" ng-model="checkboxvalue.c" md-no-ink style="position:relative; display:inline" flex="50" flex->{{checkboxval}}
+                                            </md-checkbox>
+
+                                        </div>
+                                    </div>
+                                    <div flex="50">
+                                        <div ng-repeat="(checkboxkey, checkboxval) in notSorted(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" class="list_item" ng-if="$odd">
+                                            <md-checkbox class="md-secondary checkboxery" ng-model="checkboxvalue.c" md-no-ink style="position:relative; display:inline">{{checkboxval}}
+                                            </md-checkbox>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--report[currentPage][pagetitle][listValue].value[checkboxval].i-->
+
+
+
+                                    <div  layout="row">
+                                      <div flex="50">
+                                       <div ng-repeat="(checkboxkey, checkboxval) in filterExisting(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" ng-if="checkboxvalue.i != ''  && $even" >
+                                        <div ng-if="checkboxvalue.i != '' && $even" class="UpPicture" style="background-image: url('{{checkboxvalue.i}}')" />
+                                        </div>
+                                        </div>
+                                        <div flex="50">
+                                        <div  ng-repeat="(checkboxkey, checkboxval) in filterExisting(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" ng-if="checkboxvalue.i != ''  && $odd" flex="50">
+                                        <div ng-if="checkboxvalue.i != '' && $odd" class="UpPicture" style="background-image: url('{{checkboxvalue.i}}')" />
+                                        </div>
+                                        </div>
+                                    </div>
+
+
+                            </div>
+
+
+
+                            <!--                           NUMBER-->
+                            <div ng-if="itemVal.type == 'number'">
+                                <h3 class="md-headline">{{listValue}}:</h3>
+
+                                <p class="md-body-1">{{itemVal.value}}</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <md-button class="cameraButton md-accent" aria-label="Photos" ng-click="capturePhoto()">
+                        <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon> Add Photo
+                    </md-button>
+
+                    <!--
+                    <md-button class="cameraButton md-accent" aria-label="Photos" ng-click="capturePhoto()">
+                        <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg"></md-icon> View Photo
+                    </md-button>
+-->
+
+                    <!--                    <div ng-repeat="image in images">{{image}}</div>-->
+
+                    <!--                    <img ng-src="./img/icon.png" id="smallImage" style="max-height: 300px" data-rotate="90" />-->
+
+
+
+                    <!--                    <a ng-click="scrollToTop()">TOP</a>-->
+                    <!--                    <div ng-if="$last" class="footerSpace"></div>-->
+
+
+                </md-card-content>
+            </md-card>
+        </md-content>
+        <div class="footerSpace"></div>
+    </section>
+
+
+</div>

@@ -19,20 +19,20 @@ footer {
 
 .fab_add_expand {
     height: 245px !important;
-    width: 200px !important;
+    width: 175px !important;
     margin-top: 5px !important;
     margin-bottom: 0 !important;
     padding-top: 5px;
     padding-bottom: 30px;
+/*
     margin-right: 26px !important;
-    margin-left: -127px !important;
+    margin-left: 127px !important;
+*/
     
     position: relative;
     background-color: white;
     border-radius: 5px;
     opacity: .9;
-    
-    
     transition: transform .3s ease-in-out;
 }
 
@@ -149,7 +149,7 @@ footer .container {
 }
 
 .fab_add_button {
-    margin: 5px;
+    margin: 5px 0;
     display: block;
     float: none;
 }

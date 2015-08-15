@@ -1,6 +1,5 @@
     var reportOne = {
         'Field Notes': {
-
             'Client Info': {
                 'Clientinfo': {
                     'type': 'clientinfo',

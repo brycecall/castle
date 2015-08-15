@@ -1,4 +1,4 @@
- angular.module('fbiApp').controller('generateController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window) {
+ angular.module('fbiApp').controller('generateController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window, $compile) {
 
      $scope.toggleLeft = buildToggler('left');
 
@@ -20,6 +20,7 @@
      }
 
      $scope.report = savedReport;
+     $scope.fieldNotes = fieldNotes;
 
 
      $scope.currentPage = Object.keys($scope.report)[0];
@@ -112,6 +113,16 @@
       //alert("Calls when app starts");
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
+
+
+          var template = "<h2 ng-click=\"toggleLeft()\" class=\"md-display-1\" style=\"cursor:pointer;\">{{currentPage}}{{pagetitle}}</h2>";
+
+     //TODO: get compile to work
+//    console.log("HI");
+//    var ngTemplate = $compile(template);
+//    var result = ngTemplate($scope);
+//    $scope.$apply();
+//    console.log(result.text());
     }
       document.addEventListener("deviceready",onDeviceReady,false);
 
@@ -193,6 +204,27 @@
 
      }
 
+//    var pdf = new jsPDF('p','pt','a4');
+//
+//    pdf.addHTML(document.body,function() {
+//        var string = pdf.output('datauristring');
+//        $('.preview-pane').attr('src', string);
+//    });
+
+//    // Step 1: parse HTML into DOM element
+//    var template = document.documentElement.innerHTML;
+//
+//    // Step 2: compile the template
+//    var linkFn = $compile(template);
+//
+//    // Step 3: link the compiled template with the scope.
+//    var element = linkFn($scope);
+//     console.log(element);
+//
+//    // Step 4: Append to DOM (optional)
+//    //parent.appendChild(element);
+
+    //var template = document.documentElement.innerHTML;
 
 
 

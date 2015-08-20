@@ -3319,3 +3319,20 @@
 
         }
     };
+
+var headings = [
+    'Field Notes',
+    'Site',
+    'Exterior',
+    'Roofing',
+    'Structural',
+    'Thermal',
+    'Plumbing',
+    'Heating',
+    'Cooling',
+    'Electrical',
+    'Interior',
+    'Life/Safety',
+    'Photo Appendix'
+
+];

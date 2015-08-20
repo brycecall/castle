@@ -364,3 +364,9 @@ overoverflow-x:
 #createSideNav {
     position: absolute;
 }
+
+.pictureBox {
+    height: 230px;
+    width: 300px;
+    padding:10px;
+}

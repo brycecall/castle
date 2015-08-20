@@ -82,7 +82,6 @@
             if (value.i != '') {
                 //result.push(value);
                 result[key] = value;
-                 console.log(result);
             }
         });
 
@@ -113,16 +112,6 @@
       //alert("Calls when app starts");
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
-
-
-          var template = "<h2 ng-click=\"toggleLeft()\" class=\"md-display-1\" style=\"cursor:pointer;\">{{currentPage}}{{pagetitle}}</h2>";
-
-     //TODO: get compile to work
-//    console.log("HI");
-//    var ngTemplate = $compile(template);
-//    var result = ngTemplate($scope);
-//    $scope.$apply();
-//    console.log(result.text());
     }
       document.addEventListener("deviceready",onDeviceReady,false);
 
@@ -204,27 +193,36 @@
 
      }
 
-//    var pdf = new jsPDF('p','pt','a4');
+//var doc = new jsPDF();
 //
-//    pdf.addHTML(document.body,function() {
-//        var string = pdf.output('datauristring');
-//        $('.preview-pane').attr('src', string);
-//    });
+//doc.fromHTML($('#render_me').get(0), 15, 15, {
+//	'width': 170,
+//});
+//
+//var pdfIMG = document.getElementById('pdfIMG');
+//
+//// Show the captured photo
+//// The inline CSS rules are used to resize the image
+////
+//pdfIMG.src = doc.output("datauristring");
 
-//    // Step 1: parse HTML into DOM element
-//    var template = document.documentElement.innerHTML;
-//
-//    // Step 2: compile the template
-//    var linkFn = $compile(template);
-//
-//    // Step 3: link the compiled template with the scope.
-//    var element = linkFn($scope);
-//     console.log(element);
-//
-//    // Step 4: Append to DOM (optional)
-//    //parent.appendChild(element);
+
+
+    // Step 4: Append to DOM (optional)
+    //parent.appendChild(element);
 
     //var template = document.documentElement.innerHTML;
+
+ //    console.log("BEGIN!!!!!!!!!!!!!");
+//
+//          var template = "<h2 ng-click=\"toggleLeft()\" class=\"md-display-1\" style=\"cursor:pointer;\">{{currentPage}}{{pagetitle}}</h2>";
+//
+//    //TODO: get compile to work
+//    console.log("HI");
+//    var ngTemplate = $compile(angular.element(template));
+//    var result = ngTemplate($scope);
+//    $scope.$apply();
+//    console.log(result[0].outerHTML);
 
 
 

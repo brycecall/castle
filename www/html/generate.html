@@ -22,9 +22,11 @@
         </md-sidenav>
     </md-content>
 
-    <section flex layout="column" md-swipe-right="toggleLeft()" md-scroll-y style="position:relative">
-        <md-content id="testAgain">
-            <md-card ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle centerContent" ng-init="page = report[currentPage][pagetitle]">
+    <section flex layout="column" md-swipe-right="toggleLeft()" md-scroll-y style="position:relative" id="render_me">
+
+
+        <md-content id="testAgain" >
+            <md-card ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]" >
                 <!--<md-card>-->
                 <md-card-content style="position:relative">
                     <div layout="row" layout-align="space-between end">
@@ -101,8 +103,10 @@
                     </div>
                 </md-card-content>
             </md-card>
+<!--
 
-<!--            <iframe class="preview-pane" type="application/pdf" width="100%" height="650" frameborder="0" style="position:relative;z-index:999" src=""></iframe>-->
+            <iframe class="preview-pane" type="application/pdf" width="100%" height="650" frameborder="0" style="position:relative;z-index:999" src="" id="pdfIMG" ></iframe>
+-->
 
         </md-content>
         <div class="footerSpace"></div>
@@ -110,3 +114,8 @@
 
 
 </div>
+
+
+
+
+

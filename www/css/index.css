@@ -271,11 +271,9 @@ a:hover {
 
 .subNavLeft {
     display: block;
-    height: 100%;
     position: fixed;
     top:64px;
     z-index: 60;
-    overflow: inherit;
 }
 
 .mainHeaderBar {
@@ -300,6 +298,7 @@ md-radio-group {
 .md-open-menu-container {
     overflow: hidden;
 }
+
 .checkboxery {
     position: relative;
 
@@ -355,3 +354,7 @@ md-radio-group {
     height: 300px;
 */
 }
+overoverflow-x:
+        ::
+        \:
+         conscscroll;

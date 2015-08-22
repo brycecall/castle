@@ -103,7 +103,8 @@
     var destinationType;
     var imageLocation;
     var cameraDestination;
-
+    var deviceIsReady = false;
+    var gFileEntry;
      document.addEventListener("deviceready", onDeviceReady1, false);
 
     // device APIs are available
@@ -112,7 +113,7 @@
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-        //gotFileWriter();
+        deviceIsReady = true;
         console.log('Device Readiness Complete');
     }
 
@@ -123,12 +124,20 @@
 /********************************************************
 * FILE WRITER
 ***********************************************************/
+//
+//     function writeToFile() = {
+//        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+//
+//     }
+
+
     function gotFS(fileSystem) {
         fileSystem.root.getFile("saved.txt", {create: true, exclusive: false}, gotFileEntry, fail);
     }
 
 
     function gotFileEntry(fileEntry) {
+        gFileEntry = fileEntry;
         fileEntry.createWriter(gotFileWriter, fail);
         fileEntry.file(readAsText, fail);
 
@@ -138,7 +147,9 @@
         writer.onwrite = function(evt) {
             console.log("write success");
         };
-        writer.write("some sample text");
+        var stringReport = JSON.stringify($scope.report, null,2);
+        //for int
+        writer.write(stringReport);
     }
 
     function readAsText(file) {
@@ -159,6 +170,10 @@
      $scope.exportReport = function() {
 
      }
+
+     //console.log(JSON.stringify($scope.report));
+
+//console.log('FILE ENTRY: ' + gFileEntry.name);
 
 /********************************************************
 * CAMERA

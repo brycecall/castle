@@ -1,16 +1,24 @@
-      var fieldNotes = {
+        var fieldNotes = {
             'Client Info': {
                 'Clientinfo': {
                     'type': 'clientinfo',
                     'value': {
-                        'firstName': 'Rod',
-                        'lastName': 'Beacham',
-                        'address': '1234 N Beacham Dr.',
+                        'firstName': '',
+                        'lastName': '',
+                        'address': '',
                         'addressTwo': '',
-                        'city': 'Seattle',
-                        'state': 'Washington',
-                        'postalCode': '83427'
+                        'city': '',
+                        'state': '',
+                        'postalCode': ''
                     }
+                },
+                'Report ID': {
+                    'type': 'text',
+                    'value': 'Z.0000'
+                },
+                'Report Date': {
+                    'type':'date',
+                    'value': ''
                 }
             },
             'Property Specifications': {
@@ -25,30 +33,25 @@
                     'content': 'Detached outbuildings, seasonally visible defects, poorly accessible components, areas that may have been hidden and/ or areas containing significant furnishings or storage are not included in the scope of this inspection.'
                 },
                 'Inspection Type': {
-                    'type': 'dial',
-                    'value': {
-                        'Full': {c:false, i:''},
-                        'Partial': {c:false, i:''},
-                        'Abbreviated': {c:false, i:''},
-                        'Ancillary': {c:false, i:''},
-                        'Limited': {c:false, i:''},
-                        '203(k)': {c:false, i:''},
-                        'Rehabilitation': {c:false, i:''}
-                    }
+                    'type': 'select',
+                    'content': [
+                        'Full',
+                        'Partial',
+                        'Abbreviated',
+                        'Ancillary',
+                        'Limited',
+                        '203(k)',
+                        'Rehabilitation'
+                         ],
+                    'value': ''
                 },
-                'Year Built': { //NEED SPIN DIAL
-                    'type': 'dial',
-                    'value': {
-                        '1': {c:false, i:''},
-                        '2': {c:false, i:''},
-                        '3': {c:false, i:''},
-                        '4': {c:false, i:''},
-                        'Spin Dial': {c:false, i:''}
-                    }
-                },
-                'Squarefeet of the Property': { //NEEDS NUMBER ENTRY
+                'Year Built': {
                     'type': 'number',
-                    'value': 1800
+                    'value': ''
+                },
+                'Squarefeet of the Property': {
+                    'type': 'number',
+                    'value': 0
                 },
                 'Type of Home': {
                     'type': 'radio',
@@ -74,7 +77,7 @@
                              'Industrial',
                              'Commercial'
                          ],
-                    'value': 'Commercial'
+                    'value': ''
                 },
                 'Number of Stories': {
                     'type': 'radio',
@@ -90,9 +93,9 @@
                              'Mid-Rise',
                              'Multi-Level'
                          ],
-                    'value': 'Three-Story'
+                    'value': ''
                 },
-                'House Frame': { //radio
+                'House Frame': {
                     'type': 'radio',
                     'content': [
                              'Wood-Framed',
@@ -123,21 +126,21 @@
                              'Mid-Rise',
                              'High-Rise'
                          ],
-                    'value': 'High-Rise'
+                    'value': ''
                 },
                 'Configurations': {
                     'type': 'checkbox',
                     'value': {
-                        'w/ Lower Parking Garage': {c:true, i:'./img/icon.png'},
-                        'w/ Basement & Garage': {c:true, i:''},
+                        'w/ Lower Parking Garage': {c:false, i:''},
+                        'w/ Basement & Garage': {c:false, i:''},
                         'w/ Garage': {c:false, i:''},
-                        'w/ Garage & Crawlspace': {c:true, i:'./img/rod.png'},
+                        'w/ Garage & Crawlspace': {c:false, i:''},
                         'w/ Full Basement': {c:false, i:''},
-                        'w/ Daylight Basement': {c:true, i:'./img/icon.png'},
+                        'w/ Daylight Basement': {c:false, i:''},
                         'w/ Basement & Crawlspace(s)': {c:false, i:''},
                         'w/ Crawlspace': {c:false, i:''},
                         'w/ Slab-On-Grade': {c:false, i:''},
-                        'Over Adjoining Unit(s)': {c:true, i:'./img/rod.png'},
+                        'Over Adjoining Unit(s)': {c:false, i:''},
                         'Over Adjoining Basement Unit': {c:false, i:''}
                     }
                 },

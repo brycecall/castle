@@ -324,10 +324,14 @@ md-radio-group {
 
 .UpPicture {
     height: 200px;
-    width: 300px;
-    background-size: contain;
+    width:269px;
+    max-width: 269px;
+    background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
+    position: relative;
+    margin: 20px;
+
 }
 
 .sideListItem {
@@ -366,7 +370,30 @@ overoverflow-x:
 }
 
 .pictureBox {
-    height: 230px;
-    width: 300px;
-    padding:10px;
+    text-align: center;
+    background-color: black;
+    color: white;
+    opacity: .3;
+    width: 269px;
+    height: 35px;
+    position: absolute;
+    bottom: 0;
+
+}
+
+.imageTitle {
+    color:white;
+    text-align:center;
+    display: inline-block;
+    vertical-align:middle;
+    line-height: normal;
+}
+
+.centerTextVertical {
+    height:35px;
+    width:269px;
+    line-height: 35px;
+    text-align: center;
+    position:absolute;
+    bottom:0;
 }

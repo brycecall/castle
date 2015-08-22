@@ -25,13 +25,13 @@
             'Driveway Condition': {
                 'type': 'checkbox',
                 'value': {
-                    'Satisfactory': {c:true, i:'./img/icon.png'},
-                    'Marginal': {c:true, i:'./img/studphen.png'},
-                    'Poor': {c:true, i:'./img/studphen.png'},
+                    'Satisfactory': {c:true, i:'./img/baby.jpg'},
+                    'Marginal': {c:true, i:'./img/baby1.jpg'},
+                    'Poor': {c:true, i:'./img/baby1.jpg'},
                     'Pitched towards home': {c:false, i:''},
                     'Typical cracks': {c:false, i:''},
                     'Large cracks': {c:false, i:''},
-                    'Root heaving': {c:true, i:'./img/icon.png'},
+                    'Root heaving': {c:true, i:'./img/baby.jpg'},
                     'Uneven': {c:false, i:''},
                     'Trip/Falling Hazard': {c:false, i:''}
                 }

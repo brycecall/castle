@@ -1,4 +1,4 @@
-    var reportOne = {
+        var reportOne = {
         'Field Notes': {
             'Client Info': {
                 'Clientinfo': {
@@ -12,6 +12,14 @@
                         'state': '',
                         'postalCode': ''
                     }
+                },
+                'Report ID': {
+                    'type': 'text',
+                    'value': ''
+                },
+                'Report Date': {
+                    'type':'date',
+                    'value': ''
                 }
             },
             'Property Specifications': {
@@ -26,28 +34,23 @@
                     'content': 'Detached outbuildings, seasonally visible defects, poorly accessible components, areas that may have been hidden and/ or areas containing significant furnishings or storage are not included in the scope of this inspection.'
                 },
                 'Inspection Type': {
-                    'type': 'dial',
-                    'value': {
-                        'Full': {c:false, i:''},
-                        'Partial': {c:false, i:''},
-                        'Abbreviated': {c:false, i:''},
-                        'Ancillary': {c:false, i:''},
-                        'Limited': {c:false, i:''},
-                        '203(k)': {c:false, i:''},
-                        'Rehabilitation': {c:false, i:''}
-                    }
+                    'type': 'select',
+                    'content': [
+                        'Full',
+                        'Partial',
+                        'Abbreviated',
+                        'Ancillary',
+                        'Limited',
+                        '203(k)',
+                        'Rehabilitation'
+                         ],
+                    'value': ''
                 },
-                'Year Built': { //NEED SPIN DIAL
-                    'type': 'dial',
-                    'value': {
-                        '1': {c:false, i:''},
-                        '2': {c:false, i:''},
-                        '3': {c:false, i:''},
-                        '4': {c:false, i:''},
-                        'Spin Dial': {c:false, i:''}
-                    }
+                'Year Built': {
+                    'type': 'number',
+                    'value': ''
                 },
-                'Squarefeet of the Property': { //NEEDS NUMBER ENTRY
+                'Squarefeet of the Property': {
                     'type': 'number',
                     'value': 0
                 },
@@ -93,7 +96,7 @@
                          ],
                     'value': ''
                 },
-                'House Frame': { //radio
+                'House Frame': {
                     'type': 'radio',
                     'content': [
                              'Wood-Framed',
@@ -3336,3 +3339,5 @@ var headings = [
     'Photo Appendix'
 
 ];
+
+var current = "Field Notes";

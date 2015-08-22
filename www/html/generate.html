@@ -4,16 +4,19 @@
             <!--subNavLeft-->
                 <div class="padMe">
                     <md-toolbar class="md-theme-indigo" ng-click="close()">
-                        <h2 class="md-toolbar-tools md-title">{{currentPage}}</h2>
+                        <h2 class="md-toolbar-tools md-title">{{currentGenPage}}</h2>
                     </md-toolbar>
 
                     <md-list class="subMenu">
 
-                        <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" role="listitem" class="md-proxy-focus md-ink-ripple " style="position:relative; margin-left: 20px">
+                        <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" role="listitem" class="md-proxy-focus md-ink-ripple " style="position:relative; margin-left: 20px" ng-if="section != 'Field Notes'">
 
                             <md-button class="md-secondary menuButton" ng-click="navigatePage(section)" aria-label="{{section}}">{{section}}</md-button>
                         </md-list-item>
+                       <md-list-item role="listitem" class="md-proxy-focus md-ink-ripple " style="position:relative; margin-left: 20px" >
 
+                           <a ng-href="#create" aria-label="Edit Report" style="border:none" ><md-button class="md-secondary menuButton" ng-click="#create" aria-label="Edit Report">Edit Report</md-button></a>
+                        </md-list-item>
                     </md-list>
                 </div>
         </md-sidenav>
@@ -22,24 +25,33 @@
 
 
         <md-content id="testAgain" >
-            <md-card ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]" >
+            <md-card ng-repeat="(pagekey, pagetitle) in notSorted(report[currentGenPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentGenPage][pagetitle]" >
                 <!--<md-card>-->
                 <md-card-content style="position:relative">
                     <div layout="row" layout-align="space-between end">
                         <div>
-                            <h2 ng-click="toggleLeft()" class="md-display-1" style="cursor:pointer;">{{currentPage}}
+                            <h2 ng-click="toggleLeft()" class="md-display-1" style="cursor:pointer;">{{currentGenPage}}
                             <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_chevron_right_48px.svg" class="headNavIcon"></md-icon>{{pagetitle}}
                         </h2>
 
+                            <h4 ng-init="clientInfo = report['Field Notes']['Client Info']['Clientinfo'].value" class="md-caption" >{{clientInfo.address}}, {{clientInfo.city}},{{clientInfo.state}} {{clientInfo.postalCode}}</h4>
 
+
+                        </div>
+                        <div style="text-align:right">
+                            <h4 class="md-caption">Report ID: {{report['Field Notes']['Client Info']['Report ID'].value}}</h4>
+                            <h4 class="md-caption">{{report['Field Notes']['Client Info']['Report Date'].value}}</h4>
+                        </div>
+<!--
                             <h4 ng-init="clientInfo = fieldNotes['Client Info'].Clientinfo.value" class="md-caption">{{clientInfo.address}}, {{clientInfo.city}},{{clientInfo.state}} {{clientInfo.postalCode}}</h4>
                         </div>
-                        <div>
-                            <h4 class="md-caption">Report #: </h4>
+                        <div style="text-align:right">
+                            <h4 class="md-caption">Report ID: {{fieldNotes['Client Info']['Report ID'].value}}</h4>
                             <h4 class="md-caption">8/7/2015</h4>
                         </div>
+-->
                     </div>
-                    <div ng-repeat="(listKey, listValue) in notSorted(page)" ng-init="itemVal = report[currentPage][pagetitle][listValue]">
+                    <div ng-repeat="(listKey, listValue) in notSorted(page)" ng-init="itemVal = report[currentGenPage][pagetitle][listValue]">
 
 
                         <div layout="column" layout-fill="" layout-align="top center">
@@ -73,37 +85,34 @@
 
                                     <div  layout="row" layout-sm="column">
                                       <div flex="50">
-                                       <div ng-repeat="(checkboxkey, checkboxval) in filterExisting(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" ng-if="checkboxvalue.i != ''  && $even" >
+                                           <div ng-repeat="(checkboxkey, checkboxval) in filterExisting(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" ng-if="checkboxvalue.i != ''  && $even" >
 
-                                       <div class="pictureBox">
-                                        <div class="UpPicture" style="background-image: url('{{checkboxvalue.i}}')" />
-                                        <div class="md-caption" style="text-align:center">{{listValue}}: {{checkboxval}}</div>
-                                       </div>
+                                            <div class="UpPicture" style="background-image: url('{{checkboxvalue.i}}')" >
+                                                <div class="md-caption pictureBox"></div>
+                                                                                                    <div class="centerTextVertical"><span class="md-caption imageTitle">{{listValue}}: {{checkboxval}}</span></div>
+                                             </div>
 
-                                        </div>
+                                            </div>
                                         </div>
                                         <div flex="50">
-                                        <div  ng-repeat="(checkboxkey, checkboxval) in filterExisting(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" ng-if="checkboxvalue.i != ''  && $odd" flex="50">
-
-                                       <div class="pictureBox">
-                                        <div class="UpPicture" style="background-image: url('{{checkboxvalue.i}}')" />
-                                        <div class="md-caption" style="text-align:center">{{listValue}}: {{checkboxval}}</div>
-                                       </div>
-
-
-                                        </div>
+                                            <div  ng-repeat="(checkboxkey, checkboxval) in filterExisting(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" ng-if="checkboxvalue.i != ''  && $odd" flex="50">
+                                            <div class="UpPicture" style="background-image: url('{{checkboxvalue.i}}')" >
+                                                <div class="md-caption pictureBox"></div>
+                                                  <div class="centerTextVertical"><span class="md-caption imageTitle">{{listValue}}: {{checkboxval}}</span></div>
+                                             </div>
+                                            </div>
                                         </div>
                                     </div>
 
 <!--
-                                    <md-grid-list  md-cols-sm="1" md-cols-gt-sm="2" md-row-height="1:1">
-                            <md-grid-tile ng-repeat="(checkboxkey, checkboxval) in filterExisting(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" ng-if="checkboxvalue.i != ''  && $even" class="UpPicture" style="background-image: url('{{checkboxvalue.i}}')" >
+                                    <md-grid-list  md-cols-sm="1" md-cols-md="2" md-cols-lg="4" md-row-height="1:1">
+                            <md-grid-tile ng-repeat="(checkboxkey, checkboxval) in filterExisting(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" ng-if="checkboxvalue.i != ''  && $even" style="background-image: url('{{checkboxvalue.i}}'); width:300px; height:200px;  background-size:cover; " >
                               <md-grid-tile-footer>
                                 <h3>{{listValue}}: {{checkboxval}}</h3>
                               </md-grid-tile-footer>
                             </md-grid-tile>
 
-                                     <md-grid-tile ng-repeat="(checkboxkey, checkboxval) in filterExisting(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" ng-if="checkboxvalue.i != ''  && $odd"  class="UpPicture" style="background-image: url('{{checkboxvalue.i}}')" >
+                                     <md-grid-tile ng-repeat="(checkboxkey, checkboxval) in filterExisting(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" ng-if="checkboxvalue.i != ''  && $odd"  style="background-image: url('{{checkboxvalue.i}}'); background-size:cover; width:300px; height:200px;" >
                               <md-grid-tile-footer>
                                 <h3>{{listValue}}: {{checkboxval}}</h3>
                               </md-grid-tile-footer>

@@ -58,6 +58,7 @@
          $scope.navigatePage = function (sectionkey) {
          $scope.close();
          $scope.currentPage = sectionkey;
+
          document.getElementById("testAgain").scrollTop = 0;
      };
 

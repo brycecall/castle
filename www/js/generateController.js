@@ -19,11 +19,11 @@
          return debounceFn;
      }
 
-     $scope.report = savedReport;
-     $scope.fieldNotes = fieldNotes;
+     $scope.report = reportOne;
+//     $scope.fieldNotes = fieldNotes;
 
 
-     $scope.currentPage = Object.keys($scope.report)[0];
+     $scope.currentGenPage = Object.keys($scope.report)[1];
      $scope.subPage = '';
 
      $scope.close = function () {
@@ -57,7 +57,7 @@
 
          $scope.navigatePage = function (sectionkey) {
          $scope.close();
-         $scope.currentPage = sectionkey;
+         $scope.currentGenPage = sectionkey;
          document.getElementById("testAgain").scrollTop = 0;
      };
 

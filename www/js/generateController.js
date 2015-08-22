@@ -103,20 +103,67 @@
     var destinationType;
     var imageLocation;
     var cameraDestination;
-    $scope.page;
-    $scope.list;
-    $scope.checkBox;
 
-   // device APIs are available
-  function onDeviceReady() {
-      //alert("Calls when app starts");
+     document.addEventListener("deviceready", onDeviceReady1, false);
+
+    // device APIs are available
+    function onDeviceReady1() {
+        console.log('Prepairing Device');
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
+        //gotFileWriter();
+        console.log('Device Readiness Complete');
     }
-      document.addEventListener("deviceready",onDeviceReady,false);
 
 
-  // Called when a photo is successfully retrieved
+
+
+
+/********************************************************
+* FILE WRITER
+***********************************************************/
+    function gotFS(fileSystem) {
+        fileSystem.root.getFile("saved.txt", {create: true, exclusive: false}, gotFileEntry, fail);
+    }
+
+
+    function gotFileEntry(fileEntry) {
+        fileEntry.createWriter(gotFileWriter, fail);
+        fileEntry.file(readAsText, fail);
+
+    }
+
+    function gotFileWriter(writer) {
+        writer.onwrite = function(evt) {
+            console.log("write success");
+        };
+        writer.write("some sample text");
+    }
+
+    function readAsText(file) {
+        var reader = new FileReader();
+        reader.onloadend = function(evt) {
+            console.log("Read as text");
+            console.log(evt.target.result);
+        };
+        reader.readAsText(file);
+    }
+
+
+    function fail(error) {
+        console.log(error.code);
+    }
+
+
+     $scope.exportReport = function() {
+
+     }
+
+/********************************************************
+* CAMERA
+***********************************************************/
+    // Called when a photo is successfully retrieved
     function onPhotoDataSuccess(imageData) {
         //alert("Calls after photo is taken, returning to device");
 
@@ -125,7 +172,6 @@
             cameraDestination.i = "data:image/jpeg;base64," + imageData;
         });
     }
-
 
 
   // Called when a photo is successfully retrieved
@@ -189,42 +235,61 @@
         window.history.back();
     }
 
-     $scope.exportReport = function() {
 
-     }
 
-//var doc = new jsPDF();
+//    window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(dir) {
+//            console.log("got main dir",dir);
+//            dir.getFile("log.txt", {create:true}, function(file) {
+//                console.log("got the file", file);
+//                logOb = file;
+//                writeLog("App started");
+//            });
+//        });
 //
-//doc.fromHTML($('#render_me').get(0), 15, 15, {
-//	'width': 170,
-//});
+//function writeLog(str) {
+//	if(!logOb) return;
+//	var log = str + " [" + (new Date()) + "]\n";
+//	console.log("going to log "+log);
+//	logOb.createWriter(function(fileWriter) {
 //
-//var pdfIMG = document.getElementById('pdfIMG');
+//		fileWriter.seek(fileWriter.length);
 //
-//// Show the captured photo
-//// The inline CSS rules are used to resize the image
-////
-//pdfIMG.src = doc.output("datauristring");
-
-
-
-    // Step 4: Append to DOM (optional)
-    //parent.appendChild(element);
-
-    //var template = document.documentElement.innerHTML;
-
- //    console.log("BEGIN!!!!!!!!!!!!!");
+//		var blob = new Blob([log], {type:'text/plain'});
+//		fileWriter.write(blob);
+//		console.log("ok, in theory i worked");
+//	}, fail);
+//}
 //
-//          var template = "<h2 ng-click=\"toggleLeft()\" class=\"md-display-1\" style=\"cursor:pointer;\">{{currentPage}}{{pagetitle}}</h2>";
+//writeLog("I am file contents... hopefully");
 //
-//    //TODO: get compile to work
-//    console.log("HI");
-//    var ngTemplate = $compile(angular.element(template));
-//    var result = ngTemplate($scope);
-//    $scope.$apply();
-//    console.log(result[0].outerHTML);
+//function justForTesting() {
+//	logOb.file(function(file) {
+//		var reader = new FileReader();
+//
+//		reader.onloadend = function(e) {
+//			console.log(this.result);
+//		};
+//
+//		reader.readAsText(file);
+//	}, fail);
+//
+//}
+//
 
 
+
+//    function win(writer) {
+//        writer.onwrite = function(evt) {
+//            console.log("write success");
+//        };
+//        writer.write("some sample text");
+//    };
+//
+//    var ffail = function(evt) {
+//        console.log(error.code);
+//    };
+//
+//    entry.createWriter(win, ffail);
 
  });
 

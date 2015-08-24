@@ -90,7 +90,11 @@
       document.addEventListener("deviceready",onDeviceReady,false);
 
 
-  // Called when a photo is successfully retrieved
+/********************************************************
+* CAMERA
+***********************************************************/
+
+    // Called when a photo is successfully retrieved (DATA_URL)
     function onPhotoDataSuccess(imageData) {
         //alert("Calls after photo is taken, returning to device");
 
@@ -137,6 +141,14 @@
 //        $scope.capturePhoto()
         $scope.getPhoto(1);
      }
+
+    $scope.capturePagePhoto = function(listValue, itemVal) {
+        var imgJSON = {'title':'', 'i':'./img/baby.jpg'};
+        imgJSON.title = listValue;
+        itemVal.content.push(imgJSON);
+        cameraDestination = itemVal.content[itemVal.content.length - 1];
+        $scope.getPhoto(1);
+    }
 
     // Called if something bad happens.
     $scope.onFail = function onFail(message) {

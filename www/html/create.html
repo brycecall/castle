@@ -41,36 +41,36 @@
                                 <div layout="" layout-sm="column">
                                     <md-input-container flex="">
                                         <label>First name</label>
-                                        <input ng-model="page.input.firstName">
+                                        <input ng-model="itemVal.value.firstName">
                                     </md-input-container>
                                     <md-input-container flex="">
                                         <label>Last Name</label>
-                                        <input ng-model="page.input.lastName">
+                                        <input ng-model="itemVal.value.lastName">
                                     </md-input-container>
                                 </div>
                             </div>
                             <md-input-container flex="">
                                 <label>Address</label>
-                                <input ng-model="page.input.address">
+                                <input ng-model="itemVal.value.address">
                             </md-input-container>
 
                             <md-input-container md-no-float="">
                                 <label>Address Line 2</label>
-                                <input ng-model="page.input.addressTwo">
+                                <input ng-model="itemVal.value.addressTwo">
                             </md-input-container>
 
                             <div layout="" layout-sm="column">
                                 <md-input-container flex="">
                                     <label>City</label>
-                                    <input ng-model="page.input.city">
+                                    <input ng-model="itemVal.value.city">
                                 </md-input-container>
                                 <md-input-container flex="">
                                     <label>State</label>
-                                    <input ng-model="page.input.state">
+                                    <input ng-model="itemVal.value.state">
                                 </md-input-container>
                                 <md-input-container flex="">
                                     <label>Postal Code</label>
-                                    <input ng-model="page.input.postalCode">
+                                    <input ng-model="itemVal.value.postalCode">
                                 </md-input-container>
                             </div>
 
@@ -164,29 +164,38 @@
                             </div>
 
 
-                        </div>
-                    </div>
 
-                    <md-button class="cameraButton md-accent" aria-label="Photos" ng-click="capturePhoto()">
+
+<!--
+                    <md-menu  flex="10" style="text-align:center;" >
+                    <div ng-click="$mdOpenMenu()" style="padding:0 5px">
+                        <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent" ng-show="checkboxvalue.i != '' && checkboxvalue.c"></md-icon>
+                    </div>
+                    <md-menu-content>
+                        <div  class="UpPicture" style="background-image: url('{{checkboxvalue.i}}')" />
+                    </md-menu-content>
+
+                    </md-menu>
+
+                    <md-icon ng-show="checkboxvalue.c"  md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="initCameraAction(checkboxvalue)" aria-label="capture photo" flex="10"></md-icon>
+-->
+                  <div  ng-if="itemVal.type == 'image'" layout="row" layout-align="start center">
+                    <md-menu  flex="10" style="text-align:center;" >
+                    <div ng-click="$mdOpenMenu()" style="padding:0 5px">
+                        <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent" ></md-icon>
+                    </div>
+                    <md-menu-content>
+                        <div ng-repeat="pageImage in itemVal.content" class="UpPicture" style="background-image: url('{{pageImage.i}}')" />
+                    </md-menu-content>
+
+                    </md-menu>
+                    <md-button class="cameraButton md-accent" aria-label="Photos" ng-click="capturePagePhoto(listValue, itemVal)">
                         <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon> Add Photo
                     </md-button>
 
-<!--
-                    <md-button class="cameraButton md-accent" aria-label="Photos" ng-click="capturePhoto()">
-                        <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg"></md-icon> View Photo
-                    </md-button>
--->
-
-<!--                    <div ng-repeat="image in images">{{image}}</div>-->
-
-<!--                    <img ng-src="./img/icon.png" id="smallImage" style="max-height: 300px" data-rotate="90" />-->
-
-
-
-<!--                    <a ng-click="scrollToTop()">TOP</a>-->
-<!--                    <div ng-if="$last" class="footerSpace"></div>-->
-
-
+                        </div>
+                    </div>
+                    </div>
                 </md-card-content>
             </md-card>
         </md-content>

@@ -20,6 +20,12 @@
                 'Report Date': {
                     'type':'date',
                     'value': ''
+                },
+                'Client Info Images': {
+                    'type':'image',
+                    'content': [
+                       // {'title':'', 'i':''}
+                    ]
                 }
             },
             'Property Specifications': {
@@ -3294,7 +3300,7 @@
                         'Rodent': {c:false, i:''}
                     }
                 },
-                'Building Materials (Refer To Specific Sections': {
+                'Building Materials (Refer To Specific Sections)': {
                     'type': 'checkbox',
                     'value': {
                         'Missing Window Safety Glass': {c:false, i:''},

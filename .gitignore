@@ -2,3 +2,5 @@
 /node_modules/
 /resources/ios/
 /www/other_components/
+/www/bower_components/
+/bower_components/

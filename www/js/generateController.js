@@ -103,8 +103,7 @@
     var destinationType;
     var imageLocation;
     var cameraDestination;
-    var deviceIsReady = false;
-    var gFileEntry;
+
      document.addEventListener("deviceready", onDeviceReady1, false);
 
     // device APIs are available

@@ -139,48 +139,48 @@
                             'type': 'checkbox',
                             'value': {
                                 'w/ Lower Parking Garage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'w/ Basement & Garage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'w/ Garage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'w/ Garage & Crawlspace': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'w/ Full Basement': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'w/ Daylight Basement': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'w/ Basement & Crawlspace(s)': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'w/ Crawlspace': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'w/ Slab-On-Grade': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Over Adjoining Unit(s)': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Over Adjoining Basement Unit': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -202,52 +202,52 @@
                             'type': 'checkbox',
                             'value': {
                                 'At Curbside': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'In a Rear Alley': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'In the Driveway': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'In an Attached Garage(s)': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'In a Detached Garage(s)': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'In an Attached Carport': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'In a Detached Carport': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'In a Covered Parking Space': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'In an Open Parking Space': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'In a Secured Parking Garage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'In an Open Parking Garage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'In an Open,Striped Parking Lot': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             },
                         },
@@ -255,24 +255,24 @@
                             'type': 'checkbox',
                             'value': {
                                 'Electricity': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Water': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Gas': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Oil': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Propane': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -280,24 +280,24 @@
                             'type': 'checkbox',
                             'value': {
                                 'Electricity': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Water': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Gas': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Oil': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Propane': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -346,40 +346,40 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Pitched towards home': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Typical cracks': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Large cracks': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Root heaving': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Uneven': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Trip/Falling Hazard': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -398,52 +398,52 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Typical cracks': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Large cracks': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Gaps': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Holes': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Mildew': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Damage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Settled': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Uneven Surface': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Trip/Falling Hazard': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -451,44 +451,44 @@
                             'type': 'checkbox',
                             'value': {
                                 'n/a': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Uneven': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Large cracks': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Root heaving': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Moss build-up': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing spacers': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Settled': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Trip hazard': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing handrails': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing safety glass': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -496,12 +496,12 @@
                             'type': 'checkbox',
                             'value': {
                                 'None': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'TYPE (Needs Greater Definition)': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -509,32 +509,32 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Damaged': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Leaning': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Leaking/Drainage Concern': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Trip/Falling Hazard': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -542,24 +542,24 @@
                             'type': 'checkbox',
                             'value': {
                                 'n/a': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Water Feature': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Drop-off/Retaining Wall': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Steep Slope': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'TYPE (Needs Greater Definition)': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -567,44 +567,44 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Maginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Trip/Falling Hazard': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Leaning': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Damaged': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Verify Adequate Height': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Hazardous': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Re-Evaluate': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -612,32 +612,32 @@
                             'type': 'checkbox',
                             'value': {
                                 'Not Inspected': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor Earth-to-Wood Separation': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Yard Steps': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Drainage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Negative Surrounding Grade': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Overgrown Foliage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Re-Evaluate': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -652,24 +652,24 @@
                             'type': 'checkbox',
                             'value': {
                                 'n/a': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Concrete': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Pavers/Stone/Brick': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Wood/Composite': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Covered': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -677,68 +677,68 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Verify Attachment': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Loose/Missing Railings': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Trip Hazard(s)': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Typical Cracks': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Large Cracks': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Gaps/Holes': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Weathered Finish': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Damaged': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Settled': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Earth Contact': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Mildew': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Fungal Rot/Probed': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Re-Evaluate': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -746,48 +746,48 @@
                             'type': 'checkbox',
                             'value': {
                                 'n/a': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Concrete': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Uneven': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Large Cracks': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Root Heaving': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Moss Build-Up': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing Spacers': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Settled': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Trip Hazard': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing Handrails': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing Safety Glass': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -795,24 +795,24 @@
                             'type': 'checkbox',
                             'value': {
                                 'n/a': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Raised': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Covered': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Wood/Composite': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Verity Attachment': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -820,48 +820,48 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Loose/Missing Railings': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Weathered Finish': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Damaged': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Settled': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Earth Contact': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Mildew': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Fungal Rot/Probed': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Re-Evaluate': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         }
@@ -889,76 +889,76 @@
                             'type': 'checkbox',
                             'value': {
                                 'Brick': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Stone': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Stucco': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Metal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Vinyl': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Cement Board': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Wood': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Fiberboard': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Hardi-Board/Plank': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Panels/Sheets': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'T-111': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Lapped': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'T&G': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Vertical Channel': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'EIFS': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Pre 1996 EIFS': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Recalled LP': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Friable PACM': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -966,68 +966,68 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Loose': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Gaps': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing Pieces': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Broken/Damaged': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Inadequate Coverage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Peeling Paint': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Weathered': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Pest Issues': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Cracked/Bulging': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Mildew': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Deteriorated': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Fungal Rot/Probed': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Re-Evaluate': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1035,32 +1035,32 @@
                             'type': 'checkbox',
                             'value': {
                                 'n/a': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Defective': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Re-Evaluate': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1068,44 +1068,44 @@
                             'type': 'checkbox',
                             'value': {
                                 'Wood': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Fiberboard': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Masonry': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'EIFS': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Metal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Vinyl': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Enclosed Soffit': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Open Eaves': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Screened Ventilation': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Unflashed BRT/OLook': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1113,80 +1113,80 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Loose': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Gaps': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing Pieces': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Exposed Wood': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Loose/Missing Flashing': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor Protection/Coverage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Stains': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Peeling Paint': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Weathered/Worn': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Deterioration': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Fungal Rot': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Broken/Damaged': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Pest Issues': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Foliage Contact': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Potential Hidden Damage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Recommend Re-Evaluation': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1199,24 +1199,24 @@
                             'type': 'checkbox',
                             'value': {
                                 'Wood': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Aluminum/Metal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Clad': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Vinyl': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Fiberglass': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1224,60 +1224,60 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Gaps': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing Pieces': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Exposed Wood': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing Flashing': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Weathered/Worn Finish': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Peeling Paint/Inadequate Coverage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing Caulking': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Broken Glass': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Damaged': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Deteriorated': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Fungal Rot': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1285,16 +1285,16 @@
                             'type': 'checkbox',
                             'value': {
                                 'Metal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Wood': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Fiberglass': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1302,36 +1302,36 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing or Inadequate': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Threshold': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Weather-Strip': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Hardware': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Repairs Needed': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1339,28 +1339,28 @@
                             'type': 'checkbox',
                             'value': {
                                 'Weathered': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Stretched': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Cracked': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Gaps': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Recommend sealing all perforations through the exterior wall surface': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1381,32 +1381,32 @@
                             'type': 'checkbox',
                             'value': {
                                 'Curbside': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Space': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Public Garage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Carport': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Garage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Attached': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Detached': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1414,24 +1414,24 @@
                             'type': 'checkbox',
                             'value': {
                                 'Concrete Slab': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Asphalt': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Pavers/Cobblestone': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Gravel': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Dirt': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1439,48 +1439,48 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Sloping': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Typical Cracks': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Large Cracks': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Trip Hazards': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Efflorescence': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Not Visible': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Excessive Storage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Re-Evaluate': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1488,24 +1488,24 @@
                             'type': 'checkbox',
                             'value': {
                                 'n/a': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Blocked or Inoperable': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Wood': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Metal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Fiberglass': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1513,32 +1513,32 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Verify Door': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Threshod': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Hinges': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Seal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1546,24 +1546,24 @@
                             'type': 'checkbox',
                             'value': {
                                 'n/a': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Blocked or Inoperable': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Wood': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Metal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Fiberglass': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1571,28 +1571,28 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Damaged': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Needs Adjustment': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Re-Evaluate': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1600,56 +1600,56 @@
                             'type': 'checkbox',
                             'value': {
                                 'n/a': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Overhead': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Sliding': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Roll-Up Panels': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Tilt-Up Slab': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Lites': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Wood': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Hardboard': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Metal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Fiberglass': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Solid': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Insulated': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Hollow': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1657,48 +1657,48 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Inoperable': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Gaps': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Security Concerns': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Blocked/Inaccessible': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Locked Shut': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Stained': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'De-Laminated': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Damaged': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1706,24 +1706,24 @@
                             'type': 'checkbox',
                             'value': {
                                 'n/a': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Inoperable': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Blocked': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'No Access': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'No Remote': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1731,20 +1731,20 @@
                             'type': 'checkbox',
                             'value': {
                                 'n/a': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Disconnected/Inoperable': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Door Stops': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Intermittent Function': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1752,28 +1752,28 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Damaged': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Needs Adjustment': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Re-Evaluate': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1797,28 +1797,28 @@
                             'type': 'checkbox',
                             'value': {
                                 'Inspected/Walked on (Traversed) Roof': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Inspected/NOT Traversed': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'NOT Inspected': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Vulnerable to Traversing Damage': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Unsafe Traversing Condition(s)': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Not Visible': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1826,24 +1826,24 @@
                             'type': 'checkbox',
                             'value': {
                                 'Ground w/ Binoculars': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Ladder': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Eaves': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Interior': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Other Building': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1851,32 +1851,32 @@
                             'type': 'checkbox',
                             'value': {
                                 'Gable': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Hip': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Mansard': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Shed': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Flat': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Dutch Hip': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Combination': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1884,16 +1884,16 @@
                             'type': 'checkbox',
                             'value': {
                                 'Steep': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Medium': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Low': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1912,16 +1912,16 @@
                             'type': 'checkbox',
                             'value': {
                                 '1': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 '2': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'More than 2': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1929,64 +1929,64 @@
                             'type': 'checkbox',
                             'value': {
                                 'Asphalt/Comp': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Rolled': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 '3-Tab': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Multiple Thickness': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Corrugated FG': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Modified Bitumen': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Torch-Down/Hot Tar': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Metal/Standing Seam': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Metal Shingle': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Wood Shingle': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Cedar Shake': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Clay Tile': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Concrete Tile': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Slate': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'PVC Membrane': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -1994,60 +1994,60 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Marginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Granule Loss': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Broken/Damaged': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Missing (Tabs)': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Cupping': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Aligned Gaps/Cracks': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Lifting': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Moss': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Fungal Rot': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Rusted': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Exposed Fasteners': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Recommend Professional Re-Evaluation/Remediation': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -2055,28 +2055,28 @@
                             'type': 'checkbox',
                             'value': {
                                 'n/a': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Metal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Woven Asphalt': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Cut Asphalt': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Tile': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Concrete': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -2084,44 +2084,44 @@
                             'type': 'checkbox',
                             'value': {
                                 'Satisfactory': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Maginal': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Poor': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Defective': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Broken/Damaged': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Rusted': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Holes/Gaps': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Leaks': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Installation Defects': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 },
                                 'Vulnerable Areas': {
-                                    c: false,
-                                    i: ''
+                                    'c': false,
+                                    'i': []
                                 }
                             }
                         },
@@ -2134,52 +2134,52 @@
                         'type': 'checkbox',
                         'value': {
                             'n/a': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'No Access': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Not Visible': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Walls/Dormers': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Chimney Chase(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Class "B" Vent(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Dryer Vent': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Fan Vent(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Plumbing DMV Pipes': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Antennae/Satellite Dish': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Cable/Wiring': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Electical Mast': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2187,44 +2187,44 @@
                         'type': 'checkbox',
                         'value': {
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Defective': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Broken/Damaged': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Rusted': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Raised/Holes/Gaps': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Leaks': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Installation Defects': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Vulnerable Areas': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2232,16 +2232,16 @@
                         'type': 'checkbox',
                         'value': {
                             'n/a': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'No Access': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Not Visible': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2249,44 +2249,44 @@
                         'type': 'checkbox',
                         'value': {
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Defective': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Broken/Damaged': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Rusted': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Holes/Gaps': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Leaks': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Installation Defects': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Vulnerable Areas': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2294,24 +2294,24 @@
                         'type': 'checkbox',
                         'value': {
                             'n/a': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Missing': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Installation Defects': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Rusted': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Potential Future Concern': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2319,44 +2319,44 @@
                         'type': 'checkbox',
                         'value': {
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Defective': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Broken/Damaged': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Raised': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Holes/Gaps': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Leaks': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Vulnerable Areas': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Repair or Re-Evaluate': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     }
@@ -2366,24 +2366,24 @@
                         'type': 'checkbox',
                         'value': {
                             'Eave-Mounted': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Internal with Scuppers': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Metal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Plastic/Vinyl': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Wood': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2391,72 +2391,72 @@
                         'type': 'checkbox',
                         'value': {
                             'Missing': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Loose/Sagging': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Fallen/Pulled Away': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Reversed Slope/Ponding': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Clogged': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Debris': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Granule Wash': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Spillover Stains': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Deteriorated Wood': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Cracked/Split': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Holes': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Leaking Joints': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Rust': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Moss': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2464,20 +2464,20 @@
                         'type': 'checkbox',
                         'value': {
                             'No Down-Spouts': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Above Grade': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Below Grade': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Not Visible': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2485,36 +2485,36 @@
                         'type': 'checkbox',
                         'value': {
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Missing': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Loose/Disconnected': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Clogged': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Open Gaps Around Downspout-to-Drain Connections': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor Extensions/Splash Blocks': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2537,48 +2537,48 @@
                         'type': 'checkbox',
                         'value': {
                             'n/a': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Vaulted/No Attic': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Partial Attic': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'No Access': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Sealed Access': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Trusses': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Stick-Framed': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Rafters & Joists': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Beams & Purlins': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Hips': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Valleys': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2586,24 +2586,24 @@
                         'type': 'checkbox',
                         'value': {
                             'Plywood': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'OSB': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'H-Clipped': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Plank': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             '1X Skip Sheathing': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2611,28 +2611,28 @@
                         'type': 'checkbox',
                         'value': {
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Sagging/Over-Spanned': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Broken/Damaged': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Structural Defect (Design Related)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2640,32 +2640,32 @@
                         'type': 'checkbox',
                         'value': {
                             'Bracing': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Collar Ties': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Knee Walls': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Stains': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Deterioration': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Hazardous/Unsafe': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Recommend Professional Re-Evaluation': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                         //COMMENTS SECTION HERE.
@@ -2682,16 +2682,16 @@
                         'type': 'checkbox',
                         'value': {
                             '4X Beams & Plank Diaphragm': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             '2X Joists & Diaphragm': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Flat Truss': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2699,20 +2699,20 @@
                         'type': 'checkbox',
                         'value': {
                             'Steel': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Concrete': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Laminated': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Dimensional Lumber': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2720,44 +2720,44 @@
                         'type': 'checkbox',
                         'value': {
                             'Wood': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'TJI (Wood I-Beams': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Sleepers': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             '"Foam-Crete"': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Diagonal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Plank': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Shiplap': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Tongue & Groove': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Plywood': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'OSB': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2765,24 +2765,24 @@
                         'type': 'checkbox',
                         'value': {
                             'Covered/Not Visible': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Wood': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Steel': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Concrete': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'CMU (block)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2790,52 +2790,52 @@
                         'type': 'checkbox',
                         'value': {
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Sagging/Over-Spanned': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Broken': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Damaged': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Structural Defects (Design Related)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Missing or Inadequate Bracing': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Stains': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Deterioration': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Hazardous/Unsafe': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Recommend Professional Evaluation and/or Remediation': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2843,12 +2843,12 @@
                         'type': 'checkbox',
                         'value': {
                             'n/a': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Open': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2856,12 +2856,12 @@
                         'type': 'checkbox',
                         'value': {
                             '1 Side': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Both Sides': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2869,20 +2869,20 @@
                         'type': 'checkbox',
                         'value': {
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Missing Handrail': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2890,44 +2890,44 @@
                         'type': 'checkbox',
                         'value': {
                             'Newels': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Baluster Spacing': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Rails': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Headroom': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor/Inadequate Support': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Uneven Risers': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Over-Height Step(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Missing Firewall': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Hazardous/Unsafe': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Recommend Professional Evaluation and/or Remediation': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2935,20 +2935,20 @@
                         'type': 'checkbox',
                         'value': {
                             'Concrete': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Dirt/Gravel': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Wood': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Covered/Not Visible': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -2956,48 +2956,48 @@
                         'type': 'checkbox',
                         'value': {
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Typical Settling Cracks': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Large Cracks': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Stains': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Efflorescence': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Storage': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Damage': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Hazardous/Unsafe': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Re-Evaluate': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     }
@@ -3007,44 +3007,44 @@
                         'type': 'checkbox',
                         'value': {
                             'Perimeter Walls': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Post/Beam': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Columns': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poured Concrete': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'CMU(Block)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Masonry': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Unmortared Stone/Brick': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Logs': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Treated Wood': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Strip Footings': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3052,52 +3052,52 @@
                         'type': 'checkbox',
                         'value': {
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Imbedded Wood': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Rock Pockets': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'No Tie-Downs': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Stains': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Damage': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Deterioration': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Efflorescence': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'EWC': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Fungal Rot/Probed': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3105,36 +3105,36 @@
                         'type': 'checkbox',
                         'value': {
                             'Storage': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Perimeter Cover': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Obstacles': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Inaccessible Area': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Pests': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Tight/Limited Mobility': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Hazards/Unsafe': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Recommend Re-Evaluation and/or Remediation': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3142,40 +3142,40 @@
                         'type': 'checkbox',
                         'value': {
                             'None': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Exit Holes': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Frass': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Galleries': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Damage': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Mildew/Bio-Growth': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Mold Sampled/Tested': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Fungal Rot/Probed': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Re-Evaluate': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3183,40 +3183,40 @@
                         'type': 'checkbox',
                         'value': {
                             'Typical Settling': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Vertical': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Step': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Horizontal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'V-Cracking': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Displaced': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Inactive': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Active': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Larger than 1/4 inch': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3235,40 +3235,40 @@
                         'type': 'checkbox',
                         'value': {
                             'Evidence of Flooding': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Not Visible': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Efflorescence': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Humidity': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Old Stains': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Silt Deposits': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Soil on Vapor Barrier': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Fresh Stains': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Standing Water': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3276,28 +3276,28 @@
                         'type': 'checkbox',
                         'value': {
                             'n/a': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Missing': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Not Tested': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Operable': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Inoperable': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Re-Evaluate': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                         //COMMENT SECTION GOES HERE.
@@ -3320,24 +3320,24 @@
                         'type': 'checkbox',
                         'value': {
                             'No Attic': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'No Access': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Door': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Pull Down Stair': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Scuttle-Hole(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3345,28 +3345,28 @@
                         'type': 'checkbox',
                         'value': {
                             'Hall': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Bedroom': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Closet': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Laundry Room': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Garage': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Exterior': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3374,44 +3374,44 @@
                         'type': 'checkbox',
                         'value': {
                             'Near Access': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'From Ladder': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'At Roof Apex': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Limited Accessibility': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Inspected (Traversed) Attic': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Entered but NOT Traversed': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'NOT Entered/NOT Inspected': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Vulnerable to Traversing Damage': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Unsafe Traversing Condition(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Not Visible': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3419,16 +3419,16 @@
                         'type': 'checkbox',
                         'value': {
                             'None': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Rafters': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Ceiling Joists': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3436,32 +3436,32 @@
                         'type': 'checkbox',
                         'value': {
                             'Fiber Glass': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Cellulose': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Vermiculite': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Mineral/Rock Wool': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Batts': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Loose': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Wood Shavings': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3469,28 +3469,28 @@
                         'type': 'checkbox',
                         'value': {
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Missing Areas': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Uneven Placement': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Damaged': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3498,28 +3498,28 @@
                         'type': 'checkbox',
                         'value': {
                             'Eaves': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Gable': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Top': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Ridge': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Powered Vent(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Attic Fan(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3527,40 +3527,40 @@
                         'type': 'checkbox',
                         'value': {
                             'None': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor/Missing': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Odors': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Excessive Heat': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Ventilation Appears Inadequate': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Effectiveness NOT Evaluated': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Re-Evaluate': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3568,40 +3568,40 @@
                         'type': 'checkbox',
                         'value': {
                             'Yes': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Roof Leaks': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Old Stains/Inactive': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Fresh Stains/Active': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Mildew/Mold': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Stained Diaphragm': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Wet Insulation': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Damage': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Re-Evaluate': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3609,56 +3609,56 @@
                         'type': 'checkbox',
                         'value': {
                             'None': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Prior/Inactive': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Live/Active': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Nesting Materials': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Scat': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Insect': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Bee/Wasp': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Bird': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Rodent': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Racoon': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Potential Points of Pest Entry': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Hazardous/Unsafe': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Recommend Professional Evaluation and/or Remediation': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
 
                         }
@@ -3675,24 +3675,24 @@
                         'type': 'checkbox',
                         'value': {
                             'Door/Panel': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Scuttle-Hole': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'No Access': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'No Crawl-Space': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Not Visible': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3700,40 +3700,40 @@
                         'type': 'checkbox',
                         'value': {
                             'Hall': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Bedroom': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Closet': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Laundry Room': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Garage': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Exterior': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Inspected Basement or Crawl': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'NOT Entered/NOT Inspected': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Limited Accessibility': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3741,24 +3741,24 @@
                         'type': 'checkbox',
                         'value': {
                             'Near Access': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'From Exterior': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'At Center Only': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Vulnerable': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Unsafe': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3766,16 +3766,16 @@
                         'type': 'checkbox',
                         'value': {
                             'None Visible': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Floor': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Rim Joists': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3783,16 +3783,16 @@
                         'type': 'checkbox',
                         'value': {
                             'Fiberglass Batts': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Blown-in Cellulose': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Foam Board': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3800,24 +3800,24 @@
                         'type': 'checkbox',
                         'value': {
                             'None Visible': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Wired': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Stapled': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Twine': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Lathe': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3825,36 +3825,36 @@
                         'type': 'checkbox',
                         'value': {
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Missing Areas': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Fallen Down': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Damaged': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Installed Upside-Down': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Ineffective Installation/Gaps': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3862,20 +3862,20 @@
                         'type': 'checkbox',
                         'value': {
                             'None': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Foundation Vents': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Powered Vent(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Fan(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3883,24 +3883,24 @@
                         'type': 'checkbox',
                         'value': {
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Effectiveness NOT Evaluated': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Re-Evaluate': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3908,24 +3908,24 @@
                         'type': 'checkbox',
                         'value': {
                             'None': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Damaged': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Gaps/Displaced Areas': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Exposed Earth': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3933,24 +3933,24 @@
                         'type': 'checkbox',
                         'value': {
                             'Present': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Efflorescence': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Old Stains': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Fresh': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Standing Water': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                         }
                     },
@@ -3958,24 +3958,24 @@
                         'type': 'checkbox',
                         'value': {
                             'To Out-Fall': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Interior Plane': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'None Apparent': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Sump Pump': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Functional': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -3983,56 +3983,56 @@
                         'type': 'checkbox',
                         'value': {
                             'None': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Prior/Inactive': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Live/Active': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Nesting Materials': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Scat': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Insect': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Bee/Wasp': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Bird': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Rodent': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Racoon': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Potential Point Pest Entry': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Hazardous/Unsafe': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Recommend Professional Evaluation and/or Remediation': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     }
@@ -4042,20 +4042,20 @@
                         'type': 'checkbox',
                         'value': {
                             'Whole House Fan(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Make-Up Air Vent(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Furnace Blower(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Ceiling-Mounted Fan(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -4063,28 +4063,28 @@
                         'type': 'checkbox',
                         'value': {
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor/Missing': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Open Blade': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Caged': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Remote Control': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -4092,24 +4092,24 @@
                         'type': 'checkbox',
                         'value': {
                             'Bathroom Exhaust Fan(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Kitchen Fan(s)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Inoperable': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Weak/Noisy': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Unsafe': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -4117,52 +4117,52 @@
                         'type': 'checkbox',
                         'value': {
                             'Satisfactory': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Marginal': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Poor/Missing': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Vented Properly (Outside Building Envelope)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Not Visible': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Recirculating-Only Type': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Clogged Grease Filter': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Restricted (Collapsed/Blocked)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Venting Into Attic Space': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Aimed at Gable, Eave, or Roof Vents': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Fallen Loose': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Re-Evaluate': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -4189,16 +4189,16 @@
                         'type': 'checkbox',
                         'value': {
                             'Public Water': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Shared Well': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Private Well': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -4206,36 +4206,36 @@
                         'type': 'checkbox',
                         'value': {
                             'Closet': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Bathroom': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Yard Box': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Garage': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Basement': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Crawl Space': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'Interior Wall': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             },
                             'OTHER (NEED MORE DATA)': {
-                                c: false,
-                                i: ''
+                                'c': false,
+                                'i': []
                             }
                         }
                     },
@@ -4247,12 +4247,12 @@
                     'type': 'checkbox',
                     'value': {
                         'Varies Per Unit': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OTHER (NEED MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4260,12 +4260,12 @@
                     'type': 'checkbox',
                     'value': {
                         'Public Sewer': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OTHER (NEED MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4273,24 +4273,24 @@
                     'type': 'checkbox',
                     'value': {
                         'Copper': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Galvanized': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Plastic/CPVC': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Polybutylene': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'PEX': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4298,24 +4298,24 @@
                     'type': 'checkbox',
                     'value': {
                         'Not Visible': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Leaking': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Unprotected/Freezing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Discolered Water': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Odor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4323,32 +4323,32 @@
                     'type': 'checkbox',
                     'value': {
                         'LIST PRESSURE?': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Low': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'High': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Normal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Shut-Off': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Winterized': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4356,24 +4356,24 @@
                     'type': 'checkbox',
                     'value': {
                         'Copper': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Galvanized': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Plastic/CPVC': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Polybutylene': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'PEX': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4381,28 +4381,28 @@
                     'type': 'checkbox',
                     'value': {
                         'Not Fully Visible': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cross Connections': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Leaks': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4410,16 +4410,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Service Entry': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Unknown': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Unlikely': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4427,16 +4427,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Yes': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'No': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Not Visible': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4444,20 +4444,20 @@
                     'type': 'checkbox',
                     'value': {
                         'Copper': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cast Iron': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Galvanized': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Plastic/ABS/PVC': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4465,28 +4465,28 @@
                     'type': 'checkbox',
                     'value': {
                         'Not Fully Visible': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Maginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Leaks': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Unsupported': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4497,28 +4497,28 @@
                     'type': 'checkbox',
                     'value': {
                         'Functional': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Intermittent Function': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing/Incomplete': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Loose': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Broken/Damaged': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4526,20 +4526,20 @@
                     'type': 'checkbox',
                     'value': {
                         'Hose Bibb': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Wall Stop': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Faucet': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Sprayer': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4547,28 +4547,28 @@
                     'type': 'checkbox',
                     'value': {
                         'Kitchen': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Master Bath': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Main Bath': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Half Bath': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Laundry': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Bar': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4576,20 +4576,20 @@
                     'type': 'checkbox',
                     'value': {
                         'Vegetable Sink': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Insta-Hot': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Water Filter': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Ice Maker': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4597,12 +4597,12 @@
                     'type': 'checkbox',
                     'value': {
                         'Noisy': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Defective': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4610,8 +4610,8 @@
                     'type': 'checkbox',
                     'value': {
                         'Airgap': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4619,20 +4619,20 @@
                     'type': 'checkbox',
                     'value': {
                         'Functional': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Intermittent Function': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Defects/Damage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4640,24 +4640,24 @@
                     'type': 'checkbox',
                     'value': {
                         'Functional': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Surface Damage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cabinet Damage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cross Connection': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Improve Caulking at Sink, Back-Splash, Tub Deck, Shower Surround, Floor, Wood or MDF Molding': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4665,12 +4665,12 @@
                     'type': 'checkbox',
                     'value': {
                         'Unsealed (Recommend Sealing)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cracked/Loose/Missing Grout': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4678,40 +4678,40 @@
                     'type': 'checkbox',
                     'value': {
                         'Functional': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Stopper': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing/Inoperable Overflow': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Clog/Slow Drain': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Stained Drainpipe': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Drips/Leaks': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Defects/Damage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Unsafe': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Re-Evaluate': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4719,28 +4719,28 @@
                     'type': 'checkbox',
                     'value': {
                         'Kitchen': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Master Bath': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Main Bath': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Half Bath': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Laundry': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Bar': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4748,28 +4748,28 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Runs Continuously': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Leaks': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Loose Bowl': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4777,24 +4777,24 @@
                     'type': 'checkbox',
                     'value': {
                         'Ceramic': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'FG': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Masonite/Laminate': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Slab': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Jacuzzi': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4802,44 +4802,44 @@
                     'type': 'checkbox',
                     'value': {
                         'Functional': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Stains': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cross Connection': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Defective': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Loose Tile': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cracked/Broken': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Leaky Shower Head': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Leaky Faucet': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Leaky Sprayer': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4850,24 +4850,24 @@
                     'type': 'checkbox',
                     'value': {
                         'Gas/Propane': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Electric': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Oil': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Solar': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Geo Thermal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4875,12 +4875,12 @@
                     'type': 'checkbox',
                     'value': {
                         'American': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OTHER (NEEDS MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4888,48 +4888,48 @@
                     'type': 'checkbox',
                     'value': {
                         '1': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         '2': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         '3': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         '4': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         '5': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         '6': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         '7': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         '8': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         '9': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         '10': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OTHER (NEEDS MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4937,28 +4937,28 @@
                     'type': 'checkbox',
                     'value': {
                         '10': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         '20': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         '30': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         '40': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         '50': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OTHER (NEEDS MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4966,8 +4966,8 @@
                     'type': 'checkbox',
                     'value': {
                         'TEXT ENTRY FIELD': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4975,8 +4975,8 @@
                     'type': 'checkbox',
                     'value': {
                         'TEXT ENTRY FIELD': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4984,8 +4984,8 @@
                     'type': 'checkbox',
                     'value': {
                         'OTHER (NEEDS MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -4993,16 +4993,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Data Plate Inaccessible/Illegible': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing/Loose Seismic Restraints': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5010,20 +5010,20 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Reduced Extension': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor Extension Termination': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5031,60 +5031,60 @@
                     'type': 'checkbox',
                     'value': {
                         'n/a': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Metal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Flex Ducting': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'PVC': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Condensate': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Rust': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Corrosion': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Verify Proper Pitch': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Disconnected': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Into Masonry Chase': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Liner': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Back-Drafting': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Unsafe': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Recommend Professional Re-Evaluation and/or Remediation': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5107,32 +5107,32 @@
                     'type': 'checkbox',
                     'value': {
                         'Gas': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'LP': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Electric': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Oil': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Solar': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Wind': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Geo Thermal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5140,20 +5140,20 @@
                     'type': 'checkbox',
                     'value': {
                         'Central Forced Air': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'In-Wall Space Heaters': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Baseboard Wall': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Radiant': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5161,16 +5161,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Water': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Steam': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Radiator': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5178,16 +5178,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Air': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Water': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Ground': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5195,20 +5195,20 @@
                     'type': 'checkbox',
                     'value': {
                         'Wood': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Solid Fuel(Pellet)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Gas Log': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Verify Clearance to Combustibles': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5216,24 +5216,24 @@
                     'type': 'checkbox',
                     'value': {
                         'Passive': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Heat Sink': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Photo-Voltaic': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Panels': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Convection': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5243,12 +5243,12 @@
                     'type': 'checkbox',
                     'value': {
                         'Bryant': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OTHER (NEED MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5256,12 +5256,12 @@
                     'type': 'checkbox',
                     'value': {
                         'Text Entry?': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OTHER (NEED MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5273,8 +5273,8 @@
                     'type': 'textbox',
                     'value': {
                         'TEXT ENTRY REQUIRED': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5282,8 +5282,8 @@
                     'type': 'textbox',
                     'value': {
                         'TEXT ENTRY REQUIRED': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5291,16 +5291,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory (Annual Safety)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing/Old': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Last Serviced n/a': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5308,28 +5308,28 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Dusty Cabinet': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Rust': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Corrosion': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Flame Distortion': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 }
@@ -5339,16 +5339,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Plenum & Cold Air Returns': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Metal Duct': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Insulated Flex Duct': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5356,32 +5356,32 @@
                     'type': 'checkbox',
                     'value': {
                         'Metal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'PVC': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Verify Proper Pitch': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Rusted': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Deteriorated': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Disconnected': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'n/a': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5389,32 +5389,32 @@
                     'type': 'checkbox',
                     'value': {
                         'n/a': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Electrostatic': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Paper': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Filter Fabric': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor/Dirty': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5422,20 +5422,20 @@
                     'type': 'checkbox',
                     'value': {
                         'Functional': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Verify Location/Function': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Hazard': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Recommend Professional HVAC Re-Evaluation, Safety Inspection, and/or Remediation': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 }
@@ -5455,36 +5455,36 @@
                     'type': 'checkbox',
                     'value': {
                         'Masonry Firebox': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Metal FP Insert': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Direct Vent Gas FP': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Wood/Pellet Stove': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Masonry Flue Liner': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Metal Flue Liner': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Unlined Chase': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Venting Into Chimney Chase': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5492,20 +5492,20 @@
                     'type': 'checkbox',
                     'value': {
                         'Loose': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Settling Cracks': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Burned': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Verify Clearance to Combustibles': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5513,20 +5513,20 @@
                     'type': 'checkbox',
                     'value': {
                         'No Access': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Liner': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cracked Refractory Brick': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing/Loose Mortar': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5534,36 +5534,36 @@
                     'type': 'checkbox',
                     'value': {
                         'Missing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'No Access': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable/DTO': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Rusted': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damaged/Broken': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Creosote Build-Up': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Deterioration': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Recommend Cleaning/Re-Evaluation/Repairs': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5571,84 +5571,84 @@
                     'type': 'checkbox',
                     'value': {
                         'n/a': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Framed': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Masonry': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Metal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Class B': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'DV Wall Hood': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cracked Wash': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Loose Mortar': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'No Liner': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'No Spark Arrestor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Rust': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Creosote': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Cricket': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inadequate/Missing Flashing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damaged': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Burn Guard': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Recommend Professional Re-Evaluation/Remediation': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 }
@@ -5670,12 +5670,12 @@
                     'type': 'checkbox',
                     'value': {
                         'TEXT ENTRY FIELD': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'NOT Tested': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5683,16 +5683,16 @@
                     'type': 'checkbox',
                     'value': {
                         'n/a': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OTHER (NEEDS MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5700,40 +5700,40 @@
                     'type': 'checkbox',
                     'value': {
                         'Natural Gas': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Propane': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Electric': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Central Air': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Heat Pump': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Fan Cooled': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Water': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Gas Chiller': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Swamp Cooler': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 }
@@ -5743,12 +5743,12 @@
                     'type': 'textbox',
                     'value': {
                         'Bryant': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OTHER (NEEDS MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5756,12 +5756,12 @@
                     'type': 'textbox',
                     'value': {
                         'n/a': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OTHER (NEEDS MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5769,12 +5769,12 @@
                     'type': 'dial',
                     'value': {
                         '1996': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'YEAR ENTRY NEEDED': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5782,8 +5782,8 @@
                     'type': 'textbox',
                     'value': {
                         'TEXT FIELD ENTRY': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5791,8 +5791,8 @@
                     'type': 'textbox',
                     'value': {
                         'TEXT FIELD ENTRY': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 }
@@ -5802,12 +5802,12 @@
                     'type': 'checkbox',
                     'value': {
                         'Bryant': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OTHER (NEEDS MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5815,12 +5815,12 @@
                     'type': 'checkbox',
                     'value': {
                         'n/a': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OTHER (NEEDS MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5828,12 +5828,12 @@
                     'type': 'dial',
                     'value': {
                         '1996': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'YEAR ENTRY NEEDED': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5841,8 +5841,8 @@
                     'type': 'textbox',
                     'value': {
                         'TEXT FIELD ENTRY': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5850,8 +5850,8 @@
                     'type': 'textbox',
                     'value': {
                         'TEXT FIELD ENTRY': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5859,28 +5859,28 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Uneven Base': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inadequate Base Height': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Obstructed Flow': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5888,24 +5888,24 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Leaking': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damaged': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Worn': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Insulation Missing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5928,44 +5928,44 @@
                     'type': 'checkbox',
                     'value': {
                         'Underground': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Yard Post': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Not Visible/Accessible': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'In Conduit': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Overhead': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Pole Unstable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         '3 Cables': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         '4 Cables': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Copper': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Aluminum': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -5973,28 +5973,28 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inadequate Clearances': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Hazard': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6002,12 +6002,12 @@
                     'type': 'checkbox',
                     'value': {
                         'AMPS (NEED MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'VOLTS (NEED MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6015,8 +6015,8 @@
                     'type': 'checkbox',
                     'value': {
                         'Visible': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6024,20 +6024,20 @@
                     'type': 'checkbox',
                     'value': {
                         'Exterior Wall': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Yard Post': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Mechanical Closet': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Not Visible/Locked': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6045,28 +6045,28 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inadequate Access': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Hazard': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6074,20 +6074,20 @@
                     'type': 'checkbox',
                     'value': {
                         'Not Visible': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Ground Rods': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Ufer': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Bonded to Water/Gas Piping': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6095,20 +6095,20 @@
                     'type': 'checkbox',
                     'value': {
                         'Copper': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Aluminum': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Not Visible/Accessible': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6116,24 +6116,24 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Loose Clamp/Lug': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Improper Bond': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Too Far From Entry': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6141,36 +6141,36 @@
                     'type': 'checkbox',
                     'value': {
                         'With Meter': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inside Main Panel': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Near Panel': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Fuse': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Breaker': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Switch': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Split-Bus': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Overloaded (>6 Hand Motions)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6178,16 +6178,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Not Visible/Accessible': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Blocked': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Not Evaluated': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6195,12 +6195,12 @@
                     'type': 'checkbox',
                     'value': {
                         'n/a': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OTHER (NEED MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6208,12 +6208,12 @@
                     'type': 'checkbox',
                     'value': {
                         'Breakers': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Fuses': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6221,8 +6221,8 @@
                     'type': 'checkbox',
                     'value': {
                         'NEED MORE DATA': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6230,12 +6230,12 @@
                     'type': 'checkbox',
                     'value': {
                         '240': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OTHER (NEED MORE DATA)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6243,16 +6243,16 @@
                     'type': 'checkbox',
                     'value': {
                         'GFCI Breakers': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'AFCI Breakers': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'n/a': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6260,44 +6260,44 @@
                     'type': 'checkbox',
                     'value': {
                         'Garage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Basement': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'With Meter': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Exterior Wall': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Yard Post': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Interior Wall': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Mechanical Room': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Laundry Room': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Utility Area': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Crawl Space': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6305,40 +6305,40 @@
                     'type': 'checkbox',
                     'value': {
                         'Copper': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Almuninum': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Tin Clad Copper': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Copper Clad Aluminum': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Non-Metallic Sheathed': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'BX Cable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Condiut': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cloth-Wrapped': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Knob & Tube': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6346,72 +6346,72 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inadequate Access Clearances': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Dangling Wires': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Excessive Sheathing in Panel': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Double-Tapping': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Undersized Wiring': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Rust': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Buried In Insulation': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Burned Breakers': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Dangerous Panel Type': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Improper Splicing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Hazardous/Unsafe': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Recommend Professional Evaluation/Repairs': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6422,24 +6422,24 @@
                     'type': 'checkbox',
                     'value': {
                         'Missing/Removed': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Bulbs': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Covers': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Gaps': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6447,28 +6447,28 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inadequate Clearances': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Hazard': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6476,16 +6476,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Typical Grounded': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Some Grounded': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Typical Un-Grounded': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6493,76 +6493,76 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Weak/Loose': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing/Removed': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Cover Plates': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Dangling/Unmounted': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'External Splicing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Gaps Into Boxes': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Burned': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Open Ground': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Open Neutral': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Reverse Polarity': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Ungrounded 3-Prong': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damaged': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Hazardous/Unsafe': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Recommend Repair/Evaluation by Professional Electrician': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6570,16 +6570,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Installed': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing/Recommended': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'NOT Tested': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6587,20 +6587,20 @@
                     'type': 'checkbox',
                     'value': {
                         'Installed': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Chirping/Low Batteries': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6628,28 +6628,28 @@
                     'type': 'checkbox',
                     'value': {
                         'n/a': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Solid Wood': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Metal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Fiberglass': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Panel': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Hollow Core': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6657,24 +6657,24 @@
                     'type': 'checkbox',
                     'value': {
                         'Sagging/Settled': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Rubbing/Binding': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damaged': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Hardware Issues': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Doorbell Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6682,16 +6682,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Missing/Damaged': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor Seal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Ineffective Threshold': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6699,52 +6699,52 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inaccessible': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Difficult To Operate (Needs Adjustment/Lubrication)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Hardware': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inadequate Security': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Failed Thermal Seals': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Broken Panes': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Stained': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Weathered Sills': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Mold/Mildew': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Deterioration': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6752,16 +6752,16 @@
                     'type': 'checkbox',
                     'value': {
                         'n/a': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6769,12 +6769,12 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing/Inadequate': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6782,64 +6782,64 @@
                     'type': 'checkbox',
                     'value': {
                         'Appeared Functional': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Loose/Worn': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Cover Plates': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Ungrounded 3-Prong': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable GFCI': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing GFCI Protection': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Reversed Polarity': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OG/RP Within 6 Feet': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Burned': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Exposed Wires': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Hazardous/Unsafe': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Refer To Electrical Section': {
                             c: true,
-                            i: ''
+                            'i': []
                         },
                         'Recommend Professional Evaluation': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6853,48 +6853,48 @@
                     'type': 'checkbox',
                     'value': {
                         'Sink Disposer': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Fridge': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Dishwasher': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Oven': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Range': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Microwave': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Warmer': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Trash Compactor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cooler': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Water Filter': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Instant Hot': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6902,28 +6902,28 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damaged': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Worn Finish': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Loose Drawers/Hinges': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6931,20 +6931,20 @@
                     'type': 'checkbox',
                     'value': {
                         'Granite': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Laminate': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Tile': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Slab': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6952,24 +6952,24 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Worn': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damaged': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6977,16 +6977,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal/Worn': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -6994,16 +6994,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Worn/Cracked/Gaps': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Improve at Sink, Back-Splash, Counters, or Fixtures': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7011,24 +7011,24 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cracked/Missing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Loose': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Water Damage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Recommend Sealing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7036,16 +7036,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7053,12 +7053,12 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing/Inadequate': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7066,60 +7066,60 @@
                     'type': 'checkbox',
                     'value': {
                         'Appeared Functional': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Loose/Worn': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Cover Plates': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Ungrounded 3-Prong': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable GFCI': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing GFCI Protection': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Reversed Polarity': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OG/RP Within 6 Feet': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Burned': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Exposed Wires': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Hazardous/Unsafe': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Recommend Professional Evaluation': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 }
@@ -7129,32 +7129,32 @@
                     'type': 'checkbox',
                     'value': {
                         'None': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Washer': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Dryer': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'WH': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Furnace': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Conditioner': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7162,28 +7162,28 @@
                     'type': 'checkbox',
                     'value': {
                         'Electric': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Gas': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable/OFF': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cap Needed': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Hazard(s)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Recommend Re-Evaluation': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7191,16 +7191,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Wall': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Ceiling': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Floor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7208,12 +7208,12 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Clogged/Loose/Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7221,28 +7221,28 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Weak/Noisy': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 }
@@ -7252,24 +7252,24 @@
                     'type': 'checkbox',
                     'value': {
                         'GWB': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Lath & Plaster': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Acoustic Tile': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Paneling': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Open Beam': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7277,32 +7277,32 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Stains/Mildew': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cracks': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Repairs': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'PACM': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7310,24 +7310,24 @@
                     'type': 'checkbox',
                     'value': {
                         'Covered': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Sloping': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Squeaks': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damaged': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Fungal Rot': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7335,12 +7335,12 @@
                     'type': 'checkbox',
                     'value': {
                         'Worn/Cracked/Gaps': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Improve At Sink, Back-Splash, Tub/Shower Surround/ or Floor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7348,16 +7348,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Yes': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'No': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7365,16 +7365,16 @@
                     'type': 'checkbox',
                     'value': {
                         'Yes': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'No': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7382,60 +7382,60 @@
                     'type': 'checkbox',
                     'value': {
                         'Appeared Functional': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Loose/Worn': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Cover Plates': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Ungrounded 3-Prong': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable GFCI': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing GFCI Protection': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Reversed Polarity': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OG/RP Within 6 Feet': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Burned': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Exposed Wires': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Hazardous/Unsafe': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Recommend Professional Evaluation': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 }
@@ -7445,24 +7445,24 @@
                     'type': 'checkbox',
                     'value': {
                         'GWB': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Lath & Plaster': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Acoustic Tile': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Paneling': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Open Beam': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7470,68 +7470,68 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Stains': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Moisture/Mildew': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Water Damage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Settling': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Truss Uplift': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Nail Pops': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Holes': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cracks': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inadequate Repairs/Texture': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Sooting': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'PACM': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Hazardous/Unsafe': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Recommend Professional Evaluation': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7539,20 +7539,20 @@
                     'type': 'checkbox',
                     'value': {
                         'Hard Surfaces (Tile/Stone)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Hardwood/Laminate': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Vinyl': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Carpet': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7560,56 +7560,56 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Excessive Wear': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Squeaks': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Stains': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Sloping': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Uneven Surfaces': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Holes': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Wrinkled Carpet': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Trip Hazard(s)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Repair(s)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7617,28 +7617,28 @@
                     'type': 'checkbox',
                     'value': {
                         'Passage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Pocket': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Double': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Bi-Fold': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Bi-Pass': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Accordion': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7646,64 +7646,64 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inaccessible': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing/Removed': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Hardware': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Settled/Rubbing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Improperly Hung/Sagging': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Holes': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Stains': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cracked/Split Jambs': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inadequate Repairs': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Recommend Servicing/Adjusting': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7711,24 +7711,24 @@
                     'type': 'checkbox',
                     'value': {
                         'Sliders': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Fixed': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Single Hung': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Double Hung': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Awning': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7736,60 +7736,60 @@
                     'type': 'checkbox',
                     'value': {
                         'Satisfactory': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Marginal': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Poor': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Difficult To Operate': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Improve Security': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Hardware': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Broken Panes': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Failed Thermal Seals': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Verify Bedroom Egress': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Stained': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Weathered Sills': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Mold/Mildew': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Damage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Deterioration': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7802,60 +7802,60 @@
                     'type': 'checkbox',
                     'value': {
                         'Appeared Functional': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Loose/Worn': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Cover Plates': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Ungrounded 3-Prong': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Inoperable GFCI': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing GFCI Protection': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Reversed Polarity': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'OG/RP Within 6 Feet': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Burned': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Exposed Wires': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Hazardous/Unsafe': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Recommend Professional Evaluation': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7878,73 +7878,73 @@
                     'type': 'checkbox',
                     'value': {
                         'n/a': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Unsafe/Uneven Walking Surfaces': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Re-Evaluate': true,
                         'Interior': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Exterior': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Steep Slope/Drop-Off': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Retaining Wall': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Driveway/Walkway(s)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Landing': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Balcony': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Patio': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Deck': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Steps/Stairs': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing Guard/Handrail(s)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Low Guard/Handrail(s)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Root Heaving': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Erosion': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cracks/Gaps/Missing Dividers': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -7952,48 +7952,48 @@
                     'type': 'checkbox',
                     'value': {
                         'n/a': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'None': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing/Inadequate Firewall': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Missing/Inadequate Fire-Door': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Excessive Storage': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Excessive Heat': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Cellulose Debris': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Roof Tear-Off Debris': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Entrapment/Locks': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Improve Bedroom Egress': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Verify Adequate CO & Fire Alarms': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -8001,28 +8001,28 @@
                     'type': 'checkbox',
                     'value': {
                         'None': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Ponding/Breeding Water': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Potential Points of Pest Entry': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Rat Droppings Toxins': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Bee/Wasp Nests': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Racoon': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -8030,12 +8030,12 @@
                     'type': 'checkbox',
                     'value': {
                         'Insect': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Rodent': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },
@@ -8043,36 +8043,36 @@
                     'type': 'checkbox',
                     'value': {
                         'Missing Window Safety Glass': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Electrical Shock Hazard(s)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Bio-Growth/Mold/Mildew': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'PACM': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Friable ACM': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Lead': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Airborne/VOCs': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         },
                         'Potential Hidden Hazard(s)': {
-                            c: false,
-                            i: ''
+                            'c': false,
+                            'i': []
                         }
                     }
                 },

@@ -105,7 +105,9 @@
                                     <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent" ng-show="checkboxvalue.i != '' && checkboxvalue.c"></md-icon>
                                     </div>
                                     <md-menu-content>
-                                        <div  class="UpPicture" style="background-image: url('{{checkboxvalue.i}}')" />
+                                       <md-content style="max-height:480px;  overflow-y:scroll;">
+                                        <div ng-repeat="checkboxImage in checkboxvalue.i"  class="UpPicture" style="background-image: url('{{checkboxImage.i}}')" />
+                                        </md-content>
                                     </md-menu-content>
 
                                     </md-menu>

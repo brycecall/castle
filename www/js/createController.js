@@ -100,7 +100,7 @@
 
         // Show the captured photo
         $scope.$apply(function () {
-            cameraDestination.i = "data:image/jpeg;base64," + imageData;
+            cameraDestination = "data:image/jpeg;base64," + imageData;
         });
     }
 
@@ -111,7 +111,7 @@
         //alert("Calls when we change to add item page");
 
         $scope.$apply(function () {
-            cameraDestination.i = imageURI;
+            cameraDestination = imageURI;
         });
     }
 
@@ -137,16 +137,18 @@
 
 
     $scope.initCameraAction = function(pCheckboxval) {
-        cameraDestination =  pCheckboxval;
+        var imgJSON = {'i':''};
+        pCheckboxval.i.push(imgJSON);
+        cameraDestination = pCheckboxval.i[pCheckboxval.i.length - 1].i;
 //        $scope.capturePhoto()
         $scope.getPhoto(1);
      }
 
     $scope.capturePagePhoto = function(listValue, itemVal) {
-        var imgJSON = {'title':'', 'i':'./img/baby.jpg'};
+        var imgJSON = {'title':'', 'i':''};
         imgJSON.title = listValue;
         itemVal.content.push(imgJSON);
-        cameraDestination = itemVal.content[itemVal.content.length - 1];
+        cameraDestination = itemVal.content[itemVal.content.length - 1].i;
         $scope.getPhoto(1);
     }
 

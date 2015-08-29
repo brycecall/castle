@@ -111,7 +111,7 @@
         //alert("Calls when we change to add item page");
 
         $scope.$apply(function () {
-            cameraDestination = imageURI;
+            cameraDestination.i = imageURI;
         });
     }
 
@@ -139,17 +139,25 @@
     $scope.initCameraAction = function(pCheckboxval) {
         var imgJSON = {'i':''};
         pCheckboxval.i.push(imgJSON);
-        cameraDestination = pCheckboxval.i[pCheckboxval.i.length - 1].i;
+        cameraDestination = pCheckboxval.i[pCheckboxval.i.length - 1];
 //        $scope.capturePhoto()
         $scope.getPhoto(1);
+//        if (cameraDestination.i == '')
+//            pCheckboxval.i.pop();
      }
 
     $scope.capturePagePhoto = function(listValue, itemVal) {
         var imgJSON = {'title':'', 'i':''};
         imgJSON.title = listValue;
         itemVal.content.push(imgJSON);
-        cameraDestination = itemVal.content[itemVal.content.length - 1].i;
+        cameraDestination = itemVal.content[itemVal.content.length - 1];
         $scope.getPhoto(1);
+//        if (cameraDestination.i == '')
+//            itemVal.content.pop();
+    }
+
+    $scope.removeIMG = function(pJSONIMG, source) {
+        source.splice(source.indexOf(pJSONIMG), 1);
     }
 
     // Called if something bad happens.

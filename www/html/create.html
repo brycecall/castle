@@ -105,9 +105,14 @@
                                     <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent" ng-show="checkboxvalue.i != '' && checkboxvalue.c"></md-icon>
                                     </div>
                                     <md-menu-content>
-                                       <md-content style="max-height:480px;  overflow-y:scroll;">
-                                        <div ng-repeat="checkboxImage in checkboxvalue.i"  class="UpPicture" style="background-image: url('{{checkboxImage.i}}')" />
-                                        </md-content>
+                                         <md-content style="max-height:480px;  overflow-y:scroll;">
+                                   <md-card ng-repeat="checkboxImage in checkboxvalue.i" style="position:relative;" layout="column" layout-align="center end">
+                                   <div ng-click="removeIMG(checkboxImage, checkboxvalue.i)" class="cancelIMG" flex="">
+                                       <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_clear_48px.svg" class="" ></md-icon>
+                                   </div>
+                                        <div class="UpPicture" style="background-image: url('{{checkboxImage.i}}')" />
+                                    </md-card>
+                                    </md-content>
                                     </md-menu-content>
 
                                     </md-menu>
@@ -182,15 +187,23 @@
                     <md-icon ng-show="checkboxvalue.c"  md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="initCameraAction(checkboxvalue)" aria-label="capture photo" flex="10"></md-icon>
 -->
                   <div  ng-if="itemVal.type == 'image'" layout="row" layout-align="start center">
-                    <md-menu  flex="10" style="text-align:center;" >
+
+                    <md-menu  flex="10" style="text-align:center;" ng-if="itemVal.content.length != 0">
                     <div ng-click="$mdOpenMenu()" style="padding:0 5px">
                         <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent" ></md-icon>
                     </div>
                     <md-menu-content>
-                        <div ng-repeat="pageImage in itemVal.content" class="UpPicture" style="background-image: url('{{pageImage.i}}')" />
+                       <md-content style="max-height:480px;  overflow-y:scroll;">
+                       <md-card ng-repeat="pageImage in itemVal.content" style="position:relative;" layout="column" layout-align="center end">
+                       <div ng-click="removeIMG(pageImage, itemVal.content)" class="cancelIMG" flex="">
+                           <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_clear_48px.svg" class="" ></md-icon>
+                       </div>
+                        <div  class="UpPicture" style="background-image: url('{{pageImage.i}}'); background-color:black" />
+                        </md-card>
+                        </md-content>
                     </md-menu-content>
-
                     </md-menu>
+
                     <md-button class="cameraButton md-accent" aria-label="Photos" ng-click="capturePagePhoto(listValue, itemVal)">
                         <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon> Add Photo
                     </md-button>

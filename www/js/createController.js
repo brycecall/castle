@@ -137,7 +137,7 @@
 
 
     $scope.initCameraAction = function(pCheckboxval) {
-        var imgJSON = {'i':''};
+        var imgJSON = {'i':'./img/Favicon.gif'};
         pCheckboxval.i.push(imgJSON);
         cameraDestination = pCheckboxval.i[pCheckboxval.i.length - 1];
 //        $scope.capturePhoto()
@@ -147,7 +147,7 @@
      }
 
     $scope.capturePagePhoto = function(listValue, itemVal) {
-        var imgJSON = {'title':'', 'i':''};
+        var imgJSON = {'title':'', 'i':'./img/Favicon.gif'};
         imgJSON.title = listValue;
         itemVal.content.push(imgJSON);
         cameraDestination = itemVal.content[itemVal.content.length - 1];
@@ -156,9 +156,22 @@
 //            itemVal.content.pop();
     }
 
+    $scope.captureAppendixPhoto = function() {
+        var imgJSON = {'title':'', 'i':'./img/Favicon.gif'}
+        var source = $scope.report['Photo Appendix']['Additional Photos for Further Clarification']['Photo Appendix Images'].content;
+        source.push(imgJSON);
+        cameraDestination = source[source.length - 1];
+        $scope.getPhoto(1);
+
+
+    }
+
     $scope.removeIMG = function(pJSONIMG, source) {
         source.splice(source.indexOf(pJSONIMG), 1);
     }
+
+
+
 
     // Called if something bad happens.
     $scope.onFail = function onFail(message) {

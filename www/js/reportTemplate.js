@@ -3789,7 +3789,7 @@
         'Photo Appendix': {
             'Additional Photos for Further Clarification': {
                 'Photo Appendix Images': {
-                            'type': 'image',
+                            'type': 'photoAppendix',
                             'content': [
                        // {'title':'', 'i':''}
                     ]

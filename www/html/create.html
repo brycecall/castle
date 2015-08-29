@@ -209,6 +209,41 @@
                     </md-button>
 
                         </div>
+
+                  <div  ng-if="itemVal.type == 'photoAppendix'" layout="column" layout-align="start start">
+
+                        <div  layout="row" layout-sm="column">
+                          <div flex="50">
+                               <div ng-repeat="pageImage in itemVal.content" ng-if="$even">
+
+                                <div class="UpPicture" style="background-image: url('{{pageItem.i}}')" >
+                                    <div class="md-caption pictureBox"></div>
+                                   <div class="centerTextVertical"><span class="md-caption imageTitle">{{listValue}}</span></div>
+                                 </div>
+
+                                </div>
+                            </div>
+                            <div flex="50">
+                               <div ng-repeat="pageImage in itemVal.content" ng-if="$odd">
+
+                                <div class="UpPicture" style="background-image: url('{{pageItem.i}}')" >
+                                    <div class="md-caption pictureBox"></div>
+                                   <div class="centerTextVertical"><span class="md-caption imageTitle">{{listValue}}</span></div>
+                                 </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    <md-button class="cameraButton md-accent" aria-label="Photos" ng-click="capturePagePhoto(listValue, itemVal)">
+                        <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon> Add Photo
+                    </md-button>
+
+                        </div>
+
+
+
                     </div>
                     </div>
                 </md-card-content>
@@ -244,7 +279,7 @@
                         </md-button>
                         </a>
 
-                        <a ng-href="#image" ng-click="toggleAdd()">
+                        <a ng-click="captureAppendixPhoto()">
                         <span class="fab_add_label">Image</span>
                         <md-button class="md-fab fab_add_button md-primary"  aria-label="Add Image">
                            <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" style="color:white" layout="row" layout-align="center center"></md-icon>

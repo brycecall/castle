@@ -2396,26 +2396,45 @@
                     'required': false,
                     'type': 'checkbox',
                     'value': {
+                        'Unknown': {'c': false,'i': []},
+                        'A. O. Smith': {'c': false,'i': []},
                         'American': {'c': false,'i': []},
-                        'OTHER (NEEDS MORE DATA)': {'c': false,'i': []}
+                        'American Standard': {'c': false,'i': []},
+                        'Amtrol': {'c': false,'i': []},
+                        'Aqua Star / Bosch': {'c': false,'i': []},
+                        'Bosch': {'c': false,'i': []},
+                        'Bradford White': {'c': false,'i': []},
+                        'Briggs': {'c': false,'i': []},
+                        'Craftmaster': {'c': false,'i': []},
+                        'Eccotemp': {'c': false,'i': []},
+                        'GE': {'c': false,'i': []},
+                        'Hoyt': {'c': false,'i': []},
+                        'Kenmore': {'c': false,'i': []},
+                        'KD Navien': {'c': false,'i': []},
+                        'Lochinvar': {'c': false,'i': []},
+                        'Munchkin': {'c': false,'i': []},
+                        'Navien America': {'c': false,'i': []},
+                        'Navion': {'c': false,'i': []},
+                        'Noritz': {'c': false,'i': []},
+                        'Polaris': {'c': false,'i': []},
+                        'Reliance': {'c': false,'i': []},
+                        'Rheem': {'c': false,'i': []},
+                        'Ruud': {'c': false,'i': []},
+                        'Richmond': {'c': false,'i': []},
+                        'Rinnai': {'c': false,'i': []},
+                        'Sears Roebuck': {'c': false,'i': []},
+                        'State': {'c': false,'i': []},
+                        'State Select': {'c': false,'i': []},
+                        'Takagi': {'c': false,'i': []},
+                        'True Value': {'c': false,'i': []},
+                        'US Craftmaster': {'c': false,'i': []},
+                        'Whirlpool': {'c': false,'i': []}
                     }
                 },
-                'Approximate Age (Years Old)': { //NEEDS MORE DATA.
+                'Approximate Age (Years Old)': { //NEEDS SOME WAY TO CHOOSE "UNKNOWN."
                     'required': false,
-                    'type': 'checkbox',
-                    'value': {
-                        '1': {'c': false,'i': []},
-                        '2': {'c': false,'i': []},
-                        '3': {'c': false,'i': []},
-                        '4': {'c': false,'i': []},
-                        '5': {'c': false,'i': []},
-                        '6': {'c': false,'i': []},
-                        '7': {'c': false,'i': []},
-                        '8': {'c': false,'i': []},
-                        '9': {'c': false,'i': []},
-                        '10': {'c': false,'i': []},
-                        'OTHER (NEEDS MORE DATA)': {'c': false,'i': []}
-                    }
+                    'type': 'number',
+                    'value': ''
                 },
                 'Capacity (in Gallons)': {
                     'required': false,

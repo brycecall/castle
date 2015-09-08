@@ -128,7 +128,7 @@
 
                                 <h3 class="md-headline">{{listValue}}:</h3>
                                 <md-radio-group ng-model="itemVal.value">
-                                    <md-radio-button ng-repeat="(radiokey, radiovalue) in notSorted(itemVal.content)" ng-init="radioval = itemVal.content[radiovalue]" ng-value="radioval">{{radioval}}</md-radio-button>
+                                    <md-radio-button ng-repeat="(radiokey, radiovalue) in notSorted(itemVal.content)" ng-init="radioval = itemVal.content[radiovalue]" ng-value="radioval" class="radioHeight"><span >{{radioval}}</span></md-radio-button>
                                 </md-radio-group>
                                 <md-divider></md-divider>
                             </div>
@@ -256,39 +256,65 @@
 </div>
 
                    <div class="mainButton">
-                   <div class="buttonBox">
-                    <div class="fab_add_expand" ng-show="show_add_icons">
-                        <a ng-href="#item" ng-click="toggleAdd()">
-                        <span class="fab_add_label">Item</span>
-                        <md-button class="md-fab md-hue-1 fab_add_button" aria-label="Add Item">
-                            <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                        </md-button>
-                        </a>
+                       <div class="buttonBox">
+                        <div class="fab_add_expand" ng-show="show_add_icons">
+                            <a ng-href="#item" ng-click="toggleAdd()">
+                            <span class="fab_add_label">Item</span>
+                            <md-button class="md-fab md-hue-1 fab_add_button" aria-label="Add Item">
+                                <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                            </md-button>
+                            </a>
 
-                        <a ng-href="#page" ng-click="toggleAdd()">
-                        <span class="fab_add_label">Page</span>
-                        <md-button class="md-fab md-hue-2 fab_add_button" aria-label="Add Page">
-                            <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                        </md-button>
-                        </a>
+                            <a ng-href="#page" ng-click="toggleAdd()">
+                            <span class="fab_add_label">Page</span>
+                            <md-button class="md-fab md-hue-2 fab_add_button" aria-label="Add Page">
+                                <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                            </md-button>
+                            </a>
 
-                        <a ng-href="#section" ng-click="toggleAdd()">
-                        <span class="fab_add_label">Section</span>
-                        <md-button class="md-fab md-hue-3 fab_add_button" aria-label="Add Section">
-                            <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                        </md-button>
-                        </a>
+                            <a ng-href="#section" ng-click="toggleAdd()">
+                            <span class="fab_add_label">Section</span>
+                            <md-button class="md-fab md-hue-3 fab_add_button" aria-label="Add Section">
+                                <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                            </md-button>
+                            </a>
 
-                        <a ng-click="captureAppendixPhoto()">
-                        <span class="fab_add_label">Image</span>
-                        <md-button class="md-fab fab_add_button md-primary"  aria-label="Add Image">
-                           <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" style="color:white" layout="row" layout-align="center center"></md-icon>
+                            <a ng-click="togglePlusMenus()">
+                                <span class="fab_add_label">Image</span>
+                                <md-button class="md-fab fab_add_button md-primary"  aria-label="Add Image">
+                                   <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" style="color:white" layout="row" layout-align="center center"></md-icon>
+                                </md-button>
+                            </a>
+                        </div>
+
+                        <md-button class="md-fab md-primary"  ng-click="toggleAdd()" aria-label="stuff">
+                           <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
                         </md-button>
-                        </a>
+                        </div>
                     </div>
 
-                    <md-button class="md-fab md-primary"  ng-click="toggleAdd()" aria-label="stuff">
-                       <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                    </md-button>
+<!--
+                    <div >
+                       <div class="plusMenu" ng-if="togglePlusMenu">
+
+
+                       <md-select ng-model="itemVal.value" placeholder="Select {{listValue}}">
+                           <md-option ng-repeat="(sectionkey, section) in notSorted(report)" ng-init="radioval = itemVal.content[radiovalue]" ng-value="">{{ section }}</md-option>
+                        </md-select>
+
+
+                          <md-input-container>
+                          <label>asd</label>
+                          <input type="text" ng-model="" >
+                        </md-input-container>
+
+
+
+                       </div>
+
+
                     </div>
-                    </div>
+-->
+
+
+

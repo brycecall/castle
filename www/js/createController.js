@@ -120,15 +120,25 @@
       //alert("Call when button is pressed");
 
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, $scope.onFail(), { quality: 50,
-      destinationType: destinationType.DATA_URL });
+      navigator.camera.getPicture(onPhotoDataSuccess, $scope.onFail(), {
+        quality: 50,
+//        encodingType : encodingType.PNG,
+//        targetWidth:260,
+//        targeHeight: 260,
+        correctOrientation: true,
+        destinationType: destinationType.DATA_URL });
 
     }
 
    // A button will call this function
     $scope.getPhoto = function getPhoto(source) {
         // Retrieve image file location from specified source
-        navigator.camera.getPicture(onPhotoURISuccess, $scope.onFail(), { quality: 50,
+        navigator.camera.getPicture(onPhotoURISuccess, $scope.onFail(), {
+        quality: 50,
+//        encodingType : encodingType.PNG,
+//        targetWidth:260,
+//        targeHeight: 260,
+        correctOrientation: true,
         destinationType: destinationType.FILE_URI,
         sourceType: source });
 
@@ -137,7 +147,7 @@
 
 
     $scope.initCameraAction = function(pCheckboxval) {
-        var imgJSON = {'i':'./img/Favicon.gif'};
+        var imgJSON = {'i':''};
         pCheckboxval.i.push(imgJSON);
         cameraDestination = pCheckboxval.i[pCheckboxval.i.length - 1];
 //        $scope.capturePhoto()
@@ -147,7 +157,7 @@
      }
 
     $scope.capturePagePhoto = function(listValue, itemVal) {
-        var imgJSON = {'title':'', 'i':'./img/Favicon.gif'};
+        var imgJSON = {'title':'', 'i':''};
         imgJSON.title = listValue;
         itemVal.content.push(imgJSON);
         cameraDestination = itemVal.content[itemVal.content.length - 1];
@@ -156,8 +166,20 @@
 //            itemVal.content.pop();
     }
 
+    $scope.togglePlusMenu = false;
+
+     $scope.togglePlusMenus = function() {
+         $scope.togglePlusMenu = !$scope.togglePlusMenu;
+
+
+
+         $scope.captureAppendixPhoto();
+     }
+
+
     $scope.captureAppendixPhoto = function() {
-        var imgJSON = {'title':'', 'i':'./img/Favicon.gif'}
+
+        var imgJSON = {'title':'', 'i':''}
         var source = $scope.report['Photo Appendix']['Additional Photos for Further Clarification']['Photo Appendix Images'].content;
         source.push(imgJSON);
         cameraDestination = source[source.length - 1];

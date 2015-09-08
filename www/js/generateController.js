@@ -208,17 +208,27 @@
       //alert("Call when button is pressed");
 
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, $scope.onFail(), { quality: 50,
-      destinationType: destinationType.DATA_URL });
+      navigator.camera.getPicture(onPhotoDataSuccess, $scope.onFail(), {
+          quality: 50,
+          encodingType : encodingType.JPEG,
+          targetWidth:260,
+          targeHeight: 260,
+          correctOrientation: true,
+          destinationType: destinationType.DATA_URL });
 
     }
 
    // A button will call this function
     $scope.getPhoto = function getPhoto(source) {
         // Retrieve image file location from specified source
-        navigator.camera.getPicture(onPhotoURISuccess, $scope.onFail(), { quality: 50,
-        destinationType: destinationType.FILE_URI,
-        sourceType: source });
+        navigator.camera.getPicture(onPhotoURISuccess, $scope.onFail(), {
+            quality: 50,
+            encodingType : encodingType.JPEG,
+            targetWidth:260,
+            targeHeight: 260,
+            correctOrientation: true,
+            destinationType: destinationType.FILE_URI,
+            sourceType: source });
 
 
     }

@@ -35,12 +35,12 @@
                         'Conditions': {
                             'type': 'presettext',
                             'showcontent': true,
-                            'content': 'This Report concerns the visual [INSERT OPTION] inspection of an approximately [CALCULATE & INSERT AGE] old, [INSERT SQFT], [INSERT TYPE OF HOME],[INSERT PROPERTY USE],[INSERT NUMBER OF STORIES],[INSERT HOUSE FRAME],[INSERT PROPERTY TYPE],[INSERT CONFIGURATIONS], built in [INSERT YEAR].  The main entrance, driveway, or street access appeared to be facing predominantely toward the [INSERT PROPERTY ORIENTATION].  The street surface was [INSERT DRIVEWAY TYPE], and vehicle parking was available [INSERT VEHICLE PARKING]. ...   The locations of the main utility controls, shut-off valves, and/or disconnects are noted in the applicable mechanical sections.'
+                            'content': 'This Report concerns the visual [INSERT OPTION] inspection of an approximately [CALCULATE & INSERT AGE] old, [INSERT SQFT], [INSERT TYPE OF HOME],[INSERT PROPERTY USE],[INSERT NUMBER OF STORIES],[INSERT HOUSE FRAME],[INSERT PROPERTY TYPE],[INSERT CONFIGURATIONS], built in [INSERT YEAR].  The main entrance, driveway, or street access appeared to be facing predominantely toward the [INSERT PROPERTY ORIENTATION].  The street surface was [INSERT DRIVEWAY TYPE], and vehicle parking was available [INSERT VEHICLE PARKING]. The Utilities servicing the Property identified were [INSERT UTILITES]. [UTILITES OFF] were off at the time of inspection. The locations of the main utility controls, shut-off valves, and/or disconnects are noted in the applicable mechanical sections.'
                         },
                         'Limitations': {
                             'type': 'presettext',
                             'showcontent': true,
-                            'content': 'Detached outbuildings, seasonally visible defects, poorly accessible components, areas that may have been hidden and/ or areas containing significant furnishings or storage are not included in the scope of this inspection.'
+                            'content': 'The [INSERT PROPERTY TYPE] was [INSERT PROPERTY OCCUPANCY] at the time of the inspection.  The inspection began at [*INSPECTION START TIME][AM/PM] and ended at roughly [*INSPECTION END TIME][AM/PM].  The weather at the time of the inspeciton was [GRAB WEATHER FORECAST FROM WEATHER.COM: Cloudy, Snowy, Icy, Windy] with [no precipitation, cloudy, sunny, rain, no rain, etc.].  Those in attendance at the time of the inspection were [INSERT PERSONS PRESENT].  Detached outbuildings, seasonally visible defects, poorly accessible components, areas that may have been hidden and/ or areas containing significant furnishings or storage are not included in the scope of this inspection.'
                         },
                         'Inspection Type': {
                             'required': true,
@@ -193,7 +193,7 @@
                                 'In an Open Parking Space': {'c': false,'i': []},
                                 'In a Secured Parking Garage': {'c': false,'i': []},
                                 'In an Open Parking Garage': {'c': false,'i': []},
-                                'In an Open,Striped Parking Lot': {'c': false,'i': []}
+                                'In an Open, Striped Parking Lot': {'c': false,'i': []}
                             }
                         },
                         'Utilities': {
@@ -217,6 +217,44 @@
                                 'Oil': {'c': false,'i': []},
                                 'Propane': {'c': false,'i': []}
                             }
+                        },
+                        'Property Occupancy': {
+                            'required': true,
+                            'type': 'select',
+                            'content': [
+                        'Occupied',
+                        'Mostly Occupied',
+                        'Mostly Vacant',
+                        'Vacant'
+                                ],
+                            'value': ''
+                        },
+                        'Persons Present': {
+                            'required': false,
+                            'type': 'checkbox',
+                            'value': {
+                                'Inspector': {'c': false,'i': []},
+                                'Buyer': {'c': false,'i': []},
+                                'Resident': {'c': false,'i': []},
+                                'Builder/Builders Rep': {'c': false,'i': []},
+                                'Owner/Seller': {'c': false,'i': []},
+                                'Agent': {'c': false,'i': []},
+                                'Friends/Other': {'c': false,'i': []},
+                            }
+                        },
+                        'Person(s) Providing Property Access': {
+                            'required': false,
+                            'type': 'radio',
+                            'content': [
+                                'Inspector',
+                                'Buyer',
+                                'Resident',
+                                'Builder/Builders Rep',
+                                'Owner/Seller',
+                                'Agent',
+                                'Friends/Other'
+                            ],
+                            'value': ''
                         },
                  //       'Direction': {
                  //           'required': false,
@@ -262,6 +300,7 @@
                             'type': 'radio',
                             'content': [
                              'n/a',
+                             'Unfinished',
                              'Concrete',
                              'Asphalt',
                              'Pavers/stone/brick',
@@ -280,6 +319,8 @@
                                 'Typical cracks': {'c': false,'i': []},
                                 'Large cracks': {'c': false,'i': []},
                                 'Root heaving': {'c': false,'i': []},
+                                'Steep': {'c': false,'i': []},
+                                'Damaged': {'c': false,'i': []},
                                 'Uneven': {'c': false,'i': []},
                                 'Trip/Falling Hazard': {'c': false,'i': []}
                             }
@@ -319,6 +360,7 @@
                             'type': 'checkbox',
                             'value': {
                                 'n/a': {'c': false,'i': []},
+                                'Satisfactory': {'c': false,'i': []},
                                 'Uneven': {'c': false,'i': []},
                                 'Large cracks': {'c': false,'i': []},
                                 'Root heaving': {'c': false,'i': []},
@@ -335,7 +377,16 @@
                             'type': 'checkbox',
                             'value': {
                                 'None': {'c': false,'i': []},
-                                'TYPE (Needs Greater Definition)': {'c': false,'i': []}
+                                'Verify': {'c': false,'i': []},
+                                'Treated Wood': {'c': false,'i': []},
+                                'Railroad Ties': {'c': false,'i': []},
+                                'Concrete': {'c': false,'i': []},
+                                'Concrete Blocks': {'c': false,'i': []},
+                                'CMU/Blocks': {'c': false,'i': []},
+                                'Gabions': {'c': false,'i': []},
+                                'Rockery': {'c': false,'i': []},
+                                'Masonry': {'c': false,'i': []},
+                                'Cemented Stone': {'c': false,'i': []}
                             }
                         },
                         'Retaining Wall Condition': {
@@ -351,7 +402,7 @@
                                 'Trip/Falling Hazard': {'c': false,'i': []}
                             }
                         },
-                        'Safety Fencing at': {
+                        'Safety Fencing Location': {
                             'required': false,
                             'type': 'checkbox',
                             'value': {
@@ -360,6 +411,21 @@
                                 'Drop-off/Retaining Wall': {'c': false,'i': []},
                                 'Steep Slope': {'c': false,'i': []},
                                 'TYPE (Needs Greater Definition)': {'c': false,'i': []}
+                            }
+                        },
+                        'Safety Fencing Type': {
+                            'required': false,
+                            'type': 'checkbox',
+                            'value': {
+                                'n/a': {'c': false,'i': []},
+                                'Concrete': {'c': false,'i': []},
+                                'Wood': {'c': false,'i': []},
+                                'Privacy': {'c': false,'i': []},
+                                'Chainlink': {'c': false,'i': []},
+                                'Masonry': {'c': false,'i': []},
+                                'Rail': {'c': false,'i': []},
+                                'Wire': {'c': false,'i': []},
+                                'Plastic/Vinyl': {'c': false,'i': []}
                             }
                         },
                         'Safety Fencing Condition': {
@@ -443,7 +509,6 @@
                             'type': 'checkbox',
                             'value': {
                                 'n/a': {'c': false,'i': []},
-                                'Concrete': {'c': false,'i': []},
                                 'Uneven': {'c': false,'i': []},
                                 'Large Cracks': {'c': false,'i': []},
                                 'Root Heaving': {'c': false,'i': []},
@@ -461,9 +526,10 @@
                             'value': {
                                 'n/a': {'c': false,'i': []},
                                 'Raised': {'c': false,'i': []},
+                                'Roof-top': {'c': false,'i': []},
                                 'Covered': {'c': false,'i': []},
                                 'Wood/Composite': {'c': false,'i': []},
-                                'Verity Attachment': {'c': false,'i': []}
+                                'PVC': {'c': false,'i': []}
                             }
                         },
                         'Deck/Balcony Condition': {
@@ -480,8 +546,15 @@
                                 'Earth Contact': {'c': false,'i': []},
                                 'Mildew': {'c': false,'i': []},
                                 'Fungal Rot/Probed': {'c': false,'i': []},
+                                'Verify Attachment': {'c': false,'i': []},
                                 'Re-Evaluate': {'c': false,'i': []}
                             }
+                        },
+                        'Moisture Conditions': {
+                            'required': false,
+                            'type': 'presettext',
+                            'showcontent': true,
+                            'content': 'Undesirable exterior conditions conducive to pest and/or rot concerns may exist, develop, and/or worsen over time. Recommend identification and elimination of all exposed or unprotected wood in outdoor conditions or inadequate earth-to-wood separation (less than 6 to 8 inches), negative grade (ground surfaces sloping toward building), or overgrown foliage (vegetation touching wall surfaces) and maintain improved conditions to minimize risk of pest, moisture or other potential exterior concerns.'
                         },
                         'Attached Steps/Platforms Images': {
                             'type': 'image',
@@ -505,13 +578,6 @@
                             'showcontent': true,
                             'content': 'According to the Home Inspection Standards of Practice WAC § 308-408C-080 of the Washington State Dept. of Licensing, the inspector is not required to inspect buildings, decks, patios, fences, retaining walls, and other structures detached from the dwelling, safety type glass or the integrity of thermal window seals, flues or verify the presence of flue liners beyond what can be safely and readily seen from the roof or the firebox of a stove or fireplace, test or evaluate the operation of security locks, devices or systems, enter areas beneath decks with less than five feet of clearance from the underside of joists to grade, evaluate the function or condition of shutters, awnings, storm doors, storm windows, screens, and similar accessories.'
                         },
-
-                        'Moisture Conditions': {
-                            'required': false,
-                            'type': 'presettext',
-                            'showcontent': true,
-                            'content': 'Undesirable exterior conditions conducive to pest and/or rot concerns may exist, develop, and/or worsen over time. Recommend identification and elimination of all exposed or unprotected wood in outdoor conditions or inadequate earth-to-wood separation (less than 6 to 8 inches), negative grade (ground surfaces sloping toward building), or overgrown foliage (vegetation touching wall surfaces) and maintain improved conditions to minimize risk of pest, moisture or other potential exterior concerns.'
-                        },
                         'Type(s) of Wall Cladding': {
                             'required': false,
                             'type': 'checkbox',
@@ -526,6 +592,7 @@
                                 'Fiberboard': {'c': false,'i': []},
                                 'Hardi-Board/Plank': {'c': false,'i': []},
                                 'Panels/Sheets': {'c': false,'i': []},
+                                'Shingles': {'c': false,'i': []},
                                 'T-111': {'c': false,'i': []},
                                 'Lapped': {'c': false,'i': []},
                                 'T&G': {'c': false,'i': []},
@@ -544,8 +611,10 @@
                                 'Marginal': {'c': false,'i': []},
                                 'Poor': {'c': false,'i': []},
                                 'Loose': {'c': false,'i': []},
-                                'Gaps': {'c': false,'i': []},
-                                'Missing Pieces': {'c': false,'i': []},
+                                'Gaps/Holes': {'c': false,'i': []},
+                                'Buckled': {'c': false,'i': []},
+                                'Tight Butt Joints': {'c': false,'i': []},
+                                'Missing Joint Flashing': {'c': false,'i': []},
                                 'Broken/Damaged': {'c': false,'i': []},
                                 'Inadequate Coverage': {'c': false,'i': []},
                                 'Peeling Paint': {'c': false,'i': []},
@@ -558,7 +627,7 @@
                                 'Re-Evaluate': {'c': false,'i': []}
                             }
                         },
-                        'Flashing': {
+                        'Flashing at Fenestrations': {
                             'required': false,
                             'type': 'checkbox',
                             'value': {
@@ -568,7 +637,10 @@
                                 'Marginal': {'c': false,'i': []},
                                 'Poor': {'c': false,'i': []},
                                 'Defective': {'c': false,'i': []},
-                                'Re-Evaluate': {'c': false,'i': []}
+                                'Loose': {'c': false,'i': []},
+                                'Gaps/Holes': {'c': false,'i': []},
+                                'Exposed Structure': {'c': false,'i': []},
+                                'Recommend Re-Evaluate/Repair': {'c': false,'i': []}
                             }
                         },
                         'Trim/Soffit/Fascia': {
@@ -584,7 +656,7 @@
                                 'Enclosed Soffit': {'c': false,'i': []},
                                 'Open Eaves': {'c': false,'i': []},
                                 'Screened Ventilation': {'c': false,'i': []},
-                                'Unflashed BRT/OLook': {'c': false,'i': []}
+                                'Unflashed BRT/Out-Lookers': {'c': false,'i': []}
                             }
                         },
                         'Trim/Soffit/Fascia Condition': {
@@ -595,7 +667,7 @@
                                 'Marginal': {'c': false,'i': []},
                                 'Poor': {'c': false,'i': []},
                                 'Loose': {'c': false,'i': []},
-                                'Gaps': {'c': false,'i': []},
+                                'Gaps/Holes': {'c': false,'i': []},
                                 'Missing Pieces': {'c': false,'i': []},
                                 'Exposed Wood': {'c': false,'i': []},
                                 'Loose/Missing Flashing': {'c': false,'i': []},
@@ -648,6 +720,7 @@
                                 'Peeling Paint/Inadequate Coverage': {'c': false,'i': []},
                                 'Missing Caulking': {'c': false,'i': []},
                                 'Broken Glass': {'c': false,'i': []},
+                                'Failed Thermal Seal': {'c': false,'i': []},
                                 'Damaged': {'c': false,'i': []},
                                 'Deteriorated': {'c': false,'i': []},
                                 'Fungal Rot': {'c': false,'i': []}
@@ -669,10 +742,9 @@
                                 'Satisfactory': {'c': false,'i': []},
                                 'Marginal': {'c': false,'i': []},
                                 'Poor': {'c': false,'i': []},
-                                'Missing or Inadequate': {'c': false,'i': []},
-                                'Threshold': {'c': false,'i': []},
-                                'Weather-Strip': {'c': false,'i': []},
-                                'Hardware': {'c': false,'i': []},
+                                'Missing or Inadequate Threshold': {'c': false,'i': []},
+                                'Missing or Inadequate Weather-Strip': {'c': false,'i': []},
+                                'Missing or Inadequate Hardware': {'c': false,'i': []},
                                 'Repairs Needed': {'c': false,'i': []}
                             }
                         },
@@ -680,6 +752,7 @@
                             'required': false,
                             'type': 'checkbox',
                             'value': {
+                                'Satisfactory': {'c': false,'i': []},
                                 'Weathered': {'c': false,'i': []},
                                 'Stretched': {'c': false,'i': []},
                                 'Cracked': {'c': false,'i': []},
@@ -712,6 +785,7 @@
                             'required': false,
                             'type': 'checkbox',
                             'value': {
+                                'n/a': {'c': false,'i': []},
                                 'Curbside': {'c': false,'i': []},
                                 'Space': {'c': false,'i': []},
                                 'Public Garage': {'c': false,'i': []},
@@ -725,7 +799,9 @@
                             'required': false,
                             'type': 'checkbox',
                             'value': {
+                                'n/a': {'c': false,'i': []},
                                 'Concrete Slab': {'c': false,'i': []},
+                                'Sealed': {'c': false,'i': []},
                                 'Asphalt': {'c': false,'i': []},
                                 'Pavers/Cobblestone': {'c': false,'i': []},
                                 'Gravel': {'c': false,'i': []},
@@ -746,32 +822,39 @@
                                 'Efflorescence': {'c': false,'i': []},
                                 'Not Visible': {'c': false,'i': []},
                                 'Excessive Storage': {'c': false,'i': []},
-                                'Re-Evaluate': {'c': false,'i': []
-                                }
+                                'Re-Evaluate': {'c': false,'i': []}
                             }
                         },
-                        'Firewall': {
+                        'Firewall Location': {
                             'required': false,
                             'type': 'checkbox',
                             'value': {
                                 'n/a': {'c': false,'i': []},
-                                'Blocked or Inoperable': {'c': false,'i': []},
-                                'Wood': {'c': false,'i': []},
-                                'Metal': {'c': false,'i': []},
-                                'Fiberglass': {'c': false,'i': []}
+                                'Above Living Space': {'c': false,'i': []},
+                                'Below Living Space': {'c': false,'i': []},
+                                'Adjoining Walls': {'c': false,'i': []},
                             }
                         },
                         'Firewall Condition': {
                             'required': false,
                             'type': 'checkbox',
                             'value': {
+                                'Penetrations': {'c': false,'i': []},
+                                'Pet Door': {'c': false,'i': []},
                                 'Satisfactory': {'c': false,'i': []},
                                 'Marginal': {'c': false,'i': []},
                                 'Poor': {'c': false,'i': []},
-                                'Verify Door': {'c': false,'i': []},
+                            }
+                        },
+                        'Firedoor Condition': {
+                            'required': false,
+                            'type': 'checkbox',
+                            'value': {
+                                'Door': {'c': false,'i': []},
                                 'Threshod': {'c': false,'i': []},
                                 'Hinges': {'c': false,'i': []},
-                                'Seal': {'c': false,'i': []}
+                                'Seal': {'c': false,'i': []},
+                                'Repairs Needed': {'c': false,'i': []}
                             }
                         },
                         'Exterior Service Door': {
@@ -812,8 +895,8 @@
                                 'Metal': {'c': false,'i': []},
                                 'Fiberglass': {'c': false,'i': []},
                                 'Solid': {'c': false,'i': []},
-                                'Insulated': {'c': false,'i': []},
-                                'Hollow': {'c': false,'i': []}
+                                'Hollow': {'c': false,'i': []},
+                                'Insulated': {'c': false,'i': []}
                             }
                         },
                         'Car Door Condition': {
@@ -936,24 +1019,13 @@
                         },
                         'Age of Roof Covering': {
                             'required': false,
-                            'type': 'select',
-                            'content': [
-                                '<2 Years',
-                                '2-5 Years',
-                                '5-10 Years',
-                                '10-15 Years',
-                                '15+ Years'
-                                ],
+                            'type': 'number',
                             'value': ''
                         },
                         '# of Layers of Roof Covering': {
                             'required': false,
-                            'type': 'checkbox',
-                            'value': {
-                                '1': {'c': false,'i': []},
-                                '2': {'c': false,'i': []},
-                                'More than 2': {'c': false,'i': []}
-                            }
+                            'type': 'number',
+                            'value': ''
                         },
                         'Roof Covering': {
                             'required': false,
@@ -963,7 +1035,8 @@
                                 'Rolled': {'c': false,'i': []},
                                 '3-Tab': {'c': false,'i': []},
                                 'Multiple Thickness': {'c': false,'i': []},
-                                'Corrugated FG': {'c': false,'i': []},
+                                'Presidential': {'c': false,'i': []},
+                                'Corrugated Fiber Glass': {'c': false,'i': []},
                                 'Modified Bitumen': {'c': false,'i': []},
                                 'Torch-Down/Hot Tar': {'c': false,'i': []},
                                 'Metal/Standing Seam': {'c': false,'i': []},
@@ -986,8 +1059,9 @@
                                 'Granule Loss': {'c': false,'i': []},
                                 'Broken/Damaged': {'c': false,'i': []},
                                 'Missing (Tabs)': {'c': false,'i': []},
-                                'Cupping': {'c': false,'i': []},
-                                'Aligned Gaps/Cracks': {'c': false,'i': []},
+                                'Cupping/Curling': {'c': false,'i': []},
+                                'Aligned Gaps': {'c': false,'i': []},
+                                'Cracked': {'c': false,'i': []},
                                 'Lifting': {'c': false,'i': []},
                                 'Moss': {'c': false,'i': []},
                                 'Fungal Rot': {'c': false,'i': []},
@@ -1046,7 +1120,7 @@
                             'Class "B" Vent(s)': {'c': false,'i': []},
                             'Dryer Vent': {'c': false,'i': []},
                             'Fan Vent(s)': {'c': false,'i': []},
-                            'Plumbing DMV Pipes': {'c': false,'i': []},
+                            'Plumbing DWV Pipes': {'c': false,'i': []},
                             'Antennae/Satellite Dish': {'c': false,'i': []},
                             'Cable/Wiring': {'c': false,'i': []},
                             'Electical Mast': {'c': false,'i': []}
@@ -1090,6 +1164,7 @@
                             'Holes/Gaps': {'c': false,'i': []},
                             'Leaks': {'c': false,'i': []},
                             'Installation Defects': {'c': false,'i': []},
+                            'Security Concern': {'c': false,'i': []},
                             'Vulnerable Areas': {'c': false,'i': []}
                         }
                     },
@@ -1233,7 +1308,7 @@
                             'OSB': {'c': false,'i': []},
                             'H-Clipped': {'c': false,'i': []},
                             'Plank': {'c': false,'i': []},
-                            '1X Skip Sheathing': {'c': false,'i': []}
+                            '1x Skip Sheathing': {'c': false,'i': []}
                         }
                     },
                     'Condition': {
@@ -1280,6 +1355,7 @@
                         'required': false,
                         'type': 'checkbox',
                         'value': {
+                            'n/a': {'c': false,'i': []},
                             '4X Beams & Plank Diaphragm': {'c': false,'i': []},
                             '2X Joists & Diaphragm': {'c': false,'i': []},
                             'Flat Truss': {'c': false,'i': []}
@@ -1291,7 +1367,7 @@
                         'value': {
                             'Steel': {'c': false,'i': []},
                             'Concrete': {'c': false,'i': []},
-                            'Laminated': {'c': false,'i': []},
+                            'Laminated/Engineered': {'c': false,'i': []},
                             'Dimensional Lumber': {'c': false,'i': []}
                         }
                     },
@@ -1299,14 +1375,28 @@
                         'required': false,
                         'type': 'checkbox',
                         'value': {
-                            'Wood': {'c': false,'i': []},
-                            'TJI (Wood I-Beams': {'c': false,'i': []},
+                            'No Joists': {'c': false,'i': []},
+                            'Lumber': {'c': false,'i': []},
                             'Sleepers': {'c': false,'i': []},
+                        }
+                    },
+                    'I-Beams': {
+                        'required': false,
+                        'type': 'checkbox',
+                        'value': {
+                            'n/a': {'c': false,'i': []},
+                            'Wood/TJI': {'c': false,'i': []},
+                            'Metal': {'c': false,'i': []}
+                        }
+                    },
+                    'Diaphragm': {
+                        'required': false,
+                        'type': 'checkbox',
+                        'value': {
                             '"Foam-Crete"': {'c': false,'i': []},
                             'Diagonal': {'c': false,'i': []},
                             'Plank': {'c': false,'i': []},
-                            'Shiplap': {'c': false,'i': []},
-                            'Tongue & Groove': {'c': false,'i': []},
+                            'T&G/Shiplap': {'c': false,'i': []},
                             'Plywood': {'c': false,'i': []},
                             'OSB': {'c': false,'i': []}
                         }
@@ -1326,6 +1416,7 @@
                         'required': false,
                         'type': 'checkbox',
                         'value': {
+                            'Not Visible': {'c': false,'i': []},
                             'Satisfactory': {'c': false,'i': []},
                             'Marginal': {'c': false,'i': []},
                             'Poor': {'c': false,'i': []},
@@ -1345,15 +1436,8 @@
                         'type': 'checkbox',
                         'value': {
                             'n/a': {'c': false,'i': []},
-                            'Open': {'c': false,'i': []}
-                        }
-                    },
-                    'Enclosed On': {
-                        'required': false,
-                        'type': 'checkbox',
-                        'value': {
-                            '1 Side': {'c': false,'i': []},
-                            'Both Sides': {'c': false,'i': []}
+                            'Open': {'c': false,'i': []},
+                            'Enclosed': {'c': false,'i': []},
                         }
                     },
                     'Condition': {
@@ -1370,11 +1454,9 @@
                         'required': false,
                         'type': 'checkbox',
                         'value': {
-                            'Newels': {'c': false,'i': []},
-                            'Baluster Spacing': {'c': false,'i': []},
                             'Rails': {'c': false,'i': []},
                             'Headroom': {'c': false,'i': []},
-                            'Poor/Inadequate Support': {'c': false,'i': []},
+                            'Support': {'c': false,'i': []},
                             'Uneven Risers': {'c': false,'i': []},
                             'Over-Height Step(s)': {'c': false,'i': []},
                             'Missing Firewall': {'c': false,'i': []},
@@ -1492,21 +1574,10 @@
                             'Displaced': {'c': false,'i': []},
                             'Inactive': {'c': false,'i': []},
                             'Active': {'c': false,'i': []},
-                            'Larger than 1/4 inch': {'c': false,'i': []}
+                            'Larger than 1/4 inch': {'c': false,'i': []},
+                            'Re-Evaluate': {'c': false,'i': []},
                         }
                     },
-                    'Re-Evaluation Location': {
-                        'required': false,
-                        'type': 'select',
-                            'content': [
-                                'North',
-                                'South',
-                                'East',
-                                'West'
-                                ],
-                            'value': ''
-                        },
-                        
                     'Drainage': {
                         'required': false,
                         'type': 'checkbox',
@@ -1604,6 +1675,31 @@
                             'Ceiling Joists': {'c': false,'i': []}
                         }
                     },
+                    'Attic Insulation Quantity (in)': {
+                        'required': false,
+                        'type': 'checkbox',
+                        'value': {
+                            'Not Installed': {'c': false,'i': []},
+                            'Not Determined': {'c': false,'i': []},
+                            'Inadequate': {'c': false,'i': []},
+                            'Varied': {'c': false,'i': []},
+                            '<2 inches  R 5': {'c': false,'i': []},
+                            '<3 inches   R-9+': {'c': false,'i': []},
+                            '3 inches  R-11': {'c': false,'i': []},
+                            '4 inches  R-13': {'c': false,'i': []},
+                            '5 inches  R-15': {'c': false,'i': []},
+                            '6 inches  R-19': {'c': false,'i': []},
+                            '2" hard foam / R20': {'c': false,'i': []},
+                            '8-10 inches  R-28+': {'c': false,'i': []},
+                            '10-12 inches  R-32+': {'c': false,'i': []},
+                            '12-14 inches  R-36+': {'c': false,'i': []},
+                            '14-16 inches  R-38+': {'c': false,'i': []},
+                            '16-18 inches R- 40+': {'c': false,'i': []},
+                            '18-20 inches R- 42+': {'c': false,'i': []},
+                            '20-22 inches R- 44+': {'c': false,'i': []},
+                            '22-24 inches R- 46+': {'c': false,'i': []}
+                        }
+                    },
                     'Attic Insulation Type': {
                         'required': false,
                         'type': 'checkbox',
@@ -1660,7 +1756,8 @@
                         'required': false,
                         'type': 'checkbox',
                         'value': {
-                            'Yes': {'c': false,'i': []},
+                            'None': {'c': false,'i': []},
+                            'Condensation': {'c': false,'i': []},
                             'Roof Leaks': {'c': false,'i': []},
                             'Old Stains/Inactive': {'c': false,'i': []},
                             'Fresh Stains/Active': {'c': false,'i': []},
@@ -1820,7 +1917,8 @@
                         'required': false,
                         'type': 'checkbox',
                         'value': {
-                            'Present': {'c': false,'i': []},
+                            'None': {'c': false,'i': []},
+                            'Condensation': {'c': false,'i': []},
                             'Efflorescence': {'c': false,'i': []},
                             'Old Stains': {'c': false,'i': []},
                             'Fresh': {'c': false,'i': []},
@@ -1893,6 +1991,7 @@
                         'value': {
                             'Bathroom Exhaust Fan(s)': {'c': false,'i': []},
                             'Kitchen Fan(s)': {'c': false,'i': []},
+                            'Laundry Fan(s)': {'c': false,'i': []},
                             'Inoperable': {'c': false,'i': []},
                             'Weak/Noisy': {'c': false,'i': []},
                             'Unsafe': {'c': false,'i': []}
@@ -1905,7 +2004,7 @@
                             'Satisfactory': {'c': false,'i': []},
                             'Marginal': {'c': false,'i': []},
                             'Poor/Missing': {'c': false,'i': []},
-                            'Vented Properly (Outside Building Envelope)': {'c': false,'i': []},
+                            'Vented Improperly (Inside Building Envelope)': {'c': false,'i': []},
                             'Not Visible': {'c': false,'i': []},
                             'Recirculating-Only Type': {'c': false,'i': []},
                             'Clogged Grease Filter': {'c': false,'i': []},
@@ -1944,10 +2043,11 @@
                         'showcontent': true,
                         'content': 'According to the Home Inspection Standards of Practice WAC § 308-408C-100 of the Washington State Dept. of Licensing, the inspector is not required to operate any valves, including faucets of freestanding or built-in appliances or fixtures, (if the outlet end of the valve or faucet is connected or intended to be connected to an appliance), any plumbing components not readily accessible, or inspect any system that is shut down or winterized; or determine the quantity of water from on-site water supplies, the condition and operation of private water supply systems or water wells and related pressure tanks and pumps, the potability of any water supply whether public or private, or water-conditioning equipment, including softeners and filter systems; or test pressure or temperature/pressure relief valves, gas supply systems, ignite pilot lights, test fire sprinkler systems, or ancillary systems or components such as, but not limited to, those related to solar water heating and hot water circulation; or test shower pans for leaks, or use special equipment to test/scan shower or tub surrounds for moisture in surrounding substrate materials; or test exterior drain systems or floor drains, including but not limited to, exterior stairwell drains and driveway drains; or test interior components of exterior pumps, or sealed sanitary waste lift systems, or the quality or the condition and operation of on-site sewage disposal systems such as waste ejector pumps, cesspools, septic tanks, drain fields, related underground piping, conduit, cisterns, and related equipment.'
                     },
-                    'Water Supply Source': { //NEED MORE DATA!
+                    'Water Supply Source': {
                         'required': false,
                         'type': 'checkbox',
                         'value': {
+                            'Unknown/Verify': {'c': false,'i': []},
                             'Public Water': {'c': false,'i': []},
                             'Shared Well': {'c': false,'i': []},
                             'Private Well': {'c': false,'i': []}
@@ -1957,35 +2057,60 @@
                         'required': false,
                         'type': 'checkbox',
                         'value': {
+                            'n/a': {'c': false,'i': []},
                             'Closet': {'c': false,'i': []},
-                            'Bathroom': {'c': false,'i': []},
-                            'Yard Box': {'c': false,'i': []},
+                            'Well House': {'c': false,'i': []},
+                            'Verify': {'c': false,'i': []},
+                            'Not Found': {'c': false,'i': []},
                             'Garage': {'c': false,'i': []},
+                            'Above Waterheater': {'c': false,'i': []},
+                            'Yard Box': {'c': false,'i': []},
                             'Basement': {'c': false,'i': []},
                             'Crawl Space': {'c': false,'i': []},
-                            'Interior Wall': {'c': false,'i': []},
-                            'OTHER (NEED MORE DATA)': {'c': false,'i': []}
+                            'Exterior Wall': {'c': false,'i': []},
+                            'Interior Utility Closet': {'c': false,'i': []},
+                            'Inside Cabinet': {'c': false,'i': []},
+                            'Laundry Closet': {'c': false,'i': []},
+                            'Bedroom': {'c': false,'i': []}
                         }
                     },
-                    'Water Pressure': { //THIS REQUIRES MORE DATA.
-                        'required': false,
-                        'type': 'number',
-                        'value': ''
-                    },
-                'Water Temperature': { //THIS REQUIRES MORE DATA.
+                    'Water Pressure': {
                     'required': false,
                     'type': 'checkbox',
                     'value': {
-                        'Varies Per Unit': {'c': false,'i': []},
-                        'OTHER (NEED MORE DATA)': {'c': false,'i': []}
-                    }
-                },
-                'Water System': { //THIS REQUIRES MORE DATA.
-                    'required': false,
-                    'type': 'checkbox',
+                        'Unknown': {'c': false,'i': []},
+                        'Verify': {'c': false,'i': []},
+                        'OFF': {'c': false,'i': []},
+                        'Inadequate (<45psi)': {'c': false,'i': []},
+                        'Adequate (45-85psi)': {'c': false,'i': []},
+                        'Excessive (>85psi)': {'c': false,'i': []},
+                        }
+                    },
+                    'Water Temperature': {
+                        'required': false,
+                        'type': 'checkbox',
+                        'value': {
+                            'Varies Per Unit': {'c': false,'i': []},
+                            'See WH Schedule': {'c': false,'i': []},
+                            'WH OFF/Verify Function': {'c': false,'i': []},
+                            'WH on Vacation Mode': {'c': false,'i': []},
+                            'See Interior Section': {'c': false,'i': []},
+                            'Inadequate (65-85 degrees)': {'c': false,'i': []},
+                            'Normal (85-115 degrees)': {'c': false,'i': []},
+                            'Hot (115-120 degrees)': {'c': false,'i': []},
+                            'Scalding Hazard (>120 degrees)': {'c': false,'i': []},
+                        }
+                    },
+                    'Waste System': {
+                        'required': false,
+                        'type': 'checkbox',
                     'value': {
                         'Public Sewer': {'c': false,'i': []},
-                        'OTHER (NEED MORE DATA)': {'c': false,'i': []}
+                        'Shared Septic': {'c': false,'i': []},
+                        'Private Septic & Drainfield': {'c': false,'i': []},
+                        'Private Septic & Mound': {'c': false,'i': []},
+                        'Private Septic & Leech Line': {'c': false,'i': []},
+                        'Unknown/Verify': {'c': false,'i': []}
                     }
                 },
                 'Main Entry Piping': {
@@ -2271,26 +2396,45 @@
                     'required': false,
                     'type': 'checkbox',
                     'value': {
+                        'Unknown': {'c': false,'i': []},
+                        'A. O. Smith': {'c': false,'i': []},
                         'American': {'c': false,'i': []},
-                        'OTHER (NEEDS MORE DATA)': {'c': false,'i': []}
+                        'American Standard': {'c': false,'i': []},
+                        'Amtrol': {'c': false,'i': []},
+                        'Aqua Star / Bosch': {'c': false,'i': []},
+                        'Bosch': {'c': false,'i': []},
+                        'Bradford White': {'c': false,'i': []},
+                        'Briggs': {'c': false,'i': []},
+                        'Craftmaster': {'c': false,'i': []},
+                        'Eccotemp': {'c': false,'i': []},
+                        'GE': {'c': false,'i': []},
+                        'Hoyt': {'c': false,'i': []},
+                        'Kenmore': {'c': false,'i': []},
+                        'KD Navien': {'c': false,'i': []},
+                        'Lochinvar': {'c': false,'i': []},
+                        'Munchkin': {'c': false,'i': []},
+                        'Navien America': {'c': false,'i': []},
+                        'Navion': {'c': false,'i': []},
+                        'Noritz': {'c': false,'i': []},
+                        'Polaris': {'c': false,'i': []},
+                        'Reliance': {'c': false,'i': []},
+                        'Rheem': {'c': false,'i': []},
+                        'Ruud': {'c': false,'i': []},
+                        'Richmond': {'c': false,'i': []},
+                        'Rinnai': {'c': false,'i': []},
+                        'Sears Roebuck': {'c': false,'i': []},
+                        'State': {'c': false,'i': []},
+                        'State Select': {'c': false,'i': []},
+                        'Takagi': {'c': false,'i': []},
+                        'True Value': {'c': false,'i': []},
+                        'US Craftmaster': {'c': false,'i': []},
+                        'Whirlpool': {'c': false,'i': []}
                     }
                 },
-                'Approximate Age (Years Old)': { //NEEDS MORE DATA.
+                'Approximate Age (Years Old)': { //NEEDS SOME WAY TO CHOOSE "UNKNOWN."
                     'required': false,
-                    'type': 'checkbox',
-                    'value': {
-                        '1': {'c': false,'i': []},
-                        '2': {'c': false,'i': []},
-                        '3': {'c': false,'i': []},
-                        '4': {'c': false,'i': []},
-                        '5': {'c': false,'i': []},
-                        '6': {'c': false,'i': []},
-                        '7': {'c': false,'i': []},
-                        '8': {'c': false,'i': []},
-                        '9': {'c': false,'i': []},
-                        '10': {'c': false,'i': []},
-                        'OTHER (NEEDS MORE DATA)': {'c': false,'i': []}
-                    }
+                    'type': 'number',
+                    'value': ''
                 },
                 'Capacity (in Gallons)': {
                     'required': false,
@@ -2314,7 +2458,7 @@
                     'type': 'textbox',
                     'value': ''
                 },
-                'Water Temperature': { //NEEDS MORE DATA
+                'Water Temperature': {
                     'required': false,
                     'type': 'number',
                     'value': ''

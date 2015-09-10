@@ -1,4 +1,4 @@
- angular.module('fbiApp').controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window) {
+ angular.module('fbiApp').controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window, $routeParams) {
 
      $scope.toggleLeft = buildToggler('left');
 
@@ -21,8 +21,12 @@
 
      $scope.report = reportOne;
 
+     $scope.currentPage = ($routeParams.section == 'default')  ? Object.keys($scope.report)[0] : $routeParams.section;
 
-     $scope.currentPage = Object.keys($scope.report)[0];
+
+     //if ($routeParams.section == 1)
+     //alert($routeParams.section);
+
      $scope.subPage = '';
 
      $scope.close = function () {
@@ -216,6 +220,9 @@
      }
 
 
+     $scope.toggleItem = function(pItem) {
+        pItem.showvalue = !pItem.showvalue;
+     }
  });
 
 

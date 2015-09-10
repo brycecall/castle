@@ -123,7 +123,9 @@ body {
 
 }
 
-
+.md-headline, .md-title, .md-subhead, .md-display-1, .subHeader {
+    outline: none;
+}
 
 .subsubmenu {
   color: rgba(0,0,0,0.54);

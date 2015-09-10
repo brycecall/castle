@@ -30,7 +30,7 @@ inspection.config(['$routeProvider',
 
     function ($routeProvider, $anchorScroll) {
         $routeProvider
-            .when('/create', {
+            .when('/create/:section', {
                 templateUrl: 'html/create.html',
                 controller: 'createController'
             })
@@ -51,7 +51,7 @@ inspection.config(['$routeProvider',
             })
 
             .otherwise({
-                redirectTo: '/create'
+                redirectTo: '/create/default'
             });
   }]);
 
@@ -79,7 +79,7 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
     $scope.service = service;
     
     $scope.toggleNavigation = function() {
-        var de
+        var de;
         $mdSidenav("main").toggle();
     }
     

@@ -44,11 +44,11 @@
         <div ng-app="fbiApp">
             <div ng-controller="indexController">
 <!--               mainHeaderBar-->
-                <header class="">
-                    <md-toolbar>
-                      <div class="md-toolbar-tools">
+                <header  >
+                    <md-toolbar >
+                      <div class="md-toolbar-tools" >
                         <md-button class="md-icon-button" aria-label="Navigation" ng-click="toggleNavigation()" ng-model-options="{ debounce: 1000 }">
-                             <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg"></md-icon>
+                             <md-icon md-svg-icon="{{service.currentPage.icon}}"></md-icon>
                         </md-button>
                         <h2 class="page_header">
                           <span>{{service.currentPage.title}}</span>
@@ -81,8 +81,8 @@
                     </md-content>
                 </md-sidenav>
                 
-                <div ng-view class="console-content" id="scrollArea" autoscroll="true" style="position: fixed; top: 64px; height: 100%; width: 100%;"></div>
-
+                <div ng-view class="console-content" id="scrollArea" autoscroll="true" style="position: fixed; top: 64px; height: 100%; width: 100%; z-index:50"></div>
+<!--top: 64px-->
                          
 <!--              view-window-->
                 <footer>

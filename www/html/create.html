@@ -1,7 +1,29 @@
-<div ng-controller="createController" flex="" layout="row" class="page" id="nav" style="background-color:white">
+<div ng-controller="createController" flex="" layout="column" class="page" id="nav" style="background-color:white; ">
 
+                <header  class="createHeader" ng-if="currentPage != 'default'">
+                    <md-toolbar >
+                      <div class="md-toolbar-tools" >
+
+                        <md-button class="md-icon-button" aria-label="Navigation" ng-model-options="{ debounce: 1000 }">
+                        <a href="#create/default"><md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_arrow_back_48px.svg"></md-icon></a>
+                        </md-button>
+
+                        <h2 class="page_header">
+                          <a  href="#create/default">{{currentPage}}</a>
+                        </h2>
+
+                        <span flex></span>
+                        <a ng-href="#account" aria-label="Account" style="border:none" >
+                          <div class="profileWrapper">
+                            <div class="profile_picture" style="background-image: url(img/rod.png);" />
+                          </div>
+                        </a>
+                      </div>
+                    </md-toolbar>
+                </header>
+
+<!--
         <md-sidenav class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open subNavLeft" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-swipe-left="close()">
-            <!--subNavLeft-->
             <div class="padMe">
             <md-toolbar class="md-theme-indigo" ng-click="close()">
                 <h2 class="md-toolbar-tools md-title">{{currentPage}}</h2>
@@ -19,13 +41,28 @@
                  <a href="#generate"><md-button class="md-secondary" aria-label="generate Report">Generate Report</md-button></a>
             </div>
         </md-sidenav>
+-->
 
 
     <section flex="" layout="column" md-swipe-right="toggleLeft()" md-scroll-y style="position:relative">
         <md-content id="testAgain" >
 
-       <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_arrow_back_48px.svg" ng-click="toggleLeft()"></md-icon>
-            <md-card ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]">
+
+<!--                SECTION NAVIGATION   -->
+            <md-card ng-if="currentPage == 'default'">
+                <md-list class="subMenu" style="position:relative; margin-left:5px;" >
+                    <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" class=" sideListItem">
+                        <a href="#create/{{section}}">
+                        <md-button class="md-secondary menuButton" flex="" aria-label="{{section}}">{{section}}</md-button>
+                        </a>
+                    </md-list-item>
+                </md-list>
+             <a href="#generate"><md-button class="md-secondary" aria-label="generate Report">Generate Report</md-button></a>
+            </md-card>
+
+
+<!--           PAGES-->
+            <md-card ng-if="currentPage != 'default'" ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]" >
 
                 <md-card-content style="position:relative">
                     <md-subheader ng-click="toggleItem(page['Show Value'])" class="subHeader md-primary  md-no-sticky" style="cursor:pointer;">{{pagetitle}}
@@ -79,6 +116,7 @@
                                 </md-input-container>
                             </div>
                         </div>
+                        <md-divider></md-divider>
                         </div>
 
                         <div layout="column" layout-fill="" layout-align="top center">

@@ -110,7 +110,6 @@ body {
 }
 
 .menuButton {
-    display: block;
     text-align: left;
     width: 100%;
     text-transform:none;
@@ -119,8 +118,10 @@ body {
     font-size: 13px;
     color: #333;
 
+}
 
-
+.subMenu .menuButton:hover {
+   color:rgb(76,175,80);
 }
 
 .md-headline, .md-title, .md-subhead, .md-display-1, .subHeader {
@@ -421,3 +422,36 @@ overoverflow-x:
     z-index: 999;
 
 }
+
+.createHeader {
+    z-index: 99;
+    position: fixed;
+    top: 0px;
+    height: 64px;
+    width: 100%;
+    display:block;
+}
+
+.createHeader a:hover {
+    color: inherit;
+}
+
+.overHead {
+  font-weight: 400;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-flex-direction: row;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  height: 64px;
+  max-height: 64px;
+  padding: 0 16px;
+  margin: 0;
+   }
+
+

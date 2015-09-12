@@ -79,11 +79,12 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
     $scope.service = service;
     
     $scope.toggleNavigation = function() {
-        var de;
+
         $mdSidenav("main").toggle();
     }
     
     $scope.show_add_icons = false;
+
     $scope.toggleAdd = function() {
         $scope.show_add_icons = !$scope.show_add_icons;
     }
@@ -91,6 +92,7 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
     $scope.scrollToTop = function() {
         $anchorScroll();
     }
+
 
     $scope.navigationPages = [
         {
@@ -119,9 +121,26 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
         factory.currentPage = {
             title: "Inspection",
             preventNavigation: false,
+            icon: "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg"
         };
 
         
+        factory.menuSwitch = function(type) {
+            //alert("CALLED!");
+            var icon;
+            switch (type)
+            {
+                case 'menu':
+                    icon = "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg"
+                    break;
+                case 'back':
+                    icon = "./bower_components/material-design-icons/navigation/svg/design/ic_arrow_back_48px.svg";
+                    break;
+                default:
+                    icon = "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg";
+            }
+            factory.currentPage.icon = icon;
+        }
         // Current user information
         factory.currentUser = {
             user_id: 1,

@@ -1,8 +1,0 @@
-diff a/www/bower_components/angular-aria/angular-aria.js b/www/bower_components/angular-aria/angular-aria.js	(rejected hunks)
-@@ -1,5 +1,5 @@
- /**
-- * @license AngularJS v1.4.3
-+ * @license AngularJS v1.4.4
-  * (c) 2010-2015 Google, Inc. http://angularjs.org
-  * License: MIT
-  */

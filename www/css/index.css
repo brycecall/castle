@@ -414,12 +414,10 @@ overoverflow-x:
 }
 
 .plusMenu {
-    height: 100%;
-    width: 100%;
     background-color: white;
     position: fixed;
-    top:65px;
-    z-index: 999;
+    bottom:0px;
+    z-index: 9999;
 
 }
 

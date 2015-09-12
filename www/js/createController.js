@@ -198,7 +198,7 @@ $scope.currentPage = $routeParams.section;
         source.splice(source.indexOf(pJSONIMG), 1);
     }
 
-
+    $scope.isOpen = false;
 
 
     // Called if something bad happens.

@@ -1,4 +1,4 @@
- angular.module('fbiApp').controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window, $routeParams, inspectionService) {
+ angular.module('fbiApp').controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window, $routeParams, inspectionService, $mdBottomSheet) {
 
      $scope.toggleLeft = buildToggler('left');
 
@@ -176,9 +176,6 @@ $scope.currentPage = $routeParams.section;
 
      $scope.togglePlusMenus = function() {
          $scope.togglePlusMenu = !$scope.togglePlusMenu;
-
-
-
          $scope.captureAppendixPhoto();
      }
 
@@ -225,6 +222,35 @@ $scope.currentPage = $routeParams.section;
      $scope.toggleItem = function(pItem) {
         pItem.showvalue = !pItem.showvalue;
      }
+
+
+    $scope.openBottomSheet = function() {
+        $mdBottomSheet.show({
+          templateUrl: 'addItem.html'
+        });
+    }
+
+     $scope.appendReport = function() {
+
+         var testJSON = {
+                'One' : {
+                     '1Ah': 'ah1',
+                     '2Ah' : 'ah2'
+
+                },
+                'Two' : {
+                     '3Ah': 'ah3',
+                     '4Ah' : 'ah4'
+                }
+          };
+
+         console.log(JSON.stringify(testJSON, null, 2));
+         alert(testJSON['One']['2Ah']);
+         testJSON['One'].hello = {'insert' : 'me'};
+//         $.extend
+         console.log(JSON.stringify(testJSON, null, 2));
+     }
+
  });
 
 

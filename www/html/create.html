@@ -22,35 +22,14 @@
                     </md-toolbar>
                 </header>
 
-<!--
-        <md-sidenav class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open subNavLeft" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-swipe-left="close()">
-            <div class="padMe">
-            <md-toolbar class="md-theme-indigo" ng-click="close()">
-                <h2 class="md-toolbar-tools md-title">{{currentPage}}</h2>
-            </md-toolbar>
-
-                <md-list class="subMenu">
-
-                    <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" class=" sideListItem">
-
-                        <a href="#create/{{section}}"><md-button class="md-secondary menuButton" ng-click="" aria-label="{{section}}">{{section}}</md-button></a>
-
-                    </md-list-item>
-
-                </md-list>
-                 <a href="#generate"><md-button class="md-secondary" aria-label="generate Report">Generate Report</md-button></a>
-            </div>
-        </md-sidenav>
--->
-
-
     <section flex="" layout="column" md-swipe-right="toggleLeft()" md-scroll-y style="position:relative">
         <md-content id="testAgain" >
 
 
 <!--                SECTION NAVIGATION   -->
             <md-card ng-if="currentPage == 'default'">
-                <md-list class="subMenu" style="position:relative; margin-left:5px;" >
+               <md-card-content>
+                <md-list class="subMenu" style="position:relative;" >
                     <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" class=" sideListItem">
                         <a href="#create/{{section}}">
                         <md-button class="md-secondary menuButton" flex="" aria-label="{{section}}">{{section}}</md-button>
@@ -58,17 +37,23 @@
                     </md-list-item>
                 </md-list>
              <a href="#generate"><md-button class="md-secondary" aria-label="generate Report">Generate Report</md-button></a>
+             </md-card-content>
             </md-card>
 
 
 <!--           PAGES-->
-            <md-card ng-if="currentPage != 'default'" ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]" >
+<md-card ng-if="currentPage != 'default'">
 
-                <md-card-content style="position:relative">
-                    <md-subheader ng-click="toggleItem(page['Show Value'])" class="subHeader md-primary  md-no-sticky" style="cursor:pointer;">{{pagetitle}}
-                    </md-subheader>
+           <md-tabs  md-dynamic-height  md-swipe-content style="padding:0 16px 16px 16px">
+            <md-tab ng-if="currentPage != 'default'" ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]" >
 
-<div ng-if="page['Show Value'].showvalue">
+<!--                <md-card-content style="position:relative">-->
+                   <md-tab-label>{{pagetitle}}</md-tab-label>
+
+
+<md-tab-body >
+<!--<div ng-if="page['Show Value'].showvalue">-->
+                   <div>
                     <div ng-repeat="(listKey, listValue) in notSorted(page)" ng-init="itemVal = report[currentPage][pagetitle][listValue]">
 
 <!--                       CLIENT INFO-->
@@ -168,7 +153,7 @@
                                     </md-menu>
 <!--report[currentPage][pagetitle][listValue].value[checkboxval].i-->
                               <md-icon ng-show="checkboxvalue.c"  md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="initCameraAction(checkboxvalue)" aria-label="capture photo" flex="10"></md-icon>
-
+<!--       <md-button ng-click="appendTo(itemVal)">TEST BUTTON</md-button>-->
                                 </div>
                                 <md-divider></md-divider>
                             </div>
@@ -301,8 +286,13 @@
                     </div>
                     </div>
                     </div>
-                </md-card-content>
-            </md-card>
+<!--                </md-card-content>-->
+           </md-tab-body>
+
+            </md-tab>
+            </md-tabs>
+          </md-card>
+
         </md-content>
 
 
@@ -312,7 +302,7 @@
   width: 300px;
   height: 300px;
   margin-left: auto;
-  margin-right: auto;" layout="row" layout-align="center center">
+  margin-right: auto; position:relative" layout="row" layout-align="center center">
       <md-fab-speed-dial md-open="isOpen"  md-direction="up" md-class="md-fling">
         <md-fab-trigger>
                         <md-button class="md-fab md-primary"  aria-label="stuff">
@@ -346,12 +336,57 @@
 -->
 
 
+
+
+<!--     <ng-button ng-click="appendReport()">TEST BUTTON</ng-button>-->
+
+
         <div class="footerSpace"></div>
     </section>
 
 
+
+
+<!--  BOTTOM SHEET PLUS MENU-->
+        <script type="text/ng-template" id="addItem.html">
+            <md-bottom-sheet class="md-list md-has-header">
+                <div layout="column" layout-align="start start" style="text-align:left">
+                    <md-button aria-label="Add Item" layout-align="center start" style="text-align:left">
+                       <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                        <span>Item</span>
+                    </md-button>
+                    <md-button class="" aria-label="Add Page" layout-align="center start" style="text-align:left">
+                       <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                        <span>Page</span>
+                    </md-button>
+                    <md-button class="" aria-label="Add Section"  layout-align="center start" style="text-align:left">
+                       <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                        <span>Section</span>
+                    </md-button>
+                    <md-button class=""  aria-label="Add Image"  layout-align="center start" style="text-align:left">
+                       <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                        <span>Image</span>
+                    </md-button>
+                </div>
+
+            </md-bottom-sheet>
+        </script>
+
+
+<!--          PLUS BUTTON-->
+           <div class="mainButton">
+       <div class="buttonBox">
+        <md-button class="md-fab md-primary"  ng-click="openBottomSheet()" aria-label="stuff">
+           <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+        </md-button>
+        </div>
+    </div>
+
 </div>
 
+
+
+<!--
                    <div class="mainButton">
                        <div class="buttonBox">
                         <div class="fab_add_expand" ng-show="show_add_icons">
@@ -389,6 +424,7 @@
                         </md-button>
                         </div>
                     </div>
+-->
 
 
 

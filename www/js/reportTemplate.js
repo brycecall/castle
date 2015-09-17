@@ -4085,7 +4085,7 @@
         }
         };
 
-        var headings = [
+var headings = [
     'Field Notes',
     'Site',
     'Exterior',

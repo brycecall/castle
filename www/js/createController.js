@@ -19,7 +19,7 @@
          return debounceFn;
      }
 
-     $scope.report = reportOne;
+     $scope.report = inspectionService.currentReport;
 
      //$scope.currentPage = ($routeParams.section == 'default')  ? Object.keys($scope.report)[0] : $routeParams.section;
 $scope.currentPage = $routeParams.section;

@@ -192,8 +192,8 @@ body {
 }
 
 .footerSpace {
-    height: 55px;
-    margin-bottom: 55px;
+/*    height: 55px;*/
+    margin-bottom: 64px;
 }
 
 .subSideAction {

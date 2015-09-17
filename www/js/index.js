@@ -151,6 +151,8 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
         };
 
         
+        factory.currentReport = reportOne;
+
         factory.menuSwitch = function(type) {
             //alert("CALLED!");
             var icon;

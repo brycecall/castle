@@ -419,7 +419,7 @@ overoverflow-x:
     z-index: 99;
     position: fixed;
     top: 0px;
-    height: 64px;
+    height: 54px;
     width: 100%;
     display:block;
 }

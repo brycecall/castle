@@ -23,6 +23,10 @@
                         {
                             "xml": "<feature name=\"FileTransfer\"><param name=\"android-package\" value=\"org.apache.cordova.filetransfer.FileTransfer\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Capture\"><param name=\"android-package\" value=\"org.apache.cordova.mediacapture.Capture\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -32,7 +36,15 @@
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 3
+                            "count": 4
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.RECORD_AUDIO\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.RECORD_VIDEO\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -50,6 +62,9 @@
             "PACKAGE_NAME": "com.maurasoftware"
         },
         "org.apache.cordova.file-transfer": {
+            "PACKAGE_NAME": "com.maurasoftware"
+        },
+        "org.apache.cordova.media-capture": {
             "PACKAGE_NAME": "com.maurasoftware"
         }
     },

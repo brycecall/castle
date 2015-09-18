@@ -2,6 +2,9 @@
 
      $scope.toggleLeft = buildToggler('left');
 
+
+
+
      /**
       * Build handler to open/close a SideNav; when animation finishes
       * report completion in console
@@ -151,25 +154,12 @@ $scope.currentPage = $routeParams.section;
 
     }
 
-
-    $scope.initCameraAction = function(pCheckboxval) {
-        var imgJSON = {'i':''};
-        pCheckboxval.i.push(imgJSON);
-        cameraDestination = pCheckboxval.i[pCheckboxval.i.length - 1];
-//        $scope.capturePhoto()
-        $scope.getPhoto(1);
-//        if (cameraDestination.i == '')
-//            pCheckboxval.i.pop();
-     }
-
     $scope.capturePagePhoto = function(listValue, itemVal) {
         var imgJSON = {'title':'', 'i':''};
         imgJSON.title = listValue;
         itemVal.content.push(imgJSON);
         cameraDestination = itemVal.content[itemVal.content.length - 1];
         $scope.getPhoto(1);
-//        if (cameraDestination.i == '')
-//            itemVal.content.pop();
     }
 
     $scope.togglePlusMenu = false;
@@ -203,6 +193,67 @@ $scope.currentPage = $routeParams.section;
 
         });
      }
+
+//    $scope.initCameraAction = function(pCheckboxval) {
+//        var imgJSON = {'i':''};
+//        pCheckboxval.i.push(imgJSON);
+//        cameraDestination = pCheckboxval.i[pCheckboxval.i.length - 1];
+//        $scope.getPhoto(1);
+//     }
+
+
+
+/**********************************************************
+* CAMERA WITH CAPTURE (allows multiple images per session
+***********************************************************/
+    function captureSuccess(mediaFiles) {
+        var i, len;
+        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
+            var imgJSON = {'i': ''};
+            imgJSON.i = mediaFiles.fullPath;
+            $scope.CallingItem.i.push(imgJSON);
+        }
+    }
+
+    function captureError(error) {
+        var msg = 'An error occurred during capture: ' + error.code;
+        navigator.notification.alert(msg, null, 'Uh oh!');
+    }
+
+     $scope.CallingItem;
+
+
+     $scope.initCameraAction = function(pCallingItem) {
+         $scope.CallingItem = pCallingItem;
+         $scope.captureImage();
+     }
+
+    $scope.captureImage = function() {
+        navigator.device.capture.captureImage(captureSuccess, captureError, {limit: 3});
+    }
+
+    // Upload files to server
+    function uploadFile(mediaFile) {
+        var ft = new FileTransfer(),
+            path = mediaFile.fullPath,
+            name = mediaFile.name;
+
+        ft.upload(path,
+            "http://my.domain.com/upload.php",
+            function(result) {
+                console.log('Upload success: ' + result.responseCode);
+                console.log(result.bytesSent + ' bytes sent');
+            },
+            function(error) {
+                console.log('Error uploading file ' + path + ': ' + error.code);
+            },
+            { fileName: name });
+    }
+
+
+
+
+
 
     // Called if something bad happens.
     $scope.onFail = function onFail(message) {

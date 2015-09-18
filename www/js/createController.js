@@ -197,6 +197,12 @@ $scope.currentPage = $routeParams.section;
 
     $scope.isOpen = false;
 
+     $scope.openItems = function() {
+          angular.forEach($scope.report[$scope.currentPage], function(value, key) {
+              console.log(value + " " + key);
+
+        });
+     }
 
     // Called if something bad happens.
     $scope.onFail = function onFail(message) {

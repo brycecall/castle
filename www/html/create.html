@@ -18,6 +18,23 @@
                             <div class="profile_picture" style="background-image: url(img/rod.png);" />
                           </div>
                         </a>
+
+
+                        <md-menu>
+                            <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open sample menu">
+                                <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_more_vert_48px.svg"></md-icon>
+                         </md-button>
+
+                         <md-menu-content>
+                           <md-menu-item>
+                           <md-button ng-click="openItems()">Open All Items</md-button>
+                           </md-menu-item>
+                               <md-menu-item>
+                           <md-button ng-click="closeItems()">Close All Items</md-button>
+                           </md-menu-item>
+                         </md-menu-content>
+                        </md-menu>
+
                       </div>
                     </md-toolbar>
                 </header>
@@ -29,11 +46,12 @@
 <!--                SECTION NAVIGATION   -->
             <md-card ng-if="currentPage == 'default'">
                <md-card-content>
-                <md-list class="subMenu" style="position:relative;" >
-                    <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" class=" sideListItem">
-                        <a href="#create/{{section}}">
-                        <md-button class="md-secondary menuButton" flex="" aria-label="{{section}}">{{section}}</md-button>
+                <md-list class="subMenu"  >
+                    <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" style="position:relative" flex="">
+                        <a href="#create/{{section}}" class="menuButton">
+                        <md-button class="md-no-style  md-secondary" style="" aria-label="{{section}}">{{section}}</md-button>
                         </a>
+                        <md-divider></md-divider>
                     </md-list-item>
                 </md-list>
              <a href="#generate"><md-button class="md-secondary" aria-label="generate Report">Generate Report</md-button></a>
@@ -51,16 +69,15 @@
                    <md-tab-label>{{pagetitle}}</md-tab-label>
 
 
-<md-tab-body >
-<!--<div ng-if="page['Show Value'].showvalue">-->
+            <md-tab-body>
+            <!--<div ng-if="page['Show Value'].showvalue">-->
                    <div>
                     <div ng-repeat="(listKey, listValue) in notSorted(page)" ng-init="itemVal = report[currentPage][pagetitle][listValue]">
 
 <!--                       CLIENT INFO-->
                         <div ng-if="itemVal.type == 'clientinfo'">
-
                             <div layout="row">
-                            <h3 class="md-title" ng-click="toggleItem(itemVal)">Client Info:</h3>
+                                <h3 class="md-subhead" ng-click="toggleItem(itemVal)">Client Info:</h3>
                             </div>
                             <div ng-if="itemVal.showvalue">
                             <div layout="row" layout-sm="column">
@@ -101,7 +118,7 @@
                                 </md-input-container>
                             </div>
                         </div>
-                        <md-divider></md-divider>
+<!--                        <md-divider></md-divider>-->
                         </div>
 
                         <div layout="column" layout-fill="" layout-align="top center">
@@ -110,7 +127,7 @@
                             <div ng-if="itemVal.type == 'presettext'">
                                    <div layout="row">
 <!--                                       <md-switch ng-disabled="true" ng-model="isDisabled" aria-label="Disabled" />-->
-                                       <h3 class="md-title" style="border:none" ng-click="toggleItem(itemVal)">{{listValue}} Message:</h3>
+                                       <h3 class="md-subhead" style="border:none" ng-click="toggleItem(itemVal)">{{listValue}} Message:</h3>
                                    </div>
 
                                     <div class="relFlex" ng-if="itemVal.showvalue">
@@ -118,14 +135,14 @@
                                         <div flex></div>
                                         <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_48px.svg" class="md-accent" ng-click="showMessage($event, listValue, itemVal.content)" flex="10"></md-icon>
                                     </div>
-                                    <md-divider></md-divider>
+<!--                                    <md-divider></md-divider>-->
                             </div>
 
 <!--                           CHECKBOX-->
                             <div ng-if="itemVal.type == 'checkbox'">
                                 <div layout="row">
 <!--                                            <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_box_48px.svg" class="" ></md-icon>-->
-                                <h3 class="md-title" ng-click="toggleItem(itemVal)" flex="">{{listValue}}:</h3>
+                                <h3 class="md-subhead" ng-click="toggleItem(itemVal)" flex="">{{listValue}}:</h3>
                                 </div>
                                 <div ng-repeat="(checkboxkey, checkboxval) in notSorted(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]"  layout="row" class="list_item" style="position:relative" ng-if="itemVal.showvalue">
 
@@ -155,58 +172,58 @@
                               <md-icon ng-show="checkboxvalue.c"  md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="initCameraAction(checkboxvalue)" aria-label="capture photo" flex="10"></md-icon>
 <!--       <md-button ng-click="appendTo(itemVal)">TEST BUTTON</md-button>-->
                                 </div>
-                                <md-divider></md-divider>
+<!--                                <md-divider></md-divider>-->
                             </div>
 
 <!--                            RADIO-->
                             <div ng-if="itemVal.type == 'radio'">
 
-                                <h3 class="md-title" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
+                                <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-radio-group ng-model="itemVal.value" ng-if="itemVal.showvalue">
                                     <md-radio-button ng-repeat="(radiokey, radiovalue) in notSorted(itemVal.content)" ng-init="radioval = itemVal.content[radiovalue]" ng-value="radioval" class="radioHeight"><span >{{radioval}}</span></md-radio-button>
                                 </md-radio-group>
-                                <md-divider></md-divider>
+<!--                                <md-divider></md-divider>-->
                             </div>
 
 <!--                           NUMBER-->
                             <div ng-if="itemVal.type == 'number'">
-                                <h3 class="md-title" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
+                                <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-input-container layout="row" ng-if="itemVal.showvalue">
                                     <label>{{itemVal.label}}</label>
                                     <input ng-model="itemVal.value" type="number" flex-gt-sm="50" flex-sm="">
                                 </md-input-container>
-                                <md-divider></md-divider>
+<!--                                <md-divider></md-divider>-->
                             </div>
 
 <!--                           TEXT-->
                             <div ng-if="itemVal.type == 'text'">
-                                <h3 class="md-title" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
+                                <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-input-container ng-if="itemVal.showvalue">
                                     <label>{{itemVal.label}}</label>
                                     <input ng-model="itemVal.value" type="text" >
                                 </md-input-container>
-                                <md-divider></md-divider>
+<!--                                <md-divider></md-divider>-->
                             </div>
 
 <!--                           SELECT-->
                             <div ng-if="itemVal.type == 'select'">
-                               <h3 class="md-title" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
+                               <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-input-container ng-if="itemVal.showvalue">
                                   <md-select ng-model="itemVal.value" placeholder="Select {{listValue}}">
                                     <md-option ng-repeat="(radiokey, radiovalue) in notSorted(itemVal.content)" ng-init="radioval = itemVal.content[radiovalue]" ng-value="radioval">{{ radioval }}</md-option>
                                   </md-select>
                                 </md-input-container>
-                                <md-divider></md-divider>
+<!--                                <md-divider></md-divider>-->
                             </div>
 
 <!--                           DATE-->
                             <div  ng-if="itemVal.type == 'date'">
-                                <h3 class="md-title" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
+                                <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-input-container layout="row" ng-if="itemVal.showvalue">
                                     <label>{{itemVal.label}}</label>
                                     <input ng-model="itemVal.value" type="date" flex-gt-sm="50" flex-sm="">
                                 </md-input-container>
-                                <md-divider></md-divider>
+<!--                                <md-divider></md-divider>-->
                             </div>
 
 

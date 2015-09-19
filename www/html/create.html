@@ -27,11 +27,17 @@
 
                          <md-menu-content>
                            <md-menu-item>
-                           <md-button ng-click="openItems()">Open All Items</md-button>
+                               <md-button ng-click="openItems(true)">Open All Items</md-button>
                            </md-menu-item>
-                               <md-menu-item>
-                           <md-button ng-click="closeItems()">Close All Items</md-button>
+
+                            <md-menu-item>
+                               <md-button ng-click="openItems(false)">Close All Items</md-button>
                            </md-menu-item>
+
+                           <md-menu-item>
+                               <md-button ng-click="filterRequired()">{{hideOrShowText}} Unrequired</md-button>
+                           </md-menu-item>
+
                          </md-menu-content>
                         </md-menu>
 
@@ -39,7 +45,7 @@
                     </md-toolbar>
                 </header>
 
-    <section flex="" layout="column" md-swipe-right="toggleLeft()" md-scroll-y style="position:relative">
+    <section flex="" layout="column" md-scroll-y style="position:relative">
         <md-content id="testAgain" >
 
 
@@ -63,7 +69,7 @@
 <md-card ng-if="currentPage != 'default'">
 
            <md-tabs  md-dynamic-height  md-swipe-content style="padding:0 16px 16px 16px">
-            <md-tab ng-if="currentPage != 'default'" ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]" >
+            <md-tab ng-if="currentPage != 'default'" ng-repeat="(pagekey, pagetitle) in notSorted(report[currentPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentPage][pagetitle]" md-on-select="changeSelection(pagetitle)">
 
 <!--                <md-card-content style="position:relative">-->
                    <md-tab-label>{{pagetitle}}</md-tab-label>

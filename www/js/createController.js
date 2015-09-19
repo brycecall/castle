@@ -187,72 +187,37 @@ $scope.currentPage = $routeParams.section;
 
     $scope.isOpen = false;
 
-     $scope.openItems = function() {
-          angular.forEach($scope.report[$scope.currentPage], function(value, key) {
-              console.log(value + " " + key);
+     $scope.selectedPage;
+     $scope.changeSelection = function(pagetitle) {
+        $scope.selectedPage = pagetitle;
+         console.log($scope.selectedPage);
+     }
 
+     $scope.openItems = function(showVal) {
+        angular.forEach($scope.report[$scope.currentPage][$scope.selectedPage], function(value, key)         {
+            value.showvalue = showVal;
         });
      }
+     $scope.hideOrShowText = "Hide";
 
-//    $scope.initCameraAction = function(pCheckboxval) {
-//        var imgJSON = {'i':''};
-//        pCheckboxval.i.push(imgJSON);
-//        cameraDestination = pCheckboxval.i[pCheckboxval.i.length - 1];
-//        $scope.getPhoto(1);
-//     }
+     $scope.filterRequired = function() {
+        $scope.hideOrShowText = ($scope.hideOrShowText == "Hide") ? "Show" : "Hide";
 
 
 
-/**********************************************************
-* CAMERA WITH CAPTURE (allows multiple images per session
-***********************************************************/
-    function captureSuccess(mediaFiles) {
-        var i, len;
-        for (i = 0, len = mediaFiles.length; i < len; i += 1) {
-            var imgJSON = {'i': ''};
-            imgJSON.i = mediaFiles.fullPath;
-            $scope.CallingItem.i.push(imgJSON);
-        }
-    }
 
-    function captureError(error) {
-        var msg = 'An error occurred during capture: ' + error.code;
-        navigator.notification.alert(msg, null, 'Uh oh!');
-    }
-
-     $scope.CallingItem;
-
-
-     $scope.initCameraAction = function(pCallingItem) {
-         $scope.CallingItem = pCallingItem;
-         $scope.captureImage();
      }
 
-    $scope.captureImage = function() {
-        navigator.device.capture.captureImage(captureSuccess, captureError, {limit: 3});
-    }
-
-    // Upload files to server
-    function uploadFile(mediaFile) {
-        var ft = new FileTransfer(),
-            path = mediaFile.fullPath,
-            name = mediaFile.name;
-
-        ft.upload(path,
-            "http://my.domain.com/upload.php",
-            function(result) {
-                console.log('Upload success: ' + result.responseCode);
-                console.log(result.bytesSent + ' bytes sent');
-            },
-            function(error) {
-                console.log('Error uploading file ' + path + ': ' + error.code);
-            },
-            { fileName: name });
-    }
 
 
 
 
+    $scope.initCameraAction = function(pCheckboxval) {
+        var imgJSON = {'i':''};
+        pCheckboxval.i.push(imgJSON);
+        cameraDestination = pCheckboxval.i[pCheckboxval.i.length - 1];
+        $scope.getPhoto(1);
+     }
 
 
     // Called if something bad happens.

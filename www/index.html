@@ -44,7 +44,8 @@
         <div ng-app="fbiApp">
             <div ng-controller="indexController">
 <!--               mainHeaderBar-->
-                <header  >
+               <div>
+                <header >
                     <md-toolbar >
                       <div class="md-toolbar-tools" >
                         <md-button class="md-icon-button" aria-label="Navigation" ng-click="toggleNavigation()" ng-model-options="{ debounce: 1000 }">
@@ -82,7 +83,7 @@
                 </md-sidenav>
                 
                 <div ng-view class="console-content" id="scrollArea" autoscroll="true" style="position: fixed; top: 64px; height: 100%; width: 100%; z-index:50"></div>
-<!--top: 64px-->
+</div>
                          
 <!--              view-window-->
                 <footer>

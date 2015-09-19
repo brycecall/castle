@@ -42,17 +42,17 @@
                             'showvalue':false
                         },
                         'Conditions': {
-                            'type': 'presettext',
+                            'type': 'presettext', 'showvalue' : false,
                             'showcontent': true,
                             'content': 'This Report concerns the visual [INSERT OPTION] inspection of an approximately [CALCULATE & INSERT AGE] old, [INSERT SQFT], [INSERT TYPE OF HOME],[INSERT PROPERTY USE],[INSERT NUMBER OF STORIES],[INSERT HOUSE FRAME],[INSERT PROPERTY TYPE],[INSERT CONFIGURATIONS], built in [INSERT YEAR].  The main entrance, driveway, or street access appeared to be facing predominantely toward the [INSERT PROPERTY ORIENTATION].  The street surface was [INSERT DRIVEWAY TYPE], and vehicle parking was available [INSERT VEHICLE PARKING]. The Utilities servicing the Property identified were [INSERT UTILITES]. [UTILITES OFF] were off at the time of inspection. The locations of the main utility controls, shut-off valves, and/or disconnects are noted in the applicable mechanical sections.'
                         },
                         'Limitations': {
-                            'type': 'presettext',
+                            'type': 'presettext', 'showvalue' : false,
                             'showcontent': true,
                             'content': 'The [INSERT PROPERTY TYPE] was [INSERT PROPERTY OCCUPANCY] at the time of the inspection.  The inspection began at [*INSPECTION START TIME][AM/PM] and ended at roughly [*INSPECTION END TIME][AM/PM].  The weather at the time of the inspeciton was [GRAB WEATHER FORECAST FROM WEATHER.COM: Cloudy, Snowy, Icy, Windy] with [no precipitation, cloudy, sunny, rain, no rain, etc.].  Those in attendance at the time of the inspection were [INSERT PERSONS PRESENT].  Detached outbuildings, seasonally visible defects, poorly accessible components, areas that may have been hidden and/ or areas containing significant furnishings or storage are not included in the scope of this inspection.'
                         },
                         'Inspection Type': {
-                            'required': true,
+                            'required': true, 'showvalue' : false,
                             'type': 'select',
                             'content': [
                         'Full',
@@ -66,17 +66,17 @@
                             'value': ''
                         },
                         'Year Built': {
-                            'required': true,
+                            'required': true, 'showvalue' : false,
                             'type': 'number',
                             'value': ''
                         },
                         'Squarefeet of the Property': {
-                            'required': true,
+                            'required': true,  'showvalue' : false,
                             'type': 'number',
                             'value': 0
                         },
                         'Type of Home': {
-                            'required': true,
+                            'required': true, 'showvalue' : false,
                             'type': 'radio',
                             'content': [
                              'Single Family',
@@ -104,7 +104,7 @@
                             'value': ''
                         },
                         'Number of Stories': {
-                            'required': true,
+                            'required': true, 'showvalue' : false,
                             'type': 'radio',
                             'content': [
                              'Rambler',
@@ -121,7 +121,7 @@
                             'value': ''
                         },
                         'House Frame': {
-                            'required': true,
+                            'required': true,  'showvalue' : false,
                             'type': 'radio',
                             'content': [
                              'Wood-Framed',
@@ -136,7 +136,7 @@
                             'value': ''
                         },
                         'Property Type': {
-                            'required': true,
+                            'required': true,  'showvalue' : false,
                             'type': 'radio',
                             'content': [
                              'Home',
@@ -156,7 +156,7 @@
                             'value': ''
                         },
                         'Configurations': {
-                            'required': true,
+                            'required': true, 'showvalue' : false,
                             'type': 'checkbox',
                             'value': {
                                 'w/ Lower Parking Garage': {'c': false,'i': []},

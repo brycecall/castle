@@ -153,6 +153,8 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
         
         factory.currentReport = reportOne;
 
+        factory.hideShowOptions = {'text' : "Hide", 'showNonRequired' : true}
+
         factory.menuSwitch = function(type) {
             //alert("CALLED!");
             var icon;

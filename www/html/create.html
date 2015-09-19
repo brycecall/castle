@@ -35,7 +35,7 @@
                            </md-menu-item>
 
                            <md-menu-item>
-                               <md-button ng-click="filterRequired()">{{hideOrShowText}} Unrequired</md-button>
+                               <md-button ng-click="filterRequired()">{{service.hideShowOptions.text}} Unrequired</md-button>
                            </md-menu-item>
 
                          </md-menu-content>
@@ -81,7 +81,7 @@
                     <div ng-repeat="(listKey, listValue) in notSorted(page)" ng-init="itemVal = report[currentPage][pagetitle][listValue]">
 
 <!--                       CLIENT INFO-->
-                        <div ng-if="itemVal.type == 'clientinfo'">
+                        <div ng-if="itemVal.type == 'clientinfo' && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
                             <div layout="row">
                                 <h3 class="md-subhead" ng-click="toggleItem(itemVal)">Client Info:</h3>
                             </div>
@@ -130,7 +130,7 @@
                         <div layout="column" layout-fill="" layout-align="top center">
 
 <!--                           PRE-SET TEXT-->
-                            <div ng-if="itemVal.type == 'presettext'">
+                            <div ng-if="itemVal.type == 'presettext'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
                                    <div layout="row">
 <!--                                       <md-switch ng-disabled="true" ng-model="isDisabled" aria-label="Disabled" />-->
                                        <h3 class="md-subhead" style="border:none" ng-click="toggleItem(itemVal)">{{listValue}} Message:</h3>
@@ -145,7 +145,7 @@
                             </div>
 
 <!--                           CHECKBOX-->
-                            <div ng-if="itemVal.type == 'checkbox'">
+                            <div ng-if="itemVal.type == 'checkbox'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
                                 <div layout="row">
 <!--                                            <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_box_48px.svg" class="" ></md-icon>-->
                                 <h3 class="md-subhead" ng-click="toggleItem(itemVal)" flex="">{{listValue}}:</h3>
@@ -182,7 +182,7 @@
                             </div>
 
 <!--                            RADIO-->
-                            <div ng-if="itemVal.type == 'radio'">
+                            <div ng-if="itemVal.type == 'radio'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
 
                                 <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-radio-group ng-model="itemVal.value" ng-if="itemVal.showvalue">
@@ -192,7 +192,7 @@
                             </div>
 
 <!--                           NUMBER-->
-                            <div ng-if="itemVal.type == 'number'">
+                            <div ng-if="itemVal.type == 'number'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
                                 <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-input-container layout="row" ng-if="itemVal.showvalue">
                                     <label>{{itemVal.label}}</label>
@@ -202,7 +202,7 @@
                             </div>
 
 <!--                           TEXT-->
-                            <div ng-if="itemVal.type == 'text'">
+                            <div ng-if="itemVal.type == 'text'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
                                 <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-input-container ng-if="itemVal.showvalue">
                                     <label>{{itemVal.label}}</label>
@@ -212,7 +212,7 @@
                             </div>
 
 <!--                           SELECT-->
-                            <div ng-if="itemVal.type == 'select'">
+                            <div ng-if="itemVal.type == 'select'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
                                <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-input-container ng-if="itemVal.showvalue">
                                   <md-select ng-model="itemVal.value" placeholder="Select {{listValue}}">
@@ -223,7 +223,7 @@
                             </div>
 
 <!--                           DATE-->
-                            <div  ng-if="itemVal.type == 'date'">
+                            <div  ng-if="itemVal.type == 'date'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
                                 <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-input-container layout="row" ng-if="itemVal.showvalue">
                                     <label>{{itemVal.label}}</label>
@@ -233,22 +233,7 @@
                             </div>
 
 
-
-
-<!--
-                    <md-menu  flex="10" style="text-align:center;" >
-                    <div ng-click="$mdOpenMenu()" style="padding:0 5px">
-                        <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent" ng-show="checkboxvalue.i != '' && checkboxvalue.c"></md-icon>
-                    </div>
-                    <md-menu-content>
-                        <div  class="UpPicture" style="background-image: url('{{checkboxvalue.i}}')" />
-                    </md-menu-content>
-
-                    </md-menu>
-
-                    <md-icon ng-show="checkboxvalue.c"  md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="initCameraAction(checkboxvalue)" aria-label="capture photo" flex="10"></md-icon>
--->
-                  <div  ng-if="itemVal.type == 'image'" layout="row" layout-align="start center">
+                  <div  ng-if="itemVal.type == 'image'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)" layout="row" layout-align="start center">
 
                     <md-menu  flex="10" style="text-align:center;" ng-if="itemVal.content.length != 0">
                     <div ng-click="$mdOpenMenu()" style="padding:0 5px">
@@ -272,7 +257,7 @@
 
                         </div>
 
-                  <div  ng-if="itemVal.type == 'photoAppendix'" layout="column" layout-align="start start">
+                  <div  ng-if="itemVal.type == 'photoAppendix'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)" layout="column" layout-align="start start">
 
                         <div  layout="row" layout-sm="column">
                           <div flex="50">

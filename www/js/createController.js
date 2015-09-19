@@ -198,13 +198,19 @@ $scope.currentPage = $routeParams.section;
             value.showvalue = showVal;
         });
      }
-     $scope.hideOrShowText = "Hide";
+
 
      $scope.filterRequired = function() {
-        $scope.hideOrShowText = ($scope.hideOrShowText == "Hide") ? "Show" : "Hide";
-
-
-
+        if (inspectionService.hideShowOptions.text == "Hide")
+        {
+            inspectionService.hideShowOptions.showNonRequired = false;
+            inspectionService.hideShowOptions.text  = "Show";
+        }
+        else
+        {
+            inspectionService.hideShowOptions.showNonRequired = true;
+            inspectionService.hideShowOptions.text  = "Hide";
+        }
 
      }
 

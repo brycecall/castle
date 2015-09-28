@@ -199,25 +199,6 @@ $scope.currentPage = $routeParams.section;
         });
      }
 
-
-     $scope.filterRequired = function() {
-        if (inspectionService.hideShowOptions.text == "Hide")
-        {
-            inspectionService.hideShowOptions.showNonRequired = false;
-            inspectionService.hideShowOptions.text  = "Show";
-        }
-        else
-        {
-            inspectionService.hideShowOptions.showNonRequired = true;
-            inspectionService.hideShowOptions.text  = "Hide";
-        }
-
-     }
-
-
-
-
-
     $scope.initCameraAction = function(pCheckboxval) {
         var imgJSON = {'i':''};
         pCheckboxval.i.push(imgJSON);
@@ -258,6 +239,7 @@ $scope.currentPage = $routeParams.section;
         });
     }
 
+
      $scope.appendReport = function() {
 
          var testJSON = {
@@ -273,11 +255,90 @@ $scope.currentPage = $routeParams.section;
           };
 
          console.log(JSON.stringify(testJSON, null, 2));
-         alert(testJSON['One']['2Ah']);
-         testJSON['One'].hello = {'insert' : 'me'};
+       //  alert(testJSON['One']['2Ah']);
+         testJSON['One'] = {'insert' : 'me'};
 //         $.extend
          console.log(JSON.stringify(testJSON, null, 2));
      }
+
+
+
+    $scope.itemTypes = {
+
+        "types" : {
+            "checkbox" : "checkbox",
+            "radio" : "radio",
+            "select" : "image",
+            "presettext" : "Preset Message",
+            "number" : "Number",
+            "text" : "Text"
+        },
+        "type" : ""
+    }
+
+
+    $scope.newItem = {
+        'title': '',
+        'content': {
+            'required': false,
+            'showvalue' : true,
+            'type': '',
+            //'value': '',
+            'value': {
+            },
+            'content': []
+        }
+    }
+
+    $scope.removeItem = function(toRemove, theType) {
+        if (theType == "radio")
+            $scope.newItem.content.content.splice( toRemove, 1 );
+        else
+             delete $scope.newItem.content.value[toRemove];
+    }
+
+    $scope.addItemToReport = function() {
+
+
+        var jsonToAdd = {};
+       // jsonToAdd[newItem.title] = newItem.content;
+       // $scope.report[$scope.currentPage][$scope.selectedPage][jsonToAdd];
+        $scope.report[$scope.currentPage][$scope.selectedPage][$scope.newItem.title] = $scope.newItem.content;
+        console.log(JSON.stringify($scope.report[$scope.currentPage][$scope.selectedPage][$scope.newItem.title], null, 2));
+
+        $scope.newItem = {
+            'title': '',
+            'content': {
+                'required': false,
+                'showvalue' : true,
+                'type': '',
+                //'value': '',
+                'value': {
+                },
+                'content': []
+            }
+        }
+
+
+
+    }
+
+    $scope.addNewItem = function(theType, theValue) {
+            var newJSON;
+                switch (theType)
+                {
+                    case 'checkbox':
+                        newJSON =  {'c':false, 'i':[]};
+                        $scope.newItem.content.value[theValue] = newJSON;
+                        break;
+                    case 'radio':
+                        $scope.newItem.content.content.push(theValue);
+                        break;
+                }
+
+        console.log(JSON.stringify($scope.newItem, null, 2));
+    }
+
 
  });
 

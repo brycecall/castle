@@ -50,6 +50,11 @@ inspection.config(['$routeProvider',
                 controller: 'generateController'
             })
 
+            .when('/newContent/:type', {
+                templateUrl: 'html/newContent.html',
+                controller: 'createController'
+            })
+
             .otherwise({
                 redirectTo: '/create/default'
             });
@@ -130,9 +135,35 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
             title: "Saved Reports",
             icon: "./bower_components/material-design-icons/action/svg/design/ic_book_48px.svg",
             link: "#saved"
+        },
+        {
+            title: "Account",
+            icon: "./bower_components/material-design-icons/action/svg/design/ic_book_48px.svg",
+            link: "#account"
         }
         ];
+
+        $scope.hideShowOptions = {
+            'text' : "Hide",
+            'showNonRequired' : true
+        };
+
+            $scope.filterRequired = function() {
+            if ($scope.hideShowOptions.text == "Hide")
+            {
+                $scope.hideShowOptions.showNonRequired = false;
+                $scope.hideShowOptions.text  = "Show";
+            }
+            else
+            {
+                $scope.hideShowOptions.showNonRequired = true;
+                $scope.hideShowOptions.text  = "Hide";
+            }
+        }
 }]);
+
+
+
 
 // Create the factory / service that is shared among all the controllers
 inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
@@ -150,10 +181,14 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
             icon: "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg"
         };
 
-        
-        factory.currentReport = reportOne;
 
-        factory.hideShowOptions = {'text' : "Hide", 'showNonRequired' : true}
+
+
+         factory.currentReport = reportOne;
+
+
+
+
 
         factory.menuSwitch = function(type) {
             //alert("CALLED!");
@@ -171,6 +206,8 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
             }
             factory.currentPage.icon = icon;
         }
+
+
         // Current user information
         factory.currentUser = {
             user_id: 1,
@@ -181,14 +218,14 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
         };
 
         // Refresh the cache every hour
-        setInterval(function() {
-            factory.clearCache();
-        }, 1800000);  // Update every 30 minutes.
-        
-        factory.clearCache = function () {
-            cache.removeAll();
-            $route.reload();
-        };
+//        setInterval(function() {
+//            factory.clearCache();
+//        }, 1800000);  // Update every 30 minutes.
+//
+//        factory.clearCache = function () {
+//            cache.removeAll();
+//            $route.reload();
+//        };
 
 
         factory.openExternalUrl = function (url) {

@@ -301,12 +301,11 @@
 
                 <md-input-container style="width:150px;">
                  <label>Select Item Type</label>
-                  <md-select ng-model="newItem.content.type" value="typevalue">
-<!--                    md-on-close="addNewItem(itemTypes.type)">-->
+                  <md-select ng-model="newItem.content.type" value="typevalue" md-on-close="resetNewItemValueContents()">
                     <md-option ng-repeat="(typekey, typevalue) in itemTypes.types" >{{typekey}}</md-option>
                   </md-select>
                 </md-input-container>
-
+<!--CHECKBOX-->
                 <div ng-if="newItem.content.type == 'checkbox'" >
 
                         <input ng-model="newItem.title" required class="md-subhead" style="width:300px; border:none;" type="text" placeholder="Item Title">
@@ -322,14 +321,14 @@
 
                     <form ng-submit="addNewItem(newItem.content.type, newstuff); newstuff ='' ">
                         <div layout="row" style="margin-top:10px">
-                            <button type="submit" style="background-color:transparent; margin:0px 5px 0 0; padding:0px 0 0 0; border:none; color:white; height:0;"><md-icon style="color:gray" md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                            <button type="submit" style="background-color:transparent; margin:0px 5px 0 5px; padding:0px 0 0 0; border:none; color:white; height:0;"><md-icon style="color:gray" md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
                             </button>
                             <input required style="border-width: 0 0 1px 0" ng-model="newstuff" type="text" placeholder="List item">
                         </div>
                     </form>
                     <md-button ng-click="addItemToReport()">Add me!</md-button>
                 </div>
-
+<!--RADIO-->
                 <div ng-if="newItem.content.type == 'radio'" >
 
                         <input ng-model="newItem.title" required class="md-subhead" style="width:300px; border:none;" type="text" placeholder="Item Title">
@@ -345,7 +344,7 @@
 
                     <form ng-submit="addNewItem(newItem.content.type, newstuff); newstuff ='' ">
                         <div layout="row" style="margin-top:10px">
-                            <button type="submit" style="background-color:transparent; margin:0px 5px 0 0; padding:0px 0 0 0; border:none; color:white; height:0;">
+                            <button type="submit" style="background-color:transparent; margin:0px 5px 0 5px; padding:0px 0 0 0; border:none; color:white; height:0;">
                             <md-icon style="color:gray" md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
                             </button>
                             <input required style="border-width: 0 0 1px 0" ng-model="newstuff" type="text" placeholder="List item">
@@ -354,10 +353,49 @@
                     <md-button ng-click="addItemToReport()">Add me!</md-button>
                 </div>
 
+<!--                SELECT-->
+                <div ng-if="newItem.content.type == 'select'">
+
+                        <input ng-model="newItem.title" required class="md-subhead" style="width:300px; border:none;" type="text" placeholder="Item Title">
+
+
+                    <md-input-container >
+                      <md-select ng-model="newItem.content.value">
+                        <md-option ng-repeat="(selkey, selval) in newItem.content.content" ng-value="selval">{{ selval }}</md-option>
+                      </md-select>
+                    </md-input-container>
+
+
+                    <form ng-submit="addNewItem(newItem.content.type, newstuff); newstuff ='' ">
+                        <div layout="row" style="margin-top:10px">
+                            <button type="submit" style="background-color:transparent; margin:0px 5px 0 5px; padding:0px 0 0 0; border:none; color:white; height:0;">
+                            <md-icon style="color:gray" md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                            </button>
+                            <input required style="border-width: 0 0 1px 0" ng-model="newstuff" type="text" placeholder="List item">
+                        </div>
+                    </form>
+
+                    <md-button ng-click="addItemToReport()">Add me!</md-button>
+                </div>
+
+<!--               NUMBER DATE AND TEXT-->
+                <div ng-if="newItem.content.type == 'number' || newItem.content.type == 'date'
+                        || newItem.content.type == 'text'" >
+
+                        <input ng-model="newItem.title" required class="md-subhead" style="width:300px; border:none;" type="text" placeholder="Item Title">
+
+                       <md-input-container>
+                        <label>New {{newItem.content.type}}</label>
+                        <input ng-model="newItem.content.value" class="md-subhead" style="width:300px;" type="{{newItem.content.type}}" ng-init="newItem.content.value = ''">
+                        </md-input-container>
+
+                    <md-button ng-click="addItemToReport()">Add me!</md-button>
+                </div>
+
 
             </md-card-content>
           </md-card>
-<div style="height:300px"></div>
+<!--<div style="height:300px"></div>-->
 
 
                     </div>

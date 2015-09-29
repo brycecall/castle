@@ -269,9 +269,10 @@ $scope.currentPage = $routeParams.section;
             "checkbox" : "checkbox",
             "radio" : "radio",
             "select" : "image",
-            "presettext" : "Preset Message",
+           // "presettext" : "Preset Message",
             "number" : "Number",
-            "text" : "Text"
+            "text" : "Text",
+            "date" : "Date"
         },
         "type" : ""
     }
@@ -305,22 +306,29 @@ $scope.currentPage = $routeParams.section;
        // $scope.report[$scope.currentPage][$scope.selectedPage][jsonToAdd];
         $scope.report[$scope.currentPage][$scope.selectedPage][$scope.newItem.title] = $scope.newItem.content;
         console.log(JSON.stringify($scope.report[$scope.currentPage][$scope.selectedPage][$scope.newItem.title], null, 2));
+            $scope.resetNewItem();
 
+
+
+    }
+
+    $scope.resetNewItem = function() {
         $scope.newItem = {
-            'title': '',
-            'content': {
-                'required': false,
-                'showvalue' : true,
-                'type': '',
-                //'value': '',
-                'value': {
-                },
-                'content': []
+                'title': '',
+                'content': {
+                    'required': false,
+                    'showvalue' : true,
+                    'type': '',
+                    'value': {
+                    },
+                    'content': []
+                }
             }
-        }
+    }
 
-
-
+    $scope.resetNewItemValueContents = function() {
+         $scope.newItem.content.content =[];
+         $scope.newITem.content.value = {};
     }
 
     $scope.addNewItem = function(theType, theValue) {
@@ -332,6 +340,7 @@ $scope.currentPage = $routeParams.section;
                         $scope.newItem.content.value[theValue] = newJSON;
                         break;
                     case 'radio':
+                    case 'select':
                         $scope.newItem.content.content.push(theValue);
                         break;
                 }

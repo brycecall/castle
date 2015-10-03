@@ -143,23 +143,23 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
         }
         ];
 
-        $scope.hideShowOptions = {
-            'text' : "Hide",
-            'showNonRequired' : true
-        };
+//        $scope.hideShowOptions = {
+//            'text' : "Hide",
+//            'showNonRequired' : true
+//        };
 
-            $scope.filterRequired = function() {
-            if ($scope.hideShowOptions.text == "Hide")
-            {
-                $scope.hideShowOptions.showNonRequired = false;
-                $scope.hideShowOptions.text  = "Show";
-            }
-            else
-            {
-                $scope.hideShowOptions.showNonRequired = true;
-                $scope.hideShowOptions.text  = "Hide";
-            }
-        }
+//            $scope.filterRequired = function() {
+//            if (hideShowOptions.text == "Hide")
+//            {
+//               hideShowOptions.showNonRequired = false;
+//               hideShowOptions.text  = "Show";
+//            }
+//            else
+//            {
+//                hideShowOptions.showNonRequired = true;
+//                hideShowOptions.text  = "Hide";
+//            }
+//        }
 }]);
 
 
@@ -186,9 +186,9 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
 
          factory.currentReport = reportOne;
 
+        factory.backdrop = false;
 
-
-
+        factory.selectedPage;
 
         factory.menuSwitch = function(type) {
             //alert("CALLED!");

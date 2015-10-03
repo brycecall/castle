@@ -4085,21 +4085,7 @@
         }
         };
 
-var headings = [
-    'Field Notes',
-    'Site',
-    'Exterior',
-    'Roofing',
-    'Structural',
-    'Thermal',
-    'Plumbing',
-    'Heating',
-    'Cooling',
-    'Electrical',
-    'Interior',
-    'Life/Safety',
-    'Photo Appendix'
-
-];
-
-        var current = "Field Notes";
+     var hideShowOptions = {
+            'text' : "Hide",
+            'showNonRequired' : true
+        };

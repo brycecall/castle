@@ -18,16 +18,17 @@ footer {
 }
 
 .fab_add_expand {
-    height: 245px !important;
+    height: 258px !important;
     width: 175px !important;
     margin-top: 5px !important;
     margin-bottom: 0 !important;
     padding-top: 5px;
     padding-bottom: 30px;
-/*
-    margin-right: 26px !important;
+
+    margin-right: 15px !important;
+    /*
     margin-left: 127px !important;
-*/
+    */
     
     position: relative;
     background-color: white;

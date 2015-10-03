@@ -294,9 +294,27 @@
                     </div>
                     </div>
 
-<!--           TODO-->
-           <md-card >
+<!--<md-button class="md-fab">Item</md-button>-->
+
+
+<script type="text/ng-template" id="itemDialog.html">
+         <md-dialog>
+         <md-toolbar layout="row" layout-align="center center">
+             <h4 class="md-subhead" style="padding:0 25px">Add Item</h3>
+             <span flex></span>
+                 <md-button class="md-icon-button" ng-click="cancelDialog()">
+       <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_close_48px.svg" ></md-icon>
+      </md-button>
+         </md-toolbar>
+         <md-dialog-content>
+<!--         <div class="backgroundCover">asdasd</div>-->
+
+<!--          <div class="centerMenu" ng-if="showAddItemMenu">-->
+<!--                      <md-card class="centerCenterMenu" >-->
+<!--
+<md-card  >
              <md-card-content>
+-->
                 <md-input-container style="width:150px;">
                  <label>Select Item Type</label>
                   <md-select ng-model="newItem.content.type" value="typevalue" md-on-close="resetNewItemValueContents()">
@@ -305,7 +323,7 @@
                 </md-input-container>
 
 
-                 <input ng-model="newItem.title" required class="md-subhead" style="width:300px; border:none;" type="text" placeholder="Item Title">
+                 <input ng-model="newItem.title" required class="md-subhead" ng-class="" style="width:300px; border:none;" type="text" placeholder="Item Title">
 
 
                     <div ng-if="newItem.content.type == 'radio' || newItem.content.type == 'select'" >
@@ -373,15 +391,20 @@
                         </md-input-container>
                 </div>
                 <br />
-             <md-button ng-click="addItemToReport()">Add me!</md-button>
+                <br />
+             <md-button ng-click="addItemToReport(); cancelDialog()" class="md-secondary md-raised" style="">Add me!</md-button>
 
+
+<!--
             </md-card-content>
           </md-card>
-<!--<div style="height:300px"></div>-->
-
+-->
+<!--          </div>-->
+             </md-dialog-content>
+    </md-dialog>
+                       </script>
 
                     </div>
-<!--                </md-card-content>-->
            </md-tab-body>
 
             </md-tab>
@@ -393,40 +416,41 @@
         <div class="footerSpace"></div>
     </section>
 
-<!--
       <md-fab-speed-dial md-open="isOpen"  md-direction="up" md-class="md-fling" class="mainButton">
         <md-fab-trigger >
-                        <md-button class="md-fab md-primary"  aria-label="stuff">
-                           <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                        </md-button>
+                <md-button class="md-fab md-primary"  aria-label="stuff">
+                   <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                </md-button>
         </md-fab-trigger>
         <md-fab-actions  style="position:relative; left:-23px">
-                            <a ng-href="#item" layout="row" layout-align="end center" >
-                            <div >Item</div>
-                            <md-button class="md-fab md-hue-1 md-raised md-mini"  aria-label="Add Item">
-                                <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                            </md-button>
-                            </a>
+<!--            <a ng-click="toggleAddItemMenu()" layout="row" layout-align="end center" >-->
+            <a ng-click="showItemDialog($event)" layout="row" layout-align="end center" >
 
-                            <a ng-href="#page" layout="row" layout-align="end center" >
-                            <div >Page</div>
-                            <md-button class="md-fab md-hue-2 md-raised md-mini" aria-label="Add Page">
-                                <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                            </md-button>
-                            </a>
+                <div >Item</div>
+                <md-button class="md-fab md-hue-1 md-raised md-mini"  aria-label="Add Item">
+                    <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                </md-button>
+            </a>
 
-                            <a ng-href="#section" layout="row" layout-align="end center" >
-                            <div >Section</div>
-                            <md-button class="md-fab md-hue-3 md-raised md-mini" aria-label="Add Section">
-                                <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                            </md-button>
-                            </a>
+            <a ng-href="#page" layout="row" layout-align="end center" >
+                <div >Page</div>
+                <md-button class="md-fab md-hue-2 md-raised md-mini" aria-label="Add Page">
+                    <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                </md-button>
+            </a>
+
+            <a ng-href="#section" layout="row" layout-align="end center" >
+                <div >Section</div>
+                <md-button class="md-fab md-hue-3 md-raised md-mini" aria-label="Add Section">
+                    <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                </md-button>
+            </a>
         </md-fab-actions>
       </md-fab-speed-dial>
--->
 
 
 <!--  BOTTOM SHEET PLUS MENU-->
+<!--
         <script type="text/ng-template" id="addItem.html">
             <md-bottom-sheet class="md-list md-has-header">
                 <div layout="column" layout-align="start start" style="text-align:left">
@@ -462,11 +486,10 @@
 
             </md-bottom-sheet>
         </script>
-
-
-
+-->
 
 <!--          PLUS BUTTON-->
+<!--
      <div class="mainButton">
        <div class="buttonBox">
             <md-button class="md-fab md-primary"  ng-click="openBottomSheet()" aria-label="stuff">
@@ -474,50 +497,59 @@
             </md-button>
         </div>
     </div>
+-->
+
+
+
+
+<!--
+<div class="mainButton">
+   <div class="buttonBox">
+    <div class="fab_add_expand" ng-show="show_add_icons">
+        <a ng-href="#item" ng-click="toggleAdd()">
+        <span class="fab_add_label">Item</span>
+        <md-button class="md-fab md-hue-1 fab_add_button" aria-label="Add Item">
+            <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+        </md-button>
+        </a>
+
+        <a ng-href="#page" ng-click="toggleAdd()">
+        <span class="fab_add_label">Page</span>
+        <md-button class="md-fab md-hue-2 fab_add_button" aria-label="Add Page">
+            <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+        </md-button>
+        </a>
+
+        <a ng-href="#section" ng-click="toggleAdd()">
+        <span class="fab_add_label">Section</span>
+        <md-button class="md-fab md-hue-3 fab_add_button" aria-label="Add Section">
+            <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+        </md-button>
+        </a>
+
+        <a ng-click="togglePlusMenus()">
+            <span class="fab_add_label">Image</span>
+            <md-button class="md-fab fab_add_button md-primary"  aria-label="Add Image">
+               <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" style="color:white" layout="row" layout-align="center center"></md-icon>
+            </md-button>
+        </a>
+    </div>
+
+    <md-button class="md-fab md-primary"  ng-click="toggleAdd()" aria-label="stuff">
+       <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+    </md-button>
+    </div>
+</div>
+-->
+
+
+
 
 </div>
 
 
 
-<!--
-                   <div class="mainButton">
-                       <div class="buttonBox">
-                        <div class="fab_add_expand" ng-show="show_add_icons">
-                            <a ng-href="#item" ng-click="toggleAdd()">
-                            <span class="fab_add_label">Item</span>
-                            <md-button class="md-fab md-hue-1 fab_add_button" aria-label="Add Item">
-                                <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                            </md-button>
-                            </a>
 
-                            <a ng-href="#page" ng-click="toggleAdd()">
-                            <span class="fab_add_label">Page</span>
-                            <md-button class="md-fab md-hue-2 fab_add_button" aria-label="Add Page">
-                                <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                            </md-button>
-                            </a>
-
-                            <a ng-href="#section" ng-click="toggleAdd()">
-                            <span class="fab_add_label">Section</span>
-                            <md-button class="md-fab md-hue-3 fab_add_button" aria-label="Add Section">
-                                <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                            </md-button>
-                            </a>
-
-                            <a ng-click="togglePlusMenus()">
-                                <span class="fab_add_label">Image</span>
-                                <md-button class="md-fab fab_add_button md-primary"  aria-label="Add Image">
-                                   <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" style="color:white" layout="row" layout-align="center center"></md-icon>
-                                </md-button>
-                            </a>
-                        </div>
-
-                        <md-button class="md-fab md-primary"  ng-click="toggleAdd()" aria-label="stuff">
-                           <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                        </md-button>
-                        </div>
-                    </div>
--->
 
 
 

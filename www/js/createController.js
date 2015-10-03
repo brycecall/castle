@@ -26,6 +26,14 @@
 
      //$scope.currentPage = ($routeParams.section == 'default')  ? Object.keys($scope.report)[0] : $routeParams.section;
 $scope.currentPage = $routeParams.section;
+$scope.selectedPage = inspectionService.selectedPage;
+$scope.changeSelection = function(pagetitle) {
+        $scope.selectedPage = pagetitle;
+        inspectionService.selectedPage = pagetitle;
+         console.log($scope.selectedPage);
+     }
+
+
 //         inspectionService.currentPage.title = $scope.currentPage;
 //         inspectionService.menuSwitch('back');
 
@@ -45,8 +53,6 @@ $scope.currentPage = $routeParams.section;
 
      $scope.alert = '';
      $scope.showMessage = function (event, type, message) {
-         //         message.replace('\n', '<br />');
-
          $mdDialog.show(
              $mdDialog.alert()
              .title(type + ' Message')
@@ -57,12 +63,52 @@ $scope.currentPage = $routeParams.section;
          );
      };
 
+     $scope.showAddItemMenu = false;
+     $scope.toggleAddItemMenu = function() {
+         inspectionService.backdrop = !inspectionService.backdrop;
+         $scope.showAddItemMenu = !$scope.showAddItemMenu;
+
+     }
+
+     $scope.showItemDialog = function (event) {
+            $mdDialog.show({
+              controller: 'createController',
+              templateUrl: 'itemDialog.html',
+              parent: angular.element(document.body),
+              targetEvent: event,
+              clickOutsideToClose:true,
+              preserveScope:true,
+            });
+
+     };
+
+    $scope.cancelDialog = function() {
+        $mdDialog.cancel();
+    };
+
+
+     $scope.hideShowOptions = hideShowOptions;
+        $scope.filterRequired = function() {
+            if (hideShowOptions.text == "Hide")
+            {
+               hideShowOptions.showNonRequired = false;
+               hideShowOptions.text  = "Show";
+            }
+            else
+            {
+                hideShowOptions.showNonRequired = true;
+                hideShowOptions.text  = "Hide";
+            }
+        }
+
+
      $scope.scrollToTop = function () {
          $timeout(function () {
              document.getElementById("testAgain").scrollTop = 0;
              console.log("called ");
          });
      };
+
 
    $scope.navigatePage = function (sectionkey) {
          $scope.close();
@@ -187,11 +233,7 @@ $scope.currentPage = $routeParams.section;
 
     $scope.isOpen = false;
 
-     $scope.selectedPage;
-     $scope.changeSelection = function(pagetitle) {
-        $scope.selectedPage = pagetitle;
-         console.log($scope.selectedPage);
-     }
+
 
      $scope.openItems = function(showVal) {
         angular.forEach($scope.report[$scope.currentPage][$scope.selectedPage], function(value, key)         {
@@ -241,12 +283,10 @@ $scope.currentPage = $routeParams.section;
 
 
      $scope.appendReport = function() {
-
          var testJSON = {
                 'One' : {
                      '1Ah': 'ah1',
                      '2Ah' : 'ah2'
-
                 },
                 'Two' : {
                      '3Ah': 'ah3',
@@ -299,17 +339,10 @@ $scope.currentPage = $routeParams.section;
     }
 
     $scope.addItemToReport = function() {
-
-
-        var jsonToAdd = {};
-       // jsonToAdd[newItem.title] = newItem.content;
-       // $scope.report[$scope.currentPage][$scope.selectedPage][jsonToAdd];
+        console.log("Section: " + $scope.currentPage + " Page: " + $scope.selectedPage + " Title: " + $scope.newItem.title);
         $scope.report[$scope.currentPage][$scope.selectedPage][$scope.newItem.title] = $scope.newItem.content;
         console.log(JSON.stringify($scope.report[$scope.currentPage][$scope.selectedPage][$scope.newItem.title], null, 2));
-            $scope.resetNewItem();
-
-
-
+        $scope.resetNewItem();
     }
 
     $scope.resetNewItem = function() {
@@ -328,7 +361,7 @@ $scope.currentPage = $routeParams.section;
 
     $scope.resetNewItemValueContents = function() {
          $scope.newItem.content.content =[];
-         $scope.newITem.content.value = {};
+         $scope.newItem.content.value = {};
     }
 
     $scope.addNewItem = function(theType, theValue) {

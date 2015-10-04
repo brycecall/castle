@@ -100,13 +100,12 @@ inspection.config(function($mdThemingProvider) {
 
 
 // Controller for the index page
-inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUtil', '$mdSidenav', '$location', '$anchorScroll', function($scope, service, $mdUtil, $mdSidenav, $anchorScroll, $location) {
+inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUtil', '$mdSidenav', '$location', '$anchorScroll', '$rootScope', function($scope, service, $mdUtil, $mdSidenav, $anchorScroll, $location, $rootScope) {
     // This is a little hacky, bit it works alright, maybe fix latter
     $scope.service = service;
     
     $scope.toggleNavigation = function() {
-        var de;
-        $mdSidenav("main").toggle();
+          $mdSidenav("main").toggle();
     }
     
     $scope.show_add_icons = false;
@@ -119,6 +118,10 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
         $anchorScroll();
     }
 
+    $scope.go = function(pPath) {
+        var loc = $location.path(pPath);
+        console.log(loc);
+    };
 
     $scope.navigationPages = [
         {

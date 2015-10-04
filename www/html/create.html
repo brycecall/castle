@@ -449,7 +449,7 @@
                     </md-button>
                 </a>
 
-                <a ng-click="capturePagePhoto(service.selectedPage, report[currentSection]['{{service.selectedPage}} Images'])" layout="row" layout-align="end center">
+                <a ng-click="capturePagePhoto(service.selectedPage, report[currentSection][{{service.selectedPage + ' Images'}}])" layout="row" layout-align="end center">
                     <div >Image</div>
                     <md-button class="md-fab md-hue-3 md-raised md-mini" aria-label="Add Section">
                         <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon>

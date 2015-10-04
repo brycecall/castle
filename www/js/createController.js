@@ -22,6 +22,10 @@
          return debounceFn;
      }
 
+     $scope.go = function(pPath) {
+        $location.path(pPath);
+     }
+
      $scope.report = inspectionService.currentReport;
 
          //$scope.currentSection = ($routeParams.section == 'default')  ? Object.keys($scope.report)[0] : $routeParams.section;

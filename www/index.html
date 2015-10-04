@@ -69,9 +69,9 @@
                     <md-content style="height: 100%; overflow-x: hidden;">
                         <img id="menuFavicon" src="img/icon.png" />
                         <br />
-                        <md-list flex="">
-                          <a href="{{page.link}}" ng-repeat="page in navigationPages"  flex="" ng-click="toggleNavigation()" >
-                              <md-list-item >
+                        <md-list >
+                         <a ng-href="{{page.link}}" ng-click="toggleNavigation()" ng-repeat="page in navigationPages"  flex="">
+                              <md-list-item>
                                   <div md-ink-ripple="" >
                                     <md-icon md-svg-icon="{{page.icon}}" class="marginRight"></md-icon>
                                     <h2 class="listHead md-title" >{{page.title}}</h2>

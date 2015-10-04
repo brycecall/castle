@@ -13,13 +13,15 @@ footer {
     color: rgb(0,188,212);
 }*/
 
+/*
 .fab_add_expand * {
     font-size: 14pt !important;
 }
+*/
 
 .fab_add_expand {
     height: 258px !important;
-    width: 175px !important;
+    width: 130px !important;
     margin-top: 5px !important;
     margin-bottom: 0 !important;
     padding-top: 5px;
@@ -37,24 +39,31 @@ footer {
     transition: transform .3s ease-in-out;
 }
 
+
 .fab_add_expand.ng-hide {
     transform: translate3d(0px, 600px, 0px);
 }
+
 
 a {
     text-decoration: none;
 }
 
+
 a:hover {
     text-decoration: none;
 }
+
+
 footer a:hover {
     text-decoration: none;
 }
 
+
 footer {
     width: 60px;
 }
+
 
 footer i {
     width: 100%;
@@ -65,6 +74,7 @@ footer .container {
     max-width: 600px;
     min-width: 380px;
 }
+
 
 .ng-view-window {
     position: fixed;

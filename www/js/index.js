@@ -50,11 +50,6 @@ inspection.config(['$routeProvider',
                 controller: 'generateController'
             })
 
-            .when('/newContent/:type', {
-                templateUrl: 'html/newContent.html',
-                controller: 'createController'
-            })
-
             .otherwise({
                 redirectTo: '/create/default'
             });
@@ -110,7 +105,7 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
     $scope.service = service;
     
     $scope.toggleNavigation = function() {
-
+        var de;
         $mdSidenav("main").toggle();
     }
     
@@ -129,7 +124,7 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
         {
             title: "New Report",
             icon: "./bower_components/material-design-icons/action/svg/design/ic_assignment_48px.svg",
-            link: "#create"
+            link: "#create/default"
         },
         {
             title: "Saved Reports",
@@ -181,31 +176,12 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
             icon: "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg"
         };
 
-
-
-
-         factory.currentReport = reportOne;
+        factory.currentReport = reportOne;
 
         factory.backdrop = false;
 
         factory.selectedPage;
 
-        factory.menuSwitch = function(type) {
-            //alert("CALLED!");
-            var icon;
-            switch (type)
-            {
-                case 'menu':
-                    icon = "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg"
-                    break;
-                case 'back':
-                    icon = "./bower_components/material-design-icons/navigation/svg/design/ic_arrow_back_48px.svg";
-                    break;
-                default:
-                    icon = "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg";
-            }
-            factory.currentPage.icon = icon;
-        }
 
 
         // Current user information

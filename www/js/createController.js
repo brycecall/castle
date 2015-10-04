@@ -24,17 +24,17 @@
 
      $scope.report = inspectionService.currentReport;
 
-     //$scope.currentPage = ($routeParams.section == 'default')  ? Object.keys($scope.report)[0] : $routeParams.section;
-$scope.currentPage = $routeParams.section;
-$scope.selectedPage = inspectionService.selectedPage;
-$scope.changeSelection = function(pagetitle) {
+         //$scope.currentSection = ($routeParams.section == 'default')  ? Object.keys($scope.report)[0] : $routeParams.section;
+    $scope.currentSection = $routeParams.section;
+    $scope.selectedPage = inspectionService.selectedPage;
+    $scope.changeSelection = function(pagetitle) {
         $scope.selectedPage = pagetitle;
         inspectionService.selectedPage = pagetitle;
          console.log($scope.selectedPage);
      }
 
 
-//         inspectionService.currentPage.title = $scope.currentPage;
+//         inspectionService.currentPage.title = $scope.currentSection;
 //         inspectionService.menuSwitch('back');
 
      //if ($routeParams.section == 1)
@@ -79,7 +79,22 @@ $scope.changeSelection = function(pagetitle) {
               clickOutsideToClose:true,
               preserveScope:true,
             });
+     };
 
+   $scope.addPageToReport = function(newPage) {
+        $scope.report[$scope.currentSection][newPage] = {};
+        console.log(JSON.stringify($scope.report[$scope.currentSection][newPage], null, 2));
+   }
+
+     $scope.showPageDialog = function (event) {
+            $mdDialog.show({
+              controller: 'createController',
+              templateUrl: 'pageDialog.html',
+              parent: angular.element(document.body),
+              targetEvent: event,
+              clickOutsideToClose:true,
+              preserveScope:true,
+            });
      };
 
     $scope.cancelDialog = function() {
@@ -112,8 +127,8 @@ $scope.changeSelection = function(pagetitle) {
 
    $scope.navigatePage = function (sectionkey) {
          $scope.close();
-         $scope.currentPage = sectionkey;
-         inspectionService.currentPage.title = $scope.currentPage;
+         $scope.currentSection = sectionkey;
+         inspectionService.currentPage.title = $scope.currentSection;
          inspectionService.menuSwitch('back');
      };
 
@@ -232,12 +247,10 @@ $scope.changeSelection = function(pagetitle) {
         source.splice(source.indexOf(pJSONIMG), 1);
     }
 
-    $scope.isOpen = false;
-
-
+     $scope.isOpen = false;
 
      $scope.openItems = function(showVal) {
-        angular.forEach($scope.report[$scope.currentPage][$scope.selectedPage], function(value, key)         {
+        angular.forEach($scope.report[$scope.currentSection][$scope.selectedPage], function(value, key) {
             value.showvalue = showVal;
         });
      }
@@ -340,9 +353,9 @@ $scope.changeSelection = function(pagetitle) {
     }
 
     $scope.addItemToReport = function() {
-        console.log("Section: " + $scope.currentPage + " Page: " + $scope.selectedPage + " Title: " + $scope.newItem.title);
-        $scope.report[$scope.currentPage][$scope.selectedPage][$scope.newItem.title] = $scope.newItem.content;
-        console.log(JSON.stringify($scope.report[$scope.currentPage][$scope.selectedPage][$scope.newItem.title], null, 2));
+        console.log("Section: " + $scope.currentSection + " Page: " + $scope.selectedPage + " Title: " + $scope.newItem.title);
+        $scope.report[$scope.currentSection][$scope.selectedPage][$scope.newItem.title] = $scope.newItem.content;
+        console.log(JSON.stringify($scope.report[$scope.currentSection][$scope.selectedPage][$scope.newItem.title], null, 2));
         $scope.resetNewItem();
     }
 

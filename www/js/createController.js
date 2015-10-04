@@ -142,7 +142,8 @@ $scope.changeSelection = function(pagetitle) {
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     }
-      document.addEventListener("deviceready",onDeviceReady,false);
+
+  document.addEventListener("deviceready",onDeviceReady,false);
 
 
 /********************************************************

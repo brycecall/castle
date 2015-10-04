@@ -38,7 +38,7 @@ footer {
 }
 
 .fab_add_expand.ng-hide {
-    transform: translate3d(300px, 0px, 0px);
+    transform: translate3d(0px, 600px, 0px);
 }
 
 a {

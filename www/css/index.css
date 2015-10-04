@@ -342,7 +342,7 @@ md-radio-group {
     max-width: 695px;
 }
 
-.mainButton {
+.mainButtonMenu {
     position:fixed;
     bottom:0;
     right:10px;
@@ -538,5 +538,23 @@ md-toolbar {
     min-height: 54px !important;
     max-height:54px !important;
 }
+
+
+.mainButtonReverse {
+    -webkit-transition: transform .4s;
+    transition: transform .4s;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.mainButton {
+    -webkit-transition: transform .4s;
+    transition: transform .4s;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+
 
 

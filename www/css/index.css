@@ -511,3 +511,32 @@ overoverflow-x:
     -ms-flex-direction: column;
     flex-direction: column;
 }
+
+.console-content {
+    position: fixed;
+    top: 54px;
+    height: 100%;
+    width: 100%;
+    z-index:50;
+}
+
+
+.headerToolBar {
+    height:54px;
+    background-color: #4CAF50;
+    color: rgba(255,255,255,0.87);
+}
+
+.md-toolbar-tools {
+    height:54px !important;
+    min-height: 54px !important;
+    max-height:54px !important;
+}
+
+md-toolbar {
+    height:54px !important;
+    min-height: 54px !important;
+    max-height:54px !important;
+}
+
+

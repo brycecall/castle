@@ -2,7 +2,7 @@
 
                 <header  class="createHeader" ng-if="currentPage != 'default'">
                     <md-toolbar >
-                      <div class="md-toolbar-tools" >
+                     <div class="md-toolbar-tools" layout="row" layout-align="center center">
 
                         <md-button class="md-icon-button" aria-label="Navigation" ng-model-options="{ debounce: 1000 }">
                         <a href="#create/default"><md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_arrow_back_48px.svg"></md-icon></a>
@@ -21,7 +21,7 @@
 
 
                         <md-menu>
-                            <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open sample menu">
+                            <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open extra menu">
                                 <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_more_vert_48px.svg"></md-icon>
                          </md-button>
 

@@ -47,7 +47,7 @@
 <!--               mainHeaderBar-->
                <div>
                 <header >
-                    <md-toolbar >
+                    <md-toolbar style="height:54px">
                       <div class="md-toolbar-tools" >
                         <md-button class="md-icon-button" aria-label="Navigation" ng-click="toggleNavigation()" ng-model-options="{ debounce: 1000 }">
                              <md-icon md-svg-icon="{{service.currentPage.icon}}"></md-icon>
@@ -84,7 +84,7 @@
                     </md-content>
                 </md-sidenav>
                 
-                <div ng-view class="console-content" id="scrollArea" autoscroll="true" style="position: fixed; top: 64px; height: 100%; width: 100%; "></div>
+                <div ng-view class="console-content" id="scrollArea" autoscroll="true" ></div>
 </div>
 
             </div>

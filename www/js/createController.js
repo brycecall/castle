@@ -1,4 +1,4 @@
- angular.module('fbiApp').controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window, $routeParams, inspectionService, $mdBottomSheet) {
+ angular.module('fbiApp').controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $anchorScroll, $rootScope, $window, $stateParams, inspectionService, $mdBottomSheet) {
 
      $scope.toggleLeft = buildToggler('left');
 
@@ -22,14 +22,14 @@
          return debounceFn;
      }
 
-     $scope.go = function(pPath) {
-        $location.path(pPath);
-     }
+//     $scope.go = function(pPath) {
+//        $location.path(pPath);
+//     }
 
      $scope.report = inspectionService.currentReport;
 
-         //$scope.currentSection = ($routeParams.section == 'default')  ? Object.keys($scope.report)[0] : $routeParams.section;
-    $scope.currentSection = $routeParams.section;
+         //$scope.currentSection = ($stateParams.section == 'default')  ? Object.keys($scope.report)[0] : $stateParams.section;
+    $scope.currentSection = $stateParams.section;
     $scope.selectedPage = inspectionService.selectedPage;
     $scope.changeSelection = function(pagetitle) {
         $scope.selectedPage = pagetitle;
@@ -41,8 +41,8 @@
 //         inspectionService.currentPage.title = $scope.currentSection;
 //         inspectionService.menuSwitch('back');
 
-     //if ($routeParams.section == 1)
-     //alert($routeParams.section);
+     //if ($stateParams.section == 1)
+     //alert($stateParams.section);
 
      $scope.subPage = '';
 
@@ -71,7 +71,6 @@
      $scope.toggleAddItemMenu = function() {
          inspectionService.backdrop = !inspectionService.backdrop;
          $scope.showAddItemMenu = !$scope.showAddItemMenu;
-
      }
 
      $scope.showItemDialog = function (event) {
@@ -106,19 +105,19 @@
     };
 
 
-     $scope.hideShowOptions = hideShowOptions;
-        $scope.filterRequired = function() {
-            if (hideShowOptions.text == "Hide")
-            {
-               hideShowOptions.showNonRequired = false;
-               hideShowOptions.text  = "Show";
-            }
-            else
-            {
-                hideShowOptions.showNonRequired = true;
-                hideShowOptions.text  = "Hide";
-            }
+    $scope.hideShowOptions = hideShowOptions;
+    $scope.filterRequired = function() {
+        if (hideShowOptions.text == "Hide")
+        {
+           hideShowOptions.showNonRequired = false;
+           hideShowOptions.text  = "Show";
         }
+        else
+        {
+            hideShowOptions.showNonRequired = true;
+            hideShowOptions.text  = "Hide";
+        }
+    }
 
 
      $scope.scrollToTop = function () {
@@ -156,7 +155,7 @@
     var cameraDestination;
 
    // device APIs are available
-  function onDeviceReady() {
+    function onDeviceReady() {
       //alert("Calls when app starts");
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;

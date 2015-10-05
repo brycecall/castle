@@ -1,5 +1,5 @@
 // Create the main module
-var inspection = angular.module('fbiApp', ['ngRoute', 'ngTouch', 'ngMaterial']);
+var inspection = angular.module('fbiApp', ['ui.router', 'ngTouch', 'ngMaterial']);
 
 //var express = require('express');
 //var mongoose = require('mongoose');
@@ -26,34 +26,63 @@ var inspection = angular.module('fbiApp', ['ngRoute', 'ngTouch', 'ngMaterial']);
 
 
 // Config - take care of URL routes
-inspection.config(['$routeProvider',
+//inspection.config(['$routeProvider',
+//
+//    function ($routeProvider, $anchorScroll) {
+//        $routeProvider
+//            .when('/create/:section', {
+//                templateUrl: 'html/create.html',
+//                controller: 'createController'
+//            })
+//
+//            .when('/account', {
+//                templateUrl: 'html/account.html',
+//                controller: 'savedController'
+//            })
+//
+//            .when('/saved', {
+//                templateUrl: 'html/saved.html',
+//                controller: 'savedController'
+//            })
+//
+//            .when('/generate', {
+//                templateUrl: 'html/generate.html',
+//                controller: 'generateController'
+//            })
+//
+//            .otherwise({
+//                redirectTo: '/create/default'
+//            });
+//  }]);
 
-    function ($routeProvider, $anchorScroll) {
-        $routeProvider
-            .when('/create/:section', {
+inspection.config(
+    function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/create/default');
+        $stateProvider
+            .state('create', {
+                url: "/create/:section",
                 templateUrl: 'html/create.html',
                 controller: 'createController'
             })
 
-            .when('/account', {
+            .state('account', {
+                url: '/account',
                 templateUrl: 'html/account.html',
                 controller: 'savedController'
             })
 
-            .when('/saved', {
+            .state('saved', {
+                url: '/saved',
                 templateUrl: 'html/saved.html',
                 controller: 'savedController'
             })
 
-            .when('/generate', {
+            .state('generate', {
+                url: '/generate',
                 templateUrl: 'html/generate.html',
                 controller: 'generateController'
             })
-
-            .otherwise({
-                redirectTo: '/create/default'
-            });
-  }]);
+  });
 
 // Config - the material design theme
 //inspection.config(function($mdThemingProvider) {
@@ -100,7 +129,7 @@ inspection.config(function($mdThemingProvider) {
 
 
 // Controller for the index page
-inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUtil', '$mdSidenav', '$location', '$anchorScroll', '$rootScope', function($scope, service, $mdUtil, $mdSidenav, $anchorScroll, $location, $rootScope) {
+inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUtil', '$mdSidenav', '$anchorScroll', '$rootScope', function($scope, service, $mdUtil, $mdSidenav, $anchorScroll, $rootScope) {
     // This is a little hacky, bit it works alright, maybe fix latter
     $scope.service = service;
     
@@ -118,54 +147,36 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
         $anchorScroll();
     }
 
-    $scope.go = function(pPath) {
-        var loc = $location.path(pPath);
-        console.log(loc);
-    };
+//    $scope.go = function(pPath) {
+//        var loc = $location.path(pPath);
+//        console.log(loc);
+//    };
 
     $scope.navigationPages = [
         {
             title: "New Report",
             icon: "./bower_components/material-design-icons/action/svg/design/ic_assignment_48px.svg",
-            link: "#create/default"
+            link: "create({section:'default'})"
         },
         {
             title: "Saved Reports",
             icon: "./bower_components/material-design-icons/action/svg/design/ic_book_48px.svg",
-            link: "#saved"
+            link: "saved"
         },
         {
             title: "Account",
             icon: "./bower_components/material-design-icons/action/svg/design/ic_book_48px.svg",
-            link: "#account"
+            link: "account"
         }
         ];
-
-//        $scope.hideShowOptions = {
-//            'text' : "Hide",
-//            'showNonRequired' : true
-//        };
-
-//            $scope.filterRequired = function() {
-//            if (hideShowOptions.text == "Hide")
-//            {
-//               hideShowOptions.showNonRequired = false;
-//               hideShowOptions.text  = "Show";
-//            }
-//            else
-//            {
-//                hideShowOptions.showNonRequired = true;
-//                hideShowOptions.text  = "Hide";
-//            }
-//        }
-}]);
+    }]);
 
 
 
 
 // Create the factory / service that is shared among all the controllers
-inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
-    function ($http, $cacheFactory, $route) {
+inspection.factory('inspectionService', ['$http', '$cacheFactory',
+    function ($http, $cacheFactory) {
         var factory = {},
             cache = $cacheFactory('inspectionCache'), // TODO - do we need the cache?
             baseUrl = '', /* 'http://api.thedealio.org:443/bond/'   TODO - change to URL to inspectionMe server */
@@ -180,9 +191,7 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
         };
 
         factory.currentReport = reportOne;
-
         factory.backdrop = false;
-
         factory.selectedPage;
 
 
@@ -195,16 +204,6 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
             last_name: "Beacham",
             profile_image: "img/rod.png"
         };
-
-        // Refresh the cache every hour
-//        setInterval(function() {
-//            factory.clearCache();
-//        }, 1800000);  // Update every 30 minutes.
-//
-//        factory.clearCache = function () {
-//            cache.removeAll();
-//            $route.reload();
-//        };
 
 
         factory.openExternalUrl = function (url) {

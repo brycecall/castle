@@ -14,7 +14,8 @@
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/bootstrap/js/dropdown.js"></script>
         <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular-route/angular-route.js"></script>
+<!--        <script src="bower_components/angular-route/angular-route.js"></script>-->
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script src="bower_components/angular-touch/angular-touch.js"></script>
         <script src="bower_components/angular-aria/angular-aria.js"></script>
         <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -56,7 +57,7 @@
                           <span>{{service.currentPage.title}}</span>
                         </h2>
                         <span flex></span>
-                        <a ng-href="#account" aria-label="Account" style="border:none" >
+                        <a ui-sref="account" aria-label="Account" style="border:none" >
                           <div class="profileWrapper">
                             <div class="profile_picture" style="background-image: url(img/rod.png);" />
                           </div>
@@ -70,7 +71,9 @@
                         <img id="menuFavicon" src="img/icon.png" />
                         <br />
                         <md-list >
-                         <a ng-href="{{page.link}}" ng-click="toggleNavigation()" ng-repeat="page in navigationPages"  flex="">
+<!--                         <a ng-href="{{page.link}}" ng-click="toggleNavigation()" ng-repeat="page in navigationPages"  flex="">-->
+
+                        <a ui-sref="{{page.link}}" ng-click="toggleNavigation()" ng-repeat="page in navigationPages"  flex="">
                               <md-list-item>
                                   <div md-ink-ripple="" >
                                     <md-icon md-svg-icon="{{page.icon}}" class="marginRight"></md-icon>
@@ -84,7 +87,7 @@
                     </md-content>
                 </md-sidenav>
                 
-                <div ng-view class="console-content" id="scrollArea" autoscroll="true" ></div>
+                <div ui-view class="console-content" id="scrollArea" autoscroll="true" ></div>
 </div>
 
             </div>

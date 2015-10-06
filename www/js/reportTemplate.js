@@ -4085,7 +4085,3 @@
         }
         };
 
-     var hideShowOptions = {
-            'text' : "Hide",
-            'showNonRequired' : true
-        };

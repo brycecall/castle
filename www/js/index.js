@@ -165,7 +165,7 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
         },
         {
             title: "Account",
-            icon: "./bower_components/material-design-icons/action/svg/design/ic_book_48px.svg",
+            icon: "./bower_components/material-design-icons/action/svg/design/ic_account_box_48px.svg",
             link: "account"
         }
         ];
@@ -193,8 +193,6 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory',
         factory.currentReport = reportOne;
         factory.backdrop = false;
         factory.selectedPage;
-
-
 
         // Current user information
         factory.currentUser = {

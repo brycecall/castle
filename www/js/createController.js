@@ -27,7 +27,21 @@
 //     }
 
      $scope.report = inspectionService.currentReport;
+     $scope.hideShowOptions = {'text':'Hide', 'showNonRequired':true};
 
+    $scope.filterRequired = function(param) {
+        if ($scope.hideShowOptions.showNonRequired)
+        {
+           $scope.hideShowOptions.showNonRequired = false;
+           $scope.hideShowOptions.text  = "Show";
+        }
+        else
+        {
+             $scope.hideShowOptions.showNonRequired = true;
+             $scope.hideShowOptions.text  = "Hide";
+        }
+        console.log("CALLED: " + $scope.hideShowOptions.showNonRequired);
+    }
          //$scope.currentSection = ($stateParams.section == 'default')  ? Object.keys($scope.report)[0] : $stateParams.section;
     $scope.currentSection = $stateParams.section;
     $scope.selectedPage = inspectionService.selectedPage;
@@ -105,19 +119,8 @@
     };
 
 
-    $scope.hideShowOptions = hideShowOptions;
-    $scope.filterRequired = function() {
-        if (hideShowOptions.text == "Hide")
-        {
-           hideShowOptions.showNonRequired = false;
-           hideShowOptions.text  = "Show";
-        }
-        else
-        {
-            hideShowOptions.showNonRequired = true;
-            hideShowOptions.text  = "Hide";
-        }
-    }
+
+
 
 
      $scope.scrollToTop = function () {

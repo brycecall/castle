@@ -170,7 +170,7 @@
 
      }
 
-     //console.log(JSON.stringify($scope.report));
+//console.log(JSON.stringify($scope.report));
 
 //console.log('FILE ENTRY: ' + gFileEntry.name);
 

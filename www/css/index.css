@@ -184,7 +184,7 @@ body {
 
 .page {
     height:100%;
-
+    background-color: white;
 }
 
 .footerSpace {
@@ -558,3 +558,13 @@ md-toolbar {
 
 
 
+
+.frameStyle {
+    height: 100px;
+    width: 125px;
+    height: 160px;
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+    float: left;
+}

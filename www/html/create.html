@@ -298,7 +298,7 @@
        <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_close_48px.svg" ></md-icon>
       </md-button>
          </md-toolbar>
-         <md-dialog-content>
+         <md-dialog-content focusOnOpen="false">
 <!--         <div class="backgroundCover">asdasd</div>-->
 
 <!--          <div class="centerMenu" ng-if="showAddItemMenu">-->
@@ -307,6 +307,7 @@
 <md-card  >
              <md-card-content>
 -->
+               <input ng-hide="true" type="text"  autofocus />
                 <md-input-container style="width:150px;">
                  <label>Select Item Type</label>
                   <md-select ng-model="newItem.content.type" value="typevalue" md-on-close="resetNewItemValueContents()">
@@ -396,24 +397,25 @@
     </md-dialog>
    </script>
  <script type="text/ng-template" id="pageDialog.html">
-         <md-dialog>
-         <md-toolbar layout="row" layout-align="center center">
-             <h4 class="md-subhead" style="padding:0 25px">Add Page</h3>
-             <span flex></span>
-                 <md-button class="md-icon-button" ng-click="cancelDialog()">
-                   <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_close_48px.svg" ></md-icon>
-              </md-button>
-         </md-toolbar>
-         <md-dialog-content>
-               <form ng-submit="">
-                <input ng-model="newPageTitle" required class="md-subhead" style="width:300px; border:none;" type="text" placeholder="Page Title">
+         <md-dialog focusOnOpen="false">
+            <input style="hidden" type="text"  autofocus />
+             <md-toolbar layout="row" layout-align="center center">
+                 <h4 class="md-subhead" style="padding:0 25px">Add Page</h3>
+                 <span flex></span>
+                     <md-button class="md-icon-button" ng-click="cancelDialog()">
+                       <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_close_48px.svg" ></md-icon>
+                     </md-button>
+             </md-toolbar>
+             <md-dialog-content>
+                   <form ng-submit="">
+                    <input ng-model="newPageTitle" required class="md-subhead" style="width:300px; border:none;" type="text" placeholder="Page Title">
 
-                <br />
-                <br />
-                 <md-button type="submit" ng-click="addPageToReport(newPageTitle); cancelDialog()" class="md-secondary md-raised" style="">Add me!</md-button>
-                 </form>
+                    <br />
+                    <br />
+                     <md-button type="submit" ng-click="addPageToReport(newPageTitle); cancelDialog()" class="md-secondary md-raised" style="">Add me!</md-button>
+                     </form>
              </md-dialog-content>
-    </md-dialog>
+        </md-dialog>
    </script>
 
                     </div>

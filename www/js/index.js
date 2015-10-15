@@ -188,7 +188,7 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory',
             title: "Inspection",
             preventNavigation: false,
             icon: "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg"
-        };
+        }
 
         factory.currentReport = reportOne;
         factory.backdrop = false;
@@ -201,7 +201,7 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory',
             first_name: "Rod",
             last_name: "Beacham",
             profile_image: "img/rod.png"
-        };
+        }
 
 
         factory.openExternalUrl = function (url) {
@@ -214,7 +214,7 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory',
                 // iOS and others
                 window.open(url, '_system');
             }
-        };
+        }
 
         // Fires when Cordova is fully loaded
         document.addEventListener('deviceready', function () {

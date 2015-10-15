@@ -40,7 +40,7 @@
                         </div>
                         <div style="text-align:right">
                             <h4 class="md-caption">Report ID: {{report['Field Notes']['Client Info']['Report ID'].value}}</h4>
-                            <h4 class="md-caption">{{report['Field Notes']['Client Info']['Report Date'].value}}</h4>
+                            <h4 class="md-caption">{{report['Field Notes']['Client Info']['Report Date'].value | date}}</h4>
                         </div>
 <!--
                             <h4 ng-init="clientInfo = fieldNotes['Client Info'].Clientinfo.value" class="md-caption">{{clientInfo.address}}, {{clientInfo.city}},{{clientInfo.state}} {{clientInfo.postalCode}}</h4>

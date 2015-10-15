@@ -1,4 +1,4 @@
- angular.module('fbiApp').controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $anchorScroll, $rootScope, $window, $stateParams, inspectionService, $mdBottomSheet) {
+ angular.module('fbiApp').controller('createController', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', '$mdDialog', '$mdMedia', '$anchorScroll', '$rootScope', '$window', '$stateParams', 'inspectionService', '$mdBottomSheet', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $anchorScroll, $rootScope, $window, $stateParams, inspectionService, $mdBottomSheet) {
 
      $scope.toggleLeft = buildToggler('left');
 
@@ -402,7 +402,8 @@
     }
 
 
- });
+
+ }]);
 
 
 

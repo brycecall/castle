@@ -9,6 +9,18 @@
 //        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
 //
 //     }
+   document.addEventListener("deviceready", onDeviceReady, false);
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
+    }
+
+    function onFileSystemSuccess(fileSystem) {
+        console.log(fileSystem.name);
+        console.log(fileSystem.root.name);
+    }
 
 
     function gotFS(fileSystem) {
@@ -55,7 +67,7 @@
 
 //console.log('FILE ENTRY: ' + gFileEntry.name);
 
-     $http.get('repots.json').success(function(data){
+     $http.get('reports.json').success(function(data){
         $scope.newReport = data;
      });
 

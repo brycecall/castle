@@ -14,8 +14,25 @@
     // device APIs are available
     //
     function onDeviceReady() {
-        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
+
+
+
+      //  window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
     }
+
+             console.log("CALLED");
+        inspectionService.request("/report/c/1", {savedReportJson : $scope.savedReportJson}).success(function(response) {
+
+        if (response != null && response != "") {
+            $scope.savedReport1 = response;
+            console.log(response.toString());
+        }
+        else
+            {
+            $scope.chapters = "";
+            console.log("EMPTY!");
+            }
+        });
 
     function onFileSystemSuccess(fileSystem) {
         console.log(fileSystem.name);
@@ -67,9 +84,10 @@
 
 //console.log('FILE ENTRY: ' + gFileEntry.name);
 
-     $http.get('reports.json').success(function(data){
-        $scope.newReport = data;
-     });
+//     $http.get('reports.').success(function(data){
+//        $scope.newReport = data;
+//     });
+
 
 
  });

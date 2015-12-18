@@ -44,27 +44,6 @@
 
         <div ng-app="fbiApp">
             <div ng-controller="indexController">
-<!--                     <md-backdrop ng-if="service.backdrop" class="md-dialog-backdrop md-opaque ng-scope md-default-theme" aria-hidden="true" style="z-index:71" id="backdrop"></md-backdrop>-->
-<!--               mainHeaderBar-->
-               <div>
-                <header >
-                    <md-toolbar style="height:54px">
-                      <div class="md-toolbar-tools" >
-                        <md-button class="md-icon-button" aria-label="Navigation" ng-click="toggleNavigation()" ng-model-options="{ debounce: 1000 }">
-                             <md-icon md-svg-icon="{{service.currentPage.icon}}"></md-icon>
-                        </md-button>
-                        <h2 class="page_header">
-                          <span>{{service.currentPage.title}}</span>
-                        </h2>
-                        <span flex></span>
-                        <a ui-sref="account" aria-label="Account" style="border:none" >
-                          <div class="profileWrapper">
-                            <div class="profile_picture" style="background-image: url(img/rod.png);" />
-                          </div>
-                        </a>
-                      </div>
-                    </md-toolbar>
-                </header>
 
                 <md-sidenav class="md-sidenav-left md-whiteframe-z2 main_menu" md-component-id="main"  md-swipe-left="toggleNavigation()" style="z-index:70;">
                     <md-content style="height: 100%; overflow-x: hidden;">
@@ -87,6 +66,29 @@
                     </md-content>
                 </md-sidenav>
                 
+
+               <div layout="column">
+                <header >
+                    <md-toolbar style="height:54px">
+                      <div class="md-toolbar-tools" >
+                        <md-button class="md-icon-button" aria-label="Navigation" ng-click="toggleNavigation()" ng-model-options="{ debounce: 1000 }">
+                             <md-icon md-svg-icon="{{service.currentPage.icon}}"></md-icon>
+                        </md-button>
+                        <h2 class="page_header">
+                          <span>{{service.currentPage.title}}</span>
+                        </h2>
+                        <span flex></span>
+                        <a ui-sref="account" aria-label="Account" style="border:none" >
+                          <div class="profileWrapper">
+                            <div class="profile_picture" style="background-image: url(img/rod.png);" />
+                          </div>
+                        </a>
+                      </div>
+                    </md-toolbar>
+                </header>
+
+
+
                 <div ui-view class="console-content" id="scrollArea" autoscroll="true" ></div>
 </div>
 

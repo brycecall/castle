@@ -1,60 +1,6 @@
 // Create the main module
 var inspection = angular.module('fbiApp', ['ui.router', 'ngTouch', 'ngMaterial']);
 
-//var express = require('express');
-//var mongoose = require('mongoose');
-//var config = require('config');
-//var passport = require('passport');
-//var expressSession = require('express-session');
-//mongoose.connect(config.mongoUri);
-//var userService = require('./services/user-service');
-//var passportConfig = require('./auth/passport-config');
-//passportConfig();
-//
-//
-//inspection.use(passport.initialize());
-//inspection.use(passport.session());
-//inspection.use(express.static(path.join(__dirname, 'public')));
-//inspection.user(expressSession()
-//                {
-//                    secret: 'getting hungry',
-//                    saveUninitialized: false,
-//                    resave: false
-//                }
-//               ));
-
-
-
-// Config - take care of URL routes
-//inspection.config(['$routeProvider',
-//
-//    function ($routeProvider, $anchorScroll) {
-//        $routeProvider
-//            .when('/create/:section', {
-//                templateUrl: 'html/create.html',
-//                controller: 'createController'
-//            })
-//
-//            .when('/account', {
-//                templateUrl: 'html/account.html',
-//                controller: 'savedController'
-//            })
-//
-//            .when('/saved', {
-//                templateUrl: 'html/saved.html',
-//                controller: 'savedController'
-//            })
-//
-//            .when('/generate', {
-//                templateUrl: 'html/generate.html',
-//                controller: 'generateController'
-//            })
-//
-//            .otherwise({
-//                redirectTo: '/create/default'
-//            });
-//  }]);
-
 inspection.config(
     function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/create/default');
@@ -83,18 +29,6 @@ inspection.config(
                 controller: 'generateController'
             })
   });
-
-// Config - the material design theme
-//inspection.config(function($mdThemingProvider) {
-//  $mdThemingProvider.theme('default')
-//    .primaryPalette('green', {
-//      'default': '500',
-//      'hue-1': '100',
-//      'hue-2': '600',
-//      'hue-3': 'A100',
-//    })
-//    .accentPalette('orange'),
-//  });
 
 inspection.config(function($mdThemingProvider) {
   $mdThemingProvider.definePalette('inspectorPallet', {
@@ -175,13 +109,21 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
 
 
 // Create the factory / service that is shared among all the controllers
-inspection.factory('inspectionService', ['$http', '$cacheFactory',
-    function ($http, $cacheFactory) {
-        var factory = {},
-            cache = $cacheFactory('inspectionCache'), // TODO - do we need the cache?
-            baseUrl = '', /* 'http://api.thedealio.org:443/bond/'   TODO - change to URL to inspectionMe server */
-            imageBaseUrl = '', /* http://api.thedealio.org'   TODO - change to URL to inspectionMe server */
-            notificationId = 0; /* 132479809,    TODO - what is this? is this for PushWoosh? */
+inspection.factory('inspectionService', ['$http','$location', '$cacheFactory',                      function ($http, $location, $cacheFactory) {
+        var factory = {};
+        var service = {};
+        factory.serverURL = "http://dev.maurasoftware.com:443";
+        //factory.serverURL = "localhost";
+
+        // Current user information
+        factory.currentUser = {
+            user_id: 1,
+            name: "Rod Beacham",
+            user_name: "Rod",
+            first_name: "Rod",
+            last_name: "Beacham",
+            profile_image: "img/rod.png"
+        }
         
         // Current page information
         factory.currentPage = {
@@ -194,17 +136,82 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory',
         factory.backdrop = false;
         factory.selectedPage;
 
-        // Current user information
-        factory.currentUser = {
-            user_id: 1,
-            user_name: "Rod",
-            first_name: "Rod",
-            last_name: "Beacham",
-            profile_image: "img/rod.png"
-        }
+        //Setup data
+        factory.init = function() {
+            if (factory.currentUser.id == null)
+            {
+                $location.path("/signin");
+                return false;
+            }
+            return true;
+        };
+
+        //Endpoint respondant
+        factory.request = function(endpoint, jsonData) {
+            var response;
+
+            if (jsonData)
+            {
+                console.log(JSON.parse(JSON.stringify(jsonData)));
+
+                var config = {
+                    headers: {
+                        'Cache-Control': 'no-cache',
+                        'Content-Type': 'plain/text'
+                    }
+                };
+
+                response = $http.post(factory.serverURL + endpoint, jsonData, config);
+            }
+            else
+            {
+                console.log("GET " + endpoint);
+                response = $http.get(factory.serverURL + endpoint);
+            }
 
 
-        factory.openExternalUrl = function (url) {
+            return response;
+
+        };
+
+        // Debug output control
+        factory.ERROR = 1;
+        factory.WARN = 2;
+        factory.INFO = 3;
+        window.debug = false;
+        factory.console = function (message, level, stack) {
+            if (!window.debug && level == factory.ERROR)
+                console.error(message);
+            else if (window.debug)
+            {
+                var buffer = message;
+
+                if (stack)
+                    message += "\n" + (new Error()).stack.substr(7);
+
+                message = (new Date()).toLocaleTimeString() + "::" +
+                    factory.console.caller.name + ":: " + message;
+
+                switch (level) {
+                    case factory.ERROR:
+                        console.error(message);
+                        alert(buffer);
+                        break;
+                    case factory.WARN:
+                        console.warn(message);
+                        break;
+                    case factory.INFO:
+                        console.info(message);
+                        break;
+                    default:
+                        console.log(message);
+                        break;
+                }
+            }
+        };
+
+
+        factory.navigateExternalUrl = function (url) {
             if (navigator.app) {
                 // Android
                 navigator.app.loadUrl(url, { openExternal: true });
@@ -222,7 +229,8 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory',
             factory.clearCache();
             //pushWoosh.init();
         }, false);
-        
+
+        factory.console("inspector factory ready!", service.INFO);
         return factory;
   }]);
 

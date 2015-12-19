@@ -8,25 +8,25 @@ inspection.config(
             .state('create', {
                 url: "/create/:section",
                 templateUrl: 'html/create.html',
-                controller: 'createController'
+               // controller: 'createController'
             })
 
             .state('account', {
                 url: '/account',
                 templateUrl: 'html/account.html',
-                controller: 'savedController'
+               // controller: 'accountController'
             })
 
             .state('saved', {
                 url: '/saved',
                 templateUrl: 'html/saved.html',
-                controller: 'savedController'
+                //controller: 'savedController'
             })
 
             .state('generate', {
                 url: '/generate',
                 templateUrl: 'html/generate.html',
-                controller: 'generateController'
+                //controller: 'generateController'
             })
   });
 
@@ -112,7 +112,7 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
 inspection.factory('inspectionService', ['$http','$location', '$cacheFactory',                      function ($http, $location, $cacheFactory) {
         var factory = {};
         var service = {};
-        factory.serverURL = "http://dev.maurasoftware.com:443";
+        factory.serverURL = "http://dev.maurasoftware.com:9526";
         //factory.serverURL = "localhost";
 
         // Current user information
@@ -226,7 +226,7 @@ inspection.factory('inspectionService', ['$http','$location', '$cacheFactory',  
         // Fires when Cordova is fully loaded
         document.addEventListener('deviceready', function () {
             console.log('Cordova Ready!');
-            factory.clearCache();
+            //factory.clearCache();
             //pushWoosh.init();
         }, false);
 

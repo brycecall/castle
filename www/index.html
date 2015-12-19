@@ -40,10 +40,10 @@
 
         <title>Inspector App</title>
     </head>
-    <body>
+    <body style="height:100%">
 
-        <div ng-app="fbiApp">
-            <div ng-controller="indexController">
+        <div ng-app="fbiApp" style="height:100%">
+            <div ng-controller="indexController"  style="height:100%; position:relative" layout="row">
 
                 <md-sidenav class="md-sidenav-left md-whiteframe-z2 main_menu" md-component-id="main"  md-swipe-left="toggleNavigation()" style="z-index:70;">
                     <md-content style="height: 100%; overflow-x: hidden;">
@@ -67,7 +67,7 @@
                 </md-sidenav>
                 
 
-               <div layout="column">
+               <div layout="column" flex="" style="background-color:white">
                 <header >
                     <md-toolbar style="height:54px">
                       <div class="md-toolbar-tools" >
@@ -87,10 +87,8 @@
                     </md-toolbar>
                 </header>
 
-
-
-                <div ui-view class="console-content" id="scrollArea" autoscroll="true" ></div>
-</div>
+                   <md-content class="console-content ui-view" id="scrollArea" autoscroll="true" ></md-content>
+            </div>
 
             </div>
         </div>

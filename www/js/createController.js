@@ -1,48 +1,43 @@
  angular.module('fbiApp').controller('createController', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', '$mdDialog', '$mdMedia', '$anchorScroll', '$rootScope', '$window', '$stateParams', 'inspectionService', '$mdBottomSheet', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $anchorScroll, $rootScope, $window, $stateParams, inspectionService, $mdBottomSheet) {
 
-     $scope.toggleLeft = buildToggler('left');
 
 
 
+ /**
+  * Build handler to open/close a SideNav; when animation finishes
+  * report completion in console
+  */
+ $scope.toggleLeft = buildToggler('left');
+ function buildToggler(navID) {
+     var debounceFn = $mdUtil.debounce(function () {
+         $mdSidenav(navID)
+             .toggle()
+             .then(function () {
+                 $log.debug("toggle " + navID + " is done");
 
-     /**
-      * Build handler to open/close a SideNav; when animation finishes
-      * report completion in console
-      */
-     function buildToggler(navID) {
-         var debounceFn = $mdUtil.debounce(function () {
-             $mdSidenav(navID)
-                 .toggle()
-                 .then(function () {
-                     $log.debug("toggle " + navID + " is done");
+             });
+     }, 300);
 
-                 });
-         }, 300);
+     return debounceFn;
+ }
 
-         return debounceFn;
+ $scope.report = inspectionService.currentReport;
+ $scope.hideShowOptions = {'text':'Hide', 'showNonRequired':true};
+
+ $scope.filterRequired = function(param) {
+     if ($scope.hideShowOptions.showNonRequired)
+     {
+        $scope.hideShowOptions.showNonRequired = false;
+        $scope.hideShowOptions.text  = "Show";
      }
+     else
+     {
+          $scope.hideShowOptions.showNonRequired = true;
+          $scope.hideShowOptions.text  = "Hide";
+     }
+     console.log("CALLED: " + $scope.hideShowOptions.showNonRequired);
+ }
 
-//     $scope.go = function(pPath) {
-//        $location.path(pPath);
-//     }
-
-     $scope.report = inspectionService.currentReport;
-     $scope.hideShowOptions = {'text':'Hide', 'showNonRequired':true};
-
-    $scope.filterRequired = function(param) {
-        if ($scope.hideShowOptions.showNonRequired)
-        {
-           $scope.hideShowOptions.showNonRequired = false;
-           $scope.hideShowOptions.text  = "Show";
-        }
-        else
-        {
-             $scope.hideShowOptions.showNonRequired = true;
-             $scope.hideShowOptions.text  = "Hide";
-        }
-        console.log("CALLED: " + $scope.hideShowOptions.showNonRequired);
-    }
-         //$scope.currentSection = ($stateParams.section == 'default')  ? Object.keys($scope.report)[0] : $stateParams.section;
     $scope.currentSection = $stateParams.section;
     $scope.selectedPage = inspectionService.selectedPage;
     $scope.changeSelection = function(pagetitle) {
@@ -50,13 +45,6 @@
         inspectionService.selectedPage = pagetitle;
          console.log($scope.selectedPage);
      }
-
-
-//         inspectionService.currentPage.title = $scope.currentSection;
-//         inspectionService.menuSwitch('back');
-
-     //if ($stateParams.section == 1)
-     //alert($stateParams.section);
 
      $scope.subPage = '';
 
@@ -119,10 +107,6 @@
     };
 
 
-
-
-
-
      $scope.scrollToTop = function () {
          $timeout(function () {
              document.getElementById("testAgain").scrollTop = 0;
@@ -131,7 +115,7 @@
      };
 
 
-   $scope.navigatePage = function (sectionkey) {
+    $scope.navigatePage = function (sectionkey) {
          $scope.close();
          $scope.currentSection = sectionkey;
          inspectionService.currentPage.title = $scope.currentSection;

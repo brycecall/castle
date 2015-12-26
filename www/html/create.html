@@ -1,6 +1,9 @@
 <div ng-controller="createController" flex="" layout="column" class="page" id="nav" style="background-color:white; ">
 
-                <header  class="createHeader" ng-if="currentSection != 'default'">
+
+
+<!--
+                <header  class="createHeader" ng-if="currentSection != 'default'" style="z-index:1000">
                     <md-toolbar >
                      <div class="md-toolbar-tools" layout="row" layout-align="center center">
 
@@ -20,33 +23,14 @@
                         </a>
 
 
-                        <md-menu style="margin:0; padding:0;">
-                            <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open extra menu" >
-                                <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_more_vert_48px.svg"></md-icon>
-                         </md-button>
 
-                         <md-menu-content>
-                           <md-menu-item>
-                               <md-button ng-click="openItems(true)">Open All Items</md-button>
-                           </md-menu-item>
-
-                            <md-menu-item>
-                               <md-button ng-click="openItems(false)">Close All Items</md-button>
-                           </md-menu-item>
-
-                           <md-menu-item>
-                               <md-button ng-click="filterRequired(true)">{{hideShowOptions.text}} Unrequired
-                               </md-button>
-                           </md-menu-item>
-
-                         </md-menu-content>
-                        </md-menu>
 
                       </div>
                     </md-toolbar>
                 </header>
+-->
 
-    <section flex="" layout="column" md-scroll-y style="position:relative">
+    <section flex="" layout="column"  style="position:relative">
         <md-content id="testAgain" >
 
 
@@ -78,7 +62,7 @@
                     <div ng-repeat="(listKey, listValue) in notSorted(page)" ng-init="itemVal = report[currentSection][pagetitle][listValue]">
 
 <!--                       CLIENT INFO-->
-                        <div ng-if="itemVal.type == 'clientinfo' && (itemVal.required == true || hideShowOptions.showNonRequired)">
+                        <div ng-if="itemVal.type == 'clientinfo' && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
                             <div layout="row">
                                 <h3 class="md-subhead" ng-click="toggleItem(itemVal)">Client Info:</h3>
                             </div>
@@ -127,7 +111,7 @@
                         <div layout="column" layout-fill="" layout-align="top center">
 
 <!--                           PRE-SET TEXT-->
-                            <div ng-if="itemVal.type == 'presettext'  && (itemVal.required == true || hideShowOptions.showNonRequired)">
+                            <div ng-if="itemVal.type == 'presettext'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
                                    <div layout="row">
 <!--                                       <md-switch ng-disabled="true" ng-model="isDisabled" aria-label="Disabled" />-->
                                        <h3 class="md-subhead" style="border:none" ng-click="toggleItem(itemVal)">{{listValue}} Message:</h3>
@@ -142,7 +126,7 @@
                             </div>
 
 <!--                           CHECKBOX-->
-                            <div ng-if="itemVal.type == 'checkbox'  && (itemVal.required == true || hideShowOptions.showNonRequired)">
+                            <div ng-if="itemVal.type == 'checkbox'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
                                 <div layout="row">
 <!--                                            <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_box_48px.svg" class="" ></md-icon>-->
                                 <h3 class="md-subhead" ng-click="toggleItem(itemVal)" flex="">{{listValue}}:</h3>
@@ -179,7 +163,7 @@
                             </div>
 
 <!--                            RADIO-->
-                            <div ng-if="itemVal.type == 'radio'  && (itemVal.required == true || hideShowOptions.showNonRequired)">
+                            <div ng-if="itemVal.type == 'radio'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
 
                                 <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-radio-group ng-model="itemVal.value" ng-if="itemVal.showvalue">
@@ -189,7 +173,7 @@
                             </div>
 
 <!--                           NUMBER-->
-                            <div ng-if="itemVal.type == 'number'  && (itemVal.required == true || hideShowOptions.showNonRequired)">
+                            <div ng-if="itemVal.type == 'number'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
                                 <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-input-container layout="row" ng-if="itemVal.showvalue">
                                     <label>{{itemVal.label}}</label>
@@ -199,7 +183,7 @@
                             </div>
 
 <!--                           TEXT-->
-                            <div ng-if="itemVal.type == 'text'  && (itemVal.required == true || hideShowOptions.showNonRequired)">
+                            <div ng-if="itemVal.type == 'text'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
                                 <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-input-container ng-if="itemVal.showvalue">
                                     <label>{{itemVal.label}}</label>
@@ -209,7 +193,7 @@
                             </div>
 
 <!--                           SELECT-->
-                            <div ng-if="itemVal.type == 'select'  && (itemVal.required == true || hideShowOptions.showNonRequired)">
+                            <div ng-if="itemVal.type == 'select'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
                                <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-input-container ng-if="itemVal.showvalue">
                                   <md-select ng-model="itemVal.value" placeholder="Select {{listValue}}">
@@ -220,7 +204,7 @@
                             </div>
 
 <!--                           DATE-->
-                            <div  ng-if="itemVal.type == 'date'  && (itemVal.required == true || hideShowOptions.showNonRequired)">
+                            <div  ng-if="itemVal.type == 'date'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
                                 <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-input-container layout="row" ng-if="itemVal.showvalue">
                                     <label>{{itemVal.label}}</label>
@@ -230,7 +214,7 @@
                             </div>
 
 
-                  <div  ng-if="itemVal.type == 'image'  && (itemVal.required == true || hideShowOptions.showNonRequired)" layout="row" layout-align="start center">
+                  <div  ng-if="itemVal.type == 'image'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)" layout="row" layout-align="start center">
                     <md-button class="md-raised" aria-label="Photos" ng-click="capturePagePhoto(listValue, itemVal)">
                         <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon>Add Photo</md-button>
 
@@ -251,7 +235,7 @@
                     </md-menu>
                         </div>
 
-                  <div  ng-if="itemVal.type == 'photoAppendix'  && (itemVal.required == true || hideShowOptions.showNonRequired)" layout="column" layout-align="start start">
+                  <div  ng-if="itemVal.type == 'photoAppendix'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)" layout="column" layout-align="start start">
 
                         <div  layout="row" layout-sm="column">
                           <div flex="50">
@@ -398,7 +382,7 @@
    </script>
  <script type="text/ng-template" id="pageDialog.html">
          <md-dialog focusOnOpen="false">
-            <input style="hidden" type="text"  autofocus />
+            <input style="display:none" type="text"  autofocus />
              <md-toolbar layout="row" layout-align="center center">
                  <h4 class="md-subhead" style="padding:0 25px">Add Page</h3>
                  <span flex></span>
@@ -427,7 +411,7 @@
 <!-- <div class="footerSpace"></div>-->
         </md-content>
 
-        <div class="footerSpace"></div>
+
 
     </section>
 
@@ -450,12 +434,14 @@
                     </md-button>
                 </a>
 
-                <a ng-click="capturePagePhoto(service.selectedPage, report[currentSection][{{service.selectedPage + ' Images'}}])" layout="row" layout-align="end center">
-                    <div >Image</div>
+                <a ng-click="capturePagePhoto(service.selectedPage, report[currentSection][selImagePage])" layout="row" layout-align="end center">
+
+                    <div>Image</div>
                     <md-button class="md-fab md-hue-3 md-raised md-mini" aria-label="Add Section">
                         <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon>
                     </md-button>
                 </a>
+
         </div>
 
 

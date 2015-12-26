@@ -112,6 +112,11 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
 inspection.factory('inspectionService', ['$http','$location', '$cacheFactory',                      function ($http, $location, $cacheFactory) {
         var factory = {};
         var service = {};
+
+        factory.currentReport = reportOne;
+        factory.backdrop = false;
+        factory.selectedPage;
+        factory.currentSection;
         factory.serverURL = "http://dev.maurasoftware.com:9526";
         //factory.serverURL = "localhost";
 
@@ -129,12 +134,36 @@ inspection.factory('inspectionService', ['$http','$location', '$cacheFactory',  
         factory.currentPage = {
             title: "Inspection",
             preventNavigation: false,
-            icon: "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg"
+            toggleNavMenu: true,
+            icon: "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg",
+            link: "create({section:'default'})",
+            showExtraMenu: false
         }
 
-        factory.currentReport = reportOne;
-        factory.backdrop = false;
-        factory.selectedPage;
+         factory.hideShowOptions = {'text':'Hide', 'showNonRequired':true};
+
+         factory.filterRequired = function(param) {
+             if (factory.hideShowOptions.showNonRequired)
+             {
+                factory.hideShowOptions.showNonRequired = false;
+                factory.hideShowOptions.text  = "Show";
+             }
+             else
+             {
+                  factory.hideShowOptions.showNonRequired = true;
+                  factory.hideShowOptions.text  = "Hide";
+             }
+             console.log("CALLED: " + factory.hideShowOptions.showNonRequired);
+         }
+
+
+     factory.openItems = function(showVal) {
+        angular.forEach(factory.currentReport[factory.currentSection][factory.selectedPage], function(value, key) {
+            value.showvalue = showVal;
+        });
+     }
+
+
 
         //Setup data
         factory.init = function() {

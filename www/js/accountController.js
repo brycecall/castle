@@ -1,11 +1,17 @@
 angular.module('fbiApp').controller('accountController', ['$scope', 'inspectionService', '$location', '$mdSidenav',
         function accountController($scope, inspectionService, $location, $mdSidenav) {
-            inspectionService.currentPage = "Signin";
+
+        inspectionService.currentPage.toggleNavMenu = true;
+        inspectionService.currentPage.title = "Sign In";
+        inspectionService.currentPage.icon = "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg";
+
 
             $scope.username = inspectionService.currentUser.name;
             $scope.password = null;
             $scope.error = "";
             $scope.signin = function () {
+
+
 
 
                 inspectionService.console($scope.username + " " +$scope.password, inspectionService.INFO);

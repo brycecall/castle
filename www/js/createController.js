@@ -1,5 +1,32 @@
- angular.module('fbiApp').controller('createController', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', '$mdDialog', '$mdMedia', '$anchorScroll', '$rootScope', '$window', '$stateParams', 'inspectionService', '$mdBottomSheet', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $anchorScroll, $rootScope, $window, $stateParams, inspectionService, $mdBottomSheet) {
+ angular.module('fbiApp').controller('createController', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', '$mdDialog', '$mdMedia', '$anchorScroll', '$rootScope', '$window', '$stateParams', 'inspectionService', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $anchorScroll, $rootScope, $window, $stateParams, inspectionService) {
 
+
+
+    $scope.currentSection = $stateParams.section;
+    inspectionService.currentSection = $scope.currentSection;
+    $scope.selectedPage = inspectionService.selectedPage;
+    $scope.selImagePage = $scope.selectedPage + " Images";
+    $scope.report = inspectionService.currentReport;
+
+
+    $scope.changeSelection = function(pagetitle) {
+        $scope.selectedPage = pagetitle;
+        inspectionService.selectedPage = pagetitle;
+        $scope.selImagePage = $scope.selectedPage + " Images";
+         console.log($scope.selectedPage);
+     }
+    if ($scope.currentSection == "default") {
+        inspectionService.currentPage.toggleNavMenu = true;
+        inspectionService.currentPage.title = "Inspection";
+        inspectionService.currentPage.icon = "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg";
+
+    } else {
+        inspectionService.currentPage.title = $scope.currentSection;
+        inspectionService.currentPage.icon = "./bower_components/material-design-icons/navigation/svg/design/ic_arrow_back_48px.svg";
+        inspectionService.currentPage.toggleNavMenu = false;
+        inspectionService.currentPage.link = "create({section:'default'})";
+        inspectionService.currentPage.showExtraMenu = true;
+    }
 
 
 
@@ -21,30 +48,22 @@
      return debounceFn;
  }
 
- $scope.report = inspectionService.currentReport;
- $scope.hideShowOptions = {'text':'Hide', 'showNonRequired':true};
+// $scope.hideShowOptions = {'text':'Hide', 'showNonRequired':true};
+//
+// $scope.filterRequired = function(param) {
+//     if ($scope.hideShowOptions.showNonRequired)
+//     {
+//        $scope.hideShowOptions.showNonRequired = false;
+//        $scope.hideShowOptions.text  = "Show";
+//     }
+//     else
+//     {
+//          $scope.hideShowOptions.showNonRequired = true;
+//          $scope.hideShowOptions.text  = "Hide";
+//     }
+//     console.log("CALLED: " + $scope.hideShowOptions.showNonRequired);
+// }
 
- $scope.filterRequired = function(param) {
-     if ($scope.hideShowOptions.showNonRequired)
-     {
-        $scope.hideShowOptions.showNonRequired = false;
-        $scope.hideShowOptions.text  = "Show";
-     }
-     else
-     {
-          $scope.hideShowOptions.showNonRequired = true;
-          $scope.hideShowOptions.text  = "Hide";
-     }
-     console.log("CALLED: " + $scope.hideShowOptions.showNonRequired);
- }
-
-    $scope.currentSection = $stateParams.section;
-    $scope.selectedPage = inspectionService.selectedPage;
-    $scope.changeSelection = function(pagetitle) {
-        $scope.selectedPage = pagetitle;
-        inspectionService.selectedPage = pagetitle;
-         console.log($scope.selectedPage);
-     }
 
      $scope.subPage = '';
 
@@ -119,6 +138,7 @@
          $scope.close();
          $scope.currentSection = sectionkey;
          inspectionService.currentPage.title = $scope.currentSection;
+
          inspectionService.menuSwitch('back');
      };
 
@@ -239,11 +259,11 @@
 
      $scope.isOpen = false;
 
-     $scope.openItems = function(showVal) {
-        angular.forEach($scope.report[$scope.currentSection][$scope.selectedPage], function(value, key) {
-            value.showvalue = showVal;
-        });
-     }
+//     $scope.openItems = function(showVal) {
+//        angular.forEach($scope.report[$scope.currentSection][$scope.selectedPage], function(value, key) {
+//            value.showvalue = showVal;
+//        });
+//     }
 
     $scope.initCameraAction = function(pCheckboxval) {
         var imgJSON = {'i':''};

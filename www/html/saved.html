@@ -7,24 +7,15 @@
 <!--           <div layout="row" layout-align="start center" >-->
           <div>
 
-                <md-whiteframe class="md-whiteframe-1dp frameStyle" layout-align="center center">
-                    <span>This will be a report title</span>
+
+
+                <md-whiteframe  ng-repeat="sReport in savedReports" class="md-whiteframe-1dp frameStyle" ng-click="switchReport(sReport)" ui-sref="create({section:'default'})" layout-align="center center">
+                    <span>{{sReport['rep_name']}}</span>
                 </md-whiteframe>
 
-                <md-whiteframe class="md-whiteframe-1dp frameStyle" layout-align="center center">
-                    <span>This will be a report title</span>
-                </md-whiteframe>
 
-                <md-whiteframe class="md-whiteframe-1dp frameStyle" layout-align="center center">
-                    <span>This will be a report title</span>
-                </md-whiteframe>
-
-                <md-whiteframe class="md-whiteframe-1dp frameStyle" layout-align="center center">
-                    <span>This will be a report title</span>
-                </md-whiteframe>
-
-                <md-whiteframe class="md-whiteframe-1dp frameStyle" layout-align="center center">
-                    <span>This will be a report title</span>
+                <md-whiteframe class="md-whiteframe-1dp frameStyle" ui-sref="create({section:'default'})" layout-align="center center">
+                    <span>Create New Report</span>
                 </md-whiteframe>
 
            </div>

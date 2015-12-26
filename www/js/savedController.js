@@ -1,31 +1,31 @@
  angular.module('fbiApp').controller('savedController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, inspectionService, $http) {
 
-inspectionService.currentPage.title = "Saved"
+inspectionService.currentPage.title = "Saved";
 
 $scope.savedReports = {};
 
 
 
 
-$(document).ready(function() {
 
-    console.log("CALLED");
 
     inspectionService.request("/report/c/1").success(function(response) {
         if (response != null && response != "") {
             $scope.savedReports = response;
-            console.log(response[0]['rep_json']);
-        }
-        else
-        {
+
+        } else {
             $scope.chapters = "";
             console.log("EMPTY!");
         }
     });
 
-});
+    $scope.switchReport = function(sReport) {
+        console.log(sReport['rep_json']);
+        inspectionService.currentReport = JSON.parse(sReport['rep_json']);
 
-   console.log($scope.savedReports[0]);
+        console.log("This is special");
+
+    }
 
 
 /********************************************************

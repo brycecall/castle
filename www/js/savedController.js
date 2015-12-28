@@ -5,10 +5,6 @@ inspectionService.currentPage.title = "Saved";
 $scope.savedReports = {};
 
 
-
-
-
-
     inspectionService.request("/report/c/1").success(function(response) {
         if (response != null && response != "") {
             $scope.savedReports = response;
@@ -21,7 +17,12 @@ $scope.savedReports = {};
 
     $scope.switchReport = function(sReport) {
         console.log(sReport['rep_json']);
-        inspectionService.currentReport = JSON.parse(sReport['rep_json']);
+        var temp = sReport['rep_json'];
+        if (typeof temp != 'object') {
+            temp = JSON.parse(sReport['rep_json']);
+        }
+
+        inspectionService.currentReport = temp;
 
         console.log("This is special");
 

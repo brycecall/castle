@@ -45,7 +45,12 @@
                         <md-divider></md-divider>
                     </md-list-item>
                 </md-list>
-             <a href="#generate"><md-button class=" md-raised" aria-label="generate Report">Generate Report</md-button></a>
+
+
+             <a href="#generate">
+                 <md-button ng-click="checkRequired()" class="md-raised" aria-label="generate Report">Generate Report</md-button>
+             </a>
+
              </md-card-content>
             </md-card>
 
@@ -117,10 +122,15 @@
                                        <h3 class="md-subhead" style="border:none" ng-click="toggleItem(itemVal)">{{listValue}} Message:</h3>
                                    </div>
 
-                                    <div class="relFlex" ng-if="itemVal.showvalue">
+                                    <div class="relFlex" ng-if="itemVal.showvalue" layout="column">
                                         <md-switch ng-model="itemVal.showcontent" aria-label="Show listValue" class="firstPosition md-body-1">Show {{listValue}} Message </md-switch>
-                                        <div flex></div>
-                                        <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_48px.svg" class="md-accent" ng-click="showMessage($event, listValue, itemVal.content)" flex="10"></md-icon>
+
+                                        <md-card>
+                                        <md-card-content>{{itemVal.content}}</md-card-content>
+                                        </md-card>
+
+<!--                                        <div flex></div>-->
+<!--                                        <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_48px.svg" class="md-accent" ng-click="showMessage($event, listValue, itemVal.content)" flex="10"></md-icon>-->
                                     </div>
 <!--                                    <md-divider></md-divider>-->
                             </div>

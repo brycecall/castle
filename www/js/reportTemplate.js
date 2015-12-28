@@ -1,4 +1,5 @@
-        var reportOne = {
+        var reportOne =
+            {
                 "Field Notes": {
                     "Client Info": {
                         "Show Value": {
@@ -268,7 +269,7 @@
                             "type": "image",
                             "content": [
                     ]
-                        },
+                        }
 
                     }
                 },
@@ -556,7 +557,7 @@
                         "Attached Steps/Platforms Images": {
                             "type": "image",
                             "content": []
-                        },
+                        }
                     }
                 },
                 "Exterior": {
@@ -782,7 +783,7 @@
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "showcontent": true,
-                            "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-180 of the Washington State Dept. of Licensing, the inspector is not required to: (1)determine whether or not a solid core pedestrian door that is not labeled is fire rated, (2)verify the functionality of garage door opener remote controls, (3)move vehicles or personal property, (4)operate any equipment unless otherwise addressed in the standards of practice.",
+                            "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-180 of the Washington State Dept. of Licensing, the inspector is not required to: (1)determine whether or not a solid core pedestrian door that is not labeled is fire rated, (2)verify the functionality of garage door opener remote controls, (3)move vehicles or personal property, (4)operate any equipment unless otherwise addressed in the standards of practice."
                         },
                         "Vehicle Parking": {
                             "required": false, "showvalue" : false,
@@ -835,7 +836,7 @@
                                 "n/a": {"c": false,"i": []},
                                 "Above Living Space": {"c": false,"i": []},
                                 "Below Living Space": {"c": false,"i": []},
-                                "Adjoining Walls": {"c": false,"i": []},
+                                "Adjoining Walls": {"c": false,"i": []}
                             }
                         },
                         "Firewall Condition": {
@@ -846,7 +847,7 @@
                                 "Pet Door": {"c": false,"i": []},
                                 "Satisfactory": {"c": false,"i": []},
                                 "Marginal": {"c": false,"i": []},
-                                "Poor": {"c": false,"i": []},
+                                "Poor": {"c": false,"i": []}
                             }
                         },
                         "Firedoor Condition": {
@@ -957,7 +958,7 @@
                             "content": [
                     ]
                         }
-                    },
+                    }
                 },
                 "Roofing": {
                     "Roof Covering(s)": {
@@ -1205,7 +1206,7 @@
                             "type": "image",
                             "content": [
                     ]
-                        },
+                        }
                 },
                 "Gutters & Down-Spouts": {
                         "Show Value": {
@@ -1323,7 +1324,7 @@
                             "1x Skip Sheathing": {"c": false,"i": []}
                         }
                     },
-                    "Condition": {
+                    "Diaphragm Sheathing Condition": {
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
@@ -1391,7 +1392,7 @@
                         "value": {
                             "No Joists": {"c": false,"i": []},
                             "Lumber": {"c": false,"i": []},
-                            "Sleepers": {"c": false,"i": []},
+                            "Sleepers": {"c": false,"i": []}
                         }
                     },
                     "I-Beams": {
@@ -1407,7 +1408,7 @@
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
-                            'Foam-Crete': {"c": false,"i": []},
+                            "Foam-Crete": {"c": false,"i": []},
                             "Diagonal": {"c": false,"i": []},
                             "Plank": {"c": false,"i": []},
                             "T&G/Shiplap": {"c": false,"i": []},
@@ -1426,7 +1427,7 @@
                             "CMU (block)": {"c": false,"i": []}
                         }
                     },
-                    "Condition": {
+                    "Posts(Columns) Condition": {
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
@@ -1451,10 +1452,10 @@
                         "value": {
                             "n/a": {"c": false,"i": []},
                             "Open": {"c": false,"i": []},
-                            "Enclosed": {"c": false,"i": []},
+                            "Enclosed": {"c": false,"i": []}
                         }
                     },
-                    "Condition": {
+                    "Stairs Condition": {
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
@@ -1488,7 +1489,7 @@
                             "Covered/Not Visible": {"c": false,"i": []}
                         }
                     },
-                    "Condition": {
+                    "Basement/Crawl Floor Condition": {
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
@@ -1592,7 +1593,7 @@
                             "Inactive": {"c": false,"i": []},
                             "Active": {"c": false,"i": []},
                             "Larger than 1/4 inch": {"c": false,"i": []},
-                            "Re-Evaluate": {"c": false,"i": []},
+                            "Re-Evaluate": {"c": false,"i": []}
                         }
                     },
                     "Drainage": {
@@ -1913,7 +1914,7 @@
                             "Fan(s)": {"c": false,"i": []}
                         }
                     },
-                    "Condition": {
+                    "Condition of Crawl-Space Ventilation": {
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
@@ -1944,7 +1945,7 @@
                             "Efflorescence": {"c": false,"i": []},
                             "Old Stains": {"c": false,"i": []},
                             "Fresh": {"c": false,"i": []},
-                            "Standing Water": {"c": false,"i": []},
+                            "Standing Water": {"c": false,"i": []}
                         }
                     },
                     "Drainage": {
@@ -1998,7 +1999,7 @@
                             "Ceiling-Mounted Fan(s)": {"c": false,"i": []}
                         }
                     },
-                    "Condition": {
+                    "Whole House Ventiliation Condition": {
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
@@ -2022,7 +2023,7 @@
                             "Unsafe": {"c": false,"i": []}
                         }
                     },
-                    "Condition": {
+                    "Condition Moisture Reduction Fans": {
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
@@ -2111,7 +2112,7 @@
                         "OFF": {"c": false,"i": []},
                         "Inadequate (<45psi)": {"c": false,"i": []},
                         "Adequate (45-85psi)": {"c": false,"i": []},
-                        "Excessive (>85psi)": {"c": false,"i": []},
+                        "Excessive (>85psi)": {"c": false,"i": []}
                         }
                     },
                     "Water Temperature": {
@@ -2126,7 +2127,7 @@
                             "Inadequate (65-85 degrees)": {"c": false,"i": []},
                             "Normal (85-115 degrees)": {"c": false,"i": []},
                             "Hot (115-120 degrees)": {"c": false,"i": []},
-                            "Scalding Hazard (>120 degrees)": {"c": false,"i": []},
+                            "Scalding Hazard (>120 degrees)": {"c": false,"i": []}
                         }
                     },
                     "Waste System": {
@@ -2152,7 +2153,7 @@
                         "PEX": {"c": false,"i": []}
                     }
                 },
-                "Condition": {
+                "Main Entry Piping Condition": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2187,7 +2188,7 @@
                         "PEX": {"c": false,"i": []}
                     }
                 },
-                "Condition": {
+                "Condition of Water Lines": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2227,7 +2228,7 @@
                         "Plastic/ABS/PVC": {"c": false,"i": []}
                     }
                 },
-                "Condition": {
+                "Condition of DMV Piping": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2272,7 +2273,7 @@
                         "Sprayer": {"c": false,"i": []}
                     }
                 },
-                "Location": {
+                "Faucets/Fixtures Location": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2309,7 +2310,7 @@
                         "Airgap": {"c": false,"i": []}
                     }
                 },
-                "Condition": {
+                "Dishwasher Condition": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2353,7 +2354,7 @@
                         "Re-Evaluate": {"c": false,"i": []}
                     }
                 },
-                "Location": {
+                "Sinks/Fixtures Location": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2388,7 +2389,7 @@
                         "Jacuzzi": {"c": false,"i": []}
                     }
                 },
-                "Condition": {
+                "Condition of Tub/Shower Surround(s)": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2674,7 +2675,7 @@
                         "Last Serviced n/a": {"c": false,"i": []}
                     }
                 },
-                "Condition": {
+                "Posted Service History Condition": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2945,7 +2946,7 @@
                     "type":"hidden",
                     "showvalue":false
                 },
-                "Brand Name": {
+                "Compressor/Condenser Brand Name": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2953,7 +2954,7 @@
                         "OTHER (NEEDS MORE DATA)": {"c": false,"i": []}
                     }
                 },
-                "Capacity": {
+                "Compressor/Condenser Capacity": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2961,22 +2962,22 @@
                         "OTHER (NEEDS MORE DATA)": {"c": false,"i": []}
                     }
                 },
-                "Year of Manufacture": {
+                "Compressor/Condenser Year of Manufacture": {
                     "required": false, "showvalue" : false,
                     "type": "number",
                     "value": ""
                 },
-                "Model #": {
+                "Model # of Compressor/Condenser": {
                     "required": false, "showvalue" : false,
                     "type": "textbox",
                     "value": ""
                 },
-                "Serial #": {
+                "Serial # of Compressor/Condenser": {
                     "required": false, "showvalue" : false,
                     "type": "textbox",
                     "value": ""
                 },
-                "Condition": {
+                "Condition Compressor/Condenser": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -3040,7 +3041,7 @@
                         "Aluminum": {"c": false,"i": []}
                     }
                 },
-                "Condition 1": {
+                "Condition of Main Service Entry": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -3109,7 +3110,7 @@
                         "Not Visible/Accessible": {"c": false,"i": []}
                     }
                 },
-                "Condition 2": {
+                "Condition of Main Electrical Disconnect": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -3216,7 +3217,7 @@
                         "Knob & Tube": {"c": false,"i": []}
                     }
                 },
-                "Condition 3": {
+                "Condition of Branch Wiring": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -3282,7 +3283,7 @@
                         "Typical Un-Grounded": {"c": false,"i": []}
                     }
                 },
-                "Condition 4": {
+                "Condition of Switches/Receptacles": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -3440,7 +3441,7 @@
                         "Burned": {"c": false,"i": []},
                         "Exposed Wires": {"c": false,"i": []},
                         "Hazardous/Unsafe": {"c": false,"i": []},
-                        "Refer To Electrical Section": {c: true,"i": []},
+                        "Refer To Electrical Section": {"c": true,"i": []},
                         "Recommend Professional Evaluation": {"c": false,"i": []}
                     }
                 },
@@ -3662,7 +3663,7 @@
                         "Open Beam": {"c": false,"i": []}
                     }
                 },
-                "Condition 5": {
+                "Condition of Walls/Ceilings": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -3754,7 +3755,7 @@
                         "Open Beam": {"c": false,"i": []}
                     }
                 },
-                "Condition 6": {
+                "Walls/Ceilings Condition": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -3786,7 +3787,7 @@
                         "Carpet": {"c": false,"i": []}
                     }
                 },
-                "Condition 7": {
+                "Floor Coverings Condition": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -3817,7 +3818,7 @@
                         "Accordion": {"c": false,"i": []}
                     }
                 },
-                "Condition 8": {
+                "Interior Doors Condition": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {

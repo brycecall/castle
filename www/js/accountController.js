@@ -2,7 +2,7 @@ angular.module('fbiApp').controller('accountController', ['$scope', 'inspectionS
         function accountController($scope, inspectionService, $location, $mdSidenav) {
 
         inspectionService.currentPage.toggleNavMenu = true;
-        inspectionService.currentPage.title = "Sign In";
+        inspectionService.currentPage.title = "Account";
         inspectionService.currentPage.icon = "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg";
 
 

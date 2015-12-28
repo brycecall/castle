@@ -30,6 +30,12 @@
 
 
 
+    $scope.checkRequired = function() {
+       // inspectionService.currentReport
+
+    }
+
+
  /**
   * Build handler to open/close a SideNav; when animation finishes
   * report completion in console

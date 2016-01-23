@@ -3,7 +3,7 @@ var inspection = angular.module('fbiApp', ['ui.router', 'ngTouch', 'ngMaterial']
 
 inspection.config(
     function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/create/default');
+        $urlRouterProvider.otherwise('/saved');
         $stateProvider
             .state('create', {
                 url: "/create/:section",
@@ -63,8 +63,7 @@ inspection.config(function($mdThemingProvider) {
 
 
 // Controller for the index page
-inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUtil', '$mdSidenav', '$anchorScroll', '$rootScope', function($scope, service, $mdUtil, $mdSidenav, $anchorScroll, $rootScope) {
-    // This is a little hacky, bit it works alright, maybe fix latter
+inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUtil', '$mdSidenav', function($scope, service, $mdUtil, $mdSidenav) {
     $scope.service = service;
     
     $scope.toggleNavigation = function() {
@@ -76,15 +75,6 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
     $scope.toggleAdd = function() {
         $scope.show_add_icons = !$scope.show_add_icons;
     }
-    
-    $scope.scrollToTop = function() {
-        $anchorScroll();
-    }
-
-//    $scope.go = function(pPath) {
-//        var loc = $location.path(pPath);
-//        console.log(loc);
-//    };
 
     $scope.navigationPages = [
         {
@@ -109,11 +99,11 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
 
 
 // Create the factory / service that is shared among all the controllers
-inspection.factory('inspectionService', ['$http','$location', '$cacheFactory',                      function ($http, $location, $cacheFactory) {
+inspection.factory('inspectionService', ['$http','$location', '$cacheFactory', function ($http, $location, $cacheFactory) {
         var factory = {};
-        var service = {};
 
-        factory.currentReport = reportOne;
+    console.log("factory again");
+        factory.currentReport;
         factory.backdrop = false;
         factory.selectedPage;
         factory.currentSection;
@@ -162,8 +152,6 @@ inspection.factory('inspectionService', ['$http','$location', '$cacheFactory',  
             value.showvalue = showVal;
         });
      }
-
-
 
         //Setup data
         factory.init = function() {
@@ -256,11 +244,83 @@ inspection.factory('inspectionService', ['$http','$location', '$cacheFactory',  
         document.addEventListener('deviceready', function () {
             console.log('Cordova Ready!');
             //factory.clearCache();
-            //pushWoosh.init();
         }, false);
 
-        factory.console("inspector factory ready!", service.INFO);
         return factory;
   }]);
+
+
+inspection.service("reportService", function () {
+
+var theReport = {};
+
+return {
+    getTheReport: function () {
+        return theReport;
+    },
+    setTheReport: function (value) {
+        theReport = value;
+    }
+};
+
+});
+
+
+inspection.service("serverService", function ($http, $q) {
+    return ({
+        getReport: getReport
+
+    });
+
+    function getReport() {
+        console.log("Get Report Called");
+        var request = $http({
+            method: "GET",
+            url: "http://dev.maurasoftware.com:9526/report/c/1",
+            params: {
+                action: "GET"
+            }
+        });
+        return (request.then(handleSuccess, handleError));
+    }
+
+    function handleError(response) {
+        if (!angular.isObject(response.data) ||
+            !response.data.message
+        ) {
+            return ($q.reject("An unknown error occurred."));
+        }
+        return ($q.reject(response.data.message));
+    }
+
+    function handleSuccess(response) {
+        return (response.data);
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

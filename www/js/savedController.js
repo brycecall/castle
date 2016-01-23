@@ -1,8 +1,17 @@
- angular.module('fbiApp').controller('savedController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, inspectionService, $http) {
+inspection.controller('savedController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, inspectionService, $http, reportService, $rootScope) {
 
 inspectionService.currentPage.title = "Saved";
 
 $scope.savedReports = {};
+
+
+//          $scope.report = {};
+//   function applyRemoteData(remoteData) {
+//     }
+//
+//     serverService.getReport().then(function (report) {
+//         applyRemoteData(report)
+//     });
 
 
     inspectionService.request("/report/c/1").success(function(response) {
@@ -17,16 +26,22 @@ $scope.savedReports = {};
 
     $scope.switchReport = function(sReport) {
         console.log(sReport['rep_json']);
+
         var temp = sReport['rep_json'];
-        if (typeof temp != 'object') {
-            temp = JSON.parse(sReport['rep_json']);
-        }
+//        if (typeof temp != 'object') {
+//            temp = JSON.parse(sReport['rep_json']);
+//        }
 
+        console.log(temp);
         inspectionService.currentReport = temp;
-
+        reportService.setTheReport(temp);
+        $rootScope.$broadcast('reportChange', inspectionService.currentReport);
         console.log("This is special");
 
     }
+
+
+   // console.log(JSON.stringify(reportOne))
 
 
 /********************************************************

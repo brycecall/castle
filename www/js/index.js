@@ -1,71 +1,34 @@
 // Create the main module
-var inspection = angular.module('fbiApp', ['ngRoute', 'ngTouch', 'ngMaterial']);
+var inspection = angular.module('fbiApp', ['ui.router', 'ngTouch', 'ngMaterial']);
 
-//var express = require('express');
-//var mongoose = require('mongoose');
-//var config = require('config');
-//var passport = require('passport');
-//var expressSession = require('express-session');
-//mongoose.connect(config.mongoUri);
-//var userService = require('./services/user-service');
-//var passportConfig = require('./auth/passport-config');
-//passportConfig();
-//
-//
-//inspection.use(passport.initialize());
-//inspection.use(passport.session());
-//inspection.use(express.static(path.join(__dirname, 'public')));
-//inspection.user(expressSession()
-//                {
-//                    secret: 'getting hungry',
-//                    saveUninitialized: false,
-//                    resave: false
-//                }
-//               ));
-
-
-
-// Config - take care of URL routes
-inspection.config(['$routeProvider',
-
-    function ($routeProvider, $anchorScroll) {
-        $routeProvider
-            .when('/create/:section', {
+inspection.config(
+    function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.otherwise('/create/default');
+        $stateProvider
+            .state('create', {
+                url: "/create/:section",
                 templateUrl: 'html/create.html',
-                controller: 'createController'
+               // controller: 'createController'
             })
 
-            .when('/account', {
+            .state('account', {
+                url: '/account',
                 templateUrl: 'html/account.html',
-                controller: 'savedController'
+               // controller: 'accountController'
             })
 
-            .when('/saved', {
+            .state('saved', {
+                url: '/saved',
                 templateUrl: 'html/saved.html',
-                controller: 'savedController'
+                //controller: 'savedController'
             })
 
-            .when('/generate', {
+            .state('generate', {
+                url: '/generate',
                 templateUrl: 'html/generate.html',
-                controller: 'generateController'
+                //controller: 'generateController'
             })
-
-            .otherwise({
-                redirectTo: '/create/default'
-            });
-  }]);
-
-// Config - the material design theme
-//inspection.config(function($mdThemingProvider) {
-//  $mdThemingProvider.theme('default')
-//    .primaryPalette('green', {
-//      'default': '500',
-//      'hue-1': '100',
-//      'hue-2': '600',
-//      'hue-3': 'A100',
-//    })
-//    .accentPalette('orange'),
-//  });
+  });
 
 inspection.config(function($mdThemingProvider) {
   $mdThemingProvider.definePalette('inspectorPallet', {
@@ -100,13 +63,12 @@ inspection.config(function($mdThemingProvider) {
 
 
 // Controller for the index page
-inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUtil', '$mdSidenav', '$location', '$anchorScroll', function($scope, service, $mdUtil, $mdSidenav, $anchorScroll, $location) {
+inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUtil', '$mdSidenav', '$anchorScroll', '$rootScope', function($scope, service, $mdUtil, $mdSidenav, $anchorScroll, $rootScope) {
     // This is a little hacky, bit it works alright, maybe fix latter
     $scope.service = service;
     
     $scope.toggleNavigation = function() {
-
-        $mdSidenav("main").toggle();
+          $mdSidenav("main").toggle();
     }
     
     $scope.show_add_icons = false;
@@ -119,79 +81,166 @@ inspection.controller('indexController', ['$scope', 'inspectionService', '$mdUti
         $anchorScroll();
     }
 
+//    $scope.go = function(pPath) {
+//        var loc = $location.path(pPath);
+//        console.log(loc);
+//    };
 
     $scope.navigationPages = [
         {
             title: "New Report",
             icon: "./bower_components/material-design-icons/action/svg/design/ic_assignment_48px.svg",
-            link: "#create"
+            link: "create({section:'default'})"
         },
         {
             title: "Saved Reports",
             icon: "./bower_components/material-design-icons/action/svg/design/ic_book_48px.svg",
-            link: "#saved"
+            link: "saved"
+        },
+        {
+            title: "Account",
+            icon: "./bower_components/material-design-icons/action/svg/design/ic_account_box_48px.svg",
+            link: "account"
         }
         ];
-}]);
+    }]);
+
+
+
 
 // Create the factory / service that is shared among all the controllers
-inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
-    function ($http, $cacheFactory, $route) {
-        var factory = {},
-            cache = $cacheFactory('inspectionCache'), // TODO - do we need the cache?
-            baseUrl = '', /* 'http://api.thedealio.org:443/bond/'   TODO - change to URL to inspectionMe server */
-            imageBaseUrl = '', /* http://api.thedealio.org'   TODO - change to URL to inspectionMe server */
-            notificationId = 0; /* 132479809,    TODO - what is this? is this for PushWoosh? */
+inspection.factory('inspectionService', ['$http','$location', '$cacheFactory',                      function ($http, $location, $cacheFactory) {
+        var factory = {};
+        var service = {};
+
+        factory.currentReport = reportOne;
+        factory.backdrop = false;
+        factory.selectedPage;
+        factory.currentSection;
+        factory.serverURL = "http://dev.maurasoftware.com:9526";
+        //factory.serverURL = "localhost";
+
+        // Current user information
+        factory.currentUser = {
+            user_id: 1,
+            name: "Rod Beacham",
+            user_name: "Rod",
+            first_name: "Rod",
+            last_name: "Beacham",
+            profile_image: "img/rod.png"
+        }
         
         // Current page information
         factory.currentPage = {
             title: "Inspection",
             preventNavigation: false,
-            icon: "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg"
-        };
-
-        
-        factory.currentReport = reportOne;
-
-        factory.hideShowOptions = {'text' : "Hide", 'showNonRequired' : true}
-
-        factory.menuSwitch = function(type) {
-            //alert("CALLED!");
-            var icon;
-            switch (type)
-            {
-                case 'menu':
-                    icon = "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg"
-                    break;
-                case 'back':
-                    icon = "./bower_components/material-design-icons/navigation/svg/design/ic_arrow_back_48px.svg";
-                    break;
-                default:
-                    icon = "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg";
-            }
-            factory.currentPage.icon = icon;
+            toggleNavMenu: true,
+            icon: "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg",
+            link: "create({section:'default'})",
+            showExtraMenu: false
         }
-        // Current user information
-        factory.currentUser = {
-            user_id: 1,
-            user_name: "Rod",
-            first_name: "Rod",
-            last_name: "Beacham",
-            profile_image: "img/rod.png"
+
+         factory.hideShowOptions = {'text':'Hide', 'showNonRequired':true};
+
+         factory.filterRequired = function(param) {
+             if (factory.hideShowOptions.showNonRequired)
+             {
+                factory.hideShowOptions.showNonRequired = false;
+                factory.hideShowOptions.text  = "Show";
+             }
+             else
+             {
+                  factory.hideShowOptions.showNonRequired = true;
+                  factory.hideShowOptions.text  = "Hide";
+             }
+             console.log("CALLED: " + factory.hideShowOptions.showNonRequired);
+         }
+
+
+     factory.openItems = function(showVal) {
+        angular.forEach(factory.currentReport[factory.currentSection][factory.selectedPage], function(value, key) {
+            value.showvalue = showVal;
+        });
+     }
+
+
+
+        //Setup data
+        factory.init = function() {
+            if (factory.currentUser.id == null)
+            {
+                $location.path("/signin");
+                return false;
+            }
+            return true;
         };
 
-        // Refresh the cache every hour
-        setInterval(function() {
-            factory.clearCache();
-        }, 1800000);  // Update every 30 minutes.
-        
-        factory.clearCache = function () {
-            cache.removeAll();
-            $route.reload();
+        //Endpoint respondant
+        factory.request = function(endpoint, jsonData) {
+            var response;
+
+            if (jsonData)
+            {
+                console.log(JSON.parse(JSON.stringify(jsonData)));
+
+                var config = {
+                    headers: {
+                        'Cache-Control': 'no-cache',
+                        'Content-Type': 'plain/text'
+                    }
+                };
+
+                response = $http.post(factory.serverURL + endpoint, jsonData, config);
+            }
+            else
+            {
+                console.log("GET " + endpoint);
+                response = $http.get(factory.serverURL + endpoint);
+            }
+
+
+            return response;
+
+        };
+
+        // Debug output control
+        factory.ERROR = 1;
+        factory.WARN = 2;
+        factory.INFO = 3;
+        window.debug = false;
+        factory.console = function (message, level, stack) {
+            if (!window.debug && level == factory.ERROR)
+                console.error(message);
+            else if (window.debug)
+            {
+                var buffer = message;
+
+                if (stack)
+                    message += "\n" + (new Error()).stack.substr(7);
+
+                message = (new Date()).toLocaleTimeString() + "::" +
+                    factory.console.caller.name + ":: " + message;
+
+                switch (level) {
+                    case factory.ERROR:
+                        console.error(message);
+                        alert(buffer);
+                        break;
+                    case factory.WARN:
+                        console.warn(message);
+                        break;
+                    case factory.INFO:
+                        console.info(message);
+                        break;
+                    default:
+                        console.log(message);
+                        break;
+                }
+            }
         };
 
 
-        factory.openExternalUrl = function (url) {
+        factory.navigateExternalUrl = function (url) {
             if (navigator.app) {
                 // Android
                 navigator.app.loadUrl(url, { openExternal: true });
@@ -201,15 +250,16 @@ inspection.factory('inspectionService', ['$http', '$cacheFactory', '$route',
                 // iOS and others
                 window.open(url, '_system');
             }
-        };
+        }
 
         // Fires when Cordova is fully loaded
         document.addEventListener('deviceready', function () {
             console.log('Cordova Ready!');
-            factory.clearCache();
+            //factory.clearCache();
             //pushWoosh.init();
         }, false);
-        
+
+        factory.console("inspector factory ready!", service.INFO);
         return factory;
   }]);
 

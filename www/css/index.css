@@ -118,7 +118,7 @@ body {
    color:rgb(76,175,80);
 }
 
-.md-headline, .md-title, .md-subhead, .md-display-1, .subHeader {
+.md-headline, .md-title, .md-subhead, .md-display-1, .subHeader, input {
     outline: none;
 }
 
@@ -169,7 +169,9 @@ body {
 }
 
 .cameraButton {
-    margin-left: 7px;
+    margin: 0;
+    text-align: left;
+    padding-left: 0;
 }
 
 .neutral {
@@ -182,7 +184,7 @@ body {
 
 .page {
     height:100%;
-
+    background-color: white;
 }
 
 .footerSpace {
@@ -340,7 +342,7 @@ md-radio-group {
     max-width: 695px;
 }
 
-.mainButton {
+.mainButtonMenu {
     position:fixed;
     bottom:0;
     right:10px;
@@ -446,4 +448,123 @@ overoverflow-x:
   margin: 0;
    }
 
+.backgroundCover {
+    transition: opacity 450ms;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+        z-index: 79;
+    background-color: rgba(33,33,33,1.0);
+        opacity: .48;
 
+}
+
+
+.centerMenu {
+/*
+    position: fixed;
+    z-index: 900;
+    top: 0;
+    bottom: 0;
+    left:0;
+    right:0;
+    height:651px;
+*/
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 80;
+    overflow: hidden;
+
+}
+
+.centerCenterMenu {
+    opacity: 1;
+    min-width: 240px;
+    max-width: 80%;
+    max-height: 80%;
+    position: relative;
+    overflow: auto;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
+    box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.14),
+        0px 16px 24px 2px rgba(0, 0, 0, 0.098),
+        0px 6px 30px 5px rgba(0, 0, 0, 0.084);
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.console-content {
+    height: 100%;
+}
+
+
+/*
+.headerToolBar {
+    height:54px;
+    background-color: #4CAF50;
+    color: rgba(255,255,255,0.87);
+}
+
+.md-toolbar-tools {
+    height:54px !important;
+    min-height: 54px !important;
+    max-height:54px !important;
+}
+*/
+
+/*
+md-toolbar {
+    height:54px !important;
+    min-height: 54px !important;
+    max-height:54px !important;
+}
+*/
+
+
+.mainButtonReverse {
+    -webkit-transition: transform .4s;
+    transition: transform .4s;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.mainButton {
+    -webkit-transition: transform .4s;
+    transition: transform .4s;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+
+
+
+
+.frameStyle {
+    height: 100px;
+    width: 125px;
+    height: 160px;
+    padding: 5px;
+    margin: 10px;
+    text-align: center;
+    float: left;
+}

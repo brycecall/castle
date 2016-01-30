@@ -7,14 +7,15 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!--        Terrible unsafe policy to be changed later-->
-        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+<!--        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">-->
 
         <!--        <script type="text/javascript" src="/platforms/android/assets/www/cordova.js"></script>-->
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/bootstrap/js/dropdown.js"></script>
         <script src="bower_components/angular/angular.js"></script>
-        <script src="bower_components/angular-route/angular-route.js"></script>
+<!--        <script src="bower_components/angular-route/angular-route.js"></script>-->
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script src="bower_components/angular-touch/angular-touch.js"></script>
         <script src="bower_components/angular-aria/angular-aria.js"></script>
         <script src="bower_components/angular-animate/angular-animate.js"></script>
@@ -22,9 +23,9 @@
 
         <!-- Application Scripts -->
         <script src="js/index.js"></script>
-        <script src="js/fieldNotes.js"></script>
+<!--        <script src="js/fieldNotes.js"></script>-->
         <script src="js/reportTemplate.js"></script>
-        <script src="js/savedTemplate.js"></script>
+<!--        <script src="js/savedTemplate.js"></script>-->
         <script src="js/createController.js"></script>
         <script src="js/savedController.js"></script>
         <script src="js/accountController.js"></script>
@@ -39,133 +40,82 @@
 
         <title>Inspector App</title>
     </head>
-    <body>
+    <body style="height:100%">
 
-        <div ng-app="fbiApp">
-            <div ng-controller="indexController">
-<!--               mainHeaderBar-->
-               <div>
-                <header >
-                    <md-toolbar >
-                      <div class="md-toolbar-tools" >
-                        <md-button class="md-icon-button" aria-label="Navigation" ng-click="toggleNavigation()" ng-model-options="{ debounce: 1000 }">
-                             <md-icon md-svg-icon="{{service.currentPage.icon}}"></md-icon>
-                        </md-button>
-                        <h2 class="page_header">
-                          <span>{{service.currentPage.title}}</span>
-                        </h2>
-                        <span flex></span>
-                        <a ng-href="#account" aria-label="Account" style="border:none" >
-                          <div class="profileWrapper">
-                            <div class="profile_picture" style="background-image: url(img/rod.png);" />
-                          </div>
-                        </a>
-                      </div>
-                    </md-toolbar>
-                </header>
+        <div ng-app="fbiApp" style="height:100%; width:100%">
+            <div ng-controller="indexController"  style="height:100%; width:100%; position:relative" layout="row">
 
-                <md-sidenav class="md-sidenav-left md-whiteframe-z2 main_menu" md-component-id="main"  md-swipe-left="toggleNavigation()" style="z-index:70">
-                    <md-content style="height: 100%;">
-                        <img id="menuFavicon" src="img/icon.png" /><br />
-                        <md-list flex="">
-                          <a href="{{page.link}}" ng-repeat="page in navigationPages"  flex="" ng-click="toggleNavigation()" class="md-headline">
-                              <md-list-item flex="" class="listItem " >
+                <md-sidenav class="md-sidenav-left md-whiteframe-z2 main_menu" md-component-id="main"  md-swipe-left="toggleNavigation()" style="z-index:70;">
+                    <md-content style="height: 100%; overflow-x: hidden;">
+                        <img id="menuFavicon" src="img/icon.png" />
+                        <br />
+                        <md-list >
+                        <a ui-sref="{{page.link}}" ng-click="toggleNavigation()" ng-repeat="page in navigationPages"  flex="">
+                              <md-list-item>
                                   <div md-ink-ripple="" >
                                     <md-icon md-svg-icon="{{page.icon}}" class="marginRight"></md-icon>
-                                    <h2 class="listHead md-headline" >{{page.title}}</h2>
+                                    <h2 class="listHead md-title" >{{page.title}}</h2>
                                   </div>
                               </md-list-item>
-<!--                              <md-divider ng-if="!$last"></md-divider>-->
                           </a>
                         </md-list>
                         <md-button class="nav_button md-raised md-primary" ng-href="#account" ng-click="toggleNavigation()" arial-label="Sign in">Sign in</md-button>
                     </md-content>
                 </md-sidenav>
                 
-                <div ng-view class="console-content" id="scrollArea" autoscroll="true" style="position: fixed; top: 64px; height: 100%; width: 100%; z-index:50"></div>
-</div>
-                         
-<!--              view-window-->
-                <footer>
-<!--
-    <div class="lock_size" layout="row" layout-align="center center">
-        <md-fab-speed-dial md-open="show_add_icons" md-direction="up"
-             ng-class="md-scale">
-        <md-fab-trigger>
-                   <md-button class="md-fab md-primary" ng-click="toggleAdd()" aria-label="stuff">
-                       <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                    </md-button>
-        </md-fab-trigger>
-        <md-fab-actions>
-                        <a ng-href="#item" ng-click="toggleAdd()" layout="row" layout-align="center end">
-                        <span class="fab_add_label">Item</span>
-                        <md-button class="md-fab md-raised md-mini md-hue-1 fab_add_button" aria-label="Add Item">
-                         <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+
+               <div layout="column" flex="" style="background-color:white">
+                <header>
+                    <md-toolbar >
+                      <div class="md-toolbar-tools" layout="row" layout-align="center center">
+
+                        <md-button ng-if="service.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ng-click="toggleNavigation()" ng-model-options="{ debounce: 1000 }">
+                             <md-icon md-svg-icon="{{service.currentPage.icon}}"></md-icon>
                         </md-button>
+
+                        <md-button ng-if="!service.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ui-sref="{{service.currentPage.link}}" ng-model-options="{ debounce: 1000 }">
+                             <md-icon md-svg-icon="{{service.currentPage.icon}}"></md-icon>
+                        </md-button>
+
+                        <h2 class="page_header">
+                          <span>{{service.currentPage.title}}</span>
+                        </h2>
+                        <span flex></span>
+                        <a ui-sref="account" aria-label="Account" style="border:none" >
+                          <div class="profileWrapper">
+                              <div class="profile_picture" style="background-image: url(img/rod.png);" ></div>
+                          </div>
                         </a>
 
-                        <a ng-href="#page" ng-click="toggleAdd()" layout="row" layout-align="center center">
-                        <span class="fab_add_label">Page</span>
-                        <md-button class="md-fab md-raised md-mini md-hue-2 fab_add_button" aria-label="Add Page">
-                        <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                        </md-button>
-                        </a>
+                         <md-menu style="margin:0; padding:0;" ng-if="service.currentPage.showExtraMenu">
+                         <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open extra menu" >
+                                <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_more_vert_48px.svg"></md-icon>
+                         </md-button>
 
-                        <a ng-href="#section" ng-click="toggleAdd()" layout="row" layout-align="center center">
-                        <span class="fab_add_label">Section</span>
-                        <md-button class="md-fab md-raised md-mini md-hue-3 fab_add_button" aria-label="Add Section">
-                                                   <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                        </md-button>
-                        </a>
+                         <md-menu-content>
+                           <md-menu-item>
+                               <md-button ng-click="service.openItems(true)">Open All Items</md-button>
+                           </md-menu-item>
 
-                        <a ng-href="#image" ng-click="toggleAdd()" layout="row" layout-align="center center">
-                        <span class="fab_add_label">Image</span>
-                        <md-button class="md-fab md-raised md-mini fab_add_button md-primary"  aria-label="Add Image">
-                                                   <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" style="color:white" layout="row" layout-align="center center"></md-icon>
-                        </md-button>
-                        </a>
-        </md-fab-actions>
-    </md-fab-speed-dial>
-</div>
--->
-<!--
-                   <div >
-                    <div class="fab_add_expand" ng-show="show_add_icons">
-                        <a ng-href="#item" ng-click="toggleAdd()">
-                        <span class="fab_add_label">Item</span>
-                        <md-button class="md-fab md-hue-1 fab_add_button" aria-label="Add Item">
-                            <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                        </md-button>
-                        </a>
-                        
-                        <a ng-href="#page" ng-click="toggleAdd()">
-                        <span class="fab_add_label">Page</span>
-                        <md-button class="md-fab md-hue-2 fab_add_button" aria-label="Add Page">
-                            <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                        </md-button>
-                        </a>
-                        
-                        <a ng-href="#section" ng-click="toggleAdd()">
-                        <span class="fab_add_label">Section</span>
-                        <md-button class="md-fab md-hue-3 fab_add_button" aria-label="Add Section">
-                            <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                        </md-button>
-                        </a>
+                            <md-menu-item>
+                               <md-button ng-click="service.openItems(false)">Close All Items</md-button>
+                           </md-menu-item>
 
-                        <a ng-href="#image" ng-click="toggleAdd()">
-                        <span class="fab_add_label">Image</span>
-                        <md-button class="md-fab fab_add_button md-primary"  aria-label="Add Image">
-                           <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" style="color:white" layout="row" layout-align="center center"></md-icon>
-                        </md-button>
-                        </a>
-                    </div>
-                    
-                    <md-button class="md-fab md-primary" ng-click="toggleAdd()" aria-label="stuff">
-                       <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
-                    </md-button>
-                    </div>
--->
-                </footer>
+                           <md-menu-item>
+                               <md-button ng-click="service.filterRequired(true)">{{service.hideShowOptions.text}} Unrequired
+                               </md-button>
+                           </md-menu-item>
+
+                         </md-menu-content>
+                        </md-menu>
+
+                      </div>
+                    </md-toolbar>
+                </header>
+
+                   <md-content class="console-content ui-view" id="scrollArea" autoscroll="true" ></md-content>
+            </div>
+
             </div>
         </div>
     </body>

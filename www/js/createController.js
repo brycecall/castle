@@ -1,36 +1,75 @@
- angular.module('fbiApp').controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window, $routeParams, inspectionService, $mdBottomSheet) {
-
-     $scope.toggleLeft = buildToggler('left');
+ angular.module('fbiApp').controller('createController', ['$scope', '$timeout', '$mdSidenav', '$mdUtil', '$log', '$mdDialog', '$mdMedia', '$anchorScroll', '$rootScope', '$window', '$stateParams', 'inspectionService', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $anchorScroll, $rootScope, $window, $stateParams, inspectionService) {
 
 
 
+    $scope.currentSection = $stateParams.section;
+    inspectionService.currentSection = $scope.currentSection;
+    $scope.selectedPage = inspectionService.selectedPage;
+    $scope.selImagePage = $scope.selectedPage + " Images";
+    $scope.report = inspectionService.currentReport;
 
-     /**
-      * Build handler to open/close a SideNav; when animation finishes
-      * report completion in console
-      */
-     function buildToggler(navID) {
-         var debounceFn = $mdUtil.debounce(function () {
-             $mdSidenav(navID)
-                 .toggle()
-                 .then(function () {
-                     $log.debug("toggle " + navID + " is done");
 
-                 });
-         }, 300);
-
-         return debounceFn;
+    $scope.changeSelection = function(pagetitle) {
+        $scope.selectedPage = pagetitle;
+        inspectionService.selectedPage = pagetitle;
+        $scope.selImagePage = $scope.selectedPage + " Images";
+         console.log($scope.selectedPage);
      }
+    if ($scope.currentSection == "default") {
+        inspectionService.currentPage.toggleNavMenu = true;
+        inspectionService.currentPage.title = "Inspection";
+        inspectionService.currentPage.icon = "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg";
 
-     $scope.report = inspectionService.currentReport;
+    } else {
+        inspectionService.currentPage.title = $scope.currentSection;
+        inspectionService.currentPage.icon = "./bower_components/material-design-icons/navigation/svg/design/ic_arrow_back_48px.svg";
+        inspectionService.currentPage.toggleNavMenu = false;
+        inspectionService.currentPage.link = "create({section:'default'})";
+        inspectionService.currentPage.showExtraMenu = true;
+    }
 
-     //$scope.currentPage = ($routeParams.section == 'default')  ? Object.keys($scope.report)[0] : $routeParams.section;
-$scope.currentPage = $routeParams.section;
-//         inspectionService.currentPage.title = $scope.currentPage;
-//         inspectionService.menuSwitch('back');
 
-     //if ($routeParams.section == 1)
-     //alert($routeParams.section);
+
+    $scope.checkRequired = function() {
+       // inspectionService.currentReport
+
+    }
+
+
+ /**
+  * Build handler to open/close a SideNav; when animation finishes
+  * report completion in console
+  */
+ $scope.toggleLeft = buildToggler('left');
+ function buildToggler(navID) {
+     var debounceFn = $mdUtil.debounce(function () {
+         $mdSidenav(navID)
+             .toggle()
+             .then(function () {
+                 $log.debug("toggle " + navID + " is done");
+
+             });
+     }, 300);
+
+     return debounceFn;
+ }
+
+// $scope.hideShowOptions = {'text':'Hide', 'showNonRequired':true};
+//
+// $scope.filterRequired = function(param) {
+//     if ($scope.hideShowOptions.showNonRequired)
+//     {
+//        $scope.hideShowOptions.showNonRequired = false;
+//        $scope.hideShowOptions.text  = "Show";
+//     }
+//     else
+//     {
+//          $scope.hideShowOptions.showNonRequired = true;
+//          $scope.hideShowOptions.text  = "Hide";
+//     }
+//     console.log("CALLED: " + $scope.hideShowOptions.showNonRequired);
+// }
+
 
      $scope.subPage = '';
 
@@ -45,8 +84,6 @@ $scope.currentPage = $routeParams.section;
 
      $scope.alert = '';
      $scope.showMessage = function (event, type, message) {
-         //         message.replace('\n', '<br />');
-
          $mdDialog.show(
              $mdDialog.alert()
              .title(type + ' Message')
@@ -57,6 +94,44 @@ $scope.currentPage = $routeParams.section;
          );
      };
 
+     $scope.showAddItemMenu = false;
+     $scope.toggleAddItemMenu = function() {
+         inspectionService.backdrop = !inspectionService.backdrop;
+         $scope.showAddItemMenu = !$scope.showAddItemMenu;
+     }
+
+     $scope.showItemDialog = function (event) {
+            $mdDialog.show({
+              controller: 'createController',
+              templateUrl: 'itemDialog.html',
+              parent: angular.element(document.body),
+              targetEvent: event,
+              clickOutsideToClose:true,
+              preserveScope:true,
+            });
+     };
+
+   $scope.addPageToReport = function(newPage) {
+        $scope.report[$scope.currentSection][newPage] = {};
+        console.log(JSON.stringify($scope.report[$scope.currentSection][newPage], null, 2));
+   }
+
+     $scope.showPageDialog = function (event) {
+            $mdDialog.show({
+              controller: 'createController',
+              templateUrl: 'pageDialog.html',
+              parent: angular.element(document.body),
+              targetEvent: event,
+              clickOutsideToClose:true,
+              preserveScope:true,
+            });
+     };
+
+    $scope.cancelDialog = function() {
+        $mdDialog.cancel();
+    };
+
+
      $scope.scrollToTop = function () {
          $timeout(function () {
              document.getElementById("testAgain").scrollTop = 0;
@@ -64,10 +139,12 @@ $scope.currentPage = $routeParams.section;
          });
      };
 
-   $scope.navigatePage = function (sectionkey) {
+
+    $scope.navigatePage = function (sectionkey) {
          $scope.close();
-         $scope.currentPage = sectionkey;
-         inspectionService.currentPage.title = $scope.currentPage;
+         $scope.currentSection = sectionkey;
+         inspectionService.currentPage.title = $scope.currentSection;
+
          inspectionService.menuSwitch('back');
      };
 
@@ -91,12 +168,13 @@ $scope.currentPage = $routeParams.section;
     var cameraDestination;
 
    // device APIs are available
-  function onDeviceReady() {
+    function onDeviceReady() {
       //alert("Calls when app starts");
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
     }
-      document.addEventListener("deviceready",onDeviceReady,false);
+
+  document.addEventListener("deviceready",onDeviceReady,false);
 
 
 /********************************************************
@@ -185,38 +263,13 @@ $scope.currentPage = $routeParams.section;
         source.splice(source.indexOf(pJSONIMG), 1);
     }
 
-    $scope.isOpen = false;
+     $scope.isOpen = false;
 
-     $scope.selectedPage;
-     $scope.changeSelection = function(pagetitle) {
-        $scope.selectedPage = pagetitle;
-         console.log($scope.selectedPage);
-     }
-
-     $scope.openItems = function(showVal) {
-        angular.forEach($scope.report[$scope.currentPage][$scope.selectedPage], function(value, key)         {
-            value.showvalue = showVal;
-        });
-     }
-
-
-     $scope.filterRequired = function() {
-        if (inspectionService.hideShowOptions.text == "Hide")
-        {
-            inspectionService.hideShowOptions.showNonRequired = false;
-            inspectionService.hideShowOptions.text  = "Show";
-        }
-        else
-        {
-            inspectionService.hideShowOptions.showNonRequired = true;
-            inspectionService.hideShowOptions.text  = "Hide";
-        }
-
-     }
-
-
-
-
+//     $scope.openItems = function(showVal) {
+//        angular.forEach($scope.report[$scope.currentSection][$scope.selectedPage], function(value, key) {
+//            value.showvalue = showVal;
+//        });
+//     }
 
     $scope.initCameraAction = function(pCheckboxval) {
         var imgJSON = {'i':''};
@@ -258,13 +311,12 @@ $scope.currentPage = $routeParams.section;
         });
     }
 
-     $scope.appendReport = function() {
 
+     $scope.appendReport = function() {
          var testJSON = {
                 'One' : {
                      '1Ah': 'ah1',
                      '2Ah' : 'ah2'
-
                 },
                 'Two' : {
                      '3Ah': 'ah3',
@@ -273,13 +325,95 @@ $scope.currentPage = $routeParams.section;
           };
 
          console.log(JSON.stringify(testJSON, null, 2));
-         alert(testJSON['One']['2Ah']);
-         testJSON['One'].hello = {'insert' : 'me'};
+       //  alert(testJSON['One']['2Ah']);
+         testJSON['One'] = {'insert' : 'me'};
 //         $.extend
          console.log(JSON.stringify(testJSON, null, 2));
      }
 
- });
+
+
+    $scope.itemTypes = {
+
+        "types" : {
+            "checkbox" : "checkbox",
+            "radio" : "radio",
+            "select" : "image",
+           // "presettext" : "Preset Message",
+            "number" : "Number",
+            "text" : "Text",
+            "date" : "Date"
+        },
+        "type" : ""
+    }
+
+
+    $scope.newItem = {
+        'title': '',
+        'content': {
+            'required': false,
+            'showvalue' : true,
+            'type': '',
+            //'value': '',
+            'value': {
+            },
+            'content': []
+        }
+    }
+
+    $scope.removeItem = function(toRemove, theType) {
+        if (theType == "radio")
+            $scope.newItem.content.content.splice( toRemove, 1 );
+        else
+             delete $scope.newItem.content.value[toRemove];
+    }
+
+    $scope.addItemToReport = function() {
+        console.log("Section: " + $scope.currentSection + " Page: " + $scope.selectedPage + " Title: " + $scope.newItem.title);
+        $scope.report[$scope.currentSection][$scope.selectedPage][$scope.newItem.title] = $scope.newItem.content;
+        console.log(JSON.stringify($scope.report[$scope.currentSection][$scope.selectedPage][$scope.newItem.title], null, 2));
+        $scope.resetNewItem();
+    }
+
+    $scope.resetNewItem = function() {
+        $scope.newItem = {
+                'title': '',
+                'content': {
+                    'required': false,
+                    'showvalue' : true,
+                    'type': '',
+                    'value': {
+                    },
+                    'content': []
+                }
+            }
+    }
+
+    $scope.resetNewItemValueContents = function() {
+         $scope.newItem.content.content =[];
+         $scope.newItem.content.value = {};
+    }
+
+    $scope.addNewItem = function(theType, theValue) {
+            var newJSON;
+                switch (theType)
+                {
+                    case 'checkbox':
+                        newJSON =  {'c':false, 'i':[]};
+                        $scope.newItem.content.value[theValue] = newJSON;
+                        break;
+                    case 'radio':
+                    case 'select':
+                        $scope.newItem.content.content.push(theValue);
+                        break;
+                }
+
+        console.log(JSON.stringify($scope.newItem, null, 2));
+    }
+
+
+
+ }]);
 
 
 

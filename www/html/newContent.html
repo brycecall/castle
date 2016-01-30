@@ -1,0 +1,61 @@
+<div ng-controller="createController" flex="" layout="column" class="page" id="nav" style="background-color:white; ">
+
+                <header  class="createHeader" ng-if="currentPage != 'default'">
+                    <md-toolbar >
+                      <div class="md-toolbar-tools" style="background-color:gray">
+
+                        <md-button class="md-icon-button" aria-label="Navigation" ng-model-options="{ debounce: 1000 }">
+                        <a href="#create/default"><md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_arrow_back_48px.svg"></md-icon></a>
+                        </md-button>
+
+                        <h2 class="page_header">
+                          <a  href="#create/default">Add Item</a>
+                        </h2>
+
+                        <span flex></span>
+
+
+                      </div>
+                    </md-toolbar>
+                </header>
+
+    <section flex="" layout="column" md-scroll-y style="position:relative">
+        <md-content id="testAgain" >
+
+
+<!--           PAGES-->
+          <md-card>
+           <md-card-content>
+
+<!--            <h3 class="md-subhead" ng-click="">Item Type</h3>-->
+
+            <md-input-container style="width:150px;">
+             <label>Select Item Type</label>
+              <md-select ng-model="itemTypes.type" value="typevalue">
+                <md-option ng-repeat="(typekey, typevalue) in itemTypes.types" >{{typekey}}</md-option>
+              </md-select>
+            </md-input-container>
+
+            <div ng-if="itemTypes.type == 'Checkbox'" >
+                <md-input-container layout="row">
+                     <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                    <input ng-model="" type="text" placeholder="List item">
+                </md-input-container>
+            </div>
+
+
+            </md-card-content>
+          </md-card>
+
+        </md-content>
+
+        <div class="footerSpace"></div>
+    </section>
+
+</div>
+
+
+
+
+
+

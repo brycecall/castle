@@ -54,15 +54,15 @@
                         "Inspection Type": {
                             "required": true, "showvalue" : false,
                             "type": "select",
-                            "content": [
-                        "Full",
-                        "Partial",
-                        "Abbreviated",
-                        "Ancillary",
-                        "Limited",
-                        "203(k)",
-                        "Rehabilitation"
-                                ],
+                            "content": {
+                        "Full": {"m":2},
+                        "Partial": {"m":2},
+                        "Abbreviated": {"m":2},
+                        "Ancillary": {"m":2},
+                        "Limited": {"m":2},
+                        "203(k)": {"m":2},
+                        "Rehabilitation": {"m":2}
+                        },
                             "value": ""
                         },
                         "Year Built": {
@@ -78,81 +78,81 @@
                         "Type of Home": {
                             "required": true, "showvalue" : false,
                             "type": "radio",
-                            "content": [
-                             "Single Family",
-                             "Single Use",
-                             "Multiple Use",
-                             "Duplex",
-                             "Triplex",
-                             "Multi Family",
-                             "Detatched"
-                         ],
+                            "content": {
+                             "Single Family": {"m":2},
+                             "Single Use": {"m":2},
+                             "Multiple Use": {"m":2},
+                             "Duplex": {"m":2},
+                             "Triplex": {"m":2},
+                             "Multi Family": {"m":2},
+                             "Detatched": {"m":2}
+                            },
                             "value": ""
                         },
 
                         "Property Use": {
                             "required": true,
                             "type": "radio",
-                            "content": [
-                             "Residential",
-                             "Apartment",
-                             "Retail Store",
-                             "Business",
-                             "Industrial",
-                             "Commercial"
-                         ],
+                            "content": {
+                             "Residential": {"m":2},
+                             "Apartment": {"m":2},
+                             "Retail Store": {"m":2},
+                             "Business": {"m":2},
+                             "Industrial": {"m":2},
+                             "Commercial": {"m":2}
+                            },
                             "value": ""
                         },
                         "Number of Stories": {
                             "required": true, "showvalue" : false,
                             "type": "radio",
-                            "content": [
-                             "Rambler",
-                             "One Level",
-                             "Split-Entry",
-                             "Split-Level",
-                             "One Story",
-                             "1 1/2 Story",
-                             "Two-Story",
-                             "Three-Story",
-                             "Mid-Rise",
-                             "Multi-Level"
-                         ],
+                            "content": {
+                             "Rambler": {"m":2},
+                             "One Level": {"m":2},
+                             "Split-Entry": {"m":2},
+                             "Split-Level": {"m":2},
+                             "One Story": {"m":2},
+                             "1 1/2 Story": {"m":2},
+                             "Two-Story": {"m":2},
+                             "Three-Story": {"m":2},
+                             "Mid-Rise": {"m":2},
+                             "Multi-Level": {"m":2}
+                            },
                             "value": ""
                         },
                         "House Frame": {
                             "required": true,  "showvalue" : false,
                             "type": "radio",
-                            "content": [
-                             "Wood-Framed",
-                             "Steel-Framed",
-                             "Concrete",
-                             "CMU/Block",
-                             "Masonry",
-                             "Tilt-Up",
-                             "Wood-Frame on Steel Carriage",
-                             "ICF"
-                         ],
+                            "content": {
+                             "Wood-Framed": {"m":2},
+                             "Steel-Framed": {"m":2},
+                             "Concrete": {"m":2},
+                             "CMU/Block": {"m":2},
+                             "Masonry": {"m":2},
+                             "Tilt-Up": {"m":2},
+                             "Wood-Frame on Steel Carriage": {"m":2},
+                             "ICF": {"m":2}
+                            },
                             "value": ""
                         },
                         "Property Type": {
                             "required": true,  "showvalue" : false,
                             "type": "radio",
-                            "content": [
-                             "Home",
-                             "Twin Home",
-                             "Town Home",
-                             "Mobile Home",
-                             "Log Home",
-                             "Manufactured Home",
-                             "Prefabbed Structure",
-                             "Condominium",
-                             "Building",
-                             "Garage",
-                             "Low-Rise",
-                             "Mid-Rise",
-                             "High-Rise"
-                         ],
+                            "content": {
+                             "Home": {"m":2},
+                             "Twin Home": {"m":2},
+                             "Town Home": {"m":2},
+                             "Mobile Home": {"m":2},
+                             "Log Home": {"m":2},
+                             "Manufactured Home": {"m":2},
+                             "Prefabbed Structure": {"m":2},
+                             "Condominium": {"m":2},
+                             "Building": {"m":2},
+                             "Garage": {"m":2},
+                             "Low-Rise": {"m":2},
+                             "Mid-Rise": {"m":2},
+                             "High-Rise": {"m":2}
+                            },
                             "value": ""
                         },
                         "Configurations": {
@@ -175,16 +175,16 @@
                         "Property Orientation": {
                             "required": false, "showvalue" : false,
                             "type": "select",
-                            "content": [
-                             "North",
-                             "East",
-                             "West",
-                             "South",
-                             "North-East",
-                             "North-West",
-                             "South-East",
-                             "South-West"
-                         ],
+                            "content": {
+                             "North": {"m":2},
+                             "East": {"m":2},
+                             "West": {"m":2},
+                             "South": {"m":2},
+                             "North-East": {"m":2},
+                             "North-West": {"m":2},
+                             "South-East": {"m":2},
+                             "South-West": {"m":2}
+                            },
                             "value": ""
                         },
                         "Vehicle Parking": {
@@ -254,15 +254,15 @@
                         "Person(s) Providing Property Access": {
                             "required": false, "showvalue" : false,
                             "type": "radio",
-                            "content": [
-                                "Inspector",
-                                "Buyer",
-                                "Resident",
-                                "Builder/Builders Rep",
-                                "Owner/Seller",
-                                "Agent",
-                                "Friends/Other"
-                            ],
+                            "content": {
+                                "Inspector": {"m":2},
+                                "Buyer": {"m":2},
+                                "Resident": {"m":2},
+                                "Builder/Builders Rep": {"m":2},
+                                "Owner/Seller": {"m":2},
+                                "Agent": {"m":2},
+                                "Friends/Other: {"m":2}"
+                            },
                             "value": ""
                         },
                         "Property Specifications Images": {
@@ -291,46 +291,41 @@
                             "showcontent": true,
                             "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-170 of the Washington State Dept. of Licensing, the inspector is not required to: (1)inspect fences, privacy walls or retaining walls that are not contiguous with the structure, (2)report the condition of soil, trees, shrubs or vegetation unless they adversely affect the structure, (3)evaluate hydrological or geological conditions, (4)determine the adequacy of bulkheads, sea-walls, break- walls, and docks."
                         },
-                        "Driveway": {
-                            "required": false, "showvalue" : false,
-                            "type": "radio",
-                            "content": [
-                             "n/a",
-                             "Unfinished",
-                             "Concrete",
-                             "Asphalt",
-                             "Pavers/stone/brick",
-                             "Dirt/gravel"
-                             ],
-                            "value": ""
-                        },
+                         "Driveway": {
+                             "type": "radio",
+                             "content": {
+                                 "n/a": {"m":2},
+                                 "Concrete": {"m":2},
+                                 "Asphalt": {"m":2},
+                                 "Pavers/stone/brick": {"m":2},
+                                 "Dirt/gravel": {"m":2}
+                             },
+                             "value": ""
+                         },
                         "Driveway Condition": {
-                            "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "Satisfactory": {"c": false,"i": []},
-                                "Marginal": {"c": false,"i": []},
-                                "Poor": {"c": false,"i": []},
-                                "Pitched towards home": {"c": false,"i": []},
-                                "Typical cracks": {"c": false,"i": []},
-                                "Large cracks": {"c": false,"i": []},
-                                "Root heaving": {"c": false,"i": []},
-                                "Steep": {"c": false,"i": []},
-                                "Damaged": {"c": false,"i": []},
-                                "Uneven": {"c": false,"i": []},
-                                "Trip/Falling Hazard": {"c": false,"i": []}
+                                "Satisfactory": {"c":true, "i":"./img/baby.jpg", "m":2},
+                                "Marginal": {"c":true, "i":"./img/baby1.jpg", "m":2},
+                                "Poor": {"c":true, "i":"./img/baby1.jpg", "m":2},
+                                "Pitched towards home": {"c":false, "i":"", "m":2},
+                                "Typical cracks": {"c":false, "i":"", "m":2},
+                                "Large cracks": {"c":false, "i":"", "m":2},
+                                "Root heaving": {"c":true, "i":"./img/baby.jpg", "m":2},
+                                "Uneven": {"c":false, "i":"", "m":2},
+                                "Trip/Falling Hazard": {"c":false, "i":"", "m":2}
                             }
                         },
                         "Patio": {
                             "required": false, "showvalue" : false,
                             "type": "radio",
-                            "content": [
-                             "n/a",
-                             "Concrete",
-                             "Paver/stone/brick",
-                             "Wood/Composite",
-                             "Covered"
-                         ],
+                            "content": {
+                             "n/a": {"m":2},
+                             "Concrete": {"m":2},
+                             "Paver/stone/brick": {"m":2},
+                             "Wood/Composite": {"m":2},
+                             "Covered": {"m":2}
+                            },
                             "value": ""
                         },
                         "Patio Condition": {

@@ -1,46 +1,14 @@
 <div ng-controller="createController" flex="" layout="column" class="page" id="nav" style="background-color:white; ">
 
-
-
-<!--
-                <header  class="createHeader" ng-if="currentSection != 'default'" style="z-index:1000">
-                    <md-toolbar >
-                     <div class="md-toolbar-tools" layout="row" layout-align="center center">
-
-                        <md-button class="md-icon-button" aria-label="Navigation" ng-model-options="{ debounce: 1000 }">
-                        <a href="#create/default"><md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_arrow_back_48px.svg"></md-icon></a>
-                        </md-button>
-
-                        <h2 class="page_header">
-                          <a  href="#create/default">{{currentSection}}</a>
-                        </h2>
-
-                        <span flex></span>
-                        <a ng-href="#account" aria-label="Account" style="border:none" >
-                          <div class="profileWrapper">
-                            <div class="profile_picture" style="background-image: url(img/rod.png);" />
-                          </div>
-                        </a>
-
-
-
-
-                      </div>
-                    </md-toolbar>
-                </header>
--->
-
     <section flex="" layout="column"  style="position:relative">
-        <md-content id="testAgain" >
-
+        <md-content>
 
 <!--                SECTION NAVIGATION   -->
             <md-card ng-if="currentSection == 'default'">
-               <md-card-content>
-                <md-list class="subMenu"  >
+                <md-list class="subMenu" >
                     <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" style="position:relative" flex="">
-                        <a href="#create/{{section}}" class="menuButton">
-                        <md-button class="md-no-style  md-secondary" style="" aria-label="{{section}}">{{section}}</md-button>
+                        <a href="#create/{{section}}" class="menuButton" flex>
+                        <md-button class="md-no-style" style="" aria-label="{{section}}">{{section}}</md-button>
                         </a>
                         <md-divider></md-divider>
                     </md-list-item>
@@ -50,8 +18,6 @@
              <a href="#generate">
                  <md-button ng-click="checkRequired()" class="md-raised" aria-label="generate Report">Generate Report</md-button>
              </a>
-
-             </md-card-content>
             </md-card>
 
 
@@ -129,8 +95,6 @@
                                         <md-card-content>{{itemVal.content}}</md-card-content>
                                         </md-card>
 
-<!--                                        <div flex></div>-->
-<!--                                        <md-icon md-svg-icon="./bower_components/material-design-icons/communication/svg/design/ic_message_48px.svg" class="md-accent" ng-click="showMessage($event, listValue, itemVal.content)" flex="10"></md-icon>-->
                                     </div>
 <!--                                    <md-divider></md-divider>-->
                             </div>
@@ -138,7 +102,6 @@
 <!--                           CHECKBOX-->
                             <div ng-if="itemVal.type == 'checkbox'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)">
                                 <div layout="row">
-<!--                                            <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_box_48px.svg" class="" ></md-icon>-->
                                 <h3 class="md-subhead" ng-click="toggleItem(itemVal)" flex="">{{listValue}}:</h3>
                                 </div>
                                 <div ng-repeat="(checkboxkey, checkboxval) in notSorted(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]"  layout="row" class="list_item" style="position:relative" ng-if="itemVal.showvalue">
@@ -151,13 +114,13 @@
 
                                     <md-menu  flex="10" style="text-align:center;" >
                                     <div ng-click="$mdOpenMenu()" style="padding:0 5px">
-                                    <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent" ng-show="checkboxvalue.i != '' && checkboxvalue.c"></md-icon>
+                                    <md-icon md-svg-icon="image" class="md-accent" ng-show="checkboxvalue.i != '' && checkboxvalue.c"></md-icon>
                                     </div>
                                     <md-menu-content>
                                          <md-content style="max-height:480px;  overflow-y:scroll;">
                                    <md-card ng-repeat="checkboxImage in checkboxvalue.i" style="position:relative;" layout="column" layout-align="center end">
                                    <div ng-click="removeIMG(checkboxImage, checkboxvalue.i)" class="cancelIMG" flex="">
-                                       <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_clear_48px.svg" class="" ></md-icon>
+                                       <md-icon md-svg-icon="clear" class="" ></md-icon>
                                    </div>
                                         <div class="UpPicture" style="background-image: url('{{checkboxImage.i}}')" />
                                     </md-card>
@@ -166,7 +129,7 @@
 
                                     </md-menu>
 <!--report[currentSection][pagetitle][listValue].value[checkboxval].i-->
-                              <md-icon ng-show="checkboxvalue.c"  md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" class="md-accent" ng-click="initCameraAction(checkboxvalue)" aria-label="capture photo" flex="10"></md-icon>
+                              <md-icon ng-show="checkboxvalue.c"  md-svg-icon="camera" class="md-accent" ng-click="initCameraAction(checkboxvalue)" aria-label="capture photo" flex="10"></md-icon>
 <!--       <md-button ng-click="appendTo(itemVal)">TEST BUTTON</md-button>-->
                                 </div>
 <!--                                <md-divider></md-divider>-->
@@ -226,17 +189,17 @@
 
                   <div  ng-if="itemVal.type == 'image'  && (itemVal.required == true || service.hideShowOptions.showNonRequired)" layout="row" layout-align="start center">
                     <md-button class="md-raised" aria-label="Photos" ng-click="capturePagePhoto(listValue, itemVal)">
-                        <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon>Add Photo</md-button>
+                        <md-icon md-svg-icon="camera"></md-icon>Add Photo</md-button>
 
                     <md-menu  flex="10" style="text-align:center;" ng-if="itemVal.content.length != 0">
                     <div ng-click="$mdOpenMenu()" style="padding:0 5px">
-                        <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_image_48px.svg" class="md-accent" ></md-icon>
+                        <md-icon md-svg-icon="image" class="md-accent" ></md-icon>
                     </div>
                     <md-menu-content>
                        <md-content style="max-height:480px;  overflow-y:scroll;">
                        <md-card ng-repeat="pageImage in itemVal.content" style="position:relative;" layout="column" layout-align="center end">
                        <div ng-click="removeIMG(pageImage, itemVal.content)" class="cancelIMG" flex="">
-                           <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_clear_48px.svg" class="" ></md-icon>
+                           <md-icon md-svg-icon="clear" class="" ></md-icon>
                        </div>
                         <div  class="UpPicture" style="background-image: url('{{pageImage.i}}'); background-color:black" />
                         </md-card>
@@ -272,7 +235,7 @@
 
 
                     <md-button class="cameraButton md-accent" aria-label="Photos" ng-click="capturePagePhoto(listValue, itemVal)">
-                        <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg" ></md-icon> Add Photo
+                        <md-icon md-svg-icon="camera" ></md-icon> Add Photo
                     </md-button>
 
                         </div>
@@ -280,27 +243,16 @@
                     </div>
                     </div>
 
-<!--<md-button class="md-fab">Item</md-button>-->
-
-
 <script type="text/ng-template" id="itemDialog.html">
          <md-dialog>
          <md-toolbar layout="row" layout-align="center center">
              <h4 class="md-subhead" style="padding:0 25px">Add Item</h3>
              <span flex></span>
                  <md-button class="md-icon-button" ng-click="cancelDialog()">
-       <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_close_48px.svg" ></md-icon>
+       <md-icon md-svg-icon="close" ></md-icon>
       </md-button>
          </md-toolbar>
          <md-dialog-content focusOnOpen="false">
-<!--         <div class="backgroundCover">asdasd</div>-->
-
-<!--          <div class="centerMenu" ng-if="showAddItemMenu">-->
-<!--                      <md-card class="centerCenterMenu" >-->
-<!--
-<md-card  >
-             <md-card-content>
--->
                <input ng-hide="true" type="text"  autofocus />
                 <md-input-container style="width:150px;">
                  <label>Select Item Type</label>
@@ -321,7 +273,7 @@
                                <div layout="row"  ng-repeat="(radkey, radval) in newItem.content.content">
                                 <md-radio-button ng-value="radval" class="radioHeight"><span >{{radval}}</span></md-radio-button>
                                 <span flex=""></span>
-                                <md-icon ng-click="removeItem(radkey, newItem.content.type)" md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_cancel_48px.svg" ></md-icon>
+                                <md-icon ng-click="removeItem(radkey, newItem.content.type)" md-svg-icon="cancel" ></md-icon>
                                  </div>
                             </md-radio-group>
                          </div>
@@ -337,7 +289,7 @@
 
                         <form ng-submit="addNewItem(newItem.content.type, newstuff); newstuff ='' ">
                             <div layout="row" style="margin-top:10px">
-                                <button type="submit" style="background-color:transparent; margin:0px 5px 0 5px; padding:0px 0 0 0; border:none; color:white; height:0;"><md-icon style="color:gray" md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                                <button type="submit" style="background-color:transparent; margin:0px 5px 0 5px; padding:0px 0 0 0; border:none; color:white; height:0;"><md-icon style="color:gray" md-svg-icon="add"></md-icon>
                                 </button>
                                 <input required style="border-width: 0 0 1px 0" ng-model="newstuff" type="text" placeholder="List item">
                             </div>
@@ -354,13 +306,13 @@
                                 </md-checkbox>
                                 <span flex=""></span>
 
-                                <md-icon ng-click="removeItem(checkbkey)" md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_cancel_48px.svg" ></md-icon>
+                                <md-icon ng-click="removeItem(checkbkey)" md-svg-icon="cancel" ></md-icon>
                             </div>
                         </div>
 
                       <form ng-submit="addNewItem(newItem.content.type, newstuff); newstuff ='' ">
                             <div layout="row" style="margin-top:10px">
-                                <button type="submit" style="background-color:transparent; margin:0px 5px 0 5px; padding:0px 0 0 0; border:none; color:white; height:0;"><md-icon style="color:gray" md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                                <button type="submit" style="background-color:transparent; margin:0px 5px 0 5px; padding:0px 0 0 0; border:none; color:white; height:0;"><md-icon style="color:gray" md-svg-icon="add"></md-icon>
                                 </button>
                                 <input required style="border-width: 0 0 1px 0" ng-model="newstuff" type="text" placeholder="List item">
                             </div>
@@ -381,12 +333,6 @@
                 <br />
              <md-button ng-click="addItemToReport(); cancelDialog()" class="md-secondary md-raised" style="">Add me!</md-button>
 
-
-<!--
-            </md-card-content>
-          </md-card>
--->
-<!--          </div>-->
              </md-dialog-content>
     </md-dialog>
    </script>
@@ -397,7 +343,7 @@
                  <h4 class="md-subhead" style="padding:0 25px">Add Page</h3>
                  <span flex></span>
                      <md-button class="md-icon-button" ng-click="cancelDialog()">
-                       <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_close_48px.svg" ></md-icon>
+                       <md-icon md-svg-icon="close" ></md-icon>
                      </md-button>
              </md-toolbar>
              <md-dialog-content>
@@ -433,14 +379,14 @@
                 <a ng-click="showItemDialog($event)" layout="row" layout-align="end center" >
                     <div >Item</div>
                     <md-button class="md-fab md-hue-1 md-raised md-mini"  aria-label="Add Item">
-                        <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                        <md-icon md-svg-icon="add"></md-icon>
                     </md-button>
                 </a>
 
                 <a ng-click="showPageDialog($event)" layout="row" layout-align="end center" >
                     <div >Page</div>
                     <md-button class="md-fab md-hue-2 md-raised md-mini" aria-label="Add Page">
-                        <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"></md-icon>
+                        <md-icon md-svg-icon="add"></md-icon>
                     </md-button>
                 </a>
 
@@ -448,7 +394,7 @@
 
                     <div>Image</div>
                     <md-button class="md-fab md-hue-3 md-raised md-mini" aria-label="Add Section">
-                        <md-icon md-svg-icon="./bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg"></md-icon>
+                        <md-icon md-svg-icon="camera"></md-icon>
                     </md-button>
                 </a>
 
@@ -456,7 +402,7 @@
 
 
         <md-button class="md-fab md-primary"  style="margin-right:27px;"  ng-click="toggleAdd()" aria-label="stuff">
-           <md-icon md-svg-icon="./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg"  ng-class="{'mainButton' : show_add_icons, 'mainButtonReverse' : !show_add_icons}"></md-icon>
+           <md-icon md-svg-icon="add"  ng-class="{'mainButton' : show_add_icons, 'mainButtonReverse' : !show_add_icons}"></md-icon>
         </md-button>
 
     </div>

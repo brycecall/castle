@@ -1,9 +1,9 @@
-angular.module('fbiApp').controller('accountController', ['$scope', 'inspectionService', '$location', '$mdSidenav',
+app.controller('accountController', ['$scope', 'inspectionService', '$location', '$mdSidenav',
         function accountController($scope, inspectionService, $location, $mdSidenav) {
 
         inspectionService.currentPage.toggleNavMenu = true;
         inspectionService.currentPage.title = "Account";
-        inspectionService.currentPage.icon = "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg";
+        inspectionService.currentPage.icon = "menu";
 
 
             $scope.username = inspectionService.currentUser.name;
@@ -11,10 +11,6 @@ angular.module('fbiApp').controller('accountController', ['$scope', 'inspectionS
             $scope.error = "";
             $scope.signin = function () {
 
-
-
-
-                inspectionService.console($scope.username + " " +$scope.password, inspectionService.INFO);
 
                 if ($scope.username == null || $scope.password == null
                     || $scope.username == "" || $scope.password == "")
@@ -45,6 +41,4 @@ angular.module('fbiApp').controller('accountController', ['$scope', 'inspectionS
                 inspectionService.currentUser = {user_id: null, name: null};
                 $scope.username = null;
             };
-
-            inspectionService.console("signinConroller load complete", inspectionService.INFO);
         }]);

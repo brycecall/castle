@@ -1,4 +1,4 @@
-inspection.controller('savedController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, inspectionService, $http, reportService, $rootScope) {
+app.controller('savedController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, inspectionService, $http, reportService, $rootScope) {
 
 inspectionService.currentPage.title = "Saved";
 
@@ -19,24 +19,23 @@ $scope.savedReports = {};
             $scope.savedReports = response;
 
         } else {
-            $scope.chapters = "";
+            $scope.savedReports = {};
             console.log("EMPTY!");
         }
     });
 
     $scope.switchReport = function(sReport) {
-        console.log(sReport['rep_json']);
+        //console.log(sReport['rep_json']);
 
         var temp = sReport['rep_json'];
-//        if (typeof temp != 'object') {
-//            temp = JSON.parse(sReport['rep_json']);
-//        }
-
-        console.log(temp);
+        if (typeof temp != 'object') {
+            temp = JSON.parse(sReport['rep_json']);
+        }
+        //console.log(temp);
         inspectionService.currentReport = temp;
         reportService.setTheReport(temp);
         $rootScope.$broadcast('reportChange', inspectionService.currentReport);
-        console.log("This is special");
+       // console.log("This is special");
 
     }
 

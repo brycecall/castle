@@ -1,26 +1,24 @@
- inspection.controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $anchorScroll, $rootScope, $window, $stateParams, inspectionService, serverService, reportService) {
+ app.controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $anchorScroll, $rootScope, $window, $stateParams, inspectionService, serverService, reportService) {
 
 
+ $scope.currentSection = $stateParams.section;
+ inspectionService.currentSection = $scope.currentSection;
+ $scope.selectedPage = inspectionService.selectedPage;
+ $scope.selImagePage = $scope.selectedPage + " Images";
+ $scope.report = reportOne;
 
-         $scope.currentSection = $stateParams.section;
-         inspectionService.currentSection = $scope.currentSection;
-         $scope.selectedPage = inspectionService.selectedPage;
-         $scope.selImagePage = $scope.selectedPage + " Images";
-         $scope.report = reportService.getTheReport();
 
-     $scope.$on('reportChange', function (event, data) {
-         console.log("IT IS HERE I SAY!");
-         $scope.report = data;
-
-     });
-
-//     $scope.$watch(function () { reportService.getTheReport(); }, function (newValue, oldValue) {
-//        if (newValue != null) {
-//            $scope.report = newValue;
+//    inspectionService.request("/report/r/1").success(function(response) {
+//        if (response != null && response != "") {
+//            $scope.fullResponse = response;
+//            $scope.report = JSON.parse($scope.fullResponse[0]['rep_json']);
+//          //  console.log($scope.report);
+//
+//        } else {
+//            $scope.report = {};
+//            console.log("EMPTY!");
 //        }
-//    }, true);
-
-     console.log($scope.report);
+//    });
 
          $scope.changeSelection = function (pagetitle) {
              $scope.selectedPage = pagetitle;
@@ -28,14 +26,15 @@
              $scope.selImagePage = $scope.selectedPage + " Images";
              console.log($scope.selectedPage);
          }
+
          if ($scope.currentSection == "default") {
              inspectionService.currentPage.toggleNavMenu = true;
              inspectionService.currentPage.title = "Inspection";
-             inspectionService.currentPage.icon = "./bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg";
+             inspectionService.currentPage.icon = "menu";
 
          } else {
              inspectionService.currentPage.title = $scope.currentSection;
-             inspectionService.currentPage.icon = "./bower_components/material-design-icons/navigation/svg/design/ic_arrow_back_48px.svg";
+             inspectionService.currentPage.icon = "back";
              inspectionService.currentPage.toggleNavMenu = false;
              inspectionService.currentPage.link = "create({section:'default'})";
              inspectionService.currentPage.showExtraMenu = true;

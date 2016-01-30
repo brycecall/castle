@@ -6,15 +6,10 @@
         <meta name="msapplication-tap-highlight" content="no" />
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!--        Terrible unsafe policy to be changed later-->
-<!--        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">-->
-
-        <!--        <script type="text/javascript" src="/platforms/android/assets/www/cordova.js"></script>-->
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
         <script src="bower_components/bootstrap/js/dropdown.js"></script>
         <script src="bower_components/angular/angular.js"></script>
-<!--        <script src="bower_components/angular-route/angular-route.js"></script>-->
         <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
         <script src="bower_components/angular-touch/angular-touch.js"></script>
         <script src="bower_components/angular-aria/angular-aria.js"></script>
@@ -37,11 +32,9 @@
         <link type="text/css" rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
         <link type="text/css" rel="stylesheet" href="default.css" />
         <link type="text/css" rel="stylesheet" href="css/index.css" />
-
         <title>Inspector App</title>
     </head>
     <body style="height:100%">
-
         <div ng-app="fbiApp" style="height:100%; width:100%">
             <div ng-controller="indexController"  style="height:100%; width:100%; position:relative" layout="row">
 
@@ -62,7 +55,6 @@
                         <md-button class="nav_button md-raised md-primary" ng-href="#account" ng-click="toggleNavigation()" arial-label="Sign in">Sign in</md-button>
                     </md-content>
                 </md-sidenav>
-                
 
                <div layout="column" flex="" style="background-color:white">
                 <header>
@@ -89,7 +81,7 @@
 
                          <md-menu style="margin:0; padding:0;" ng-if="service.currentPage.showExtraMenu">
                          <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open extra menu" >
-                                <md-icon md-svg-icon="./bower_components/material-design-icons/navigation/svg/design/ic_more_vert_48px.svg"></md-icon>
+                                <md-icon md-svg-icon="more_vert"></md-icon>
                          </md-button>
 
                          <md-menu-content>
@@ -113,7 +105,7 @@
                     </md-toolbar>
                 </header>
 
-                   <md-content class="console-content ui-view" id="scrollArea" autoscroll="true" ></md-content>
+                   <md-content class="console-content ui-view" id="scrollArea"></md-content>
             </div>
 
             </div>

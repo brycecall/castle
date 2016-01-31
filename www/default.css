@@ -177,9 +177,10 @@ footer .container {
 
 #menuFavicon {
     display: block;
-    height: 5%;
+    height:45px;
+    width:45px;
     min-height:45px;
-    margin: auto;
+    margin: 10px auto;
     text-align: center;
 
 }

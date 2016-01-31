@@ -3,7 +3,7 @@ var app = angular.module('fbiApp', ['ui.router', 'ngTouch', 'ngMaterial']);
 
 app.config(
     function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/saved');
+        $urlRouterProvider.otherwise('/account');
         $stateProvider
             .state('create', {
                 url: "/create/:section",
@@ -59,14 +59,15 @@ app.config(function ($mdIconProvider) {
         .icon('assignment', './bower_components/material-design-icons/action/svg/design/ic_assignment_48px.svg')
         .icon('book', './bower_components/material-design-icons/action/svg/design/ic_book_48px.svg')
         .icon('account', './bower_components/material-design-icons/action/svg/design/ic_account_box_48px.svg')
-    .icon('image', './bower_components/material-design-icons/image/svg/design/ic_image_48px.svg')
-    .icon('clear', './bower_components/material-design-icons/content/svg/design/ic_clear_48px.svg')
-    .icon('camera', './bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg')
-    .icon('cancel','./bower_components/material-design-icons/navigation/svg/design/ic_cancel_48px.svg')
-    .icon('add','./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg')
-    .icon('close','./bower_components/material-design-icons/navigation/svg/design/ic_close_48px.svg')
-    .icon('back','./bower_components/material-design-icons/navigation/svg/design/ic_arrow_back_48px.svg')
-    .icon('more_vert','./bower_components/material-design-icons/navigation/svg/design/ic_more_vert_48px.svg')
+        .icon('image', './bower_components/material-design-icons/image/svg/design/ic_image_48px.svg')
+        .icon('clear', './bower_components/material-design-icons/content/svg/design/ic_clear_48px.svg')
+        .icon('camera', './bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg')
+        .icon('cancel','./bower_components/material-design-icons/navigation/svg/design/ic_cancel_48px.svg')
+        .icon('add','./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg')
+        .icon('close','./bower_components/material-design-icons/navigation/svg/design/ic_close_48px.svg')
+        .icon('back','./bower_components/material-design-icons/navigation/svg/design/ic_arrow_back_48px.svg')
+        .icon('more_vert','./bower_components/material-design-icons/navigation/svg/design/ic_more_vert_48px.svg')
+        .icon('account_circle','./bower_components/material-design-icons/action/svg/design/ic_account_circle_48px.svg')
 });
 
 
@@ -120,11 +121,10 @@ app.factory('inspectionService', function ($http, $location, $cacheFactory) {
     // Current user information
     factory.currentUser = {
         user_id: 1,
-        name: "Rod Beacham",
-        user_name: "Rod",
-        first_name: "Rod",
-        last_name: "Beacham",
-        profile_image: "img/rod.png"
+        name: "",
+        user_name: "",
+        profile_image: "img/rod.png",
+        loggedIn:false
     }
 
     // Current page information

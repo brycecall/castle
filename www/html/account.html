@@ -1,21 +1,33 @@
-
 <div ng-controller="accountController" layout="column" class="page">
-<ng-content>
-<div class="page-content">
-    <div class="signin_view" ng-if="inspectorService.currentUser.name">
-        <h2 style="text-align: center">Welcome, {{username}}!</h2>
-        <a class="button signin_button" ng-click="signout()">Logout</a>
-    </div>
-    <div class="signin_view" ng-show="!inspectorService.currentUser.name">
-        <h2 style="text-align: center">Welcome<span ng-if="username">, {{username}}</span>!</h2>
-        <p style="text-align: center">Please login in order to access your personal profile.</p>
-        <p style="color: red">{{error}}</p>
-        <input class="field" type="text" autofocus="autofocus" placeholder="username" ng-model="username"/>
-        <input class="field" type="password" placeholder="password" ng-model="password"/>
-        <a class="button signin_button" ng-click="signin()">Login</a>
-    </div>
-</div>
-</ng-content>
-</div>
+    <md-content>
+       <md-card>
+       <md-card-content>
+        <form ng-submit="loginForm()">
+            <div class="signin_view" ng-if="inspectorService.currentUser.name">
+                <h2 style="text-align: center">Welcome, {{username}}!</h2>
+                <a class="button signin_button" ng-click="signout()">Logout</a>
+            </div>
+            <div class="signin_view" ng-show="!inspectorService.currentUser.name">
+                <h2 style="text-align: center">Welcome<span ng-if="username">, {{username}}</span>!</h2>
+                <p style="text-align: center">Please login in order to access your personal profile.</p>
+                <p style="color: red">{{error}}</p>
+                <div layout="column">
+                <md-input-container>
+                   <label>username</label>
+                    <input class="field" type="text" autofocus="autofocus"  ng-model="username" />
+                </md-input-container>
+                <md-input-container>
+                   <label>password</label>
+                    <input class="field" type="password" ng-model="password" />
+                </md-input-container>
+                </div>
+                
+                <md-button class="button signin_button md-primary md-raised" ng-click="signin()">Login</md-button>
+            </div>
 
-
+        </form>
+      
+    </md-card-content>
+      </md-card>
+    </md-content>
+</div>

@@ -1,5 +1,4 @@
-app.controller('accountController', ['$scope', 'inspectionService', '$location', '$mdSidenav',
-        function accountController($scope, inspectionService, $location, $mdSidenav) {
+app.controller('accountController', function accountController($scope, inspectionService, $location, $mdSidenav) {
 
         inspectionService.currentPage.toggleNavMenu = true;
         inspectionService.currentPage.title = "Account";
@@ -7,7 +6,7 @@ app.controller('accountController', ['$scope', 'inspectionService', '$location',
 
 
             $scope.username = inspectionService.currentUser.name;
-            $scope.password = null;
+            $scope.password = inspectionService.currentUser.password;
             $scope.error = "";
             $scope.signin = function () {
 
@@ -41,4 +40,4 @@ app.controller('accountController', ['$scope', 'inspectionService', '$location',
                 inspectionService.currentUser = {user_id: null, name: null};
                 $scope.username = null;
             };
-        }]);
+        });

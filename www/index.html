@@ -38,11 +38,17 @@
         <div ng-app="fbiApp" style="height:100%; width:100%">
             <div ng-controller="indexController"  style="height:100%; width:100%; position:relative" layout="row">
 
-                <md-sidenav class="md-sidenav-left md-whiteframe-z2 main_menu" md-component-id="main"  md-swipe-left="toggleNavigation()" style="z-index:70;">
-                    <md-content style="height: 100%; overflow-x: hidden;">
+                <md-sidenav class="md-sidenav-left lSideNav" md-component-id="main"  md-swipe-left="toggleNavigation()">
+                
                         <img id="menuFavicon" src="img/icon.png" />
+<!--
+                        <md-toolbar class="md-tall">
+                </md-toolbar>
+-->
+                    <md-content flex layout="column">
+     
                         <br />
-                        <md-list >
+                        <md-list flex>
                         <a ui-sref="{{page.link}}" ng-click="toggleNavigation()" ng-repeat="page in navigationPages"  flex="">
                               <md-list-item>
                                   <div md-ink-ripple="" >
@@ -52,7 +58,7 @@
                               </md-list-item>
                           </a>
                         </md-list>
-                        <md-button class="nav_button md-raised md-primary" ng-href="#account" ng-click="toggleNavigation()" arial-label="Sign in">Sign in</md-button>
+<!--                        <md-button class="nav_button md-raised md-primary" ng-href="#account" ng-click="toggleNavigation()" arial-label="Sign in">Sign in</md-button>-->
                     </md-content>
                 </md-sidenav>
 
@@ -74,9 +80,11 @@
                         </h2>
                         <span flex></span>
                         <a ui-sref="account" aria-label="Account" style="border:none" >
-                          <div class="profileWrapper">
-                              <div class="profile_picture" style="background-image: url(img/rod.png);" ></div>
+                          <div class="profileWrapper" ng-if="service.currentUser.loggedIn == true">
+                              <div class="profile_picture" style="background-image: url({{service.currentUser.profile_image}});"></div>
+                        
                           </div>
+                            <md-icon ng-if="service.currentUser.loggedIn == false"  md-svg-icon="account_circle" class="profile_picture"></md-icon>
                         </a>
 
                          <md-menu style="margin:0; padding:0;" ng-if="service.currentPage.showExtraMenu">

@@ -44,24 +44,24 @@
                         "Conditions": {
                             "type": "presettext", "showvalue" : false,
                             "showcontent": true,
-                            "content": "This Report concerns the visual [INSERT OPTION] inspection of an approximately [CALCULATE & INSERT AGE] old, [INSERT SQFT], [INSERT TYPE OF HOME],[INSERT PROPERTY USE],[INSERT NUMBER OF STORIES],[INSERT HOUSE FRAME],[INSERT PROPERTY TYPE],[INSERT CONFIGURATIONS], built in [INSERT YEAR].  The main entrance, driveway, or street access appeared to be facing predominantely toward the [INSERT PROPERTY ORIENTATION].  The street surface was [INSERT DRIVEWAY TYPE], and vehicle parking was available [INSERT VEHICLE PARKING]. The Utilities servicing the Property identified were [INSERT UTILITES]. [UTILITES OFF] were off at the time of inspection. The locations of the main utility controls, shut-off valves, and/or disconnects are noted in the applicable mechanical sections."
+                            "content": "This Report concerns the visual [INSERT OPTION] inspection of an approximately [CALCULATE & INSERT AGE] old, [INSERT SQFT], [INSERT TYPE OF HOME],[INSERT PROPERTY USE],[INSERT NUMBER OF STORIES],[INSERT HOUSE FRAME],[INSERT PROPERTY TYPE],[INSERT CONFIGURATIONS], built in [INSERT YEAR].  The main entrance, driveway, or street access appeared to be facing predominantely toward the [INSERT PROPERTY ORIENTATION].  The street surface was [INSERT DRIVEWAY TYPE], and vehicle parking was available [INSERT VEHICLE PARKING]. The Utilities servicing the Property identified were [INSERT UTILITES]. [UTILITES OFF] were off at the time of inspection. The locations of the main utility controls, shut-off valves, and or or disconnects are noted in the applicable mechanical sections."
                         },
                         "Limitations": {
                             "type": "presettext", "showvalue" : false,
                             "showcontent": true,
-                            "content": "The [INSERT PROPERTY TYPE] was [INSERT PROPERTY OCCUPANCY] at the time of the inspection.  The inspection began at [*INSPECTION START TIME][AM/PM] and ended at roughly [*INSPECTION END TIME][AM/PM].  The weather at the time of the inspeciton was [GRAB WEATHER FORECAST FROM WEATHER.COM: Cloudy, Snowy, Icy, Windy] with [no precipitation, cloudy, sunny, rain, no rain, etc.].  Those in attendance at the time of the inspection were [INSERT PERSONS PRESENT].  Detached outbuildings, seasonally visible defects, poorly accessible components, areas that may have been hidden and/ or areas containing significant furnishings or storage are not included in the scope of this inspection."
+                            "content": "The [INSERT PROPERTY TYPE] was [INSERT PROPERTY OCCUPANCY] at the time of the inspection.  The inspection began at [*INSPECTION START TIME][AM or PM] and ended at roughly [*INSPECTION END TIME][AM or PM].  The weather at the time of the inspeciton was [GRAB WEATHER FORECAST FROM WEATHER.COM: Cloudy, Snowy, Icy, Windy] with [no precipitation, cloudy, sunny, rain, no rain, etc.].  Those in attendance at the time of the inspection were [INSERT PERSONS PRESENT].  Detached outbuildings, seasonally visible defects, poorly accessible components, areas that may have been hidden and or  or areas containing significant furnishings or storage are not included in the scope of this inspection."
                         },
                         "Inspection Type": {
                             "required": true, "showvalue" : false,
                             "type": "select",
                             "content": {
-                        "Full": {"m":2},
-                        "Partial": {"m":2},
-                        "Abbreviated": {"m":2},
-                        "Ancillary": {"m":2},
-                        "Limited": {"m":2},
-                        "203(k)": {"m":2},
-                        "Rehabilitation": {"m":2}
+                                "Full": {"m":2},
+                                "Partial": {"m":2},
+                                "Abbreviated": {"m":2},
+                                "Ancillary": {"m":2},
+                                "Limited": {"m":2},
+                                "203(k)": {"m":2},
+                                "Rehabilitation": {"m":2}
                         },
                             "value": ""
                         },
@@ -112,7 +112,7 @@
                              "Split-Entry": {"m":2},
                              "Split-Level": {"m":2},
                              "One Story": {"m":2},
-                             "1 1/2 Story": {"m":2},
+                             "1 1 or 2 Story": {"m":2},
                              "Two-Story": {"m":2},
                              "Three-Story": {"m":2},
                              "Mid-Rise": {"m":2},
@@ -127,7 +127,7 @@
                              "Wood-Framed": {"m":2},
                              "Steel-Framed": {"m":2},
                              "Concrete": {"m":2},
-                             "CMU/Block": {"m":2},
+                             "CMU or Block": {"m":2},
                              "Masonry": {"m":2},
                              "Tilt-Up": {"m":2},
                              "Wood-Frame on Steel Carriage": {"m":2},
@@ -159,15 +159,15 @@
                             "required": true, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "w/ Lower Parking Garage": {"c": false,"i": []},
-                                "w/ Basement & Garage": {"c": false,"i": []},
-                                "w/ Garage": {"c": false,"i": []},
-                                "w/ Garage & Crawlspace": {"c": false,"i": []},
-                                "w/ Full Basement": {"c": false,"i": []},
-                                "w/ Daylight Basement": {"c": false,"i": []},
-                                "w/ Basement & Crawlspace(s)": {"c": false,"i": []},
-                                "w/ Crawlspace": {"c": false,"i": []},
-                                "w/ Slab-On-Grade": {"c": false,"i": []},
+                                "w or  Lower Parking Garage": {"c": false,"i": []},
+                                "w or  Basement & Garage": {"c": false,"i": []},
+                                "w or  Garage": {"c": false,"i": []},
+                                "w or  Garage & Crawlspace": {"c": false,"i": []},
+                                "w or  Full Basement": {"c": false,"i": []},
+                                "w or  Daylight Basement": {"c": false,"i": []},
+                                "w or  Basement & Crawlspace(s)": {"c": false,"i": []},
+                                "w or  Crawlspace": {"c": false,"i": []},
+                                "w or  Slab-On-Grade": {"c": false,"i": []},
                                 "Over Adjoining Unit(s)": {"c": false,"i": []},
                                 "Over Adjoining Basement Unit": {"c": false,"i": []}
                             }
@@ -176,14 +176,14 @@
                             "required": false, "showvalue" : false,
                             "type": "select",
                             "content": {
-                             "North": {"m":2},
-                             "East": {"m":2},
-                             "West": {"m":2},
-                             "South": {"m":2},
-                             "North-East": {"m":2},
-                             "North-West": {"m":2},
-                             "South-East": {"m":2},
-                             "South-West": {"m":2}
+                             "North",
+                             "East",
+                             "West",
+                             "South",
+                             "North-East",
+                             "North-West",
+                             "South-East",
+                             "South-West"
                             },
                             "value": ""
                         },
@@ -230,12 +230,12 @@
                         "Property Occupancy": {
                             "required": true,
                             "type": "select",
-                            "content": [
-                        "Occupied",
-                        "Mostly Occupied",
-                        "Mostly Vacant",
-                        "Vacant"
-                                ],
+                            "content": {
+                                "Occupied",
+                                "Mostly Occupied",
+                                "Mostly Vacant",
+                                "Vacant"
+                            },
                             "value": ""
                         },
                         "Persons Present": {
@@ -245,23 +245,23 @@
                                 "Inspector": {"c": false,"i": []},
                                 "Buyer": {"c": false,"i": []},
                                 "Resident": {"c": false,"i": []},
-                                "Builder/Builders Rep": {"c": false,"i": []},
-                                "Owner/Seller": {"c": false,"i": []},
+                                "Builder or Builders Rep": {"c": false,"i": []},
+                                "Owner or Seller": {"c": false,"i": []},
                                 "Agent": {"c": false,"i": []},
-                                "Friends/Other": {"c": false,"i": []}
+                                "Friends or Other": {"c": false,"i": []}
                             }
                         },
                         "Person(s) Providing Property Access": {
                             "required": false, "showvalue" : false,
                             "type": "radio",
                             "content": {
-                                "Inspector": {"m":2},
-                                "Buyer": {"m":2},
-                                "Resident": {"m":2},
-                                "Builder/Builders Rep": {"m":2},
-                                "Owner/Seller": {"m":2},
-                                "Agent": {"m":2},
-                                "Friends/Other: {"m":2}"
+                                "Inspector",
+                                "Buyer",
+                                "Resident",
+                                "Builder or Builders Rep",
+                                "Owner or Seller",
+                                "Agent",
+                                "Friends or Other"
                             },
                             "value": ""
                         },
@@ -294,36 +294,36 @@
                          "Driveway": {
                              "type": "radio",
                              "content": {
-                                 "n/a": {"m":2},
+                                 "Not Applicable": {"m":2},
                                  "Concrete": {"m":2},
                                  "Asphalt": {"m":2},
-                                 "Pavers/stone/brick": {"m":2},
-                                 "Dirt/gravel": {"m":2}
+                                 "Pavers or stone or brick": {"m":2},
+                                 "Dirt or gravel": {"m":2}
                              },
                              "value": ""
                          },
                         "Driveway Condition": {
                             "type": "checkbox",
                             "value": {
-                                "Satisfactory": {"c":true, "i":"./img/baby.jpg", "m":2},
-                                "Marginal": {"c":true, "i":"./img/baby1.jpg", "m":2},
-                                "Poor": {"c":true, "i":"./img/baby1.jpg", "m":2},
+                                "Satisfactory": {"c":true, "i":". or img or baby.jpg", "m":2},
+                                "Marginal": {"c":true, "i":". or img or baby1.jpg", "m":2},
+                                "Poor": {"c":true, "i":". or img or baby1.jpg", "m":2},
                                 "Pitched towards home": {"c":false, "i":"", "m":2},
                                 "Typical cracks": {"c":false, "i":"", "m":2},
                                 "Large cracks": {"c":false, "i":"", "m":2},
-                                "Root heaving": {"c":true, "i":"./img/baby.jpg", "m":2},
+                                "Root heaving": {"c":true, "i":". or img or baby.jpg", "m":2},
                                 "Uneven": {"c":false, "i":"", "m":2},
-                                "Trip/Falling Hazard": {"c":false, "i":"", "m":2}
+                                "Trip or Falling Hazard": {"c":false, "i":"", "m":2}
                             }
                         },
                         "Patio": {
                             "required": false, "showvalue" : false,
                             "type": "radio",
                             "content": {
-                             "n/a": {"m":2},
+                             "Not Applicable": {"m":2},
                              "Concrete": {"m":2},
-                             "Paver/stone/brick": {"m":2},
-                             "Wood/Composite": {"m":2},
+                             "Paver or stone or brick": {"m":2},
+                             "Wood or Composite": {"m":2},
                              "Covered": {"m":2}
                             },
                             "value": ""
@@ -343,14 +343,14 @@
                                 "Damage": {"c": false,"i": []},
                                 "Settled": {"c": false,"i": []},
                                 "Uneven Surface": {"c": false,"i": []},
-                                "Trip/Falling Hazard": {"c": false,"i": []}
+                                "Trip or Falling Hazard": {"c": false,"i": []}
                             }
                         },
                         "Walkways and Steps": {
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "n/a": {"c": false,"i": []},
+                                "Not Applicable": {"c": false,"i": []},
                                 "Satisfactory": {"c": false,"i": []},
                                 "Uneven": {"c": false,"i": []},
                                 "Large cracks": {"c": false,"i": []},
@@ -373,7 +373,7 @@
                                 "Railroad Ties": {"c": false,"i": []},
                                 "Concrete": {"c": false,"i": []},
                                 "Concrete Blocks": {"c": false,"i": []},
-                                "CMU/Blocks": {"c": false,"i": []},
+                                "CMU or Blocks": {"c": false,"i": []},
                                 "Gabions": {"c": false,"i": []},
                                 "Rockery": {"c": false,"i": []},
                                 "Masonry": {"c": false,"i": []},
@@ -389,17 +389,17 @@
                                 "Poor": {"c": false,"i": []},
                                 "Damaged": {"c": false,"i": []},
                                 "Leaning": {"c": false,"i": []},
-                                "Leaking/Drainage Concern": {"c": false,"i": []},
-                                "Trip/Falling Hazard": {"c": false,"i": []}
+                                "Leaking or Drainage Concern": {"c": false,"i": []},
+                                "Trip or Falling Hazard": {"c": false,"i": []}
                             }
                         },
                         "Safety Fencing Location": {
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "n/a": {"c": false,"i": []},
+                                "Not Applicable": {"c": false,"i": []},
                                 "Water Feature": {"c": false,"i": []},
-                                "Drop-off/Retaining Wall": {"c": false,"i": []},
+                                "Drop-off or Retaining Wall": {"c": false,"i": []},
                                 "Steep Slope": {"c": false,"i": []},
                                 "TYPE (Needs Greater Definition)": {"c": false,"i": []}
                             }
@@ -408,7 +408,7 @@
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "n/a": {"c": false,"i": []},
+                                "Not Applicable": {"c": false,"i": []},
                                 "Concrete": {"c": false,"i": []},
                                 "Wood": {"c": false,"i": []},
                                 "Privacy": {"c": false,"i": []},
@@ -416,7 +416,7 @@
                                 "Masonry": {"c": false,"i": []},
                                 "Rail": {"c": false,"i": []},
                                 "Wire": {"c": false,"i": []},
-                                "Plastic/Vinyl": {"c": false,"i": []}
+                                "Plastic or Vinyl": {"c": false,"i": []}
                             }
                         },
                         "Safety Fencing Condition": {
@@ -427,7 +427,7 @@
                                 "Maginal": {"c": false,"i": []},
                                 "Poor": {"c": false,"i": []},
                                 "Missing": {"c": false,"i": []},
-                                "Trip/Falling Hazard": {"c": false,"i": []},
+                                "Trip or Falling Hazard": {"c": false,"i": []},
                                 "Leaning": {"c": false,"i": []},
                                 "Damaged": {"c": false,"i": []},
                                 "Verify Adequate Height": {"c": false,"i": []},
@@ -459,23 +459,23 @@
                             "content": []
                         }
                     },
-                    "Attached Steps/Platforms": {
+                    "Attached Steps or Platforms": {
                         "Show Value": {
                             "type":"hidden",
                             "showvalue":false
                         },
-                        "Porch/Stoop": {
+                        "Porch or Stoop": {
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "n/a": {"c": false,"i": []},
+                                "Not Applicable": {"c": false,"i": []},
                                 "Concrete": {"c": false,"i": []},
-                                "Pavers/Stone/Brick": {"c": false,"i": []},
-                                "Wood/Composite": {"c": false,"i": []},
+                                "Pavers or Stone or Brick": {"c": false,"i": []},
+                                "Wood or Composite": {"c": false,"i": []},
                                 "Covered": {"c": false,"i": []}
                             }
                         },
-                        "Porch/Stoop Condition": {
+                        "Porch or Stoop Condition": {
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
@@ -483,17 +483,17 @@
                                 "Marginal": {"c": false,"i": []},
                                 "Poor": {"c": false,"i": []},
                                 "Verify Attachment": {"c": false,"i": []},
-                                "Loose/Missing Railings": {"c": false,"i": []},
+                                "Loose or Missing Railings": {"c": false,"i": []},
                                 "Trip Hazard(s)": {"c": false,"i": []},
                                 "Typical Cracks": {"c": false,"i": []},
                                 "Large Cracks": {"c": false,"i": []},
-                                "Gaps/Holes": {"c": false,"i": []},
+                                "Gaps or Holes": {"c": false,"i": []},
                                 "Weathered Finish": {"c": false,"i": []},
                                 "Damaged": {"c": false,"i": []},
                                 "Settled": {"c": false,"i": []},
                                 "Earth Contact": {"c": false,"i": []},
                                 "Mildew": {"c": false,"i": []},
-                                "Fungal Rot/Probed": {"c": false,"i": []},
+                                "Fungal Rot or Probed": {"c": false,"i": []},
                                 "Re-Evaluate": {"c": false,"i": []}
                             }
                         },
@@ -501,7 +501,7 @@
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "n/a": {"c": false,"i": []},
+                                "Not Applicable": {"c": false,"i": []},
                                 "Uneven": {"c": false,"i": []},
                                 "Large Cracks": {"c": false,"i": []},
                                 "Root Heaving": {"c": false,"i": []},
@@ -513,32 +513,32 @@
                                 "Missing Safety Glass": {"c": false,"i": []}
                             }
                         },
-                        "Deck/Balcony": {
+                        "Deck or Balcony": {
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "n/a": {"c": false,"i": []},
+                                "Not Applicable": {"c": false,"i": []},
                                 "Raised": {"c": false,"i": []},
                                 "Roof-top": {"c": false,"i": []},
                                 "Covered": {"c": false,"i": []},
-                                "Wood/Composite": {"c": false,"i": []},
+                                "Wood or Composite": {"c": false,"i": []},
                                 "PVC": {"c": false,"i": []}
                             }
                         },
-                        "Deck/Balcony Condition": {
+                        "Deck or Balcony Condition": {
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
                                 "Satisfactory": {"c": false,"i": []},
                                 "Marginal": {"c": false,"i": []},
                                 "Poor": {"c": false,"i": []},
-                                "Loose/Missing Railings": {"c": false,"i": []},
+                                "Loose or Missing Railings": {"c": false,"i": []},
                                 "Weathered Finish": {"c": false,"i": []},
                                 "Damaged": {"c": false,"i": []},
                                 "Settled": {"c": false,"i": []},
                                 "Earth Contact": {"c": false,"i": []},
                                 "Mildew": {"c": false,"i": []},
-                                "Fungal Rot/Probed": {"c": false,"i": []},
+                                "Fungal Rot or Probed": {"c": false,"i": []},
                                 "Verify Attachment": {"c": false,"i": []},
                                 "Re-Evaluate": {"c": false,"i": []}
                             }
@@ -547,16 +547,16 @@
                             "required": false, "showvalue" : false,
                             "type": "presettext",
                             "showcontent": true,
-                            "content": "Undesirable exterior conditions conducive to pest and/or rot concerns may exist, develop, and/or worsen over time. Recommend identification and elimination of all exposed or unprotected wood in outdoor conditions or inadequate earth-to-wood separation (less than 6 to 8 inches), negative grade (ground surfaces sloping toward building), or overgrown foliage (vegetation touching wall surfaces) and maintain improved conditions to minimize risk of pest, moisture or other potential exterior concerns."
+                            "content": "Undesirable exterior conditions conducive to pest and or or rot concerns may exist, develop, and or or worsen over time. Recommend identification and elimination of all exposed or unprotected wood in outdoor conditions or inadequate earth-to-wood separation (less than 6 to 8 inches), negative grade (ground surfaces sloping toward building), or overgrown foliage (vegetation touching wall surfaces) and maintain improved conditions to minimize risk of pest, moisture or other potential exterior concerns."
                         },
-                        "Attached Steps/Platforms Images": {
+                        "Attached Steps or Platforms Images": {
                             "type": "image",
                             "content": []
                         }
                     }
                 },
                 "Exterior": {
-                    "Siding / Wall Cladding": {
+                    "Siding  or  Wall Cladding": {
                         "Show Value": {
                             "type":"hidden",
                             "showvalue":false
@@ -585,8 +585,8 @@
                                 "Cement Board": {"c": false,"i": []},
                                 "Wood": {"c": false,"i": []},
                                 "Fiberboard": {"c": false,"i": []},
-                                "Hardi-Board/Plank": {"c": false,"i": []},
-                                "Panels/Sheets": {"c": false,"i": []},
+                                "Hardi-Board or Plank": {"c": false,"i": []},
+                                "Panels or Sheets": {"c": false,"i": []},
                                 "Shingles": {"c": false,"i": []},
                                 "T-111": {"c": false,"i": []},
                                 "Lapped": {"c": false,"i": []},
@@ -606,19 +606,19 @@
                                 "Marginal": {"c": false,"i": []},
                                 "Poor": {"c": false,"i": []},
                                 "Loose": {"c": false,"i": []},
-                                "Gaps/Holes": {"c": false,"i": []},
+                                "Gaps or Holes": {"c": false,"i": []},
                                 "Buckled": {"c": false,"i": []},
                                 "Tight Butt Joints": {"c": false,"i": []},
                                 "Missing Joint Flashing": {"c": false,"i": []},
-                                "Broken/Damaged": {"c": false,"i": []},
+                                "Broken or Damaged": {"c": false,"i": []},
                                 "Inadequate Coverage": {"c": false,"i": []},
                                 "Peeling Paint": {"c": false,"i": []},
                                 "Weathered": {"c": false,"i": []},
                                 "Pest Issues": {"c": false,"i": []},
-                                "Cracked/Bulging": {"c": false,"i": []},
+                                "Cracked or Bulging": {"c": false,"i": []},
                                 "Mildew": {"c": false,"i": []},
                                 "Deteriorated": {"c": false,"i": []},
-                                "Fungal Rot/Probed": {"c": false,"i": []},
+                                "Fungal Rot or Probed": {"c": false,"i": []},
                                 "Re-Evaluate": {"c": false,"i": []}
                             }
                         },
@@ -626,19 +626,19 @@
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "n/a": {"c": false,"i": []},
+                                "Not Applicable": {"c": false,"i": []},
                                 "Missing": {"c": false,"i": []},
                                 "Satisfactory": {"c": false,"i": []},
                                 "Marginal": {"c": false,"i": []},
                                 "Poor": {"c": false,"i": []},
                                 "Defective": {"c": false,"i": []},
                                 "Loose": {"c": false,"i": []},
-                                "Gaps/Holes": {"c": false,"i": []},
+                                "Gaps or Holes": {"c": false,"i": []},
                                 "Exposed Structure": {"c": false,"i": []},
-                                "Recommend Re-Evaluate/Repair": {"c": false,"i": []}
+                                "Recommend Re-Evaluate or Repair": {"c": false,"i": []}
                             }
                         },
-                        "Trim/Soffit/Fascia": {
+                        "Trim or Soffit or Fascia": {
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
@@ -651,10 +651,10 @@
                                 "Enclosed Soffit": {"c": false,"i": []},
                                 "Open Eaves": {"c": false,"i": []},
                                 "Screened Ventilation": {"c": false,"i": []},
-                                "Unflashed BRT/Out-Lookers": {"c": false,"i": []}
+                                "Unflashed BRT or Out-Lookers": {"c": false,"i": []}
                             }
                         },
-                        "Trim/Soffit/Fascia Condition": {
+                        "Trim or Soffit or Fascia Condition": {
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
@@ -662,24 +662,24 @@
                                 "Marginal": {"c": false,"i": []},
                                 "Poor": {"c": false,"i": []},
                                 "Loose": {"c": false,"i": []},
-                                "Gaps/Holes": {"c": false,"i": []},
+                                "Gaps or Holes": {"c": false,"i": []},
                                 "Missing Pieces": {"c": false,"i": []},
                                 "Exposed Wood": {"c": false,"i": []},
-                                "Loose/Missing Flashing": {"c": false,"i": []},
-                                "Poor Protection/Coverage": {"c": false,"i": []},
+                                "Loose or Missing Flashing": {"c": false,"i": []},
+                                "Poor Protection or Coverage": {"c": false,"i": []},
                                 "Stains": {"c": false,"i": []},
                                 "Peeling Paint": {"c": false,"i": []},
-                                "Weathered/Worn": {"c": false,"i": []},
+                                "Weathered or Worn": {"c": false,"i": []},
                                 "Deterioration": {"c": false,"i": []},
                                 "Fungal Rot": {"c": false,"i": []},
-                                "Broken/Damaged": {"c": false,"i": []},
+                                "Broken or Damaged": {"c": false,"i": []},
                                 "Pest Issues": {"c": false,"i": []},
                                 "Foliage Contact": {"c": false,"i": []},
                                 "Potential Hidden Damage": {"c": false,"i": []},
                                 "Recommend Re-Evaluation": {"c": false,"i": []}
                             }
                         },
-                        "Siding / Wall Cladding Images": {
+                        "Siding  or  Wall Cladding Images": {
                             "type": "image",
                             "content": [
                     ]
@@ -690,18 +690,18 @@
                             "type":"hidden",
                             "showvalue":false
                         },
-                        "Window Frame/Trim": {
+                        "Window Frame or Trim": {
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
                                 "Wood": {"c": false,"i": []},
-                                "Aluminum/Metal": {"c": false,"i": []},
+                                "Aluminum or Metal": {"c": false,"i": []},
                                 "Clad": {"c": false,"i": []},
                                 "Vinyl": {"c": false,"i": []},
                                 "Fiberglass": {"c": false,"i": []}
                             }
                         },
-                        "Window Frame/Trim Condition": {
+                        "Window Frame or Trim Condition": {
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
@@ -712,8 +712,8 @@
                                 "Missing Pieces": {"c": false,"i": []},
                                 "Exposed Wood": {"c": false,"i": []},
                                 "Missing Flashing": {"c": false,"i": []},
-                                "Weathered/Worn Finish": {"c": false,"i": []},
-                                "Peeling Paint/Inadequate Coverage": {"c": false,"i": []},
+                                "Weathered or Worn Finish": {"c": false,"i": []},
+                                "Peeling Paint or Inadequate Coverage": {"c": false,"i": []},
                                 "Missing Caulking": {"c": false,"i": []},
                                 "Broken Glass": {"c": false,"i": []},
                                 "Failed Thermal Seal": {"c": false,"i": []},
@@ -763,7 +763,7 @@
                     ]
                         }
                     },
-                    "Attached Garage/Carport": {
+                    "Attached Garage or Carport": {
                         "Show Value": {
                             "type":"hidden",
                             "showvalue":false
@@ -772,7 +772,7 @@
                             "required": false, "showvalue" : false,
                             "type": "presettext",
                             "showcontent": true,
-                            "content": "The inspection of attached garages and carports includes their framing, siding, roof, doors, windows, and installed electrical / mechanical systems pertaining to the operation of the home, and describes any deficiencies of these systems or components. The report shows the condition and function of the overhead garage doors and associated hardware, the tested function of the garage door openers, their auto-reverse systems and secondary entrapment devices (photoelectric and edge sensors) when present, the condition and installation of any pedestrian door(s), and/or fire separation between the house and garage when applicable, and the presence of any fire hazard or ignition source (gas and electric water heaters, electrical receptacles, electronic air cleaners, motors of installed appliances, etc.) that is within eighteen inches of the garage floor."
+                            "content": "The inspection of attached garages and carports includes their framing, siding, roof, doors, windows, and installed electrical  or  mechanical systems pertaining to the operation of the home, and describes any deficiencies of these systems or components. The report shows the condition and function of the overhead garage doors and associated hardware, the tested function of the garage door openers, their auto-reverse systems and secondary entrapment devices (photoelectric and edge sensors) when present, the condition and installation of any pedestrian door(s), and or or fire separation between the house and garage when applicable, and the presence of any fire hazard or ignition source (gas and electric water heaters, electrical receptacles, electronic air cleaners, motors of installed appliances, etc.) that is within eighteen inches of the garage floor."
                         },
                         "Limitations": {
                             "required": false, "showvalue" : false,
@@ -784,7 +784,7 @@
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "n/a": {"c": false,"i": []},
+                                "Not Applicable": {"c": false,"i": []},
                                 "Curbside": {"c": false,"i": []},
                                 "Space": {"c": false,"i": []},
                                 "Public Garage": {"c": false,"i": []},
@@ -798,11 +798,11 @@
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "n/a": {"c": false,"i": []},
+                                "Not Applicable": {"c": false,"i": []},
                                 "Concrete Slab": {"c": false,"i": []},
                                 "Sealed": {"c": false,"i": []},
                                 "Asphalt": {"c": false,"i": []},
-                                "Pavers/Cobblestone": {"c": false,"i": []},
+                                "Pavers or Cobblestone": {"c": false,"i": []},
                                 "Gravel": {"c": false,"i": []},
                                 "Dirt": {"c": false,"i": []}
                             }
@@ -828,7 +828,7 @@
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "n/a": {"c": false,"i": []},
+                                "Not Applicable": {"c": false,"i": []},
                                 "Above Living Space": {"c": false,"i": []},
                                 "Below Living Space": {"c": false,"i": []},
                                 "Adjoining Walls": {"c": false,"i": []}
@@ -860,7 +860,7 @@
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "n/a": {"c": false,"i": []},
+                                "Not Applicable": {"c": false,"i": []},
                                 "Blocked or Inoperable": {"c": false,"i": []},
                                 "Wood": {"c": false,"i": []},
                                 "Metal": {"c": false,"i": []},
@@ -883,7 +883,7 @@
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "n/a": {"c": false,"i": []},
+                                "Not Applicable": {"c": false,"i": []},
                                 "Overhead": {"c": false,"i": []},
                                 "Sliding": {"c": false,"i": []},
                                 "Roll-Up Panels": {"c": false,"i": []},
@@ -908,7 +908,7 @@
                                 "Inoperable": {"c": false,"i": []},
                                 "Gaps": {"c": false,"i": []},
                                 "Security Concerns": {"c": false,"i": []},
-                                "Blocked/Inaccessible": {"c": false,"i": []},
+                                "Blocked or Inaccessible": {"c": false,"i": []},
                                 "Locked Shut": {"c": false,"i": []},
                                 "Stained": {"c": false,"i": []},
                                 "De-Laminated": {"c": false,"i": []},
@@ -919,7 +919,7 @@
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "n/a": {"c": false,"i": []},
+                                "Not Applicable": {"c": false,"i": []},
                                 "Inoperable": {"c": false,"i": []},
                                 "Blocked": {"c": false,"i": []},
                                 "No Access": {"c": false,"i": []},
@@ -930,8 +930,8 @@
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "n/a": {"c": false,"i": []},
-                                "Disconnected/Inoperable": {"c": false,"i": []},
+                                "Not Applicable": {"c": false,"i": []},
+                                "Disconnected or Inoperable": {"c": false,"i": []},
                                 "Door Stops": {"c": false,"i": []},
                                 "Intermittent Function": {"c": false,"i": []}
                             }
@@ -948,7 +948,7 @@
                                 "Re-Evaluate": {"c": false,"i": []}
                             }
                         },
-                        "Attached Garage/Carport Images": {
+                        "Attached Garage or Carport Images": {
                             "type": "image",
                             "content": [
                     ]
@@ -965,20 +965,20 @@
                             "required": false, "showvalue" : false,
                             "type": "presettext",
                             "showcontent": true,
-                            "content": "An inspection of the roof(s) includes traversing the roof surface to inspect the roof covering materials (unless in the opinion of the inspector, walking on the roof could damage roofing materials or be unsafe) gutters and downspout systems, visible flashing(s), roof vents, skylights, and any other roof penetrations, the portions of the chimney(s) and/or flue(s) visible from the exterior, describes the type of roof coverings used & their general condition, as well as any deficiencies of these systems or components, and reports on the presence of multiple layers of roofing, and the manner in which the roof is ventilated."
+                            "content": "An inspection of the roof(s) includes traversing the roof surface to inspect the roof covering materials (unless in the opinion of the inspector, walking on the roof could damage roofing materials or be unsafe) gutters and downspout systems, visible flashing(s), roof vents, skylights, and any other roof penetrations, the portions of the chimney(s) and or or flue(s) visible from the exterior, describes the type of roof coverings used & their general condition, as well as any deficiencies of these systems or components, and reports on the presence of multiple layers of roofing, and the manner in which the roof is ventilated."
                         },
                         "Limitations": {
                             "required": false, "showvalue" : false,
                             "type": "presettext",
                             "showcontent": true,
-                            "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-090 of the Washington State Dept. of Licensing, the inspector is not required to: traverse unsafe or vulnerable roof surfaces, remove snow, ice, debris or other material(s) that obscure the roof surface or prevents access to the roof, inspect gutter and downspout systems concealed within the structure, inspect related underground drainage piping; and/or antennas, lightning arresters, or similar attachments, operate powered roof ventilators, or predict remaining life expectancy of roof coverings."
+                            "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-090 of the Washington State Dept. of Licensing, the inspector is not required to: traverse unsafe or vulnerable roof surfaces, remove snow, ice, debris or other material(s) that obscure the roof surface or prevents access to the roof, inspect gutter and downspout systems concealed within the structure, inspect related underground drainage piping; and or or antennas, lightning arresters, or similar attachments, operate powered roof ventilators, or predict remaining life expectancy of roof coverings."
                         },
                         "Roof Covering(s)": {
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "Inspected/Walked on (Traversed) Roof": {"c": false,"i": []},
-                                "Inspected/NOT Traversed": {"c": false,"i": []},
+                                "Inspected or Walked on (Traversed) Roof": {"c": false,"i": []},
+                                "Inspected or NOT Traversed": {"c": false,"i": []},
                                 "NOT Inspected": {"c": false,"i": []},
                                 "Vulnerable to Traversing Damage": {"c": false,"i": []},
                                 "Unsafe Traversing Condition(s)": {"c": false,"i": []},
@@ -989,7 +989,7 @@
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "Ground w/ Binoculars": {"c": false,"i": []},
+                                "Ground w or  Binoculars": {"c": false,"i": []},
                                 "Ladder": {"c": false,"i": []},
                                 "Eaves": {"c": false,"i": []},
                                 "Interior": {"c": false,"i": []},
@@ -1023,7 +1023,7 @@
                             "type": "number",
                             "value": ""
                         },
-                        "# of Layers of Roof Covering": {
+                        "Number of Layers of Roof Covering": {
                             "required": false, "showvalue" : false,
                             "type": "number",
                             "value": ""
@@ -1032,15 +1032,15 @@
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "Asphalt/Comp": {"c": false,"i": []},
+                                "Asphalt or Comp": {"c": false,"i": []},
                                 "Rolled": {"c": false,"i": []},
                                 "3-Tab": {"c": false,"i": []},
                                 "Multiple Thickness": {"c": false,"i": []},
                                 "Presidential": {"c": false,"i": []},
                                 "Corrugated Fiber Glass": {"c": false,"i": []},
                                 "Modified Bitumen": {"c": false,"i": []},
-                                "Torch-Down/Hot Tar": {"c": false,"i": []},
-                                "Metal/Standing Seam": {"c": false,"i": []},
+                                "Torch-Down or Hot Tar": {"c": false,"i": []},
+                                "Metal or Standing Seam": {"c": false,"i": []},
                                 "Metal Shingle": {"c": false,"i": []},
                                 "Wood Shingle": {"c": false,"i": []},
                                 "Cedar Shake": {"c": false,"i": []},
@@ -1058,9 +1058,9 @@
                                 "Marginal": {"c": false,"i": []},
                                 "Poor": {"c": false,"i": []},
                                 "Granule Loss": {"c": false,"i": []},
-                                "Broken/Damaged": {"c": false,"i": []},
+                                "Broken or Damaged": {"c": false,"i": []},
                                 "Missing (Tabs)": {"c": false,"i": []},
-                                "Cupping/Curling": {"c": false,"i": []},
+                                "Cupping or Curling": {"c": false,"i": []},
                                 "Aligned Gaps": {"c": false,"i": []},
                                 "Cracked": {"c": false,"i": []},
                                 "Lifting": {"c": false,"i": []},
@@ -1068,14 +1068,14 @@
                                 "Fungal Rot": {"c": false,"i": []},
                                 "Rusted": {"c": false,"i": []},
                                 "Exposed Fasteners": {"c": false,"i": []},
-                                "Recommend Professional Re-Evaluation/Remediation": {"c": false,"i": []}
+                                "Recommend Professional Re-Evaluation or Remediation": {"c": false,"i": []}
                             }
                         },
                         "Valley(s)": {
                             "required": false, "showvalue" : false,
                             "type": "checkbox",
                             "value": {
-                                "n/a": {"c": false,"i": []},
+                                "Not Applicable": {"c": false,"i": []},
                                 "Metal": {"c": false,"i": []},
                                 "Woven Asphalt": {"c": false,"i": []},
                                 "Cut Asphalt": {"c": false,"i": []},
@@ -1091,9 +1091,9 @@
                                 "Maginal": {"c": false,"i": []},
                                 "Poor": {"c": false,"i": []},
                                 "Defective": {"c": false,"i": []},
-                                "Broken/Damaged": {"c": false,"i": []},
+                                "Broken or Damaged": {"c": false,"i": []},
                                 "Rusted": {"c": false,"i": []},
-                                "Holes/Gaps": {"c": false,"i": []},
+                                "Holes or Gaps": {"c": false,"i": []},
                                 "Leaks": {"c": false,"i": []},
                                 "Installation Defects": {"c": false,"i": []},
                                 "Vulnerable Areas": {"c": false,"i": []}
@@ -1114,17 +1114,17 @@
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
-                            "n/a": {"c": false,"i": []},
+                            "Not Applicable": {"c": false,"i": []},
                             "No Access": {"c": false,"i": []},
                             "Not Visible": {"c": false,"i": []},
-                            "Walls/Dormers": {"c": false,"i": []},
+                            "Walls or Dormers": {"c": false,"i": []},
                             "Chimney Chase(s)": {"c": false,"i": []},
                             "Class 'B' Vent(s)": {"c": false,"i": []},
                             "Dryer Vent": {"c": false,"i": []},
                             "Fan Vent(s)": {"c": false,"i": []},
                             "Plumbing DWV Pipes": {"c": false,"i": []},
-                            "Antennae/Satellite Dish": {"c": false,"i": []},
-                            "Cable/Wiring": {"c": false,"i": []},
+                            "Antennae or Satellite Dish": {"c": false,"i": []},
+                            "Cable or Wiring": {"c": false,"i": []},
                             "Electical Mast": {"c": false,"i": []}
                         }
                     },
@@ -1136,24 +1136,24 @@
                             "Marginal": {"c": false,"i": []},
                             "Poor": {"c": false,"i": []},
                             "Defective": {"c": false,"i": []},
-                            "Broken/Damaged": {"c": false,"i": []},
+                            "Broken or Damaged": {"c": false,"i": []},
                             "Rusted": {"c": false,"i": []},
-                            "Raised/Holes/Gaps": {"c": false,"i": []},
+                            "Raised Holes or Gaps": {"c": false,"i": []},
                             "Leaks": {"c": false,"i": []},
                             "Installation Defects": {"c": false,"i": []},
                             "Vulnerable Areas": {"c": false,"i": []}
                         }
                     },
-                    "Skylights/Skywalls": {
+                    "Skylights or Skywalls": {
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
-                            "n/a": {"c": false,"i": []},
+                            "Not Applicable": {"c": false,"i": []},
                             "No Access": {"c": false,"i": []},
                             "Not Visible": {"c": false,"i": []}
                         }
                     },
-                    "Skylights/Skywalls Condition": {
+                    "Skylights or Skywalls Condition": {
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
@@ -1161,9 +1161,9 @@
                             "Marginal": {"c": false,"i": []},
                             "Poor": {"c": false,"i": []},
                             "Defective": {"c": false,"i": []},
-                            "Broken/Damaged": {"c": false,"i": []},
+                            "Broken or Damaged": {"c": false,"i": []},
                             "Rusted": {"c": false,"i": []},
-                            "Holes/Gaps": {"c": false,"i": []},
+                            "Holes or Gaps": {"c": false,"i": []},
                             "Leaks": {"c": false,"i": []},
                             "Installation Defects": {"c": false,"i": []},
                             "Security Concern": {"c": false,"i": []},
@@ -1174,7 +1174,7 @@
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
-                            "n/a": {"c": false,"i": []},
+                            "Not Applicable": {"c": false,"i": []},
                             "Missing": {"c": false,"i": []},
                             "Installation Defects": {"c": false,"i": []},
                             "Rusted": {"c": false,"i": []},
@@ -1189,9 +1189,9 @@
                             "Marginal": {"c": false,"i": []},
                             "Poor": {"c": false,"i": []},
                             "Defective": {"c": false,"i": []},
-                            "Broken/Damaged": {"c": false,"i": []},
+                            "Broken or Damaged": {"c": false,"i": []},
                             "Raised": {"c": false,"i": []},
-                            "Holes/Gaps": {"c": false,"i": []},
+                            "Holes or Gaps": {"c": false,"i": []},
                             "Leaks": {"c": false,"i": []},
                             "Vulnerable Areas": {"c": false,"i": []},
                             "Repair or Re-Evaluate": {"c": false,"i": []}
@@ -1215,7 +1215,7 @@
                             "Eave-Mounted": {"c": false,"i": []},
                             "Internal with Scuppers": {"c": false,"i": []},
                             "Metal": {"c": false,"i": []},
-                            "Plastic/Vinyl": {"c": false,"i": []},
+                            "Plastic or Vinyl": {"c": false,"i": []},
                             "Wood": {"c": false,"i": []}
                         }
                     },
@@ -1227,15 +1227,15 @@
                             "Satisfactory": {"c": false,"i": []},
                             "Marginal": {"c": false,"i": []},
                             "Poor": {"c": false,"i": []},
-                            "Loose/Sagging": {"c": false,"i": []},
-                            "Fallen/Pulled Away": {"c": false,"i": []},
-                            "Reversed Slope/Ponding": {"c": false,"i": []},
+                            "Loose or Sagging": {"c": false,"i": []},
+                            "Fallen or Pulled Away": {"c": false,"i": []},
+                            "Reversed Slope or Ponding": {"c": false,"i": []},
                             "Clogged": {"c": false,"i": []},
                             "Debris": {"c": false,"i": []},
                             "Granule Wash": {"c": false,"i": []},
                             "Spillover Stains": {"c": false,"i": []},
                             "Deteriorated Wood": {"c": false,"i": []},
-                            "Cracked/Split": {"c": false,"i": []},
+                            "Cracked or Split": {"c": false,"i": []},
                             "Holes": {"c": false,"i": []},
                             "Leaking Joints": {"c": false,"i": []},
                             "Rust": {"c": false,"i": []},
@@ -1260,13 +1260,13 @@
                             "Marginal": {"c": false,"i": []},
                             "Poor": {"c": false,"i": []},
                             "Missing": {"c": false,"i": []},
-                            "Loose/Disconnected": {"c": false,"i": []},
+                            "Loose or Disconnected": {"c": false,"i": []},
                             "Clogged": {"c": false,"i": []},
                             "Open Gaps Around Downspout-to-Drain Connections": {"c": false,"i": []},
-                            "Poor Extensions/Splash Blocks": {"c": false,"i": []}
+                            "Poor Extensions or Splash Blocks": {"c": false,"i": []}
                         }
                     },
-                    "Gutters/Down Spouts Images": {
+                    "Gutters or Down Spouts Images": {
                             "type": "image",
                             "content": [
                     ]
@@ -1283,7 +1283,7 @@
                         "required": false, "showvalue" : false,
                         "type": "presettext",
                         "showcontent": true,
-                        "content": "An inspection of the structure includes traversing attics and subfloor crawl-spaces to inspect the building materials comprising the major structural components, the visible foundation; floor framing; roof framing and diaphragm; other support and substructure / superstructure components; stairs; ventilation (when applicable); and exposed concrete slabs in habitable areas, and describes any deficiencies of these systems or components. The report describes the condition and serviceability of visible, exposed foundations and grade slabs, walls, posts, piers, beams, joists, trusses, sub-floors, chimney foundations, stairs and the visible roof structure and attic components where readily and safely accessible, subfloor crawl-spaces and basements for indications of flooding and moisture penetration, and where deterioration is suspected or where clear indications of possible deterioration exist, a representative number of structural components were probed, and any pest-conducive conditions or wood-rot are reported. Probing is not required when probing will damage any finished surface or where no deterioration is suspected."
+                        "content": "An inspection of the structure includes traversing attics and subfloor crawl-spaces to inspect the building materials comprising the major structural components, the visible foundation; floor framing; roof framing and diaphragm; other support and substructure  or  superstructure components; stairs; ventilation (when applicable); and exposed concrete slabs in habitable areas, and describes any deficiencies of these systems or components. The report describes the condition and serviceability of visible, exposed foundations and grade slabs, walls, posts, piers, beams, joists, trusses, sub-floors, chimney foundations, stairs and the visible roof structure and attic components where readily and safely accessible, subfloor crawl-spaces and basements for indications of flooding and moisture penetration, and where deterioration is suspected or where clear indications of possible deterioration exist, a representative number of structural components were probed, and any pest-conducive conditions or wood-rot are reported. Probing is not required when probing will damage any finished surface or where no deterioration is suspected."
                     },
                     "Limitations": {
                         "required": false, "showvalue" : false,
@@ -1295,8 +1295,8 @@
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
-                            "n/a": {"c": false,"i": []},
-                            "Vaulted/No Attic": {"c": false,"i": []},
+                            "Not Applicable": {"c": false,"i": []},
+                            "Vaulted or No Attic": {"c": false,"i": []},
                             "Partial Attic": {"c": false,"i": []},
                             "No Access": {"c": false,"i": []},
                             "Sealed Access": {"c": false,"i": []},
@@ -1326,8 +1326,8 @@
                             "Satisfactory": {"c": false,"i": []},
                             "Marginal": {"c": false,"i": []},
                             "Poor": {"c": false,"i": []},
-                            "Sagging/Over-Spanned": {"c": false,"i": []},
-                            "Broken/Damaged": {"c": false,"i": []},
+                            "Sagging or Over-Spanned": {"c": false,"i": []},
+                            "Broken or Damaged": {"c": false,"i": []},
                             "Structural Defect (Design Related)": {"c": false,"i": []}
                         }
                     },
@@ -1340,7 +1340,7 @@
                             "Knee Walls": {"c": false,"i": []},
                             "Stains": {"c": false,"i": []},
                             "Deterioration": {"c": false,"i": []},
-                            "Hazardous/Unsafe": {"c": false,"i": []},
+                            "Hazardous or Unsafe": {"c": false,"i": []},
                             "Recommend Professional Re-Evaluation": {"c": false,"i": []}
                         }
                     },
@@ -1365,7 +1365,7 @@
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
-                            "n/a": {"c": false,"i": []},
+                            "Not Applicable": {"c": false,"i": []},
                             "4X Beams & Plank Diaphragm": {"c": false,"i": []},
                             "2X Joists & Diaphragm": {"c": false,"i": []},
                             "Flat Truss": {"c": false,"i": []}
@@ -1377,7 +1377,7 @@
                         "value": {
                             "Steel": {"c": false,"i": []},
                             "Concrete": {"c": false,"i": []},
-                            "Laminated/Engineered": {"c": false,"i": []},
+                            "Laminated or Engineered": {"c": false,"i": []},
                             "Dimensional Lumber": {"c": false,"i": []}
                         }
                     },
@@ -1394,8 +1394,8 @@
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
-                            "n/a": {"c": false,"i": []},
-                            "Wood/TJI": {"c": false,"i": []},
+                            "Not Applicable": {"c": false,"i": []},
+                            "Wood or TJI": {"c": false,"i": []},
                             "Metal": {"c": false,"i": []}
                         }
                     },
@@ -1406,7 +1406,7 @@
                             "Foam-Crete": {"c": false,"i": []},
                             "Diagonal": {"c": false,"i": []},
                             "Plank": {"c": false,"i": []},
-                            "T&G/Shiplap": {"c": false,"i": []},
+                            "T&G or Shiplap": {"c": false,"i": []},
                             "Plywood": {"c": false,"i": []},
                             "OSB": {"c": false,"i": []}
                         }
@@ -1415,7 +1415,7 @@
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
-                            "Covered/Not Visible": {"c": false,"i": []},
+                            "Covered or Not Visible": {"c": false,"i": []},
                             "Wood": {"c": false,"i": []},
                             "Steel": {"c": false,"i": []},
                             "Concrete": {"c": false,"i": []},
@@ -1430,22 +1430,22 @@
                             "Satisfactory": {"c": false,"i": []},
                             "Marginal": {"c": false,"i": []},
                             "Poor": {"c": false,"i": []},
-                            "Sagging/Over-Spanned": {"c": false,"i": []},
+                            "Sagging or Over-Spanned": {"c": false,"i": []},
                             "Broken": {"c": false,"i": []},
                             "Damaged": {"c": false,"i": []},
                             "Structural Defects (Design Related)": {"c": false,"i": []},
                             "Missing or Inadequate Bracing": {"c": false,"i": []},
                             "Stains": {"c": false,"i": []},
                             "Deterioration": {"c": false,"i": []},
-                            "Hazardous/Unsafe": {"c": false,"i": []},
-                            "Recommend Professional Evaluation and/or Remediation": {"c": false,"i": []}
+                            "Hazardous or Unsafe": {"c": false,"i": []},
+                            "Recommend Professional Evaluation or Remediation": {"c": false,"i": []}
                         }
                     },
                     "Stairs": {
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
-                            "n/a": {"c": false,"i": []},
+                            "Not Applicable": {"c": false,"i": []},
                             "Open": {"c": false,"i": []},
                             "Enclosed": {"c": false,"i": []}
                         }
@@ -1470,21 +1470,21 @@
                             "Uneven Risers": {"c": false,"i": []},
                             "Over-Height Step(s)": {"c": false,"i": []},
                             "Missing Firewall": {"c": false,"i": []},
-                            "Hazardous/Unsafe": {"c": false,"i": []},
-                            "Recommend Professional Evaluation and/or Remediation": {"c": false,"i": []}
+                            "Hazardous or Unsafe": {"c": false,"i": []},
+                            "Recommend Professional Evaluation or Remediation": {"c": false,"i": []}
                         }
                     },
-                    "Basement/Crawl Floor": {
+                    "Basement or Crawl Floor": {
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
                             "Concrete": {"c": false,"i": []},
-                            "Dirt/Gravel": {"c": false,"i": []},
+                            "Dirt or Gravel": {"c": false,"i": []},
                             "Wood": {"c": false,"i": []},
-                            "Covered/Not Visible": {"c": false,"i": []}
+                            "Covered or Not Visible": {"c": false,"i": []}
                         }
                     },
-                    "Basement/Crawl Floor Condition": {
+                    "Basement or Crawl Floor Condition": {
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
@@ -1497,7 +1497,7 @@
                             "Efflorescence": {"c": false,"i": []},
                             "Storage": {"c": false,"i": []},
                             "Damage": {"c": false,"i": []},
-                            "Hazardous/Unsafe": {"c": false,"i": []},
+                            "Hazardous or Unsafe": {"c": false,"i": []},
                             "Re-Evaluate": {"c": false,"i": []}
                         }
                     },
@@ -1517,12 +1517,12 @@
                         "type": "checkbox",
                         "value": {
                             "Perimeter Walls": {"c": false,"i": []},
-                            "Post/Beam": {"c": false,"i": []},
+                            "Post or Beam": {"c": false,"i": []},
                             "Columns": {"c": false,"i": []},
                             "Poured Concrete": {"c": false,"i": []},
                             "CMU(Block)": {"c": false,"i": []},
                             "Masonry": {"c": false,"i": []},
-                            "Unmortared Stone/Brick": {"c": false,"i": []},
+                            "Unmortared Stone or Brick": {"c": false,"i": []},
                             "Logs": {"c": false,"i": []},
                             "Treated Wood": {"c": false,"i": []},
                             "Strip Footings": {"c": false,"i": []}
@@ -1543,7 +1543,7 @@
                             "Deterioration": {"c": false,"i": []},
                             "Efflorescence": {"c": false,"i": []},
                             "EWC": {"c": false,"i": []},
-                            "Fungal Rot/Probed": {"c": false,"i": []}
+                            "Fungal Rot or Probed": {"c": false,"i": []}
                         }
                     },
                     "Limited By": {
@@ -1555,12 +1555,12 @@
                             "Obstacles": {"c": false,"i": []},
                             "Inaccessible Area": {"c": false,"i": []},
                             "Pests": {"c": false,"i": []},
-                            "Tight/Limited Mobility": {"c": false,"i": []},
-                            "Hazards/Unsafe": {"c": false,"i": []},
-                            "Recommend Re-Evaluation and/or Remediation": {"c": false,"i": []}
+                            "Tight or Limited Mobility": {"c": false,"i": []},
+                            "Hazards or Unsafe": {"c": false,"i": []},
+                            "Recommend Re-Evaluation or Remediation": {"c": false,"i": []}
                         }
                     },
-                    "WDI/WDO (Wood-Destroying)": {
+                    "WDI or WDO (Wood-Destroying)": {
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
@@ -1569,9 +1569,9 @@
                             "Frass": {"c": false,"i": []},
                             "Galleries": {"c": false,"i": []},
                             "Damage": {"c": false,"i": []},
-                            "Mildew/Bio-Growth": {"c": false,"i": []},
-                            "Mold Sampled/Tested": {"c": false,"i": []},
-                            "Fungal Rot/Probed": {"c": false,"i": []},
+                            "Mildew or Bio-Growth": {"c": false,"i": []},
+                            "Mold Sampled or Tested": {"c": false,"i": []},
+                            "Fungal Rot or Probed": {"c": false,"i": []},
                             "Re-Evaluate": {"c": false,"i": []}
                         }
                     },
@@ -1587,7 +1587,7 @@
                             "Displaced": {"c": false,"i": []},
                             "Inactive": {"c": false,"i": []},
                             "Active": {"c": false,"i": []},
-                            "Larger than 1/4 inch": {"c": false,"i": []},
+                            "Larger than one fourth inch": {"c": false,"i": []},
                             "Re-Evaluate": {"c": false,"i": []}
                         }
                     },
@@ -1609,7 +1609,7 @@
                     "Sump Pump": {
                         "type": "checkbox",
                         "value": {
-                            "n/a": {"c": false,"i": []},
+                            "Not Applicable": {"c": false,"i": []},
                             "Missing": {"c": false,"i": []},
                             "Not Tested": {"c": false,"i": []},
                             "Operable": {"c": false,"i": []},
@@ -1640,7 +1640,7 @@
                         "required": false, "showvalue" : false,
                         "type": "presettext",
                         "showcontent": true,
-                        "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-150 of the Washington State Dept. of Licensing, the inspector is not required to determine the presence, extent, and type of insulation and vapor barriers concealed in the exterior walls, the thickness or R-value of insulation above the ceiling, in the walls or below the floors, or evaluate whether the type of material used to insulate pipes, ducts, jackets and boilers is a health hazard. (BOLD THIS)The efficiency and quantity of air ventilation and mechanical systems is not measured, calculated, or controls tested, other than to confirm that they exist, and/or actually turn a system on or off.(BOLD THIS)"
+                        "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-150 of the Washington State Dept. of Licensing, the inspector is not required to determine the presence, extent, and type of insulation and vapor barriers concealed in the exterior walls, the thickness or R-value of insulation above the ceiling, in the walls or below the floors, or evaluate whether the type of material used to insulate pipes, ducts, jackets and boilers is a health hazard. (BOLD THIS)The efficiency and quantity of air ventilation and mechanical systems is not measured, calculated, or controls tested, other than to confirm that they exist, or actually turn a system on or off.(BOLD THIS)"
                     },
                     "Access": {
                         "required": false, "showvalue" : false,
@@ -1675,7 +1675,7 @@
                             "Limited Accessibility": {"c": false,"i": []},
                             "Inspected (Traversed) Attic": {"c": false,"i": []},
                             "Entered but NOT Traversed": {"c": false,"i": []},
-                            "NOT Entered/NOT Inspected": {"c": false,"i": []},
+                            "NOT Entered or NOT Inspected": {"c": false,"i": []},
                             "Vulnerable to Traversing Damage": {"c": false,"i": []},
                             "Unsafe Traversing Condition(s)": {"c": false,"i": []},
                             "Not Visible": {"c": false,"i": []}
@@ -1698,17 +1698,17 @@
                             "Not Determined": {"c": false,"i": []},
                             "Inadequate": {"c": false,"i": []},
                             "Varied": {"c": false,"i": []},
-                            "<2 inches  R 5": {"c": false,"i": []},
-                            "<3 inches   R-9+": {"c": false,"i": []},
-                            "3 inches  R-11": {"c": false,"i": []},
-                            "4 inches  R-13": {"c": false,"i": []},
-                            "5 inches  R-15": {"c": false,"i": []},
-                            "6 inches  R-19": {"c": false,"i": []},
-                            "2 hard foam / R20": {"c": false,"i": []},
-                            "8-10 inches  R-28+": {"c": false,"i": []},
-                            "10-12 inches  R-32+": {"c": false,"i": []},
-                            "12-14 inches  R-36+": {"c": false,"i": []},
-                            "14-16 inches  R-38+": {"c": false,"i": []},
+                            "<2 inches R 5": {"c": false,"i": []},
+                            "<3 inches R-9+": {"c": false,"i": []},
+                            "3 inches R-11": {"c": false,"i": []},
+                            "4 inches R-13": {"c": false,"i": []},
+                            "5 inches R-15": {"c": false,"i": []},
+                            "6 inches R-19": {"c": false,"i": []},
+                            "2 hard foam R20": {"c": false,"i": []},
+                            "8-10 inches R-28+": {"c": false,"i": []},
+                            "10-12 inches R-32+": {"c": false,"i": []},
+                            "12-14 inches R-36+": {"c": false,"i": []},
+                            "14-16 inches R-38+": {"c": false,"i": []},
                             "16-18 inches R- 40+": {"c": false,"i": []},
                             "18-20 inches R- 42+": {"c": false,"i": []},
                             "20-22 inches R- 44+": {"c": false,"i": []},
@@ -1722,7 +1722,7 @@
                             "Fiber Glass": {"c": false,"i": []},
                             "Cellulose": {"c": false,"i": []},
                             "Vermiculite": {"c": false,"i": []},
-                            "Mineral/Rock Wool": {"c": false,"i": []},
+                            "Mineral or Rock Wool": {"c": false,"i": []},
                             "Batts": {"c": false,"i": []},
                             "Loose": {"c": false,"i": []},
                             "Wood Shavings": {"c": false,"i": []}
@@ -1759,7 +1759,7 @@
                             "None": {"c": false,"i": []},
                             "Satisfactory": {"c": false,"i": []},
                             "Marginal": {"c": false,"i": []},
-                            "Poor/Missing": {"c": false,"i": []},
+                            "Poor or Missing": {"c": false,"i": []},
                             "Odors": {"c": false,"i": []},
                             "Excessive Heat": {"c": false,"i": []},
                             "Ventilation Appears Inadequate": {"c": false,"i": []},
@@ -1774,9 +1774,9 @@
                             "None": {"c": false,"i": []},
                             "Condensation": {"c": false,"i": []},
                             "Roof Leaks": {"c": false,"i": []},
-                            "Old Stains/Inactive": {"c": false,"i": []},
-                            "Fresh Stains/Active": {"c": false,"i": []},
-                            "Mildew/Mold": {"c": false,"i": []},
+                            "Old Stains or Inactive": {"c": false,"i": []},
+                            "Fresh Stains or Active": {"c": false,"i": []},
+                            "Mildew or Mold": {"c": false,"i": []},
                             "Stained Diaphragm": {"c": false,"i": []},
                             "Wet Insulation": {"c": false,"i": []},
                             "Damage": {"c": false,"i": []},
@@ -1788,18 +1788,18 @@
                         "type": "checkbox",
                         "value": {
                             "None": {"c": false,"i": []},
-                            "Prior/Inactive": {"c": false,"i": []},
-                            "Live/Active": {"c": false,"i": []},
+                            "Prior or Inactive": {"c": false,"i": []},
+                            "Live or Active": {"c": false,"i": []},
                             "Nesting Materials": {"c": false,"i": []},
                             "Scat": {"c": false,"i": []},
                             "Insect": {"c": false,"i": []},
-                            "Bee/Wasp": {"c": false,"i": []},
+                            "Bee or Wasp": {"c": false,"i": []},
                             "Bird": {"c": false,"i": []},
                             "Rodent": {"c": false,"i": []},
                             "Racoon": {"c": false,"i": []},
                             "Potential Points of Pest Entry": {"c": false,"i": []},
-                            "Hazardous/Unsafe": {"c": false,"i": []},
-                            "Recommend Professional Evaluation and/or Remediation": {"c": false,"i": []}
+                            "Hazardous or Unsafe": {"c": false,"i": []},
+                            "Recommend Professional Evaluation or Remediation": {"c": false,"i": []}
                         }
                     },
                     "Ventiliation Notice": {
@@ -1814,7 +1814,7 @@
                     ]
                         }
                 },
-                "Crawl Spaces/Unfinished Basements": {
+                "Crawl Spaces or Unfinished Basements": {
                         "Show Value": {
                             "type":"hidden",
                             "showvalue":false
@@ -1823,7 +1823,7 @@
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
-                            "Door/Panel": {"c": false,"i": []},
+                            "Door or Panel": {"c": false,"i": []},
                             "Scuttle-Hole": {"c": false,"i": []},
                             "No Access": {"c": false,"i": []},
                             "No Crawl-Space": {"c": false,"i": []},
@@ -1841,7 +1841,7 @@
                             "Garage": {"c": false,"i": []},
                             "Exterior": {"c": false,"i": []},
                             "Inspected Basement or Crawl": {"c": false,"i": []},
-                            "NOT Entered/NOT Inspected": {"c": false,"i": []},
+                            "NOT Entered or NOT Inspected": {"c": false,"i": []},
                             "Limited Accessibility": {"c": false,"i": []}
                         }
                     },
@@ -1896,7 +1896,7 @@
                             "Fallen Down": {"c": false,"i": []},
                             "Damaged": {"c": false,"i": []},
                             "Installed Upside-Down": {"c": false,"i": []},
-                            "Ineffective Installation/Gaps": {"c": false,"i": []}
+                            "Ineffective Installation or Gaps": {"c": false,"i": []}
                         }
                     },
                     "Crawl-Space Ventilation": {
@@ -1927,7 +1927,7 @@
                             "None": {"c": false,"i": []},
                             "Satisfactory": {"c": false,"i": []},
                             "Damaged": {"c": false,"i": []},
-                            "Gaps/Displaced Areas": {"c": false,"i": []},
+                            "Gaps or Displaced Areas": {"c": false,"i": []},
                             "Exposed Earth": {"c": false,"i": []}
                         }
                     },
@@ -1959,27 +1959,27 @@
                         "type": "checkbox",
                         "value": {
                             "None": {"c": false,"i": []},
-                            "Prior/Inactive": {"c": false,"i": []},
-                            "Live/Active": {"c": false,"i": []},
+                            "Prior or Inactive": {"c": false,"i": []},
+                            "Live or Active": {"c": false,"i": []},
                             "Nesting Materials": {"c": false,"i": []},
                             "Scat": {"c": false,"i": []},
                             "Insect": {"c": false,"i": []},
-                            "Bee/Wasp": {"c": false,"i": []},
+                            "Bee or Wasp": {"c": false,"i": []},
                             "Bird": {"c": false,"i": []},
                             "Rodent": {"c": false,"i": []},
                             "Racoon": {"c": false,"i": []},
                             "Potential Point Pest Entry": {"c": false,"i": []},
-                            "Hazardous/Unsafe": {"c": false,"i": []},
-                            "Recommend Professional Evaluation and/or Remediation": {"c": false,"i": []}
+                            "Hazardous or Unsafe": {"c": false,"i": []},
+                            "Recommend Professional Evaluation or Remediation": {"c": false,"i": []}
                         }
                     },
-                    "Crawl Space/Basement Images": {
+                    "Crawl Space or Basement Images": {
                             "type": "image",
                             "content": [
                     ]
                         }
                 },
-                "Interior Ventilation/Exhaust Fans": {
+                "Interior Ventilation or Exhaust Fans": {
                         "Show Value": {
                             "type":"hidden",
                             "showvalue":false
@@ -2000,7 +2000,7 @@
                         "value": {
                             "Satisfactory": {"c": false,"i": []},
                             "Marginal": {"c": false,"i": []},
-                            "Poor/Missing": {"c": false,"i": []},
+                            "Poor or Missing": {"c": false,"i": []},
                             "Open Blade": {"c": false,"i": []},
                             "Caged": {"c": false,"i": []},
                             "Remote Control": {"c": false,"i": []}
@@ -2014,7 +2014,7 @@
                             "Kitchen Fan(s)": {"c": false,"i": []},
                             "Laundry Fan(s)": {"c": false,"i": []},
                             "Inoperable": {"c": false,"i": []},
-                            "Weak/Noisy": {"c": false,"i": []},
+                            "Weak or Noisy": {"c": false,"i": []},
                             "Unsafe": {"c": false,"i": []}
                         }
                     },
@@ -2024,12 +2024,12 @@
                         "value": {
                             "Satisfactory": {"c": false,"i": []},
                             "Marginal": {"c": false,"i": []},
-                            "Poor/Missing": {"c": false,"i": []},
+                            "Poor or Missing": {"c": false,"i": []},
                             "Vented Improperly (Inside Building Envelope)": {"c": false,"i": []},
                             "Not Visible": {"c": false,"i": []},
                             "Recirculating-Only Type": {"c": false,"i": []},
                             "Clogged Grease Filter": {"c": false,"i": []},
-                            "Restricted (Collapsed/Blocked)": {"c": false,"i": []},
+                            "Restricted (Collapsed or Blocked)": {"c": false,"i": []},
                             "Venting Into Attic Space": {"c": false,"i": []},
                             "Aimed at Gable, Eave, or Roof Vents": {"c": false,"i": []},
                             "Fallen Loose": {"c": false,"i": []},
@@ -2042,7 +2042,7 @@
                         "showcontent": true,
                         "content": "To minimize unwanted moisture accumulation or humidity concerns, recommend regular use of adequate exhaust fans in kitchens, laundries, bathrooms, and other moisture producing areas with sealed venting to outside the building envelope. Routine maintenance is recommended to ensure that noisy, worn, or dirty fans are serviced or replaced as needed."
                     },
-                    "Interior Ventilation/Exhaust Fan Images": {
+                    "Interior Ventilation or Exhaust Fan Images": {
                             "type": "image",
                             "content": [
                     ]
@@ -2059,19 +2059,19 @@
                         "required": false, "showvalue" : false,
                         "type": "presettext",
                         "showcontent": true,
-                        "content": "An inspection of the plumbing system includes visible water supply lines; visible drain/waste / soil and vent lines; fixtures and faucets; domestic hot water system and fuel source, and includes operating fixtures in order to observe functional flow, check for functional drainage from fixtures, and describe the visible water supply and distribution piping materials; drain, waste and vent materials; water-heating equipment, and any deficiencies of these systems or components. This section reports: (1)The presence and location of the main water shutoff valve and/or fuel shutoff valve(s), or reports that they were not found, (2)The presence and functionality of sump pumps/waste ejector pumps when visible or confirms the float switch activates the pump when the sump is dry, and (3)Whether or not the water temperature was tested, and the presence of the temperature and pressure relief (TPR) valve and associated piping. The generally accepted maximum safe water temperature is one hundred twenty degrees (120&#176;) Fahrenheit."
+                        "content": "An inspection of the plumbing system includes visible water supply lines; visible drain or waste or soil and vent lines; fixtures and faucets; domestic hot water system and fuel source, and includes operating fixtures in order to observe functional flow, check for functional drainage from fixtures, and describe the visible water supply and distribution piping materials; drain, waste and vent materials; water-heating equipment, and any deficiencies of these systems or components. This section reports: (1)The presence and location of the main water shutoff valve or fuel shutoff valve(s), or reports that they were not found, (2)The presence and functionality of sump pumps or waste ejector pumps when visible or confirms the float switch activates the pump when the sump is dry, and (3)Whether or not the water temperature was tested, and the presence of the temperature and pressure relief (TPR) valve and associated piping. The generally accepted maximum safe water temperature is one hundred twenty degrees (120&#176;) Fahrenheit."
                     },
                     "Limitations": {
                         "required": false, "showvalue" : false,
                         "type": "presettext",
                         "showcontent": true,
-                        "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-100 of the Washington State Dept. of Licensing, the inspector is not required to operate any valves, including faucets of freestanding or built-in appliances or fixtures, (if the outlet end of the valve or faucet is connected or intended to be connected to an appliance), any plumbing components not readily accessible, or inspect any system that is shut down or winterized; or determine the quantity of water from on-site water supplies, the condition and operation of private water supply systems or water wells and related pressure tanks and pumps, the potability of any water supply whether public or private, or water-conditioning equipment, including softeners and filter systems; or test pressure or temperature/pressure relief valves, gas supply systems, ignite pilot lights, test fire sprinkler systems, or ancillary systems or components such as, but not limited to, those related to solar water heating and hot water circulation; or test shower pans for leaks, or use special equipment to test/scan shower or tub surrounds for moisture in surrounding substrate materials; or test exterior drain systems or floor drains, including but not limited to, exterior stairwell drains and driveway drains; or test interior components of exterior pumps, or sealed sanitary waste lift systems, or the quality or the condition and operation of on-site sewage disposal systems such as waste ejector pumps, cesspools, septic tanks, drain fields, related underground piping, conduit, cisterns, and related equipment."
+                        "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-100 of the Washington State Dept. of Licensing, the inspector is not required to operate any valves, including faucets of freestanding or built-in appliances or fixtures, (if the outlet end of the valve or faucet is connected or intended to be connected to an appliance), any plumbing components not readily accessible, or inspect any system that is shut down or winterized; or determine the quantity of water from on-site water supplies, the condition and operation of private water supply systems or water wells and related pressure tanks and pumps, the potability of any water supply whether public or private, or water-conditioning equipment, including softeners and filter systems; or test pressure or temperature or pressure relief valves, gas supply systems, ignite pilot lights, test fire sprinkler systems, or ancillary systems or components such as, but not limited to, those related to solar water heating and hot water circulation; or test shower pans for leaks, or use special equipment to test or scan shower or tub surrounds for moisture in surrounding substrate materials; or test exterior drain systems or floor drains, including but not limited to, exterior stairwell drains and driveway drains; or test interior components of exterior pumps, or sealed sanitary waste lift systems, or the quality or the condition and operation of on-site sewage disposal systems such as waste ejector pumps, cesspools, septic tanks, drain fields, related underground piping, conduit, cisterns, and related equipment."
                     },
                     "Water Supply Source": {
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
-                            "Unknown/Verify": {"c": false,"i": []},
+                            "Unknown or Verify": {"c": false,"i": []},
                             "Public Water": {"c": false,"i": []},
                             "Shared Well": {"c": false,"i": []},
                             "Private Well": {"c": false,"i": []}
@@ -2081,7 +2081,7 @@
                         "required": false, "showvalue" : false,
                         "type": "checkbox",
                         "value": {
-                            "n/a": {"c": false,"i": []},
+                            "Not Applicable": {"c": false,"i": []},
                             "Closet": {"c": false,"i": []},
                             "Well House": {"c": false,"i": []},
                             "Verify": {"c": false,"i": []},
@@ -2116,7 +2116,7 @@
                         "value": {
                             "Varies Per Unit": {"c": false,"i": []},
                             "See WH Schedule": {"c": false,"i": []},
-                            "WH OFF/Verify Function": {"c": false,"i": []},
+                            "WH OFF or Verify Function": {"c": false,"i": []},
                             "WH on Vacation Mode": {"c": false,"i": []},
                             "See Interior Section": {"c": false,"i": []},
                             "Inadequate (65-85 degrees)": {"c": false,"i": []},
@@ -2134,7 +2134,7 @@
                         "Private Septic & Drainfield": {"c": false,"i": []},
                         "Private Septic & Mound": {"c": false,"i": []},
                         "Private Septic & Leech Line": {"c": false,"i": []},
-                        "Unknown/Verify": {"c": false,"i": []}
+                        "Unknown or Verify": {"c": false,"i": []}
                     }
                 },
                 "Main Entry Piping": {
@@ -2143,7 +2143,7 @@
                     "value": {
                         "Copper": {"c": false,"i": []},
                         "Galvanized": {"c": false,"i": []},
-                        "Plastic/CPVC": {"c": false,"i": []},
+                        "Plastic or CPVC": {"c": false,"i": []},
                         "Polybutylene": {"c": false,"i": []},
                         "PEX": {"c": false,"i": []}
                     }
@@ -2154,7 +2154,7 @@
                     "value": {
                         "Not Visible": {"c": false,"i": []},
                         "Leaking": {"c": false,"i": []},
-                        "Unprotected/Freezing": {"c": false,"i": []},
+                        "Unprotected or Freezing": {"c": false,"i": []},
                         "Discolered Water": {"c": false,"i": []},
                         "Odor": {"c": false,"i": []}
                     }
@@ -2178,7 +2178,7 @@
                     "value": {
                         "Copper": {"c": false,"i": []},
                         "Galvanized": {"c": false,"i": []},
-                        "Plastic/CPVC": {"c": false,"i": []},
+                        "Plastic or CPVC": {"c": false,"i": []},
                         "Polybutylene": {"c": false,"i": []},
                         "PEX": {"c": false,"i": []}
                     }
@@ -2220,7 +2220,7 @@
                         "Copper": {"c": false,"i": []},
                         "Cast Iron": {"c": false,"i": []},
                         "Galvanized": {"c": false,"i": []},
-                        "Plastic/ABS/PVC": {"c": false,"i": []}
+                        "Plastic or ABS or PVC": {"c": false,"i": []}
                     }
                 },
                 "Condition of DMV Piping": {
@@ -2241,7 +2241,7 @@
                     ]
                         }
             },
-            "Faucets/Fixtures": {
+            "Faucets or Fixtures": {
                         "Show Value": {
                             "type":"hidden",
                             "showvalue":false
@@ -2253,9 +2253,9 @@
                         "Functional": {"c": false,"i": []},
                         "Intermittent Function": {"c": false,"i": []},
                         "Inoperable": {"c": false,"i": []},
-                        "Missing/Incomplete": {"c": false,"i": []},
+                        "Missing or Incomplete": {"c": false,"i": []},
                         "Loose": {"c": false,"i": []},
-                        "Broken/Damaged": {"c": false,"i": []}
+                        "Broken or Damaged": {"c": false,"i": []}
                     }
                 },
                 "Leaking": {
@@ -2268,7 +2268,7 @@
                         "Sprayer": {"c": false,"i": []}
                     }
                 },
-                "Faucets/Fixtures Location": {
+                "Faucets or Fixtures Location": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2312,10 +2312,10 @@
                         "Functional": {"c": false,"i": []},
                         "Inoperable": {"c": false,"i": []},
                         "Intermittent Function": {"c": false,"i": []},
-                        "Defects/Damage": {"c": false,"i": []}
+                        "Defects or Damage": {"c": false,"i": []}
                     }
                 },
-                "Sinks/Fixtures": {
+                "Sinks or Fixtures": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2331,7 +2331,7 @@
                     "type": "checkbox",
                     "value": {
                         "Unsealed (Recommend Sealing)": {"c": false,"i": []},
-                        "Cracked/Loose/Missing Grout": {"c": false,"i": []}
+                        "Cracked, Loose, or Missing Grout": {"c": false,"i": []}
                     }
                 },
                 "Drainage": {
@@ -2340,16 +2340,16 @@
                     "value": {
                         "Functional": {"c": false,"i": []},
                         "Missing Stopper": {"c": false,"i": []},
-                        "Missing/Inoperable Overflow": {"c": false,"i": []},
-                        "Clog/Slow Drain": {"c": false,"i": []},
+                        "Missing or Inoperable Overflow": {"c": false,"i": []},
+                        "Clog or Slow Drain": {"c": false,"i": []},
                         "Stained Drainpipe": {"c": false,"i": []},
-                        "Drips/Leaks": {"c": false,"i": []},
-                        "Defects/Damage": {"c": false,"i": []},
+                        "Drips or Leaks": {"c": false,"i": []},
+                        "Defects or Damage": {"c": false,"i": []},
                         "Unsafe": {"c": false,"i": []},
                         "Re-Evaluate": {"c": false,"i": []}
                     }
                 },
-                "Sinks/Fixtures Location": {
+                "Sinks or Fixtures Location": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2373,18 +2373,18 @@
                         "Damage": {"c": false,"i": []}
                     }
                 },
-                "Tub/Shower Surround(s)": {
+                "Tub or Shower Surround(s)": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
                         "Ceramic": {"c": false,"i": []},
                         "FG": {"c": false,"i": []},
-                        "Masonite/Laminate": {"c": false,"i": []},
+                        "Masonite or Laminate": {"c": false,"i": []},
                         "Slab": {"c": false,"i": []},
                         "Jacuzzi": {"c": false,"i": []}
                     }
                 },
-                "Condition of Tub/Shower Surround(s)": {
+                "Condition of Tub or Shower Surround(s)": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2394,13 +2394,13 @@
                         "Cross Connection": {"c": false,"i": []},
                         "Defective": {"c": false,"i": []},
                         "Loose Tile": {"c": false,"i": []},
-                        "Cracked/Broken": {"c": false,"i": []},
+                        "Cracked or Broken": {"c": false,"i": []},
                         "Leaky Shower Head": {"c": false,"i": []},
                         "Leaky Faucet": {"c": false,"i": []},
                         "Leaky Sprayer": {"c": false,"i": []}
                     }
                 },
-                "Faucet/Fixtures Images": {
+                "Faucet or Fixtures Images": {
                             "type": "image",
                             "content": [
                     ]
@@ -2415,7 +2415,7 @@
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "Gas/Propane": {"c": false,"i": []},
+                        "Gas or Propane": {"c": false,"i": []},
                         "Electric": {"c": false,"i": []},
                         "Oil": {"c": false,"i": []},
                         "Solar": {"c": false,"i": []},
@@ -2427,11 +2427,11 @@
                     "type": "checkbox",
                     "value": {
                         "Unknown": {"c": false,"i": []},
-                        "A. O. Smith": {"c": false,"i": []},
+                        "A O Smith": {"c": false,"i": []},
                         "American": {"c": false,"i": []},
                         "American Standard": {"c": false,"i": []},
                         "Amtrol": {"c": false,"i": []},
-                        "Aqua Star / Bosch": {"c": false,"i": []},
+                        "Aqua Star  or  Bosch": {"c": false,"i": []},
                         "Bosch": {"c": false,"i": []},
                         "Bradford White": {"c": false,"i": []},
                         "Briggs": {"c": false,"i": []},
@@ -2478,12 +2478,12 @@
                         "OTHER (NEEDS MORE DATA)": {"c": false,"i": []}
                     }
                 },
-                "Model #": {
+                "Model Number": {
                     "required": false, "showvalue" : false,
                     "type": "textbox",
                     "value": ""
                 },
-                "Serial #": {
+                "Serial Number": {
                     "required": false, "showvalue" : false,
                     "type": "textbox",
                     "value": ""
@@ -2498,8 +2498,8 @@
                     "type": "checkbox",
                     "value": {
                         "Inoperable": {"c": false,"i": []},
-                        "Data Plate Inaccessible/Illegible": {"c": false,"i": []},
-                        "Missing/Loose Seismic Restraints": {"c": false,"i": []}
+                        "Data Plate Inaccessible or Illegible": {"c": false,"i": []},
+                        "Missing or Loose Seismic Restraints": {"c": false,"i": []}
                     }
                 },
                 "TPRV Connection": {
@@ -2516,7 +2516,7 @@
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "n/a": {"c": false,"i": []},
+                        "Not Applicable": {"c": false,"i": []},
                         "Metal": {"c": false,"i": []},
                         "Flex Ducting": {"c": false,"i": []},
                         "PVC": {"c": false,"i": []},
@@ -2529,7 +2529,7 @@
                         "Missing Liner": {"c": false,"i": []},
                         "Back-Drafting": {"c": false,"i": []},
                         "Unsafe": {"c": false,"i": []},
-                        "Recommend Professional Re-Evaluation and/or Remediation": {"c": false,"i": []}
+                        "Recommend Professional Re-Evaluation or Remediation": {"c": false,"i": []}
                     }
                 },
                 "Water Heater Images": {
@@ -2555,7 +2555,7 @@
                     "required": false, "showvalue" : false,
                     "type": "presettext",
                     "showcontent": true,
-                    "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-120 of the Washington State Dept. of Licensing, the inspector is not required to determine adequacy of combustion air, or the capacity, adequacy, or efficiency of a heating system, or evaluate thermostats or controls other than to confirm that they actually turn a system on or off. The inspector did not remove covers or panels that were not readily accessible or removable, or dismantle any equipment, controls, or gauges except readily identifiable access covers designed to be removed by users. The inspector is not required to ignite pilot lights, or operate heating devices or systems that have been shut down, do not respond to normal controls, or any heating system when circumstances are not conducive to safe operation or when doing so will damage the equipment, inspect or evaluate heat exchangers concealed inside furnaces and boilers, the interior of chimneys and flues, and/or any heating equipment that is not readily accessible, or installed heating system accessories, such as humidifiers, air purifiers, motorized dampers, heat reclaimers; solar heating systems; or concealed distribution systems."
+                    "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-120 of the Washington State Dept. of Licensing, the inspector is not required to determine adequacy of combustion air, or the capacity, adequacy, or efficiency of a heating system, or evaluate thermostats or controls other than to confirm that they actually turn a system on or off. The inspector did not remove covers or panels that were not readily accessible or removable, or dismantle any equipment, controls, or gauges except readily identifiable access covers designed to be removed by users. The inspector is not required to ignite pilot lights, or operate heating devices or systems that have been shut down, do not respond to normal controls, or any heating system when circumstances are not conducive to safe operation or when doing so will damage the equipment, inspect or evaluate heat exchangers concealed inside furnaces and boilers, the interior of chimneys and flues, and or or any heating equipment that is not readily accessible, or installed heating system accessories, such as humidifiers, air purifiers, motorized dampers, heat reclaimers; solar heating systems; or concealed distribution systems."
                 },
                 "Energy Source(s)": {
                     "required": false, "showvalue" : false,
@@ -2625,7 +2625,7 @@
                     ]
                         }
             },
-            "Central Furnace/Heat Pump": {
+            "Central Furnace or Heat Pump": {
                         "Show Value": {
                             "type":"hidden",
                             "showvalue":false
@@ -2651,12 +2651,12 @@
                     "type": "number",
                     "value": ""
                 },
-                "Model #": {
+                "Model Number": {
                     "required": false, "showvalue" : false,
                     "type": "textbox",
                     "value": ""
                 },
-                "Serial #": {
+                "Serial Number": {
                     "required": false, "showvalue" : false,
                     "type": "textbox",
                     "value": ""
@@ -2666,8 +2666,8 @@
                     "type": "checkbox",
                     "value": {
                         "Satisfactory (Annual Safety)": {"c": false,"i": []},
-                        "Missing/Old": {"c": false,"i": []},
-                        "Last Serviced n/a": {"c": false,"i": []}
+                        "Missing or Old": {"c": false,"i": []},
+                        "Last Serviced Not Visible": {"c": false,"i": []}
                     }
                 },
                 "Posted Service History Condition": {
@@ -2682,7 +2682,7 @@
                         "Flame Distortion": {"c": false,"i": []}
                     }
                 },
-                "Central Furnace/Heat Pump Images": {
+                "Central Furnace or Heat Pump Images": {
                             "type": "image",
                             "content": [
                     ]
@@ -2712,30 +2712,30 @@
                         "Rusted": {"c": false,"i": []},
                         "Deteriorated": {"c": false,"i": []},
                         "Disconnected": {"c": false,"i": []},
-                        "n/a": {"c": false,"i": []}
+                        "Not Applicable": {"c": false,"i": []}
                     }
                 },
                 "Filter": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "n/a": {"c": false,"i": []},
+                        "Not Applicable": {"c": false,"i": []},
                         "Electrostatic": {"c": false,"i": []},
                         "Paper": {"c": false,"i": []},
                         "Filter Fabric": {"c": false,"i": []},
                         "Satisfactory": {"c": false,"i": []},
                         "Marginal": {"c": false,"i": []},
-                        "Poor/Dirty": {"c": false,"i": []}
+                        "Poor or Dirty": {"c": false,"i": []}
                     }
                 },
-                "Disconnect/Typical Safety Controls": {
+                "Disconnect or Typical Safety Controls": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
                         "Functional": {"c": false,"i": []},
-                        "Verify Location/Function": {"c": false,"i": []},
+                        "Verify Location or Function": {"c": false,"i": []},
                         "Hazard": {"c": false,"i": []},
-                        "Recommend Professional HVAC Re-Evaluation, Safety Inspection, and/or Remediation": {"c": false,"i": []}
+                        "Recommend Professional HVAC Re-Evaluation, Safety Inspection, and or or Remediation": {"c": false,"i": []}
                     }
                 },
                 "NEW SECTION??? Images": {
@@ -2744,7 +2744,7 @@
                     ]
                         }
             },
-            "Fireplaces/Stoves": {
+            "Fireplaces or Stoves": {
                         "Show Value": {
                             "type":"hidden",
                             "showvalue":false
@@ -2761,21 +2761,21 @@
                     "showcontent": true,
                     "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-160 of the Washington State Dept. of Licensing, the inspector is not required to: (1)inspect flues or verify the presence of flue liners beyond what can be safely and readily seen from the roof or the firebox of a stove or fireplace, (2)inspect any solid fuel device being operated at the time of the inspection, (3)dismantle fireplaces or stoves to inspect fire-boxes or remove rain caps to inspect chimney flues, (3)evaluate the installation or adequacy of fireplace inserts, or modifications to a fireplace, stove, or chimney, or (4)ignite fires in a fireplace or stove, perform a chimney smoke test or determine the adequacy of draft."
                 },
-                "Fireplace/Stove Type": {
+                "Fireplace or Stove Type": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
                         "Masonry Firebox": {"c": false,"i": []},
                         "Metal FP Insert": {"c": false,"i": []},
                         "Direct Vent Gas FP": {"c": false,"i": []},
-                        "Wood/Pellet Stove": {"c": false,"i": []},
+                        "Wood or Pellet Stove": {"c": false,"i": []},
                         "Masonry Flue Liner": {"c": false,"i": []},
                         "Metal Flue Liner": {"c": false,"i": []},
                         "Unlined Chase": {"c": false,"i": []},
                         "Venting Into Chimney Chase": {"c": false,"i": []}
                     }
                 },
-                "Mantle/Hearth": {
+                "Mantle or Hearth": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2792,7 +2792,7 @@
                         "No Access": {"c": false,"i": []},
                         "Missing Liner": {"c": false,"i": []},
                         "Cracked Refractory Brick": {"c": false,"i": []},
-                        "Missing/Loose Mortar": {"c": false,"i": []}
+                        "Missing or Loose Mortar": {"c": false,"i": []}
                     }
                 },
                 "Damper": {
@@ -2801,19 +2801,19 @@
                     "value": {
                         "Missing": {"c": false,"i": []},
                         "No Access": {"c": false,"i": []},
-                        "Inoperable/DTO": {"c": false,"i": []},
+                        "Inoperable or DTO": {"c": false,"i": []},
                         "Rusted": {"c": false,"i": []},
-                        "Damaged/Broken": {"c": false,"i": []},
+                        "Damaged or Broken": {"c": false,"i": []},
                         "Creosote Build-Up": {"c": false,"i": []},
                         "Deterioration": {"c": false,"i": []},
-                        "Recommend Cleaning/Re-Evaluation/Repairs": {"c": false,"i": []}
+                        "Recommend Cleaning or Re-Evaluation or Repairs": {"c": false,"i": []}
                     }
                 },
                 "Chimney": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "n/a": {"c": false,"i": []},
+                        "Not Applicable": {"c": false,"i": []},
                         "Framed": {"c": false,"i": []},
                         "Masonry": {"c": false,"i": []},
                         "Metal": {"c": false,"i": []},
@@ -2826,16 +2826,16 @@
                         "Rust": {"c": false,"i": []},
                         "Creosote": {"c": false,"i": []},
                         "Missing Cricket": {"c": false,"i": []},
-                        "Inadequate/Missing Flashing": {"c": false,"i": []},
+                        "Inadequate or Missing Flashing": {"c": false,"i": []},
                         "Damaged": {"c": false,"i": []},
                         "Missing Burn Guard": {"c": false,"i": []},
                         "Satisfactory": {"c": false,"i": []},
                         "Marginal": {"c": false,"i": []},
                         "Poor": {"c": false,"i": []},
-                        "Recommend Professional Re-Evaluation/Remediation": {"c": false,"i": []}
+                        "Recommend Professional Re-Evaluation or Remediation": {"c": false,"i": []}
                     }
                 },
-                "Fireplaces/Stoves Images": {
+                "Fireplaces or Stoves Images": {
                             "type": "image",
                             "content": [
                     ]
@@ -2852,24 +2852,24 @@
                     "required": false, "showvalue" : false,
                     "type": "presettext",
                     "showcontent": true,
-                    "content": "The inspection of the air conditioning system includes the cooling equipment; cooling distribution equipment, the energy sources, and a description noted in this report of any deficiencies of these systems or components: (1)Where an air conditioning system is present, readily accessible access panels or covers provided by the manufacturer or installer were opened to inspect the air conditioning system. (2)Where conditions allowed use of normal control devices, function of the controls and operative components of the complete system were inspected, and temperature differential was measured and recorded. (3)Interior exhaust fans and/or furnace blower motors may be present and/or operational at the time of the inspection but do not provide cooling. (BOLD THIS)Heat pump cycles were NOT reversed, and if outdoor temperatures were below 60 degrees during the past 72hrs, A/C systems were NOT tested.(BOLD THIS)"
+                    "content": "The inspection of the air conditioning system includes the cooling equipment; cooling distribution equipment, the energy sources, and a description noted in this report of any deficiencies of these systems or components: (1)Where an air conditioning system is present, readily accessible access panels or covers provided by the manufacturer or installer were opened to inspect the air conditioning system. (2)Where conditions allowed use of normal control devices, function of the controls and operative components of the complete system were inspected, and temperature differential was measured and recorded. (3)Interior exhaust fans or furnace blower motors may be present and or or operational at the time of the inspection but do not provide cooling. (BOLD THIS)Heat pump cycles were NOT reversed, and if outdoor temperatures were below 60 degrees during the past 72hrs, Air Conditioning systems were NOT tested.(BOLD THIS)"
                 },
                 "Limitations": {
                     "required": false, "showvalue" : false,
                     "type": "presettext",
                     "showcontent": true,
-                    "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-130 of the Washington State Dept. of Licensing, the inspector is not required to determine the efficiency, or adequacy of the system, activate cooling systems that have been shut down, or operate cooling system components if the exterior temperature is below sixty degrees Fahrenheit, when doing so might damage the equipment, or when other circumstances are not conducive to safe operation, remove covers or panels that are not readily accessible or dismantle any equipment, controls, or gauges except readily identifiable access covers designed to be removed by users, check the coolant pressure / charge, or inspect the system for refrigerant leaks, inspect gas-fired refrigeration systems, evaporative coolers, wall or window-mounted air-conditioning units, evaluate digital-type thermostats or controls, or determine how much current the unit is drawing."
+                    "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-130 of the Washington State Dept. of Licensing, the inspector is not required to determine the efficiency, or adequacy of the system, activate cooling systems that have been shut down, or operate cooling system components if the exterior temperature is below sixty degrees Fahrenheit, when doing so might damage the equipment, or when other circumstances are not conducive to safe operation, remove covers or panels that are not readily accessible or dismantle any equipment, controls, or gauges except readily identifiable access covers designed to be removed by users, check the coolant pressure  or  charge, or inspect the system for refrigerant leaks, inspect gas-fired refrigeration systems, evaporative coolers, wall or window-mounted air-conditioning units, evaluate digital-type thermostats or controls, or determine how much current the unit is drawing."
                 },
                 "Temperature Differential": {
                     "required": false, "showvalue" : false,
                     "type": "number",
                     "value": ""
                 },
-                "A/C Type": {
+                "Air Conditioner Type": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "n/a": {"c": false,"i": []},
+                        "Not Applicable": {"c": false,"i": []},
                         "Inoperable": {"c": false,"i": []},
                         "OTHER (NEEDS MORE DATA)": {"c": false,"i": []}
                     }
@@ -2912,7 +2912,7 @@
                     "required": false, "showvalue" : false,
                     "type": "textbox",
                     "value": {
-                        "n/a": {"c": false,"i": []},
+                        "Not Applicable": {"c": false,"i": []},
                         "OTHER (NEEDS MORE DATA)": {"c": false,"i": []}
                     }
                 },
@@ -2921,12 +2921,12 @@
                     "type": "number",
                     "value": ""
                 },
-                "Model #": {
+                "Model Number": {
                     "required": false, "showvalue" : false,
                     "type": "textbox",
                     "value": ""
                 },
-                "Serial #": {
+                "Serial Number": {
                     "type": "textbox",
                     "value": ""
                 },
@@ -2936,12 +2936,12 @@
                     ]
                         }
             },
-            "Compressor/Condenser (Outside)": {
+            "Compressor or Condenser (Outside)": {
                 "Show Value": {
                     "type":"hidden",
                     "showvalue":false
                 },
-                "Compressor/Condenser Brand Name": {
+                "Compressor or Condenser Brand Name": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2949,30 +2949,30 @@
                         "OTHER (NEEDS MORE DATA)": {"c": false,"i": []}
                     }
                 },
-                "Compressor/Condenser Capacity": {
+                "Compressor or Condenser Capacity": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "n/a": {"c": false,"i": []},
+                        "Not Applicable": {"c": false,"i": []},
                         "OTHER (NEEDS MORE DATA)": {"c": false,"i": []}
                     }
                 },
-                "Compressor/Condenser Year of Manufacture": {
+                "Compressor or Condenser Year of Manufacture": {
                     "required": false, "showvalue" : false,
                     "type": "number",
                     "value": ""
                 },
-                "Model # of Compressor/Condenser": {
+                "Model Number of Compressor or Condenser": {
                     "required": false, "showvalue" : false,
                     "type": "textbox",
                     "value": ""
                 },
-                "Serial # of Compressor/Condenser": {
+                "Serial Number of Compressor or Condenser": {
                     "required": false, "showvalue" : false,
                     "type": "textbox",
                     "value": ""
                 },
-                "Condition Compressor/Condenser": {
+                "Condition Compressor or Condenser": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -2995,7 +2995,7 @@
                         "Insulation Missing": {"c": false,"i": []}
                     }
                 },
-                "Compressor/Condensor Images": {
+                "Compressor or Condensor Images": {
                             "type": "image",
                             "content": [
                     ]
@@ -3018,7 +3018,7 @@
                     "required": false, "showvalue" : false,
                     "type": "presettext",
                     "showcontent": true,
-                    "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-110 of the Washington State Dept. of Licensing, the inspector is not required to: insert any tool, probe or testing device into the main or sub-panels, activate electrical systems or branch circuits that are not energized, operate circuit breakers, service disconnects or remove fuses, verify the continuity of connected service ground(s), or test every switch, receptacle, and fixture, move any objects, furniture, or appliances to gain access to any electrical component, remove switch and receptacle cover plates, dismantle any electrical device or control, except for the removal of the dead-front covers from the main service panel and sub-panels, or inspect electrical equipment thatAPOSTRPHEs not readily accessible, or ancillary systems, including but not limited to: timers, security systems, low voltage relays, smoke/heat detectors, antennas, intercoms, electrical de- icing tapes, lawn sprinkler wiring, swimming pool or spa wiring, central vacuum systems.(BOLD THIS) Solid conductor aluminum wiring may be hazardous and if reported, a licensed electrician should inspect the system to ensure itAPOSTROPHEs safe. Homes without ground fault protection should have GFCI devices installed, replaced, or upgraded where recommended by industry standards.(BOLD THIS)"
+                    "content": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-110 of the Washington State Dept. of Licensing, the inspector is not required to: insert any tool, probe or testing device into the main or sub-panels, activate electrical systems or branch circuits that are not energized, operate circuit breakers, service disconnects or remove fuses, verify the continuity of connected service ground(s), or test every switch, receptacle, and fixture, move any objects, furniture, or appliances to gain access to any electrical component, remove switch and receptacle cover plates, dismantle any electrical device or control, except for the removal of the dead-front covers from the main service panel and sub-panels, or inspect electrical equipment thatAPOSTRPHEs not readily accessible, or ancillary systems, including but not limited to: timers, security systems, low voltage relays, smoke or heat detectors, antennas, intercoms, electrical de- icing tapes, lawn sprinkler wiring, swimming pool or spa wiring, central vacuum systems.(BOLD THIS) Solid conductor aluminum wiring may be hazardous and if reported, a licensed electrician should inspect the system to ensure itAPOSTROPHEs safe. Homes without ground fault protection should have GFCI devices installed, replaced, or upgraded where recommended by industry standards.(BOLD THIS)"
                 },
                 "Main Service Entry": {
                     "required": false, "showvalue" : false,
@@ -3026,7 +3026,7 @@
                     "value": {
                         "Underground": {"c": false,"i": []},
                         "Yard Post": {"c": false,"i": []},
-                        "Not Visible/Accessible": {"c": false,"i": []},
+                        "Not Visible or Accessible": {"c": false,"i": []},
                         "In Conduit": {"c": false,"i": []},
                         "Overhead": {"c": false,"i": []},
                         "Pole Unstable": {"c": false,"i": []},
@@ -3070,7 +3070,7 @@
                         "Exterior Wall": {"c": false,"i": []},
                         "Yard Post": {"c": false,"i": []},
                         "Mechanical Closet": {"c": false,"i": []},
-                        "Not Visible/Locked": {"c": false,"i": []}
+                        "Not Visible or Locked": {"c": false,"i": []}
                     }
                 },
                 "Meter Condition": {
@@ -3092,7 +3092,7 @@
                         "Not Visible": {"c": false,"i": []},
                         "Ground Rods": {"c": false,"i": []},
                         "Ufer": {"c": false,"i": []},
-                        "Bonded to Water/Gas Piping": {"c": false,"i": []}
+                        "Bonded to Water or Gas Piping": {"c": false,"i": []}
                     }
                 },
                 "Ground Wiring": {
@@ -3102,7 +3102,7 @@
                         "Copper": {"c": false,"i": []},
                         "Aluminum": {"c": false,"i": []},
                         "Missing": {"c": false,"i": []},
-                        "Not Visible/Accessible": {"c": false,"i": []}
+                        "Not Visible or Accessible": {"c": false,"i": []}
                     }
                 },
                 "Condition of Main Electrical Disconnect": {
@@ -3110,7 +3110,7 @@
                     "type": "checkbox",
                     "value": {
                         "Satisfactory": {"c": false,"i": []},
-                        "Loose Clamp/Lug": {"c": false,"i": []},
+                        "Loose Clamp or Lug": {"c": false,"i": []},
                         "Missing": {"c": false,"i": []},
                         "Improper Bond": {"c": false,"i": []},
                         "Too Far From Entry": {"c": false,"i": []}
@@ -3134,7 +3134,7 @@
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "Not Visible/Accessible": {"c": false,"i": []},
+                        "Not Visible or Accessible": {"c": false,"i": []},
                         "Blocked": {"c": false,"i": []},
                         "Not Evaluated": {"c": false,"i": []}
                     }
@@ -3143,7 +3143,7 @@
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "n/a": {"c": false,"i": []},
+                        "Not Applicable": {"c": false,"i": []},
                         "OTHER (NEED MORE DATA)": {"c": false,"i": []
                         }
                     }
@@ -3178,7 +3178,7 @@
                     "value": {
                         "GFCI Breakers": {"c": false,"i": []},
                         "AFCI Breakers": {"c": false,"i": []},
-                        "n/a": {"c": false,"i": []}
+                        "Not Applicable": {"c": false,"i": []}
                     }
                 },
                 "Location": {
@@ -3231,8 +3231,8 @@
                         "Burned Breakers": {"c": false,"i": []},
                         "Dangerous Panel Type": {"c": false,"i": []},
                         "Improper Splicing": {"c": false,"i": []},
-                        "Hazardous/Unsafe": {"c": false,"i": []},
-                        "Recommend Professional Evaluation/Repairs": {"c": false,"i": []}
+                        "Hazardous or Unsafe": {"c": false,"i": []},
+                        "Recommend Professional Evaluation or Repairs": {"c": false,"i": []}
                     }
                 },
                 "Electrical System Images": {
@@ -3241,7 +3241,7 @@
                     ]
                         }
             },
-            "Fixtures/Switches/Detectors": {
+            "Fixtures, Switches, or Detectors": {
                 "Show Value": {
                     "type":"hidden",
                     "showvalue":false
@@ -3250,7 +3250,7 @@
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "Missing/Removed": {"c": false,"i": []},
+                        "Missing or Removed": {"c": false,"i": []},
                         "Inoperable": {"c": false,"i": []},
                         "Missing Bulbs": {"c": false,"i": []},
                         "Missing Covers": {"c": false,"i": []},
@@ -3269,7 +3269,7 @@
                         "Hazard": {"c": false,"i": []}
                     }
                 },
-                "Switches/Receptacles": {
+                "Switches or Receptacles": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -3278,7 +3278,7 @@
                         "Typical Un-Grounded": {"c": false,"i": []}
                     }
                 },
-                "Condition of Switches/Receptacles": {
+                "Condition of Switches or Receptacles": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -3286,10 +3286,10 @@
                         "Marginal": {"c": false,"i": []},
                         "Poor": {"c": false,"i": []},
                         "Inoperable": {"c": false,"i": []},
-                        "Weak/Loose": {"c": false,"i": []},
-                        "Missing/Removed": {"c": false,"i": []},
+                        "Weak or Loose": {"c": false,"i": []},
+                        "Missing or Removed": {"c": false,"i": []},
                         "Missing Cover Plates": {"c": false,"i": []},
-                        "Dangling/Unmounted": {"c": false,"i": []},
+                        "Dangling or Unmounted": {"c": false,"i": []},
                         "External Splicing": {"c": false,"i": []},
                         "Gaps Into Boxes": {"c": false,"i": []},
                         "Burned": {"c": false,"i": []},
@@ -3298,8 +3298,8 @@
                         "Reverse Polarity": {"c": false,"i": []},
                         "Ungrounded 3-Prong": {"c": false,"i": []},
                         "Damaged": {"c": false,"i": []},
-                        "Hazardous/Unsafe": {"c": false,"i": []},
-                        "Recommend Repair/Evaluation by Professional Electrician": {"c": false,"i": []}
+                        "Hazardous or Unsafe": {"c": false,"i": []},
+                        "Recommend Repair or Evaluation by Professional Electrician": {"c": false,"i": []}
                     }
                 },
                 "Carbon Monoxide Detectors": {
@@ -3307,7 +3307,7 @@
                     "type": "checkbox",
                     "value": {
                         "Installed": {"c": false,"i": []},
-                        "Missing/Recommended": {"c": false,"i": []},
+                        "Missing or Recommended": {"c": false,"i": []},
                         "NOT Tested": {"c": false,"i": []}
                     }
                 },
@@ -3317,7 +3317,7 @@
                     "value": {
                         "Installed": {"c": false,"i": []},
                         "Inoperable": {"c": false,"i": []},
-                        "Chirping/Low Batteries": {"c": false,"i": []},
+                        "Chirping or Low Batteries": {"c": false,"i": []},
                         "Missing": {"c": false,"i": []}
                     }
                 },
@@ -3327,7 +3327,7 @@
                     "showcontent": true,
                     "content": "CAUTION: Testing Detectors by pushing test buttons may be inconclusive"
                 },
-                "Fixtures/Switches/Detectors Images": {
+                "Fixtures, Switches, or Detectors Images": {
                             "type": "image",
                             "content": [
                     ]
@@ -3356,7 +3356,7 @@
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "n/a": {"c": false,"i": []},
+                        "Not Applicable": {"c": false,"i": []},
                         "Solid Wood": {"c": false,"i": []},
                         "Metal": {"c": false,"i": []},
                         "Fiberglass": {"c": false,"i": []},
@@ -3368,8 +3368,8 @@
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "Sagging/Settled": {"c": false,"i": []},
-                        "Rubbing/Binding": {"c": false,"i": []},
+                        "Sagging or Settled": {"c": false,"i": []},
+                        "Rubbing or Binding": {"c": false,"i": []},
                         "Damaged": {"c": false,"i": []},
                         "Hardware Issues": {"c": false,"i": []},
                         "Doorbell Inoperable": {"c": false,"i": []}
@@ -3379,7 +3379,7 @@
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "Missing/Damaged": {"c": false,"i": []},
+                        "Missing or Damaged": {"c": false,"i": []},
                         "Poor Seal": {"c": false,"i": []},
                         "Ineffective Threshold": {"c": false,"i": []}
                     }
@@ -3390,14 +3390,14 @@
                     "value": {
                         "Satisfactory": {"c": false,"i": []},
                         "Inaccessible": {"c": false,"i": []},
-                        "Difficult To Operate (Needs Adjustment/Lubrication)": {"c": false,"i": []},
+                        "Difficult To Operate (Needs Adjustment or Lubrication)": {"c": false,"i": []},
                         "Missing Hardware": {"c": false,"i": []},
                         "Inadequate Security": {"c": false,"i": []},
                         "Failed Thermal Seals": {"c": false,"i": []},
                         "Broken Panes": {"c": false,"i": []},
                         "Stained": {"c": false,"i": []},
                         "Weathered Sills": {"c": false,"i": []},
-                        "Mold/Mildew": {"c": false,"i": []},
+                        "Mold or Mildew": {"c": false,"i": []},
                         "Damage": {"c": false,"i": []},
                         "Deterioration": {"c": false,"i": []}
                     }
@@ -3406,7 +3406,7 @@
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "n/a": {"c": false,"i": []},
+                        "Not Applicable": {"c": false,"i": []},
                         "Inoperable": {"c": false,"i": []},
                         "Satisfactory": {"c": false,"i": []}
                     }
@@ -3416,15 +3416,15 @@
                     "type": "checkbox",
                     "value": {
                         "Satisfactory": {"c": false,"i": []},
-                        "Missing/Inadequate": {"c": false,"i": []}
+                        "Missing or Inadequate": {"c": false,"i": []}
                     }
                 },
-                "Lights/Switches/Receptacles (Refer To Electrical Section/SUB-HEADING??/DO WE NEED THIS SECTION??)": {
+                "Lights, Switches, or Receptacles (Refer To Electrical Section or SUB-HEADING? or DO WE NEED THIS SECTION?)": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
                         "Appeared Functional": {"c": false,"i": []},
-                        "Loose/Worn": {"c": false,"i": []},
+                        "Loose or Worn": {"c": false,"i": []},
                         "Missing": {"c": false,"i": []},
                         "Inoperable": {"c": false,"i": []},
                         "Missing Cover Plates": {"c": false,"i": []},
@@ -3432,10 +3432,10 @@
                         "Inoperable GFCI": {"c": false,"i": []},
                         "Missing GFCI Protection": {"c": false,"i": []},
                         "Reversed Polarity": {"c": false,"i": []},
-                        "OG/RP Within 6 Feet": {"c": false,"i": []},
+                        "OG or RP Within 6 Feet": {"c": false,"i": []},
                         "Burned": {"c": false,"i": []},
                         "Exposed Wires": {"c": false,"i": []},
-                        "Hazardous/Unsafe": {"c": false,"i": []},
+                        "Hazardous or Unsafe": {"c": false,"i": []},
                         "Refer To Electrical Section": {"c": true,"i": []},
                         "Recommend Professional Evaluation": {"c": false,"i": []}
                     }
@@ -3481,7 +3481,7 @@
                         "Poor": {"c": false,"i": []},
                         "Damaged": {"c": false,"i": []},
                         "Worn Finish": {"c": false,"i": []},
-                        "Loose Drawers/Hinges": {"c": false,"i": []}
+                        "Loose Drawers or Hinges": {"c": false,"i": []}
                     }
                 },
                 "Countertops": {
@@ -3510,7 +3510,7 @@
                     "type": "checkbox",
                     "value": {
                         "Satisfactory": {"c": false,"i": []},
-                        "Marginal/Worn": {"c": false,"i": []},
+                        "Marginal or Worn": {"c": false,"i": []},
                         "Poor": {"c": false,"i": []}
                     }
                 },
@@ -3519,7 +3519,7 @@
                     "type": "checkbox",
                     "value": {
                         "Satisfactory": {"c": false,"i": []},
-                        "Worn/Cracked/Gaps": {"c": false,"i": []},
+                        "Worn or Cracked or Gaps": {"c": false,"i": []},
                         "Improve at Sink, Back-Splash, Counters, or Fixtures": {"c": false,"i": []}
                     }
                 },
@@ -3528,7 +3528,7 @@
                     "type": "checkbox",
                     "value": {
                         "Satisfactory": {"c": false,"i": []},
-                        "Cracked/Missing": {"c": false,"i": []},
+                        "Cracked or Missing": {"c": false,"i": []},
                         "Loose": {"c": false,"i": []},
                         "Water Damage": {"c": false,"i": []},
                         "Recommend Sealing": {"c": false,"i": []}
@@ -3548,15 +3548,15 @@
                     "type": "checkbox",
                     "value": {
                         "Satisfactory": {"c": false,"i": []},
-                        "Missing/Inadequate": {"c": false,"i": []}
+                        "Missing or Inadequate": {"c": false,"i": []}
                     }
                 },
-                "Lights/Switches/Receptacles (Refer To Electrical Section)": {
+                "Lights or Switches or Receptacles (Refer To Electrical Section)": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
                         "Appeared Functional": {"c": false,"i": []},
-                        "Loose/Worn": {"c": false,"i": []},
+                        "Loose or Worn": {"c": false,"i": []},
                         "Missing": {"c": false,"i": []},
                         "Inoperable": {"c": false,"i": []},
                         "Missing Cover Plates": {"c": false,"i": []},
@@ -3564,10 +3564,10 @@
                         "Inoperable GFCI": {"c": false,"i": []},
                         "Missing GFCI Protection": {"c": false,"i": []},
                         "Reversed Polarity": {"c": false,"i": []},
-                        "OG/RP Within 6 Feet": {"c": false,"i": []},
+                        "OG or RP Within 6 Feet": {"c": false,"i": []},
                         "Burned": {"c": false,"i": []},
                         "Exposed Wires": {"c": false,"i": []},
-                        "Hazardous/Unsafe": {"c": false,"i": []},
+                        "Hazardous or Unsafe": {"c": false,"i": []},
                         "Recommend Professional Evaluation": {"c": false,"i": []}
                     }
                 },
@@ -3601,7 +3601,7 @@
                     "value": {
                         "Electric": {"c": false,"i": []},
                         "Gas": {"c": false,"i": []},
-                        "Inoperable/OFF": {"c": false,"i": []},
+                        "Inoperable or OFF": {"c": false,"i": []},
                         "Cap Needed": {"c": false,"i": []},
                         "Hazard(s)": {"c": false,"i": []},
                         "Recommend Re-Evaluation": {"c": false,"i": []}
@@ -3621,7 +3621,7 @@
                     "type": "checkbox",
                     "value": {
                         "Satisfactory": {"c": false,"i": []},
-                        "Clogged/Loose/Poor": {"c": false,"i": []}
+                        "Clogged or Loose or Poor": {"c": false,"i": []}
                     }
                 },
                 "Exhaust Fan": {
@@ -3631,7 +3631,7 @@
                         "Satisfactory": {"c": false,"i": []},
                         "Marginal": {"c": false,"i": []},
                         "Poor": {"c": false,"i": []},
-                        "Weak/Noisy": {"c": false,"i": []},
+                        "Weak or Noisy": {"c": false,"i": []},
                         "Inoperable": {"c": false,"i": []},
                         "Missing": {"c": false,"i": []}
                     }
@@ -3647,7 +3647,7 @@
                     "type":"hidden",
                     "showvalue":false
                 },
-                "Walls/Ceilings": {
+                "Walls or Ceilings": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -3658,14 +3658,14 @@
                         "Open Beam": {"c": false,"i": []}
                     }
                 },
-                "Condition of Walls/Ceilings": {
+                "Condition of Walls or Ceilings": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
                         "Satisfactory": {"c": false,"i": []},
                         "Marginal": {"c": false,"i": []},
                         "Poor": {"c": false,"i": []},
-                        "Stains/Mildew": {"c": false,"i": []},
+                        "Stains or Mildew": {"c": false,"i": []},
                         "Cracks": {"c": false,"i": []},
                         "Repairs": {"c": false,"i": []},
                         "PACM": {"c": false,"i": []}
@@ -3686,8 +3686,8 @@
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "Worn/Cracked/Gaps": {"c": false,"i": []},
-                        "Improve At Sink, Back-Splash, Tub/Shower Surround/ or Floor": {"c": false,"i": []}
+                        "Worn or Cracked or Gaps": {"c": false,"i": []},
+                        "Improve At Sink, Back-Splash, Tub or Shower Surround or  or Floor": {"c": false,"i": []}
                     }
                 },
                 "Heat": {
@@ -3708,12 +3708,12 @@
                         "Inoperable": {"c": false,"i": []}
                     }
                 },
-                "Lights/Switches/Receptacles (Refer To Electrical Section)": {
+                "Lights or Switches or Receptacles (Refer To Electrical Section)": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
                         "Appeared Functional": {"c": false,"i": []},
-                        "Loose/Worn": {"c": false,"i": []},
+                        "Loose or Worn": {"c": false,"i": []},
                         "Missing": {"c": false,"i": []},
                         "Inoperable": {"c": false,"i": []},
                         "Missing Cover Plates": {"c": false,"i": []},
@@ -3721,10 +3721,10 @@
                         "Inoperable GFCI": {"c": false,"i": []},
                         "Missing GFCI Protection": {"c": false,"i": []},
                         "Reversed Polarity": {"c": false,"i": []},
-                        "OG/RP Within 6 Feet": {"c": false,"i": []},
+                        "OG or RP Within 6 Feet": {"c": false,"i": []},
                         "Burned": {"c": false,"i": []},
                         "Exposed Wires": {"c": false,"i": []},
-                        "Hazardous/Unsafe": {"c": false,"i": []},
+                        "Hazardous or Unsafe": {"c": false,"i": []},
                         "Recommend Professional Evaluation": {"c": false,"i": []}
                     }
                 },
@@ -3739,7 +3739,7 @@
                     "type":"hidden",
                     "showvalue":false
                 },
-                "Walls/Ceilings": {
+                "Walls or Ceilings": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -3750,7 +3750,7 @@
                         "Open Beam": {"c": false,"i": []}
                     }
                 },
-                "Walls/Ceilings Condition": {
+                "Walls or Ceilings Condition": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
@@ -3758,17 +3758,17 @@
                         "Marginal": {"c": false,"i": []},
                         "Poor": {"c": false,"i": []},
                         "Stains": {"c": false,"i": []},
-                        "Moisture/Mildew": {"c": false,"i": []},
+                        "Moisture or Mildew": {"c": false,"i": []},
                         "Water Damage": {"c": false,"i": []},
                         "Settling": {"c": false,"i": []},
                         "Truss Uplift": {"c": false,"i": []},
                         "Nail Pops": {"c": false,"i": []},
                         "Holes": {"c": false,"i": []},
                         "Cracks": {"c": false,"i": []},
-                        "Inadequate Repairs/Texture": {"c": false,"i": []},
+                        "Inadequate Repairs or Texture": {"c": false,"i": []},
                         "Sooting": {"c": false,"i": []},
                         "PACM": {"c": false,"i": []},
-                        "Hazardous/Unsafe": {"c": false,"i": []},
+                        "Hazardous or Unsafe": {"c": false,"i": []},
                         "Recommend Professional Evaluation": {"c": false,"i": []}
                     }
                 },
@@ -3776,8 +3776,8 @@
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "Hard Surfaces (Tile/Stone)": {"c": false,"i": []},
-                        "Hardwood/Laminate": {"c": false,"i": []},
+                        "Hard Surfaces (Tile or Stone)": {"c": false,"i": []},
+                        "Hardwood or Laminate": {"c": false,"i": []},
                         "Vinyl": {"c": false,"i": []},
                         "Carpet": {"c": false,"i": []}
                     }
@@ -3822,16 +3822,16 @@
                         "Poor": {"c": false,"i": []},
                         "Inaccessible": {"c": false,"i": []},
                         "Inoperable": {"c": false,"i": []},
-                        "Missing/Removed": {"c": false,"i": []},
+                        "Missing or Removed": {"c": false,"i": []},
                         "Missing Hardware": {"c": false,"i": []},
-                        "Settled/Rubbing": {"c": false,"i": []},
-                        "Improperly Hung/Sagging": {"c": false,"i": []},
+                        "Settled or Rubbing": {"c": false,"i": []},
+                        "Improperly Hung or Sagging": {"c": false,"i": []},
                         "Holes": {"c": false,"i": []},
                         "Stains": {"c": false,"i": []},
-                        "Cracked/Split Jambs": {"c": false,"i": []},
+                        "Cracked or Split Jambs": {"c": false,"i": []},
                         "Damage": {"c": false,"i": []},
                         "Inadequate Repairs": {"c": false,"i": []},
-                        "Recommend Servicing/Adjusting": {"c": false,"i": []}
+                        "Recommend Servicing or Adjusting": {"c": false,"i": []}
                     }
                 },
                 "Window Type(s)": {
@@ -3860,7 +3860,7 @@
                         "Verify Bedroom Egress": {"c": false,"i": []},
                         "Stained": {"c": false,"i": []},
                         "Weathered Sills": {"c": false,"i": []},
-                        "Mold/Mildew": {"c": false,"i": []},
+                        "Mold or Mildew": {"c": false,"i": []},
                         "Damage": {"c": false,"i": []},
                         "Deterioration": {"c": false,"i": []}
                     }
@@ -3871,12 +3871,12 @@
                     "showcontent": true,
                     "content": "Where Bedrooms lack a door directly to the outside, a window should serve as an emergency egress.  Recommend regular evaluation and service (lubrication, adjustment) of bedroom windows to verify smooth operation and to ensure adequate emergency egress."
                 },
-                "Lights/Switches/Receptacles (Refer To Electrical Section)/DUPLICATE?!?!": {
+                "Lights or Switches or Receptacles (Refer To Electrical Section) or DUPLICATE?!?!": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
                         "Appeared Functional": {"c": false,"i": []},
-                        "Loose/Worn": {"c": false,"i": []},
+                        "Loose or Worn": {"c": false,"i": []},
                         "Missing": {"c": false,"i": []},
                         "Inoperable": {"c": false,"i": []},
                         "Missing Cover Plates": {"c": false,"i": []},
@@ -3884,10 +3884,10 @@
                         "Inoperable GFCI": {"c": false,"i": []},
                         "Missing GFCI Protection": {"c": false,"i": []},
                         "Reversed Polarity": {"c": false,"i": []},
-                        "OG/RP Within 6 Feet": {"c": false,"i": []},
+                        "OG or RP Within 6 Feet": {"c": false,"i": []},
                         "Burned": {"c": false,"i": []},
                         "Exposed Wires": {"c": false,"i": []},
-                        "Hazardous/Unsafe": {"c": false,"i": []},
+                        "Hazardous or Unsafe": {"c": false,"i": []},
                         "Recommend Professional Evaluation": {"c": false,"i": []}
                     }
                 },
@@ -3898,7 +3898,7 @@
                         }
             }
         },
-        "Life/Safety": {
+        "Life or Safety": {
             "Potential Safety Concerns": {
                 "Show Value": {
                     "type":"hidden",
@@ -3916,43 +3916,43 @@
                     "showcontent": true,
                     "content": "The Home Inspection Standards of Practice of the Washington State Department of Licensing state that the inspector is NOT required to report the presence of potentially hazardous plants or animals including, but not limited to, wood destroying insects or diseases harmful to humans; the presence of any environmental hazards including, but not limited to mold, toxins, carcinogens, noise, contaminants, asbestos, lead, water, soil, air quality, or other environmental issues, or the effectiveness of any system installed or methods utilized to control or remove suspected hazardous substances. Unless specifically stated in the standards of practice, or in writing in the pre-inspection agreement, no safety hazards are included in the investigation."
                 },
-                "Tripping/Falling Hazard(s)": {
+                "Tripping or Falling Hazard(s)": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "n/a": {"c": false,"i": []},
-                        "Unsafe/Uneven Walking Surfaces": {"c": false,"i": []},
+                        "Not Applicable": {"c": false,"i": []},
+                        "Unsafe or Uneven Walking Surfaces": {"c": false,"i": []},
                         "Re-Evaluate": true,
                         "Interior": {"c": false,"i": []},
                         "Exterior": {"c": false,"i": []},
-                        "Steep Slope/Drop-Off": {"c": false,"i": []},
+                        "Steep Slope or Drop-Off": {"c": false,"i": []},
                         "Retaining Wall": {"c": false,"i": []},
-                        "Driveway/Walkway(s)": {"c": false,"i": []},
+                        "Driveway or Walkway(s)": {"c": false,"i": []},
                         "Landing": {"c": false,"i": []},
                         "Balcony": {"c": false,"i": []},
                         "Patio": {"c": false,"i": []},
                         "Deck": {"c": false,"i": []},
-                        "Steps/Stairs": {"c": false,"i": []},
-                        "Missing Guard/Handrail(s)": {"c": false,"i": []},
-                        "Low Guard/Handrail(s)": {"c": false,"i": []},
+                        "Steps or Stairs": {"c": false,"i": []},
+                        "Missing Guard or Handrail(s)": {"c": false,"i": []},
+                        "Low Guard or Handrail(s)": {"c": false,"i": []},
                         "Root Heaving": {"c": false,"i": []},
                         "Erosion": {"c": false,"i": []},
-                        "Cracks/Gaps/Missing Dividers": {"c": false,"i": []}
+                        "Cracks or Gaps or Missing Dividers": {"c": false,"i": []}
                     }
                 },
                 "Fire Hazards": {
                     "required": false, "showvalue" : false,
                     "type": "checkbox",
                     "value": {
-                        "n/a": {"c": false,"i": []},
+                        "Not Applicable": {"c": false,"i": []},
                         "None": {"c": false,"i": []},
-                        "Missing/Inadequate Firewall": {"c": false,"i": []},
-                        "Missing/Inadequate Fire-Door": {"c": false,"i": []},
+                        "Missing or Inadequate Firewall": {"c": false,"i": []},
+                        "Missing or Inadequate Fire-Door": {"c": false,"i": []},
                         "Excessive Storage": {"c": false,"i": []},
                         "Excessive Heat": {"c": false,"i": []},
                         "Cellulose Debris": {"c": false,"i": []},
                         "Roof Tear-Off Debris": {"c": false,"i": []},
-                        "Entrapment/Locks": {"c": false,"i": []},
+                        "Entrapment or Locks": {"c": false,"i": []},
                         "Improve Bedroom Egress": {"c": false,"i": []},
                         "Verify Adequate CO & Fire Alarms": {"c": false,"i": []}
                     }
@@ -3962,10 +3962,10 @@
                     "type": "checkbox",
                     "value": {
                         "None": {"c": false,"i": []},
-                        "Ponding/Breeding Water": {"c": false,"i": []},
+                        "Ponding or Breeding Water": {"c": false,"i": []},
                         "Potential Points of Pest Entry": {"c": false,"i": []},
                         "Rat Droppings Toxins": {"c": false,"i": []},
-                        "Bee/Wasp Nests": {"c": false,"i": []},
+                        "Bee or Wasp Nests": {"c": false,"i": []},
                         "Racoon": {"c": false,"i": []}
                     }
                 },
@@ -3983,11 +3983,11 @@
                     "value": {
                         "Missing Window Safety Glass": {"c": false,"i": []},
                         "Electrical Shock Hazard(s)": {"c": false,"i": []},
-                        "Bio-Growth/Mold/Mildew": {"c": false,"i": []},
+                        "Bio-Growth or Mold or Mildew": {"c": false,"i": []},
                         "PACM": {"c": false,"i": []},
                         "Friable ACM": {"c": false,"i": []},
                         "Lead": {"c": false,"i": []},
-                        "Airborne/VOCs": {"c": false,"i": []},
+                        "Airborne or VOCs": {"c": false,"i": []},
                         "Potential Hidden Hazard(s)": {"c": false,"i": []}
                     }
                 },

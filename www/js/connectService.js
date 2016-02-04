@@ -1,6 +1,6 @@
 app.factory('connectService', 
 function () {
-    var socket = null;
+    var socket = io();
     var instance = {};
     
     var authenticated_user = new user("", "", null);
@@ -24,9 +24,6 @@ function () {
     };
     
     instance.login = function(username, password) {
-        // TODO: setup SSL connection (unsecured currently)
-        socket = io(); // Connect to socket.io
-        
         var user_credentials = new user(username, password, null);
         
         var object = new emitObject(authenticated_user, user_credentials);
@@ -53,6 +50,7 @@ function () {
     }
     socket.on("ready user", loginHandler);
     
+    instance.getReports();
     return instance;
 });
 
@@ -61,7 +59,6 @@ function user(username, token, meta) {
     
     // TODO: populate after login.
     this.username = username;
-    this.secret = ""; // Used for password when first authenticating
     this.token = token;
     this.meta = meta;
 }

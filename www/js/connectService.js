@@ -51,7 +51,7 @@ function ($rootScope) {
                 $rootScope.sendReport_handler(data);
                 break;
             default:
-                alert("Oops!  There was an error:\n" + data);
+                alert("Oops!  There was an error...\n\nPlease contact customer support.\n\n" + data);
         }
         
         console.log(data);

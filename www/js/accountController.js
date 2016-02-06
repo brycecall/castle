@@ -1,4 +1,4 @@
-app.controller('accountController', function accountController($scope, inspectionService, $location, $mdSidenav) {
+app.controller('accountController', function accountController($rootScope, $scope, inspectionService, $state, $mdSidenav) {
 
         inspectionService.currentPage.toggleNavMenu = true;
         inspectionService.currentPage.title = "Account";
@@ -19,23 +19,13 @@ app.controller('accountController', function accountController($scope, inspectio
                 }
 
                 inspectionService.io.login($scope.username, $scope.password);
-
-                // inspectionService.request("/user/login", {username:$scope.username, password:$scope.password}).success(function(data) {
-                //     if (data.status)
-                //     {
-                //         inspectionService.currentUser.name = $scope.username;
-                //         inspectionService.currentUser.user_id = data.id;
-                //         $scope.password = null;
-                //         $location.path("/saved");
-                //     }
-                //     else
-                //     {
-                //         $scope.error = "Incorrect username or password, please try again.";
-                //         return;
-                //     }
-                // }).error( function(data) {
-                //     $scope.error = "Server error! Oops...";
-                // });
+                $rootScope.authenticateUser_handler = function(data) {
+                    console.log("AUTH");
+                    if (data.payload !== null)
+                        $scope.error = data.payload.code;
+                    else
+                        $state.go("saved");
+                };
             };
 
             $scope.signout = function() {

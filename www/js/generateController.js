@@ -1,4 +1,4 @@
-app.controller('generateController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window, $compile) {
+app.controller('generateController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window, $compile, inspectionService) {
 
      $scope.toggleLeft = buildToggler('left');
 
@@ -19,7 +19,7 @@ app.controller('generateController', function ($scope, $timeout, $mdSidenav, $md
          return debounceFn;
      }
 
-     $scope.report = reportOne;
+     $scope.report = inspectionService.currentReport;
 //     $scope.fieldNotes = fieldNotes;
 
 

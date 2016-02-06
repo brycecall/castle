@@ -108,14 +108,14 @@ app.controller('indexController', function ($scope, inspectionService, $mdUtil, 
 
 
 // Create the factory / service that is shared among all the controllers
-app.factory('inspectionService', function ($http, $location, $cacheFactory) {
+app.factory('inspectionService', function ($http, $location, $cacheFactory, connectService) {
     var factory = {};
 
-    console.log("factory called");
-    factory.currentReport;
+    factory.io = connectService;
+    factory.currentReport = null;
     factory.backdrop = false;
-    factory.selectedPage;
-    factory.currentSection;
+    factory.selectedPage = null;
+    factory.currentSection = null;
     factory.serverURL = "http://dev.maurasoftware.com:9526";
 
     // Current user information
@@ -125,7 +125,7 @@ app.factory('inspectionService', function ($http, $location, $cacheFactory) {
         user_name: "",
         profile_image: "img/rod.png",
         loggedIn:false
-    }
+    };
 
     // Current page information
     factory.currentPage = {
@@ -135,7 +135,7 @@ app.factory('inspectionService', function ($http, $location, $cacheFactory) {
         icon: "menu",
         link: "create({section:'default'})",
         showExtraMenu: false
-    }
+    };
 
     factory.hideShowOptions = {
         'text': 'Hide',
@@ -151,18 +151,18 @@ app.factory('inspectionService', function ($http, $location, $cacheFactory) {
             factory.hideShowOptions.text = "Hide";
         }
         console.log("CALLED: " + factory.hideShowOptions.showNonRequired);
-    }
+    };
 
 
     factory.openItems = function (showVal) {
         angular.forEach(factory.currentReport[factory.currentSection][factory.selectedPage], function (value, key) {
             value.showvalue = showVal;
         });
-    }
+    };
 
     //Setup data
     factory.init = function () {
-        if (factory.currentUser.id == null) {
+        if (factory.currentUser.id === null) {
             $location.path("/signin");
             return false;
         }
@@ -213,51 +213,51 @@ app.factory('inspectionService', function ($http, $location, $cacheFactory) {
     return factory;
 });
 
+//****** Likely will be replaced by connectService *******
+// app.service("reportService", function () {
 
-app.service("reportService", function () {
+//     var theReport = {};
 
-    var theReport = {};
+//     return {
+//         getTheReport: function () {
+//             return theReport;
+//         },
+//         setTheReport: function (value) {
+//             theReport = value;
+//         }
+//     };
 
-    return {
-        getTheReport: function () {
-            return theReport;
-        },
-        setTheReport: function (value) {
-            theReport = value;
-        }
-    };
-
-});
+// });
 
 
-app.service("serverService", function ($http, $q) {
-    return ({
-        getReport: getReport
+// app.service("serverService", function ($http, $q) {
+//     return ({
+//         getReport: getReport
 
-    });
+//     });
 
-    function getReport() {
-        console.log("Get Report Called");
-        var request = $http({
-            method: "GET",
-            url: "http://dev.maurasoftware.com:9526/report/c/1",
-            params: {
-                action: "GET"
-            }
-        });
-        return (request.then(handleSuccess, handleError));
-    }
+//     function getReport() {
+//         console.log("Get Report Called");
+//         var request = $http({
+//             method: "GET",
+//             url: "http://dev.maurasoftware.com:9526/report/c/1",
+//             params: {
+//                 action: "GET"
+//             }
+//         });
+//         return (request.then(handleSuccess, handleError));
+//     }
 
-    function handleError(response) {
-        if (!angular.isObject(response.data) ||
-            !response.data.message
-        ) {
-            return ($q.reject("An unknown error occurred."));
-        }
-        return ($q.reject(response.data.message));
-    }
+//     function handleError(response) {
+//         if (!angular.isObject(response.data) ||
+//             !response.data.message
+//         ) {
+//             return ($q.reject("An unknown error occurred."));
+//         }
+//         return ($q.reject(response.data.message));
+//     }
 
-    function handleSuccess(response) {
-        return (response.data);
-    }
-});
+//     function handleSuccess(response) {
+//         return (response.data);
+//     }
+// });

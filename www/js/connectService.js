@@ -1,69 +1,91 @@
 app.factory('connectService', 
-function () {
-    var socket = io();
+
+/**************************
+ *    CONNECT SERVICE
+ **************************/
+function ($rootScope) {
+    var socket = io("http://127.0.0.1:8080");
     var instance = {};
     
     var authenticated_user = new user("", "", null);
     
-    // Client Emitters
-    instance.getReports = function() {
-        var object = new emitObject(authenticated_user, null);
-        socket.emit("get user reports", object);
-    };
-    instance.getReport = function(report) {
-        var object = new emitObject(authenticated_user, report.id);
-        socket.emit("get report", object);
-    };
-    instance.sendReport = function(report) {
-        var object = new emitObject(authenticated_user, report);
-        socket.emit("send report", object);
-    };
-    instance.deleteReport = function(report) {
-        var object = new emitObject(authenticated_user, report.id);
-        socket.emit("delete report", object);
+    // Private
+    var emit = function(event, payload) {
+        var object = new emitObject(authenticated_user, event, payload);
+        socket.emit(event, object);
     };
     
+    // Client Emitters
+    instance.sendReport = function(report) {
+        emit(UPDATE_EVENTS.send_report, report);
+    };
+    instance.deleteReport = function(report) {
+        emit(UPDATE_EVENTS.delete_report, report.id);
+    };
     instance.login = function(username, password) {
         var user_credentials = new user(username, password, null);
-        
-        var object = new emitObject(authenticated_user, user_credentials);
-        socket.emit("authenticate user", object);
+        emit(UPDATE_EVENTS.authenticate_user, user_credentials);
     };
     instance.logout = function() {
         socket = null; // Disconnect from socket.io
     };
     instance.createNewUser = function(new_user) {
-        var object = new emitObject(authenticated_user, new_user);
-        socket.emit("create user", object);
+        emit(UPDATE_EVENTS.create_user, new_user);
     };
     
     // Client Listeners
-    var readyHandler = function(data) {
+    var updateHandler = function(data) {
+        console.log("UPDATE!");
+        
+        switch (data.event) {
+            case UPDATE_EVENTS.authenticate_user:
+                $rootScope.authenticateUser_handler(data);
+                break;
+            case UPDATE_EVENTS.create_user:
+                $rootScope.createUser_handler(data);
+                break;
+            case UPDATE_EVENTS.delete_report:
+                $rootScope.deleteReport_handler(data);
+                break;
+            case UPDATE_EVENTS.send_report:
+                $rootScope.sendReport_handler(data);
+                break;
+            default:
+                alert("Oops!  There was an error:\n" + data);
+        }
+        
         console.log(data);
-    }
-    socket.on("ready", readyHandler);
-    var loginHandler = function(data) {
-        if (data)
-            authenticated_user = data;
-        else
-            console.log("User not authenticated.");
-    }
-    socket.on("ready user", loginHandler);
+    };
+    socket.on("update", updateHandler);
     
-    instance.getReports();
     return instance;
 });
 
-function user(username, token, meta) {
-    // TODO: Attempt login on object creation
-    
-    // TODO: populate after login.
+/**************************
+ *    CUSTOM DATA TYPES
+ **************************/
+function user(username, password, meta) {
     this.username = username;
-    this.token = token;
+    this.password = password;
     this.meta = meta;
 }
 
-function emitObject(user, payload) {
+function emitObject(user, event, payload) {
     this.user = user;
+    this.event = event;
     this.payload = payload;
 }
+
+/**************************
+ *    CUSTOM DATA TYPES
+ **************************/
+var UPDATE_EVENTS = function() {
+    var instance = {};
+    
+    instance.send_report = "send report";
+    instance.delete_report = "delete report";
+    instance.authenticate_user = "authenticate user";
+    instance.create_user = "create user";
+    
+    return instance;
+}();

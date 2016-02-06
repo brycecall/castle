@@ -1,4 +1,4 @@
- app.controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $anchorScroll, $rootScope, $window, $stateParams, inspectionService, serverService, reportService) {
+ app.controller('createController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $anchorScroll, $rootScope, $window, $stateParams, inspectionService) {
 
 
  $scope.currentSection = $stateParams.section;

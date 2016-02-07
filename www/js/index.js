@@ -108,15 +108,25 @@ app.controller('indexController', function ($scope, inspectionService, $mdUtil, 
 
 
 // Create the factory / service that is shared among all the controllers
-app.factory('inspectionService', function ($http, $location, $cacheFactory, connectService) {
+app.factory('inspectionService', function ($rootScope, connectService) {
     var factory = {};
 
     factory.io = connectService;
+    factory.reports = null;
     factory.currentReport = null;
     factory.backdrop = false;
     factory.selectedPage = null;
     factory.currentSection = null;
-    factory.serverURL = "http://dev.maurasoftware.com:9526";
+    //factory.serverURL = "http://dev.maurasoftware.com:9526";
+    
+    //TODO: change when send and delete differ
+    $rootScope.deleteReport_handler = $rootScope.refresh_handler;
+    $rootScope.sendReport_handler = $rootScope.refresh_handler;
+    $rootScope.refresh_handler = function(data) {
+        console.log("UPDATE ALL REPORTS");
+        factory.reports = data.payload;
+        console.info(factory.reports);
+    }
 
     // Current user information
     factory.currentUser = {

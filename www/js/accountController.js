@@ -5,26 +5,27 @@ app.controller('accountController', function accountController($rootScope, $scop
         inspectionService.currentPage.icon = "menu";
 
 
-            $scope.username = inspectionService.currentUser.name;
+            $scope.name = inspectionService.currentUser.name;
             $scope.password = inspectionService.currentUser.password;
             $scope.error = "";
             $scope.signin = function () {
 
 
-                if ($scope.username == null || $scope.password == null
-                    || $scope.username == "" || $scope.password == "")
+                if ($scope.email == null || $scope.email == null
+                    || $scope.email == "" || $scope.password == "")
                 {
-                    $scope.error = "Please enter a username and password.";
+                    $scope.error = "Please enter an email and password.";
                     return;
                 }
 
-                inspectionService.io.login($scope.username, $scope.password);
+                inspectionService.io.login($scope.email, $scope.password);
                 $rootScope.authenticateUser_handler = function(data) {
                     console.log("AUTH");
                     if (data.payload !== null)
                         $scope.error = data.payload.code;
                     else
                         $state.go("saved");
+                    inspectionService.io.refresh();
                 };
             };
 

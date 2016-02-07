@@ -1,4 +1,4 @@
-app.controller('generateController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window, $compile, inspectionService) {
+app.controller('generateController', function ($rootScope, $scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window, $compile, inspectionService) {
 
      $scope.toggleLeft = buildToggler('left');
 
@@ -19,6 +19,15 @@ app.controller('generateController', function ($scope, $timeout, $mdSidenav, $md
          return debounceFn;
      }
 
+    $scope.submit = function() {
+        inspectionService.currentReport = $scope.report;
+        inspectionService.io.sendReport(inspectionService.currentReport);
+    }
+    $rootScope.sendReport_handler = function(data) {
+        console.log("SEND REPORT");
+    };
+    
+    
      $scope.report = inspectionService.currentReport;
 //     $scope.fieldNotes = fieldNotes;
 

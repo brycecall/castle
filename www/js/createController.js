@@ -5,7 +5,7 @@
  inspectionService.currentSection = $scope.currentSection;
  $scope.selectedPage = inspectionService.selectedPage;
  $scope.selImagePage = $scope.selectedPage + " Images";
- $scope.report = reportOne;
+ $scope.report = inspectionService.currentReport;
 
 
 //    inspectionService.request("/report/r/1").success(function(response) {

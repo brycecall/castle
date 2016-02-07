@@ -7,7 +7,7 @@ function ($rootScope) {
     var socket = io("http://127.0.0.1:8080");
     var instance = {};
     
-    var authenticated_user = new user("", "", null);
+    var authenticated_user = null;
     
     // Private
     var emit = function(event, payload) {
@@ -19,16 +19,24 @@ function ($rootScope) {
     instance.sendReport = function(report) {
         emit(UPDATE_EVENTS.send_report, report);
     };
+    
     instance.deleteReport = function(report) {
         emit(UPDATE_EVENTS.delete_report, report.id);
     };
+    
+    instance.refresh = function() {
+        emit(UPDATE_EVENTS.refresh, null);
+    };
+    
     instance.login = function(username, password) {
         var user_credentials = new user(username, password, null);
         emit(UPDATE_EVENTS.authenticate_user, user_credentials);
     };
+    
     instance.logout = function() {
         socket = null; // Disconnect from socket.io
     };
+    
     instance.createNewUser = function(new_user) {
         emit(UPDATE_EVENTS.create_user, new_user);
     };
@@ -39,10 +47,15 @@ function ($rootScope) {
         
         switch (data.event) {
             case UPDATE_EVENTS.authenticate_user:
+                authenticated_user = data.user;
                 $rootScope.authenticateUser_handler(data);
                 break;
             case UPDATE_EVENTS.create_user:
+                authenticated_user = data.user;
                 $rootScope.createUser_handler(data);
+                break;
+            case UPDATE_EVENTS.refresh:
+                $rootScope.refresh_handler(data);
                 break;
             case UPDATE_EVENTS.delete_report:
                 $rootScope.deleteReport_handler(data);
@@ -84,6 +97,7 @@ var UPDATE_EVENTS = function() {
     
     instance.send_report = "send report";
     instance.delete_report = "delete report";
+    instance.refresh = "refresh";
     instance.authenticate_user = "authenticate user";
     instance.create_user = "create user";
     

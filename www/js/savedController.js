@@ -1,43 +1,23 @@
-app.controller('savedController', function ($scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, inspectionService, $http, reportService, $rootScope) {
+app.controller('savedController', function ($scope, inspectionService, $state) {
 
 inspectionService.currentPage.title = "Saved";
+$scope.inspectionService = inspectionService;
 
-$scope.savedReports = {};
-
-
-//          $scope.report = {};
-//   function applyRemoteData(remoteData) {
-//     }
+//    inspectionService.request("/report/c/1").success(function(response) {
+//        if (response != null && response != "") {
+//            $scope.savedReports = response;
 //
-//     serverService.getReport().then(function (report) {
-//         applyRemoteData(report)
-//     });
-
-
-    inspectionService.request("/report/c/1").success(function(response) {
-        if (response != null && response != "") {
-            $scope.savedReports = response;
-
-        } else {
-            $scope.savedReports = {};
-            console.log("EMPTY!");
-        }
-    });
+//        } else {
+//            $scope.savedReports = {};
+//            console.log("EMPTY!");
+//        }
+//    });
 
     $scope.switchReport = function(sReport) {
-        //console.log(sReport['rep_json']);
-
-        var temp = sReport['rep_json'];
-        if (typeof temp != 'object') {
-            temp = JSON.parse(sReport['rep_json']);
-        }
-        //console.log(temp);
-        inspectionService.currentReport = temp;
-        reportService.setTheReport(temp);
-        $rootScope.$broadcast('reportChange', inspectionService.currentReport);
-       // console.log("This is special");
-
+        inspectionService.currentReport = sReport;
+        $state.go("create");
     }
+    
 
 
    // console.log(JSON.stringify(reportOne))

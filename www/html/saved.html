@@ -9,7 +9,7 @@
 
 
 
-                <md-whiteframe  ng-repeat="sReport in savedReports" class="md-whiteframe-1dp frameStyle" ng-click="switchReport(sReport)" ui-sref="create({section:'default'})" layout-align="center center">
+                <md-whiteframe  ng-repeat="sReport in inspectionService.reports" class="md-whiteframe-1dp frameStyle" ng-click="switchReport(sReport)" ui-sref="create({section:'default'})" layout-align="center center">
                     <span>{{sReport['rep_name']}}</span>
                 </md-whiteframe>
 

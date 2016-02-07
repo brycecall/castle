@@ -140,7 +140,7 @@
 
                                 <h3 class="md-subhead" ng-click="toggleItem(itemVal)">{{listValue}}:</h3>
                                 <md-radio-group ng-model="itemVal.value" ng-if="itemVal.showvalue">
-                                    <md-radio-button ng-repeat="(radiokey, radiovalue) in notSorted(itemVal.content)" ng-init="radioval = itemVal.content[radiovalue]" ng-value="radioval" class="radioHeight"><span >{{radioval}}</span></md-radio-button>
+                                    <md-radio-button ng-repeat="(radiokey, radiovalue) in notSorted(itemVal.content)" ng-value="radiovalue" class="radioHeight"><span >{{radiovalue}}</span></md-radio-button>
                                 </md-radio-group>
 <!--                                <md-divider></md-divider>-->
                             </div>

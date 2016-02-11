@@ -19,16 +19,47 @@ app.controller('accountController', function accountController($rootScope, $scop
                 }
 
                 inspectionService.io.login($scope.email, $scope.password);
-                $rootScope.authenticateUser_handler = function(data) {
+            };
+            $scope.register = function() {
+                if (!$scope.name || !$scope.email || !$scope.password || !$scope.passwordTwo)
+                    {
+                        $scope.error = "Please provide all of the information requested.";
+                        return;
+                    }
+                
+                if ($scope.password !== $scope.passwordTwo)
+                    {
+                        $scope.error = "Paswords do not match.";
+                        $scope.password = "";
+                        $scope.passwordTwo = "";
+                        return;
+                    }
+                
+                inspectionService.io.createNewUser($scope.email, $scope.password, $scope.name);
+            };
+    
+            $rootScope.authenticateUser_handler = function(data) {
                     console.log("AUTH");
+                    console.info(data);
                     if (data.payload !== null)
-                        $scope.error = data.payload.code;
+                        {
+                            $scope.error = data.payload.code;
+                            inspectionService.currentUser = null;
+                        }
                     else
-                        $state.go("saved");
+                        {
+                            inspectionService.currentUser = {};
+                            inspectionService.currentUser.loggedIn = true;
+                            inspectionService.currentUser.name = data.user.username;
+                            inspectionService.currentUser.user_name = data.user.username;
+                            inspectionService.currentUser.user_id = data.user.uid;
+                            inspectionService.currentUser.profile_image = data.user.password.profileImageURL;
+                            $state.go("saved");
+                        }
                     inspectionService.io.refresh();
                 };
-            };
-
+            $rootScope.createUser_handler = $rootScope.authenticateUser_handler;
+    
             $scope.signout = function() {
                 inspectionService.currentUser = {user_id: null, name: null};
                 $scope.username = null;

@@ -11,7 +11,11 @@ function ($rootScope) {
     
     // Private
     var emit = function(event, payload) {
-        var object = new emitObject(authenticated_user, event, payload);
+        if (authenticated_user)
+            var object = new emitObject(authenticated_user.token, event, payload);
+        else
+            var object = new emitObject(null, event, payload);
+        
         socket.emit(event, object);
     };
     
@@ -37,8 +41,9 @@ function ($rootScope) {
         socket = null; // Disconnect from socket.io
     };
     
-    instance.createNewUser = function(new_user) {
-        emit(UPDATE_EVENTS.create_user, new_user);
+    instance.createNewUser = function(username, password, meta) {
+        var user_credentials = new user(username, password, meta);
+        emit(UPDATE_EVENTS.create_user, user_credentials);
     };
     
     // Client Listeners
@@ -66,8 +71,6 @@ function ($rootScope) {
             default:
                 alert("Oops!  There was an error...\n\nPlease contact customer support.\n\n" + data);
         }
-        
-        console.log(data);
     };
     socket.on("update", updateHandler);
     

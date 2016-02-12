@@ -1,6 +1,32 @@
-app.controller('generateController', function ($rootScope, $scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, $location, $anchorScroll, $rootScope, $window, $compile, inspectionService) {
+app.controller('generateController', function ($rootScope, $scope, $timeout, $mdSidenav, $mdUtil, $log, $mdDialog, $mdMedia, inspectionService) {
 
-     $scope.toggleLeft = buildToggler('left');
+    $scope.report = inspectionService.currentReport;
+
+    $scope.report = reportOne;
+
+    $scope.currentGenPage = Object.keys($scope.report)[1];
+
+
+   // console.log("REPORT: " + $scope.report);
+
+    $scope.subPage = '';
+    $scope.alert = '';
+    $scope.images = [];
+
+    var pictureSource = null;
+    var destinationType = null;
+    var imageLocation = null;
+    var cameraDestination = null;
+
+    $scope.toggleLeft = buildToggler('left');
+
+
+    $scope.getSummaryItems = function(item) {
+        if (item.type == 'radio') {
+                return item.content;
+        }
+
+    };
 
      /**
       * Build handler to open/close a SideNav; when animation finishes
@@ -22,18 +48,11 @@ app.controller('generateController', function ($rootScope, $scope, $timeout, $md
     $scope.submit = function() {
         inspectionService.currentReport = $scope.report;
         inspectionService.io.sendReport(inspectionService.currentReport);
-    }
+    };
+
     $rootScope.sendReport_handler = function(data) {
         console.log("SEND REPORT");
     };
-    
-    
-     $scope.report = inspectionService.currentReport;
-//     $scope.fieldNotes = fieldNotes;
-
-
-     $scope.currentGenPage = Object.keys($scope.report)[1];
-     $scope.subPage = '';
 
      $scope.close = function () {
          $mdSidenav('left').close()
@@ -43,10 +62,8 @@ app.controller('generateController', function ($rootScope, $scope, $timeout, $md
      };
 
 
-     $scope.alert = '';
-     $scope.showMessage = function (event, type, message) {
-         //         message.replace('\n', '<br />');
 
+     $scope.showMessage = function (event, type, message) {
          $mdDialog.show(
              $mdDialog.alert()
              .title(type + ' Message')
@@ -64,7 +81,7 @@ app.controller('generateController', function ($rootScope, $scope, $timeout, $md
          });
      };
 
-         $scope.navigatePage = function (sectionkey) {
+     $scope.navigatePage = function (sectionkey) {
          $scope.close();
          $scope.currentGenPage = sectionkey;
          document.getElementById("testAgain").scrollTop = 0;
@@ -75,43 +92,8 @@ app.controller('generateController', function ($rootScope, $scope, $timeout, $md
          return obj ? Object.keys(obj) : [];
      };
 
-     $scope.filterExisting = function (items) {
-         var result = [];
-
-//         for (var i = 0; i < items.length; i++) {
-//             var value = items[i];
-//
-//                if (value.i != '') {
-//                    result.push(value);
-//                }
-//         }
-
-        angular.forEach(items, function(value, key) {
-
-            if (value.i != '') {
-                //result.push(value);
-                result[key] = value;
-            }
-        });
 
 
-         return result ? Object.keys(result) : [];
-
-       };
-
-//
-//     $scope.$watch(function() { return $mdMedia('gt-md'); }, function(big) {
-//        console.log(big);
-//      });
-
-     $scope.images = [];
-
-
-
-    var pictureSource;
-    var destinationType;
-    var imageLocation;
-    var cameraDestination;
 
      document.addEventListener("deviceready", onDeviceReady1, false);
 
@@ -132,12 +114,6 @@ app.controller('generateController', function ($rootScope, $scope, $timeout, $md
 /********************************************************
 * FILE WRITER
 ***********************************************************/
-//
-//     function writeToFile() = {
-//        window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
-//
-//     }
-
 
     function gotFS(fileSystem) {
         fileSystem.root.getFile("saved.txt", {create: true, exclusive: false}, gotFileEntry, fail);
@@ -177,11 +153,8 @@ app.controller('generateController', function ($rootScope, $scope, $timeout, $md
 
      $scope.exportReport = function() {
 
-     }
+     };
 
-//console.log(JSON.stringify($scope.report));
-
-//console.log('FILE ENTRY: ' + gFileEntry.name);
 
 /********************************************************
 * CAMERA
@@ -197,7 +170,7 @@ app.controller('generateController', function ($rootScope, $scope, $timeout, $md
     }
 
 
-  // Called when a photo is successfully retrieved
+    // Called when a photo is successfully retrieved
     function onPhotoURISuccess(imageURI) {
         //alert("Calls when we change to add item page");
 
@@ -212,7 +185,7 @@ app.controller('generateController', function ($rootScope, $scope, $timeout, $md
         imageLocation = imageURI;
     }
 
-  // Capture Photo button will call this function
+   // Capture Photo button will call this function
    $scope.capturePhoto = function capturePhoto() {
       //alert("Call when button is pressed");
 
@@ -227,7 +200,7 @@ app.controller('generateController', function ($rootScope, $scope, $timeout, $md
 
     }
 
-   // A button will call this function
+    // A button will call this function
     $scope.getPhoto = function getPhoto(source) {
         // Retrieve image file location from specified source
         navigator.camera.getPicture(onPhotoURISuccess, $scope.onFail(), {
@@ -269,60 +242,6 @@ app.controller('generateController', function ($rootScope, $scope, $timeout, $md
     }
 
 
-
-//    window.resolveLocalFileSystemURL(cordova.file.dataDirectory, function(dir) {
-//            console.log("got main dir",dir);
-//            dir.getFile("log.txt", {create:true}, function(file) {
-//                console.log("got the file", file);
-//                logOb = file;
-//                writeLog("App started");
-//            });
-//        });
-//
-//function writeLog(str) {
-//	if(!logOb) return;
-//	var log = str + " [" + (new Date()) + "]\n";
-//	console.log("going to log "+log);
-//	logOb.createWriter(function(fileWriter) {
-//
-//		fileWriter.seek(fileWriter.length);
-//
-//		var blob = new Blob([log], {type:'text/plain'});
-//		fileWriter.write(blob);
-//		console.log("ok, in theory i worked");
-//	}, fail);
-//}
-//
-//writeLog("I am file contents... hopefully");
-//
-//function justForTesting() {
-//	logOb.file(function(file) {
-//		var reader = new FileReader();
-//
-//		reader.onloadend = function(e) {
-//			console.log(this.result);
-//		};
-//
-//		reader.readAsText(file);
-//	}, fail);
-//
-//}
-//
-
-
-
-//    function win(writer) {
-//        writer.onwrite = function(evt) {
-//            console.log("write success");
-//        };
-//        writer.write("some sample text");
-//    };
-//
-//    var ffail = function(evt) {
-//        console.log(error.code);
-//    };
-//
-//    entry.createWriter(win, ffail);
 
  });
 

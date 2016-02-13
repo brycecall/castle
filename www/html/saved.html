@@ -1,25 +1,14 @@
 
-<div ng-controller="savedController" layout="column" class="page ">
-<ng-content>
-
-    <md-card >
+<div ng-controller="savedController" layout="column" class="page" >
+    <md-card>
         <md-card-content>
-<!--           <div layout="row" layout-align="start center" >-->
-          <div>
-
-
-
                 <md-whiteframe  ng-repeat="sReport in inspectionService.reports" class="md-whiteframe-1dp frameStyle" ng-click="switchReport(sReport)" ui-sref="create({section:'default'})" layout-align="center center">
                     <span>{{sReport['rep_name']}}</span>
                 </md-whiteframe>
 
-
                 <md-whiteframe class="md-whiteframe-1dp frameStyle" ng-click="switchReport(defaultReport)" ui-sref="create({section:'default'})" layout-align="center center">
                     <span>Create New Report</span>
                 </md-whiteframe>
-
-           </div>
         </md-card-content>
     </md-card>
-</ng-content>
 </div>

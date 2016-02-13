@@ -1,30 +1,48 @@
 <div ng-controller="generateController" flex="" layout="row" class="page" id="nav">
 
-        <md-sidenav class="md-sidenav-left md-whiteframe-z2 ng-isolate-scope md-locked-open subNavLeft" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-swipe-left="close()">
-            <!--subNavLeft-->
-                <div class="padMe">
-                    <md-toolbar class="md-theme-indigo" ng-click="close()">
-                        <h2 class="md-toolbar-tools md-title">{{currentGenPage}}</h2>
-                    </md-toolbar>
-
-                    <md-list class="subMenu">
-
-                        <md-list-item ng-repeat="(sectionkey, section) in notSorted(report)" role="listitem" class="md-proxy-focus md-ink-ripple " style="position:relative; margin-left: 20px" ng-if="section != 'Field Notes'">
-
-                            <md-button class="md-secondary menuButton" ng-click="navigatePage(section)" aria-label="{{section}}">{{section}}</md-button>
-                        </md-list-item>
-                       <md-list-item role="listitem" class="md-proxy-focus md-ink-ripple " style="position:relative; margin-left: 20px" >
-
-                           <a ng-href="#create" aria-label="Edit Report" style="border:none" ><md-button class="md-secondary menuButton" ng-click="" aria-label="Edit Report">Edit Report</md-button></a>
-                        </md-list-item>
-                    </md-list>
-                </div>
-        </md-sidenav>
 
     <section flex layout="column" md-swipe-right="toggleLeft()" style="position:relative" id="render_me">
-
-
         <md-content id="testAgain" >
+           <md-card>
+               <md-card-content style="position:relative" >
+                   <div ng-repeat="section in report" >
+                       <div ng-repeat="page in section" >
+                          <ol ng-repeat="item in page" >
+                             <h2 ng-if="item.type == 'radio'">Something</h2>
+                             <li ng-repeat="itemval in getSummaryItems(item)" >{{itemval.m}}</li>
+                          </ol>
+                       </div>
+                   </div>
+               </md-card-content>
+           </md-card>
+
+<!--
+ "Driveway": {
+     "type": "radio",
+     "content": {
+         "Not Applicable": {"m":2},
+         "Concrete": {"m":2},
+         "Asphalt": {"m":2},
+         "Pavers or stone or brick": {"m":2},
+         "Dirt or gravel": {"m":2}
+     },
+     "value": ""
+ },
+"Driveway Condition": {
+    "type": "checkbox",
+    "value": {
+        "Satisfactory": {"c":true, "i":". or img or baby.jpg", "m":2},
+        "Marginal": {"c":true, "i":". or img or baby1.jpg", "m":2},
+        "Poor": {"c":true, "i":". or img or baby1.jpg", "m":2},
+        "Pitched towards home": {"c":false, "i":"", "m":2},
+        "Typical cracks": {"c":false, "i":"", "m":2},
+        "Large cracks": {"c":false, "i":"", "m":2},
+        "Root heaving": {"c":true, "i":". or img or baby.jpg", "m":2},
+        "Uneven": {"c":false, "i":"", "m":2},
+        "Trip or Falling Hazard": {"c":false, "i":"", "m":2}
+    }
+},
+-->
             <md-card ng-repeat="(pagekey, pagetitle) in notSorted(report[currentGenPage])" class="md-whiteframe-z1 subPageStyle" ng-init="page = report[currentGenPage][pagetitle]" >
                 <!--<md-card>-->
                 <md-card-content style="position:relative">
@@ -51,14 +69,14 @@
                         </div>
 -->
                     </div>
-                    <div ng-repeat="(listKey, listValue) in notSorted(page)" ng-init="itemVal = report[currentGenPage][pagetitle][listValue]">
+                    <div ng-repeat="item in notSorted(page)" ng-init="itemVal = report[currentGenPage][pagetitle][item]">
 
 
                         <div layout="column" layout-fill="" layout-align="top center">
 
                             <!--                           PRE-SET TEXT-->
                             <div ng-if="itemVal.type == 'presettext'">
-                                <h2 class="md-headline">Inspection {{listValue}}</h2>
+                                <h2 class="md-headline">Inspection {{item}}</h2>
                                 <md-divider></md-divider>
                                 <p class="md-body-1">{{itemVal.content}}</p>
                             </div>
@@ -66,7 +84,7 @@
 
                             <!--                           CHECKBOX-->
                             <div ng-if="itemVal.type == 'checkbox'">
-                                <h3 class="md-headline">{{listValue}}:</h3>
+                                <h3 class="md-headline">{{item}}:</h3>
                                 <div layout="row">
                                     <div flex="50">
                                         <div ng-repeat="(checkboxkey, checkboxval) in notSorted(itemVal.value)" ng-init="checkboxvalue = itemVal.value[checkboxval]" class="list_item" ng-if="$even">

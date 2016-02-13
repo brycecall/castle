@@ -1,7 +1,7 @@
 app.controller('savedController', function ($scope, inspectionService, $state) {
-
-inspectionService.currentPage.title = "Saved";
 $scope.inspectionService = inspectionService;
+inspectionService.currentPage.title = "Saved";
+
 
 //    inspectionService.request("/report/c/1").success(function(response) {
 //        if (response != null && response != "") {
@@ -13,6 +13,7 @@ $scope.inspectionService = inspectionService;
 //        }
 //    });
 
+    $scope.defaultReport = reportOne;
     $scope.switchReport = function(sReport) {
         inspectionService.currentReport = sReport;
         $state.go("create");

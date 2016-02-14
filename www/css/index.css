@@ -554,11 +554,6 @@ md-toolbar {
     transform: rotate(45deg);
 }
 
-
-
-
-
-
 .frameStyle {
     height: 100px;
     width: 125px;
@@ -571,4 +566,13 @@ md-toolbar {
 
 .lSideNav {
 
+}
+
+.addButton {
+    background-color:transparent;
+    margin:0px 5px 0 5px;
+    padding: 0px 0 0 0;
+    border:none;
+    color:white;
+    height:0;
 }

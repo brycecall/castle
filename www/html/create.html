@@ -95,9 +95,9 @@
                                         <div layout="row">
                                             <h3 class="md-subhead" ng-click="toggleItem(item)" flex="">{{item.title}}:</h3>
                                         </div>
-                                        <div ng-repeat="(checkboxkey, checkbox) in item.value" layout="row" class="list_item" style="position:relative" ng-if="item.showvalue">
+                                        <div ng-repeat="checkbox in item.content" layout="row" class="list_item" style="position:relative" ng-if="item.showvalue">
                                             <span md-ink-ripple class="md-body-1" md-proxy-focus style="margin:0">
-                                            <md-checkbox class="md-secondary checkboxery" ng-model="checkbox.c" aria-label="{{checkboxkey}}"  md-no-ink style="position:relative; display:inline" >{{checkboxkey}}
+                                            <md-checkbox class="md-secondary checkboxery" ng-model="checkbox.c" aria-label="{{checkbox.title}}"  md-no-ink style="position:relative; display:inline" >{{checkbox.title}}
                                             </md-checkbox>
                                             </span>
                                             <div flex=""></div>
@@ -127,7 +127,7 @@
 
                                         <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
                                         <md-radio-group ng-model="item.value" ng-if="item.showvalue">
-                                            <md-radio-button ng-repeat="(radiokey, radiovalue) in notSorted(item.content)" ng-value="radiovalue" class="radioHeight"><span>{{radiovalue}}</span></md-radio-button>
+                                            <md-radio-button ng-repeat="radiovalue in item.content" ng-value="radiovalue" class="radioHeight"><span>{{radiovalue.title}}</span></md-radio-button>
                                         </md-radio-group>
                                         <!--                                <md-divider></md-divider>-->
                                     </div>
@@ -157,7 +157,7 @@
                                         <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
                                         <md-input-container ng-if="item.showvalue">
                                             <md-select ng-model="item.value" placeholder="Select {{item.title}}">
-                                                <md-option ng-repeat="(radiokey, radiovalue) in notSorted(item.content)" ng-init="radioval = item.content[radiovalue]" ng-value="radioval">{{ radioval }}</md-option>
+                                                <md-option ng-repeat="radiovalue in item.content" ng-value="radiovalue.title">{{radiovalue.title}}</md-option>
                                             </md-select>
                                         </md-input-container>
                                         <!--                                <md-divider></md-divider>-->

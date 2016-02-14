@@ -20,10 +20,52 @@
 //        }
 //    });
 
+//     function jambaJSON() {
+//         for (var sectionkey in reportOne.sections) {
+//             var section = reportOne.sections[sectionkey];
+//            for (var pagekey in section.pages) {
+//                var page = section.pages[pagekey];
+//                for (var itemkey in page.items) {
+//                    var item = page.items[itemkey];
+//
+//                    if (item.type == 'radio' || item.type == 'select') {
+//                        var tcontent = [];
+//
+//                        if (item.content != []) {
+//                            for (var i in item.content) {
+//                                var key = "";
+//                                for (key in item.content[i]);
+//                                var temp = {'title':i,'rrTitle':key, 'rrVal':item.content[i][key]};
+//                                tcontent.push(temp);
+//                            }
+//                            reportOne.sections[sectionkey].pages[pagekey].items[itemkey].content = tcontent;
+//                        }
+//                    } else if (item.type == 'checkbox') {
+//                        var tcontent = [];
+//                        for (var i in item.value) {
+//                            var temp = {'title':i,'c':false};
+//                            tcontent.push(temp);
+//                        }
+//                        reportOne.sections[sectionkey].pages[pagekey].items[itemkey].content = tcontent;
+//                        item.value = [];
+//                        reportOne.sections[sectionkey].pages[pagekey].items[itemkey].value = [];
+//                    }
+//                }
+//            }
+//         }
+//         console.log(JSON.stringify(reportOne, null, 2));
+//     }
+//
+//     jambaJSON();
+
+
+
+
+
          $scope.changeSelection = function (index, pagetitle) {
              $scope.selectedPage = index;
              inspectionService.selectedPage = index;
-             console.log($scope.selectedPage + ' ' + pagetitle);
+            // console.log($scope.selectedPage + ' ' + pagetitle);
          }
 
          if ($scope.currentSection == "default") {
@@ -123,7 +165,7 @@
 
          $scope.addPageToReport = function (newPage) {
              $scope.report[$scope.currentSection][newPage] = {};
-             console.log(JSON.stringify($scope.report[$scope.currentSection][newPage], null, 2));
+             //console.log(JSON.stringify($scope.report[$scope.currentSection][newPage], null, 2));
          }
 
          $scope.showPageDialog = function (event) {
@@ -328,13 +370,13 @@
                  }
              };
 
-             console.log(JSON.stringify(testJSON, null, 2));
+             //console.log(JSON.stringify(testJSON, null, 2));
              //  alert(testJSON['One']['2Ah']);
              testJSON['One'] = {
                  'insert': 'me'
              };
              //         $.extend
-             console.log(JSON.stringify(testJSON, null, 2));
+             //console.log(JSON.stringify(testJSON, null, 2));
          }
 
 
@@ -371,7 +413,7 @@
          }
 
          $scope.addItemToReport = function () {
-             console.log("Section: " + $scope.currentSection + " Page: " + $scope.selectedPage + " Title: " + $scope.newItem.title);
+             //console.log("Section: " + $scope.currentSection + " Page: " + $scope.selectedPage + " Title: " + $scope.newItem.title);
              $scope.report.sections[$scope.currentSection].pages[$scope.selectedPage].items.push($scope.newItem);
              $scope.resetNewItem();
          }
@@ -414,7 +456,7 @@
                  break;
              }
 
-             console.log(JSON.stringify($scope.newItem, null, 2));
+            // console.log(JSON.stringify($scope.newItem, null, 2));
          }
 
 

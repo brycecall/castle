@@ -1,24 +1,25 @@
 var majorConcerns = {
-    "0": "Verify and improve ground surfaces around perimeter walls to slope away from building (min. 1 inch per foot) to encourage percolation of surface water into soil 5-6' from foundation wall.  Proper slope (eliminating negative grade) helps prevent moisture intrusion issues.",
-    "1": "All earth or foliage to wood contact should be eliminated, and adequate separation should be maintained to prevent pest or moisture concerns, and to allow adequate space for service / maintenance work.  (Adequate separation minimums are roughly 6 to 8 inch to soil, and 10 to 12 inch to vegetation).",
-    "2": "There was evidence of significantly damaged or deteriorated exterior cladding (siding and trim), and/or deck components, ie; swollen, bulging, stained, or deteriorated, with fungal rot (probed) at some boards.  Recommend re-evaluation of all exposed exterior wood components (cladding, trim, fascia, soffit, posts, stairs, decks, railings), and corrections made as necessary.",
-    "3": "One or more retaining walls showed large cracks, holes, gaps, or other evidence of movement, settling or mechanical damage.  Recommend re-evaluation and remediation.",
-    "4": "The retaining walls appeared to be leaning, or out of plumb.  Significant leaning is an indicator of excessive pressure, and should be re-evaluated prior to failure.",
-    "5": "There was evidence of inadequate drainage from the retaining wall (stains, leaking water, silt deposits, or other drainage concerns).    Recommend re-evaluation and corrections as necessary.",
-    "6": "The yard appeared to have inadequate slope and/or drainage to carry water away from the property.  Standing surface water can contribute to harmful pests and wood-destroying insects or organisms (WDI & WDO).  Also, during wet seasons, water retention may cause unsafe or slippery walking surfaces.s",
-    "7": "Rapid remark",
-    "8": "Rapid remark",
+    "0": 0,
+    "1": {"Title":"Negative Grade", "Value":"Verify and improve ground surfaces around perimeter walls to slope away from building (min. 1 inch per foot) to encourage percolation of surface water into soil 5-6' from foundation wall.  Proper slope (eliminating negative grade) helps prevent moisture intrusion issues."},
+    "2": "All earth or foliage to wood contact should be eliminated, and adequate separation should be maintained to prevent pest or moisture concerns, and to allow adequate space for service / maintenance work.  (Adequate separation minimums are roughly 6 to 8 inch to soil, and 10 to 12 inch to vegetation).",
+    "3": "There was evidence of significantly damaged or deteriorated exterior cladding (siding and trim), and/or deck components, ie; swollen, bulging, stained, or deteriorated, with fungal rot (probed) at some boards.  Recommend re-evaluation of all exposed exterior wood components (cladding, trim, fascia, soffit, posts, stairs, decks, railings), and corrections made as necessary.",
+    "4": "One or more retaining walls showed large cracks, holes, gaps, or other evidence of movement, settling or mechanical damage.  Recommend re-evaluation and remediation.",
+    "5": "The retaining walls appeared to be leaning, or out of plumb.  Significant leaning is an indicator of excessive pressure, and should be re-evaluated prior to failure.",
+    "6": "There was evidence of inadequate drainage from the retaining wall (stains, leaking water, silt deposits, or other drainage concerns).    Recommend re-evaluation and corrections as necessary.",
+    "7": "The yard appeared to have inadequate slope and/or drainage to carry water away from the property.  Standing surface water can contribute to harmful pests and wood-destroying insects or organisms (WDI & WDO).  Also, during wet seasons, water retention may cause unsafe or slippery walking surfaces.s",
+    "8": "There appeared to be erosion and/or inadequate support beneath walks, driveways, porches, retaining walls, or other exterior concrete.  Verify and improve soil and/or grading to provide adequate support.",
     "9": "Rapid remark",
     "10": "Rapid remark",
     "11": "Rapid remark",
     "12": "Rapid remark",
-    "13": "Rapid remark"
+    "13": "Rapid remark",
+    "14": "Rapid remark"
 
 };
 
 
 var deferredCostItems = {
-    "0": "There appeared to be erosion and/or inadequate support beneath walks, driveways, porches, retaining walls, or other exterior concrete.  Verify and improve soil and/or grading to provide adequate support.",
+    "0": "",
     "1": "The exterior finish appeared to be weathered or inadequate to protect exposed wood in outdoor conditions.  Recommend re-evaluation of exterior coverage (flaking, peeling, or missing paint) at exterior cladding, fascia, soffit, trim, & cantilevered floor soffit, and/or exposed, unprotected barge rafter tails, and/or cracked or missing caulking.",
     "2": "Rapid remark",
     "3": "Rapid remark",

@@ -10,10 +10,10 @@
      $scope.togglePlusMenu = false;
      $scope.images = [];
      $scope.showAddItemMenu = false;
-     var pictureSource;
-     var destinationType;
-     var imageLocation;
-     var cameraDestination;
+     var pictureSource = null;
+     var destinationType = null;
+     var imageLocation = null;
+     var cameraDestination = null;
 
      // a method for maintaining order in javascript/json objects
      $scope.notSorted = function (obj) {
@@ -96,68 +96,74 @@
   * CAMERA
   ***********************************************************/
 
-     // Called when a photo is successfully retrieved (DATA_URL)
-     function onPhotoDataSuccess(imageData) {
-         //alert("Calls after photo is taken, returning to device");
 
-         // Show the captured photo
-         $scope.$apply(function () {
-             cameraDestination = "data:image/jpeg;base64," + imageData;
-         });
-     }
-
-     // Called when a photo is successfully retrieved
-     function onPhotoURISuccess(imageURI) {
-         //alert("Calls when we change to add item page");
-
-         $scope.$apply(function () {
-             cameraDestination.i = imageURI;
-         });
-     }
-
-     // Capture Photo button will call this function
-     $scope.capturePhoto = function capturePhoto() {
-         //alert("Call when button is pressed");
-
-         // Take picture using device camera and retrieve image as base64-encoded string
-         navigator.camera.getPicture(onPhotoDataSuccess, $scope.onFail(), {
+     // Take picture using device camera and retrieve image as base64-encoded string
+     $scope.capturePhotoDataURL = function() {
+         navigator.camera.getPicture(onCapturePhotoDataURLSuccess, $scope.onFail(), {
              quality: 50,
-             //        encodingType : encodingType.PNG,
-             //        targetWidth:260,
-             //        targeHeight: 260,
              correctOrientation: true,
              destinationType: destinationType.DATA_URL
          });
 
      };
 
-     // A button will call this function
-     $scope.getPhoto = function getPhoto(source) {
-         // Retrieve image file location from specified source
-         navigator.camera.getPicture(onPhotoURISuccess, $scope.onFail(), {
+     // Retrieve image file location from specified source
+     $scope.capturePhotoFileURI = function(source, isArray) {
+         navigator.camera.getPicture(function(imageData) {
+
+             $scope.$apply(function () {
+                 if (isArray) {
+                    source.push("data:image/jpeg;base64," + imageData);
+                 } else {
+                    source = ("data:image/jpeg;base64," + imageData);
+                 }
+             });
+            }, $scope.onFail(), {
              quality: 50,
-             //        encodingType : encodingType.PNG,
-             //        targetWidth:260,
-             //        targeHeight: 260,
              correctOrientation: true,
              destinationType: destinationType.FILE_URI,
              sourceType: source
          });
-
-
      };
+
+     // capturePhotoFileURI success callback (FILE_URI)
+     function OnCapturePhotoFileURISuccess(imageURI) {
+         $scope.$apply(function () {
+             cameraDestination.push(imageURI);
+         });
+     }
 
      $scope.removeIMG = function (pJSONIMG, source) {
          source.splice(source.indexOf(pJSONIMG), 1);
      };
 
-     $scope.initCameraAction = function (pCheckboxval) {
-         var imgJSON = {};
-         pCheckboxval.i.push(imgJSON);
-         cameraDestination = pCheckboxval.i[pCheckboxval.i.length - 1];
-         $scope.getPhoto(1);
+     // set up object with image array then adds photos to the array
+     $scope.initCameraAction = function (item) {
+
+         var array = [];
+         if (item.i == null) {
+             item["i"] = array;
+             console.log("initCameraAction inner called");
+         }
+
+         //cameraDestination = item.i[item.i.length - 1];
+         cameraDestination = item.i;
+         $scope.capturePhotoFileURI(1);
      };
 
+     // set up object with image array then adds photos to the array
+     $scope.capturePagePhoto = function(item, title) {
+
+         var array = [];
+         if (item.i == null) {
+             item["i"] = array;
+             console.log("initCameraAction inner called");
+         }
+
+         //cameraDestination = item.i[item.i.length - 1];
+         cameraDestination = item.i;
+         $scope.capturePhotoFileURI(1);
+     };
 
      // Called if something bad happens.
      $scope.onFail = function onFail(message) {
@@ -175,32 +181,10 @@
          window.history.back();
      };
 
-     $scope.capturePagePhoto = function (listValue, itemVal) {
-         var imgJSON = {
-             'title': '',
-             'i': ''
-         };
-         imgJSON.title = listValue;
-         itemVal.content.push(imgJSON);
-         cameraDestination = itemVal.content[itemVal.content.length - 1];
-         $scope.getPhoto(1);
-     };
 
  /********************************************************
   * Plus Menu
   ***********************************************************/
-
-     //TODO: Fix this for new JSON structure
-     $scope.captureAppendixPhoto = function () {
-         var imgJSON = {
-             'title': '',
-             'i': ''
-         }
-         var source = $scope.report['Photo Appendix']['Additional Photos for Further Clarification']['Photo Appendix Images'].content;
-         source.push(imgJSON);
-         cameraDestination = source[source.length - 1];
-         $scope.getPhoto(1);
-     };
 
      $scope.itemTypes = {
          "types": {

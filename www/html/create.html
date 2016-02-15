@@ -96,7 +96,7 @@
                                             <h3 class="md-subhead" ng-click="toggleItem(item)" flex="">{{item.title}}:</h3>
                                         </div>
                                         <div ng-repeat="checkbox in item.content" layout="row" class="list_item" style="position:relative" ng-if="item.showvalue">
-                                            <span md-ink-ripple class="md-body-1" md-proxy-focus style="margin:0">
+                                            <span md-ink-ripple class="md-body-1" style="margin:0">
                                             <md-checkbox class="md-secondary checkboxery" ng-model="checkbox.c" aria-label="{{checkbox.title}}"  md-no-ink style="position:relative; display:inline" >{{checkbox.title}}
                                             </md-checkbox>
                                             </span>
@@ -174,6 +174,7 @@
                                     </div>
 
 
+<!--
                                     <div ng-if="item.type == 'image'  && (item.required == true || service.hideShowOptions.showNonRequired)" layout="row" layout-align="start center">
                                         <md-button class="md-raised" aria-label="Photos" ng-click="capturePagePhoto(item.title, item)">
                                             <md-icon md-svg-icon="camera"></md-icon>Add Photo</md-button>
@@ -194,6 +195,7 @@
                                             </md-menu-content>
                                         </md-menu>
                                     </div>
+-->
 
                                     <div ng-if="item.type == 'photoAppendix'  && (item.required == true || service.hideShowOptions.showNonRequired)" layout="column" layout-align="start start">
 
@@ -363,7 +365,7 @@
     </md-button>
 </a>
 
-<a ng-click="capturePagePhoto(service.selectedPage, report[currentSection][selImagePage])" layout="row" layout-align="end center">
+<a ng-click="initCameraAction(report.sections[currentSection].pages[selectedPage])" layout="row" layout-align="end center">
     <div>Image</div>
     <md-button class="md-fab md-hue-3 md-raised md-mini" aria-label="Add Section">
         <md-icon md-svg-icon="camera"></md-icon>

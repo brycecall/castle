@@ -97,79 +97,53 @@
   ***********************************************************/
 
 
-     // Take picture using device camera and retrieve image as base64-encoded string
-     $scope.capturePhotoDataURL = function() {
-         navigator.camera.getPicture(onCapturePhotoDataURLSuccess, $scope.onFail(), {
-             quality: 50,
-             correctOrientation: true,
-             destinationType: destinationType.DATA_URL
-         });
-
-     };
-
      // Retrieve image file location from specified source
-     $scope.capturePhotoFileURI = function(source, isArray) {
-         navigator.camera.getPicture(function(imageData) {
+     $scope.capturePhoto = function(sourceType, source, isArray, isDataUrl) {
+         var destination = destinationType.DATA_URL;
+         if (!isDataUrl) {
+             destination = destinationType.FILE_URI;
+         }
 
-             console.log("isArray: " + isArray);
+        navigator.camera.getPicture(function(imageData) {
+             //console.log("Image Data: " + imageData);
+
+             if (isDataUrl) {
+                imageData = "data:image/jpeg;base64," + imageData
+             }
 
              $scope.$apply(function () {
                  if (isArray) {
-                    source.push("data:image/jpeg;base64," + imageData);
+                    source.push(imageData);
                  } else {
-                    source = ("data:image/jpeg;base64," + imageData);
+                    source = (imageData);
                  }
              });
-            }, $scope.onFail(), {
+
+            }, onFail, {
              quality: 50,
              correctOrientation: true,
-             destinationType: destinationType.FILE_URI,
-             sourceType: source
+             destinationType: destination,
+             sourceType: sourceType
          });
      };
 
-     // capturePhotoFileURI success callback (FILE_URI)
-     function OnCapturePhotoFileURISuccess(imageURI) {
-         $scope.$apply(function () {
-             cameraDestination.push(imageURI);
-         });
-     }
 
-     $scope.removeIMG = function (pJSONIMG, source) {
-         source.splice(source.indexOf(pJSONIMG), 1);
+     $scope.removeIMG = function (source, index) {
+         source.splice(index, 1);
      };
 
      // set up object with image array then adds photos to the array
-     $scope.initCameraAction = function (item) {
-
+     $scope.initCameraAction = function (item, isArray, isDataUrl, title) {
          var array = [];
          if (item.i == null) {
              item["i"] = array;
-             console.log("initCameraAction inner called");
          }
-
-         //cameraDestination = item.i[item.i.length - 1];
-         cameraDestination = item.i;
-         $scope.capturePhotoFileURI(1);
-     };
-
-     // set up object with image array then adds photos to the array
-     $scope.capturePagePhoto = function(item, title) {
-
-         var array = [];
-         if (item.i == null) {
-             item["i"] = array;
-             console.log("initCameraAction inner called");
-         }
-
-         //cameraDestination = item.i[item.i.length - 1];
-         cameraDestination = item.i;
-         $scope.capturePhotoFileURI(1);
+         $scope.capturePhoto(1, item.i, isArray, isDataUrl);
      };
 
      // Called if something bad happens.
-     $scope.onFail = function onFail(message) {
-          alert('Failed because: ' + message);
+     function onFail(message) {
+          console.log('Failed because: ' + message);
      };
 
      //Cancel the add opperation

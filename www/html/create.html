@@ -109,16 +109,16 @@
                                                 <md-menu-content>
                                                     <md-content style="max-height:480px;  overflow-y:scroll;">
                                                         <md-card ng-repeat="checkboxImage in checkbox.i" style="position:relative;" layout="column" layout-align="center end">
-                                                            <div ng-click="removeIMG(checkboxImage, checkbox.i)" class="cancelIMG" flex="">
+                                                            <div ng-click="removeIMG(checkbox.i, $index)" class="cancelIMG" flex="">
                                                                 <md-icon md-svg-icon="clear" class=""></md-icon>
                                                             </div>
-                                                            <div class="UpPicture" style="background-image: url('{{checkboxImage.i}}')" />
+                                                            <div class="UpPicture" style="background-image: url('{{checkboxImage}}')" />
                                                         </md-card>
                                                     </md-content>
                                                 </md-menu-content>
 
                                             </md-menu>
-                                            <md-icon ng-show="checkbox.c" md-svg-icon="camera" class="md-accent" ng-click="initCameraAction(checkbox)" aria-label="capture photo" flex="10"></md-icon>
+                                            <md-icon ng-show="checkbox.c" md-svg-icon="camera" class="md-accent" ng-click="initCameraAction(checkbox, true, true)" aria-label="capture photo" flex="10"></md-icon>
                                         </div>
                                     </div>
 
@@ -365,7 +365,7 @@
     </md-button>
 </a>
 
-<a ng-click="initCameraAction(report.sections[currentSection].pages[selectedPage])" layout="row" layout-align="end center">
+<a ng-click="initCameraAction(report.sections[currentSection].pages[selectedPage], false, true)" layout="row" layout-align="end center">
     <div>Image</div>
     <md-button class="md-fab md-hue-3 md-raised md-mini" aria-label="Add Section">
         <md-icon md-svg-icon="camera"></md-icon>

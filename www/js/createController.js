@@ -111,6 +111,8 @@
      $scope.capturePhotoFileURI = function(source, isArray) {
          navigator.camera.getPicture(function(imageData) {
 
+             console.log("isArray: " + isArray);
+
              $scope.$apply(function () {
                  if (isArray) {
                     source.push("data:image/jpeg;base64," + imageData);

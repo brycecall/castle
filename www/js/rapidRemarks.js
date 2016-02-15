@@ -1,3 +1,25 @@
+ var rapidRemarks = [
+     {
+     "title":"Major Concerns",
+     "content" : [
+        {"title":"Asbestos", "value":"This is the rapid remark value"}, //0
+        {"title":"Asbestos", "value":"This is the rapid remark value"}, //1
+        {"title":"Asbestos", "value":"This is the rapid remark value"}, //2
+        {"title":"Asbestos", "value":"This is the rapid remark value"}  //3
+     ]
+    },
+    {
+     "title":"Not So Major Concerns",
+     "content" : [
+       {"title":"Asbestos", "value":"This is the rapid remark value"}, //0
+       {"title":"Asbestos", "value":"This is the rapid remark value"}, //1
+       {"title":"Asbestos", "value":"This is the rapid remark value"}, //2
+       {"title":"Asbestos", "value":"This is the rapid remark value"}  //3
+     ]
+    }
+ ];
+
+
 var majorConcerns = {
     "0": 0,
     "1": {"Title":"Negative Grade", "Value":"Verify and improve ground surfaces around perimeter walls to slope away from building (min. 1 inch per foot) to encourage percolation of surface water into soil 5-6' from foundation wall.  Proper slope (eliminating negative grade) helps prevent moisture intrusion issues."},

@@ -68,6 +68,8 @@ app.config(function ($mdIconProvider) {
         .icon('back','./bower_components/material-design-icons/navigation/svg/design/ic_arrow_back_48px.svg')
         .icon('more_vert','./bower_components/material-design-icons/navigation/svg/design/ic_more_vert_48px.svg')
         .icon('account_circle','./bower_components/material-design-icons/action/svg/design/ic_account_circle_48px.svg')
+        .icon('rrAdd','./bower_components/material-design-icons/av/svg/design/ic_playlist_add_48px.svg')
+        .icon('rrEdit','./bower_components/material-design-icons/av/svg/design/ic_playlist_add_check_48px.svg')
 });
 
 
@@ -117,6 +119,7 @@ app.factory('inspectionService', function ($rootScope, connectService) {
     factory.backdrop = false;
     factory.selectedPage = null;
     factory.currentSection = null;
+    factory.rapidRemarks = rapidRemarks;
     //factory.serverURL = "http://dev.maurasoftware.com:9526";
     
     //TODO: change when send and delete differ

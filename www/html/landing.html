@@ -1,0 +1,72 @@
+//This is the Landing Page that shows the App (or even Company) Logo, and the following options:
+// - New Report
+// - Recent Reports
+//   - Reports Pending Upload (This would be a symbol and on the page "Recent Reports")
+// - Templates (This needs to be created)
+// - Options/Settings (This needs to be created)
+// - Account  (This is already a symbol and already created)
+
+//Once a user "signs in" they should be taken to the landing page.
+
+<div ng-controller="accountController" layout="column" class="page">
+    <md-content>
+        <md-card>
+            <md-card-content>
+                <h2 style="text-align: center">Welcome<span ng-if="username">, {{username}}</span>!</h2>
+                <p style="text-align: center">Please login in order to access your reports and templates, or register to begin using Inspector Pro&#174;</p>
+                <p style="color: red">{{error}}</p>
+                <div class="signin_view" ng-if="inspectorService.currentUser.name">
+                    <h2 style="text-align: center">Welcome, {{username}}!</h2>
+                    <a class="button signin_button" ng-click="signout()">Logout</a>
+                </div>
+                <md-tabs md-dynamic-height>
+                    <md-tab label="login">
+                        <form ng-submit="loginForm()">
+
+                            <div class="signin_view" ng-show="!inspectorService.currentUser.name">
+                                <div layout="column">
+                                    <md-input-container>
+                                        <label>email</label>
+                                        <input class="field" type="text" autofocus="autofocus" ng-model="email" />
+                                    </md-input-container>
+                                    <md-input-container>
+                                        <label>password</label>
+                                        <input class="field" type="password" ng-model="password" />
+                                    </md-input-container>
+                                </div>
+
+                                <md-button class="button signin_button md-primary md-raised" ng-click="signin()">Login</md-button>
+                            </div>
+                        </form>
+                    </md-tab>
+                    <md-tab label="register">
+                        <form ng-submit="registerForm()">
+                            <div class="signin_view" ng-show="!inspectorService.currentUser.name">
+                                <div layout="column">
+                                    <md-input-container>
+                                        <label>full name</label>
+                                        <input class="field" type="text" autofocus="autofocus" ng-model="name" />
+                                    </md-input-container>
+                                    <md-input-container>
+                                        <label>email</label>
+                                        <input class="field" type="text" autofocus="autofocus" ng-model="email" />
+                                    </md-input-container>
+                                    <md-input-container>
+                                        <label>password</label>
+                                        <input class="field" type="password" ng-model="password" />
+                                    </md-input-container>
+                                  <md-input-container>
+                                        <label>retype password</label>
+                                        <input class="field" type="password" ng-model="passwordTwo" />
+                                    </md-input-container>
+                                </div>
+
+                                <md-button class="button signin_button md-primary md-raised" ng-click="register()">Register</md-button>
+                            </div>
+                        </form>
+                    </md-tab>
+                </md-tabs>
+            </md-card-content>
+        </md-card>
+    </md-content>
+</div>

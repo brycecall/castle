@@ -55,6 +55,11 @@
      $scope.checkRequired = function () {
          //TODO: validate that all required items have been filled out
      }
+     
+     // Publish report to PDF
+     $scope.publishReportPDf = function() {
+         var report = document.querySelctor("");
+     }
 
      // output = !input
      $scope.toggleItem = function (pItem) {

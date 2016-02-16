@@ -2,6 +2,7 @@
     "jscodehints.detectedExclusions": [
         "/home/brycecall/Code/fbi_mobile/www/bower_components/angular-touch/index.js",
         "/home/brycecall/Code/fbi_mobile/www/js/accountController.js",
-        "/home/brycecall/Code/fbi_mobile/www/js/index.js"
+        "/home/brycecall/Code/fbi_mobile/www/js/index.js",
+        "/home/brycecall/Code/fbi_mobile/www/bower_components/angular-aria/angular-aria.js"
     ]
 }

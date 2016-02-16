@@ -55,21 +55,21 @@ app.config(function ($mdThemingProvider) {
 app.config(function ($mdIconProvider) {
     // Configure URLs for icons specified by [set:]id.
     $mdIconProvider
-        .icon('menu', './bower_components/material-design-icons/navigation/svg/design/ic_menu_48px.svg')
-        .icon('assignment', './bower_components/material-design-icons/action/svg/design/ic_assignment_48px.svg')
-        .icon('book', './bower_components/material-design-icons/action/svg/design/ic_book_48px.svg')
-        .icon('account', './bower_components/material-design-icons/action/svg/design/ic_account_box_48px.svg')
-        .icon('image', './bower_components/material-design-icons/image/svg/design/ic_image_48px.svg')
-        .icon('clear', './bower_components/material-design-icons/content/svg/design/ic_clear_48px.svg')
-        .icon('camera', './bower_components/material-design-icons/image/svg/design/ic_camera_48px.svg')
-        .icon('cancel','./bower_components/material-design-icons/navigation/svg/design/ic_cancel_48px.svg')
-        .icon('add','./bower_components/material-design-icons/content/svg/design/ic_add_48px.svg')
-        .icon('close','./bower_components/material-design-icons/navigation/svg/design/ic_close_48px.svg')
-        .icon('back','./bower_components/material-design-icons/navigation/svg/design/ic_arrow_back_48px.svg')
-        .icon('more_vert','./bower_components/material-design-icons/navigation/svg/design/ic_more_vert_48px.svg')
-        .icon('account_circle','./bower_components/material-design-icons/action/svg/design/ic_account_circle_48px.svg')
-        .icon('rrAdd','./bower_components/material-design-icons/av/svg/design/ic_playlist_add_48px.svg')
-        .icon('rrEdit','./bower_components/material-design-icons/av/svg/design/ic_playlist_add_check_48px.svg')
+        .icon('menu', './bower_components/material-design-icons/navigation/svg/production/ic_menu_48px.svg')
+        .icon('assignment', './bower_components/material-design-icons/action/svg/production/ic_assignment_48px.svg')
+        .icon('book', './bower_components/material-design-icons/action/svg/production/ic_book_48px.svg')
+        .icon('account', './bower_components/material-design-icons/action/svg/production/ic_account_box_48px.svg')
+        .icon('image', './bower_components/material-design-icons/image/svg/production/ic_image_48px.svg')
+        .icon('clear', './bower_components/material-design-icons/content/svg/production/ic_clear_48px.svg')
+        .icon('camera', './bower_components/material-design-icons/image/svg/production/ic_camera_48px.svg')
+        .icon('cancel','./bower_components/material-design-icons/navigation/svg/production/ic_cancel_48px.svg')
+        .icon('add','./bower_components/material-design-icons/content/svg/production/ic_add_48px.svg')
+        .icon('close','./bower_components/material-design-icons/navigation/svg/production/ic_close_48px.svg')
+        .icon('back','./bower_components/material-design-icons/navigation/svg/production/ic_arrow_back_48px.svg')
+        .icon('more_vert','./bower_components/material-design-icons/navigation/svg/production/ic_more_vert_48px.svg')
+        .icon('account_circle','./bower_components/material-design-icons/action/svg/production/ic_account_circle_48px.svg')
+        .icon('rrAdd','./bower_components/material-design-icons/av/svg/production/ic_playlist_add_48px.svg')
+        .icon('rrEdit','./bower_components/material-design-icons/av/svg/production/ic_playlist_add_check_48px.svg');
 });
 
 

@@ -27,7 +27,7 @@
 
 <md-tab-label>{{page.title}}</md-tab-label>
 <md-tab-body>
-<div ng-repeat="item in page.items">
+<div ng-repeat="item in page.items" >
     <!--                       CLIENT INFO-->
     <div ng-if="item.type == 'clientinfo' && (item.required == true || service.hideShowOptions.showNonRequired)">
         <div layout="row">
@@ -90,6 +90,12 @@
             </div>
         </div>
 
+
+<!--
+            <div class="inspectionDialog">
+               I am a sample wrapper
+           </div>
+-->
         <!--                           CHECKBOX-->
         <div ng-if="item.type == 'checkbox'  && (item.required == true || service.hideShowOptions.showNonRequired)">
             <div layout="row">
@@ -103,7 +109,18 @@
                 <div flex=""></div>
                 <div layout="row" ng-show="checkbox.c">
 
-            <script type="text/ng-template" id="rapidRemarksDialog.html">
+
+
+
+
+
+
+                <md-button class="md-icon-button" ng-click="showRapidRemarksDialog($event, $parent.$parent.$index, $index)" aria-label="add rapid remark">
+                    <md-icon md-svg-icon="rrAdd" class="md-accent" ng-if="checkbox.rrTitle == null"></md-icon>
+                    <md-icon md-svg-icon="rrEdit" class="md-accent" ng-if="checkbox.rrTitle != null"></md-icon>
+                </md-button>
+
+              <script type="text/ng-template" id="rapidRemarksDialog.html">
                 <md-dialog focusOnOpen="false">
                 <input style="display:none" type="text" autofocus />
                 <md-toolbar layout="row" layout-align="center center">
@@ -114,29 +131,23 @@
                     </md-button>
                 </md-toolbar>
                 <md-dialog-content>
-                    <form ng-submit="addRapidRemark(dialogCheckbox.rrTitle, dialogCheckbox.rrVal); cancelDialog()">
-
-                    <md-input-container>
-                        <md-select required ng-model="dialogCheckbox.rrTitle" placeholder="Rapid Remark Sections">
-                            <md-option ng-repeat="remarkSection in rapidRemarks" ng-value="$index">{{remarkSection.title}}</md-option>
-                        </md-select>
-                    </md-input-container>
-
-                    <md-input-container ng-if="dialogCheckbox.rrTitle != null">
-                        <md-select required ng-model="dialogCheckbox.rrVal" placeholder="Rapid Remarks">
-                            <md-option ng-repeat="remark in rapidRemarks[dialogCheckbox.rrTitle].content" ng-value="$index">{{remark.title}}</md-option>
-                        </md-select>
-                    </md-input-container>
-
+                    <form ng-submit="cancelDialog()">
+                        <md-input-container>
+                            <md-select required ng-model="report.sections[currentSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex].rrTitle" placeholder="Rapid Remark Sections">
+                                <md-option ng-repeat="remarkSection in rapidRemarks" ng-value="$index">{{remarkSection.title}}</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container ng-if="report.sections[currentSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex].rrTitle != null">
+                            <md-select required ng-model="report.sections[currentSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex].rrVal" placeholder="Rapid Remarks">
+                                <md-option ng-repeat="remark in rapidRemarks[report.sections[currentSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex].rrTitle].content" ng-value="$index">{{remark.title}}</md-option>
+                            </md-select>
+                        </md-input-container>
                     <md-button type="submit" aria-label="submit" class="md-secondary md-raised" style="">Add me!</md-button>
                     </form>
                 </md-dialog-content>
                 </md-dialog>
             </script>
 
-                    <md-button class="md-icon-button" ng-click="showRapidRemarksDialog($event, checkbox)" aria-label="add rapid remark">
-                        <md-icon md-svg-icon="rrAdd" class="md-accent"></md-icon>
-                    </md-button>
                     <md-menu flex="10" style="text-align:center;">
                         <md-button class="md-icon-button" aria-label="view images"  ng-click="$mdOpenMenu()" ng-show="checkbox.i != '' && checkbox.i != null && checkbox.c">
                             <md-icon md-svg-icon="image" class="md-accent" ></md-icon>
@@ -406,3 +417,5 @@
 </div>
 
 </div>
+
+<!--<div class="inspectionDialog">This could be a problem</div>-->

@@ -89,24 +89,30 @@
          });
      };
 
-      $scope.addRapidRemark = function (remarkTitle, remarkValue) {
-             console.log("The function is called: " + $rootScope.dialogCheckbox);
-             $rootScope.dialogCheckbox.rrTitle = remarkTitle;
-             $rootScope.dialogCheckbox.rrVal = remarkValue;
+      $scope.addRapidRemark = function (remarkTitle, remarkValue, itemIndex, checkboxIndex) {
+             console.log("Add rapid remark");
+             $scope.report.sections[$scope.currentSection].pages[$scope.selectedPage].items[$rootScope.itemIndex].content[$rootScope.checkboxIndex].rrTitle = remarkTitle;
+             $scope.report.sections[$scope.currentSection].pages[$scope.selectedPage].items[$rootScope.itemIndex].content[$rootScope.checkboxIndex].rrVal = remarkValue;
             //console.log(JSON.stringify($scope.report.sections[$scope.currentSection].pages[$scope.selectedPage], null, 2));
          };
 
-     $scope.showRapidRemarksDialog = function (event, checkbox) {
-          $rootScope.dialogCheckbox = checkbox;
+     $scope.showRapidRemarksDialog = function (event, itemIndex, checkboxIndex) {
+          $rootScope.itemIndex = itemIndex;
+          $rootScope.checkboxIndex = checkboxIndex;
+                  //console.log("ItemIndex: " + itemIndex + " checkboxindex: " +  checkboxIndex);
           $mdDialog
              .show({
                  controller: 'createController',
                  templateUrl: 'rapidRemarksDialog.html',
                  parent: angular.element(document.body),
                  targetEvent: event,
-                 clickOutsideToClose: true,
-                 preserveScope: true
-             });
+                 clickOutsideToClose: true
+                // ,preserveScope: true
+             }).finally(function(){
+              $rootScope.itemIndex = null;
+              $rootScope.checkboxIndex = null;
+           // console.log("FINALLY!");
+          });
 
      };
 

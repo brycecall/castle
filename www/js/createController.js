@@ -4,6 +4,7 @@
      inspectionService.currentSection = $scope.currentSection;
      $scope.selectedPage = inspectionService.selectedPage;
      $scope.report = inspectionService.currentReport;
+     $scope.rapidRemarks = inspectionService.rapidRemarks;
      $scope.report = reportOne; //REMOVE after testing
      $scope.subPage = '';
      $scope.isOpen = false;
@@ -14,6 +15,7 @@
      var destinationType = null;
      var imageLocation = null;
      var cameraDestination = null;
+
 
      // a method for maintaining order in javascript/json objects
      $scope.notSorted = function (obj) {
@@ -85,6 +87,27 @@
              clickOutsideToClose: true,
              preserveScope: true,
          });
+     };
+
+      $scope.addRapidRemark = function (remarkTitle, remarkValue) {
+             console.log("The function is called: " + $rootScope.dialogCheckbox);
+             $rootScope.dialogCheckbox.rrTitle = remarkTitle;
+             $rootScope.dialogCheckbox.rrVal = remarkValue;
+            //console.log(JSON.stringify($scope.report.sections[$scope.currentSection].pages[$scope.selectedPage], null, 2));
+         };
+
+     $scope.showRapidRemarksDialog = function (event, checkbox) {
+          $rootScope.dialogCheckbox = checkbox;
+          $mdDialog
+             .show({
+                 controller: 'createController',
+                 templateUrl: 'rapidRemarksDialog.html',
+                 parent: angular.element(document.body),
+                 targetEvent: event,
+                 clickOutsideToClose: true,
+                 preserveScope: true
+             });
+
      };
 
      $scope.cancelDialog = function () {

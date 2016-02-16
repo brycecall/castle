@@ -21,311 +21,344 @@
 
 
             <!--           PAGES-->
-            <md-card ng-if="currentSection != 'default'">
-                <md-tabs md-dynamic-height md-swipe-content style="padding:0 16px 16px 16px">
-                    <md-tab ng-if="currentSection != 'default'" ng-repeat="page in report.sections[currentSection].pages" class="md-whiteframe-z1 subPageStyle" md-on-select="changeSelection($index, page.title)">
+<md-card ng-if="currentSection != 'default'">
+<md-tabs md-dynamic-height md-swipe-content style="padding:0 16px 16px 16px">
+<md-tab ng-if="currentSection != 'default'" ng-repeat="page in report.sections[currentSection].pages" class="md-whiteframe-z1 subPageStyle" md-on-select="changeSelection($index, page.title)">
 
-                        <md-tab-label>{{page.title}}</md-tab-label>
-                        <md-tab-body>
-                            <div ng-repeat="item in page.items">
-                                <!--                       CLIENT INFO-->
-                                <div ng-if="item.type == 'clientinfo' && (item.required == true || service.hideShowOptions.showNonRequired)">
-                                    <div layout="row">
-                                        <h3 class="md-subhead" ng-click="toggleItem(item)">Client Info:</h3>
-                                    </div>
-                                    <div ng-if="item.showvalue">
-                                        <div layout="row" layout-sm="column">
-                                            <div layout="" layout-sm="column">
-                                                <md-input-container flex="">
-                                                    <label>First name</label>
-                                                    <input ng-model="item.value.firstName">
-                                                </md-input-container>
-                                                <md-input-container flex="">
-                                                    <label>Last Name</label>
-                                                    <input ng-model="item.value.lastName">
-                                                </md-input-container>
-                                            </div>
-                                        </div>
-                                        <md-input-container flex="">
-                                            <label>Address</label>
-                                            <input ng-model="item.value.address">
-                                        </md-input-container>
+<md-tab-label>{{page.title}}</md-tab-label>
+<md-tab-body>
+<div ng-repeat="item in page.items">
+    <!--                       CLIENT INFO-->
+    <div ng-if="item.type == 'clientinfo' && (item.required == true || service.hideShowOptions.showNonRequired)">
+        <div layout="row">
+            <h3 class="md-subhead" ng-click="toggleItem(item)">Client Info:</h3>
+        </div>
+        <div ng-if="item.showvalue">
+            <div layout="row" layout-sm="column">
+                <div layout="" layout-sm="column">
+                    <md-input-container flex="">
+                        <label>First name</label>
+                        <input ng-model="item.value.firstName">
+                    </md-input-container>
+                    <md-input-container flex="">
+                        <label>Last Name</label>
+                        <input ng-model="item.value.lastName">
+                    </md-input-container>
+                </div>
+            </div>
+            <md-input-container flex="">
+                <label>Address</label>
+                <input ng-model="item.value.address">
+            </md-input-container>
 
-                                        <md-input-container md-no-float="">
-                                            <label>Address Line 2</label>
-                                            <input ng-model="item.value.addressTwo">
-                                        </md-input-container>
+            <md-input-container md-no-float="">
+                <label>Address Line 2</label>
+                <input ng-model="item.value.addressTwo">
+            </md-input-container>
 
-                                        <div layout="" layout-sm="column">
-                                            <md-input-container flex="">
-                                                <label>City</label>
-                                                <input ng-model="item.value.city">
-                                            </md-input-container>
-                                            <md-input-container flex="">
-                                                <label>State</label>
-                                                <input ng-model="item.value.state">
-                                            </md-input-container>
-                                            <md-input-container flex="">
-                                                <label>Postal Code</label>
-                                                <input ng-model="item.value.postalCode">
-                                            </md-input-container>
-                                        </div>
-                                    </div>
-                                </div>
+            <div layout="" layout-sm="column">
+                <md-input-container flex="">
+                    <label>City</label>
+                    <input ng-model="item.value.city">
+                </md-input-container>
+                <md-input-container flex="">
+                    <label>State</label>
+                    <input ng-model="item.value.state">
+                </md-input-container>
+                <md-input-container flex="">
+                    <label>Postal Code</label>
+                    <input ng-model="item.value.postalCode">
+                </md-input-container>
+            </div>
+        </div>
+    </div>
 
-                                <div layout="column" layout-fill="" layout-align="top center">
+    <div layout="column" layout-fill="" layout-align="top center">
 
-                                    <!--                           PRE-SET TEXT-->
-                                    <div ng-if="item.type == 'presettext'  && (item.required == true || service.hideShowOptions.showNonRequired)">
-                                        <div layout="row">
-                                            <h3 class="md-subhead" style="border:none" ng-click="toggleItem(item)">{{item.title}} Message:</h3>
-                                        </div>
+        <!--                           PRE-SET TEXT-->
+        <div ng-if="item.type == 'presettext'  && (item.required == true || service.hideShowOptions.showNonRequired)">
+            <div layout="row">
+                <h3 class="md-subhead" style="border:none" ng-click="toggleItem(item)">{{item.title}} Message:</h3>
+            </div>
 
-                                        <div class="relFlex" ng-if="item.showvalue" layout="column">
-                                            <md-switch ng-model="item.showcontent" aria-label="Show item.title" class="firstPosition md-body-1">Show {{item.title}} Message </md-switch>
-                                            <md-card>
-                                                <md-card-content>{{item.content}}</md-card-content>
-                                            </md-card>
+            <div class="relFlex" ng-if="item.showvalue" layout="column">
+                <md-switch ng-model="item.showcontent" aria-label="Show item.title" class="firstPosition md-body-1">Show {{item.title}} Message </md-switch>
+                <md-card>
+                    <md-card-content>{{item.content}}</md-card-content>
+                </md-card>
 
-                                        </div>
-                                    </div>
+            </div>
+        </div>
 
-                                    <!--                           CHECKBOX-->
-                                    <div ng-if="item.type == 'checkbox'  && (item.required == true || service.hideShowOptions.showNonRequired)">
-                                        <div layout="row">
-                                            <h3 class="md-subhead" ng-click="toggleItem(item)" flex="">{{item.title}}:</h3>
-                                        </div>
-                                        <div ng-repeat="checkbox in item.content" layout="row" class="list_item" style="position:relative" ng-if="item.showvalue">
-                                            <span md-ink-ripple class="md-body-1" style="margin:0">
-                                            <md-checkbox class="md-secondary checkboxery" ng-model="checkbox.c" aria-label="{{checkbox.title}}"  md-no-ink style="position:relative; display:inline" >{{checkbox.title}}
-                                            </md-checkbox>
-                                            </span>
-                                            <div flex=""></div>
+        <!--                           CHECKBOX-->
+        <div ng-if="item.type == 'checkbox'  && (item.required == true || service.hideShowOptions.showNonRequired)">
+            <div layout="row">
+                <h3 class="md-subhead" ng-click="toggleItem(item)" flex="">{{item.title}}:</h3>
+            </div>
+            <div ng-repeat="checkbox in item.content" layout="row" class="list_item" style="position:relative" ng-if="item.showvalue">
+                <span md-ink-ripple class="md-body-1" style="margin:0">
+                    <md-checkbox md-no-ink class="md-secondary checkboxery" ng-model="checkbox.c" aria-label="{{checkbox.title}}"   style="position:relative; display:inline" >{{checkbox.title}}
+                    </md-checkbox>
+                </span>
+                <div flex=""></div>
+                <div layout="row" ng-show="checkbox.c">
 
-                                            <md-menu flex="10" style="text-align:center;">
-                                                <div ng-click="$mdOpenMenu()" style="padding:0 5px">
-                                                    <md-icon md-svg-icon="image" class="md-accent" ng-show="checkbox.i != '' && checkbox.i != null && checkbox.c"></md-icon>
-                                                </div>
-                                                <md-menu-content>
-                                                    <md-content style="max-height:480px;  overflow-y:scroll;">
-                                                        <md-card ng-repeat="checkboxImage in checkbox.i" style="position:relative;" layout="column" layout-align="center end">
-                                                            <div ng-click="removeIMG(checkbox.i, $index)" class="cancelIMG" flex="">
-                                                                <md-icon md-svg-icon="clear" class=""></md-icon>
-                                                            </div>
-                                                            <div class="UpPicture" style="background-image: url('{{checkboxImage}}')" />
-                                                        </md-card>
-                                                    </md-content>
-                                                </md-menu-content>
+            <script type="text/ng-template" id="rapidRemarksDialog.html">
+                <md-dialog focusOnOpen="false">
+                <input style="display:none" type="text" autofocus />
+                <md-toolbar layout="row" layout-align="center center">
+                    <h3 class="md-subhead" style="padding:0 25px">Add/Edit Rapid Remark</h3>
+                    <span flex></span>
+                    <md-button class="md-icon-button" aria-label="cancel" ng-click="cancelDialog()">
+                        <md-icon md-svg-icon="close" ></md-icon>
+                    </md-button>
+                </md-toolbar>
+                <md-dialog-content>
+                    <form ng-submit="addRapidRemark(dialogCheckbox.rrTitle, dialogCheckbox.rrVal); cancelDialog()">
 
-                                            </md-menu>
-                                            <md-icon ng-show="checkbox.c" md-svg-icon="camera" class="md-accent" ng-click="initCameraAction(checkbox, true, true)" aria-label="capture photo" flex="10"></md-icon>
-                                        </div>
-                                    </div>
+                    <md-input-container>
+                        <md-select required ng-model="dialogCheckbox.rrTitle" placeholder="Rapid Remark Sections">
+                            <md-option ng-repeat="remarkSection in rapidRemarks" ng-value="$index">{{remarkSection.title}}</md-option>
+                        </md-select>
+                    </md-input-container>
 
-                                    <!--                            RADIO-->
-                                    <div ng-if="item.type == 'radio'  && (item.required == true || service.hideShowOptions.showNonRequired)">
+                    <md-input-container ng-if="dialogCheckbox.rrTitle != null">
+                        <md-select required ng-model="dialogCheckbox.rrVal" placeholder="Rapid Remarks">
+                            <md-option ng-repeat="remark in rapidRemarks[dialogCheckbox.rrTitle].content" ng-value="$index">{{remark.title}}</md-option>
+                        </md-select>
+                    </md-input-container>
 
-                                        <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
-                                        <md-radio-group ng-model="item.value" ng-if="item.showvalue">
-                                            <md-radio-button ng-repeat="radiovalue in item.content" ng-value="radiovalue" class="radioHeight"><span>{{radiovalue.title}}</span></md-radio-button>
-                                        </md-radio-group>
-                                        <!--                                <md-divider></md-divider>-->
-                                    </div>
+                    <md-button type="submit" aria-label="submit" class="md-secondary md-raised" style="">Add me!</md-button>
+                    </form>
+                </md-dialog-content>
+                </md-dialog>
+            </script>
 
-                                    <!--                           NUMBER-->
-                                    <div ng-if="item.type == 'number'  && (item.required == true || service.hideShowOptions.showNonRequired)">
-                                        <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
-                                        <md-input-container layout="row" ng-if="item.showvalue">
-                                            <label>{{item.label}}</label>
-                                            <input ng-model="item.value" type="number" flex-gt-sm="50" flex-sm="">
-                                        </md-input-container>
-                                        <!--                                <md-divider></md-divider>-->
-                                    </div>
+                    <md-button class="md-icon-button" ng-click="showRapidRemarksDialog($event, checkbox)" aria-label="add rapid remark">
+                        <md-icon md-svg-icon="rrAdd" class="md-accent"></md-icon>
+                    </md-button>
+                    <md-menu flex="10" style="text-align:center;">
+                        <md-button class="md-icon-button" aria-label="view images"  ng-click="$mdOpenMenu()" ng-show="checkbox.i != '' && checkbox.i != null && checkbox.c">
+                            <md-icon md-svg-icon="image" class="md-accent" ></md-icon>
+                        </md-button>
+                        <md-menu-content>
+                            <md-content style="max-height:480px;  overflow-y:scroll;">
+                                <md-card ng-repeat="checkboxImage in checkbox.i" style="position:relative;" layout="column" layout-align="center end">
+                                    <md-button ng-click="removeIMG(checkbox.i, $index)" class="md-icon-button cancelIMG">
+                                        <md-icon  md-svg-icon="clear"  aria-label="rapid remarks" ></md-icon>
+                                    </md-button>
+                                    <div class="UpPicture" style="background-image: url('{{checkboxImage}}')" />
+                                </md-card>
+                            </md-content>
+                        </md-menu-content>
 
-                                    <!--                           TEXT-->
-                                    <div ng-if="item.type == 'text'  && (item.required == true || service.hideShowOptions.showNonRequired)">
-                                        <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
-                                        <md-input-container ng-if="item.showvalue">
-                                            <label>{{item.label}}</label>
-                                            <input ng-model="item.value" type="text">
-                                        </md-input-container>
-                                        <!--                                <md-divider></md-divider>-->
-                                    </div>
+                    </md-menu>
+                    <md-button class="md-icon-button"  ng-click="initCameraAction(checkbox, true, true)" aria-label="capture photo">
+                        <md-icon ng-show="checkbox.c" md-svg-icon="camera" class="md-accent" ></md-icon>
+                    </md-button>
+                </div>
+            </div>
+        </div>
 
-                                    <!--                           SELECT-->
-                                    <div ng-if="item.type == 'select'  && (item.required == true || service.hideShowOptions.showNonRequired)">
-                                        <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
-                                        <md-input-container ng-if="item.showvalue">
-                                            <md-select ng-model="item.value" placeholder="Select {{item.title}}">
-                                                <md-option ng-repeat="radiovalue in item.content" ng-value="radiovalue.title">{{radiovalue.title}}</md-option>
-                                            </md-select>
-                                        </md-input-container>
-                                        <!--                                <md-divider></md-divider>-->
-                                    </div>
+        <!--                            RADIO-->
+        <div ng-if="item.type == 'radio'  && (item.required == true || service.hideShowOptions.showNonRequired)">
+            <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
+            <md-radio-group ng-model="item.value" ng-if="item.showvalue">
+                <md-radio-button ng-repeat="radiovalue in item.content" ng-value="radiovalue" class="radioHeight"><span>{{radiovalue.title}}</span></md-radio-button>
+            </md-radio-group>
+            <!--                                <md-divider></md-divider>-->
+        </div>
 
-                                    <!--                           DATE-->
-                                    <div ng-if="item.type == 'date'  && (item.required == true || service.hideShowOptions.showNonRequired)">
-                                        <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
-                                        <md-input-container layout="row" ng-if="item.showvalue">
-                                            <label>{{item.label}}</label>
-                                            <input ng-model="item.value" type="date" flex-gt-sm="50" flex-sm="">
-                                        </md-input-container>
-                                        <!--                                <md-divider></md-divider>-->
-                                    </div>
+        <!--                           NUMBER-->
+        <div ng-if="item.type == 'number'  && (item.required == true || service.hideShowOptions.showNonRequired)">
+            <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
+            <md-input-container layout="row" ng-if="item.showvalue">
+                <label>{{item.label}}</label>
+                <input ng-model="item.value" type="number" flex-gt-sm="50" flex-sm="">
+            </md-input-container>
+            <!--                                <md-divider></md-divider>-->
+        </div>
+
+        <!--                           TEXT-->
+        <div ng-if="item.type == 'text'  && (item.required == true || service.hideShowOptions.showNonRequired)">
+            <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
+            <md-input-container ng-if="item.showvalue">
+                <label>{{item.label}}</label>
+                <input ng-model="item.value" type="text">
+            </md-input-container>
+            <!--                                <md-divider></md-divider>-->
+        </div>
+
+        <!--                           SELECT-->
+        <div ng-if="item.type == 'select'  && (item.required == true || service.hideShowOptions.showNonRequired)">
+            <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
+            <md-input-container ng-if="item.showvalue">
+                <md-select ng-model="item.value" placeholder="Select {{item.title}}">
+                    <md-option ng-repeat="radiovalue in item.content" ng-value="radiovalue.title">{{radiovalue.title}}</md-option>
+                </md-select>
+            </md-input-container>
+            <!--                                <md-divider></md-divider>-->
+        </div>
+
+        <!--                           DATE-->
+        <div ng-if="item.type == 'date'  && (item.required == true || service.hideShowOptions.showNonRequired)">
+            <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
+            <md-input-container layout="row" ng-if="item.showvalue">
+                <label>{{item.label}}</label>
+                <input ng-model="item.value" type="date" flex-gt-sm="50" flex-sm="">
+            </md-input-container>
+            <!--                                <md-divider></md-divider>-->
+        </div>
 
 
 <!--
-                                    <div ng-if="item.type == 'image'  && (item.required == true || service.hideShowOptions.showNonRequired)" layout="row" layout-align="start center">
-                                        <md-button class="md-raised" aria-label="Photos" ng-click="capturePagePhoto(item.title, item)">
-                                            <md-icon md-svg-icon="camera"></md-icon>Add Photo</md-button>
+        <div ng-if="item.type == 'image'  && (item.required == true || service.hideShowOptions.showNonRequired)" layout="row" layout-align="start center">
+            <md-button class="md-raised" aria-label="Photos" ng-click="capturePagePhoto(item.title, item)">
+                <md-icon md-svg-icon="camera"></md-icon>Add Photo</md-button>
 
-                                        <md-menu flex="10" style="text-align:center;" ng-if="item.content.length != 0">
-                                            <div ng-click="$mdOpenMenu()" style="padding:0 5px">
-                                                <md-icon md-svg-icon="image" class="md-accent"></md-icon>
-                                            </div>
-                                            <md-menu-content>
-                                                <md-content style="max-height:480px;  overflow-y:scroll;">
-                                                    <md-card ng-repeat="pageImage in item.content" style="position:relative;" layout="column" layout-align="center end">
-                                                        <div ng-click="removeIMG(pageImage, item.content)" class="cancelIMG" flex="">
-                                                            <md-icon md-svg-icon="clear" class=""></md-icon>
-                                                        </div>
-                                                        <div class="UpPicture" style="background-image: url('{{pageImage.i}}'); background-color:black" />
-                                                    </md-card>
-                                                </md-content>
-                                            </md-menu-content>
-                                        </md-menu>
-                                    </div>
+            <md-menu flex="10" style="text-align:center;" ng-if="item.content.length != 0">
+                <div ng-click="$mdOpenMenu()" style="padding:0 5px">
+                    <md-icon md-svg-icon="image" class="md-accent"></md-icon>
+                </div>
+                <md-menu-content>
+                    <md-content style="max-height:480px;  overflow-y:scroll;">
+                        <md-card ng-repeat="pageImage in item.content" style="position:relative;" layout="column" layout-align="center end">
+                            <div ng-click="removeIMG(pageImage, item.content)" class="cancelIMG" flex="">
+                                <md-icon md-svg-icon="clear" class=""></md-icon>
+                            </div>
+                            <div class="UpPicture" style="background-image: url('{{pageImage.i}}'); background-color:black" />
+                        </md-card>
+                    </md-content>
+                </md-menu-content>
+            </md-menu>
+        </div>
 -->
 
-                                    <div ng-if="item.type == 'photoAppendix'  && (item.required == true || service.hideShowOptions.showNonRequired)" layout="column" layout-align="start start">
+        <div ng-if="item.type == 'photoAppendix'  && (item.required == true || service.hideShowOptions.showNonRequired)" layout="column" layout-align="start start">
+            <div layout="row" layout-sm="column">
+                <div flex="50">
+                    <div ng-repeat="pageImage in item.content" ng-if="$even">
 
-                                        <div layout="row" layout-sm="column">
-                                            <div flex="50">
-                                                <div ng-repeat="pageImage in item.content" ng-if="$even">
+                        <div class="UpPicture" style="background-image: url('{{pageItem.i}}')">
+                            <div class="md-caption pictureBox"></div>
+                            <div class="centerTextVertical"><span class="md-caption imageTitle">{{item.title}}</span></div>
+                        </div>
 
-                                                    <div class="UpPicture" style="background-image: url('{{pageItem.i}}')">
-                                                        <div class="md-caption pictureBox"></div>
-                                                        <div class="centerTextVertical"><span class="md-caption imageTitle">{{item.title}}</span></div>
-                                                    </div>
+                    </div>
+                </div>
+                <div flex="50">
+                    <div ng-repeat="pageImage in item.content" ng-if="$odd">
 
-                                                </div>
-                                            </div>
-                                            <div flex="50">
-                                                <div ng-repeat="pageImage in item.content" ng-if="$odd">
+                        <div class="UpPicture" style="background-image: url('{{pageItem.i}}')">
+                            <div class="md-caption pictureBox"></div>
+                            <div class="centerTextVertical"><span class="md-caption imageTitle">{{item.title}}</span></div>
+                        </div>
 
-                                                    <div class="UpPicture" style="background-image: url('{{pageItem.i}}')">
-                                                        <div class="md-caption pictureBox"></div>
-                                                        <div class="centerTextVertical"><span class="md-caption imageTitle">{{item.title}}</span></div>
-                                                    </div>
+                    </div>
+                </div>
+            </div>
+            <md-button class="cameraButton md-accent" aria-label="Photos" ng-click="capturePagePhoto(item.title, item)">
+                <md-icon md-svg-icon="camera"></md-icon> Add Photo
+            </md-button>
+        </div>
 
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <md-button class="cameraButton md-accent" aria-label="Photos" ng-click="capturePagePhoto(item.title, item)">
-                                            <md-icon md-svg-icon="camera"></md-icon> Add Photo
-                                        </md-button>
-
-                                    </div>
-
-                                </div>
-                            </div>
+    </div>
+</div>
 
 <script type="text/ng-template" id="itemDialog.html">
-    <md-dialog>
-    <md-toolbar layout="row" layout-align="center center">
-        <h3 class="md-subhead" style="padding:0 25px">Add Item</h3>
-        <span flex></span>
-        <md-button aria-label="cancel" class="md-icon-button" ng-click="cancelDialog()">
-            <md-icon md-svg-icon="close" ></md-icon>
-        </md-button>
-    </md-toolbar>
-    <md-dialog-content focusOnOpen="false">
-        <input ng-hide="true" type="text"  autofocus />
-        <md-input-container style="width:150px;">
-        <label>Select Item Type</label>
-            <md-select ng-model="newItem.type" value="typevalue" md-on-close="resetNewItemValueContents()">
-                <md-option ng-repeat="(typekey, typevalue) in itemTypes.types" >{{typekey}}</md-option>
-            </md-select>
-        </md-input-container>
+<md-dialog>
+<md-toolbar layout="row" layout-align="center center">
+    <h3 class="md-subhead" style="padding:0 25px">Add Item</h3>
+    <span flex></span>
+    <md-button aria-label="cancel" class="md-icon-button" ng-click="cancelDialog()">
+        <md-icon md-svg-icon="close" ></md-icon>
+    </md-button>
+</md-toolbar>
+<md-dialog-content focusOnOpen="false">
+    <input ng-hide="true" type="text"  autofocus />
+    <md-input-container style="width:150px;">
+    <label>Select Item Type</label>
+        <md-select ng-model="newItem.type" value="typevalue" md-on-close="resetNewItemValueContents()">
+            <md-option ng-repeat="(typekey, typevalue) in itemTypes.types" >{{typekey}}</md-option>
+        </md-select>
+    </md-input-container>
 
 
-        <input ng-if="newItem.type != ''" ng-model="newItem.title" required class="md-subhead" style="width:300px; border:none;" type="text" placeholder="Item Title">
+    <input ng-if="newItem.type != ''" ng-model="newItem.title" required class="md-subhead" style="width:300px; border:none;" type="text" placeholder="Item Title">
 
 
-        <div ng-if="newItem.type == 'radio' || newItem.type == 'select' || newItem.type == 'checkbox'" >
+    <div ng-if="newItem.type == 'radio' || newItem.type == 'select' || newItem.type == 'checkbox'" >
 
-            <!--RADIO-->
-            <div ng-if="newItem.type == 'radio'" >
-                <md-radio-group ng-model="newItem.value" >
-                    <div layout="row" ng-repeat="radval in newItem.content">
-                        <md-radio-button ng-value="radval.value" class="radioHeight">
-                            <span>{{radval.title}}</span>
-                        </md-radio-button>
-                        <span flex=""></span>
-                        <md-icon ng-click="removeItem(radval, newItem.type)" md-svg-icon="cancel" ></md-icon>
-                    </div>
-                </md-radio-group>
-            </div>
-
-            <!--SELECT-->
-            <div ng-if="newItem.type == 'select'">
-                <md-input-container >
-                    <md-select ng-model="newItem.value" aria-label="add select item" >
-                        <md-option ng-repeat="selval in newItem.content" ng-value="selval.title">{{selval.title}}</md-option>
-                    </md-select>
-                </md-input-container>
-            </div>
-
-            <!--CHECKBOX-->
-            <div ng-if="newItem.type == 'checkbox'" >
-                <div ng-if="newItem.type == 'checkbox'">
-                    <div layout="row" layout-align="space-between center" ng-repeat="checkbval in newItem.content">
-                        <md-checkbox class="md-secondary checkboxery"  ng-model="checkbval.c"> {{checkbval.title}}
-                        </md-checkbox>
-                        <span flex=""></span>
-                        <md-icon ng-click="removeItem(checkbval)" md-svg-icon="cancel" ></md-icon>
-                    </div>
+        <!--RADIO-->
+        <div ng-if="newItem.type == 'radio'" >
+            <md-radio-group ng-model="newItem.value" >
+                <div layout="row" ng-repeat="radval in newItem.content">
+                    <md-radio-button ng-value="radval.value" class="radioHeight">
+                        <span>{{radval.title}}</span>
+                    </md-radio-button>
+                    <span flex=""></span>
+                    <md-icon ng-click="removeItem(radval, newItem.type)" md-svg-icon="cancel" ></md-icon>
                 </div>
-             </div>
-
-            <form ng-submit="addNewItem(newItem.type, newstuff); newstuff ='' ">
-                <div layout="row" style="margin-top:10px">
-                    <button type="submit" class="addButton">
-                        <md-icon style="color:gray" md-svg-icon="add"></md-icon>
-                    </button>
-                    <input required style="border-width: 0 0 1px 0" ng-model="newstuff" type="text" placeholder="{{newItem.type}} item">
-                </div>
-            </form>
-
+            </md-radio-group>
         </div>
 
-        <!--               NUMBER DATE AND TEXT-->
-        <div ng-if="newItem.type == 'number' || newItem.type == 'date'
-             || newItem.type == 'text'" >
-            <md-input-container>
-                <label>New {{newItem.type}}</label>
-                <input ng-model="newItem.value" class="md-subhead" style="width:300px;" type="{{newItem.type}}" ng-init="newItem.value = ''">
+        <!--SELECT-->
+        <div ng-if="newItem.type == 'select'">
+            <md-input-container >
+                <md-select ng-model="newItem.value" aria-label="add select item" >
+                    <md-option ng-repeat="selval in newItem.content" ng-value="selval.title">{{selval.title}}</md-option>
+                </md-select>
             </md-input-container>
         </div>
-        <br />
-        <br />
-        <md-button ng-click="addItemToReport(); cancelDialog()" aria-label="add item" class="md-secondary md-raised" style="">Add me!</md-button>
-    </md-dialog-content>
+
+        <!--CHECKBOX-->
+        <div ng-if="newItem.type == 'checkbox'" >
+            <div ng-if="newItem.type == 'checkbox'">
+                <div layout="row" layout-align="space-between center" ng-repeat="checkbval in newItem.content">
+                    <md-checkbox class="md-secondary checkboxery"  ng-model="checkbval.c"> {{checkbval.title}}
+                    </md-checkbox>
+                    <span flex=""></span>
+                    <md-icon ng-click="removeItem(checkbval)" md-svg-icon="cancel" ></md-icon>
+                </div>
+            </div>
+         </div>
+
+        <form ng-submit="addNewItem(newItem.type, newstuff); newstuff ='' ">
+            <div layout="row" style="margin-top:10px">
+                <button type="submit" class="addButton">
+                    <md-icon style="color:gray" md-svg-icon="add"></md-icon>
+                </button>
+                <input required style="border-width: 0 0 1px 0" ng-model="newstuff" type="text" placeholder="{{newItem.type}} item">
+            </div>
+        </form>
+
+    </div>
+
+    <!--               NUMBER DATE AND TEXT-->
+    <div ng-if="newItem.type == 'number' || newItem.type == 'date'
+         || newItem.type == 'text'" >
+        <md-input-container>
+            <label>New {{newItem.type}}</label>
+            <input ng-model="newItem.value" class="md-subhead" style="width:300px;" type="{{newItem.type}}" ng-init="newItem.value = ''">
+        </md-input-container>
+    </div>
+    <br />
+    <br />
+    <md-button ng-click="addItemToReport(); cancelDialog()" aria-label="add item" class="md-secondary md-raised" style="">Add me!</md-button>
+</md-dialog-content>
 </md-dialog>
 </script>
 
 <script type="text/ng-template" id="pageDialog.html">
     <md-dialog focusOnOpen="false">
-    <input style="display:none" type="text" autofocus />
-    <md-toolbar layout="row" layout-align="center center">
-        <h3 class="md-subhead" style="padding:0 25px">Add Page</h3>
-        <span flex></span>
-        <md-button class="md-icon-button" aria-label="cancel" ng-click="cancelDialog()">
-            <md-icon md-svg-icon="close" ></md-icon>
-        </md-button>
-    </md-toolbar>
+        <input style="display:none" type="text" autofocus />
+        <md-toolbar layout="row" layout-align="center center">
+            <h3 class="md-subhead" style="padding:0 25px">Add Page</h3>
+            <span flex></span>
+            <md-button class="md-icon-button" aria-label="cancel" ng-click="cancelDialog()">
+                <md-icon md-svg-icon="close" ></md-icon>
+            </md-button>
+        </md-toolbar>
         <md-dialog-content>
             <form ng-submit="addPageToReport(newPageTitle); cancelDialog()">
             <input ng-model="newPageTitle" required class="md-subhead" style="width:300px; border:none;" type="text" placeholder="Page Title">
@@ -338,50 +371,38 @@
 </script>
 
 </md-tab-body>
-
 </md-tab>
 </md-tabs>
 </md-card>
 <!-- <div class="footerSpace"></div>-->
 </md-content>
-
 </section>
 
 
 <div class="mainButtonMenu" ng-if="currentSection != 'default'">
-<div class="fab_add_expand" ng-show="show_add_icons">
-
-<a ng-click="showItemDialog($event)" layout="row" layout-align="end center" >
-    <div >Item</div>
-    <md-button class="md-fab md-hue-1 md-raised md-mini"  aria-label="Add Item">
-        <md-icon md-svg-icon="add"></md-icon>
+    <div class="fab_add_expand" ng-show="show_add_icons">
+        <a ng-click="showItemDialog($event)" layout="row" layout-align="end center" >
+            <div >Item</div>
+            <md-button class="md-fab md-hue-1 md-raised md-mini"  aria-label="Add Item">
+                <md-icon md-svg-icon="add"></md-icon>
+            </md-button>
+        </a>
+        <a ng-click="showPageDialog($event)" layout="row" layout-align="end center" >
+            <div >Page</div>
+            <md-button class="md-fab md-hue-2 md-raised md-mini" aria-label="Add Page">
+                <md-icon md-svg-icon="add"></md-icon>
+            </md-button>
+        </a>
+        <a ng-click="initCameraAction(report.sections[currentSection].pages[selectedPage], false, true)" layout="row" layout-align="end center">
+            <div>Image</div>
+            <md-button class="md-fab md-hue-3 md-raised md-mini" aria-label="Add Section">
+                <md-icon md-svg-icon="camera"></md-icon>
+            </md-button>
+        </a>
+    </div>
+    <md-button class="md-fab md-primary"  style="margin-right:27px;"  ng-click="toggleAdd()" aria-label="stuff">
+        <md-icon md-svg-icon="add"  ng-class="{'mainButton' : show_add_icons, 'mainButtonReverse' : !show_add_icons}"></md-icon>
     </md-button>
-</a>
-
-<a ng-click="showPageDialog($event)" layout="row" layout-align="end center" >
-    <div >Page</div>
-    <md-button class="md-fab md-hue-2 md-raised md-mini" aria-label="Add Page">
-        <md-icon md-svg-icon="add"></md-icon>
-    </md-button>
-</a>
-
-<a ng-click="initCameraAction(report.sections[currentSection].pages[selectedPage], false, true)" layout="row" layout-align="end center">
-    <div>Image</div>
-    <md-button class="md-fab md-hue-3 md-raised md-mini" aria-label="Add Section">
-        <md-icon md-svg-icon="camera"></md-icon>
-    </md-button>
-</a>
-
 </div>
-
-
-<md-button class="md-fab md-primary"  style="margin-right:27px;"  ng-click="toggleAdd()" aria-label="stuff">
-    <md-icon md-svg-icon="add"  ng-class="{'mainButton' : show_add_icons, 'mainButtonReverse' : !show_add_icons}"></md-icon>
-</md-button>
-
-</div>
-
-
-
 
 </div>

@@ -4,8 +4,8 @@ app.factory('connectService',
      *    CONNECT SERVICE
      **************************/
     function ($rootScope) {
-        //var socket = io("http://dev.maurasoftware.com:8080");
-        var socket = io("http://127.0.0.1:8080");
+        var socket = io("http://dev.maurasoftware.com:8080");
+        //var socket = io("http://127.0.0.1:8080");
         var instance = {};
 
         var authenticated_user = null;

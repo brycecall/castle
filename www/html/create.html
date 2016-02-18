@@ -109,12 +109,6 @@
                 <div flex=""></div>
                 <div layout="row" ng-show="checkbox.c">
 
-
-
-
-
-
-
                 <md-button class="md-icon-button" ng-click="showRapidRemarksDialog($event, $parent.$parent.$index, $index)" aria-label="add rapid remark">
                     <md-icon md-svg-icon="rrAdd" class="md-accent" ng-if="checkbox.rrTitle == null"></md-icon>
                     <md-icon md-svg-icon="rrEdit" class="md-accent" ng-if="checkbox.rrTitle != null"></md-icon>
@@ -124,7 +118,7 @@
                 <md-dialog focusOnOpen="false">
                 <input style="display:none" type="text" autofocus />
                 <md-toolbar layout="row" layout-align="center center">
-                    <h3 class="md-subhead" style="padding:0 25px">Add/Edit Rapid Remark</h3>
+                    <h3 class="md-subhead" style="padding:0 25px">Link Rapid Remark</h3>
                     <span flex></span>
                     <md-button class="md-icon-button" aria-label="cancel" ng-click="cancelDialog()">
                         <md-icon md-svg-icon="close" ></md-icon>
@@ -132,17 +126,31 @@
                 </md-toolbar>
                 <md-dialog-content>
                     <form ng-submit="cancelDialog()">
-                        <md-input-container>
-                            <md-select required ng-model="report.sections[currentSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex].rrTitle" placeholder="Rapid Remark Sections">
+                        <md-input-container ng-init="remarkItem = report.sections[currentSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex]">
+                            <md-select required ng-model="remarkItem.rrTitle" placeholder="Rapid Remark Sections">
                                 <md-option ng-repeat="remarkSection in rapidRemarks" ng-value="$index">{{remarkSection.title}}</md-option>
                             </md-select>
                         </md-input-container>
-                        <md-input-container ng-if="report.sections[currentSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex].rrTitle != null">
-                            <md-select required ng-model="report.sections[currentSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex].rrVal" placeholder="Rapid Remarks">
-                                <md-option ng-repeat="remark in rapidRemarks[report.sections[currentSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex].rrTitle].content" ng-value="$index">{{remark.title}}</md-option>
+                        <md-input-container ng-if="remarkItem.rrTitle != null">
+                            <md-select required ng-model="remarkItem.rrVal" placeholder="Rapid Remarks">
+                                <md-option ng-repeat="remark in rapidRemarks[remarkItem.rrTitle].content" ng-value="$index">{{remark.title}}</md-option>
                             </md-select>
                         </md-input-container>
-                    <md-button type="submit" aria-label="submit" class="md-secondary md-raised" style="">Add me!</md-button>
+                        <div layout="row">
+                            <span flex></span>
+                            <md-button type="submit" aria-label="submit" class="md-secondary md-raised">Link me!</md-button>
+                        </div>
+                         <div>
+                             <h3>{{rapidRemarks[remarkItem.rrTitle].content[remarkItem.rrVal].title}}</h3>
+                             <p>{{rapidRemarks[remarkItem.rrTitle].content[remarkItem.rrVal].value}}</p>
+                         </div>
+<!--
+                     <md-divider></md-divider>
+                      <div ng-repeat="remark in rapidRemarks[remarkItem.rrTitle].content">
+                        <h3>{{remark.title}}</h3>
+                        <p>{{remark.value}}</p>
+                      </div>
+-->
                     </form>
                 </md-dialog-content>
                 </md-dialog>
@@ -355,7 +363,7 @@
     </div>
     <br />
     <br />
-    <md-button ng-click="addItemToReport(); cancelDialog()" aria-label="add item" class="md-secondary md-raised" style="">Add me!</md-button>
+    <md-button ng-click="addItemToReport(); cancelDialog()" aria-label="add item" class="md-secondary md-raised" >Add me!</md-button>
 </md-dialog-content>
 </md-dialog>
 </script>
@@ -371,7 +379,7 @@
             </md-button>
         </md-toolbar>
         <md-dialog-content>
-            <form ng-submit="addPageToReport(newPageTitle); cancelDialog()">
+            <form ng-submit="addPageToReport(newPageTitle); cancelDialog()" name="addPageForm">
             <input ng-model="newPageTitle" required class="md-subhead" style="width:300px; border:none;" type="text" placeholder="Page Title">
             <br />
             <br />
@@ -390,31 +398,120 @@
 </section>
 
 
-<div class="mainButtonMenu" ng-if="currentSection != 'default'">
-    <div class="fab_add_expand" ng-show="show_add_icons">
-        <a ng-click="showItemDialog($event)" layout="row" layout-align="end center" >
-            <div >Item</div>
-            <md-button class="md-fab md-hue-1 md-raised md-mini"  aria-label="Add Item">
-                <md-icon md-svg-icon="add"></md-icon>
+<script type="text/ng-template" id="editRapidRemarks.html">
+    <md-dialog focusOnOpen="true" >
+<!--        <input style="display:none" type="text" autofocus />-->
+        <md-toolbar layout="row" layout-align="center center">
+           <div class="md-toolbar-tools">
+            <h3 class="md-subhead" >Add Rapid Remarks</h3>
+            <span flex></span>
+            <md-button class="md-icon-button" aria-label="cancel" ng-click="cancelDialog()">
+                <md-icon md-svg-icon="close" ></md-icon>
             </md-button>
-        </a>
-        <a ng-click="showPageDialog($event)" layout="row" layout-align="end center" >
-            <div >Page</div>
-            <md-button class="md-fab md-hue-2 md-raised md-mini" aria-label="Add Page">
-                <md-icon md-svg-icon="add"></md-icon>
-            </md-button>
-        </a>
-        <a ng-click="initCameraAction(report.sections[currentSection].pages[selectedPage], false, true)" layout="row" layout-align="end center">
-            <div>Image</div>
-            <md-button class="md-fab md-hue-3 md-raised md-mini" aria-label="Add Section">
-                <md-icon md-svg-icon="camera"></md-icon>
-            </md-button>
-        </a>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+
+<!--
+          <md-switch ng-model="editSection" aria-label="Edit Section">
+              Add Section
+          </md-switch>
+-->
+            <div ng-cloak>
+  <md-content>
+    <md-tabs md-dynamic-height >
+      <md-tab label="Add Remark">
+            <md-content class="md-padding" >
+             <form ng-submit="addNewRapidRemark(remarkKey, remarkTitle, remarkValue)" novalidate  name="addNewRR">
+                <md-input-container>
+                    <md-select required ng-model="remarkKey" placeholder="Choose Rapid Remark Sections" >
+                        <md-option required ng-repeat="remarkSection in rapidRemarks" ng-value="$index">{{remarkSection.title}}</md-option>
+                    </md-select>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Remark Title</label>
+                    <input ng-model="remarkTitle" type="text" required>
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Remark Content</label>
+                    <input ng-model="remarkValue" type="text" required>
+                </md-input-container>
+
+
+
+                <div layout="row">
+                 <span flex></span>
+                 <md-button type="submit" aria-label="cancel" ng-disabled="addNewRR.$invalid" class="md-secondary md-raised" style="">Add me!</md-button>
+                </div>
+
+                <div ng-repeat="remark in rapidRemarks[remarkKey].content | orderBy:$index:reverse=true">
+                    <h3>{{remark.title}}</h3>
+                    <p>{{remark.value}}</p>
+                </div>
+
+            </form>
+          </md-content>
+        </md-tab>
+                 <md-tab label="Add Remark Section">
+                 <md-content class="md-padding">
+            <form ng-submit="addNewRemarkSection(sectionTitle)" name="addRRSection" novalidate>
+                <md-input-container>
+                    <label>Add Remark Section Title</label>
+                    <input required ng-model="sectionTitle" type="text">
+                </md-input-container>
+                <div layout="row">
+                 <span flex></span>
+                 <md-button type="submit" aria-label="cancel" class="md-secondary md-raised" ng-disabled="addRRSection.$invalid">Add me!</md-button>
+                </div>
+                <br/>
+                <div ng-repeat="remark in rapidRemarks | orderBy:$index:reverse=true">
+                    <p class="md-subhead">{{remark.title}}</p>
+                </div>
+
+            </form>
+                     </md-content>
+        </md-tab>
+      </md-tabs>
+                </md-content>
+            </div>
+
+        </md-dialog-content>
+    </md-dialog>
+</script>
+
+    <div class="mainButtonMenu" ng-if="currentSection != 'default'">
+        <div class="fab_add_expand" ng-show="show_add_icons">
+            <a ng-click="showItemDialog($event)" layout="row" layout-align="end center" >
+                <div >Item</div>
+                <md-button class="md-fab md-hue-1 md-raised md-mini"  aria-label="Add Item">
+                    <md-icon md-svg-icon="add"></md-icon>
+                </md-button>
+            </a>
+            <a ng-click="showPageDialog($event)" layout="row" layout-align="end center" >
+                <div >Page</div>
+                <md-button class="md-fab md-hue-2 md-raised md-mini" aria-label="Add Page">
+                    <md-icon md-svg-icon="add"></md-icon>
+                </md-button>
+            </a>
+            <a ng-click="editRapidRemarks($event)" layout="row" layout-align="end center">
+                <div>Remark</div>
+                <md-button class="md-fab md-hue-3 md-raised md-mini" aria-label="Add Remark">
+                    <md-icon md-svg-icon="add"></md-icon>
+                </md-button>
+            </a>
+            <a ng-click="initCameraAction(report.sections[currentSection].pages[selectedPage], false, true)" layout="row" layout-align="end center">
+                <div>Image</div>
+                <md-button class="md-fab md-hue-3 md-raised md-mini" aria-label="Add Section">
+                    <md-icon md-svg-icon="camera"></md-icon>
+                </md-button>
+            </a>
+        </div>
+        <md-button class="md-fab md-primary"  style="margin-right:27px;"  ng-click="toggleAdd()" aria-label="stuff">
+            <md-icon md-svg-icon="add"  ng-class="{'mainButton' : show_add_icons, 'mainButtonReverse' : !show_add_icons}"></md-icon>
+        </md-button>
     </div>
-    <md-button class="md-fab md-primary"  style="margin-right:27px;"  ng-click="toggleAdd()" aria-label="stuff">
-        <md-icon md-svg-icon="add"  ng-class="{'mainButton' : show_add_icons, 'mainButtonReverse' : !show_add_icons}"></md-icon>
-    </md-button>
-</div>
 
 </div>
 

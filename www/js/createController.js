@@ -101,6 +101,31 @@
             //console.log(JSON.stringify($scope.report.sections[$scope.currentSection].pages[$scope.selectedPage], null, 2));
          };
 
+
+     $scope.editRapidRemarks = function() {
+          $mdDialog
+             .show({
+                 controller: 'createController',
+                 templateUrl: 'editRapidRemarks.html',
+                 parent: angular.element(document.body),
+                 targetEvent: event,
+                 clickOutsideToClose: true
+             });
+     };
+
+     $scope.addNewRapidRemark = function(remarkKey, remarkTitle, remarkValue) {
+        var remark = {"title":remarkTitle, "value":remarkValue};
+        inspectionService.rapidRemarks[remarkKey].content.push(remark);
+         $scope.remarkTitle = null;
+         $scope.remarkValue = null;
+     };
+
+     $scope.addNewRemarkSection = function(sectionTitle) {
+         var rapidRemark = {"title":sectionTitle, "content":[]};
+        inspectionService.rapidRemarks.push(rapidRemark);
+         $scope.sectionTitle = null;
+     };
+
      $scope.showRapidRemarksDialog = function (event, itemIndex, checkboxIndex) {
           $rootScope.itemIndex = itemIndex;
           $rootScope.checkboxIndex = checkboxIndex;

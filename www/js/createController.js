@@ -5,7 +5,7 @@
      $scope.selectedPage = inspectionService.selectedPage;
      $scope.report = inspectionService.currentReport;
      $scope.rapidRemarks = inspectionService.rapidRemarks;
-     $scope.report = reportOne; //REMOVE after testing
+     //$scope.report = reportOne; //REMOVE after testing
      $scope.subPage = '';
      $scope.isOpen = false;
      $scope.togglePlusMenu = false;
@@ -38,7 +38,7 @@
      }
 
      // change main header image and title
-     if ($scope.currentSection == "default") {
+     if ($scope.currentSection == "default" || $scope.report.sections[$scope.currentSection] == undefined) {
          inspectionService.currentPage.toggleNavMenu = true;
          inspectionService.currentPage.title = "Inspection";
          inspectionService.currentPage.icon = "menu";
@@ -54,12 +54,27 @@
      // validate that all required items have been filled out
      $scope.checkRequired = function () {
          //TODO: validate that all required items have been filled out
+         $scope.saveReport();
      }
      
      // Publish report to PDF
-     $scope.publishReportPDf = function() {
+     $scope.publishReportPDF = function() {
          var report = document.querySelctor("");
      }
+     
+     // Save report to server
+     $scope.saveReport = function() {
+         console.info("Sending report " + $scope.report.name + " with id #" + $scope.report.id);
+         // Must use angular.fromJson and angular.toJson to remove angular added $$hashkey.
+         inspectionService.io.sendReport(angular.fromJson(angular.toJson($scope.report)));
+     }
+     $rootScope.sendReport_handler = function(data) {
+       if (data.payload.id !== null)
+           {
+               alert("Report Saved.");
+               inspectionService.reports = data.payload;
+           }
+     };
 
      // output = !input
      $scope.toggleItem = function (pItem) {

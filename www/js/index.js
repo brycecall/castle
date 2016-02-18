@@ -131,6 +131,7 @@ app.factory('inspectionService', function ($rootScope, connectService) {
         console.info(factory.reports);
     }
 
+    // TODO: change this to use the connect service user instead (for persist)
     // Current user information
     factory.currentUser = {
         user_id: 1,
@@ -223,6 +224,9 @@ app.factory('inspectionService', function ($rootScope, connectService) {
         //factory.clearCache();
     }, false);
 
+    // Always to a refresh on index load, just to keep up to date.
+    factory.io.refresh();
+    
     return factory;
 });
 

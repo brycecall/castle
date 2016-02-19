@@ -115,7 +115,7 @@ app.factory('inspectionService', function ($rootScope, connectService) {
 
     factory.io = connectService;
     factory.reports = null;
-    factory.currentReport = null;
+    factory.currentReport = reportOne;
     factory.backdrop = false;
     factory.selectedPage = null;
     factory.currentSection = null;
@@ -169,9 +169,12 @@ app.factory('inspectionService', function ($rootScope, connectService) {
 
 
     factory.openItems = function (showVal) {
-        angular.forEach(factory.currentReport[factory.currentSection][factory.selectedPage], function (value, key) {
-            value.showvalue = showVal;
-        });
+
+        for (item in factory.currentReport.sections[factory.currentSection].pages[factory.selectedPage].items) {
+            item.showvalue = showVal;
+        }
+
+
     };
 
     //Setup data

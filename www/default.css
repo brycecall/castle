@@ -38,6 +38,14 @@ footer {
 
 .fab_add_expand.ng-hide {
     transform: translate3d(0px, 600px, 0px);
+/*
+    transition: opacity 1s ease-in-out;
+    -moz-transition: opacity 1s ease-in-out;
+    -webkit-transition: opacity 1s ease-in-out;
+    -webkit-transition-property: -webkit-transform,opacity;
+    -webkit-transition-duration: 1s;
+    -webkit-transition-timing-function: ease-in;
+*/
 }
 
 

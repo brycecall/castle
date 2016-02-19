@@ -109,6 +109,25 @@
          });
      };
 
+
+//      $scope.clearRapidRemarks = function(remarkItem, rItem) {
+//            remarkItem.rrTitle = remarkItem.rItem.rrTitle;
+//            remarkItem.rrVal   = remarkItem.rItem
+//      };
+
+      $scope.linkRemark = function(remarkItem, rItem, clear) {
+            if (clear) {
+                remarkItem.rrTitle = null;
+                remarkItem.rrVal = null;
+                $scope.rItem.rrTitle = null;
+                $scope.rItem.rrVal = null;
+            } else {
+                remarkItem.rrTitle = rItem.rrTitle;
+                remarkItem.rrVal = rItem.rrVal;
+            }
+      };
+
+
       $scope.addRapidRemark = function (remarkTitle, remarkValue, itemIndex, checkboxIndex) {
              console.log("Add rapid remark");
              $scope.report.sections[$scope.currentSection].pages[$scope.selectedPage].items[$rootScope.itemIndex].content[$rootScope.checkboxIndex].rrTitle = remarkTitle;

@@ -3,7 +3,7 @@
     <md-card>
         <md-card-content>
                 <md-whiteframe  ng-repeat="sReport in inspectionService.reports" class="md-whiteframe-1dp frameStyle" ng-click="switchReport(sReport)" ui-sref="create({section:'default'})" layout-align="center center">
-                    <span>{{sReport['rep_name']}}</span>
+                    <span>{{sReport.title}}</span>
                 </md-whiteframe>
 
                 <md-whiteframe class="md-whiteframe-1dp frameStyle" ng-click="switchReport(defaultReport)" ui-sref="create({section:'default'})" layout-align="center center">

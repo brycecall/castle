@@ -67,37 +67,37 @@ var reportOne = {
               "content": [
                 {
                   "title": "Full",
-                  "rrTitle": "m",
+                  "rrTitle": 1,
                   "rrVal": 2
                 },
                 {
                   "title": "Partial",
-                  "rrTitle": "m",
+                  "rrTitle": 1,
                   "rrVal": 2
                 },
                 {
                   "title": "Abbreviated",
-                  "rrTitle": "m",
+                  "rrTitle": 1,
                   "rrVal": 2
                 },
                 {
                   "title": "Ancillary",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Limited",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "203(k)",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Rehabilitation",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 }
               ],
@@ -127,37 +127,37 @@ var reportOne = {
               "content": [
                 {
                   "title": "Single Family",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Single Use",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Multiple Use",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Duplex",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Triplex",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Multi Family",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Detatched",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 }
               ],
@@ -170,32 +170,32 @@ var reportOne = {
               "content": [
                 {
                   "title": "Residential",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Apartment",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Retail Store",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Business",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Industrial",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Commercial",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 }
               ],
@@ -209,52 +209,52 @@ var reportOne = {
               "content": [
                 {
                   "title": "Rambler",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "One Level",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Split-Entry",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Split-Level",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "One Story",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "1 1 or 2 Story",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Two-Story",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Three-Story",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Mid-Rise",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Multi-Level",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 }
               ],
@@ -268,42 +268,42 @@ var reportOne = {
               "content": [
                 {
                   "title": "Wood-Framed",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Steel-Framed",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Concrete",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "CMU or Block",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Masonry",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Tilt-Up",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Wood-Frame on Steel Carriage",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "ICF",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 }
               ],
@@ -317,67 +317,67 @@ var reportOne = {
               "content": [
                 {
                   "title": "Home",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Twin Home",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Town Home",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Mobile Home",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Log Home",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Manufactured Home",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Prefabbed Structure",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Condominium",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Building",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Garage",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Low-Rise",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Mid-Rise",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "High-Rise",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 }
               ],
@@ -728,27 +728,27 @@ var reportOne = {
               "content": [
                 {
                   "title": "Not Applicable",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Concrete",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Asphalt",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Pavers or stone or brick",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Dirt or gravel",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 }
               ],
@@ -805,27 +805,27 @@ var reportOne = {
               "content": [
                 {
                   "title": "Not Applicable",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Concrete",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Paver or stone or brick",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Wood or Composite",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 },
                 {
                   "title": "Covered",
-                  "rrTitle": "m",
+                  "rrTitle": 0,
                   "rrVal": 2
                 }
               ],

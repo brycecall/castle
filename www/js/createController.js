@@ -180,6 +180,18 @@
 
      };
 
+     $scope.previewReport = function($event) {
+          $mdDialog
+             .show({
+                 controller: 'generateController',
+                 templateUrl: './html/generate.html',
+                 parent: angular.element(document.body),
+                 targetEvent: event,
+                 clickOutsideToClose: true
+                // ,preserveScope: true
+             });
+     };
+
      $scope.cancelDialog = function () {
          $mdDialog.cancel();
      };

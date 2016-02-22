@@ -10,20 +10,20 @@ app.config(
                 templateUrl: 'html/create.html',
             })
 
-        .state('account', {
-            url: '/account',
-            templateUrl: 'html/account.html',
-        })
+            .state('account', {
+                url: '/account',
+                templateUrl: 'html/account.html',
+            })
 
-        .state('saved', {
-            url: '/saved',
-            templateUrl: 'html/saved.html',
-        })
+            .state('saved', {
+                url: '/saved',
+                templateUrl: 'html/saved.html',
+            })
 
-        .state('generate', {
-            url: '/generate',
-            templateUrl: 'html/generate.html',
-        })
+            .state('generate', {
+                url: '/generate',
+                templateUrl: 'html/generate.html',
+            });
     });
 
 app.config(function ($mdThemingProvider) {
@@ -70,9 +70,26 @@ app.config(function ($mdIconProvider) {
         .icon('account_circle','./bower_components/material-design-icons/action/svg/production/ic_account_circle_48px.svg')
         .icon('rrAdd','./bower_components/material-design-icons/av/svg/production/ic_playlist_add_48px.svg')
         .icon('rrEdit','./bower_components/material-design-icons/av/svg/production/ic_playlist_add_check_48px.svg')
-        .icon('chevron_right','./bower_components/material-design-icons/navigation/svg/design/ic_chevron_right_48px.svg')
+        .icon('chevron_right','./bower_components/material-design-icons/navigation/svg/design/ic_chevron_right_48px.svg');
 
 });
+
+//RESET main navigation values on state change
+app.run(function($rootScope, $urlRouter, inspectionService){
+    $rootScope.$on('$stateChangeStart',
+        function(event){
+             inspectionService.currentPage = {
+                title: "Inspection",
+                preventNavigation: false,
+                toggleNavMenu: true,
+                icon: "menu",
+                link: "account",
+                showExtraMenu: false
+            };
+        });
+});
+
+
 
 
 // Controller for the index page
@@ -81,13 +98,13 @@ app.controller('indexController', function ($scope, inspectionService, $mdUtil, 
 
     $scope.toggleNavigation = function () {
         $mdSidenav("main").toggle();
-    }
+    };
 
     $scope.show_add_icons = false;
 
     $scope.toggleAdd = function () {
         $scope.show_add_icons = !$scope.show_add_icons;
-    }
+    };
 
     $scope.navigationPages = [
         {
@@ -131,7 +148,7 @@ app.factory('inspectionService', function ($rootScope, connectService) {
         console.log("UPDATE ALL REPORTS");
         factory.reports = data.payload;
         console.info(factory.reports);
-    }
+    };
 
     // TODO: change this to use the connect service user instead (for persist)
     // Current user information
@@ -149,7 +166,7 @@ app.factory('inspectionService', function ($rootScope, connectService) {
         preventNavigation: false,
         toggleNavMenu: true,
         icon: "menu",
-        link: "create({section:'default'})",
+        link: "account",
         showExtraMenu: false
     };
 
@@ -221,7 +238,7 @@ app.factory('inspectionService', function ($rootScope, connectService) {
         } else {
             window.open(url, '_system');
         }
-    }
+    };
 
     // Fires when Cordova is fully loaded
     document.addEventListener('deviceready', function () {

@@ -1,46 +1,20 @@
 <div flex="" layout="row" class="page" id="nav">
 
-   <!--
-                <div ng-repeat="remark in rapidRemarks[remarkKey].content | orderBy:$index:reverse=true">
-                    <h3>{{remark.title}}</h3>
-                    <p>{{remark.value}}</p>
-                </div>
--->
-
     <section flex layout="column" style="position:relative" id="render_me">
         <md-content id="testAgain" style="padding:15px;">
-
            <div style="position:relative" >
-               <div ng-repeat="remarkSection in rapidRemarks" >
+               <div ng-repeat="remarkSection in rapidRemarks track by $index" >
                   <div ng-if="remarkSection.showValue">
                        <h2>{{remarkSection.title}}</h2>
-                       <div ng-repeat="remark in remarkSection.content | filter:{showValue:true}">
+                       <div ng-repeat="remark in remarkSection.content | filter:{showValue:true} track by $index">
                             <h3> {{remark.title}}</h3>
                             <p>{{remark.value}}</p>
                        </div>
                    </div>
                </div>
-
-
-<!--
-
-                   <div ng-repeat="section in report.sections" >
-                       <div ng-repeat="page in section.pages" >
-                         <div ng-repeat="item in page.items" >
-                          <ol>
-
-                             <h2>{{rapidRemarks[subItem.rrTitle]}}</h2>
-                             <div ng-if="item.type == 'radio' || item.type == 'checkbox'">
-                                   <li ng-repeat="subItem in item.content" >{{rapidRemarks[subItem.rrTitle].content[subItem.rrVal]}}</li>
-                             </div>
-                          </ol>
-                          </div>
-                       </div>
-                   </div>
--->
            </div>
-
-            <div ng-repeat="page in report.sections[0].pages" class="subPageStyle">
+       <div ng-repeat="section in report.sections track by $index">
+            <div ng-repeat="page in section.pages track by $index" class="subPageStyle">
                 <div style="position:relative">
                     <div layout="row" layout-align="space-between end">
                         <div>
@@ -56,7 +30,7 @@
                             <h4 class="md-caption">{{clientDate.value | date}}</h4>
                         </div>
                     </div>
-                    <div ng-repeat="item in page.items">
+                    <div ng-repeat="item in page.items track by $index">
                         <div layout="column" layout-fill="" layout-align="top center">
 
                             <!--                           PRE-SET TEXT-->
@@ -71,7 +45,7 @@
                             <div ng-if="item.type == 'checkbox'">
                                 <h3 class="md-headline">{{item.title}}:</h3>
                                 <div class="flex flex-wrap" style="display:flex; flex-wrap:wrap;">
-                                   <div ng-repeat="checkbox in item.content" class="list_item" flex="50">
+                                   <div ng-repeat="checkbox in item.content track by $index" class="list_item" flex="50">
                                         <md-checkbox class="md-secondary checkboxery" ng-model="checkbox.c" md-no-ink style="position:relative; display:inline">{{checkbox.title}}
                                         </md-checkbox>
                                     </div>
@@ -113,6 +87,7 @@
                     </div>
                 </div>
             </div>
+       </div>
         </md-content>
     </section>
 </div>

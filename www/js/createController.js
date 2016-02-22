@@ -9,12 +9,9 @@
      $scope.subPage = '';
      $scope.isOpen = false;
      $scope.togglePlusMenu = false;
-     $scope.images = [];
      $scope.showAddItemMenu = false;
      var pictureSource = null;
      var destinationType = null;
-     var imageLocation = null;
-     var cameraDestination = null;
 
 
      // a method for maintaining order in javascript/json objects
@@ -38,9 +35,9 @@
      }
 
      // change main header image and title
-     if ($scope.currentSection == "default" || $scope.report.sections[$scope.currentSection] == undefined) {
+     if ($scope.currentSection == "default" || $scope.report.sections[$scope.currentSection] === null) {
          inspectionService.currentPage.toggleNavMenu = true;
-         inspectionService.currentPage.title = "Inspection";
+         inspectionService.currentPage.title = $scope.report.title;
          inspectionService.currentPage.icon = "menu";
 
      } else {
@@ -189,7 +186,18 @@
                  targetEvent: event,
                  clickOutsideToClose: true
                 // ,preserveScope: true
-             });
+             })
+            .finally(function(){
+                // Reset Rapid Remark show/hide values
+                for (var remarkSectionKey in $scope.rapidRemarks) {
+                    var remarkSection = $scope.rapidRemarks[remarkSectionKey];
+                    remarkSection.showValue = false;
+                    for (var remarkKey in remarkSection.content) {
+                        var remark = remarkSection.content[remarkKey];
+                        remark.showValue = false;
+                    }
+                }
+          });
      };
 
      $scope.cancelDialog = function () {

@@ -98,63 +98,25 @@
             <div layout="row">
                 <h3 class="md-subhead" ng-click="toggleItem(item)" flex="">{{item.title}}:</h3>
             </div>
-            <div ng-repeat="checkbox in item.content" layout="row" class="list_item" style="position:relative" ng-if="item.showvalue">
+            <div ng-repeat="checkbox in item.content track by $index" layout="row" class="list_item" style="position:relative" ng-if="item.showvalue">
                 <span md-ink-ripple class="md-body-1" style="margin:0">
                     <md-checkbox md-no-ink class="md-secondary checkboxery" ng-model="checkbox.c" aria-label="{{checkbox.title}}"   style="position:relative; display:inline" >{{checkbox.title}}
                     </md-checkbox>
                 </span>
                 <div flex=""></div>
-                <div layout="row" ng-show="checkbox.c">
+                <div layout="row" layout-align="space-around center" ng-show="checkbox.c">
 
                 <md-button class="md-icon-button" ng-click="showRapidRemarksDialog($event, $parent.$parent.$index, $index)" aria-label="add rapid remark">
                     <md-icon md-svg-icon="rrAdd" class="md-accent" ng-if="checkbox.rrTitle == null"></md-icon>
                     <md-icon md-svg-icon="rrEdit" class="md-accent" ng-if="checkbox.rrTitle != null"></md-icon>
                 </md-button>
-
-              <script type="text/ng-template" id="rapidRemarksDialog.html">
-                <md-dialog focusOnOpen="false">
-                <input style="display:none" type="text" autofocus />
-                <md-toolbar layout="row" layout-align="center center">
-                    <h3 class="md-subhead" style="padding:0 25px">Link Rapid Remark</h3>
-                    <span flex></span>
-                    <md-button class="md-icon-button" aria-label="cancel" ng-click="cancelDialog()">
-                        <md-icon md-svg-icon="close" ></md-icon>
-                    </md-button>
-                </md-toolbar>
-                <md-dialog-content>
-                    <form ng-submit="linkRemark(remarkItem, rItem, false); cancelDialog()">
-                        <span ng-init="remarkItem = report.sections[currentSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex]"></span>
-                        <md-input-container ng-init="rItem.rrTitle = remarkItem.rrTitle">
-                            <md-select required ng-model="rItem.rrTitle" placeholder="Rapid Remark Sections">
-                                <md-option ng-repeat="remarkSection in rapidRemarks" ng-value="$index">{{remarkSection.title}}</md-option>
-                            </md-select>
-                        </md-input-container>
-                        <md-input-container ng-if="rItem.rrTitle != null" ng-init="rItem.rrVal = remarkItem.rrVal" >
-                            <md-select required ng-model="rItem.rrVal" placeholder="Rapid Remarks">
-                                <md-option ng-repeat="remark in rapidRemarks[rItem.rrTitle].content" ng-value="$index">{{remark.title}}</md-option>
-                            </md-select>
-                        </md-input-container>
-                        <div layout="row">
-                            <span flex></span>
-                            <md-button ng-click="linkRemark(remarkItem, rItem, true)" aria-label="clear" class="md-accent md-raised">clear</md-button>
-                            <md-button type="submit" aria-label="submit" class=" md-raised">Link me!</md-button>
-                        </div>
-                        <div>
-                             <h3>{{rapidRemarks[rItem.rrTitle].content[rItem.rrVal].title}}</h3>
-                             <p>{{rapidRemarks[rItem.rrTitle].content[rItem.rrVal].value}}</p>
-                        </div>
-                    </form>
-                </md-dialog-content>
-                </md-dialog>
-            </script>
-
-                    <md-menu flex="10" style="text-align:center;">
+                    <md-menu style="text-align:center; padding:0;">
                         <md-button class="md-icon-button" aria-label="view images"  ng-click="$mdOpenMenu()" ng-show="checkbox.i != '' && checkbox.i != null && checkbox.c">
                             <md-icon md-svg-icon="image" class="md-accent" ></md-icon>
                         </md-button>
                         <md-menu-content>
                             <md-content style="max-height:480px;  overflow-y:scroll;">
-                                <md-card ng-repeat="checkboxImage in checkbox.i" style="position:relative;" layout="column" layout-align="center end">
+                                <md-card ng-repeat="checkboxImage in checkbox.i track by $index" style="position:relative;" layout="column" layout-align="center end">
                                     <md-button ng-click="removeIMG(checkbox.i, $index)" class="md-icon-button cancelIMG">
                                         <md-icon  md-svg-icon="clear"  aria-label="rapid remarks" ></md-icon>
                                     </md-button>
@@ -175,7 +137,7 @@
         <div ng-if="item.type == 'radio'  && (item.required == true || service.hideShowOptions.showNonRequired)">
             <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
             <md-radio-group ng-model="item.value" ng-if="item.showvalue">
-                <md-radio-button ng-repeat="radiovalue in item.content" ng-value="radiovalue" class="radioHeight"><span>{{radiovalue.title}}</span></md-radio-button>
+                <md-radio-button ng-repeat="radiovalue in item.content track by $index" ng-value="radiovalue" class="radioHeight"><span>{{radiovalue.title}}</span></md-radio-button>
             </md-radio-group>
             <!--                                <md-divider></md-divider>-->
         </div>
@@ -205,7 +167,7 @@
             <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
             <md-input-container ng-if="item.showvalue">
                 <md-select ng-model="item.value" placeholder="Select {{item.title}}">
-                    <md-option ng-repeat="radiovalue in item.content" ng-value="radiovalue.title">{{radiovalue.title}}</md-option>
+                    <md-option ng-repeat="radiovalue in item.content track by $index" ng-value="radiovalue.title">{{radiovalue.title}}</md-option>
                 </md-select>
             </md-input-container>
             <!--                                <md-divider></md-divider>-->
@@ -248,7 +210,7 @@
         <div ng-if="item.type == 'photoAppendix'  && (item.required == true || service.hideShowOptions.showNonRequired)" layout="column" layout-align="start start">
             <div layout="row" layout-sm="column">
                 <div flex="50">
-                    <div ng-repeat="pageImage in item.content" ng-if="$even">
+                    <div ng-repeat="pageImage in item.content track by $index" ng-if="$even">
 
                         <div class="UpPicture" style="background-image: url('{{pageItem.i}}')">
                             <div class="md-caption pictureBox"></div>
@@ -258,7 +220,7 @@
                     </div>
                 </div>
                 <div flex="50">
-                    <div ng-repeat="pageImage in item.content" ng-if="$odd">
+                    <div ng-repeat="pageImage in item.content track by $index" ng-if="$odd">
 
                         <div class="UpPicture" style="background-image: url('{{pageItem.i}}')">
                             <div class="md-caption pictureBox"></div>
@@ -303,7 +265,7 @@
         <!--RADIO-->
         <div ng-if="newItem.type == 'radio'" >
             <md-radio-group ng-model="newItem.value" >
-                <div layout="row" ng-repeat="radval in newItem.content">
+                <div layout="row" ng-repeat="radval in newItem.content track by $index">
                     <md-radio-button ng-value="radval.value" class="radioHeight">
                         <span>{{radval.title}}</span>
                     </md-radio-button>
@@ -317,7 +279,7 @@
         <div ng-if="newItem.type == 'select'">
             <md-input-container >
                 <md-select ng-model="newItem.value" aria-label="add select item" >
-                    <md-option ng-repeat="selval in newItem.content" ng-value="selval.title">{{selval.title}}</md-option>
+                    <md-option ng-repeat="selval in newItem.content track by $index" ng-value="selval.title">{{selval.title}}</md-option>
                 </md-select>
             </md-input-container>
         </div>
@@ -325,7 +287,7 @@
         <!--CHECKBOX-->
         <div ng-if="newItem.type == 'checkbox'" >
             <div ng-if="newItem.type == 'checkbox'">
-                <div layout="row" layout-align="space-between center" ng-repeat="checkbval in newItem.content">
+                <div layout="row" layout-align="space-between center" ng-repeat="checkbval in newItem.content track by $index">
                     <md-checkbox class="md-secondary checkboxery"  ng-model="checkbval.c"> {{checkbval.title}}
                     </md-checkbox>
                     <span flex=""></span>
@@ -417,7 +379,7 @@
              <form ng-submit="addNewRapidRemark(remarkKey, remarkTitle, remarkValue)" novalidate  name="addNewRR">
                 <md-input-container>
                     <md-select required ng-model="remarkKey" placeholder="Choose Rapid Remark Sections" >
-                        <md-option required ng-repeat="remarkSection in rapidRemarks" ng-value="$index">{{remarkSection.title}}</md-option>
+                        <md-option required ng-repeat="remarkSection in rapidRemarks track by $index" ng-value="$index">{{remarkSection.title}}</md-option>
                     </md-select>
                 </md-input-container>
 
@@ -455,7 +417,8 @@
                 </md-input-container>
                 <div layout="row">
                  <span flex></span>
-                 <md-button type="submit" aria-label="cancel" class="md-secondary md-raised" ng-disabled="addRRSection.$invalid">Add me!</md-button>
+                 <md-button type="submit" aria-label="cancel"
+                            class="md-secondary md-raised" ng-disabled="addRRSection.$invalid">Add me!</md-button>
                 </div>
                 <br/>
                 <div ng-repeat="remark in rapidRemarks | orderBy:$index:reverse=true">
@@ -472,6 +435,43 @@
         </md-dialog-content>
     </md-dialog>
 </script>
+
+              <script type="text/ng-template" id="rapidRemarksDialog.html">
+                <md-dialog focusOnOpen="false">
+                <input style="display:none" type="text" autofocus />
+                <md-toolbar layout="row" layout-align="center center">
+                    <h3 class="md-subhead" style="padding:0 25px">Link Rapid Remark</h3>
+                    <span flex></span>
+                    <md-button class="md-icon-button" aria-label="cancel" ng-click="cancelDialog()">
+                        <md-icon md-svg-icon="close" ></md-icon>
+                    </md-button>
+                </md-toolbar>
+                <md-dialog-content>
+                    <form ng-submit="linkRemark(remarkItem, rItem, false); cancelDialog()">
+                        <span ng-init="remarkItem = report.sections[currentSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex]"></span>
+                        <md-input-container ng-init="rItem.rrTitle = remarkItem.rrTitle">
+                            <md-select required ng-model="rItem.rrTitle" placeholder="Rapid Remark Sections">
+                                <md-option ng-repeat="remarkSection in rapidRemarks track by $index" ng-value="$index">{{remarkSection.title}}</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container ng-if="rItem.rrTitle != null" ng-init="rItem.rrVal = remarkItem.rrVal" >
+                            <md-select required ng-model="rItem.rrVal" placeholder="Rapid Remarks">
+                                <md-option ng-repeat="remark in rapidRemarks[rItem.rrTitle].content track by $index" ng-value="$index">{{remark.title}}</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <div layout="row">
+                            <span flex></span>
+                            <md-button ng-click="linkRemark(remarkItem, rItem, true)" aria-label="clear" class="md-accent md-raised">clear</md-button>
+                            <md-button type="submit" aria-label="submit" class=" md-raised">Link me!</md-button>
+                        </div>
+                        <div>
+                             <h3>{{rapidRemarks[rItem.rrTitle].content[rItem.rrVal].title}}</h3>
+                             <p>{{rapidRemarks[rItem.rrTitle].content[rItem.rrVal].value}}</p>
+                        </div>
+                    </form>
+                </md-dialog-content>
+                </md-dialog>
+              </script>
 
     <div class="mainButtonMenu" ng-if="currentSection != 'default'">
         <div class="fab_add_expand" ng-show="show_add_icons">

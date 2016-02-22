@@ -69,6 +69,7 @@ var reportOne = {
                   "title": "Full",
                   "rrTitle": 1,
                   "rrVal": 2
+
                 },
                 {
                   "title": "Partial",
@@ -386,25 +387,33 @@ var reportOne = {
             {
               "title": "Configurations",
               "required": true,
-              "showvalue": false,
+              "showvalue": true,
               "type": "checkbox",
               "value": [],
               "content": [
                 {
                   "title": "With Lower Parking Garage",
-                  "c": false
+                  "c": true,
+                  "i":["./img/Studphen.png", "./img/Studphen.png", "./img/Studphen.png"],
+                  "rrTitle": 0,
+                  "rrVal": 2
                 },
                 {
                   "title": "With Basement & Garage",
-                  "c": false
+                  "c": true,
+                  "i":["./img/rod.png", "./img/rod.png", "./img/rod.png"],
+                  "rrTitle": 1,
+                  "rrVal": 2
                 },
                 {
                   "title": "With Garage",
-                  "c": false
+                  "c": true,
+                  "rrTitle": 0,
+                  "rrVal": 3
                 },
                 {
                   "title": "With Garage & Crawlspace",
-                  "c": false
+                  "c": true
                 },
                 {
                   "title": "With Full Basement",

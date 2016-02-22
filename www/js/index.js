@@ -69,7 +69,9 @@ app.config(function ($mdIconProvider) {
         .icon('more_vert','./bower_components/material-design-icons/navigation/svg/production/ic_more_vert_48px.svg')
         .icon('account_circle','./bower_components/material-design-icons/action/svg/production/ic_account_circle_48px.svg')
         .icon('rrAdd','./bower_components/material-design-icons/av/svg/production/ic_playlist_add_48px.svg')
-        .icon('rrEdit','./bower_components/material-design-icons/av/svg/production/ic_playlist_add_check_48px.svg');
+        .icon('rrEdit','./bower_components/material-design-icons/av/svg/production/ic_playlist_add_check_48px.svg')
+        .icon('chevron_right','./bower_components/material-design-icons/navigation/svg/design/ic_chevron_right_48px.svg')
+
 });
 
 

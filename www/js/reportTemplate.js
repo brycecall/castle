@@ -13,26 +13,26 @@ var reportOne = {
               "required": true,
               "type": "clientinfo",
               "value": {
-                "firstName": "",
-                "lastName": "",
-                "address": "",
+                "firstName": "Cameron",
+                "lastName": "Lilly",
+                "address": "4119 E Juanita Ave",
                 "addressTwo": "",
-                "city": "",
-                "state": "",
-                "postalCode": ""
+                "city": "Gilbert",
+                "state": "AZ",
+                "postalCode": "85234"
               }
             },
             {
               "title": "Report ID",
               "required": true,
               "type": "text",
-              "value": ""
+              "value": "111222"
             },
             {
               "title": "Report Date",
               "required": true,
               "type": "date",
-              "value": ""
+              "value": "02/23/2016"
             },
             {
               "title": "Client Info Images",

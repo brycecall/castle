@@ -1,35 +1,47 @@
 <div flex="" layout="row" class="page" id="nav">
 
     <section flex layout="column" style="position:relative" id="render_me">
-        <md-content id="testAgain" style="padding:15px;">
-           <div style="position:relative" >
-               <div ng-repeat="remarkSection in rapidRemarks track by $index" >
-                  <div ng-if="remarkSection.showValue">
-                       <h2>{{remarkSection.title}}</h2>
-                       <div ng-repeat="remark in remarkSection.content | filter:{showValue:true} track by $index">
-                            <h3> {{remark.title}}</h3>
-                            <p>{{remark.value}}</p>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       <div ng-repeat="section in report.sections track by $index">
-            <div ng-repeat="page in section.pages track by $index" class="subPageStyle">
+       <md-content id="testAgain" style="padding:15px;">
+         <h1 class="md-display-3" style="text-align:center">
+             Inspection Report
+         </h1>
+         <div class="md-body-2" style="text-align:center;">
+         <div>For the property at:</div>
+         <div class="md-headline">
+            {{clientInfo.value.address}},
+            {{clientInfo.value.city}},
+            {{clientInfo.value.state}}
+            {{clientInfo.value.postalCode}}
+         </div>
+             <div>Prepared for: {{clientInfo.value.firstName}} {{clientInfo.value.lastName}}</div>
+             <div>Inspection Date: {{reportDate.value | date}}</div>
+             <div>Prepared by: {{inspectionService.currentUser.username}}</div>
+<!--             <img src="" />-->
+             <br/>
+             <p>"A great investment deserves a great investigation"</p>
+         </div>
+
+         <div ng-repeat="section in report.sections track by $index" ng-if="section.title != 'Field Notes'">
+            <div ng-repeat="page in section.pages track by $index" class="subPageStyle" >
                 <div style="position:relative">
-                    <div layout="row" layout-align="space-between end">
-                        <div>
-                            <h2 class="md-display-1" style="cursor:pointer;">
-                                {{currentSection.title}}
-                                <md-icon md-svg-icon="chevron_right" class="headNavIcon"></md-icon>
-                                {{page.title}}
-                            </h2>
-                            <h4 class="md-caption" >{{clientInfo.value.address}}, {{clientInfo.value.city}},{{clientInfo.value.state}} {{clientInfo.value.postalCode}}</h4>
+                    <h1>
+                       <div layout="row" layout-align="space-between end">
+                            <div class="md-display-1">
+                                {{section.title}}<md-icon md-svg-icon="chevron_right" class="headNavIcon"></md-icon>{{page.title}}
+                            </div>
+                            <div class="md-caption" style="min-width:125px; text-align:right">Report ID: {{reportId.value}}</div>
                         </div>
-                        <div style="text-align:right">
-                            <h4 class="md-caption">Report ID: {{reportId.value}}</h4>
-                            <h4 class="md-caption">{{clientDate.value | date}}</h4>
+                        <div layout="row" layout-align="space-between end" class="md-caption">
+                            <div>
+                                {{clientInfo.value.address}},
+                                {{clientInfo.value.city}},
+                                {{clientInfo.value.state}}
+                                {{clientInfo.value.postalCode}}
+                            </div>
+                            <div>{{reportDate.value | date}}</div>
                         </div>
-                    </div>
+                    </h1>
+
                     <div ng-repeat="item in page.items track by $index">
                         <div layout="column" layout-fill="" layout-align="top center">
 
@@ -45,11 +57,12 @@
                             <div ng-if="item.type == 'checkbox'">
                                 <h3 class="md-headline">{{item.title}}:</h3>
                                 <div class="flex flex-wrap" style="display:flex; flex-wrap:wrap;">
-                                   <div ng-repeat="checkbox in item.content track by $index" class="list_item" flex="50">
+                                   <div ng-repeat="checkbox in item.content track by $index" flex="50">
                                         <md-checkbox class="md-secondary checkboxery" ng-model="checkbox.c" md-no-ink style="position:relative; display:inline">{{checkbox.title}}
                                         </md-checkbox>
                                     </div>
                                 </div>
+                                 <br />
                                  <div ng-init="checkboxImages = getAllItemImages(item.content)" class="flex-wrap" style="display:flex; flex-wrap:wrap;" >
                                    <div ng-repeat="imageItem in checkboxImages track by $index" flex="50">
                                      <div class="UpPicture" style="background-image: url('{{imageItem.i}}')" >
@@ -87,7 +100,19 @@
                     </div>
                 </div>
             </div>
-       </div>
+         </div>
+           <div style="position:relative" >
+               <h2 class="md-display-2" style="text-align:center">Summary</h2>
+               <div ng-repeat="remarkSection in rapidRemarks track by $index" >
+                  <div ng-if="remarkSection.showValue">
+                       <h2 class="md-headline">{{remarkSection.title}}</h2>
+                       <div ng-repeat="remark in remarkSection.content | filter:{showValue:true} track by $index">
+                            <h3> {{remark.title}}</h3>
+                            <p>{{remark.value}}</p>
+                       </div>
+                   </div>
+               </div>
+           </div>
         </md-content>
     </section>
 </div>

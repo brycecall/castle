@@ -4,16 +4,16 @@
         <md-content style="position:relative; max-width:950px; margin:0 auto;">
             <!--                SECTION NAVIGATION   -->
             <md-card ng-if="currentSection == 'default'">
-                    <md-list class="subMenu">
-                        <md-list-item ng-repeat="section in report.sections" style="position:relative" flex="">
-                            <a href="#create/{{$index}}" class="menuButton" flex>
-                                <md-button class="md-no-style" style="" aria-label="{{section.title}}">{{section.title}}</md-button>
-                            </a>
-                            <md-divider></md-divider>
-                        </md-list-item>
-                    </md-list>
-                    <md-button ng-click="previewReport($event)" class="md-raised" aria-label="Preview Report">Preview Report</md-button>
-                    <md-button ng-click="checkRequired()" class="md-raised" aria-label="Save Report">Save Report</md-button>
+                <md-list class="subMenu">
+                    <md-list-item ng-repeat="section in report.sections" style="position:relative" flex="">
+                        <a href="#create/{{$index}}" class="menuButton" flex>
+                            <md-button class="md-no-style" style="" aria-label="{{section.title}}">{{section.title}}</md-button>
+                        </a>
+                        <md-divider></md-divider>
+                    </md-list-item>
+                </md-list>
+                <md-button ng-click="previewReport($event)" class="md-raised" aria-label="Preview Report">Preview Report</md-button>
+                <md-button ng-click="checkRequired()" class="md-raised" aria-label="Save Report">Save Report</md-button>
             </md-card>
 
 

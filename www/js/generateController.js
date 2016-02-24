@@ -1,7 +1,7 @@
 app.controller('generateController', function ($rootScope, $scope, $mdUtil, $mdDialog, $mdMedia, inspectionService) {
 
     $scope.report = inspectionService.currentReport;
-  //  $scope.report = reportOne;
+   // $scope.report = reportOne;
     $scope.currentPage = inspectionService.currentPage;
     $scope.currentSection = inspectionService.currentSection;
     $scope.rapidRemarks = inspectionService.rapidRemarks;

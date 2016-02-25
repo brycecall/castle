@@ -7,23 +7,29 @@ app.config(
         $stateProvider
             .state('create', {
                 url: "/create/:section",
-                templateUrl: 'html/create.html',
+                templateUrl: 'html/create.html'
             })
 
             .state('account', {
                 url: '/account',
-                templateUrl: 'html/account.html',
+                templateUrl: 'html/account.html'
             })
 
             .state('saved', {
                 url: '/saved',
-                templateUrl: 'html/saved.html',
+                templateUrl: 'html/saved.html'
             })
 
             .state('generate', {
                 url: '/generate',
-                templateUrl: 'html/generate.html',
+                templateUrl: 'html/generate.html'
+            })
+
+            .state('templates', {
+                url: '/templates',
+                templateUrl: 'html/templates.html'
             });
+
     });
 
 app.config(function ($mdThemingProvider) {
@@ -70,8 +76,12 @@ app.config(function ($mdIconProvider) {
         .icon('account_circle','./bower_components/material-design-icons/action/svg/production/ic_account_circle_48px.svg')
         .icon('rrAdd','./bower_components/material-design-icons/av/svg/production/ic_playlist_add_48px.svg')
         .icon('rrEdit','./bower_components/material-design-icons/av/svg/production/ic_playlist_add_check_48px.svg')
-        .icon('chevron_right','./bower_components/material-design-icons/navigation/svg/design/ic_chevron_right_48px.svg');
-
+        .icon('chevron_right','./bower_components/material-design-icons/navigation/svg/production/ic_chevron_right_48px.svg')
+        .icon('check_box','./bower_components/material-design-icons/toggle/svg/production/ic_check_box_48px.svg')
+        .icon('check_box_outline','./bower_components/material-design-icons/toggle/svg/production/ic_check_box_outline_48px.svg')
+        .icon('radio_button_checked','./bower_components/material-design-icons/toggle/svg/production/ic_radio_button_checked_48px.svg')
+        .icon('radio_button_unchecked','./bower_components/material-design-icons/toggle/svg/production/ic_radio_button_unchecked_48px.svg')
+        .icon('build','./bower_components/material-design-icons/action/svg/production/ic_build_48px.svg');
 });
 
 //RESET main navigation values on state change
@@ -121,6 +131,11 @@ app.controller('indexController', function ($scope, inspectionService, $mdUtil, 
             title: "Account",
             icon: "account",
             link: "account"
+        },
+        {
+            title: "Edit Templates",
+            icon: "build",
+            link: "templates"
         }
         ];
 });

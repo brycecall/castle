@@ -1,18 +1,17 @@
-<div flex="" layout="row" class="page" id="nav">
-
+<div ng-controller="generateController" flex="" layout="row" class="page" id="nav">
     <section flex layout="column" style="position:relative" id="render_me">
-       <md-content id="testAgain" style="padding:15px;">
+       <md-content id="testAgain" style="padding:15px;" class="flex">
          <h1 class="md-display-3" style="text-align:center">
              Inspection Report
          </h1>
          <div class="md-body-2" style="text-align:center;">
-         <div>For the property at:</div>
-         <div class="md-headline">
-            {{clientInfo.value.address}},
-            {{clientInfo.value.city}},
-            {{clientInfo.value.state}}
-            {{clientInfo.value.postalCode}}
-         </div>
+             <div>For the property at:</div>
+             <div class="md-headline">
+                {{clientInfo.value.address}},
+                {{clientInfo.value.city}},
+                {{clientInfo.value.state}}
+                {{clientInfo.value.postalCode}}
+             </div>
              <div>Prepared for: {{clientInfo.value.firstName}} {{clientInfo.value.lastName}}</div>
              <div>Inspection Date: {{reportDate.value | date}}</div>
              <div>Prepared by: {{inspectionService.currentUser.username}}</div>

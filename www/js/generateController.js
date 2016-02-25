@@ -1,13 +1,15 @@
 app.controller('generateController', function ($rootScope, $scope, $mdUtil, $mdDialog, $mdMedia, inspectionService) {
 
     $scope.report = inspectionService.currentReport;
-   // $scope.report = reportOne;
+    $scope.report = reportOne;
     $scope.currentPage = inspectionService.currentPage;
     $scope.currentSection = inspectionService.currentSection;
     $scope.rapidRemarks = inspectionService.rapidRemarks;
     $scope.clientInfo = null;
     $scope.reportId = null;
     $scope.reportDate = null;
+
+    console.log("Report" + $scope.report);
 
     $scope.findInReport = function(titleToFind, listToSearch) {
         for (var listKey in listToSearch) {
@@ -18,6 +20,12 @@ app.controller('generateController', function ($rootScope, $scope, $mdUtil, $mdD
         }
         return null;
     };
+
+    inspectionService.currentPage.title = "Preview Report";
+    inspectionService.currentPage.icon = "back";
+    inspectionService.currentPage.toggleNavMenu = false;
+    inspectionService.currentPage.link = "create({section:'default'})";
+    inspectionService.currentPage.showExtraMenu = true;
 
     $scope.initialzeFieldNotesVars = function() {
         $scope.currentSection = $scope.findInReport("Field Notes", $scope.report.sections);

@@ -32,15 +32,16 @@
          $scope.selectedPage = index;
          inspectionService.selectedPage = index;
         // console.log($scope.selectedPage + ' ' + pagetitle);
-     }
+     };
 
      // change main header image and title
-     if ($scope.currentSection == "default" || $scope.report.sections[$scope.currentSection] === null) {
+     if ($scope.currentSection == "default" || $scope.report.sections[$scope.currentSection] == null) {
          inspectionService.currentPage.toggleNavMenu = true;
          inspectionService.currentPage.title = $scope.report.title;
          inspectionService.currentPage.icon = "menu";
 
      } else {
+         //console.log($scope.report.sections[$scope.currentSection]);
          inspectionService.currentPage.title = $scope.report.sections[$scope.currentSection].title;
          inspectionService.currentPage.icon = "back";
          inspectionService.currentPage.toggleNavMenu = false;
@@ -180,7 +181,7 @@
      $scope.previewReport = function($event) {
           $mdDialog
              .show({
-                 controller: 'generateController',
+                 //controller: 'generateController',
                  templateUrl: './html/generate.html',
                  parent: angular.element(document.body),
                  targetEvent: event,

@@ -1,6 +1,6 @@
 <div ng-controller="generateController" flex="" layout="row" class="page" id="nav">
-    <section flex layout="column" style="position:relative" id="render_me">
-       <md-content id="testAgain" style="padding:15px;" class="flex">
+    <section flex layout="column" style="position:relative;  overflow-x:hidden" id="render_me">
+       <md-content id="testAgain" style="padding:15px; overflow-x:hidden" class="flex">
          <h1 class="md-display-3" style="text-align:center">
              Inspection Report
          </h1>
@@ -22,7 +22,7 @@
 
          <div ng-repeat="section in report.sections track by $index" ng-if="section.title != 'Field Notes'">
             <div ng-repeat="page in section.pages track by $index" class="subPageStyle" >
-                <div style="position:relative">
+                <div style="position:relative; " >
                     <h1>
                        <div layout="row" layout-align="space-between end">
                             <div class="md-display-1">

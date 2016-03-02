@@ -32,7 +32,7 @@ var reportOne = {
               "title": "Report Date",
               "required": true,
               "type": "date",
-              "value": "02/23/2016"
+              "value": "Tue Feb 02 2016 00:00:00 GMT-0700 (Mountain Standard Time)"
             },
             {
               "title": "Client Info Images",

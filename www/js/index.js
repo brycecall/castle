@@ -104,7 +104,7 @@ app.run(function($rootScope, $urlRouter, inspectionService){
 
 // Controller for the index page
 app.controller('indexController', function ($scope, inspectionService, $mdUtil, $mdSidenav) {
-    $scope.service = inspectionService;
+    $scope.inspectionService = inspectionService;
 
     $scope.toggleNavigation = function () {
         $mdSidenav("main").toggle();
@@ -154,6 +154,10 @@ app.factory('inspectionService', function ($rootScope, connectService) {
     factory.selectedPage = null;
     factory.currentSection = null;
     factory.rapidRemarks = rapidRemarks;
+    factory.reportTemplates = [
+        {"title":"reportOne", "reportKey":"AHRDF-sdf4-sd34sd-3SDF"}
+    ];
+
     //factory.serverURL = "http://dev.maurasoftware.com:9526";
     
     //TODO: change when send and delete differ
@@ -190,7 +194,7 @@ app.factory('inspectionService', function ($rootScope, connectService) {
         'showNonRequired': true
     };
 
-    factory.filterRequired = function (param) {
+    factory.filterRequired = function(param) {
         if (factory.hideShowOptions.showNonRequired) {
             factory.hideShowOptions.showNonRequired = false;
             factory.hideShowOptions.text = "Show";
@@ -203,12 +207,9 @@ app.factory('inspectionService', function ($rootScope, connectService) {
 
 
     factory.openItems = function (showVal) {
-
-        for (item in factory.currentReport.sections[factory.currentSection].pages[factory.selectedPage].items) {
-            item.showvalue = showVal;
-        }
-
-
+        angular.forEach(factory.currentReport.sections[factory.currentSection].pages[factory.selectedPage].items, function(itemval, itemkey) {
+            itemval.showvalue = showVal;
+        });
     };
 
     //Setup data

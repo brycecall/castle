@@ -1,10 +1,11 @@
  app.controller('createController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, inspectionService) {
-
+     $scope.inspectionService = inspectionService;
      $scope.currentSection = $stateParams.section;
-     inspectionService.currentSection = $scope.currentSection;
+     $scope.inspectionService.currentSection = $scope.currentSection;
      $scope.selectedPage = inspectionService.selectedPage;
      $scope.report = inspectionService.currentReport;
      $scope.rapidRemarks = inspectionService.rapidRemarks;
+     $scope.reportTemplate = null;
      //$scope.report = reportOne; //REMOVE after testing
      $scope.subPage = '';
      $scope.isOpen = false;
@@ -12,6 +13,17 @@
      $scope.showAddItemMenu = false;
      var pictureSource = null;
      var destinationType = null;
+
+
+     $scope.setItem = function(item, val) {
+         item.value = val;
+     };
+
+     $scope.getAsDate = function(dateString) {
+         return new Date(dateString);
+     };
+
+
 
 
      // a method for maintaining order in javascript/json objects

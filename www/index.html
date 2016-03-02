@@ -79,42 +79,42 @@
                     <md-toolbar >
                       <div class="md-toolbar-tools" layout="row" layout-align="center center">
 
-                        <md-button ng-if="service.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ng-click="toggleNavigation()" ng-model-options="{ debounce: 1000 }">
-                             <md-icon md-svg-icon="{{service.currentPage.icon}}"></md-icon>
+                        <md-button ng-if="inspectionService.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ng-click="toggleNavigation()" ng-model-options="{ debounce: 1000 }">
+                             <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}"></md-icon>
                         </md-button>
 
-                        <md-button ng-if="!service.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ui-sref="{{service.currentPage.link}}" ng-model-options="{ debounce: 1000 }">
-                             <md-icon md-svg-icon="{{service.currentPage.icon}}"></md-icon>
+                        <md-button ng-if="!inspectionService.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ui-sref="{{inspectionService.currentPage.link}}" ng-model-options="{ debounce: 1000 }">
+                             <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}"></md-icon>
                         </md-button>
 
                         <h2 class="page_header">
-                          <span>{{service.currentPage.title}}</span>
+                          <span>{{inspectionService.currentPage.title}}</span>
                         </h2>
                         <span flex></span>
                         <a ui-sref="account" aria-label="Account" style="border:none" >
-                          <div class="profileWrapper" ng-if="service.currentUser.loggedIn == true">
-                              <div class="profile_picture" style="background-image: url({{service.currentUser.profile_image}});"></div>
+                          <div class="profileWrapper" ng-if="inspectionService.currentUser.loggedIn == true">
+                              <div class="profile_picture" style="background-image: url({{inspectionService.currentUser.profile_image}});"></div>
                         
                           </div>
-                            <md-icon ng-if="service.currentUser.loggedIn == false"  md-svg-icon="account_circle" class="profile_picture"></md-icon>
+                            <md-icon ng-if="inspectionService.currentUser.loggedIn == false"  md-svg-icon="account_circle" class="profile_picture"></md-icon>
                         </a>
 
-                         <md-menu style="margin:0; padding:0;" ng-if="service.currentPage.showExtraMenu">
+                         <md-menu style="margin:0; padding:0;" ng-if="inspectionService.currentPage.showExtraMenu">
                          <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open extra menu" >
                                 <md-icon md-svg-icon="more_vert"></md-icon>
                          </md-button>
 
                          <md-menu-content>
                            <md-menu-item>
-                               <md-button ng-click="service.openItems(true)">Open All Items</md-button>
+                               <md-button ng-click="inspectionService.openItems(true)">Open All Items</md-button>
                            </md-menu-item>
 
                             <md-menu-item>
-                               <md-button ng-click="service.openItems(false)">Close All Items</md-button>
+                               <md-button ng-click="inspectionService.openItems(false)">Close All Items</md-button>
                            </md-menu-item>
 
                            <md-menu-item>
-                               <md-button ng-click="service.filterRequired(true)">{{service.hideShowOptions.text}} Unrequired
+                               <md-button ng-click="inspectionService.filterRequired(true)">{{inspectionService.hideShowOptions.text}} Unrequired
                                </md-button>
                            </md-menu-item>
 

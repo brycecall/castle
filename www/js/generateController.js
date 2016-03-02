@@ -25,7 +25,7 @@ app.controller('generateController', function ($rootScope, $scope, $mdUtil, $mdD
     inspectionService.currentPage.icon = "back";
     inspectionService.currentPage.toggleNavMenu = false;
     inspectionService.currentPage.link = "create({section:'default'})";
-    inspectionService.currentPage.showExtraMenu = true;
+    inspectionService.currentPage.showExtraMenu = false;
 
     $scope.initialzeFieldNotesVars = function() {
         $scope.currentSection = $scope.findInReport("Field Notes", $scope.report.sections);

@@ -5,7 +5,7 @@
      $scope.selectedPage = inspectionService.selectedPage;
      $scope.report = inspectionService.currentReport;
      $scope.rapidRemarks = inspectionService.rapidRemarks;
-     $scope.reportTemplate = null;
+     //$scope.reportTemplate = inspectionService.reportTemplate;
      //$scope.report = reportOne; //REMOVE after testing
      $scope.subPage = '';
      $scope.isOpen = false;

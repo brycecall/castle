@@ -3,10 +3,17 @@
     <section>
         <md-content style="position:relative; max-width:950px; margin:0 auto;">
 
-         <md-card ng-show="currentSection == 'default' && reportTemplate == null">
+         <md-card ng-show="currentSection == 'default' ">
            <md-card-content>
+<!--
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Template</span>
+                </md-card-title-text>
+             </md-card-title>
+-->
             <md-input-container>
-                <md-select ng-model="reportTemplate" placeholder="Pick a Template">
+                <md-select ng-model="inspectionService.reportTemplate" placeholder="Pick a Template">
                     <md-option ng-repeat="template in inspectionService.reportTemplates track by $index"
                                ng-value="template">{{template.title}}</md-option>
                 </md-select>
@@ -16,24 +23,28 @@
 
 
 <!--                SECTION NAVIGATION   -->
-<md-card ng-show="currentSection == 'default' && reportTemplate != null">
-    <md-list class="subMenu" style="padding:0;">
-        <md-list-item ng-repeat="section in report.sections" style="position:relative" flex="">
-            <a href="#create/{{$index}}" class="menuButton" flex>
-                <md-button class="md-no-style" style="" aria-label="{{section.title}}">{{section.title}}</md-button>
-            </a>
-            <md-divider></md-divider>
-        </md-list-item>
-    </md-list>
-    <md-button ui-sref="generate" class="md-raised" aria-label="Preview Report">Preview Report</md-button>
-<!--    <md-button ng-click="previewReport($event)" class="md-raised" aria-label="Preview Report">Preview Report</md-button>-->
-    <md-button ng-click="checkRequired()" class="md-raised" aria-label="Save Report">Save Report</md-button>
-</md-card>
+<div ng-show="currentSection == 'default' && inspectionService.reportTemplate != null" >
+    <md-card>
+        <md-list class="subMenu" style="padding:0;">
+            <md-list-item ng-repeat="section in report.sections" style="position:relative" flex="">
+                <a href="#create/{{$index}}" class="menuButton" flex>
+                    <md-button class="md-no-style" style="" aria-label="{{section.title}}">{{section.title}}</md-button>
+                </a>
+                <md-divider></md-divider>
+            </md-list-item>
+        </md-list>
+        <!--    <md-button ng-click="previewReport($event)" class="md-raised" aria-label="Preview Report">Preview Report</md-button>-->
 
-
+    </md-card>
+    <div layout="row">
+        <md-button ui-sref="generate" class="md-raised" aria-label="Preview Report">Preview Report</md-button>
+        <md-button ng-click="checkRequired()" class="md-raised" aria-label="Save Report">Save Report</md-button>
+        <md-button ng-click="resetTemplate()" class="md-raised md-primary" aria-label="Reset Template">Reset Template</md-button>
+    </div>
+</div>
             <!--           PAGES-->
 <md-card ng-if="currentSection != 'default'">
-<md-tabs md-dynamic-height md-swipe-content style="padding:0 16px 16px 16px">
+<md-tabs md-dynamic-height md-swipe-content md-enable-disconnect  style="padding:0 16px 16px 16px">
 <md-tab ng-if="currentSection != 'default'" ng-repeat="page in report.sections[currentSection].pages" class="md-whiteframe-z1 subPageStyle" md-on-select="changeSelection($index, page.title)">
 
 <md-tab-label>{{page.title}}</md-tab-label>

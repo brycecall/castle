@@ -157,6 +157,7 @@ app.factory('inspectionService', function ($rootScope, connectService) {
     factory.reportTemplates = [
         {"title":"reportOne", "reportKey":"AHRDF-sdf4-sd34sd-3SDF"}
     ];
+    factory.reportTemplate = null;
 
     //factory.serverURL = "http://dev.maurasoftware.com:9526";
     

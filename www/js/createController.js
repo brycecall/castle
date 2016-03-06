@@ -13,6 +13,7 @@
      $scope.showAddItemMenu = false;
      var pictureSource = null;
      var destinationType = null;
+     $scope.unassignedImages = [];
 
 
      $scope.setItem = function(item, val) {

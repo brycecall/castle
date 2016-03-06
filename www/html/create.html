@@ -1,7 +1,7 @@
 <div ng-controller="createController" flex="" layout="column" class="page" id="nav" style="background-color:white; ">
 
     <section>
-        <md-content style="position:relative; max-width:950px; margin:0 auto;">
+        <md-content class="centerPage" style="position:relative;">
 
          <md-card ng-show="currentSection == 'default' ">
            <md-card-content>
@@ -36,7 +36,7 @@
         <!--    <md-button ng-click="previewReport($event)" class="md-raised" aria-label="Preview Report">Preview Report</md-button>-->
 
     </md-card>
-    <div layout="row">
+    <div layout="row" style="padding: 0 0 10px 0;">
         <md-button ui-sref="generate" class="md-raised" aria-label="Preview Report">Preview Report</md-button>
         <md-button ng-click="checkRequired()" class="md-raised" aria-label="Save Report">Save Report</md-button>
         <md-button ng-click="resetTemplate()" class="md-raised md-primary" aria-label="Reset Template">Reset Template</md-button>
@@ -44,12 +44,14 @@
 </div>
             <!--           PAGES-->
 <md-card ng-if="currentSection != 'default'">
-<md-tabs md-dynamic-height md-swipe-content md-enable-disconnect  style="padding:0 16px 16px 16px">
-<md-tab ng-if="currentSection != 'default'" ng-repeat="page in report.sections[currentSection].pages" class="md-whiteframe-z1 subPageStyle" md-on-select="changeSelection($index, page.title)">
+<md-tabs md-dynamic-height md-swipe-content md-enable-disconnect >
+<md-tab ng-if="currentSection != 'default'" ng-repeat="page in report.sections[currentSection].pages"
+        class="md-whiteframe-z1 subPageStyle" md-on-select="changeSelection($index, page.title)">
 
 <md-tab-label>{{page.title}}</md-tab-label>
-<md-tab-body>
-<div ng-repeat="item in page.items" >
+<md-tab-body  >
+<div style="padding:16px 16px 16px 16px">
+<div ng-repeat="item in page.items">
     <!--                       CLIENT INFO-->
     <div ng-if="item.type == 'clientinfo' && (item.required == true || inspectionService.hideShowOptions.showNonRequired)">
         <div layout="row">
@@ -201,56 +203,19 @@
                 </md-input-container>
         </div>
 
-
-<!--
-        <div ng-if="item.type == 'image'  && (item.required == true || inspectionService.hideShowOptions.showNonRequired)" layout="row" layout-align="start center">
-            <md-button class="md-raised" aria-label="Photos" ng-click="capturePagePhoto(item.title, item)">
-                <md-icon md-svg-icon="camera"></md-icon>Add Photo</md-button>
-
-            <md-menu flex="10" style="text-align:center;" ng-if="item.content.length != 0">
-                <div ng-click="$mdOpenMenu()" style="padding:0 5px">
-                    <md-icon md-svg-icon="image" class="md-accent"></md-icon>
-                </div>
-                <md-menu-content>
-                    <md-content style="max-height:480px;  overflow-y:scroll;">
-                        <md-card ng-repeat="pageImage in item.content" style="position:relative;" layout="column" layout-align="center end">
-                            <div ng-click="removeIMG(pageImage, item.content)" class="cancelIMG" flex="">
-                                <md-icon md-svg-icon="clear" class=""></md-icon>
-                            </div>
-                            <div class="UpPicture" style="background-image: url('{{pageImage.i}}'); background-color:black" />
-                        </md-card>
-                    </md-content>
-                </md-menu-content>
-            </md-menu>
-        </div>
--->
-
-        <div ng-if="item.type == 'photoAppendix'  && (item.required == true || inspectionService.hideShowOptions.showNonRequired)" layout="column" layout-align="start start">
-            <div layout="row" layout-sm="column">
-                <div flex="50">
-                    <div ng-repeat="pageImage in item.content track by $index" ng-if="$even">
-
-                        <div class="UpPicture" style="background-image: url('{{pageItem.i}}')">
-                            <div class="md-caption pictureBox"></div>
-                            <div class="centerTextVertical"><span class="md-caption imageTitle">{{item.title}}</span></div>
-                        </div>
-
-                    </div>
-                </div>
-                <div flex="50">
-                    <div ng-repeat="pageImage in item.content track by $index" ng-if="$odd">
-
-                        <div class="UpPicture" style="background-image: url('{{pageItem.i}}')">
-                            <div class="md-caption pictureBox"></div>
-                            <div class="centerTextVertical"><span class="md-caption imageTitle">{{item.title}}</span></div>
-                        </div>
-
+        <!--                           APPENDIX PHOTO-->
+        <div ng-if="item.type == 'photoAppendix'  && (item.required == true || inspectionService.hideShowOptions.showNonRequired)" >
+            <md-button class="md-raised" aria-label="Photos" ng-click="capturePhoto(1, item.content, true, true) capturePhoto">
+                <md-icon md-svg-icon="camera"></md-icon> Add Photo
+            </md-button>
+            <div layout="row" class="flex-wrap" style="display:flex; flex-wrap:wrap;">
+                <div ng-repeat="pageImage in item.content track by $index" >
+                    <div class="UpPicture" style="background-image: url('{{pageImage}}')" >
+                        <div class="md-caption pictureBox"></div>
+                        <div class="centerTextVertical"><span class="md-caption imageTitle">{{item.title}}</span></div>
                     </div>
                 </div>
             </div>
-            <md-button class="cameraButton md-accent" aria-label="Photos" ng-click="capturePagePhoto(item.title, item)">
-                <md-icon md-svg-icon="camera"></md-icon> Add Photo
-            </md-button>
         </div>
 
     </div>
@@ -361,7 +326,7 @@
     </md-dialog>
 </script>
 
-</md-tab-body>
+    </div></md-tab-body>
 </md-tab>
 </md-tabs>
 </md-card>
@@ -511,7 +476,7 @@
                     <md-icon md-svg-icon="add"></md-icon>
                 </md-button>
             </a>
-            <a ng-click="initCameraAction(report.sections[currentSection].pages[selectedPage], false, true)" layout="row" layout-align="end center">
+            <a ng-click="capturePhoto(1, unassignedImages, true, true)" layout="row" layout-align="end center">
                 <div>Image</div>
                 <md-button class="md-fab md-hue-3 md-raised md-mini" aria-label="Add Section">
                     <md-icon md-svg-icon="camera"></md-icon>

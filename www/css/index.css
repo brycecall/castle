@@ -586,4 +586,7 @@ md-toolbar {
     flex-wrap: wrap;
 }
 
-
+.centerPage {
+    max-width:950px;
+    margin:0 auto;
+}

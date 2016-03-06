@@ -1,6 +1,6 @@
 <div ng-controller="generateController" flex="" layout="row" class="page" id="nav">
-    <section flex layout="column" style="position:relative;  overflow-x:hidden" id="render_me">
-       <md-content id="testAgain" style="padding:15px; overflow-x:hidden" class="flex">
+    <section layout="column" style="position:relative;  overflow-x:hidden; max-width:950px; margin:0 auto;" id="render_me" >
+       <md-content id="testAgain" style="padding:15px; overflow-x:hidden;" >
          <h1 class="md-display-3" style="text-align:center">
              Inspection Report
          </h1>
@@ -93,6 +93,18 @@
                                 <h3 class="md-headline" >{{item.title}}:</h3>
                                 <div>
                                     {{item.value}}
+                                </div>
+                            </div>
+
+                            <!--                            PHOTO APPENDIX-->
+                            <div ng-if="item.type == 'photoAppendix'" >
+                                <div layout="row" class="flex-wrap" style="display:flex; flex-wrap:wrap;">
+                                    <div ng-repeat="pageImage in item.content track by $index" >
+                                        <div class="UpPicture" style="background-image: url('{{pageImage}}')" >
+                                            <div class="md-caption pictureBox"></div>
+                                            <div class="centerTextVertical"><span class="md-caption imageTitle">{{item.title}}</span></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

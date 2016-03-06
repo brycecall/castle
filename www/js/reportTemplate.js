@@ -10240,7 +10240,9 @@ var reportOne = {
             {
               "title": "Photo Appendix Images",
               "type": "photoAppendix",
-              "content": []
+              "content": ["./img/Studphen.png", "./img/rod.png", "./img/Studphen.png", "./img/Studphen.png"
+                         , "./img/Studphen.png", "./img/rod.png", "./img/Studphen.png", "./img/rod.png"
+                         ]
             }
           ]
         }

@@ -170,16 +170,6 @@ app.factory('inspectionService', function ($rootScope, connectService) {
         console.info(factory.reports);
     };
 
-    // TODO: change this to use the connect service user instead (for persist)
-    // Current user information
-    factory.currentUser = {
-        user_id: 1,
-        name: "",
-        user_name: "",
-        profile_image: "img/rod.png",
-        loggedIn:false
-    };
-
     // Current page information
     factory.currentPage = {
         title: "Inspection",
@@ -215,7 +205,7 @@ app.factory('inspectionService', function ($rootScope, connectService) {
 
     //Setup data
     factory.init = function () {
-        if (factory.currentUser.id === null) {
+        if (factory.io.user === null) {
             $location.path("/signin");
             return false;
         }

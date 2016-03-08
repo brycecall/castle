@@ -5,7 +5,7 @@
                 <h2 style="text-align: center">Welcome<span ng-if="username">, {{username}}</span>!</h2>
                 <p style="text-align: center">Please login in order to access your reports and templates, or register to begin using Inspector Pro&#174;</p>
                 <p style="color: red">{{error}}</p>
-                <div class="signin_view" ng-if="inspectorService.currentUser.name">
+                <div class="signin_view" ng-if="inspectorService.io.user">
                     <h2 style="text-align: center">Welcome, {{username}}!</h2>
                     <a class="button signin_button" ng-click="signout()">Logout</a>
                 </div>
@@ -13,7 +13,7 @@
                     <md-tab label="login">
                         <form ng-submit="loginForm()">
 
-                            <div class="signin_view" ng-show="!inspectorService.currentUser.name">
+                            <div class="signin_view" ng-show="!inspectorService.io.user">
                                 <div layout="column">
                                     <md-input-container>
                                         <label>email</label>
@@ -31,7 +31,7 @@
                     </md-tab>
                     <md-tab label="register">
                         <form ng-submit="registerForm()">
-                            <div class="signin_view" ng-show="!inspectorService.currentUser.name">
+                            <div class="signin_view" ng-show="!inspectorService.io.user">
                                 <div layout="column">
                                     <md-input-container>
                                         <label>full name</label>

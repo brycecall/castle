@@ -81,7 +81,10 @@ app.config(function ($mdIconProvider) {
         .icon('check_box_outline','./bower_components/material-design-icons/toggle/svg/production/ic_check_box_outline_48px.svg')
         .icon('radio_button_checked','./bower_components/material-design-icons/toggle/svg/production/ic_radio_button_checked_48px.svg')
         .icon('radio_button_unchecked','./bower_components/material-design-icons/toggle/svg/production/ic_radio_button_unchecked_48px.svg')
-        .icon('build','./bower_components/material-design-icons/action/svg/production/ic_build_48px.svg');
+        .icon('build','./bower_components/material-design-icons/action/svg/production/ic_build_48px.svg')
+        .icon('switch_camera','./bower_components/material-design-icons/image/svg/production/ic_switch_camera_48px.svg')
+        .icon('crop_free','./bower_components/material-design-icons/image/svg/production/ic_crop_free_48px.svg')
+        .icon('add_to_photos','./bower_components/material-design-icons/image/svg/production/ic_add_to_photos_48px.svg');
 });
 
 //RESET main navigation values on state change
@@ -155,7 +158,7 @@ app.factory('inspectionService', function ($rootScope, connectService) {
     factory.currentSection = null;
     factory.rapidRemarks = rapidRemarks;
     factory.reportTemplates = [
-        {"title":"reportOne", "reportKey":"AHRDF-sdf4-sd34sd-3SDF"}
+        {"title":"reportOne", "id":"AHRDF-sdf4-sd34sd-3SDF"}
     ];
     factory.reportTemplate = null;
 

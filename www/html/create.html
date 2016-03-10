@@ -205,17 +205,47 @@
 
         <!--                           APPENDIX PHOTO-->
         <div ng-if="item.type == 'photoAppendix'  && (item.required == true || inspectionService.hideShowOptions.showNonRequired)" >
-            <md-button class="md-raised" aria-label="Photos" ng-click="capturePhoto(1, item.content, true, true) capturePhoto">
-                <md-icon md-svg-icon="camera"></md-icon> Add Photo
-            </md-button>
+            <div layout="row" ng-init="selectImage = false">
+                <md-button class="md-raised" aria-label="Add Photos" ng-click="capturePhoto(1, item.content, true, true)">
+                    <md-icon md-svg-icon="camera"></md-icon> Add Photo
+                </md-button>
+                <md-button ng-click="selectImage = !selectImage" class="md-raised" aria-label="Select Image">
+                    <md-icon md-svg-icon="crop_free"></md-icon> Select
+                </md-button>
+                <md-button class="md-raised" aria-label="Assign to Item">
+                    <md-icon md-svg-icon="add_to_photos"></md-icon> Assign
+                </md-button>
+            </div>
             <div layout="row" class="flex-wrap" style="display:flex; flex-wrap:wrap;">
                 <div ng-repeat="pageImage in item.content track by $index" >
-                    <div class="UpPicture" style="background-image: url('{{pageImage}}')" >
+
+                    <div class="UpPicture " style="background-image: url('{{pageImage}}')" >
+                        <div layout="row" ng-show="selectImage">
+                           <span flex=""></span>
+                           <md-checkbox class="md-secondary" aria-label="select image" ng-model="check"></md-checkbox>
+                        </div>
                         <div class="md-caption pictureBox"></div>
                         <div class="centerTextVertical"><span class="md-caption imageTitle">{{item.title}}</span></div>
                     </div>
                 </div>
             </div>
+
+<!--
+        <md-grid-list
+                    md-cols="3"
+                    md-gutter="4px"
+                    >
+            <md-grid-tile ng-repeat="pageImage in item.content track by $index"
+              class="UpPicture" style="background-image: url('{{pageImage}}')"
+             >
+                <md-grid-tile-footer>
+                    <h3 class="md-caption">{{item.title}}</h3>
+                </md-grid-tile-footer>
+            </md-grid-tile>
+        </md-grid-list>
+-->
+
+
         </div>
 
     </div>
@@ -419,42 +449,42 @@
     </md-dialog>
 </script>
 
-              <script type="text/ng-template" id="rapidRemarksDialog.html">
-                <md-dialog focusOnOpen="false">
-                <input style="display:none" type="text" autofocus />
-                <md-toolbar layout="row" layout-align="center center">
-                    <h3 class="md-subhead" style="padding:0 25px">Link Rapid Remark</h3>
-                    <span flex></span>
-                    <md-button class="md-icon-button" aria-label="cancel" ng-click="cancelDialog()">
-                        <md-icon md-svg-icon="close" ></md-icon>
-                    </md-button>
-                </md-toolbar>
-                <md-dialog-content>
-                    <form ng-submit="linkRemark(remarkItem, rItem, false); cancelDialog()">
-                        <span ng-init="remarkItem = report.sections[currentSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex]"></span>
-                        <md-input-container ng-init="rItem.rrTitle = remarkItem.rrTitle">
-                            <md-select required ng-model="rItem.rrTitle" placeholder="Rapid Remark Sections">
-                                <md-option ng-repeat="remarkSection in rapidRemarks track by $index" ng-value="$index">{{remarkSection.title}}</md-option>
-                            </md-select>
-                        </md-input-container>
-                        <md-input-container ng-if="rItem.rrTitle != null" ng-init="rItem.rrVal = remarkItem.rrVal" >
-                            <md-select required ng-model="rItem.rrVal" placeholder="Rapid Remarks">
-                                <md-option ng-repeat="remark in rapidRemarks[rItem.rrTitle].content track by $index" ng-value="$index">{{remark.title}}</md-option>
-                            </md-select>
-                        </md-input-container>
-                        <div layout="row">
-                            <span flex></span>
-                            <md-button ng-click="linkRemark(remarkItem, rItem, true)" aria-label="clear" class="md-accent md-raised">clear</md-button>
-                            <md-button type="submit" aria-label="submit" class=" md-raised">Link me!</md-button>
-                        </div>
-                        <div>
-                             <h3>{{rapidRemarks[rItem.rrTitle].content[rItem.rrVal].title}}</h3>
-                             <p>{{rapidRemarks[rItem.rrTitle].content[rItem.rrVal].value}}</p>
-                        </div>
-                    </form>
-                </md-dialog-content>
-                </md-dialog>
-              </script>
+  <script type="text/ng-template" id="rapidRemarksDialog.html">
+    <md-dialog focusOnOpen="false">
+    <input style="display:none" type="text" autofocus />
+    <md-toolbar layout="row" layout-align="center center">
+        <h3 class="md-subhead" style="padding:0 25px">Link Rapid Remark</h3>
+        <span flex></span>
+        <md-button class="md-icon-button" aria-label="cancel" ng-click="cancelDialog()">
+            <md-icon md-svg-icon="close" ></md-icon>
+        </md-button>
+    </md-toolbar>
+    <md-dialog-content>
+        <form ng-submit="linkRemark(remarkItem, rItem, false); cancelDialog()">
+            <span ng-init="remarkItem = report.sections[currentSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex]"></span>
+            <md-input-container ng-init="rItem.rrTitle = remarkItem.rrTitle">
+                <md-select required ng-model="rItem.rrTitle" placeholder="Rapid Remark Sections">
+                    <md-option ng-repeat="remarkSection in rapidRemarks track by $index" ng-value="$index">{{remarkSection.title}}</md-option>
+                </md-select>
+            </md-input-container>
+            <md-input-container ng-if="rItem.rrTitle != null" ng-init="rItem.rrVal = remarkItem.rrVal" >
+                <md-select required ng-model="rItem.rrVal" placeholder="Rapid Remarks">
+                    <md-option ng-repeat="remark in rapidRemarks[rItem.rrTitle].content track by $index" ng-value="$index">{{remark.title}}</md-option>
+                </md-select>
+            </md-input-container>
+            <div layout="row">
+                <span flex></span>
+                <md-button ng-click="linkRemark(remarkItem, rItem, true)" aria-label="clear" class="md-accent md-raised">clear</md-button>
+                <md-button type="submit" aria-label="submit" class=" md-raised">Link me!</md-button>
+            </div>
+            <div>
+                 <h3>{{rapidRemarks[rItem.rrTitle].content[rItem.rrVal].title}}</h3>
+                 <p>{{rapidRemarks[rItem.rrTitle].content[rItem.rrVal].value}}</p>
+            </div>
+        </form>
+    </md-dialog-content>
+    </md-dialog>
+  </script>
 
     <div class="mainButtonMenu" ng-if="currentSection != 'default'">
         <div class="fab_add_expand" ng-show="show_add_icons">

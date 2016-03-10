@@ -92,11 +92,11 @@
                         </h2>
                         <span flex></span>
                         <a ui-sref="account" aria-label="Account" style="border:none" >
-                          <div class="profileWrapper" ng-if="inspectionService.currentUser.loggedIn == true">
-                              <div class="profile_picture" style="background-image: url({{inspectionService.currentUser.profile_image}});"></div>
+                          <div class="profileWrapper" ng-if="inspectionService.io.user">
+                              <div class="profile_picture" style="background-image: url({{inspectionService.io.user.password.profileImageURL}});"></div>
                         
                           </div>
-                            <md-icon ng-if="inspectionService.currentUser.loggedIn == false"  md-svg-icon="account_circle" class="profile_picture"></md-icon>
+                            <md-icon ng-if="inspectionService.io.user == null"  md-svg-icon="account_circle" class="profile_picture"></md-icon>
                         </a>
 
                          <md-menu style="margin:0; padding:0;" ng-if="inspectionService.currentPage.showExtraMenu">

@@ -5,8 +5,11 @@ app.controller('accountController', function accountController($rootScope, $scop
         inspectionService.currentPage.icon = "menu";
 
 
-            $scope.name = inspectionService.currentUser.name;
-            $scope.password = inspectionService.currentUser.password;
+            if (inspectionService.io.user)
+            {
+                $scope.name = inspectionService.io.user.username;
+                $scope.password = inspectionService.io.user.plain_password;
+            }
             $scope.error = "";
             $scope.signin = function () {
 
@@ -44,16 +47,9 @@ app.controller('accountController', function accountController($rootScope, $scop
                     if (data.payload !== null)
                         {
                             $scope.error = data.payload.code;
-                            inspectionService.currentUser = null;
                         }
                     else
                         {
-                            inspectionService.currentUser = {};
-                            inspectionService.currentUser.loggedIn = true;
-                            inspectionService.currentUser.name = data.user.username;
-                            inspectionService.currentUser.user_name = data.user.username;
-                            inspectionService.currentUser.user_id = data.user.uid;
-                            inspectionService.currentUser.profile_image = data.user.password.profileImageURL;
                             $state.go("saved");
                         }
                     inspectionService.io.refresh();
@@ -61,7 +57,7 @@ app.controller('accountController', function accountController($rootScope, $scop
             $rootScope.createUser_handler = $rootScope.authenticateUser_handler;
     
             $scope.signout = function() {
-                inspectionService.currentUser = {user_id: null, name: null};
                 $scope.username = null;
+                inspectionService.io.logout();
             };
         });

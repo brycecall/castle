@@ -8,20 +8,18 @@ app.factory('connectService',
         //var socket = io("http://127.0.0.1:8080");
         var instance = {};
 
-        var authenticated_user = null;
-
         // Private
         var emit = function (event, payload) {
-            if (!authenticated_user) {
+            if (!instance.user) {
                 try {
-                    authenticated_user = JSON.parse(localStorage.getItem('authenticated_user'));
+                    instance.user = JSON.parse(localStorage.getItem('authenticated_user'));
                 } catch (err) {
-                    authenticated_user = null;
+                    instance.user = null;
                 }
             }
 
-            if (authenticated_user)
-                var object = new emitObject(authenticated_user.token, event, payload);
+            if (instance.user)
+                var object = new emitObject(instance.user.token, event, payload);
             else
                 var object = new emitObject(null, event, payload);
 
@@ -49,7 +47,7 @@ app.factory('connectService',
         instance.logout = function () {
             socket = null; // Disconnect from socket.io
             localStorage.setItem('authenticated_user', null);
-            authenticated_user = null;
+            instance.user = null;
         };
 
         instance.createNewUser = function (username, password, meta) {
@@ -57,6 +55,8 @@ app.factory('connectService',
             emit(UPDATE_EVENTS.create_user, user_credentials);
         };
 
+        instance.user = null;
+    
         // Client Listeners
         var updateHandler = function (data) {
             console.log("UPDATE!");
@@ -64,11 +64,11 @@ app.factory('connectService',
             switch (data.event) {
             case UPDATE_EVENTS.authenticate_user:
                 localStorage.setItem('authenticated_user', JSON.stringify(data.user));
-                authenticated_user = data.user;
+                instance.user = data.user;
                 $rootScope.authenticateUser_handler(data);
                 break;
             case UPDATE_EVENTS.create_user:
-                authenticated_user = data.user;
+                instance.user = data.user;
                 $rootScope.createUser_handler(data);
                 break;
             case UPDATE_EVENTS.refresh:

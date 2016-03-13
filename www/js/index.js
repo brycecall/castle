@@ -7,7 +7,10 @@ app.config(
         $stateProvider
             .state('create', {
                 url: "/create/:section",
-                templateUrl: 'html/create.html'
+                templateUrl: 'html/create.html',
+                params: {
+                    section: 'default'
+                }
             })
 
             .state('account', {
@@ -180,7 +183,9 @@ app.factory('inspectionService', function ($rootScope, connectService) {
         toggleNavMenu: true,
         icon: "menu",
         link: "account",
-        showExtraMenu: false
+        showExtraMenu: false,
+        showAccount: true,
+        color: "#4caf50;"
     };
 
     factory.hideShowOptions = {
@@ -249,6 +254,8 @@ app.factory('inspectionService', function ($rootScope, connectService) {
             window.open(url, '_system');
         }
     };
+
+    factory.assignPhotoMode = false;
 
     // Fires when Cordova is fully loaded
     document.addEventListener('deviceready', function () {

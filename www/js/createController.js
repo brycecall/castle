@@ -1,10 +1,12 @@
- app.controller('createController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, inspectionService) {
+ app.controller('createController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, inspectionService, $state) {
      $scope.inspectionService = inspectionService;
      $scope.currentSection = $stateParams.section;
      $scope.inspectionService.currentSection = $scope.currentSection;
      $scope.selectedPage = inspectionService.selectedPage;
      $scope.report = inspectionService.currentReport;
      $scope.rapidRemarks = inspectionService.rapidRemarks;
+
+
      //$scope.reportTemplate = inspectionService.reportTemplate;
      //$scope.report = reportOne; //REMOVE after testing
      $scope.subPage = '';
@@ -14,6 +16,43 @@
      var pictureSource = null;
      var destinationType = null;
      $scope.unassignedImages = [];
+
+     // change main header image and title
+     if ($scope.currentSection == "default" || $scope.report.sections[$scope.currentSection] == null) {
+         inspectionService.currentPage.toggleNavMenu = true;
+         inspectionService.currentPage.title = $scope.report.title;
+         inspectionService.currentPage.icon = "menu";
+
+     } else {
+         //console.log($scope.report.sections[$scope.currentSection]);
+         inspectionService.currentPage.title = $scope.report.sections[$scope.currentSection].title;
+         inspectionService.currentPage.icon = "back";
+         inspectionService.currentPage.toggleNavMenu = false;
+         inspectionService.currentPage.link = "create({section:'default'})";
+         inspectionService.currentPage.showExtraMenu = true;
+
+     }
+
+     $scope.assignPhotos = function() {
+         inspectionService.assignPhotoMode = !inspectionService.assignPhotoMode;
+
+
+         inspectionService.currentPage.title = $scope.report.sections[$scope.currentSection].title;
+         $state.go("create",{section:'default'});
+//         inspectionService.currentPage.icon = "back";
+//         inspectionService.currentPage.toggleNavMenu = false;
+//         inspectionService.currentPage.showExtraMenu = false;
+//         inspectionService.currentPage.showAccount = false;
+//         inspectionService.currentPage.color="#dddddd";
+     };
+    // console.log("reloaded: " + $scope.assignPhotoMode);
+
+
+     $scope.changeUnassignedImages = function() {
+
+     };
+
+
 
 
      $scope.setItem = function(item, val) {
@@ -47,21 +86,6 @@
         // console.log($scope.selectedPage + ' ' + pagetitle);
      };
 
-     // change main header image and title
-     if ($scope.currentSection == "default" || $scope.report.sections[$scope.currentSection] == null) {
-         inspectionService.currentPage.toggleNavMenu = true;
-         inspectionService.currentPage.title = $scope.report.title;
-         inspectionService.currentPage.icon = "menu";
-
-     } else {
-         //console.log($scope.report.sections[$scope.currentSection]);
-         inspectionService.currentPage.title = $scope.report.sections[$scope.currentSection].title;
-         inspectionService.currentPage.icon = "back";
-         inspectionService.currentPage.toggleNavMenu = false;
-         inspectionService.currentPage.link = "create({section:'default'})";
-         inspectionService.currentPage.showExtraMenu = true;
-     }
-
      // validate that all required items have been filled out
      $scope.checkRequired = function () {
          //TODO: validate that all required items have been filled out
@@ -90,7 +114,7 @@
      // output = !input
      $scope.toggleItem = function (pItem) {
          pItem.showvalue = !pItem.showvalue;
-     }
+     };
 
      // Replace mdDialog?
 //     $scope.toggleAddItemMenu = function () {

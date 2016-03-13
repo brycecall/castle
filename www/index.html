@@ -76,15 +76,16 @@
 
                <div layout="column" flex="" style="background-color:white">
                 <header>
-                    <md-toolbar >
-                      <div class="md-toolbar-tools" layout="row" layout-align="center center">
+                    <md-toolbar ng-if="!inspectionService.assignPhotoMode">
+                      <div class="md-toolbar-tools" layout="row" layout-align="center center"
+                           style="background-color:{{inspectionService.currentPage.color}}" >
 
                         <md-button ng-if="inspectionService.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ng-click="toggleNavigation()" ng-model-options="{ debounce: 1000 }">
-                             <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}"></md-icon>
+                             <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}" ></md-icon>
                         </md-button>
 
                         <md-button ng-if="!inspectionService.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ui-sref="{{inspectionService.currentPage.link}}" ng-model-options="{ debounce: 1000 }">
-                             <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}"></md-icon>
+                             <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}" ></md-icon>
                         </md-button>
 
                         <h2 class="page_header">
@@ -92,7 +93,7 @@
                         </h2>
                         <span flex></span>
                         <a ui-sref="account" aria-label="Account" style="border:none" >
-                          <div class="profileWrapper" ng-if="inspectionService.io.user">
+                          <div class="profileWrapper" ng-if="inspectionService.io.user && inspectionService.currentPage.showAccount">
                               <div class="profile_picture" style="background-image: url({{inspectionService.io.user.password.profileImageURL}});"></div>
                         
                           </div>
@@ -121,6 +122,30 @@
                          </md-menu-content>
                         </md-menu>
 
+                      </div>
+                    </md-toolbar>
+
+                    <md-toolbar ng-if="inspectionService.assignPhotoMode">
+                      <div class="md-toolbar-tools" layout="row" layout-align="center center"
+                           style="background-color:#555;" >
+
+<!--
+                        <md-button ng-if="inspectionService.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ng-click="toggleNavigation()" ng-model-options="{ debounce: 1000 }">
+                             <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}" ></md-icon>
+                        </md-button>
+-->
+
+                        <md-button ng-if="!inspectionService.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ui-sref="{{inspectionService.currentPage.link}}" ng-model-options="{ debounce: 1000 }">
+                             <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}" ></md-icon>
+                        </md-button>
+
+                        <h2 class="page_header">
+                          <span>Assign photo</span>
+                        </h2>
+                        <span flex></span>
+                         <md-button class="md-icon-button" aria-label="cancel assign photo" >
+                                <md-icon md-svg-icon="close"></md-icon>
+                         </md-button>
                       </div>
                     </md-toolbar>
                 </header>

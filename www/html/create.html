@@ -3,7 +3,7 @@
     <section>
         <md-content class="centerPage" style="position:relative;">
 
-         <md-card ng-show="currentSection == 'default' ">
+         <md-card ng-show="currentSection == 'default' && inspectionService.assignPhotoMode == false">
            <md-card-content>
 <!--
             <md-card-title>
@@ -36,7 +36,7 @@
         <!--    <md-button ng-click="previewReport($event)" class="md-raised" aria-label="Preview Report">Preview Report</md-button>-->
 
     </md-card>
-    <div layout="row" style="padding: 0 0 10px 0;">
+    <div layout="row" style="padding: 0 0 10px 0;" ng-hide="inspectionService.assignPhotoMode">
         <md-button ui-sref="generate" class="md-raised" aria-label="Preview Report">Preview Report</md-button>
         <md-button ng-click="checkRequired()" class="md-raised" aria-label="Save Report">Save Report</md-button>
         <md-button ng-click="resetTemplate()" class="md-raised md-primary" aria-label="Reset Template">Reset Template</md-button>
@@ -212,17 +212,18 @@
                 <md-button ng-click="selectImage = !selectImage" class="md-raised" aria-label="Select Image">
                     <md-icon md-svg-icon="crop_free"></md-icon> Select
                 </md-button>
-                <md-button class="md-raised" aria-label="Assign to Item">
+                <md-button class="md-raised" ng-click="assignPhotos()" aria-label="Assign to Item">
                     <md-icon md-svg-icon="add_to_photos"></md-icon> Assign
                 </md-button>
             </div>
             <div layout="row" class="flex-wrap" style="display:flex; flex-wrap:wrap;">
-                <div ng-repeat="pageImage in item.content track by $index" >
+                <div ng-repeat="pageImage in item.content track by $index"  >
 
                     <div class="UpPicture " style="background-image: url('{{pageImage}}')" >
                         <div layout="row" ng-show="selectImage">
                            <span flex=""></span>
-                           <md-checkbox class="md-secondary" aria-label="select image" ng-model="check"></md-checkbox>
+                           <md-checkbox class="md-secondary" aria-label="select image"
+                                ng-model="check" ng-change="changeUnassignedImages(check, pageImage)" ></md-checkbox>
                         </div>
                         <div class="md-caption pictureBox"></div>
                         <div class="centerTextVertical"><span class="md-caption imageTitle">{{item.title}}</span></div>

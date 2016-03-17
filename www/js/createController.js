@@ -15,7 +15,21 @@
      $scope.showAddItemMenu = false;
      var pictureSource = null;
      var destinationType = null;
-     $scope.unassignedImages = [];
+
+     $scope.addToSelectedImages = function(index) {
+        var safeIndex = $.inArray(index, inspectionService.selectedImages);
+        if(safeIndex == -1) {
+            inspectionService.selectedImages.push(index);
+        } else {
+            inspectionService.selectedImages.splice(safeIndex, 1);
+        }
+     };
+
+     $scope.isInArray = function (value, array) {
+        return ($.inArray(value, array) == -1) ? false : true;
+     };
+
+
 
      // change main header image and title
      if ($scope.currentSection == "default" || $scope.report.sections[$scope.currentSection] == null) {
@@ -33,26 +47,28 @@
 
      }
 
-     $scope.assignPhotos = function() {
+     $scope.enterAssignPhotosMode = function() {
          inspectionService.assignPhotoMode = !inspectionService.assignPhotoMode;
-
-
          inspectionService.currentPage.title = $scope.report.sections[$scope.currentSection].title;
+         inspectionService.photoAppendixIndex = $scope.currentSection;
          $state.go("create",{section:'default'});
-//         inspectionService.currentPage.icon = "back";
-//         inspectionService.currentPage.toggleNavMenu = false;
-//         inspectionService.currentPage.showExtraMenu = false;
-//         inspectionService.currentPage.showAccount = false;
-//         inspectionService.currentPage.color="#dddddd";
-     };
-    // console.log("reloaded: " + $scope.assignPhotoMode);
-
-
-     $scope.changeUnassignedImages = function() {
-
      };
 
+     $scope.assignPhotos = function(subItem) {
+         if (subItem.i == null)
+             subItem.i = [];
 
+         var photoAppendix = $scope.report.sections[inspectionService.photoAppendixIndex].pages[0].items[0].content;
+
+         for(var i = 0; i < inspectionService.selectedImages.length; i++) {
+             var index = inspectionService.selectedImages[i];
+             if (index >= 0 && index < photoAppendix.length) {
+                subItem.i.push( photoAppendix[index] );
+                 photoAppendix.splice(index, 1);
+             }
+         }
+         inspectionService.cancelAssignPhotoMode();
+     };
 
 
      $scope.setItem = function(item, val) {
@@ -62,8 +78,6 @@
      $scope.getAsDate = function(dateString) {
          return new Date(dateString);
      };
-
-
 
 
      // a method for maintaining order in javascript/json objects

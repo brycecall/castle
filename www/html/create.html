@@ -127,10 +127,10 @@
                 <div flex=""></div>
                 <div layout="row" layout-align="space-around center" ng-show="checkbox.c">
 
-                <md-button class="md-icon-button" ng-click="showRapidRemarksDialog($event, $parent.$parent.$index, $index)" aria-label="add rapid remark">
-                    <md-icon md-svg-icon="rrAdd" class="md-accent" ng-if="checkbox.rrTitle == null"></md-icon>
-                    <md-icon md-svg-icon="rrEdit" class="md-accent" ng-if="checkbox.rrTitle != null"></md-icon>
-                </md-button>
+                    <md-button ng-show="!inspectionService.assignPhotoMode" class="md-icon-button" ng-click="showRapidRemarksDialog($event, $parent.$parent.$index, $index)" aria-label="add rapid remark">
+                        <md-icon md-svg-icon="rrAdd" class="md-accent" ng-if="checkbox.rrTitle == null"></md-icon>
+                        <md-icon md-svg-icon="rrEdit" class="md-accent" ng-if="checkbox.rrTitle != null"></md-icon>
+                    </md-button>
                     <md-menu style="text-align:center; padding:0;">
                         <md-button class="md-icon-button" aria-label="view images"  ng-click="$mdOpenMenu()" ng-show="checkbox.i != '' && checkbox.i != null && checkbox.c">
                             <md-icon md-svg-icon="image" class="md-accent" ></md-icon>
@@ -145,10 +145,12 @@
                                 </md-card>
                             </md-content>
                         </md-menu-content>
-
                     </md-menu>
-                    <md-button class="md-icon-button"  ng-click="initCameraAction(checkbox, true, true)" aria-label="capture photo">
-                        <md-icon ng-show="checkbox.c" md-svg-icon="camera" class="md-accent" ></md-icon>
+                    <md-button ng-show="checkbox.c && !inspectionService.assignPhotoMode"  class="md-icon-button"  ng-click="initCameraAction(checkbox, true, true)" aria-label="capture photo">
+                        <md-icon md-svg-icon="camera" class="md-accent" ></md-icon>
+                    </md-button>
+                   <md-button ng-show="checkbox.c && inspectionService.assignPhotoMode"  class="md-raised"  ng-click="assignPhotos(checkbox)" aria-label="assign photo">
+                        Assign
                     </md-button>
                 </div>
             </div>
@@ -212,18 +214,26 @@
                 <md-button ng-click="selectImage = !selectImage" class="md-raised" aria-label="Select Image">
                     <md-icon md-svg-icon="crop_free"></md-icon> Select
                 </md-button>
-                <md-button class="md-raised" ng-click="assignPhotos()" aria-label="Assign to Item">
-                    <md-icon md-svg-icon="add_to_photos"></md-icon> Assign
-                </md-button>
+                <div ng-if="selectImage">
+                    <md-button class="md-raised" ng-click="enterAssignPhotosMode()" aria-label="Assign to Item">
+                        <md-icon md-svg-icon="add_to_photos"></md-icon> Assign
+                    </md-button>
+                    <md-button class="md-raised" ng-click="clearSelection()" aria-label="Clear selection">
+                        <md-icon md-svg-icon="add_to_photos"></md-icon> Clear
+                    </md-button>
+                    <md-button class="md-raised" ng-click="deletePhotos()" aria-label="Delete Photos">
+                        <md-icon md-svg-icon="add_to_photos"></md-icon> Delete
+                    </md-button>
+                </div>
             </div>
             <div layout="row" class="flex-wrap" style="display:flex; flex-wrap:wrap;">
                 <div ng-repeat="pageImage in item.content track by $index"  >
 
-                    <div class="UpPicture " style="background-image: url('{{pageImage}}')" >
+                    <div class="UpPicture" style="background-image: url('{{pageImage}}')" >
                         <div layout="row" ng-show="selectImage">
-                           <span flex=""></span>
+                           <span flex="" ng-init="check = isInArray($index, inspectionService.selectedImages)"></span>
                            <md-checkbox class="md-secondary" aria-label="select image"
-                                ng-model="check" ng-change="changeUnassignedImages(check, pageImage)" ></md-checkbox>
+                                ng-model="check" ng-change="addToSelectedImages($index)" ></md-checkbox>
                         </div>
                         <div class="md-caption pictureBox"></div>
                         <div class="centerTextVertical"><span class="md-caption imageTitle">{{item.title}}</span></div>

@@ -109,7 +109,7 @@ app.run(function($rootScope, $urlRouter, inspectionService){
 
 
 // Controller for the index page
-app.controller('indexController', function ($scope, inspectionService, $mdUtil, $mdSidenav) {
+app.controller('indexController', function ($scope, inspectionService, $mdUtil, $mdSidenav, $state) {
     $scope.inspectionService = inspectionService;
 
     $scope.toggleNavigation = function () {
@@ -144,13 +144,14 @@ app.controller('indexController', function ($scope, inspectionService, $mdUtil, 
             link: "templates"
         }
         ];
+
 });
 
 
 
 
 // Create the factory / service that is shared among all the controllers
-app.factory('inspectionService', function ($rootScope, connectService) {
+app.factory('inspectionService', function ($rootScope, connectService, $state) {
     var factory = {};
 
     factory.io = connectService;
@@ -256,6 +257,14 @@ app.factory('inspectionService', function ($rootScope, connectService) {
     };
 
     factory.assignPhotoMode = false;
+    factory.photoAppendixIndex = null;
+    factory.selectedImages = [];
+
+    factory.cancelAssignPhotoMode = function() {
+        factory.assignPhotoMode = false;
+        if (factory.photoAppendixIndex != null)
+            $state.go("create",{section:factory.photoAppendixIndex});
+    };
 
     // Fires when Cordova is fully loaded
     document.addEventListener('deviceready', function () {

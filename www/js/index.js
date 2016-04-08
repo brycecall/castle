@@ -1,5 +1,5 @@
 // Create the main module
-var app = angular.module('fbiApp', ['ui.router', 'ngTouch', 'ngMaterial']);
+var app = angular.module('fbiApp', ['ui.router', 'ngMaterial']);
 
 app.config(
     function ($stateProvider, $urlRouterProvider) {
@@ -54,18 +54,37 @@ app.config(function ($mdThemingProvider) {
         'contrastDefaultColor': 'light',
         'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100'],
         'contrastLightColors': undefined
+    })
+   .definePalette('newOrange', {
+        '50':  '#FFF3E0',
+        '100': '#FFE0B2',
+        '200': '#FFCC80',
+        '300': '#FFB74D',
+        '400': '#FFA726',
+        '500': '#FF9800',
+        '600': '#FB8C00',
+        '700': '#F57C00',
+        '800': '#EF6C00',
+        '900': '#E65100',
+        'A100':'#FFD180',
+        'A200':'#FFAB40',
+        'A400':'#FF9100',
+        'A700':'#FF6D00',
+        'contrastDefaultColor': 'light',
+        'contrastDarkColors': ['50', '100', '200', '300', '400', 'A100'],
+        'contrastLightColors': undefined
     });
 
-    $mdThemingProvider.theme('default')
+$mdThemingProvider.theme('default')
         .primaryPalette('inspectorPallet')
-        .accentPalette('orange')
+        .accentPalette('newOrange')
 });
 
 app.config(function ($mdIconProvider) {
     // Configure URLs for icons specified by [set:]id.
     $mdIconProvider
         .icon('menu', './bower_components/material-design-icons/navigation/svg/production/ic_menu_48px.svg')
-        .icon('assignment', './bower_components/material-design-icons/action/svg/production/ic_assignment_48px.svg')
+        .icon('new_report', './bower_components/material-design-icons/action/svg/production/ic_assignment_48px.svg')
         .icon('book', './bower_components/material-design-icons/action/svg/production/ic_book_48px.svg')
         .icon('account', './bower_components/material-design-icons/action/svg/production/ic_account_box_48px.svg')
         .icon('image', './bower_components/material-design-icons/image/svg/production/ic_image_48px.svg')
@@ -73,6 +92,7 @@ app.config(function ($mdIconProvider) {
         .icon('camera', './bower_components/material-design-icons/image/svg/production/ic_camera_48px.svg')
         .icon('cancel','./bower_components/material-design-icons/navigation/svg/production/ic_cancel_48px.svg')
         .icon('add','./bower_components/material-design-icons/content/svg/production/ic_add_48px.svg')
+        .icon('remove','./bower_components/material-design-icons/content/svg/production/ic_remove_48px.svg')
         .icon('close','./bower_components/material-design-icons/navigation/svg/production/ic_close_48px.svg')
         .icon('back','./bower_components/material-design-icons/navigation/svg/production/ic_arrow_back_48px.svg')
         .icon('more_vert','./bower_components/material-design-icons/navigation/svg/production/ic_more_vert_48px.svg')
@@ -80,6 +100,7 @@ app.config(function ($mdIconProvider) {
         .icon('rrAdd','./bower_components/material-design-icons/av/svg/production/ic_playlist_add_48px.svg')
         .icon('rrEdit','./bower_components/material-design-icons/av/svg/production/ic_playlist_add_check_48px.svg')
         .icon('chevron_right','./bower_components/material-design-icons/navigation/svg/production/ic_chevron_right_48px.svg')
+        .icon('check','./bower_components/material-design-icons/navigation/svg/production/ic_check_48px.svg')
         .icon('check_box','./bower_components/material-design-icons/toggle/svg/production/ic_check_box_48px.svg')
         .icon('check_box_outline','./bower_components/material-design-icons/toggle/svg/production/ic_check_box_outline_48px.svg')
         .icon('radio_button_checked','./bower_components/material-design-icons/toggle/svg/production/ic_radio_button_checked_48px.svg')
@@ -87,7 +108,13 @@ app.config(function ($mdIconProvider) {
         .icon('build','./bower_components/material-design-icons/action/svg/production/ic_build_48px.svg')
         .icon('switch_camera','./bower_components/material-design-icons/image/svg/production/ic_switch_camera_48px.svg')
         .icon('crop_free','./bower_components/material-design-icons/image/svg/production/ic_crop_free_48px.svg')
-        .icon('add_to_photos','./bower_components/material-design-icons/image/svg/production/ic_add_to_photos_48px.svg');
+        .icon('add_to_photos','./bower_components/material-design-icons/image/svg/production/ic_add_to_photos_48px.svg')
+        .icon('delete', './bower_components/material-design-icons/action/svg/production/ic_delete_48px.svg')
+        .icon('clear_selection', './bower_components/material-design-icons/action/svg/production/ic_settings_backup_restore_48px.svg')
+        .icon('new_report_folder', './bower_components/material-design-icons/file/svg/production/ic_create_new_folder_48px.svg')
+        .icon('reverse', './bower_components/material-design-icons/action/svg/production/ic_swap_vertical_circle_48px.svg')
+        .icon('sort', './bower_components/material-design-icons/content/svg/production/ic_sort_48px.svg')
+        ;
 });
 
 //RESET main navigation values on state change
@@ -100,6 +127,7 @@ app.run(function($rootScope, $urlRouter, inspectionService){
                 toggleNavMenu: true,
                 icon: "menu",
                 link: "account",
+                go: {state:"account"},
                 showExtraMenu: false
             };
         });
@@ -115,6 +143,14 @@ app.controller('indexController', function ($scope, inspectionService, $mdUtil, 
     $scope.toggleNavigation = function () {
         $mdSidenav("main").toggle();
     };
+    
+    $scope.menuNavigation = function() {
+      if (inspectionService.currentPage.toggleNavMenu) {
+          $scope.toggleNavigation();
+      } else if (!inspectionService.currentPage.preventNavigation) {
+          $state.go(inspectionService.currentPage.go.state, inspectionService.currentPage.go.params);
+      }
+    };
 
     $scope.show_add_icons = false;
 
@@ -125,7 +161,7 @@ app.controller('indexController', function ($scope, inspectionService, $mdUtil, 
     $scope.navigationPages = [
         {
             title: "New Report",
-            icon: "assignment",
+            icon: "new_report",
             link: "create({section:'default'})"
         },
         {
@@ -184,6 +220,7 @@ app.factory('inspectionService', function ($rootScope, connectService, $state) {
         toggleNavMenu: true,
         icon: "menu",
         link: "account",
+        go: {state:"account"},
         showExtraMenu: false,
         showAccount: true,
         color: "#4caf50;"
@@ -262,6 +299,7 @@ app.factory('inspectionService', function ($rootScope, connectService, $state) {
 
     factory.cancelAssignPhotoMode = function() {
         factory.assignPhotoMode = false;
+        factory.selectedImages = [];
         if (factory.photoAppendixIndex != null)
             $state.go("create",{section:factory.photoAppendixIndex});
     };

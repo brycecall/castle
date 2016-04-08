@@ -2,26 +2,16 @@ app.controller('savedController', function ($scope, inspectionService, $state) {
 $scope.inspectionService = inspectionService;
 inspectionService.currentPage.title = "Saved";
 
-
-//    inspectionService.request("/report/c/1").success(function(response) {
-//        if (response != null && response != "") {
-//            $scope.savedReports = response;
-//
-//        } else {
-//            $scope.savedReports = {};
-//            console.log("EMPTY!");
-//        }
-//    });
-
-    $scope.defaultReport = reportOne;
-    $scope.switchReport = function(sReport) {
-        inspectionService.currentReport = sReport;
-        $state.go("create");
-    }
+$scope.defaultReport = reportOne;
+$scope.switchReport = function(sReport) {
+    inspectionService.currentReport = sReport;
+    $state.go("create");
+};
     
+$scope.reverse = false;
+$scope.orderAttribute = 'date';
+$scope.orderAttributeOptions = ['date', 'title'];
 
-
-   // console.log(JSON.stringify(reportOne))
 
 
 /********************************************************

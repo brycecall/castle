@@ -1,9 +1,9 @@
 <div ng-controller="accountController" layout="column" class="page">
-    <md-content>
+    <md-content class="centerPage">
         <md-card>
             <md-card-content>
                 <h2 style="text-align: center">Welcome<span ng-if="username">, {{username}}</span>!</h2>
-                <p style="text-align: center">Please login in order to access your reports and templates, or register to begin using Inspector Pro&#174;</p>
+                <p style="text-align: center">Please login in order to access your reports and templates, or register to begin using Castle&#174;</p>
                 <p style="color: red">{{error}}</p>
                 <div class="signin_view" ng-if="inspectorService.io.user">
                     <h2 style="text-align: center">Welcome, {{username}}!</h2>

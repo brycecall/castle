@@ -1,14 +1,34 @@
 
-<div ng-controller="savedController" layout="column" class="page" >
-    <md-card>
-        <md-card-content>
-                <md-whiteframe  ng-repeat="sReport in inspectionService.reports" class="md-whiteframe-1dp frameStyle" ng-click="switchReport(sReport)" ui-sref="create({section:'default'})" layout-align="center center">
-                    <span>{{sReport.title}}</span>
-                </md-whiteframe>
+<div ng-controller="savedController"  class="page" >
 
-                <md-whiteframe class="md-whiteframe-1dp frameStyle" ng-click="switchReport(defaultReport)" ui-sref="create({section:'default'})" layout-align="center center">
-                    <span>Create New Report</span>
-                </md-whiteframe>
+    <md-card >
+        <md-card-content >
+        <div layout="row" class="flex-wrap" layout-align="start center">
+    
+         <md-input-container>
+             <md-icon md-svg-icon="sort"></md-icon>
+             <label>Order by</label>
+            <md-select ng-model="orderAttribute">
+                <md-option ng-repeat="orderOption in orderAttributeOptions" ng-value="orderOption">{{orderOption}}</md-option>
+            </md-select>
+        </md-input-container>
+        
+        <md-button ng-click="reverse = !reverse" style="text-transform:none">
+           <md-icon md-svg-icon="reverse"></md-icon>  Reverse Order
+        </md-button>
+        <md-button ng-click="switchReport(defaultReport)" ui-sref="create({section:'default'})" style="text-transform:none" class="md-raised">
+        <md-icon md-svg-icon="new_report"></md-icon>  New Report
+        </md-button>
+        </div>
+    <div layout="row" class="flex-wrap" >
+        <md-whiteframe  ng-repeat="sReport in inspectionService.reports | orderBy:orderAttribute:reverse" class="md-whiteframe-1dp frameStyle" ng-click="switchReport(sReport)" ui-sref="create({section:'default'})" layout-align="center center">
+            <span>{{sReport.title}}</span>
+        </md-whiteframe>
+
+        <md-whiteframe class="md-whiteframe-1dp frameStyle" ng-click="switchReport(defaultReport)" ui-sref="create({section:'default'})" layout-align="center center">
+            <span>Create New Report</span>
+        </md-whiteframe>
+    </div>
         </md-card-content>
     </md-card>
 </div>

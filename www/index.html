@@ -79,14 +79,21 @@
                     <md-toolbar ng-if="!inspectionService.assignPhotoMode">
                       <div class="md-toolbar-tools" layout="row" layout-align="center center"
                            style="background-color:{{inspectionService.currentPage.color}}" >
-
+                        <md-button class="md-icon-button" aria-label="Navigation" ng-click="menuNavigation()" ng-model-options="{ debounce: 1000 }">
+                             <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}" ></md-icon>
+                        </md-button>
+<!--
                         <md-button ng-if="inspectionService.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ng-click="toggleNavigation()" ng-model-options="{ debounce: 1000 }">
                              <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}" ></md-icon>
                         </md-button>
+-->
+                          
 
+<!--
                         <md-button ng-if="!inspectionService.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ui-sref="{{inspectionService.currentPage.link}}" ng-model-options="{ debounce: 1000 }">
                              <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}" ></md-icon>
                         </md-button>
+-->
 
                         <h2 class="page_header">
                           <span>{{inspectionService.currentPage.title}}</span>

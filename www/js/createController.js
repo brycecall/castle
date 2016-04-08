@@ -5,7 +5,7 @@
      $scope.selectedPage = inspectionService.selectedPage;
      $scope.report = inspectionService.currentReport;
      $scope.rapidRemarks = inspectionService.rapidRemarks;
-
+     $scope.finishedRequired = false;
 
      //$scope.reportTemplate = inspectionService.reportTemplate;
      //$scope.report = reportOne; //REMOVE after testing
@@ -29,7 +29,9 @@
         return ($.inArray(value, array) == -1) ? false : true;
      };
 
-
+     $scope.getAnsweredIcon = function(answered) {
+         return (answered === true) ? 'check' : 'remove';
+     };
 
      // change main header image and title
      if ($scope.currentSection == "default" || $scope.report.sections[$scope.currentSection] == null) {
@@ -43,6 +45,7 @@
          inspectionService.currentPage.icon = "back";
          inspectionService.currentPage.toggleNavMenu = false;
          inspectionService.currentPage.link = "create({section:'default'})";
+         inspectionService.currentPage.go = {state:"create", params:{section:'default'}};
          inspectionService.currentPage.showExtraMenu = true;
 
      }
@@ -54,22 +57,39 @@
          $state.go("create",{section:'default'});
      };
 
-     $scope.assignPhotos = function(subItem) {
+     $scope.assignPhotos = function(subItem, action) {
          if (subItem.i == null)
              subItem.i = [];
-
+         
          var photoAppendix = $scope.report.sections[inspectionService.photoAppendixIndex].pages[0].items[0].content;
 
          for(var i = 0; i < inspectionService.selectedImages.length; i++) {
              var index = inspectionService.selectedImages[i];
              if (index >= 0 && index < photoAppendix.length) {
-                subItem.i.push( photoAppendix[index] );
-                 photoAppendix.splice(index, 1);
+                 if (action == 'assign') {
+                    subItem.i.push( photoAppendix[index] );
+                 } else if (action == 'accept') {
+                    photoAppendix.splice(index, 1);
+                 } else if (action == 'cancel') {
+                     var removeIndex = $.inArray(photoAppendix[index], subItem.i)
+                     if (removeIndex > -1) {
+                         subItem.i.splice(removeIndex, 1);
+                     }
+                     
+                 }
              }
          }
-         inspectionService.cancelAssignPhotoMode();
+         
+         if (action == 'assign') {
+             subItem.a = true;
+         } else if (action == 'cancel' || action == 'accept') {
+             subItem.a = false;
+         }
+         
+         if (action == 'accept')
+            inspectionService.cancelAssignPhotoMode();
      };
-
+     
 
      $scope.setItem = function(item, val) {
          item.value = val;
@@ -100,11 +120,42 @@
         // console.log($scope.selectedPage + ' ' + pagetitle);
      };
 
+   $scope.showRequiredDialog = function (event) {
+        var confirm = $mdDialog.confirm()
+              .title('Not all required items have been completed')
+              .textContent('Are you sure you want to continue?')
+              .ariaLabel('Required items incomplete')
+              .targetEvent(event)
+              .ok('continue anyway')
+              .cancel('finish up first');
+        $mdDialog.show(confirm).then(function() {
+          $state.go('generate');
+        }, function() {
+         
+        });
+      };
+     
      // validate that all required items have been filled out
      $scope.checkRequired = function () {
          //TODO: validate that all required items have been filled out
-         $scope.saveReport();
-     }
+          for (var sectionkey in $scope.report.sections) {
+             var section = $scope.report.sections[sectionkey];
+            for (var pagekey in section.pages) {
+                var page = section.pages[pagekey];
+                for (var itemkey in page.items) {
+                    var item = page.items[itemkey];
+                    if (item.required === true && item.answered === false) {
+                        $scope.finishedRequired =  false;
+                        $scope.showRequiredDialog();
+                        return false;
+                    }
+                }
+            }
+          }
+     $state.go('generate');
+    return true;
+        // $scope.saveReport();
+     };
      
      // Publish report to PDF
      $scope.publishReportPDF = function() {
@@ -135,6 +186,8 @@
 //          $scope.toggleItem(inspectionService.backdrop);
 //          $scope.toggleItem($scope.showAddItemMenu);
 //     }
+     
+
 
      $scope.showItemDialog = function (event) {
          $mdDialog.show({
@@ -185,7 +238,7 @@
          };
 
 
-     $scope.editRapidRemarks = function() {
+     $scope.editRapidRemarks = function($event) {
           $mdDialog
              .show({
                  controller: 'createController',

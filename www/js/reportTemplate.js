@@ -1,16 +1,18 @@
 var reportOne = {
   "name": "reportTemplate",
   "title": "reportTemplate",
+  "date":"3/22/2016",
   "sections": [
     {
       "title": "Field Notes",
+      "color": "#000000",
       "pages": [
         {
           "title": "Client Info",
           "items": [
             {
               "title": "Clientinfo",
-              "required": true,
+              "required": true, "answered":false,
               "type": "clientinfo",
               "value": {
                 "firstName": "Cameron",
@@ -24,13 +26,13 @@ var reportOne = {
             },
             {
               "title": "Report ID",
-              "required": true,
+              "required": true, "answered":false,
               "type": "text",
               "value": "111222"
             },
             {
               "title": "Report Date",
-              "required": true,
+              "required": true, "answered":false,
               "type": "date",
               "value": "02-02-2016"
             },
@@ -61,7 +63,7 @@ var reportOne = {
             },
             {
               "title": "Inspection Type",
-              "required": true,
+              "required": true, "answered":false,
               "showvalue": false,
               "type": "select",
               "content": [
@@ -106,7 +108,7 @@ var reportOne = {
             },
             {
               "title": "Year Built",
-              "required": true,
+              "required": true, "answered":false,
               "showvalue": false,
               "type": "number",
               "value": ""
@@ -114,7 +116,7 @@ var reportOne = {
             {
               "title": "Squarefeet of the Property",
               "Squarefeet of the Property": {
-                "required": true,
+                "required": true, "answered":false,
                 "showvalue": false,
                 "type": "number",
                 "value": 0
@@ -122,7 +124,7 @@ var reportOne = {
             },
             {
               "title": "Type of Home",
-              "required": true,
+              "required": true, "answered":false,
               "showvalue": false,
               "type": "radio",
               "content": [
@@ -166,7 +168,7 @@ var reportOne = {
             },
             {
               "title": "Property Use",
-              "required": true,
+              "required": true, "answered":false,
               "type": "radio",
               "content": [
                 {
@@ -204,7 +206,7 @@ var reportOne = {
             },
             {
               "title": "Number of Stories",
-              "required": true,
+              "required": true, "answered":false,
               "showvalue": false,
               "type": "radio",
               "content": [
@@ -263,7 +265,7 @@ var reportOne = {
             },
             {
               "title": "House Frame",
-              "required": true,
+              "required": true, "answered":false,
               "showvalue": false,
               "type": "radio",
               "content": [
@@ -312,7 +314,7 @@ var reportOne = {
             },
             {
               "title": "Property Type",
-              "required": true,
+              "required": true, "answered":false,
               "showvalue": false,
               "type": "radio",
               "content": [
@@ -386,7 +388,7 @@ var reportOne = {
             },
             {
               "title": "Configurations",
-              "required": true,
+              "required": true, "answered":false,
               "showvalue": true,
               "type": "checkbox",
               "value": [],
@@ -447,7 +449,7 @@ var reportOne = {
             },
             {
               "title": "Property Orientation",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "select",
               "content": [
@@ -488,7 +490,7 @@ var reportOne = {
             },
             {
               "title": "Vehicle Parking",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -545,7 +547,7 @@ var reportOne = {
             },
             {
               "title": "Utilities",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -574,7 +576,7 @@ var reportOne = {
             },
             {
               "title": "What Utilities were OFF",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -603,7 +605,7 @@ var reportOne = {
             },
             {
               "title": "Property Occupancy",
-              "required": true,
+              "required": true, "answered":false,
               "type": "select",
               "content": [
                 {
@@ -627,7 +629,7 @@ var reportOne = {
             },
             {
               "title": "Persons Present",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -664,7 +666,7 @@ var reportOne = {
             },
             {
               "title": "Person(s) Providing Property Access",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "radio",
               "content": [
@@ -711,13 +713,14 @@ var reportOne = {
     },
     {
       "title": "Site",
+      "color": "#EC407A",
       "pages": [
         {
           "title": "Evaluation",
           "items": [
             {
               "title": "Conditions",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -725,7 +728,7 @@ var reportOne = {
             },
             {
               "title": "Limitations",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -808,7 +811,7 @@ var reportOne = {
             },
             {
               "title": "Patio",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "radio",
               "content": [
@@ -842,7 +845,7 @@ var reportOne = {
             },
             {
               "title": "Patio Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -899,7 +902,7 @@ var reportOne = {
             },
             {
               "title": "Walkways and Steps",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -952,7 +955,7 @@ var reportOne = {
             },
             {
               "title": "Retaining Wall",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1005,7 +1008,7 @@ var reportOne = {
             },
             {
               "title": "Retaining Wall Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1042,7 +1045,7 @@ var reportOne = {
             },
             {
               "title": "Safety Fencing Location",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1071,7 +1074,7 @@ var reportOne = {
             },
             {
               "title": "Safety Fencing Type",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1116,7 +1119,7 @@ var reportOne = {
             },
             {
               "title": "Safety Fencing Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1165,7 +1168,7 @@ var reportOne = {
             },
             {
               "title": "Landscaping",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1202,7 +1205,7 @@ var reportOne = {
             },
             {
               "title": "Safety Concern",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -1221,7 +1224,7 @@ var reportOne = {
           "items": [
             {
               "title": "Porch or Stoop",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1250,7 +1253,7 @@ var reportOne = {
             },
             {
               "title": "Porch or Stoop Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1323,7 +1326,7 @@ var reportOne = {
             },
             {
               "title": "Yard Steps",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1372,7 +1375,7 @@ var reportOne = {
             },
             {
               "title": "Deck or Balcony",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1405,7 +1408,7 @@ var reportOne = {
             },
             {
               "title": "Deck or Balcony Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1462,7 +1465,7 @@ var reportOne = {
             },
             {
               "title": "Moisture Conditions",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -1480,13 +1483,14 @@ var reportOne = {
     },
     {
       "title": "Exterior",
+      "color": "#795649",
       "pages": [
         {
           "title": "Siding  or  Wall Cladding",
           "items": [
             {
               "title": "Conditions",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -1494,7 +1498,7 @@ var reportOne = {
             },
             {
               "title": "Limitations",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -1502,7 +1506,7 @@ var reportOne = {
             },
             {
               "title": "Type(s) of Wall Cladding",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1587,7 +1591,7 @@ var reportOne = {
             },
             {
               "title": "Wall Cladding Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1668,7 +1672,7 @@ var reportOne = {
             },
             {
               "title": "Flashing at Fenestrations",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1717,7 +1721,7 @@ var reportOne = {
             },
             {
               "title": "Trim or Soffit or Fascia",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1766,7 +1770,7 @@ var reportOne = {
             },
             {
               "title": "Trim or Soffit or Fascia Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1866,7 +1870,7 @@ var reportOne = {
             },
             {
               "title": "Window Frame or Trim",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1895,7 +1899,7 @@ var reportOne = {
             },
             {
               "title": "Window Frame or Trim Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1964,7 +1968,7 @@ var reportOne = {
             },
             {
               "title": "Exterior Doors",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -1985,7 +1989,7 @@ var reportOne = {
             },
             {
               "title": "Exterior Doors Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2022,7 +2026,7 @@ var reportOne = {
             },
             {
               "title": "Caulking",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2069,7 +2073,7 @@ var reportOne = {
           "items": [
             {
               "title": "Conditions",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -2077,7 +2081,7 @@ var reportOne = {
             },
             {
               "title": "Limitations",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -2085,7 +2089,7 @@ var reportOne = {
             },
             {
               "title": "Vehicle Parking",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2126,7 +2130,7 @@ var reportOne = {
             },
             {
               "title": "Floor",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2163,7 +2167,7 @@ var reportOne = {
             },
             {
               "title": "Floor Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2216,7 +2220,7 @@ var reportOne = {
             },
             {
               "title": "Firewall Location",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2241,7 +2245,7 @@ var reportOne = {
             },
             {
               "title": "Firewall Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2270,7 +2274,7 @@ var reportOne = {
             },
             {
               "title": "Firedoor Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2299,7 +2303,7 @@ var reportOne = {
             },
             {
               "title": "Exterior Service Door",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2328,7 +2332,7 @@ var reportOne = {
             },
             {
               "title": "Exterior Service Door Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2361,7 +2365,7 @@ var reportOne = {
             },
             {
               "title": "Car Door",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2422,7 +2426,7 @@ var reportOne = {
             },
             {
               "title": "Car Door Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2475,7 +2479,7 @@ var reportOne = {
             },
             {
               "title": "Automatic Door Opener",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2504,7 +2508,7 @@ var reportOne = {
             },
             {
               "title": "Safety Reverse",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2529,7 +2533,7 @@ var reportOne = {
             },
             {
               "title": "Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2572,13 +2576,14 @@ var reportOne = {
     },
     {
       "title": "Roofing",
+      "color": "#607D8B",
       "pages": [
         {
           "title": "Roof Covering(s)",
           "items": [
             {
               "title": "Conditions",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -2586,7 +2591,7 @@ var reportOne = {
             },
             {
               "title": "Limitations",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -2594,7 +2599,7 @@ var reportOne = {
             },
             {
               "title": "Roof Covering(s)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2627,7 +2632,7 @@ var reportOne = {
             },
             {
               "title": "Viewed Roof From",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2656,7 +2661,7 @@ var reportOne = {
             },
             {
               "title": "Style(s)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2693,7 +2698,7 @@ var reportOne = {
             },
             {
               "title": "Pitch",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2714,21 +2719,21 @@ var reportOne = {
             },
             {
               "title": "Age of Roof Covering",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "number",
               "value": ""
             },
             {
               "title": "Number of Layers of Roof Covering",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "number",
               "value": ""
             },
             {
               "title": "Roof Covering",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2801,7 +2806,7 @@ var reportOne = {
             },
             {
               "title": "Roof Covering Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2870,7 +2875,7 @@ var reportOne = {
             },
             {
               "title": "Valley(s)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2903,7 +2908,7 @@ var reportOne = {
             },
             {
               "title": "Valley(s) Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -2963,7 +2968,7 @@ var reportOne = {
           "items": [
             {
               "title": "Perforations (through-roof)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3020,7 +3025,7 @@ var reportOne = {
             },
             {
               "title": "Perforations Condition(s)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3069,7 +3074,7 @@ var reportOne = {
             },
             {
               "title": "Skylights or Skywalls",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3090,7 +3095,7 @@ var reportOne = {
             },
             {
               "title": "Skylights or Skywalls Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3143,7 +3148,7 @@ var reportOne = {
             },
             {
               "title": "Flashing(s)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3172,7 +3177,7 @@ var reportOne = {
             },
             {
               "title": "Flashing(s) Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3232,7 +3237,7 @@ var reportOne = {
           "items": [
             {
               "title": "Type",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3261,7 +3266,7 @@ var reportOne = {
             },
             {
               "title": "Gutters & Down-Spouts Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3338,7 +3343,7 @@ var reportOne = {
             },
             {
               "title": "Down-Spout Discharge",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3363,7 +3368,7 @@ var reportOne = {
             },
             {
               "title": "Down-Spout Discharge Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3414,13 +3419,14 @@ var reportOne = {
     },
     {
       "title": "Structural",
+      "color": "#009688",
       "pages": [
         {
           "title": "Roof Framing (Visible In Attic)",
           "items": [
             {
               "title": "Conditions",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -3428,7 +3434,7 @@ var reportOne = {
             },
             {
               "title": "Limitations",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -3436,7 +3442,7 @@ var reportOne = {
             },
             {
               "title": "Roof System",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3489,7 +3495,7 @@ var reportOne = {
             },
             {
               "title": "Diaphragm Sheathing",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3518,7 +3524,7 @@ var reportOne = {
             },
             {
               "title": "Diaphragm Sheathing Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3551,7 +3557,7 @@ var reportOne = {
             },
             {
               "title": "Missing or Inadequate",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3599,7 +3605,7 @@ var reportOne = {
           "items": [
             {
               "title": "Notice",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -3607,7 +3613,7 @@ var reportOne = {
             },
             {
               "title": "Sub-Floor System",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3632,7 +3638,7 @@ var reportOne = {
             },
             {
               "title": "Beams (Girders)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3657,7 +3663,7 @@ var reportOne = {
             },
             {
               "title": "Joists & Sheathing",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3678,7 +3684,7 @@ var reportOne = {
             },
             {
               "title": "I-Beams",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3699,7 +3705,7 @@ var reportOne = {
             },
             {
               "title": "Diaphragm",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3732,7 +3738,7 @@ var reportOne = {
             },
             {
               "title": "Posts(Columns)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3761,7 +3767,7 @@ var reportOne = {
             },
             {
               "title": "Posts(Columns) Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3822,7 +3828,7 @@ var reportOne = {
             },
             {
               "title": "Stairs",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3843,7 +3849,7 @@ var reportOne = {
             },
             {
               "title": "Stairs Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3868,7 +3874,7 @@ var reportOne = {
             },
             {
               "title": "Inadequate",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3909,7 +3915,7 @@ var reportOne = {
             },
             {
               "title": "Basement or Crawl Floor",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3934,7 +3940,7 @@ var reportOne = {
             },
             {
               "title": "Basement or Crawl Floor Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -3998,7 +4004,7 @@ var reportOne = {
           "items": [
             {
               "title": "Type of Foundation",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4047,7 +4053,7 @@ var reportOne = {
             },
             {
               "title": "Condition of Foundation",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4104,7 +4110,7 @@ var reportOne = {
             },
             {
               "title": "Limited By",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4145,7 +4151,7 @@ var reportOne = {
             },
             {
               "title": "WDI or WDO (Wood-Destroying)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4190,7 +4196,7 @@ var reportOne = {
             },
             {
               "title": "Cracks",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4239,7 +4245,7 @@ var reportOne = {
             },
             {
               "title": "Drainage",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4324,13 +4330,14 @@ var reportOne = {
     },
     {
       "title": "Thermal",
+      "color": "#F8981D",
       "pages": [
         {
           "title": "Attic",
           "items": [
             {
               "title": "Conditions",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -4338,7 +4345,7 @@ var reportOne = {
             },
             {
               "title": "Limitations",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -4346,7 +4353,7 @@ var reportOne = {
             },
             {
               "title": "Access",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4375,7 +4382,7 @@ var reportOne = {
             },
             {
               "title": "Location",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4408,7 +4415,7 @@ var reportOne = {
             },
             {
               "title": "Viewed",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4457,7 +4464,7 @@ var reportOne = {
             },
             {
               "title": "Attic Insulation Location",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4478,7 +4485,7 @@ var reportOne = {
             },
             {
               "title": "Attic Insulation Quantity (in)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4563,7 +4570,7 @@ var reportOne = {
             },
             {
               "title": "Attic Insulation Type",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4600,7 +4607,7 @@ var reportOne = {
             },
             {
               "title": "Attic Insulation Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4633,7 +4640,7 @@ var reportOne = {
             },
             {
               "title": "Attic Ventilation",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4666,7 +4673,7 @@ var reportOne = {
             },
             {
               "title": "Condition of Ventilation",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4711,7 +4718,7 @@ var reportOne = {
             },
             {
               "title": "Humidity",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4760,7 +4767,7 @@ var reportOne = {
             },
             {
               "title": "Infestation",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4821,7 +4828,7 @@ var reportOne = {
             },
             {
               "title": "Ventiliation Notice",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -4840,7 +4847,7 @@ var reportOne = {
           "items": [
             {
               "title": "Access",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4869,7 +4876,7 @@ var reportOne = {
             },
             {
               "title": "Location",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4914,7 +4921,7 @@ var reportOne = {
             },
             {
               "title": "Viewed",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4943,7 +4950,7 @@ var reportOne = {
             },
             {
               "title": "Sub-Floor Insulation Location",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4964,7 +4971,7 @@ var reportOne = {
             },
             {
               "title": "Sub-Floor Insulation Type",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -4985,7 +4992,7 @@ var reportOne = {
             },
             {
               "title": "Sub-Floor Insulation Retention",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5014,7 +5021,7 @@ var reportOne = {
             },
             {
               "title": "Sub-Floor Insulation Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5055,7 +5062,7 @@ var reportOne = {
             },
             {
               "title": "Crawl-Space Ventilation",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5080,7 +5087,7 @@ var reportOne = {
             },
             {
               "title": "Condition of Crawl-Space Ventilation",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5109,7 +5116,7 @@ var reportOne = {
             },
             {
               "title": "Vapor Barrier",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5138,7 +5145,7 @@ var reportOne = {
             },
             {
               "title": "Moisture",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5171,7 +5178,7 @@ var reportOne = {
             },
             {
               "title": "Drainage",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5200,7 +5207,7 @@ var reportOne = {
             },
             {
               "title": "Infestation",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5272,7 +5279,7 @@ var reportOne = {
           "items": [
             {
               "title": "Whole House Ventiliation",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5297,7 +5304,7 @@ var reportOne = {
             },
             {
               "title": "Whole House Ventiliation Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5330,7 +5337,7 @@ var reportOne = {
             },
             {
               "title": "Moisture Reduction Fans",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5363,7 +5370,7 @@ var reportOne = {
             },
             {
               "title": "Condition Moisture Reduction Fans",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5420,7 +5427,7 @@ var reportOne = {
             },
             {
               "title": "Moisture Notice",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -5438,13 +5445,14 @@ var reportOne = {
     },
     {
       "title": "Plumbing",
+      "color": "#903F98",
       "pages": [
         {
           "title": "Plumbing System",
           "items": [
             {
               "title": "Conditions",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -5452,7 +5460,7 @@ var reportOne = {
             },
             {
               "title": "Limitations",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -5460,7 +5468,7 @@ var reportOne = {
             },
             {
               "title": "Water Supply Source",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5485,7 +5493,7 @@ var reportOne = {
             },
             {
               "title": "Main Water Shut Off Valve Location",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5554,7 +5562,7 @@ var reportOne = {
             },
             {
               "title": "Water Pressure",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5587,7 +5595,7 @@ var reportOne = {
             },
             {
               "title": "Water Temperature",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5632,7 +5640,7 @@ var reportOne = {
             },
             {
               "title": "Waste System",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5665,7 +5673,7 @@ var reportOne = {
             },
             {
               "title": "Main Entry Piping",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5694,7 +5702,7 @@ var reportOne = {
             },
             {
               "title": "Main Entry Piping Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5723,7 +5731,7 @@ var reportOne = {
             },
             {
               "title": "Pressure",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5760,7 +5768,7 @@ var reportOne = {
             },
             {
               "title": "Water Lines",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5789,7 +5797,7 @@ var reportOne = {
             },
             {
               "title": "Condition of Water Lines",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5822,7 +5830,7 @@ var reportOne = {
             },
             {
               "title": "Lead (other than solder joints)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5843,7 +5851,7 @@ var reportOne = {
             },
             {
               "title": "Disimilar Metal Connection (Potential Electrolysis)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5864,7 +5872,7 @@ var reportOne = {
             },
             {
               "title": "DMV Piping",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5889,7 +5897,7 @@ var reportOne = {
             },
             {
               "title": "Condition of DMV Piping",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5933,7 +5941,7 @@ var reportOne = {
           "items": [
             {
               "title": "Faucets",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5966,7 +5974,7 @@ var reportOne = {
             },
             {
               "title": "Leaking",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -5991,7 +5999,7 @@ var reportOne = {
             },
             {
               "title": "Faucets or Fixtures Location",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6024,7 +6032,7 @@ var reportOne = {
             },
             {
               "title": "Accessories",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6049,7 +6057,7 @@ var reportOne = {
             },
             {
               "title": "Disposer",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6066,7 +6074,7 @@ var reportOne = {
             },
             {
               "title": "Dishwasher",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6079,7 +6087,7 @@ var reportOne = {
             },
             {
               "title": "Dishwasher Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6104,7 +6112,7 @@ var reportOne = {
             },
             {
               "title": "Sinks or Fixtures",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6133,7 +6141,7 @@ var reportOne = {
             },
             {
               "title": "Grout Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6150,7 +6158,7 @@ var reportOne = {
             },
             {
               "title": "Drainage",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6195,7 +6203,7 @@ var reportOne = {
             },
             {
               "title": "Sinks or Fixtures Location",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6228,7 +6236,7 @@ var reportOne = {
             },
             {
               "title": "Toilet",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6261,7 +6269,7 @@ var reportOne = {
             },
             {
               "title": "Tub or Shower Surround(s)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6290,7 +6298,7 @@ var reportOne = {
             },
             {
               "title": "Condition of Tub or Shower Surround(s)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6350,7 +6358,7 @@ var reportOne = {
           "items": [
             {
               "title": "Energy Source",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6379,7 +6387,7 @@ var reportOne = {
             },
             {
               "title": "Brand Name",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6520,14 +6528,14 @@ var reportOne = {
             },
             {
               "title": "Approximate Age (Years Old)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "number",
               "value": ""
             },
             {
               "title": "Capacity (in Gallons)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6560,28 +6568,28 @@ var reportOne = {
             },
             {
               "title": "Model Number",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "textbox",
               "value": ""
             },
             {
               "title": "Serial Number",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "textbox",
               "value": ""
             },
             {
               "title": "Water Temperature",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "number",
               "value": ""
             },
             {
               "title": "Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6602,7 +6610,7 @@ var reportOne = {
             },
             {
               "title": "TPRV Connection",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6627,7 +6635,7 @@ var reportOne = {
             },
             {
               "title": "Exhaust",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6702,13 +6710,14 @@ var reportOne = {
     },
     {
       "title": "Heating",
+      "color": "#D32E2E",
       "pages": [
         {
           "title": "Heating System",
           "items": [
             {
               "title": "Conditions",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -6716,7 +6725,7 @@ var reportOne = {
             },
             {
               "title": "Limitations",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -6724,7 +6733,7 @@ var reportOne = {
             },
             {
               "title": "Energy Source(s)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6761,7 +6770,7 @@ var reportOne = {
             },
             {
               "title": "System Type",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6786,7 +6795,7 @@ var reportOne = {
             },
             {
               "title": "Boiler",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6807,7 +6816,7 @@ var reportOne = {
             },
             {
               "title": "Heat Pump",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6828,7 +6837,7 @@ var reportOne = {
             },
             {
               "title": "Stove",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6853,7 +6862,7 @@ var reportOne = {
             },
             {
               "title": "Solar",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6893,7 +6902,7 @@ var reportOne = {
           "items": [
             {
               "title": "Brand Name",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6910,7 +6919,7 @@ var reportOne = {
             },
             {
               "title": "Capacity",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6927,28 +6936,28 @@ var reportOne = {
             },
             {
               "title": "Year of Manufacture",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "number",
               "value": ""
             },
             {
               "title": "Model Number",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "textbox",
               "value": ""
             },
             {
               "title": "Serial Number",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "textbox",
               "value": ""
             },
             {
               "title": "Posted Service History",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -6969,7 +6978,7 @@ var reportOne = {
             },
             {
               "title": "Posted Service History Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7013,7 +7022,7 @@ var reportOne = {
           "items": [
             {
               "title": "Ducting",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7034,7 +7043,7 @@ var reportOne = {
             },
             {
               "title": "Reduced Vent",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7071,7 +7080,7 @@ var reportOne = {
             },
             {
               "title": "Filter",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7108,7 +7117,7 @@ var reportOne = {
             },
             {
               "title": "Disconnect or Typical Safety Controls",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7144,7 +7153,7 @@ var reportOne = {
           "items": [
             {
               "title": "Conditions",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -7152,7 +7161,7 @@ var reportOne = {
             },
             {
               "title": "Limitations",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -7160,7 +7169,7 @@ var reportOne = {
             },
             {
               "title": "Fireplace or Stove Type",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7201,7 +7210,7 @@ var reportOne = {
             },
             {
               "title": "Mantle or Hearth",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7226,7 +7235,7 @@ var reportOne = {
             },
             {
               "title": "Firebox",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7251,7 +7260,7 @@ var reportOne = {
             },
             {
               "title": "Damper",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7292,7 +7301,7 @@ var reportOne = {
             },
             {
               "title": "Chimney",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7391,13 +7400,14 @@ var reportOne = {
     },
     {
       "title": "Cooling",
+      "color": "#38A4DD",
       "pages": [
         {
           "title": "Cooling Systems",
           "items": [
             {
               "title": "Conditions",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -7405,7 +7415,7 @@ var reportOne = {
             },
             {
               "title": "Limitations",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -7413,14 +7423,14 @@ var reportOne = {
             },
             {
               "title": "Temperature Differential",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "number",
               "value": ""
             },
             {
               "title": "Air Conditioner Type",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7441,7 +7451,7 @@ var reportOne = {
             },
             {
               "title": "Energy Source",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7497,7 +7507,7 @@ var reportOne = {
           "items": [
             {
               "title": "Brand Name",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "textbox",
               "value": {
@@ -7511,7 +7521,7 @@ var reportOne = {
             },
             {
               "title": "Capacity",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "textbox",
               "value": {
@@ -7525,14 +7535,14 @@ var reportOne = {
             },
             {
               "title": "Year of Manufacture",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "number",
               "value": ""
             },
             {
               "title": "Model Number",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "textbox",
               "value": ""
@@ -7555,7 +7565,7 @@ var reportOne = {
           "items": [
             {
               "title": "Compressor or Condenser Brand Name",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7572,7 +7582,7 @@ var reportOne = {
             },
             {
               "title": "Compressor or Condenser Capacity",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7589,28 +7599,28 @@ var reportOne = {
             },
             {
               "title": "Compressor or Condenser Year of Manufacture",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "number",
               "value": ""
             },
             {
               "title": "Model Number of Compressor or Condenser",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "textbox",
               "value": ""
             },
             {
               "title": "Serial Number of Compressor or Condenser",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "textbox",
               "value": ""
             },
             {
               "title": "Condition Compressor or Condenser",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7643,7 +7653,7 @@ var reportOne = {
             },
             {
               "title": "Refrigerant Lines",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7682,13 +7692,14 @@ var reportOne = {
     },
     {
       "title": "Electrical",
+      "color": "#FDD836",
       "pages": [
         {
           "title": "Electrical System",
           "items": [
             {
               "title": "Conditions",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -7696,7 +7707,7 @@ var reportOne = {
             },
             {
               "title": "Limitations",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -7704,7 +7715,7 @@ var reportOne = {
             },
             {
               "title": "Main Service Entry",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7753,7 +7764,7 @@ var reportOne = {
             },
             {
               "title": "Condition of Main Service Entry",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7786,7 +7797,7 @@ var reportOne = {
             },
             {
               "title": "Service Size",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7803,7 +7814,7 @@ var reportOne = {
             },
             {
               "title": "Ground Connection",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7816,7 +7827,7 @@ var reportOne = {
             },
             {
               "title": "Meter Location",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7841,7 +7852,7 @@ var reportOne = {
             },
             {
               "title": "Meter Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7874,7 +7885,7 @@ var reportOne = {
             },
             {
               "title": "Grounding",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7899,7 +7910,7 @@ var reportOne = {
             },
             {
               "title": "Ground Wiring",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7924,7 +7935,7 @@ var reportOne = {
             },
             {
               "title": "Condition of Main Electrical Disconnect",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7953,7 +7964,7 @@ var reportOne = {
             },
             {
               "title": "Main Electrical Disconnect Location",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -7994,7 +8005,7 @@ var reportOne = {
             },
             {
               "title": "Main Panel",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8015,7 +8026,7 @@ var reportOne = {
             },
             {
               "title": "Reason for Non Evaluation",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8032,7 +8043,7 @@ var reportOne = {
             },
             {
               "title": "Breakers or Fuses",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8049,7 +8060,7 @@ var reportOne = {
             },
             {
               "title": "Amps",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8062,7 +8073,7 @@ var reportOne = {
             },
             {
               "title": "Volts",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8079,7 +8090,7 @@ var reportOne = {
             },
             {
               "title": "Breaker(s)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8100,7 +8111,7 @@ var reportOne = {
             },
             {
               "title": "Location",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8149,7 +8160,7 @@ var reportOne = {
             },
             {
               "title": "Branch Wiring",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8194,7 +8205,7 @@ var reportOne = {
             },
             {
               "title": "Condition of Branch Wiring",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8282,7 +8293,7 @@ var reportOne = {
           "items": [
             {
               "title": "Fixtures",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8311,7 +8322,7 @@ var reportOne = {
             },
             {
               "title": "Fixtures Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8344,7 +8355,7 @@ var reportOne = {
             },
             {
               "title": "Switches or Receptacles",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8365,7 +8376,7 @@ var reportOne = {
             },
             {
               "title": "Condition of Switches or Receptacles",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8446,7 +8457,7 @@ var reportOne = {
             },
             {
               "title": "Carbon Monoxide Detectors",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8467,7 +8478,7 @@ var reportOne = {
             },
             {
               "title": "Smoke Detectors",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8492,7 +8503,7 @@ var reportOne = {
             },
             {
               "title": "Caution Label",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -8510,13 +8521,14 @@ var reportOne = {
     },
     {
       "title": "Interior",
+      "color": "#F06392",
       "pages": [
         {
           "title": "Living Room",
           "items": [
             {
               "title": "Conditions",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -8524,7 +8536,7 @@ var reportOne = {
             },
             {
               "title": "Limitations",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -8532,7 +8544,7 @@ var reportOne = {
             },
             {
               "title": "Entry Door(s)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8565,7 +8577,7 @@ var reportOne = {
             },
             {
               "title": "Entry Door(s) Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8594,7 +8606,7 @@ var reportOne = {
             },
             {
               "title": "Weatherstrip",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8615,7 +8627,7 @@ var reportOne = {
             },
             {
               "title": "Window(s)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8672,7 +8684,7 @@ var reportOne = {
             },
             {
               "title": "Ceiling Fan",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8693,7 +8705,7 @@ var reportOne = {
             },
             {
               "title": "Heat Source",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8710,7 +8722,7 @@ var reportOne = {
             },
             {
               "title": "Lights, Switches, or Receptacles (Refer To Electrical Section or SUB-HEADING? or DO WE NEED THIS SECTION?)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8795,7 +8807,7 @@ var reportOne = {
           "items": [
             {
               "title": "Appliances",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8848,7 +8860,7 @@ var reportOne = {
             },
             {
               "title": "Cabinets",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8881,7 +8893,7 @@ var reportOne = {
             },
             {
               "title": "Countertops",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8906,7 +8918,7 @@ var reportOne = {
             },
             {
               "title": "Countertops Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8935,7 +8947,7 @@ var reportOne = {
             },
             {
               "title": "Backsplash & Self Edge",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8956,7 +8968,7 @@ var reportOne = {
             },
             {
               "title": "Caulking",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -8977,7 +8989,7 @@ var reportOne = {
             },
             {
               "title": "Grout",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9006,7 +9018,7 @@ var reportOne = {
             },
             {
               "title": "Exhaust Fan",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9027,7 +9039,7 @@ var reportOne = {
             },
             {
               "title": "Heat Source",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9044,7 +9056,7 @@ var reportOne = {
             },
             {
               "title": "Lights or Switches or Receptacles (Refer To Electrical Section)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9120,7 +9132,7 @@ var reportOne = {
           "items": [
             {
               "title": "Appliances",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9157,7 +9169,7 @@ var reportOne = {
             },
             {
               "title": "Dryer",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9190,7 +9202,7 @@ var reportOne = {
             },
             {
               "title": "Exhausted",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9211,7 +9223,7 @@ var reportOne = {
             },
             {
               "title": "Exhaust Appears",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9228,7 +9240,7 @@ var reportOne = {
             },
             {
               "title": "Exhaust Fan",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9272,7 +9284,7 @@ var reportOne = {
           "items": [
             {
               "title": "Walls or Ceilings",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9301,7 +9313,7 @@ var reportOne = {
             },
             {
               "title": "Condition of Walls or Ceilings",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9338,7 +9350,7 @@ var reportOne = {
             },
             {
               "title": "Floors",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9367,7 +9379,7 @@ var reportOne = {
             },
             {
               "title": "Caulking",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9384,7 +9396,7 @@ var reportOne = {
             },
             {
               "title": "Heat",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9405,7 +9417,7 @@ var reportOne = {
             },
             {
               "title": "Exhaust Fan",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9426,7 +9438,7 @@ var reportOne = {
             },
             {
               "title": "Lights or Switches or Receptacles (Refer To Electrical Section)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9502,7 +9514,7 @@ var reportOne = {
           "items": [
             {
               "title": "Walls or Ceilings",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9531,7 +9543,7 @@ var reportOne = {
             },
             {
               "title": "Walls or Ceilings Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9604,7 +9616,7 @@ var reportOne = {
             },
             {
               "title": "Floor Coverings",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9629,7 +9641,7 @@ var reportOne = {
             },
             {
               "title": "Floor Coverings Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9690,7 +9702,7 @@ var reportOne = {
             },
             {
               "title": "Interior Doors",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9723,7 +9735,7 @@ var reportOne = {
             },
             {
               "title": "Interior Doors Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9792,7 +9804,7 @@ var reportOne = {
             },
             {
               "title": "Window Type(s)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9821,7 +9833,7 @@ var reportOne = {
             },
             {
               "title": "Window(s) Condition",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9886,7 +9898,7 @@ var reportOne = {
             },
             {
               "title": "Safety Concern",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -9894,7 +9906,7 @@ var reportOne = {
             },
             {
               "title": "Lights or Switches or Receptacles (Refer To Electrical Section) or DUPLICATE?!?!",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -9969,13 +9981,14 @@ var reportOne = {
     },
     {
       "title": "Life or Safety",
+      "color": "#4DAF4E",
       "pages": [
         {
           "title": "Potential Safety Concerns",
           "items": [
             {
               "title": "Conditions",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -9983,7 +9996,7 @@ var reportOne = {
             },
             {
               "title": "Limitations",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
@@ -9991,7 +10004,7 @@ var reportOne = {
             },
             {
               "title": "Tripping or Falling Hazard(s)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -10072,7 +10085,7 @@ var reportOne = {
             },
             {
               "title": "Fire Hazards",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -10125,7 +10138,7 @@ var reportOne = {
             },
             {
               "title": "Pest Related",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -10158,7 +10171,7 @@ var reportOne = {
             },
             {
               "title": "Poisen Baits",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -10175,7 +10188,7 @@ var reportOne = {
             },
             {
               "title": "Building Materials (Refer To Specific Sections)",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
@@ -10216,7 +10229,7 @@ var reportOne = {
             },
             {
               "title": "Comments",
-              "required": false,
+              "required": false, "answered":false,
               "showvalue": false,
               "type": "textbox",
               "value": {}
@@ -10233,6 +10246,7 @@ var reportOne = {
     },
     {
       "title": "Photo Appendix",
+      "color": "#3C4DA1",
       "pages": [
         {
           "title": "Additional Photos for Further Clarification",

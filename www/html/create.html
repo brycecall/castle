@@ -1,49 +1,51 @@
-<div ng-controller="createController" flex="" layout="column" class="page" id="nav" style="background-color:white; ">
+<div ng-controller="createController" flex="" layout="column" class="page" id="nav">
 
     <section>
         <md-content class="centerPage" style="position:relative;">
 
          <md-card ng-show="currentSection == 'default' && inspectionService.assignPhotoMode == false">
-           <md-card-content>
-<!--
-            <md-card-title>
-                <md-card-title-text>
-                    <span class="md-headline">Template</span>
-                </md-card-title-text>
-             </md-card-title>
--->
-            <md-input-container>
+            <md-input-container style="padding: 0px 16px 8px 16px;">
                 <md-select ng-model="inspectionService.reportTemplate" placeholder="Pick a Template">
                     <md-option ng-repeat="template in inspectionService.reportTemplates track by $index"
                                ng-value="template">{{template.title}}</md-option>
                 </md-select>
             </md-input-container>
-            </md-card-content>
          </md-card>
 
 
 <!--                SECTION NAVIGATION   -->
 <div ng-show="currentSection == 'default' && inspectionService.reportTemplate != null" >
-    <md-card>
-        <md-list class="subMenu" style="padding:0;">
-            <md-list-item ng-repeat="section in report.sections" style="position:relative" flex="">
-                <a href="#create/{{$index}}" class="menuButton" flex>
-                    <md-button class="md-no-style" style="" aria-label="{{section.title}}">{{section.title}}</md-button>
-                </a>
-                <md-divider></md-divider>
-            </md-list-item>
-        </md-list>
-        <!--    <md-button ng-click="previewReport($event)" class="md-raised" aria-label="Preview Report">Preview Report</md-button>-->
-
+    <md-card layout="column">
+        <div ng-repeat="section in report.sections" layout="column">
+            <md-button ui-sref="create({section:$index})" style="padding:8px 14px; margin:0; text-align:left; border-radius:0; text-transform:none" class="md-no-style" aria-label="{{section.title}}">
+                <span  layout="row" layout-align="start center">
+                <span>{{section.title}}</span>
+                <span flex=""></span>
+<!--                <md-icon style="color:{{section.color}};" md-svg-icon="chevron_right"></md-icon>-->
+<!--                    <div style="height:20px; width:20px; margin: 0 5px; border-radius:50%; background-color:{{section.color}}"></div>-->
+                </span>
+            </md-button>
+            <md-divider></md-divider>
+        </div>
     </md-card>
-    <div layout="row" style="padding: 0 0 10px 0;" ng-hide="inspectionService.assignPhotoMode">
-        <md-button ui-sref="generate" class="md-raised" aria-label="Preview Report">Preview Report</md-button>
-        <md-button ng-click="checkRequired()" class="md-raised" aria-label="Save Report">Save Report</md-button>
-        <md-button ng-click="resetTemplate()" class="md-raised md-primary" aria-label="Reset Template">Reset Template</md-button>
+    <div layout="row" style="padding: 0 0 10px 0;" ng-hide="inspectionService.assignPhotoMode" class="flex-wrap">
+        <md-button ng-click="checkRequired()" class="md-raised" aria-label="Preview Report">Preview Report</md-button>
+        <md-button ng-click="" class="md-raised" aria-label="Save Report">Save Report</md-button>
+        
+<!--
+       <md-input-container>
+            <md-select ng-model="reportView" placeholder="">
+                <md-option ng-repeat="reportType in ['full report','abbreviated report']" ng-value="reportType">{{reportType}}</md-option>
+            </md-select>
+        </md-input-container>
+-->
+        
+        <md-button ng-click="inspectionService.reportTemplate = null" class="md-raised md-primary" aria-label="Reset Template">Reset Template</md-button>
     </div>
 </div>
+            
             <!--           PAGES-->
-<md-card ng-if="currentSection != 'default'">
+<md-card ng-if="currentSection != 'default'" style="margin-bottom:65px;">
 <md-tabs md-dynamic-height md-swipe-content md-enable-disconnect >
 <md-tab ng-if="currentSection != 'default'" ng-repeat="page in report.sections[currentSection].pages"
         class="md-whiteframe-z1 subPageStyle" md-on-select="changeSelection($index, page.title)">
@@ -56,6 +58,10 @@
     <div ng-if="item.type == 'clientinfo' && (item.required == true || inspectionService.hideShowOptions.showNonRequired)">
         <div layout="row">
             <h3 class="md-subhead" ng-click="toggleItem(item)">Client Info:</h3>
+            <span flex="" ></span>
+            <md-button ng-click="item.answered = !item.answered" aria-label="is answered" class="md-icon-button">
+                <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}" ></md-icon>
+            </md-button>
         </div>
         <div ng-if="item.showvalue">
             <div layout="row" layout-sm="column">
@@ -97,12 +103,16 @@
         </div>
     </div>
 
-    <div layout="column" layout-fill="" layout-align="top center">
+    <div layout="column" layout-fill="" layout-align="top left">
 
         <!--                           PRE-SET TEXT-->
         <div ng-if="item.type == 'presettext'  && (item.required == true || inspectionService.hideShowOptions.showNonRequired)">
             <div layout="row">
                 <h3 class="md-subhead" style="border:none" ng-click="toggleItem(item)">{{item.title}} Message:</h3>
+                <span flex="" ></span>
+                <md-button ng-click="item.answered = !item.answered" aria-label="is answered" class="md-icon-button">
+                    <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}" ></md-icon>
+                </md-button>
             </div>
 
             <div class="relFlex" ng-if="item.showvalue" layout="column">
@@ -118,14 +128,19 @@
         <div ng-if="item.type == 'checkbox'  && (item.required == true || inspectionService.hideShowOptions.showNonRequired)">
             <div layout="row">
                 <h3 class="md-subhead" ng-click="toggleItem(item)" flex="">{{item.title}}:</h3>
+            <span flex="" ></span>
+            <md-button ng-click="item.answered = !item.answered" aria-label="is answered" class="md-icon-button">
+                <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}" ></md-icon>
+            </md-button>
             </div>
-            <div ng-repeat="checkbox in item.content track by $index" layout="row" class="list_item" style="position:relative" ng-if="item.showvalue">
-                <span md-ink-ripple class="md-body-1" style="margin:0">
+            <div layout="column">
+                <div ng-repeat="checkbox in item.content track by $index" layout="row" layout-align="end center" class="list_item flex-wrap" style="position:relative" ng-if="item.showvalue">
+                <span md-ink-ripple class="md-body-1" style="margin:0; color:#000" aria-label="checkbox">
                     <md-checkbox md-no-ink class="md-secondary checkboxery" ng-model="checkbox.c" aria-label="{{checkbox.title}}"   style="position:relative; display:inline" >{{checkbox.title}}
                     </md-checkbox>
                 </span>
                 <div flex=""></div>
-                <div layout="row" layout-align="space-around center" ng-show="checkbox.c">
+                <div layout="row" layout-align="end center" ng-show="checkbox.c" class="flex-wrap">
 
                     <md-button ng-show="!inspectionService.assignPhotoMode" class="md-icon-button" ng-click="showRapidRemarksDialog($event, $parent.$parent.$index, $index)" aria-label="add rapid remark">
                         <md-icon md-svg-icon="rrAdd" class="md-accent" ng-if="checkbox.rrTitle == null"></md-icon>
@@ -149,16 +164,29 @@
                     <md-button ng-show="checkbox.c && !inspectionService.assignPhotoMode"  class="md-icon-button"  ng-click="initCameraAction(checkbox, true, true)" aria-label="capture photo">
                         <md-icon md-svg-icon="camera" class="md-accent" ></md-icon>
                     </md-button>
-                   <md-button ng-show="checkbox.c && inspectionService.assignPhotoMode"  class="md-raised"  ng-click="assignPhotos(checkbox)" aria-label="assign photo">
+                   <md-button ng-show="checkbox.c && inspectionService.assignPhotoMode && (checkbox.a == null || !checkbox.a)"  class=""  ng-click="assignPhotos(checkbox, 'assign')" aria-label="assign photo">
                         Assign
                     </md-button>
+                   <md-button ng-show="checkbox.c && inspectionService.assignPhotoMode && checkbox.a"  class=""  ng-click="assignPhotos(checkbox, 'accept')" aria-label="accept assigned photo">
+                        Accept
+                    </md-button>
+                   <md-button ng-show="checkbox.c && inspectionService.assignPhotoMode && checkbox.a"  class=""  ng-click="assignPhotos(checkbox, 'cancel')" aria-label="cancel assigned photo">
+                        Cancel
+                    </md-button>
                 </div>
+            </div>
             </div>
         </div>
 
         <!--                            RADIO-->
         <div ng-if="item.type == 'radio'  && (item.required == true || inspectionService.hideShowOptions.showNonRequired)">
-            <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
+            <div layout="row">
+                <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
+                <span flex="" ></span>
+                <md-button ng-click="item.answered = !item.answered" aria-label="is answered" class="md-icon-button">
+                    <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}" ></md-icon>
+                </md-button>
+            </div>
             <md-radio-group ng-model="item.value" ng-if="item.showvalue">
                 <md-radio-button ng-repeat="radiovalue in item.content track by $index" ng-value="radiovalue" class="radioHeight"><span>{{radiovalue.title}}</span></md-radio-button>
             </md-radio-group>
@@ -167,7 +195,13 @@
 
         <!--                           NUMBER-->
         <div ng-if="item.type == 'number'  && (item.required == true || inspectionService.hideShowOptions.showNonRequired)">
+            <div layout="row">
             <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
+                        <span flex="" ></span>
+            <md-button ng-click="item.answered = !item.answered" aria-label="is answered" class="md-icon-button">
+                <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}" ></md-icon>
+            </md-button>
+            </div>
             <md-input-container layout="row" ng-if="item.showvalue">
                 <label>{{item.label}}</label>
                 <input ng-model="item.value" type="number" flex-gt-sm="50" flex-sm="">
@@ -177,7 +211,13 @@
 
         <!--                           TEXT-->
         <div ng-if="item.type == 'text'  && (item.required == true || inspectionService.hideShowOptions.showNonRequired)">
+            <div layout="row">
             <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
+                        <span flex="" ></span>
+            <md-button ng-click="item.answered = !item.answered" aria-label="is answered" class="md-icon-button">
+                <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}" ></md-icon>
+            </md-button>
+            </div>
             <md-input-container ng-if="item.showvalue">
                 <label>{{item.label}}</label>
                 <input ng-model="item.value" type="text">
@@ -187,7 +227,14 @@
 
         <!--                           SELECT-->
         <div ng-if="item.type == 'select'  && (item.required == true || inspectionService.hideShowOptions.showNonRequired)">
+            <div layout="row">
             <h3 class="md-subhead" ng-click="toggleItem(item)">{{item.title}}:</h3>
+                        <span flex="" ></span>
+            <md-button ng-click="item.answered = !item.answered" aria-label="is answered" class="md-icon-button">
+                <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}" ></md-icon>
+            </md-button>
+            </div>
+            
             <md-input-container ng-if="item.showvalue">
                 <md-select ng-model="item.value" placeholder="Select {{item.title}}">
                     <md-option ng-repeat="radiovalue in item.content track by $index" ng-value="radiovalue.title">{{radiovalue.title}}</md-option>
@@ -198,7 +245,15 @@
 
         <!--                           DATE-->
         <div ng-if="item.type == 'date'  && (item.required == true || inspectionService.hideShowOptions.showNonRequired)">
-                <h3 class="md-subhead" ng-click="toggleItem(item)" ng-init="tempDate = getAsDate(item.value)">{{item.title}}:</h3>
+            <div layout="row">
+                
+            <h3 class="md-subhead" ng-click="toggleItem(item)" ng-init="tempDate = getAsDate(item.value)">{{item.title}}:</h3>
+                            <span flex="" ></span>
+            <md-button ng-click="item.answered = !item.answered" aria-label="is answered" class="md-icon-button">
+                <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}" ></md-icon>
+            </md-button>
+            </div>
+            
                 <md-input-container layout="row" ng-if="item.showvalue">
                     <label>{{item.label}}</label>
                     <input ng-model="tempDate" onchange="setItem(item, tempDate)" type="date" flex-gt-sm="50" flex-sm="">
@@ -207,11 +262,11 @@
 
         <!--                           APPENDIX PHOTO-->
         <div ng-if="item.type == 'photoAppendix'  && (item.required == true || inspectionService.hideShowOptions.showNonRequired)" >
-            <div layout="row" ng-init="selectImage = false">
+            <div layout="row" ng-init="selectImage = false" class="flex-wrap">
                 <md-button class="md-raised" aria-label="Add Photos" ng-click="capturePhoto(1, item.content, true, true)">
                     <md-icon md-svg-icon="camera"></md-icon> Add Photo
                 </md-button>
-                <md-button ng-click="selectImage = !selectImage" class="md-raised" aria-label="Select Image">
+                <md-button ng-show="inspectionService.assignPhotoMode != true" ng-click="selectImage = !selectImage" class="md-raised" aria-label="Select Image">
                     <md-icon md-svg-icon="crop_free"></md-icon> Select
                 </md-button>
                 <div ng-if="selectImage">
@@ -219,10 +274,10 @@
                         <md-icon md-svg-icon="add_to_photos"></md-icon> Assign
                     </md-button>
                     <md-button class="md-raised" ng-click="clearSelection()" aria-label="Clear selection">
-                        <md-icon md-svg-icon="add_to_photos"></md-icon> Clear
+                        <md-icon md-svg-icon="clear"></md-icon> Clear
                     </md-button>
                     <md-button class="md-raised" ng-click="deletePhotos()" aria-label="Delete Photos">
-                        <md-icon md-svg-icon="add_to_photos"></md-icon> Delete
+                        <md-icon md-svg-icon="delete"></md-icon> Delete
                     </md-button>
                 </div>
             </div>

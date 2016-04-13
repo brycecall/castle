@@ -23,15 +23,15 @@
         <!-- Application Scripts -->
 
 <!--        <script src="js/fieldNotes.js"></script>-->
-        <script src="js/reportTemplate.js"></script>
         <script src="js/rapidRemarks.js"></script>
         <script src="js/index.js"></script>
-<!--        <script src="js/savedTemplate.js"></script>-->
+        <script src="js/reportTemplate.js"></script>
         <script src="js/createController.js"></script>
         <script src="js/savedController.js"></script>
         <script src="js/accountController.js"></script>
         <script src="js/generateController.js"></script>
         <script src="js/connectService.js"></script>
+        <script src="js/templateController.js"></script>
        
         <!-- Stylesheets -->
         <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
@@ -76,36 +76,28 @@
 
                <div layout="column" flex="" style="background-color:white">
                 <header>
-                    <md-toolbar ng-if="!inspectionService.assignPhotoMode">
-                      <div class="md-toolbar-tools" layout="row" layout-align="center center"
-                           style="background-color:{{inspectionService.currentPage.color}}" >
+                    <md-toolbar >
+<!--                      <div class="md-toolbar-tools"  >-->
+                        <div class="md-toolbar-tools" ng-if="!inspectionService.assignPhotoMode" layout="row" layout-align="center center"
+                           ng-style="{'background-color':inspectionService.currentPage.color}" flex>
                         <md-button class="md-icon-button" aria-label="Navigation" ng-click="menuNavigation()" ng-model-options="{ debounce: 1000 }">
                              <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}" ></md-icon>
                         </md-button>
-<!--
-                        <md-button ng-if="inspectionService.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ng-click="toggleNavigation()" ng-model-options="{ debounce: 1000 }">
-                             <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}" ></md-icon>
-                        </md-button>
--->
-                          
-
-<!--
-                        <md-button ng-if="!inspectionService.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ui-sref="{{inspectionService.currentPage.link}}" ng-model-options="{ debounce: 1000 }">
-                             <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}" ></md-icon>
-                        </md-button>
--->
 
                         <h2 class="page_header">
                           <span>{{inspectionService.currentPage.title}}</span>
                         </h2>
                         <span flex></span>
-                        <a ui-sref="account" aria-label="Account" style="border:none" >
-                          <div class="profileWrapper" ng-if="inspectionService.io.user && inspectionService.currentPage.showAccount">
+                        <a ui-sref="account" aria-label="Account" style="border:none" ng-if="inspectionService.io.user && inspectionService.currentPage.showAccount">
+                          <div class="profileWrapper" >
                               <div class="profile_picture" style="background-image: url({{inspectionService.io.user.password.profileImageURL}});"></div>
-                        
                           </div>
                             <md-icon ng-if="inspectionService.io.user == null"  md-svg-icon="account_circle" class="profile_picture"></md-icon>
                         </a>
+
+                         <md-button ng-show="inspectionService.assignPhotoMode" ng-click="inspectionService.cancelAssignPhotoMode()" class="md-icon-button" aria-label="cancel assign photo" >
+                                <md-icon md-svg-icon="close"></md-icon>
+                         </md-button>
 
                          <md-menu style="margin:0; padding:0;" ng-if="inspectionService.currentPage.showExtraMenu">
                          <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open extra menu" >
@@ -128,19 +120,28 @@
 
                          </md-menu-content>
                         </md-menu>
+                        </div>
+                        <div class="md-toolbar-tools" layout="row" layout-align="center center"
+                          style="background-color:#555" ng-if="inspectionService.assignPhotoMode" flex>
+                            <md-button ng-if="!inspectionService.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ui-sref="{{inspectionService.currentPage.link}}" ng-model-options="{ debounce: 1000 }">
+                                 <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}" ></md-icon>
+                            </md-button>
 
-                      </div>
+                        <h2 class="page_header">
+                          <span>Assign photo</span>
+                        </h2>
+                        <span flex></span>
+                         <md-button  ng-click="inspectionService.cancelAssignPhotoMode()" class="md-icon-button" aria-label="cancel assign photo" >
+                                <md-icon md-svg-icon="close"></md-icon>
+                         </md-button>
+                        </div>
+
                     </md-toolbar>
 
-                    <md-toolbar ng-if="inspectionService.assignPhotoMode">
+<!--
+                    <md-toolbar >
                       <div class="md-toolbar-tools" layout="row" layout-align="center center"
                            style="background-color:#555;" >
-
-<!--
-                        <md-button ng-if="inspectionService.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ng-click="toggleNavigation()" ng-model-options="{ debounce: 1000 }">
-                             <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}" ></md-icon>
-                        </md-button>
--->
 
                         <md-button ng-if="!inspectionService.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ui-sref="{{inspectionService.currentPage.link}}" ng-model-options="{ debounce: 1000 }">
                              <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}" ></md-icon>
@@ -155,6 +156,7 @@
                          </md-button>
                       </div>
                     </md-toolbar>
+-->
                 </header>
 
                    <md-content class="console-content ui-view" id="scrollArea"></md-content>

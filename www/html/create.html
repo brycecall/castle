@@ -3,6 +3,7 @@
     <section>
         <md-content class="centerPage" style="position:relative;">
 
+<!--        <div class="md-subhead" style="padding-left:8px;">Report Template</div>-->
          <md-card ng-show="currentSection == 'default' && inspectionService.assignPhotoMode == false">
             <md-input-container style="padding: 0px 16px 8px 16px;">
                 <md-select ng-model="inspectionService.reportTemplate" placeholder="Pick a Template">
@@ -15,6 +16,7 @@
 
 <!--                SECTION NAVIGATION   -->
 <div ng-show="currentSection == 'default' && inspectionService.reportTemplate != null" >
+
     <md-card layout="column">
         <div ng-repeat="section in report.sections" layout="column">
             <md-button ui-sref="create({section:$index})" style="padding:8px 14px; margin:0; text-align:left; border-radius:0; text-transform:none" class="md-no-style" aria-label="{{section.title}}">
@@ -269,7 +271,7 @@
                 <md-button ng-show="inspectionService.assignPhotoMode != true" ng-click="selectImage = !selectImage" class="md-raised" aria-label="Select Image">
                     <md-icon md-svg-icon="crop_free"></md-icon> Select
                 </md-button>
-                <div ng-if="selectImage">
+                <div ng-if="inspectionService.selectedImages.length > 0 && selectImage">
                     <md-button class="md-raised" ng-click="enterAssignPhotosMode()" aria-label="Assign to Item">
                         <md-icon md-svg-icon="add_to_photos"></md-icon> Assign
                     </md-button>
@@ -286,9 +288,9 @@
 
                     <div class="UpPicture" style="background-image: url('{{pageImage}}')" >
                         <div layout="row" ng-show="selectImage">
-                           <span flex="" ng-init="check = isInArray($index, inspectionService.selectedImages)"></span>
+                           <span flex=""></span>
                            <md-checkbox class="md-secondary" aria-label="select image"
-                                ng-model="check" ng-change="addToSelectedImages($index)" ></md-checkbox>
+                                ng-checked="isInArray($index, inspectionService.selectedImages)" ng-click="addToSelectedImages($index)" ></md-checkbox>
                         </div>
                         <div class="md-caption pictureBox"></div>
                         <div class="centerTextVertical"><span class="md-caption imageTitle">{{item.title}}</span></div>

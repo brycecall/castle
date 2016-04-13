@@ -30,29 +30,42 @@
      };
 
      $scope.getAnsweredIcon = function(answered) {
-         return (answered === true) ? 'check' : 'remove';
+         return (answered === true) ? 'check' : 'check_box_outline_blank';
      };
 
      // change main header image and title
-     if ($scope.currentSection == "default" || $scope.report.sections[$scope.currentSection] == null) {
-         inspectionService.currentPage.toggleNavMenu = true;
-         inspectionService.currentPage.title = $scope.report.title;
-         inspectionService.currentPage.icon = "menu";
+//        if (inspectionService.assignPhotoMode && $scope.currentSection == "default") {
+//            inspectionService.currentPage.showIcon = false;
+//         }
+//         else
 
-     } else {
-         //console.log($scope.report.sections[$scope.currentSection]);
-         inspectionService.currentPage.title = $scope.report.sections[$scope.currentSection].title;
-         inspectionService.currentPage.icon = "back";
-         inspectionService.currentPage.toggleNavMenu = false;
-         inspectionService.currentPage.link = "create({section:'default'})";
-         inspectionService.currentPage.go = {state:"create", params:{section:'default'}};
-         inspectionService.currentPage.showExtraMenu = true;
+             if ($scope.currentSection == "default" || $scope.report.sections[$scope.currentSection] == null) {
+             inspectionService.currentPage.showIcon = true;
+             inspectionService.currentPage.toggleNavMenu = true;
+             inspectionService.currentPage.title = $scope.report.title;
+             inspectionService.currentPage.icon = "menu";
 
-     }
+         } else {
+             //console.log($scope.report.sections[$scope.currentSection]);
+             inspectionService.currentPage.showIcon = true;
+             inspectionService.currentPage.title = $scope.report.sections[$scope.currentSection].title;
+             inspectionService.currentPage.icon = "back";
+             inspectionService.currentPage.toggleNavMenu = false;
+             inspectionService.currentPage.link = "create({section:'default'})";
+             inspectionService.currentPage.go = {state:"create", params:{section:'default'}};
+             inspectionService.currentPage.showExtraMenu = true;
+         }
+
+     $scope.clearSelection = function() {
+        inspectionService.selectedImages = [];
+     };
+
 
      $scope.enterAssignPhotosMode = function() {
-         inspectionService.assignPhotoMode = !inspectionService.assignPhotoMode;
-         inspectionService.currentPage.title = $scope.report.sections[$scope.currentSection].title;
+         inspectionService.assignPhotoMode = true;
+         inspectionService.currentPage.showIcon = false;
+         inspectionService.currentPage.title = "Assign Photo";
+         inspectionService.currentPage.showExtraMenu = false;
          inspectionService.photoAppendixIndex = $scope.currentSection;
          $state.go("create",{section:'default'});
      };

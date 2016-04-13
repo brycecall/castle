@@ -1,14 +1,33 @@
-//This is the Templates Page that shows all saved templates including the following Options:
-// - Create New Template
-//   - Create New Template from Previous Template
-// - Edit Template
+<div ng-controller="templateController" flex="" layout="column" class="page" id="nav" style="background-color:white; ">
+   <md-card >
+        <md-card-content >
+        <div layout="row" class="flex-wrap" layout-align="start center">
+             <md-input-container>
+                <md-icon md-svg-icon="sort"></md-icon>
+                <label>Order by</label>
+                <md-select ng-model="orderAttribute">
+                    <md-option ng-repeat="orderOption in orderAttributeOptions" ng-value="orderOption">{{orderOption}}</md-option>
+                </md-select>
+            </md-input-container>
 
-<div ng-controller="createController" flex="" layout="column" class="page" id="nav" style="background-color:white; ">
-   <md-content class="centerPage">
-    <md-card>
+            <md-button ng-click="reverse = !reverse" style="text-transform:none">
+               <md-icon md-svg-icon="reverse"></md-icon>  Reverse Order
+            </md-button>
 
+            <md-button ui-sref="create({section:'default'})" class="md-primary md-raised" >
+                <md-icon md-svg-icon="new_report"></md-icon>  New Template
+            </md-button>
+        </div>
+
+        <div layout="row" class="flex-wrap" >
+            <md-card  ng-repeat="reportTemplate in inspectionService.templates | orderBy:orderAttribute:reverse"
+               ng-click="switchTemplate(reportTemplate)" layout-align="center center">
+                <span>{{reportTemplate.title}}</span>
+            </md-card>
+        </div>
+
+        </md-card-content>
     </md-card>
-    </md-content>
-</div>
 
-<!--<div class="inspectionDialog">This could be a problem</div>-->
+
+</div>

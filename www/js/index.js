@@ -1,6 +1,8 @@
 // Create the main module
 var app = angular.module('fbiApp', ['ui.router', 'ngMaterial']);
 
+app.constant('DEFAULT_COLOR', '#4CAF50');
+
 app.config(
     function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/account');
@@ -114,21 +116,25 @@ app.config(function ($mdIconProvider) {
         .icon('new_report_folder', './bower_components/material-design-icons/file/svg/production/ic_create_new_folder_48px.svg')
         .icon('reverse', './bower_components/material-design-icons/action/svg/production/ic_swap_vertical_circle_48px.svg')
         .icon('sort', './bower_components/material-design-icons/content/svg/production/ic_sort_48px.svg')
+    .icon('check_box', './bower_components/material-design-icons/toggle/svg/production/ic_check_box_48px.svg')
+        .icon('check_box_outline_blank', './bower_components/material-design-icons/toggle/svg/production/ic_check_box_outline_blank_48px.svg')
         ;
 });
 
 //RESET main navigation values on state change
-app.run(function($rootScope, $urlRouter, inspectionService){
+app.run(function($rootScope, $urlRouter, inspectionService, DEFAULT_COLOR){
     $rootScope.$on('$stateChangeStart',
         function(event){
-             inspectionService.currentPage = {
+             inspectionService.currentPage =
+             {
                 title: "Inspection",
                 preventNavigation: false,
                 toggleNavMenu: true,
                 icon: "menu",
                 link: "account",
                 go: {state:"account"},
-                showExtraMenu: false
+                showExtraMenu: false,
+                color: DEFAULT_COLOR,
             };
         });
 });
@@ -187,7 +193,7 @@ app.controller('indexController', function ($scope, inspectionService, $mdUtil, 
 
 
 // Create the factory / service that is shared among all the controllers
-app.factory('inspectionService', function ($rootScope, connectService, $state) {
+app.factory('inspectionService', function ($rootScope, connectService, $state, DEFAULT_COLOR) {
     var factory = {};
 
     factory.io = connectService;
@@ -223,7 +229,8 @@ app.factory('inspectionService', function ($rootScope, connectService, $state) {
         go: {state:"account"},
         showExtraMenu: false,
         showAccount: true,
-        color: "#4caf50;"
+        color: DEFAULT_COLOR,
+        showIcon:true
     };
 
     factory.hideShowOptions = {
@@ -296,8 +303,10 @@ app.factory('inspectionService', function ($rootScope, connectService, $state) {
     factory.assignPhotoMode = false;
     factory.photoAppendixIndex = null;
     factory.selectedImages = [];
-
+    factory.headerLocked = false;
     factory.cancelAssignPhotoMode = function() {
+        factory.headerLocked = false;
+        factory.currentPage.color = DEFAULT_COLOR;
         factory.assignPhotoMode = false;
         factory.selectedImages = [];
         if (factory.photoAppendixIndex != null)

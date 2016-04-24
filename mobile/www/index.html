@@ -32,12 +32,12 @@
         <script src="js/generateController.js"></script>
         <script src="js/connectService.js"></script>
         <script src="js/templateController.js"></script>
+         <script src="js/itemController.js"></script>
        
         <!-- Stylesheets -->
         <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
         <link type="text/css" rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css" />
         <link type="text/css" rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
-        <link type="text/css" rel="stylesheet" href="default.css" />
         <link type="text/css" rel="stylesheet" href="css/index.css" />
         
         <!-- PDF Generation -->
@@ -52,11 +52,15 @@
 
                 <md-sidenav class="md-sidenav-left lSideNav" md-component-id="main"  md-swipe-left="toggleNavigation()">
                 
+                        
+                <md-toolbar class="md-tall castleBackground" style=" background-color: #444;">
+<!--                   <div class="menuFlag"></div>-->
+                    <div class="md-toolbar-tools" >
+                       
                         <img id="menuFavicon" src="img/icon.png" />
-<!--
-                        <md-toolbar class="md-tall">
+                        
+                    </div>
                 </md-toolbar>
--->
                     <md-content flex layout="column">
      
                         <br />
@@ -74,7 +78,7 @@
                     </md-content>
                 </md-sidenav>
 
-               <div layout="column" flex="" style="background-color:white">
+               <div layout="column" flex="" style="background-color:#fafafa">
                 <header>
                     <md-toolbar >
 <!--                      <div class="md-toolbar-tools"  >-->
@@ -137,29 +141,9 @@
                         </div>
 
                     </md-toolbar>
-
-<!--
-                    <md-toolbar >
-                      <div class="md-toolbar-tools" layout="row" layout-align="center center"
-                           style="background-color:#555;" >
-
-                        <md-button ng-if="!inspectionService.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ui-sref="{{inspectionService.currentPage.link}}" ng-model-options="{ debounce: 1000 }">
-                             <md-icon md-svg-icon="{{inspectionService.currentPage.icon}}" ></md-icon>
-                        </md-button>
-
-                        <h2 class="page_header">
-                          <span>Assign photo</span>
-                        </h2>
-                        <span flex></span>
-                         <md-button  ng-click="inspectionService.cancelAssignPhotoMode()" class="md-icon-button" aria-label="cancel assign photo" >
-                                <md-icon md-svg-icon="close"></md-icon>
-                         </md-button>
-                      </div>
-                    </md-toolbar>
--->
                 </header>
 
-                   <md-content class="console-content ui-view" id="scrollArea"></md-content>
+                   <md-content class="console-content ui-view" id="scrollArea" ></md-content>
             </div>
 
             </div>

@@ -1,7 +1,7 @@
 // Create the main module
 var app = angular.module('fbiApp', ['ui.router', 'ngMaterial']);
 
-app.constant('DEFAULT_COLOR', '#4CAF50');
+app.constant('DEFAULT_COLOR', '#009688'); //4CAF50
 
 app.config(
     function ($stateProvider, $urlRouterProvider) {
@@ -33,6 +33,11 @@ app.config(
             .state('templates', {
                 url: '/templates',
                 templateUrl: 'html/templates.html'
+            })
+        
+            .state('item', {
+                url: '/create/item/{section}/{page}/{item}',
+                templateUrl: 'html/item.html'
             });
 
     });
@@ -78,8 +83,8 @@ app.config(function ($mdThemingProvider) {
     });
 
 $mdThemingProvider.theme('default')
-        .primaryPalette('inspectorPallet')
-        .accentPalette('newOrange')
+        .primaryPalette('teal')
+        .accentPalette('teal')
 });
 
 app.config(function ($mdIconProvider) {
@@ -116,8 +121,10 @@ app.config(function ($mdIconProvider) {
         .icon('new_report_folder', './bower_components/material-design-icons/file/svg/production/ic_create_new_folder_48px.svg')
         .icon('reverse', './bower_components/material-design-icons/action/svg/production/ic_swap_vertical_circle_48px.svg')
         .icon('sort', './bower_components/material-design-icons/content/svg/production/ic_sort_48px.svg')
-    .icon('check_box', './bower_components/material-design-icons/toggle/svg/production/ic_check_box_48px.svg')
+        .icon('check_box', './bower_components/material-design-icons/toggle/svg/production/ic_check_box_48px.svg')
         .icon('check_box_outline_blank', './bower_components/material-design-icons/toggle/svg/production/ic_check_box_outline_blank_48px.svg')
+        .icon('expand_more', './bower_components/material-design-icons/navigation/svg/production/ic_expand_more_48px.svg')
+    .icon('add_circle_outline', './bower_components/material-design-icons/content/svg/production/ic_add_circle_outline_48px.svg')
         ;
 });
 

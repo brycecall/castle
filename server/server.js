@@ -12,11 +12,11 @@ var firebase = new Firebase("https://maura-inspector-pro.firebaseio.com/");
 // TODO: Setup as HTTPS site so that tranfer on website and API is encrypted
 app.set('port', 8080);
 
-var http_hanlder = function () {
+var http_handler = function () {
     console.log("FBI Server running on *:" + app.get('port'));
 };
 
-http.listen(app.get('port'), http_hanlder);
+http.listen(app.get('port'), http_handler);
 app.use('/', express.static(__dirname + '/report_view'));
 
 

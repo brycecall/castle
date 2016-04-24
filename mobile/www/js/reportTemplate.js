@@ -1,4 +1,6 @@
-var reportOne = {
+var reportOne = 
+    
+{
   "name": "reportTemplate",
   "title": "reportTemplate",
   "date":"3/22/2016",
@@ -119,7 +121,7 @@ var reportOne = {
                 "required": true, "answered":false,
                 "showvalue": false,
                 "type": "number",
-                "value": 0
+                "value":0
               }
             },
             {

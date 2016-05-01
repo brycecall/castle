@@ -35,6 +35,14 @@ app.config(
                 templateUrl: 'html/templates.html'
             })
         
+            .state('inspection', {
+                url: "/inspection/:section",
+                templateUrl: 'html/inspection.html',
+                params: {
+                    section: 'default'
+                }
+            })
+        
             .state('item', {
                 url: '/create/item/{section}/{page}/{item}',
                 templateUrl: 'html/item.html'
@@ -84,7 +92,7 @@ app.config(function ($mdThemingProvider) {
 
 $mdThemingProvider.theme('default')
         .primaryPalette('teal')
-        .accentPalette('teal')
+        .accentPalette('blue')
 });
 
 app.config(function ($mdIconProvider) {
@@ -176,6 +184,11 @@ app.controller('indexController', function ($scope, inspectionService, $mdUtil, 
             title: "New Report",
             icon: "new_report",
             link: "create({section:'default'})"
+        },
+        {
+            title: "New Inspection",
+            icon: "new_report",
+            link: "inspection({section:'default'})"
         },
         {
             title: "Saved Reports",

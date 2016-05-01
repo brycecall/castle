@@ -1,0 +1,24 @@
+<!--    <script type="text/ng-template" id="pageDialog.html">-->
+        <md-dialog focusOnOpen="false">
+            <input style="display:none" type="text" autofocus />
+            <md-toolbar layout="row" layout-align="center center">
+                <h3 class="md-subhead" style="padding:0 25px">Add Page</h3>
+                <span flex></span>
+                <md-button class="md-icon-button" aria-label="cancel" ng-click="cancelDialog()">
+                    <md-icon md-svg-icon="close"></md-icon>
+                </md-button>
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                    <form ng-submit="addPageToReport(newPageTitle); cancelDialog()" name="addPageForm">
+                        <input ng-model="newPageTitle" required class="md-subhead" 
+                            style="width:300px; border:none;" type="text" placeholder="Page Title">
+                        <br />
+                        <br />
+                        <md-button type="submit" aria-label="cancel" 
+                            class="md-secondary md-raised" style="">Add me!</md-button>
+                    </form>
+                </div>
+            </md-dialog-content>
+        </md-dialog>
+<!--    </script>-->

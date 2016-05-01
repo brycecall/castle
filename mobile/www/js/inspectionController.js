@@ -1,21 +1,14 @@
- app.controller('itemController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, inspectionService, $state) {
+ app.controller('inspectionController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, inspectionService, $state) {
      $scope.inspectionService = inspectionService;
+     $scope.currentSection = $stateParams.section;
+     $scope.inspectionService.currentSection = $scope.currentSection;
+     $scope.selectedPage = inspectionService.selectedPage;
      $scope.report = inspectionService.currentReport;
-     $scope.sectionIndex = $rootScope.sectionIndex;
-     $scope.pageIndex = $rootScope.pageIndex;
-     $scope.itemIndex = $rootScope.itemIndex;
-     $scope.item = $rootScope.item;
-     //$scope.item = inspectionService.currentReport.sections[$scope.sectionIndex].pages[$scope.pageIndex].items[$scope.itemIndex];
-     
-//     
-//     inspectionService.currentPage.showIcon = true;
-//     inspectionService.currentPage.title = $scope.report.sections[$scope.sectionIndex].pages[$scope.pageIndex].title;
-//     inspectionService.currentPage.icon = "back";
-//     inspectionService.currentPage.toggleNavMenu = false;
-//     inspectionService.currentPage.go = {state:"create", params:{section:$scope.sectionIndex}};
-//     inspectionService.currentPage.showExtraMenu = true;
+     $scope.rapidRemarks = inspectionService.rapidRemarks;
+     $scope.finishedRequired = false;
 
-
+     //$scope.reportTemplate = inspectionService.reportTemplate;
+     //$scope.report = reportOne; //REMOVE after testing
      $scope.subPage = '';
      $scope.isOpen = false;
      $scope.togglePlusMenu = false;
@@ -40,6 +33,28 @@
          return (answered === true) ? 'check' : 'check_box_outline_blank';
      };
 
+     // change main header image and title
+//        if (inspectionService.assignPhotoMode && $scope.currentSection == "default") {
+//            inspectionService.currentPage.showIcon = false;
+//         }
+//         else
+
+             if ($scope.currentSection == "default" || $scope.report.sections[$scope.currentSection] == null) {
+             inspectionService.currentPage.showIcon = true;
+             inspectionService.currentPage.toggleNavMenu = true;
+             inspectionService.currentPage.title = $scope.report.title;
+             inspectionService.currentPage.icon = "menu";
+
+         } else {
+             //console.log($scope.report.sections[$scope.currentSection]);
+             inspectionService.currentPage.showIcon = true;
+             inspectionService.currentPage.title = $scope.report.sections[$scope.currentSection].title;
+             inspectionService.currentPage.icon = "back";
+             inspectionService.currentPage.toggleNavMenu = false;
+             inspectionService.currentPage.link = "inspection({section:'default'})";
+             inspectionService.currentPage.go = {state:"inspection", params:{section:'default'}};
+             inspectionService.currentPage.showExtraMenu = true;
+         }
 
      $scope.clearSelection = function() {
         inspectionService.selectedImages = [];
@@ -51,10 +66,29 @@
          inspectionService.currentPage.showIcon = false;
          inspectionService.currentPage.title = "Assign Photo";
          inspectionService.currentPage.showExtraMenu = false;
-         inspectionService.photoAppendixIndex = $scope.sectionIndex;
+         inspectionService.photoAppendixIndex = $scope.currentSection;
          $state.go("create",{section:'default'});
      };
 
+     
+     $scope.editItemDialog = function($event, item) {
+//         $rootScope.itemIndex = itemIndex;
+//         $rootScope.pageIndex = $scope.page;
+//         $rootScope.sectionIndex = $scope.section;
+         $rootScope.item = item;
+    
+          $mdDialog
+             .show({
+                 controller: 'itemController',
+                 templateUrl: 'html/item.html',
+                 parent: angular.element(document.body),
+                 targetEvent: event,
+                 clickOutsideToClose: false,
+                 fullscreen: true
+             });
+     };
+     
+     
      $scope.assignPhotos = function(subItem, action) {
          if (subItem.i == null)
              subItem.i = [];
@@ -230,9 +264,9 @@
 
       $scope.addRapidRemark = function (remarkTitle, remarkValue, itemIndex, checkboxIndex) {
              console.log("Add rapid remark");
-             $scope.report.sections[$scope.sectionIndex].pages[$scope.selectedPage].items[$rootScope.itemIndex].content[$rootScope.checkboxIndex].rrTitle = remarkTitle;
-             $scope.report.sections[$scope.sectionIndex].pages[$scope.selectedPage].items[$rootScope.itemIndex].content[$rootScope.checkboxIndex].rrVal = remarkValue;
-            //console.log(JSON.stringify($scope.report.sections[$scope.sectionIndex].pages[$scope.selectedPage], null, 2));
+             $scope.report.sections[$scope.currentSection].pages[$scope.selectedPage].items[$rootScope.itemIndex].content[$rootScope.checkboxIndex].rrTitle = remarkTitle;
+             $scope.report.sections[$scope.currentSection].pages[$scope.selectedPage].items[$rootScope.itemIndex].content[$rootScope.checkboxIndex].rrVal = remarkValue;
+            //console.log(JSON.stringify($scope.report.sections[$scope.currentSection].pages[$scope.selectedPage], null, 2));
          };
 
 
@@ -243,7 +277,8 @@
                  templateUrl: 'editRapidRemarks.html',
                  parent: angular.element(document.body),
                  targetEvent: event,
-                 clickOutsideToClose: true
+                 clickOutsideToClose: true,
+                 fullscreen: true
              });
      };
 
@@ -405,8 +440,8 @@
      };
 
      $scope.addItemToReport = function () {
-         //console.log("Section: " + $scope.sectionIndex + " Page: " + $scope.selectedPage + " Title: " + $scope.newItem.title);
-         $scope.report.sections[$scope.sectionIndex].pages[$scope.selectedPage].items.push($scope.newItem);
+         //console.log("Section: " + $scope.currentSection + " Page: " + $scope.selectedPage + " Title: " + $scope.newItem.title);
+         $scope.report.sections[$scope.currentSection].pages[$scope.selectedPage].items.push($scope.newItem);
          $scope.resetNewItem();
      };
 
@@ -448,8 +483,8 @@
      };
 
      $scope.addPageToReport = function (newPage) {
-         $scope.report.sections[$scope.sectionIndex].pages.push({'title':newPage, "items":[]});
-         //console.log(JSON.stringify($scope.report[$scope.sectionIndex][newPage], null, 2));
+         $scope.report.sections[$scope.currentSection].pages.push({'title':newPage, "items":[]});
+         //console.log(JSON.stringify($scope.report[$scope.currentSection][newPage], null, 2));
      };
 
 //     function jambaJSON() {

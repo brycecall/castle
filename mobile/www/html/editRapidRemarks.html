@@ -1,0 +1,77 @@
+<!--    <script type="text/ng-template" id="editRapidRemarks.html">-->
+        <md-dialog focusOnOpen="true">
+            <md-toolbar layout="row" layout-align="center center">
+                <div class="md-toolbar-tools">
+                    <h3 class="md-subhead">Add Rapid Remarks</h3>
+                    <span flex></span>
+                    <md-button class="md-icon-button" aria-label="cancel" ng-click="cancelDialog()">
+                        <md-icon md-svg-icon="close"></md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                    <md-tabs md-dynamic-height>
+                        <md-tab label="Add Remark">
+                            <md-content class="md-padding">
+                                <form ng-submit="addNewRapidRemark(remarkKey, remarkTitle, remarkValue)" 
+                                   novalidate name="addNewRR">
+                                    <md-input-container class="md-block">
+                                        <md-select required ng-model="remarkKey" placeholder="Choose Rapid Remark Sections">
+                                            <md-option required ng-repeat="remarkSection in rapidRemarks track by $index" 
+                                                ng-value="$index">{{remarkSection.title}}</md-option>
+                                        </md-select>
+                                    </md-input-container>
+
+                                    <md-input-container class="md-block">
+                                        <label>Remark Title</label>
+                                        <input ng-model="remarkTitle" type="text" required>
+                                    </md-input-container>
+
+                                    <md-input-container class="md-block">
+                                        <label>Remark Content</label>
+                                        <input ng-model="remarkValue" type="text" required>
+                                    </md-input-container>
+
+
+
+                                    <div layout="row">
+                                        <span flex></span>
+                                        <md-button type="submit" aria-label="cancel" ng-disabled="addNewRR.$invalid" 
+                                            class="md-secondary md-raised" style="">Add me!</md-button>
+                                    </div>
+
+                                    <div ng-repeat="remark in rapidRemarks[remarkKey].content | orderBy:$index:reverse=true">
+                                        <h3>{{remark.title}}</h3>
+                                        <p>{{remark.value}}</p>
+                                    </div>
+
+                                </form>
+                            </md-content>
+                        </md-tab>
+                        <md-tab label="Add Remark Section">
+                            <md-content class="md-padding">
+                                <form ng-submit="addNewRemarkSection(sectionTitle)" name="addRRSection" novalidate>
+                                    <md-input-container class="md-block">
+                                        <label>Add Remark Section Title</label>
+                                        <input required ng-model="sectionTitle" type="text">
+                                    </md-input-container>
+                                    <div layout="row">
+                                        <span flex></span>
+                                        <md-button type="submit" aria-label="cancel" class="md-secondary md-raised" 
+                                            ng-disabled="addRRSection.$invalid">Add me!</md-button>
+                                    </div>
+                                    <br/>
+                                    <div ng-repeat="remark in rapidRemarks | orderBy:$index:reverse=true">
+                                        <p class="md-subhead">{{remark.title}}</p>
+                                    </div>
+
+                                </form>
+                            </md-content>
+                        </md-tab>
+                    </md-tabs>
+
+                </div>
+            </md-dialog-content>
+        </md-dialog>
+<!--    </script>-->

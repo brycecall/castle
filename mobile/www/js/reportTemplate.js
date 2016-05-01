@@ -117,12 +117,10 @@ var reportOne =
             },
             {
               "title": "Squarefeet of the Property",
-              "Squarefeet of the Property": {
-                "required": true, "answered":false,
-                "showvalue": false,
-                "type": "number",
-                "value":0
-              }
+              "required": true, "answered":false,
+              "showvalue": false,
+              "type": "number",
+              "value":0
             },
             {
               "title": "Type of Home",

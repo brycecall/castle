@@ -45,6 +45,23 @@ var connection_handler = function (socket) {
             refresh_handler(data)
         });
     };
+    
+    var create_template_handler = function (data) {
+        // TODO: Check more than just the id
+        if (!data.payload.id)
+            data.payload.id = helpers.generateGUID();
+        
+        var templates_ref = firebase.child("Organizations/FBI/Templates");
+        
+        // Populate report data
+        var object = {};
+        object[data.payload.id] = data.payload;
+        
+        // Submit to database
+        templates_ref.update(object, function() {
+            refresh_handler(data)
+        });
+    };
 
     var delete_report_handler = function (data) {
         console.log(data);
@@ -52,17 +69,35 @@ var connection_handler = function (socket) {
         socket.emit("update", data);
     };
 
+    var delete_template_handler = function (data) {
+        console.log(data);
+        data = "ERROR: Not yet implemented.";
+        socket.emit("update", data);
+    };
+    
+    var save_image_handler = function (data) {
+        console.log(data);
+        data = "ERROR: Not yet implemented.";
+        socket.emit("update", data);
+    };
+    
+    var delete_image_handler = function (data) {
+        console.log(data);
+        data = "ERROR: Not yet implemented.";
+        socket.emit("update", data);
+    };
+    
     var refresh_handler = function (data) {
         console.log(data);
-        var reports_ref = firebase.child("Organizations/FBI/Reports");
+        var org_ref = firebase.child("Organizations/FBI");
 
-        reports_ref.on("value", function (report_val) {
-            console.log(report_val.val());
-            data.payload = report_val.val();
+        org_ref.on("value", function (org_data) {
+            console.log(org_data.val());
+            data.payload = org_data.val();
             socket.emit("update", data);
         }, function (error) {
             console.log(error);
-            socket.emit("update", "Could not get reports.");
+            socket.emit("update", "Could not get organization data.");
         });
 
     };
@@ -101,8 +136,12 @@ var connection_handler = function (socket) {
         });
     };
 
+    socket.on('create template', create_template_handler);
     socket.on('send report', send_report_handler);
     socket.on('delete report', delete_report_handler);
+    socket.on('delete template', delete_template_handler);
+    socket.on('save image', save_image_handler);
+    socket.on('delete image', save_image_handler);
     socket.on('refresh', refresh_handler);
     socket.on('authenticate user', authenticate_user_handler);
     socket.on('create user', create_user_handler);

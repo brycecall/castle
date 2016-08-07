@@ -2,7 +2,12 @@
 /node_modules/
 /resources/ios/
 /www/other_components/
+/www/bower_components/
+/www/node_modules/
 /bower_components/
 /www/bower_components/webcomponentsjs/build.log
 /plugins/android.json
-
+/mobile/www/bower_components/
+/mobile/www/node_modules/
+/mobile/www/platforms/
+/mobile/platforms/

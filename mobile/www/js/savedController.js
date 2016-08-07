@@ -1,10 +1,10 @@
-app.controller('savedController', function ($scope, inspectionService, $state) {
-$scope.inspectionService = inspectionService;
-inspectionService.currentPage.title = "Saved";
+app.controller('savedController', function ($scope, castleService, $state) {
+$scope.castleService = castleService;
+castleService.currentPage.title = "Saved";
 
 $scope.defaultReport = reportOne;
 $scope.switchReport = function(sReport) {
-    inspectionService.currentReport = sReport;
+    castleService.currentReport = sReport;
     $state.go("create");
 };
     

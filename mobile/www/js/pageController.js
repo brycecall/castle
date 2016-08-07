@@ -1,13 +1,20 @@
- app.controller('createController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, castleService, $state) {
+ app.controller('pageController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, castleService, $state) {
      $scope.castleService = castleService;
-     $scope.selectedSection = $stateParams.section;
-     $scope.castleService.selectedSection = $scope.selectedSection;
-     $scope.selectedPage = castleService.selectedPage;
      $scope.report = castleService.currentReport;
+     $scope.sectionIndex = $stateParams.sectionIndex;
+     $scope.pageIndex = $stateParams.pageIndex;
+     $scope.page = $scope.report.sections[$scope.sectionIndex].pages[$scope.pageIndex];
+     
+     // change main header image and title
+     castleService.currentPage.showIcon = true;
+     castleService.currentPage.title = $scope.report.sections[$scope.sectionIndex].title;
+     castleService.currentPage.icon = "back";
+     castleService.currentPage.toggleNavMenu = false;
+     castleService.currentPage.go = {state:"inspection", params:{'sectionIndex':'default'}};
+     castleService.currentPage.showExtraMenu = true;
+     
      $scope.rapidRemarks = castleService.rapidRemarks;
-     $scope.finishedRequired = false;
-
-     //$scope.reportTemplate = castleService.reportTemplate;
+     castleService.reportTemplate = reportOne;
      //$scope.report = reportOne; //REMOVE after testing
      $scope.subPage = '';
      $scope.isOpen = false;
@@ -25,36 +32,14 @@
         }
      };
 
-     $scope.isInArray = function (value, array) {
-        return ($.inArray(value, array) == -1) ? false : true;
-     };
+
 
      $scope.getAnsweredIcon = function(answered) {
          return (answered === true) ? 'check' : 'check_box_outline_blank';
      };
 
-     // change main header image and title
-//        if (castleService.assignPhotoMode && $scope.selectedSection == "default") {
-//            castleService.currentPage.showIcon = false;
-//         }
-//         else
 
-             if ($scope.selectedSection == "default" || $scope.report.sections[$scope.selectedSection] == null) {
-             castleService.currentPage.showIcon = true;
-             castleService.currentPage.toggleNavMenu = true;
-             castleService.currentPage.title = $scope.report.title;
-             castleService.currentPage.icon = "menu";
 
-         } else {
-             //console.log($scope.report.sections[$scope.selectedSection]);
-             castleService.currentPage.showIcon = true;
-             castleService.currentPage.title = $scope.report.sections[$scope.selectedSection].title;
-             castleService.currentPage.icon = "back";
-             castleService.currentPage.toggleNavMenu = false;
-             castleService.currentPage.link = "create({sectionIndex:'default'})";
-             castleService.currentPage.go = {state:"create", params:{sectionIndex:'default'}};
-             castleService.currentPage.showExtraMenu = true;
-         }
 
      $scope.clearSelection = function() {
         castleService.selectedImages = [];
@@ -70,6 +55,25 @@
          $state.go("create",{sectionIndex:'default'});
      };
 
+     
+     $scope.editItemDialog = function($event, item) {
+//         $rootScope.itemIndex = itemIndex;
+//         $rootScope.pageIndex = $scope.page;
+//         $rootScope.sectionIndex = $scope.section;
+         $rootScope.item = item;
+    
+          $mdDialog
+             .show({
+                 controller: 'itemController',
+                 templateUrl: 'html/item.html',
+                 parent: angular.element(document.body),
+                 targetEvent: event,
+                 clickOutsideToClose: false,
+                 fullscreen: true
+             });
+     };
+     
+     
      $scope.assignPhotos = function(subItem, action) {
          if (subItem.i == null)
              subItem.i = [];
@@ -204,8 +208,8 @@
 
      $scope.showItemDialog = function (event) {
          $mdDialog.show({
-             controller: 'createController',
-             templateUrl: 'itemDialog.html',
+             controller: 'pageController',
+             templateUrl: '../html/itemDialog.html',
              parent: angular.element(document.body),
              targetEvent: event,
              clickOutsideToClose: true,
@@ -215,8 +219,8 @@
 
      $scope.showPageDialog = function (event) {
          $mdDialog.show({
-             controller: 'createController',
-             templateUrl: 'pageDialog.html',
+             controller: 'pageController',
+             templateUrl: '../html/pageDialog.html',
              parent: angular.element(document.body),
              targetEvent: event,
              clickOutsideToClose: true,
@@ -283,7 +287,7 @@
           $mdDialog
              .show({
                  controller: 'createController',
-                 templateUrl: 'rapidRemarksDialog.html',
+                 templateUrl: '../html/rapidRemarksDialog.html',
                  parent: angular.element(document.body),
                  targetEvent: event,
                  clickOutsideToClose: true
@@ -422,7 +426,7 @@
 
      $scope.addItemToReport = function () {
          //console.log("sectionIndex " + $scope.selectedSection + " Page: " + $scope.selectedPage + " Title: " + $scope.newItem.title);
-         $scope.report.sections[$scope.selectedSection].pages[$scope.selectedPage].items.push($scope.newItem);
+         $scope.report.sections[$scope.sectionIndex].pages[$scope.pageIndex].items.push($scope.newItem);
          $scope.resetNewItem();
      };
 
@@ -464,46 +468,10 @@
      };
 
      $scope.addPageToReport = function (newPage) {
-         $scope.report.sections[$scope.selectedSection].pages.push({'title':newPage, "items":[]});
+         $scope.report.sections[$scope.sectionIndex].pages.push({'title':newPage, "items":[]});
          //console.log(JSON.stringify($scope.report[$scope.selectedSection][newPage], null, 2));
      };
 
-//     function jambaJSON() {
-//         for (var sectionkey in reportOne.sections) {
-//             var section = reportOne.sections[sectionkey];
-//            for (var pagekey in section.pages) {
-//                var page = section.pages[pagekey];
-//                for (var itemkey in page.items) {
-//                    var item = page.items[itemkey];
-//
-//                    if (item.type == 'radio' || item.type == 'select') {
-//                        var tcontent = [];
-//
-//                        if (item.content != []) {
-//                            for (var i in item.content) {
-//                                var key = "";
-//                                for (key in item.content[i]);
-//                                var temp = {'title':i,'rrTitle':key, 'rrVal':item.content[i][key]};
-//                                tcontent.push(temp);
-//                            }
-//                            reportOne.sections[sectionkey].pages[pagekey].items[itemkey].content = tcontent;
-//                        }
-//                    } else if (item.type == 'checkbox') {
-//                        var tcontent = [];
-//                        for (var i in item.value) {
-//                            var temp = {'title':i,'c':false};
-//                            tcontent.push(temp);
-//                        }
-//                        reportOne.sections[sectionkey].pages[pagekey].items[itemkey].content = tcontent;
-//                        item.value = [];
-//                        reportOne.sections[sectionkey].pages[pagekey].items[itemkey].value = [];
-//                    }
-//                }
-//            }
-//         }
-//         console.log(JSON.stringify(reportOne, null, 2));
-//     }
-//
-//     jambaJSON();
+
 
  });

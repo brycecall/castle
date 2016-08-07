@@ -1,10 +1,10 @@
-app.controller('generateController', function ($rootScope, $scope, $mdUtil, $mdDialog, $mdMedia, inspectionService) {
+app.controller('generateController', function ($rootScope, $scope, $mdUtil, $mdDialog, $mdMedia, castleService) {
 
-    $scope.report = inspectionService.currentReport;
+    $scope.report = castleService.currentReport;
     $scope.report = reportOne;
-    $scope.currentPage = inspectionService.currentPage;
-    $scope.currentSection = inspectionService.currentSection;
-    $scope.rapidRemarks = inspectionService.rapidRemarks;
+    $scope.currentPage = castleService.currentPage;
+    $scope.selectedSection = castleService.selectedSection;
+    $scope.rapidRemarks = castleService.rapidRemarks;
     $scope.clientInfo = null;
     $scope.reportId = null;
     $scope.reportDate = null;
@@ -21,16 +21,16 @@ app.controller('generateController', function ($rootScope, $scope, $mdUtil, $mdD
         return null;
     };
 
-    inspectionService.currentPage.title = "Preview Report";
-    inspectionService.currentPage.icon = "back";
-    inspectionService.currentPage.toggleNavMenu = false;
-    inspectionService.currentPage.link = "create({section:'default'})";
-    inspectionService.currentPage.go = {state:"create", params:{section:'default'}};
-    inspectionService.currentPage.showExtraMenu = false;
+    castleService.currentPage.title = "Preview Report";
+    castleService.currentPage.icon = "back";
+    castleService.currentPage.toggleNavMenu = false;
+    castleService.currentPage.link = "create({sectionIndex:'default'})";
+    castleService.currentPage.go = {state:"create", params:{sectionIndex:'default'}};
+    castleService.currentPage.showExtraMenu = false;
 
     $scope.initialzeFieldNotesVars = function() {
-        $scope.currentSection = $scope.findInReport("Field Notes", $scope.report.sections);
-        $scope.currentPage = $scope.findInReport("Client Info", $scope.currentSection.pages);
+        $scope.selectedSection = $scope.findInReport("Field Notes", $scope.report.sections);
+        $scope.currentPage = $scope.findInReport("Client Info", $scope.selectedSection.pages);
         $scope.clientInfo = $scope.findInReport("Clientinfo", $scope.currentPage.items);
         $scope.reportId = $scope.findInReport("Report ID", $scope.currentPage.items);
         $scope.reportDate = $scope.findInReport("Report Date", $scope.currentPage.items);

@@ -1,20 +1,20 @@
- app.controller('itemController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, inspectionService, $state) {
-     $scope.inspectionService = inspectionService;
-     $scope.report = inspectionService.currentReport;
-     $scope.sectionIndex = $rootScope.sectionIndex;
-     $scope.pageIndex = $rootScope.pageIndex;
-     $scope.itemIndex = $rootScope.itemIndex;
-     $scope.item = $rootScope.item;
-     //$scope.item = inspectionService.currentReport.sections[$scope.sectionIndex].pages[$scope.pageIndex].items[$scope.itemIndex];
-     
-//     
-//     inspectionService.currentPage.showIcon = true;
-//     inspectionService.currentPage.title = $scope.report.sections[$scope.sectionIndex].pages[$scope.pageIndex].title;
-//     inspectionService.currentPage.icon = "back";
-//     inspectionService.currentPage.toggleNavMenu = false;
-//     inspectionService.currentPage.go = {state:"create", params:{section:$scope.sectionIndex}};
-//     inspectionService.currentPage.showExtraMenu = true;
+ app.controller('itemController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, castleService, $state) {
+     $scope.castleService = castleService;
+     $scope.report = castleService.currentReport;
+     $scope.sectionIndex = $stateParams.sectionIndex;
+     $scope.pageIndex = $stateParams.pageIndex;
+     $scope.itemIndex = $stateParams.itemIndex;
+     $scope.item = $scope.report
+           .sections[$scope.sectionIndex]
+           .pages[$scope.pageIndex]
+           .items[$scope.itemIndex];
 
+     castleService.currentPage.showIcon = true;
+     castleService.currentPage.title = $scope.report.sections[$scope.sectionIndex].pages[$scope.pageIndex].title;
+     castleService.currentPage.icon = "back";
+     castleService.currentPage.toggleNavMenu = false;
+     castleService.currentPage.go = {state:"page", params:{'sectionIndex':$scope.sectionIndex, 'pageIndex':$scope.pageIndex}};
+     castleService.currentPage.showExtraMenu = false;
 
      $scope.subPage = '';
      $scope.isOpen = false;
@@ -24,11 +24,11 @@
      var destinationType = null;
 
      $scope.addToSelectedImages = function(index) {
-        var safeIndex = $.inArray(index, inspectionService.selectedImages);
+        var safeIndex = $.inArray(index, castleService.selectedImages);
         if(safeIndex == -1) {
-            inspectionService.selectedImages.push(index);
+            castleService.selectedImages.push(index);
         } else {
-            inspectionService.selectedImages.splice(safeIndex, 1);
+            castleService.selectedImages.splice(safeIndex, 1);
         }
      };
 
@@ -42,27 +42,27 @@
 
 
      $scope.clearSelection = function() {
-        inspectionService.selectedImages = [];
+        castleService.selectedImages = [];
      };
 
 
      $scope.enterAssignPhotosMode = function() {
-         inspectionService.assignPhotoMode = true;
-         inspectionService.currentPage.showIcon = false;
-         inspectionService.currentPage.title = "Assign Photo";
-         inspectionService.currentPage.showExtraMenu = false;
-         inspectionService.photoAppendixIndex = $scope.sectionIndex;
-         $state.go("create",{section:'default'});
+         castleService.assignPhotoMode = true;
+         castleService.currentPage.showIcon = false;
+         castleService.currentPage.title = "Assign Photo";
+         castleService.currentPage.showExtraMenu = false;
+         castleService.photoAppendixIndex = $scope.sectionIndex;
+         $state.go("create",{sectionIndex:'default'});
      };
 
      $scope.assignPhotos = function(subItem, action) {
          if (subItem.i == null)
              subItem.i = [];
          
-         var photoAppendix = $scope.report.sections[inspectionService.photoAppendixIndex].pages[0].items[0].content;
+         var photoAppendix = $scope.report.sections[castleService.photoAppendixIndex].pages[0].items[0].content;
 
-         for(var i = 0; i < inspectionService.selectedImages.length; i++) {
-             var index = inspectionService.selectedImages[i];
+         for(var i = 0; i < castleService.selectedImages.length; i++) {
+             var index = castleService.selectedImages[i];
              if (index >= 0 && index < photoAppendix.length) {
                  if (action == 'assign') {
                     subItem.i.push( photoAppendix[index] );
@@ -85,7 +85,7 @@
          }
          
          if (action == 'accept')
-            inspectionService.cancelAssignPhotoMode();
+            castleService.cancelAssignPhotoMode();
      };
      
 
@@ -114,7 +114,7 @@
      // select a new page
      $scope.changeSelection = function (index, pagetitle) {
          $scope.selectedPage = index;
-         inspectionService.selectedPage = index;
+         castleService.selectedPage = index;
         // console.log($scope.selectedPage + ' ' + pagetitle);
      };
 
@@ -164,13 +164,13 @@
      $scope.saveReport = function() {
          console.info("Sending report " + $scope.report.name + " with id #" + $scope.report.id);
          // Must use angular.fromJson and angular.toJson to remove angular added $$hashkey.
-         inspectionService.io.sendReport(angular.fromJson(angular.toJson($scope.report)));
+         castleService.io.sendReport(angular.fromJson(angular.toJson($scope.report)));
      }
      $rootScope.sendReport_handler = function(data) {
        if (data.payload.id !== null)
            {
                alert("Report Saved.");
-               inspectionService.reports = data.payload;
+               castleService.reports = data.payload;
            }
      };
 
@@ -181,7 +181,7 @@
 
      // Replace mdDialog?
 //     $scope.toggleAddItemMenu = function () {
-//          $scope.toggleItem(inspectionService.backdrop);
+//          $scope.toggleItem(castleService.backdrop);
 //          $scope.toggleItem($scope.showAddItemMenu);
 //     }
      
@@ -249,14 +249,14 @@
 
      $scope.addNewRapidRemark = function(remarkKey, remarkTitle, remarkValue) {
         var remark = {"title":remarkTitle, "value":remarkValue};
-        inspectionService.rapidRemarks[remarkKey].content.push(remark);
+        castleService.rapidRemarks[remarkKey].content.push(remark);
          $scope.remarkTitle = null;
          $scope.remarkValue = null;
      };
 
      $scope.addNewRemarkSection = function(sectionTitle) {
          var rapidRemark = {"title":sectionTitle, "content":[]};
-        inspectionService.rapidRemarks.push(rapidRemark);
+        castleService.rapidRemarks.push(rapidRemark);
          $scope.sectionTitle = null;
      };
 
@@ -405,7 +405,7 @@
      };
 
      $scope.addItemToReport = function () {
-         //console.log("Section: " + $scope.sectionIndex + " Page: " + $scope.selectedPage + " Title: " + $scope.newItem.title);
+         //console.log("sectionIndex " + $scope.sectionIndex + " Page: " + $scope.selectedPage + " Title: " + $scope.newItem.title);
          $scope.report.sections[$scope.sectionIndex].pages[$scope.selectedPage].items.push($scope.newItem);
          $scope.resetNewItem();
      };

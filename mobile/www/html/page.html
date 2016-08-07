@@ -1,0 +1,100 @@
+  <div ng-controller="pageController" flex="" layout="column" class="page" id="nav">
+    <h1 class="md-title" style="margin-left:16px;">{{page.title}}</h1>
+    <!--           PAGES-->
+    <md-card style="margin-bottom:85px;" >
+        <div ng-repeat="item in page.items" layout="column" layout-align="center left" >
+            <div layout="row" layout-align="start center" >
+                <md-button
+                    
+                    class="md-subhead md-no-style" 
+                    ui-sref="item({'sectionIndex':sectionIndex, 'pageIndex':pageIndex, 'itemIndex':$index})"
+                    style="margin:0; padding: 8px 0 8px 16px; border-radius:0; text-align:left; text-transform:none;"
+                    flex=""
+                    >
+                    {{item.title}}
+                </md-button>
+
+                <md-button ng-click="item.answered = !item.answered" 
+                           aria-label="is answered" 
+                           class="md-icon-button" 
+                           >
+                    <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
+                </md-button>
+            </div>
+            <md-divider></md-divider>
+        </div>
+
+    </md-card>
+    <div class="mainButtonMenu">
+
+        <md-menu md-position-mode="target-right target">
+            <md-button class="md-fab md-primary" style="margin-right:27px;" ng-click="$mdOpenMenu($event)" aria-label="stuff">
+                <md-icon md-svg-icon="add" md-menu-origin ng-class="{'mainButton' : show_add_icons, 'mainButtonReverse' : !show_add_icons}"></md-icon>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item>
+                    <md-button ng-click="showItemDialog($event)" layout="row" layout-align="start center">
+                        <md-icon md-svg-icon="add"></md-icon>
+                        <span>Item</span>
+                    </md-button>
+                </md-menu-item>
+<!--
+                <md-menu-item>
+                    <md-button ng-click="showPageDialog($event)" layout="row" layout-align="start center">
+                        <md-icon md-svg-icon="add"></md-icon>
+                        <span>Page</span>
+                    </md-button>
+                </md-menu-item>
+-->
+<!--
+                <md-menu-item>
+                    <md-button ng-click="editRapidRemarks($event)" layout="row" layout-align="start center">
+                        <md-icon md-svg-icon="add"></md-icon>
+                        <span>Remark</span>
+                    </md-button>
+                </md-menu-item>
+-->
+                <md-menu-item>
+                    <md-button ng-click="capturePhoto(1, unassignedImages, true, true)" layout="row" layout-align="start center">
+                        <md-icon md-svg-icon="camera"></md-icon>
+                        <span>Image</span>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </div>
+</div> <!--end controller-->
+
+
+<!--
+        
+        <div class="fab_add_expand" ng-show="show_add_icons">
+            <a ng-click="showItemDialog($event)" layout="row" layout-align="end center" >
+                <div >Item</div>
+                <md-button class="md-fab md-hue-1 md-raised md-mini"  aria-label="Add Item">
+                    <md-icon md-svg-icon="add"></md-icon>
+                </md-button>
+            </a>
+            <a ng-click="showPageDialog($event)" layout="row" layout-align="end center" >
+                <div >Page</div>
+                <md-button class="md-fab md-hue-2 md-raised md-mini" aria-label="Add Page">
+                    <md-icon md-svg-icon="add"></md-icon>
+                </md-button>
+            </a>
+            <a ng-click="editRapidRemarks($event)" layout="row" layout-align="end center">
+                <div>Remark</div>
+                <md-button class="md-fab md-hue-3 md-raised md-mini" aria-label="Add Remark">
+                    <md-icon md-svg-icon="add"></md-icon>
+                </md-button>
+            </a>
+            <a ng-click="capturePhoto(1, unassignedImages, true, true)" layout="row" layout-align="end center">
+                <div>Image</div>
+                <md-button class="md-fab md-hue-3 md-raised md-mini" aria-label="Add Section">
+                    <md-icon md-svg-icon="camera"></md-icon>
+                </md-button>
+            </a>
+        </div>
+        <md-button class="md-fab md-primary"  style="margin-right:27px;"  ng-click="toggleAdd()" aria-label="stuff">
+            <md-icon md-svg-icon="add"  ng-class="{'mainButton' : show_add_icons, 'mainButtonReverse' : !show_add_icons}"></md-icon>
+        </md-button>
+-->

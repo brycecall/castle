@@ -12,7 +12,7 @@
             <md-dialog-content>
                 <div class="md-dialog-content">
                     <form ng-submit="linkRemark(remarkItem, rItem, false); cancelDialog()">
-                        <span ng-init="remarkItem = report.sections[currentSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex]"></span>
+                        <span ng-init="remarkItem = report.sections[selectedSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex]"></span>
                         <md-input-container ng-init="rItem.rrTitle = remarkItem.rrTitle" class="md-block">
                             <md-select required ng-model="rItem.rrTitle" placeholder="Rapid Remark Sections">
                                 <md-option ng-repeat="remarkSection in rapidRemarks track by $index" ng-value="$index">{{remarkSection.title}}</md-option>

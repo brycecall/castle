@@ -1,5 +1,5 @@
 // Create the main module
-var app = angular.module('fbiApp', ['ui.router', 'ngMaterial']);
+var app = angular.module('castleApp', ['ui.router', 'ngMaterial']);
 
 app.constant('DEFAULT_COLOR', '#009688'); //4CAF50
 
@@ -11,7 +11,7 @@ app.config(
                 url: "/create/:section",
                 templateUrl: 'html/create.html',
                 params: {
-                    section: 'default'
+                    sectionIndex: 'default'
                 }
             })
 
@@ -36,17 +36,23 @@ app.config(
             })
         
             .state('inspection', {
-                url: "/inspection/:section",
+                url: "/inspection/:sectionIndex",
                 templateUrl: 'html/inspection.html',
                 params: {
-                    section: 'default'
+                    sectionIndex: 'default'
                 }
             })
         
+            .state('page', {
+                url: '/inspection/{sectionIndex}/{pageIndex}',
+                templateUrl: 'html/page.html'
+            })
+        
             .state('item', {
-                url: '/create/item/{section}/{page}/{item}',
+                url: '/inspection/{sectionIndex}/{pageIndex}/{itemIndex}',
                 templateUrl: 'html/item.html'
-            });
+            })
+            ;
 
     });
 
@@ -132,15 +138,17 @@ app.config(function ($mdIconProvider) {
         .icon('check_box', './bower_components/material-design-icons/toggle/svg/production/ic_check_box_48px.svg')
         .icon('check_box_outline_blank', './bower_components/material-design-icons/toggle/svg/production/ic_check_box_outline_blank_48px.svg')
         .icon('expand_more', './bower_components/material-design-icons/navigation/svg/production/ic_expand_more_48px.svg')
-    .icon('add_circle_outline', './bower_components/material-design-icons/content/svg/production/ic_add_circle_outline_48px.svg')
-        ;
+        .icon('add_circle_outline', './bower_components/material-design-icons/content/svg/production/ic_add_circle_outline_48px.svg')
+        .icon('keyboard_arrow_right', './bower_components/material-design-icons/hardware/svg/production/ic_keyboard_arrow_right_48px.svg')
+        .icon('keyboard_arrow_down', './bower_components/material-design-icons/hardware/svg/production/ic_keyboard_arrow_down_48px.svg')
+    ;
 });
 
 //RESET main navigation values on state change
-app.run(function($rootScope, $urlRouter, inspectionService, DEFAULT_COLOR){
+app.run(function($rootScope, $urlRouter, castleService, DEFAULT_COLOR){
     $rootScope.$on('$stateChangeStart',
         function(event){
-             inspectionService.currentPage =
+             castleService.currentPage =
              {
                 title: "Inspection",
                 preventNavigation: false,
@@ -158,18 +166,18 @@ app.run(function($rootScope, $urlRouter, inspectionService, DEFAULT_COLOR){
 
 
 // Controller for the index page
-app.controller('indexController', function ($scope, inspectionService, $mdUtil, $mdSidenav, $state) {
-    $scope.inspectionService = inspectionService;
+app.controller('indexController', function ($scope, castleService, $mdUtil, $mdSidenav, $state) {
+    $scope.castleService = castleService;
 
     $scope.toggleNavigation = function () {
         $mdSidenav("main").toggle();
     };
     
     $scope.menuNavigation = function() {
-      if (inspectionService.currentPage.toggleNavMenu) {
+      if (castleService.currentPage.toggleNavMenu) {
           $scope.toggleNavigation();
-      } else if (!inspectionService.currentPage.preventNavigation) {
-          $state.go(inspectionService.currentPage.go.state, inspectionService.currentPage.go.params);
+      } else if (!castleService.currentPage.preventNavigation) {
+          $state.go(castleService.currentPage.go.state, castleService.currentPage.go.params);
       }
     };
 
@@ -180,15 +188,15 @@ app.controller('indexController', function ($scope, inspectionService, $mdUtil, 
     };
 
     $scope.navigationPages = [
-        {
-            title: "New Report",
-            icon: "new_report",
-            link: "create({section:'default'})"
-        },
+//        {
+//            title: "New Report",
+//            icon: "new_report",
+//            link: "create({sectionIndex:'default'})"
+//        },
         {
             title: "New Inspection",
             icon: "new_report",
-            link: "inspection({section:'default'})"
+            link: "inspection({sectionIndex:'default'})"
         },
         {
             title: "Saved Reports",
@@ -213,15 +221,14 @@ app.controller('indexController', function ($scope, inspectionService, $mdUtil, 
 
 
 // Create the factory / service that is shared among all the controllers
-app.factory('inspectionService', function ($rootScope, connectService, $state, DEFAULT_COLOR) {
+app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
     var factory = {};
 
-    factory.io = connectService;
     factory.reports = null;
     factory.currentReport = reportOne;
     factory.backdrop = false;
     factory.selectedPage = null;
-    factory.currentSection = null;
+    factory.selectedSection = null;
     factory.rapidRemarks = rapidRemarks;
     factory.reportTemplates = [
         {"title":"reportOne", "id":"AHRDF-sdf4-sd34sd-3SDF"}
@@ -231,13 +238,13 @@ app.factory('inspectionService', function ($rootScope, connectService, $state, D
     //factory.serverURL = "http://dev.maurasoftware.com:9526";
     
     //TODO: change when send and delete differ
-    $rootScope.deleteReport_handler = $rootScope.refresh_handler;
-    $rootScope.sendReport_handler = $rootScope.refresh_handler;
-    $rootScope.refresh_handler = function(data) {
-        console.log("UPDATE ALL REPORTS");
-        factory.reports = data.payload;
-        console.info(factory.reports);
-    };
+//    $rootScope.deleteReport_handler = $rootScope.refresh_handler;
+//    $rootScope.sendReport_handler = $rootScope.refresh_handler;
+//    $rootScope.refresh_handler = function(data) {
+//        console.log("UPDATE ALL REPORTS");
+//        factory.reports = data.payload;
+//        console.info(factory.reports);
+//    };
 
     // Current page information
     factory.currentPage = {
@@ -271,9 +278,14 @@ app.factory('inspectionService', function ($rootScope, connectService, $state, D
 
 
     factory.openItems = function (showVal) {
-        angular.forEach(factory.currentReport.sections[factory.currentSection].pages[factory.selectedPage].items, function(itemval, itemkey) {
-            itemval.showvalue = showVal;
-        });
+        angular.forEach(
+            factory.currentReport
+                   .sections[factory.selectedSection]
+                   .pages[factory.selectedPage]
+                   .items, 
+                   function(itemval, itemkey) {
+                       itemval.showvalue = showVal;
+                   });
     };
 
     //Setup data
@@ -330,7 +342,7 @@ app.factory('inspectionService', function ($rootScope, connectService, $state, D
         factory.assignPhotoMode = false;
         factory.selectedImages = [];
         if (factory.photoAppendixIndex != null)
-            $state.go("create",{section:factory.photoAppendixIndex});
+            $state.go("create",{'sectionIndex':factory.photoAppendixIndex});
     };
 
     // Fires when Cordova is fully loaded
@@ -340,10 +352,16 @@ app.factory('inspectionService', function ($rootScope, connectService, $state, D
     }, false);
 
     // Always to a refresh on index load, just to keep up to date.
-    factory.io.refresh();
+//    factory.io.refresh();
+    
+     factory.isInArray = function (value, array) {
+        return ($.inArray(value, array) == -1) ? false : true;
+     }
     
     return factory;
 });
+
+
 
 //****** Likely will be replaced by connectService *******
 // app.service("reportService", function () {

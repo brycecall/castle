@@ -1,27 +1,30 @@
   <div ng-controller="pageController" flex="" layout="column" class="page" id="nav">
+   <md-content>
     <h1 class="md-title" style="margin-left:16px;">{{page.title}}</h1>
     <!--           PAGES-->
     <md-card style="margin-bottom:85px;" >
-        <div ng-repeat="item in page.items" layout="column" layout-align="center left" >
+        <div ng-repeat="item in page.items" layout="column" >
+           <span ng-if="item.type != 'presettext'">
             <div layout="row" layout-align="start center" >
                 <md-button
-                    
                     class="md-subhead md-no-style" 
                     ui-sref="item({'sectionIndex':sectionIndex, 'pageIndex':pageIndex, 'itemIndex':$index})"
-                    style="margin:0; padding: 8px 0 8px 16px; border-radius:0; text-align:left; text-transform:none;"
-                    flex=""
-                    >
-                    {{item.title}}
+                    style="width: 100%; margin:0; padding: 8px 0 8px 16px; border-radius:0; text-align:left; text-transform:none;"
+                >
+                 
+                    <span flex="">{{item.title}}</span>
+                  
                 </md-button>
 
                 <md-button ng-click="item.answered = !item.answered" 
                            aria-label="is answered" 
                            class="md-icon-button" 
-                           >
+                >
                     <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
                 </md-button>
             </div>
-            <md-divider></md-divider>
+            <md-divider ></md-divider>
+            </span>
         </div>
 
     </md-card>
@@ -63,6 +66,7 @@
             </md-menu-content>
         </md-menu>
     </div>
+    </md-content>
 </div> <!--end controller-->
 
 

@@ -4,6 +4,8 @@
      $scope.sectionIndex = $stateParams.sectionIndex;
      $scope.pageIndex = $stateParams.pageIndex;
      $scope.itemIndex = $stateParams.itemIndex;
+     castleService.selectedSection = $scope.sectionIndex;
+     castleService.selectedPage = $scope.pageIndex;
      $scope.item = $scope.report
            .sections[$scope.sectionIndex]
            .pages[$scope.pageIndex]
@@ -32,6 +34,12 @@
         }
      };
 
+     $scope.sortableOptions = {
+         'ui-floating': false,
+          handle: '.handle',
+          containment: "parent"
+     };
+     
      $scope.isInArray = function (value, array) {
         return ($.inArray(value, array) == -1) ? false : true;
      };
@@ -111,109 +119,13 @@
 
      document.addEventListener("deviceready", onDeviceReady, false);
 
-     // select a new page
-     $scope.changeSelection = function (index, pagetitle) {
-         $scope.selectedPage = index;
-         castleService.selectedPage = index;
-        // console.log($scope.selectedPage + ' ' + pagetitle);
-     };
-
-   $scope.showRequiredDialog = function (event) {
-        var confirm = $mdDialog.confirm()
-              .title('Not all required items have been completed')
-              .textContent('Are you sure you want to continue?')
-              .ariaLabel('Required items incomplete')
-              .targetEvent(event)
-              .ok('continue anyway')
-              .cancel('finish up first');
-        $mdDialog.show(confirm).then(function() {
-          $state.go('generate');
-        }, function() {
-         
-        });
-      };
-     
-     // validate that all required items have been filled out
-     $scope.checkRequired = function () {
-         //TODO: validate that all required items have been filled out
-          for (var sectionkey in $scope.report.sections) {
-             var section = $scope.report.sections[sectionkey];
-            for (var pagekey in section.pages) {
-                var page = section.pages[pagekey];
-                for (var itemkey in page.items) {
-                    var item = page.items[itemkey];
-                    if (item.required === true && item.answered === false) {
-                        $scope.finishedRequired =  false;
-                        $scope.showRequiredDialog();
-                        return false;
-                    }
-                }
-            }
-          }
-     $state.go('generate');
-    return true;
-        // $scope.saveReport();
-     };
-     
-     // Publish report to PDF
-     $scope.publishReportPDF = function() {
-         var report = document.querySelctor("");
-     }
-     
-     // Save report to server
-     $scope.saveReport = function() {
-         console.info("Sending report " + $scope.report.name + " with id #" + $scope.report.id);
-         // Must use angular.fromJson and angular.toJson to remove angular added $$hashkey.
-         castleService.io.sendReport(angular.fromJson(angular.toJson($scope.report)));
-     }
-     $rootScope.sendReport_handler = function(data) {
-       if (data.payload.id !== null)
-           {
-               alert("Report Saved.");
-               castleService.reports = data.payload;
-           }
-     };
-
+ 
      // output = !input
      $scope.toggleItem = function (pItem) {
          pItem.showvalue = !pItem.showvalue;
      };
 
-     // Replace mdDialog?
-//     $scope.toggleAddItemMenu = function () {
-//          $scope.toggleItem(castleService.backdrop);
-//          $scope.toggleItem($scope.showAddItemMenu);
-//     }
-     
 
-
-     $scope.showItemDialog = function (event) {
-         $mdDialog.show({
-             controller: 'createController',
-             templateUrl: 'itemDialog.html',
-             parent: angular.element(document.body),
-             targetEvent: event,
-             clickOutsideToClose: true,
-             preserveScope: true,
-         });
-     };
-
-     $scope.showPageDialog = function (event) {
-         $mdDialog.show({
-             controller: 'createController',
-             templateUrl: 'pageDialog.html',
-             parent: angular.element(document.body),
-             targetEvent: event,
-             clickOutsideToClose: true,
-             preserveScope: true,
-         });
-     };
-
-
-//      $scope.clearRapidRemarks = function(remarkItem, rItem) {
-//            remarkItem.rrTitle = remarkItem.rItem.rrTitle;
-//            remarkItem.rrVal   = remarkItem.rItem
-//      };
 
       $scope.linkRemark = function(remarkItem, rItem, clear) {
             if (clear) {
@@ -230,8 +142,16 @@
 
       $scope.addRapidRemark = function (remarkTitle, remarkValue, itemIndex, checkboxIndex) {
              console.log("Add rapid remark");
-             $scope.report.sections[$scope.sectionIndex].pages[$scope.selectedPage].items[$rootScope.itemIndex].content[$rootScope.checkboxIndex].rrTitle = remarkTitle;
-             $scope.report.sections[$scope.sectionIndex].pages[$scope.selectedPage].items[$rootScope.itemIndex].content[$rootScope.checkboxIndex].rrVal = remarkValue;
+             $scope.report.sections[$scope.sectionIndex]
+                 .pages[$scope.selectedPage]
+                 .items[$rootScope.itemIndex]
+                 .content[$rootScope.checkboxIndex]
+                 .rrTitle = remarkTitle;
+             $scope.report.sections[$scope.sectionIndex]
+                 .pages[$scope.selectedPage]
+                 .items[$rootScope.itemIndex]
+                 .content[$rootScope.checkboxIndex]
+                 .rrVal = remarkValue;
             //console.log(JSON.stringify($scope.report.sections[$scope.sectionIndex].pages[$scope.selectedPage], null, 2));
          };
 
@@ -239,8 +159,8 @@
      $scope.editRapidRemarks = function($event) {
           $mdDialog
              .show({
-                 controller: 'createController',
-                 templateUrl: 'editRapidRemarks.html',
+                 controller: 'itemController',
+                 templateUrl: '../html/editRapidRemarks.html',
                  parent: angular.element(document.body),
                  targetEvent: event,
                  clickOutsideToClose: true
@@ -249,7 +169,7 @@
 
      $scope.addNewRapidRemark = function(remarkKey, remarkTitle, remarkValue) {
         var remark = {"title":remarkTitle, "value":remarkValue};
-        castleService.rapidRemarks[remarkKey].content.push(remark);
+         castleService.rapidRemarks[remarkKey].content.push(remark);
          $scope.remarkTitle = null;
          $scope.remarkValue = null;
      };
@@ -263,11 +183,12 @@
      $scope.showRapidRemarksDialog = function (event, itemIndex, checkboxIndex) {
           $rootScope.itemIndex = itemIndex;
           $rootScope.checkboxIndex = checkboxIndex;
+
                   //console.log("ItemIndex: " + itemIndex + " checkboxindex: " +  checkboxIndex);
           $mdDialog
              .show({
-                 controller: 'createController',
-                 templateUrl: 'rapidRemarksDialog.html',
+                 controller: 'itemController',
+                 templateUrl: '../html/rapidRemarksDialog.html',
                  parent: angular.element(document.body),
                  targetEvent: event,
                  clickOutsideToClose: true
@@ -277,31 +198,9 @@
               $rootScope.checkboxIndex = null;
            // console.log("FINALLY!");
           });
-
      };
 
-     $scope.previewReport = function($event) {
-          $mdDialog
-             .show({
-                 //controller: 'generateController',
-                 templateUrl: './html/generate.html',
-                 parent: angular.element(document.body),
-                 targetEvent: event,
-                 clickOutsideToClose: true
-                // ,preserveScope: true
-             })
-            .finally(function(){
-                // Reset Rapid Remark show/hide values
-                for (var remarkSectionKey in $scope.rapidRemarks) {
-                    var remarkSection = $scope.rapidRemarks[remarkSectionKey];
-                    remarkSection.showValue = false;
-                    for (var remarkKey in remarkSection.content) {
-                        var remark = remarkSection.content[remarkKey];
-                        remark.showValue = false;
-                    }
-                }
-          });
-     };
+
 
      $scope.cancelDialog = function () {
          $mdDialog.cancel();
@@ -447,47 +346,7 @@
         // console.log(JSON.stringify($scope.newItem, null, 2));
      };
 
-     $scope.addPageToReport = function (newPage) {
-         $scope.report.sections[$scope.sectionIndex].pages.push({'title':newPage, "items":[]});
-         //console.log(JSON.stringify($scope.report[$scope.sectionIndex][newPage], null, 2));
-     };
 
-//     function jambaJSON() {
-//         for (var sectionkey in reportOne.sections) {
-//             var section = reportOne.sections[sectionkey];
-//            for (var pagekey in section.pages) {
-//                var page = section.pages[pagekey];
-//                for (var itemkey in page.items) {
-//                    var item = page.items[itemkey];
-//
-//                    if (item.type == 'radio' || item.type == 'select') {
-//                        var tcontent = [];
-//
-//                        if (item.content != []) {
-//                            for (var i in item.content) {
-//                                var key = "";
-//                                for (key in item.content[i]);
-//                                var temp = {'title':i,'rrTitle':key, 'rrVal':item.content[i][key]};
-//                                tcontent.push(temp);
-//                            }
-//                            reportOne.sections[sectionkey].pages[pagekey].items[itemkey].content = tcontent;
-//                        }
-//                    } else if (item.type == 'checkbox') {
-//                        var tcontent = [];
-//                        for (var i in item.value) {
-//                            var temp = {'title':i,'c':false};
-//                            tcontent.push(temp);
-//                        }
-//                        reportOne.sections[sectionkey].pages[pagekey].items[itemkey].content = tcontent;
-//                        item.value = [];
-//                        reportOne.sections[sectionkey].pages[pagekey].items[itemkey].value = [];
-//                    }
-//                }
-//            }
-//         }
-//         console.log(JSON.stringify(reportOne, null, 2));
-//     }
-//
-//     jambaJSON();
+
 
  });

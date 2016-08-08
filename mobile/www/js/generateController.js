@@ -24,7 +24,7 @@ app.controller('generateController', function ($rootScope, $scope, $mdUtil, $mdD
     castleService.currentPage.title = "Preview Report";
     castleService.currentPage.icon = "back";
     castleService.currentPage.toggleNavMenu = false;
-    castleService.currentPage.link = "create({sectionIndex:'default'})";
+    castleService.currentPage.link = "inspection({sectionIndex:'default'})";
     castleService.currentPage.go = {state:"create", params:{sectionIndex:'default'}};
     castleService.currentPage.showExtraMenu = false;
 

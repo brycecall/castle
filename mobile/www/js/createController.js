@@ -51,7 +51,7 @@
              castleService.currentPage.title = $scope.report.sections[$scope.selectedSection].title;
              castleService.currentPage.icon = "back";
              castleService.currentPage.toggleNavMenu = false;
-             castleService.currentPage.link = "create({sectionIndex:'default'})";
+             castleService.currentPage.link = "inspection({sectionIndex:'default'})";
              castleService.currentPage.go = {state:"create", params:{sectionIndex:'default'}};
              castleService.currentPage.showExtraMenu = true;
          }

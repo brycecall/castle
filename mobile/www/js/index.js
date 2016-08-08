@@ -1,5 +1,5 @@
 // Create the main module
-var app = angular.module('castleApp', ['ui.router', 'ngMaterial']);
+var app = angular.module('castleApp', ['ui.router', 'ngMaterial', 'ui.sortable']);
 
 app.constant('DEFAULT_COLOR', '#009688'); //4CAF50
 
@@ -191,7 +191,7 @@ app.controller('indexController', function ($scope, castleService, $mdUtil, $mdS
 //        {
 //            title: "New Report",
 //            icon: "new_report",
-//            link: "create({sectionIndex:'default'})"
+//            link: "inspection({sectionIndex:'default'})"
 //        },
         {
             title: "New Inspection",

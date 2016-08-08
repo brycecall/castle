@@ -5,11 +5,11 @@ app.controller('accountController', function accountController($rootScope, $scop
         castleService.currentPage.icon = "menu";
 
 
-            if (castleService.io.user)
-            {
-                $scope.name = castleService.io.user.username;
-                $scope.password = castleService.io.user.plain_password;
-            }
+//            if (castleService.io.user)
+//            {
+//                $scope.name = castleService.io.user.username;
+//                $scope.password = castleService.io.user.plain_password;
+//            }
             $scope.error = "";
             $scope.signin = function () {
 

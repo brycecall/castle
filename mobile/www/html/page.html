@@ -1,6 +1,6 @@
   <div ng-controller="pageController" flex="" layout="column" class="page" id="nav">
    <md-content>
-    <h1 class="md-title" style="margin-left:16px;">{{page.title}}</h1>
+    <h1 class="md-subhead insTitle">{{page.title}}</h1>
     <!--           PAGES-->
     <md-card style="margin-bottom:85px;" >
         <div ng-repeat="item in page.items" layout="column" >
@@ -16,12 +16,11 @@
                   
                 </md-button>
 
-                <md-button ng-click="item.answered = !item.answered" 
-                           aria-label="is answered" 
-                           class="md-icon-button" 
-                >
-                    <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
-                </md-button>
+                <div ng-show="item.answered" 
+                     style="width:45px; text-align:center" 
+                     >
+                    <md-icon md-svg-icon="check"></md-icon>
+                </div>
             </div>
             <md-divider ></md-divider>
             </span>

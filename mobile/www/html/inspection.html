@@ -1,6 +1,7 @@
 <div ng-controller="inspectionController" flex="" layout="column" class="page" id="nav">
    <section>
     <md-content class="centerPage" style="margin-bottom:85px;">
+        <h3 class="md-subhead insTitle" >Template</h3>
         <md-card ng-show="selectedSection == 'default' && castleService.assignPhotoMode == false">
             <md-input-container style="padding: 0px 16px 8px 16px;">
                 <md-select ng-model="castleService.reportTemplate" placeholder="Pick a Template">
@@ -10,10 +11,16 @@
         </md-card>
 
         <div ng-show="selectedSection == 'default' && castleService.reportTemplate != null">
-
+           <div layout="row">
+            <h3 class="md-subhead insTitle" >Sections &amp; Subsections</h3>
+<!--
+            <md-button class="md-icon-button" aria-label="toggle pages menu">
+                <md-icon md-svg-icon="{{clicked == false ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}"></md-icon>
+            </md-button>
+-->
+            </div>
             <md-card layout="column">
                 <div ng-repeat="section in report.sections" layout="column" layout-align="center left" style="text-align-left">
-<!--                    ui-sref="inspection({sectionIndex:$index})" -->
                       <div
                        style="padding:8px 0 8px 16px; margin:0; text-align:left; 
                               vertical-align:middle; border-radius:0; text-transform:none; " 
@@ -22,11 +29,10 @@
                         <span>{{section.title}}</span>
                         <span flex=""></span>
                         <md-button class="md-icon-button" ng-init="clicked = false" ng-click="clicked = !clicked" aria-label="toggle pages menu">
-                            <md-icon md-svg-icon="{{clicked == false ? 'keyboard_arrow_right' : 'keyboard_arrow_down'}}"></md-icon>
+                            <md-icon md-svg-icon="{{clicked == false ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}"></md-icon>
                         </md-button>
                       </div>
                       <div ng-if="clicked">
-<!--                           <md-divider></md-divider>-->
                             <div ng-repeat="page in section.pages" layout="column" layout-align="center left">
                               <md-divider></md-divider>
                                <md-button  ui-sref="page({'sectionIndex':$parent.$index, 'pageIndex':$index})" 

@@ -1,5 +1,5 @@
-<div ng-controller="itemController" flex="" layout="column" class="page" id="nav" style="padding:16px;">
-   <md-content>
+<div ng-controller="itemController" flex="" layout="column" class="page" id="nav" >
+   <md-content style="padding:16px;">
      <!--
     <md-toolbar layout="row" layout-align="center center">
         <div class="md-toolbar-tools">
@@ -18,8 +18,8 @@
     <div layout="row" layout-align="start center" >
         <h1 class="md-title">{{item.title}}</h1>
         <span flex=""></span>
-        <md-button ng-click="item.answered = !item.answered" aria-label="is answered" class="md-icon-button" style="">
-            <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
+        <md-button ng-click="item.answered = !item.answered" aria-label="is answered" class="" style="">
+            <span>Completed</span> <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
         </md-button>
     </div>
 
@@ -209,5 +209,8 @@
         </div>
       </div>
     </div>
+        <md-button ng-click="item.answered = !item.answered" aria-label="is answered" class="" style="">
+            <span>Completed</span> <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
+        </md-button>
     </md-content>
 </div>

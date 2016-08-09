@@ -405,7 +405,6 @@
              "select": "image",
              // "presettext" : "Preset Message",
              "number": "Number",
-             "text": "Text",
              "date": "Date"
          },
          "type": ""

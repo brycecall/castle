@@ -141,6 +141,7 @@ app.config(function ($mdIconProvider) {
         .icon('add_circle_outline', './bower_components/material-design-icons/content/svg/production/ic_add_circle_outline_48px.svg')
         .icon('keyboard_arrow_right', './bower_components/material-design-icons/hardware/svg/production/ic_keyboard_arrow_right_48px.svg')
         .icon('keyboard_arrow_down', './bower_components/material-design-icons/hardware/svg/production/ic_keyboard_arrow_down_48px.svg')
+    .icon('keyboard_arrow_up', './bower_components/material-design-icons/hardware/svg/production/ic_keyboard_arrow_up_48px.svg')
     ;
 });
 

@@ -852,3 +852,7 @@ md-toolbar {
 .handle {
    width:30px;   
 }
+
+.insTitle {
+    margin-left:8px;
+}

@@ -22,7 +22,10 @@
      $scope.showAddItemMenu = false;
      var pictureSource = null;
      var destinationType = null;
-
+     $scope.editMode = false;
+     $scope.toggleEditMode = function() {
+        $scope.editMode = !$scope.editMode;
+     };
      $scope.addToSelectedImages = function(index) {
         var safeIndex = $.inArray(index, castleService.selectedImages);
         if(safeIndex == -1) {
@@ -32,7 +35,14 @@
         }
      };
 
-
+     $scope.addQuestion = function(array, index) {
+         
+         var template = {
+              "title": "NEW QUESTION TITLE",
+              "items": []
+         }
+         array.splice(index, 0, template);
+     };
 
      $scope.getAnsweredIcon = function(answered) {
          return (answered === true) ? 'check' : 'check_box_outline_blank';
@@ -209,7 +219,7 @@
      $scope.showItemDialog = function (event) {
          $mdDialog.show({
              controller: 'pageController',
-             templateUrl: '../html/itemDialog.html',
+             templateUrl: './html/itemDialog.html',
              parent: angular.element(document.body),
              targetEvent: event,
              clickOutsideToClose: true,
@@ -220,7 +230,7 @@
      $scope.showPageDialog = function (event) {
          $mdDialog.show({
              controller: 'pageController',
-             templateUrl: '../html/pageDialog.html',
+             templateUrl: './html/pageDialog.html',
              parent: angular.element(document.body),
              targetEvent: event,
              clickOutsideToClose: true,
@@ -287,7 +297,7 @@
           $mdDialog
              .show({
                  controller: 'createController',
-                 templateUrl: '../html/rapidRemarksDialog.html',
+                 templateUrl: './html/rapidRemarksDialog.html',
                  parent: angular.element(document.body),
                  targetEvent: event,
                  clickOutsideToClose: true

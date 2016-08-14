@@ -1,0 +1,133 @@
+adding a user to the firebase db       		
+api/insert/user/
+	POST (JSON)
+			{
+			"name":"",
+			"email":"",
+			"pw":""
+			}
+	return: (JSON)
+		{
+			"status":"", //success, failure
+			"reason":"" //some error codes that make sense to us
+		}
+
+		
+authenticating a user in the firebase db  
+api/authuser/
+POST (JSON)
+	{
+		"email":"",
+		"pw":""
+	}
+return	
+	{
+		"status":"", //success, failure
+		"reason":"" //invalid email, invalid password, "" if successful
+	}
+
+inserting an inspection
+api/insert/inspection/
+POST (JSON)
+	{} //inspection JSON
+return
+	{
+		"id":"" //report id
+	}
+
+inserting an inspection from an id
+api/insert/inspection/{id}
+POST (JSON)
+	{
+		"id":"", //report id
+		"inspection": {} //report JSON
+	}
+return 
+	{
+		"status":"", //success, failure
+		"reason":"" //"" if successful
+	}
+
+updating an inspection
+api/update/inspection/
+POST (JSON)
+	{
+		"id":"", //report id
+		"inspection": {} //report JSON
+	}
+return 
+	{
+		"status":"", //success, failure
+		"reason":"" //"" if successful
+	}
+
+
+selecting inspections from a user
+api/select/inspections/{email}/{type}/{sortfield = date}/{ascending=false}/{startdate = today-month}/{enddate=today}
+GET
+return
+[] //array of inspection JSON objects
+
+note:
+type //inspection, template
+
+
+selecting inspections from a user
+api/select/inspections/meta/{email}/{type}/{sortfield = date}/{ascending=false}/{startdate = today-month}/{enddate=today}
+GET
+return
+[] //array of inspection meta data JSON objects
+
+note:
+type //inspection, template
+
+
+selecting inspections by id
+api/select/inspection/{id}
+GET
+return
+{} //inspection json object
+
+
+deleting an inspection
+api/delete/inspection/id
+DELETE (JSON)
+
+return 
+	{
+		"status":"", //success, failure
+		"reason":"" //"" if successful
+	}
+
+selecting a user
+api/select/user
+
+
+
+deleting a user
+
+
+
+
+
+
+//GIt notes from linus
+everyone has their own branch
+"keep separate projects separate" "separate projects go in separate repos"
+"Performance isn't about doing the same thing faster, when you make something faster people start to use it differently. That is why I wanted to make merging fast because you will merge often and when you merge often you don't get as many issues merging because you merge smaller files."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

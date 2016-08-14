@@ -117,6 +117,7 @@ app.config(function ($mdIconProvider) {
         .icon('close','./bower_components/material-design-icons/navigation/svg/production/ic_close_48px.svg')
         .icon('back','./bower_components/material-design-icons/navigation/svg/production/ic_arrow_back_48px.svg')
         .icon('more_vert','./bower_components/material-design-icons/navigation/svg/production/ic_more_vert_48px.svg')
+        .icon('more_horiz','./bower_components/material-design-icons/navigation/svg/production/ic_more_horiz_48px.svg')
         .icon('account_circle','./bower_components/material-design-icons/action/svg/production/ic_account_circle_48px.svg')
         .icon('rrAdd','./bower_components/material-design-icons/av/svg/production/ic_playlist_add_48px.svg')
         .icon('rrEdit','./bower_components/material-design-icons/av/svg/production/ic_playlist_add_check_48px.svg')
@@ -141,7 +142,8 @@ app.config(function ($mdIconProvider) {
         .icon('add_circle_outline', './bower_components/material-design-icons/content/svg/production/ic_add_circle_outline_48px.svg')
         .icon('keyboard_arrow_right', './bower_components/material-design-icons/hardware/svg/production/ic_keyboard_arrow_right_48px.svg')
         .icon('keyboard_arrow_down', './bower_components/material-design-icons/hardware/svg/production/ic_keyboard_arrow_down_48px.svg')
-    .icon('keyboard_arrow_up', './bower_components/material-design-icons/hardware/svg/production/ic_keyboard_arrow_up_48px.svg')
+        .icon('keyboard_arrow_up', './bower_components/material-design-icons/hardware/svg/production/ic_keyboard_arrow_up_48px.svg')
+        .icon('mode_edit', './bower_components/material-design-icons/editor/svg/production/ic_mode_edit_48px.svg')
     ;
 });
 

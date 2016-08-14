@@ -4,6 +4,9 @@ var reportOne =
   "name": "reportTemplate",
   "title": "reportTemplate",
   "date":"3/22/2016",
+  "type":"template",
+  "inspectiontype":"",
+  "status":"",
   "sections": [
     {
       "title": "Field Notes",

@@ -24,6 +24,11 @@
 
      $scope.rapidRemarks = castleService.rapidRemarks;
      $scope.finishedRequired = false;
+     $scope.editMode = false;
+     
+     $scope.toggleEditMode = function() {
+        $scope.editMode = !$scope.editMode;
+     };
 
      castleService.reportTemplate = reportOne;
      //$scope.report = reportOne; //REMOVE after testing
@@ -43,13 +48,38 @@
         }
      };
 
-
-
+     $scope.buffer = [];
+     $scope.remove = function(level, index) {
+         $scope.buffer = level.splice(index, 1);
+     };
+     
+     $scope.getTemplate = function() {
+        
+     };
+     
+     $scope.addSection = function(array, index) {
+         
+         var template = {
+              "title": "NEW SECTION TITLE",
+              "color": "#000000",
+              "pages": []
+         }
+         array.splice(index, 0, template);
+     };
+     
+     $scope.addSubsection = function(array, index) {
+         
+         var template = {
+              "title": "NEW SUBSECTION TITLE",
+              "color": "#000000",
+              "pages": []
+         }
+         array.splice(index, 0, template);
+     };
+     
      $scope.getAnsweredIcon = function(answered) {
          return (answered === true) ? 'check' : 'check_box_outline_blank';
      };
-
-
 
      $scope.clearSelection = function() {
         castleService.selectedImages = [];
@@ -449,6 +479,10 @@
              'content': [],
              'value': ''
          };
+     };
+     
+     $scope.logstuff = function(stuff) {
+        console.log(stuff);
      };
 
      $scope.resetNewItemValueContents = function () {

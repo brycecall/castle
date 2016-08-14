@@ -160,7 +160,7 @@
           $mdDialog
              .show({
                  controller: 'itemController',
-                 templateUrl: '../html/editRapidRemarks.html',
+                 templateUrl: './html/editRapidRemarks.html',
                  parent: angular.element(document.body),
                  targetEvent: event,
                  clickOutsideToClose: true
@@ -188,7 +188,7 @@
           $mdDialog
              .show({
                  controller: 'itemController',
-                 templateUrl: '../html/rapidRemarksDialog.html',
+                 templateUrl: './html/rapidRemarksDialog.html',
                  parent: angular.element(document.body),
                  targetEvent: event,
                  clickOutsideToClose: true

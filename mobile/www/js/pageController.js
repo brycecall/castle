@@ -24,7 +24,7 @@
      var destinationType = null;
      $scope.editMode = false;
      $scope.toggleEditMode = function() {
-        $scope.editMode = !$scope.editMode;
+        castleService.editMode = !castleService.editMode;
      };
      $scope.addToSelectedImages = function(index) {
         var safeIndex = $.inArray(index, castleService.selectedImages);

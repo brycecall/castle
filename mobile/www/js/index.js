@@ -237,7 +237,10 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
         {"title":"reportOne", "id":"AHRDF-sdf4-sd34sd-3SDF"}
     ];
     factory.reportTemplate = null;
-
+    factory.editMode = false;
+    factory.toggle = function(input) {
+        input = !input;
+    };
     //factory.serverURL = "http://dev.maurasoftware.com:9526";
     
     //TODO: change when send and delete differ

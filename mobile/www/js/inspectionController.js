@@ -6,28 +6,18 @@
      $scope.report = castleService.currentReport;
      
      // change main header image and title
-     if ($scope.selectedSection == "default" || $scope.report.sections[$scope.selectedSection] == null) {
-         castleService.currentPage.showIcon = true;
-         castleService.currentPage.toggleNavMenu = true;
-         castleService.currentPage.title = $scope.report.title;
-         castleService.currentPage.icon = "menu";
-
-     } else {
-         //console.log($scope.report.sections[$scope.selectedSection]);
-         castleService.currentPage.showIcon = true;
-         castleService.currentPage.title = $scope.report.sections[$scope.selectedSection].title;
-         castleService.currentPage.icon = "back";
-         castleService.currentPage.toggleNavMenu = false;
-         castleService.currentPage.go = {state:"inspection", params:{sectionIndex:'default'}};
-         castleService.currentPage.showExtraMenu = true;
-     }
+     castleService.currentPage.showIcon = true;
+     castleService.currentPage.toggleNavMenu = true;
+     castleService.currentPage.title = $scope.report.title;
+     castleService.currentPage.icon = "menu";
+     castleService.currentPage.showExtraMenu = true;
 
      $scope.rapidRemarks = castleService.rapidRemarks;
      $scope.finishedRequired = false;
      $scope.editMode = false;
      
      $scope.toggleEditMode = function() {
-        $scope.editMode = !$scope.editMode;
+        castleService.editMode = !castleService.editMode;
      };
 
      castleService.reportTemplate = reportOne;

@@ -23,6 +23,23 @@
         </md-button>
     </div>
 
+<div ng-if="castleService.editMode">
+    <br/>
+    <md-input-container class="md-block">
+        <label>Type</label>
+        <md-select ng-model="item.type" value="typevalue">
+            <md-option ng-repeat="(typekey, typevalue) in itemTypes.types">{{typekey}}</md-option>
+        </md-select>
+    </md-input-container>
+    <br/>
+    <md-input-container class="md-block">
+      <label>Title</label>
+      <input ng-model="item.title">
+    </md-input-container>
+
+
+</div>
+
 <div>
     <!--                       CLIENT INFO-->
     <div ng-if="item.type == 'clientinfo'  && (item.required == true || castleService.hideShowOptions.showNonRequired)">
@@ -134,14 +151,16 @@
 
         <!--                            RADIO-->
         <div ng-if="item.type == 'radio'  && (item.required == true || castleService.hideShowOptions.showNonRequired)" id="radParent">
-            <md-radio-group ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#radParent'}"  ng-model="item.content">
-               <div ng-repeat="radiovalue in item.content track by $index" layout="row" layout-align="start center">
-                 <div class="handle">
-                     <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
-                 </div>
-                 <md-radio-button ng-value="radiovalue" class="">
-                    <span>{{radiovalue.title}}</span>
-                 </md-radio-button>
+            <md-radio-group ng-model="item.value">
+               <div ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#radParent'}"   ng-model="item.content">
+                    <div ng-repeat="radiovalue in item.content track by $index" layout="row" layout-align="start center">
+                     <div class="handle">
+                         <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
+                     </div>
+                     <md-radio-button ng-value="radiovalue.title" class="">
+                        <span>{{radiovalue.title}}</span>
+                     </md-radio-button>
+                  </div>
               </div>
             </md-radio-group>
         </div>

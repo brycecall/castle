@@ -10,7 +10,7 @@
             </md-input-container>
         </md-card>
 
-        <div ng-show="selectedSection == 'default' && castleService.reportTemplate != null">
+        <div ng-show="castleService.reportTemplate != null">
             <div layout="row" layout-align="space-between center">
             <h3 class="md-subhead insTitle" >Sections &amp; Subsections</h3>
                 <md-menu>
@@ -21,7 +21,7 @@
                    <md-menu-item>
                      <md-button ng-click="toggleEditMode()" aria-label="Toggle Edit Mode">
                        <md-icon md-menu-align-target md-svg-icon="mode_edit"></md-icon>
-                       Toggle Edit Mode
+                       {{castleService.editMode ? 'Exit' : 'Enter'}} Edit Mode
                      </md-button>
                    </md-menu-item>
                  </md-menu-content>
@@ -34,26 +34,31 @@
              layout="column" 
              layout-align="center left" 
              style="text-align-left">
-              <div style="padding:0px 0 0px 16px; margin:0;
+              <div  style="padding:0px 0px 0px 16px; margin:0;
                          vertical-align:middle; border-radius:0; 
-                         text-transform:none; background-color:white;" 
+                         text-transform:none; background-color:white;  height:52px;" 
                class="md-no-style" 
                aria-label="{{section.title}}"
                layout="row" 
                layout-align="left center">
-                <div class="handle" style="margin-right:6px">
+                <div ng-show="castleService.editMode" class="handle" style="margin-right:6px;">
                   <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
                 </div>
                 <input type="text" 
-                       ng-disabled="!editMode" 
+                       ng-disabled="!castleService.castleService.editMode" 
                        ng-model="section.title" 
-                       style="border:none; background-color:white;"/>
+                       style="background-color:white;"
+                       ng-class="'noBorder'" />
 
                 <span flex=""></span>
-                <md-button class="md-icon-button" ng-init="clicked = false" ng-click="clicked = !clicked" aria-label="toggle pages menu">
+                <md-button class="md-icon-button" 
+                   ng-init="clicked = false" 
+                   ng-click="clicked = !clicked" 
+                   aria-label="toggle pages menu"
+                   >
                     <md-icon md-svg-icon="{{clicked == false ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}"></md-icon>
                 </md-button>
-                <md-menu style="">
+                <md-menu style="" ng-show="castleService.editMode">
                     <md-button class="md-icon-button" aria-label="section menu" ng-click="$mdOpenMenu($event)">
                         <md-icon  md-svg-icon="more_vert"></md-icon>
                     </md-button>
@@ -86,30 +91,28 @@
                       <md-divider></md-divider>
                       <div layout="row" layout-align="start center" style="background-color:#ECEFF1;">              
                            <span class="subhandle" style="text-align:right; padding:8px 0 8px 28px;">
-                              <md-icon md-svg-icon="./img/drag.svg" style="width:30px;"></md-icon>
+                              <md-icon ng-show="castleService.editMode"  md-svg-icon="./img/drag.svg" style="width:30px;"></md-icon>
                            </span>
-                           <span ng-if="editMode"  flex="" style="padding-left:8px;">
-                           <input type="text" 
+                           <span ng-if="castleService.editMode" style="padding-left:8px;">
+                               <input type="text" 
                                ng-model="page.title" 
-                               style="border:none; background-color:#ECEFF1;"/>
-                            </span>
+                               style="border:none; background-color:#ECEFF1"/>
+                           </span>
                                
-                           <md-button ng-if="!editMode" ui-sref="page({'sectionIndex':$parent.$index, 'pageIndex':$index})" 
+                           <md-button  ui-sref="page({'sectionIndex':$parent.$index, 'pageIndex':$index})" 
                                        style="padding:2px 0px 2px 8px; margin:0; text-align:left; 
-                                              vertical-align:middle; border-radius:0; text-transform:none;  
-                                              background-color:#ECEFF1; width:100%"
+                                              vertical-align:middle; border-radius:0; text-transform:none; width:100%"
                                        aria-label="navigate to page"> 
-                                      <span>{{page.title}}</span>
+                                      <span flex=""><span ng-if="!castleService.editMode" >{{page.title}}</span></span>
                             </md-button>
 
-                            <md-button class="md-icon-button" 
+                            <md-button ng-show="castleService.editMode" class="md-icon-button" 
                                        ng-init="clicked = false" 
                                        aria-label="toggle pages menu"
                                        ng-click="remove(section.pages, $index)" 
                             >
                                 <md-icon md-svg-icon="cancel"></md-icon>
                             </md-button>
-                            <div style="height:100%; width:1px; background-color:black;"></div>
                        </div>
                     </div>
               </div>

@@ -849,6 +849,15 @@ md-toolbar {
   
    
 }
+
+.showMe .hide {
+   display:block;   
+}
+
+.hideMe .hide {
+   display:none;   
+}
+
 .handle {
    width:30px;   
 }
@@ -868,4 +877,12 @@ md-toolbar {
 
 .ui-sortable-helper md-divider {
     visibility:hidden;
+}
+
+.noBorder {
+border:none;
+}
+
+.inBorder {
+border-width: 1px; border-style:solid; border-color:#ECEFF1;
 }

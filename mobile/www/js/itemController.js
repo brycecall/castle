@@ -16,7 +16,7 @@
      castleService.currentPage.icon = "back";
      castleService.currentPage.toggleNavMenu = false;
      castleService.currentPage.go = {state:"page", params:{'sectionIndex':$scope.sectionIndex, 'pageIndex':$scope.pageIndex}};
-     castleService.currentPage.showExtraMenu = false;
+     castleService.currentPage.showExtraMenu = true;
 
      $scope.subPage = '';
      $scope.isOpen = false;

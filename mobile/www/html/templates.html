@@ -18,7 +18,7 @@
                <md-icon md-svg-icon="reverse"></md-icon>  Reverse Order
             </md-button>
 
-            <md-button ui-sref="create({section:'default'})" class="md-primary " >
+            <md-button ui-sref="inspection({sectionIndex:'default'})" class="md-primary " >
                 <md-icon md-svg-icon="new_report"></md-icon>  New Template
             </md-button>
         </div>
@@ -34,7 +34,7 @@
                 </div>
             </md-whiteframe>
             
-            <md-card  ng-repeat="reportTemplate in inspectionService.templates | orderBy:orderAttribute:reverse"
+            <md-card  ng-repeat="reportTemplate in castleService.templates | orderBy:orderAttribute:reverse"
                ng-click="switchTemplate(reportTemplate)" layout-align="center center">
                 <span>{{reportTemplate.title}}</span>
             </md-card>

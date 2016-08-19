@@ -1,15 +1,15 @@
-app.controller('accountController', function accountController($rootScope, $scope, inspectionService, $state, $mdSidenav) {
+app.controller('accountController', function accountController($rootScope, $scope, castleService, $state, $mdSidenav) {
 
-        inspectionService.currentPage.toggleNavMenu = true;
-        inspectionService.currentPage.title = "Account";
-        inspectionService.currentPage.icon = "menu";
+        castleService.currentPage.toggleNavMenu = true;
+        castleService.currentPage.title = "Account";
+        castleService.currentPage.icon = "menu";
 
 
-            if (inspectionService.io.user)
-            {
-                $scope.name = inspectionService.io.user.username;
-                $scope.password = inspectionService.io.user.plain_password;
-            }
+//            if (castleService.io.user)
+//            {
+//                $scope.name = castleService.io.user.username;
+//                $scope.password = castleService.io.user.plain_password;
+//            }
             $scope.error = "";
             $scope.signin = function () {
 
@@ -21,7 +21,7 @@ app.controller('accountController', function accountController($rootScope, $scop
                     return;
                 }
 
-                inspectionService.io.login($scope.email, $scope.password);
+                castleService.io.login($scope.email, $scope.password);
             };
             $scope.register = function() {
                 if (!$scope.name || !$scope.email || !$scope.password || !$scope.passwordTwo)
@@ -38,7 +38,7 @@ app.controller('accountController', function accountController($rootScope, $scop
                         return;
                     }
                 
-                inspectionService.io.createNewUser($scope.email, $scope.password, $scope.name);
+                castleService.io.createNewUser($scope.email, $scope.password, $scope.name);
             };
     
             $rootScope.authenticateUser_handler = function(data) {
@@ -52,12 +52,12 @@ app.controller('accountController', function accountController($rootScope, $scop
                         {
                             $state.go("saved");
                         }
-                    inspectionService.io.refresh();
+                    castleService.io.refresh();
                 };
             $rootScope.createUser_handler = $rootScope.authenticateUser_handler;
     
             $scope.signout = function() {
                 $scope.username = null;
-                inspectionService.io.logout();
+                castleService.io.logout();
             };
         });

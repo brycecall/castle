@@ -849,3 +849,23 @@ md-toolbar {
   
    
 }
+.handle {
+   width:30px;   
+}
+
+.insTitle {
+    margin-left:8px;
+}
+
+/*
+.ui-sortable-helper.sortdivider {
+    border-width: 0 0 1px 0;
+    border-color:rgba(0,0,0,0.12);
+    border-style: solid;
+}
+*/
+
+
+.ui-sortable-helper md-divider {
+    visibility:hidden;
+}

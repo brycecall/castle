@@ -12,15 +12,15 @@
             <md-dialog-content>
                 <div class="md-dialog-content">
                     <form ng-submit="linkRemark(remarkItem, rItem, false); cancelDialog()">
-                        <span ng-init="remarkItem = report.sections[currentSection].pages[selectedPage].items[$root.itemIndex].content[$root.checkboxIndex]"></span>
-                        <md-input-container ng-init="rItem.rrTitle = remarkItem.rrTitle" class="md-block">
+                        <span ng-init="remarkItem = report.sections[castleService.selectedSection].pages[castleService.selectedPage].items[$root.itemIndex].content[$root.checkboxIndex]"></span>
+                           <md-input-container ng-init="rItem.rrTitle = remarkItem.rrTitle" class="md-block">
                             <md-select required ng-model="rItem.rrTitle" placeholder="Rapid Remark Sections">
-                                <md-option ng-repeat="remarkSection in rapidRemarks track by $index" ng-value="$index">{{remarkSection.title}}</md-option>
+                                <md-option ng-repeat="remarkSection in castleService.rapidRemarks track by $index" ng-value="$index">{{remarkSection.title}}</md-option>
                             </md-select>
                         </md-input-container>
                         <md-input-container ng-if="rItem.rrTitle != null" ng-init="rItem.rrVal = remarkItem.rrVal"  class="md-block">
                             <md-select required ng-model="rItem.rrVal" placeholder="Rapid Remarks">
-                                <md-option ng-repeat="remark in rapidRemarks[rItem.rrTitle].content track by $index" ng-value="$index">{{remark.title}}</md-option>
+                                <md-option ng-repeat="remark in castleService.rapidRemarks[rItem.rrTitle].content track by $index" ng-value="$index">{{remark.title}}</md-option>
                             </md-select>
                         </md-input-container>
                         <div layout="row">
@@ -29,8 +29,8 @@
                             <md-button type="submit" aria-label="submit" class=" md-raised">Link me!</md-button>
                         </div>
                         <div>
-                            <h3>{{rapidRemarks[rItem.rrTitle].content[rItem.rrVal].title}}</h3>
-                            <p>{{rapidRemarks[rItem.rrTitle].content[rItem.rrVal].value}}</p>
+                            <h3>{{castleService.rapidRemarks[rItem.rrTitle].content[rItem.rrVal].title}}</h3>
+                            <p>{{castleService.rapidRemarks[rItem.rrTitle].content[rItem.rrVal].value}}</p>
                         </div>
                     </form>
                 </div>

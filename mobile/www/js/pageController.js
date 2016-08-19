@@ -1,35 +1,19 @@
- app.controller('inspectionController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, castleService, $state) {
+ app.controller('pageController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, castleService, $state) {
      $scope.castleService = castleService;
-     $scope.selectedSection = $stateParams.sectionIndex;
-     $scope.castleService.selectedSection = $scope.selectedSection;
-     $scope.selectedPage = castleService.selectedPage;
      $scope.report = castleService.currentReport;
+     $scope.sectionIndex = $stateParams.sectionIndex;
+     $scope.pageIndex = $stateParams.pageIndex;
+     $scope.page = $scope.report.sections[$scope.sectionIndex].pages[$scope.pageIndex];
      
      // change main header image and title
-     if ($scope.selectedSection == "default" || $scope.report.sections[$scope.selectedSection] == null) {
-         castleService.currentPage.showIcon = true;
-         castleService.currentPage.toggleNavMenu = true;
-         castleService.currentPage.title = $scope.report.title;
-         castleService.currentPage.icon = "menu";
-
-     } else {
-         //console.log($scope.report.sections[$scope.selectedSection]);
-         castleService.currentPage.showIcon = true;
-         castleService.currentPage.title = $scope.report.sections[$scope.selectedSection].title;
-         castleService.currentPage.icon = "back";
-         castleService.currentPage.toggleNavMenu = false;
-         castleService.currentPage.go = {state:"inspection", params:{sectionIndex:'default'}};
-         castleService.currentPage.showExtraMenu = true;
-     }
-
-     $scope.rapidRemarks = castleService.rapidRemarks;
-     $scope.finishedRequired = false;
-     $scope.editMode = false;
+     castleService.currentPage.showIcon = true;
+     castleService.currentPage.title = $scope.report.sections[$scope.sectionIndex].title;
+     castleService.currentPage.icon = "back";
+     castleService.currentPage.toggleNavMenu = false;
+     castleService.currentPage.go = {state:"inspection", params:{'sectionIndex':'default'}};
+     castleService.currentPage.showExtraMenu = true;
      
-     $scope.toggleEditMode = function() {
-        $scope.editMode = !$scope.editMode;
-     };
-
+     $scope.rapidRemarks = castleService.rapidRemarks;
      castleService.reportTemplate = reportOne;
      //$scope.report = reportOne; //REMOVE after testing
      $scope.subPage = '';
@@ -38,7 +22,10 @@
      $scope.showAddItemMenu = false;
      var pictureSource = null;
      var destinationType = null;
-
+     $scope.editMode = false;
+     $scope.toggleEditMode = function() {
+        $scope.editMode = !$scope.editMode;
+     };
      $scope.addToSelectedImages = function(index) {
         var safeIndex = $.inArray(index, castleService.selectedImages);
         if(safeIndex == -1) {
@@ -48,38 +35,21 @@
         }
      };
 
-     $scope.buffer = [];
-     $scope.remove = function(level, index) {
-         $scope.buffer = level.splice(index, 1);
-     };
-     
-     $scope.getTemplate = function() {
-        
-     };
-     
-     $scope.addSection = function(array, index) {
+     $scope.addQuestion = function(array, index) {
          
          var template = {
-              "title": "NEW SECTION TITLE",
-              "color": "#000000",
-              "pages": []
+              "title": "NEW QUESTION TITLE",
+              "items": []
          }
          array.splice(index, 0, template);
      };
-     
-     $scope.addSubsection = function(array, index) {
-         
-         var template = {
-              "title": "NEW SUBSECTION TITLE",
-              "color": "#000000",
-              "pages": []
-         }
-         array.splice(index, 0, template);
-     };
-     
+
      $scope.getAnsweredIcon = function(answered) {
          return (answered === true) ? 'check' : 'check_box_outline_blank';
      };
+
+
+
 
      $scope.clearSelection = function() {
         castleService.selectedImages = [];
@@ -248,8 +218,8 @@
 
      $scope.showItemDialog = function (event) {
          $mdDialog.show({
-             controller: 'createController',
-             templateUrl: 'itemDialog.html',
+             controller: 'pageController',
+             templateUrl: './html/itemDialog.html',
              parent: angular.element(document.body),
              targetEvent: event,
              clickOutsideToClose: true,
@@ -259,8 +229,8 @@
 
      $scope.showPageDialog = function (event) {
          $mdDialog.show({
-             controller: 'createController',
-             templateUrl: 'pageDialog.html',
+             controller: 'pageController',
+             templateUrl: './html/pageDialog.html',
              parent: angular.element(document.body),
              targetEvent: event,
              clickOutsideToClose: true,
@@ -327,7 +297,7 @@
           $mdDialog
              .show({
                  controller: 'createController',
-                 templateUrl: 'rapidRemarksDialog.html',
+                 templateUrl: './html/rapidRemarksDialog.html',
                  parent: angular.element(document.body),
                  targetEvent: event,
                  clickOutsideToClose: true
@@ -445,7 +415,6 @@
              "select": "image",
              // "presettext" : "Preset Message",
              "number": "Number",
-             "text": "Text",
              "date": "Date"
          },
          "type": ""
@@ -466,7 +435,7 @@
 
      $scope.addItemToReport = function () {
          //console.log("sectionIndex " + $scope.selectedSection + " Page: " + $scope.selectedPage + " Title: " + $scope.newItem.title);
-         $scope.report.sections[$scope.selectedSection].pages[$scope.selectedPage].items.push($scope.newItem);
+         $scope.report.sections[$scope.sectionIndex].pages[$scope.pageIndex].items.push($scope.newItem);
          $scope.resetNewItem();
      };
 
@@ -479,10 +448,6 @@
              'content': [],
              'value': ''
          };
-     };
-     
-     $scope.logstuff = function(stuff) {
-        console.log(stuff);
      };
 
      $scope.resetNewItemValueContents = function () {
@@ -512,7 +477,7 @@
      };
 
      $scope.addPageToReport = function (newPage) {
-         $scope.report.sections[$scope.selectedSection].pages.push({'title':newPage, "items":[]});
+         $scope.report.sections[$scope.sectionIndex].pages.push({'title':newPage, "items":[]});
          //console.log(JSON.stringify($scope.report[$scope.selectedSection][newPage], null, 2));
      };
 

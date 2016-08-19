@@ -15,11 +15,24 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "^1.5.2"
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "material-design-icons": "^2.2.3",
+    "angular-material": "^1.0.9",
+    "angular-animate": "^1.5.8",
+    "angular-aria": "^1.5.8"
   },
   "resolutions": {
-    "angular": "^1.5.2",
+    "angular": "^1.5.8",
     "angular-route": "~1.4.5",
-    "angular-touch": "~1.4.5"
-  }
+    "angular-touch": "~1.4.5",
+    "material-design-icons": "^2.2.3"
+  },
+    "dimitrk.exclude-indexing-filetree.excludeList": [
+        ".git(?!ignore)",
+        "dist",
+        "bower_components",
+        "node_modules"
+    ]
+    
 }

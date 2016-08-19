@@ -1,11 +1,11 @@
-app.controller('templateController', function ($scope, inspectionService, $state) {
-    $scope.inspectionService = inspectionService;
+app.controller('templateController', function ($scope, castleService, $state) {
+    $scope.castleService = castleService;
     $scope.reportTemplates = [];
-    inspectionService.currentPage.title = "Templates";
+    castleService.currentPage.title = "Templates";
 
     $scope.defaultReport = reportOne;
     $scope.switchReport = function(sReport) {
-        inspectionService.currentReport = sReport;
+        castleService.currentReport = sReport;
         $state.go("create");
     };
 

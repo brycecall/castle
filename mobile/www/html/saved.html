@@ -20,20 +20,20 @@
         <md-button ng-click="reverse = !reverse" style="text-transform:none">
            <md-icon md-svg-icon="reverse"></md-icon>  Reverse Order
         </md-button>
-        <md-button ng-click="switchReport(defaultReport)" ui-sref="create({section:'default'})" 
+        <md-button ng-click="switchReport(defaultReport)" ui-sref="inspection({sectionIndex:'default'})" 
            class="md-primary">
             <md-icon md-svg-icon="new_report"></md-icon>  New Report
         </md-button>
         </div>
         <div layout="row" class="flex-wrap" >
-            <md-whiteframe  ng-repeat="sReport in inspectionService.reports | orderBy:orderAttribute:reverse" 
+            <md-whiteframe  ng-repeat="sReport in castleService.reports | orderBy:orderAttribute:reverse" 
                class="md-whiteframe-1dp frameStyle" ng-click="switchReport(sReport)" 
-               ui-sref="create({section:'default'})" layout-align="center center">
+               ui-sref="inspection({sectionIndex:'default'})" layout-align="center center">
                 <span>{{sReport.title}}</span>
             </md-whiteframe>
 
             <md-whiteframe class="md-whiteframe-1dp frameStyle" 
-               ng-click="switchReport(defaultReport)" ui-sref="create({section:'default'})" 
+               ng-click="switchReport(defaultReport)" ui-sref="inspection({sectionIndex:'default'})" 
                layout="column"
                layout-align="center center">
                <div>

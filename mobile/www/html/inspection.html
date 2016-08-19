@@ -2,13 +2,53 @@
    <section>
     <md-content class="centerPage" style="margin-bottom:85px;" id="centerPage">
         <h3 class="md-subhead insTitle" >Template</h3>
-        <md-card ng-show="selectedSection == 'default' && castleService.assignPhotoMode == false">
+        
+<md-card>
             <md-input-container style="padding: 0px 16px 8px 16px;">
                 <md-select ng-model="castleService.reportTemplate" placeholder="Pick a Template">
                     <md-option ng-repeat="template in castleService.reportTemplates track by $index" ng-value="template">{{template.title}}</md-option>
                 </md-select>
             </md-input-container>
-        </md-card>
+<!--
+           <div style="">
+                <div layout="row" class="flex-wrap" layout-align="start center" style="padding: 0 0 0 8px;">
+                     <md-input-container>
+                        <md-icon md-svg-icon="sort"></md-icon>
+                        <label>Order by</label>
+                        <md-select ng-model="orderAttribute">
+                            <md-option ng-repeat="orderOption in orderAttributeOptions" 
+                                       ng-value="orderOption">{{orderOption}}</md-option>
+                        </md-select>
+                    </md-input-container>
+
+                    <md-button ng-click="reverse = !reverse" style="text-transform:none">
+                       <md-icon md-svg-icon="reverse"></md-icon>  Reverse Order
+                    </md-button>
+
+                    <md-button ui-sref="inspection({sectionIndex:'default'})" class="md-primary " >
+                        <md-icon md-svg-icon="new_report"></md-icon>  New Template
+                    </md-button>
+                </div>
+
+                <div layout="row" class="flex-wrap" >
+
+                    <md-whiteframe class="md-whiteframe-1dp frameStyle" 
+                       layout="column"
+                       layout-align="center center">
+                       <div>
+                        <md-icon md-svg-icon="add_circle_outline" style="height:35px; width:35px; margin:5px;"></md-icon>
+                        <div>New Template</div>
+                        </div>
+                    </md-whiteframe>
+
+                    <md-card  ng-repeat="reportTemplate in castleService.templates | orderBy:orderAttribute:reverse"
+                       ng-click="switchTemplate(reportTemplate)" layout-align="center center">
+                        <span>{{reportTemplate.title}}</span>
+                    </md-card>
+                </div>
+            </div>
+-->
+</md-card>
 
         <div ng-show="castleService.reportTemplate != null">
             <div layout="row" layout-align="space-between center">
@@ -45,7 +85,7 @@
                   <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
                 </div>
                 <input type="text" 
-                       ng-disabled="!castleService.castleService.editMode" 
+                       ng-disabled="!castleService.editMode" 
                        ng-model="section.title" 
                        style="background-color:white;"
                        ng-class="'noBorder'" />

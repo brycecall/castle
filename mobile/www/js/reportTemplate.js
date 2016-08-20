@@ -1,8 +1,8 @@
 var reportOne = 
     
 {
-  "name": "reportTemplate",
-  "title": "reportTemplate",
+  "name": "Name of the Report",
+  "title": "Name of the Report",
   "date":"3/22/2016",
   "type":"template",
   "inspectiontype":"",
@@ -1866,11 +1866,6 @@ var reportOne =
         {
           "title": "Wall Fenestrations",
           "items": [
-            {
-              "title": "Show Value",
-              "type": "hidden",
-              "showvalue": false
-            },
             {
               "title": "Window Frame or Trim",
               "required": false, "answered":false,

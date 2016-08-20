@@ -24,13 +24,50 @@
     </div>
 
 <div ng-if="castleService.editMode">
+   
     <br/>
+
     <md-input-container class="md-block">
         <label>Type</label>
         <md-select ng-model="item.type" value="typevalue">
-            <md-option ng-repeat="(typekey, typevalue) in itemTypes.types">{{typekey}}</md-option>
+            <md-option ng-repeat="(typekey, typevalue) in itemTypes.types">
+ 
+            <md-icon md-svg-icon="{{getIcon(typevalue)}}"></md-icon>
+            {{typekey}}
+
+            </md-option>
         </md-select>
     </md-input-container>
+
+   
+<!--
+    <md-menu>
+        <md-button class="" 
+           style="width:200px; 
+                  background-color:#eee; 
+                  text-transform:none;
+                  text-align:left;
+                  margin: 6px 0 12px 0;" 
+           aria-label="select question type" 
+           ng-click="$mdOpenMenu($event)">
+            <span layout="row">
+            <md-icon md-menu-origin md-svg-icon="{{getIcon(item.type)}}" style="margin: 6px 8px 6px 4px;"></md-icon>
+            {{itemTypes.types[item.type]}}
+            <span flex=""></span>
+            <md-icon md-svg-icon="arrow_drop_down"></md-icon>
+            </span>
+        </md-button>
+        <md-menu-content>
+            <md-menu-item ng-repeat="(typekey, typevalue) in itemTypes.types" >
+            <md-button ng-click="setItemType(typevalue)" aria-label="Insert Question">
+            <md-icon md-menu-align-target md-svg-icon="{{getIcon(typekey)}}"></md-icon>
+            {{typekey}}
+            </md-button>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+-->
+    
     <br/>
     <md-input-container class="md-block">
       <label>Title</label>

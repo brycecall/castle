@@ -12,7 +12,7 @@
 <!--
            <div style="">
                 <div layout="row" class="flex-wrap" layout-align="start center" style="padding: 0 0 0 8px;">
-                     <md-input-container>
+                    <md-input-container>
                         <md-icon md-svg-icon="sort"></md-icon>
                         <label>Order by</label>
                         <md-select ng-model="orderAttribute">
@@ -31,50 +31,53 @@
                 </div>
 
                 <div layout="row" class="flex-wrap" >
-
-                    <md-whiteframe class="md-whiteframe-1dp frameStyle" 
-                       layout="column"
-                       layout-align="center center">
-                       <div>
-                        <md-icon md-svg-icon="add_circle_outline" style="height:35px; width:35px; margin:5px;"></md-icon>
-                        <div>New Template</div>
-                        </div>
-                    </md-whiteframe>
-
-                    <md-card  ng-repeat="reportTemplate in castleService.templates | orderBy:orderAttribute:reverse"
-                       ng-click="switchTemplate(reportTemplate)" layout-align="center center">
-                        <span>{{reportTemplate.title}}</span>
+                    <md-card  ng-repeat="reportTemplate in castleService.reportTemplates | orderBy:orderAttribute:reverse"
+                              ng-click="switchTemplate(reportTemplate)" 
+                              layout-align="center center"
+                              class="frameStyle">
+                        <div class="md-body-2" >{{reportTemplate.title}}</div>
+                        <div class="md-caption" style="font-style:italic">{{reportTemplate.type}}</div>
                     </md-card>
                 </div>
             </div>
 -->
 </md-card>
+        
+<div ng-show="castleService.reportTemplate != null">
 
-        <div ng-show="castleService.reportTemplate != null">
-            <div layout="row" layout-align="space-between center">
-            <h3 class="md-subhead insTitle" >Sections &amp; Subsections</h3>
-                <md-menu>
-                <md-button class="md-icon-button" aria-label="section menu" ng-click="$mdOpenMenu($event)">
-                    <md-icon md-svg-icon="more_vert"></md-icon>
-                </md-button>
-                 <md-menu-content>
-                   <md-menu-item>
-                     <md-button ng-click="toggleEditMode()" aria-label="Toggle Edit Mode">
-                       <md-icon md-menu-align-target md-svg-icon="mode_edit"></md-icon>
-                       {{castleService.editMode ? 'Exit' : 'Enter'}} Edit Mode
-                     </md-button>
-                   </md-menu-item>
-                 </md-menu-content>
-                </md-menu>
-            </div>
+    <div>
+    <h3 class="md-subhead insTitle" >Meta-Data</h3>
+              <br />
+              <br />
+    </div>   
+           
+           
+    <div layout="row" layout-align="space-between center">
+    <h3 class="md-subhead insTitle" >Sections &amp; Subsections</h3>
+        <md-menu>
+        <md-button class="md-icon-button" aria-label="section menu" ng-click="$mdOpenMenu($event)">
+            <md-icon md-svg-icon="more_vert"></md-icon>
+        </md-button>
+         <md-menu-content>
+           <md-menu-item>
+             <md-button ng-click="toggleEditMode()" aria-label="Toggle Edit Mode">
+               <md-icon md-menu-align-target md-svg-icon="mode_edit"></md-icon>
+               {{castleService.editMode ? 'Exit' : 'Enter'}} Edit Mode
+             </md-button>
+           </md-menu-item>
+         </md-menu-content>
+        </md-menu>
+    </div>
             
             
     <md-card id="secParent" layout="column"  ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#secParent'}"  ng-model="report.sections">
         <div ng-repeat="section in report.sections track by $index" 
              layout="column" 
              layout-align="center left" 
-             style="text-align-left">
-              <div  style="padding:0px 0px 0px 16px; margin:0;
+             style="text-align-left"
+             ng-init="clicked = false" 
+              >             
+               <div  style="padding:0px 0px 0px 16px; margin:0;
                          vertical-align:middle; border-radius:0; 
                          text-transform:none; background-color:white;  height:52px;" 
                class="md-no-style" 
@@ -88,13 +91,13 @@
                        ng-disabled="!castleService.editMode" 
                        ng-model="section.title" 
                        style="background-color:white;"
-                       ng-class="'noBorder'" />
+                       class="editInput nonEditInput"
+                       ng-class="castleService.editMode ? 'inputBorder' : 'nonEditInput'" />
 
                 <span flex=""></span>
                 <md-button class="md-icon-button" 
-                   ng-init="clicked = false" 
-                   ng-click="clicked = !clicked" 
                    aria-label="toggle pages menu"
+                   ng-click="clicked = !clicked"
                    >
                     <md-icon md-svg-icon="{{clicked == false ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}"></md-icon>
                 </md-button>
@@ -103,18 +106,19 @@
                         <md-icon  md-svg-icon="more_vert"></md-icon>
                     </md-button>
                      <md-menu-content>
-                       <md-menu-item>
-                         <md-button ng-click="addSubsection(section.pages, 0);" 
-                                    aria-label="Enter Edit Mode">
-                           <md-icon md-svg-icon="add"></md-icon>
-                           Add Subsection
-                         </md-button>
-                         </md-menu-item>
+
                           <md-menu-item>
                         <md-button ng-click="addSection(report.sections, $index)" 
                                    aria-label="Enter Edit Mode">
                            <md-icon md-svg-icon="add"></md-icon>
                            Add Section
+                         </md-button>
+                         </md-menu-item>
+                       <md-menu-item>
+                         <md-button ng-click="addSubsection(section.pages, 0);" 
+                                    aria-label="Enter Edit Mode">
+                           <md-icon md-svg-icon="add"></md-icon>
+                           Add Subsection
                          </md-button>
                          </md-menu-item>
                          <md-menu-item>
@@ -136,7 +140,8 @@
                            <span ng-if="castleService.editMode" style="padding-left:8px;">
                                <input type="text" 
                                ng-model="page.title" 
-                               style="border:none; background-color:#ECEFF1"/>
+                               style="border-color:#DDD"
+                               class="inputBorder" />
                            </span>
                                
                            <md-button  ui-sref="page({'sectionIndex':$parent.$index, 'pageIndex':$index})" 

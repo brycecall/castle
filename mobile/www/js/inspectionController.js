@@ -8,7 +8,7 @@
      // change main header image and title
      castleService.currentPage.showIcon = true;
      castleService.currentPage.toggleNavMenu = true;
-     castleService.currentPage.title = $scope.report.title;
+     castleService.currentPage.title = "New Inspection";
      castleService.currentPage.icon = "menu";
      castleService.currentPage.showExtraMenu = true;
 

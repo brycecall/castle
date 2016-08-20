@@ -16,7 +16,7 @@
      castleService.currentPage.icon = "back";
      castleService.currentPage.toggleNavMenu = false;
      castleService.currentPage.go = {state:"page", params:{'sectionIndex':$scope.sectionIndex, 'pageIndex':$scope.pageIndex}};
-     castleService.currentPage.showExtraMenu = false;
+     castleService.currentPage.showExtraMenu = true;
 
      $scope.subPage = '';
      $scope.isOpen = false;
@@ -96,6 +96,10 @@
             castleService.cancelAssignPhotoMode();
      };
      
+     
+     $scope.setItemType = function(val) {
+         $scope.item.type = val;
+     };
 
      $scope.setItem = function(item, val) {
          item.value = val;
@@ -273,6 +277,45 @@
      };
 
 
+      $scope.getIcon = function(type)
+     {
+         var result = "error";
+         switch (type)
+         {
+             case 'checkbox':
+                 result = "check_box";
+                 break;
+             case 'radio':
+                 result = "radio_button_checked";
+                 break;
+             case 'select':
+                 result = "arrow_drop_down_circle";
+                 break;
+             case 'presettext':
+                 result = "subject";
+                 break;
+             case 'text':
+                 result = "short_text";
+                 break;
+             case 'date':
+                 result = "today";
+                 break;
+             case 'time':
+                 result = "watch_later";
+                 break;
+             case 'number':
+                 result = "iso";
+                 break
+             case 'image':
+                 result = "image";
+                 break
+             default:
+                 result = "error";
+                 break;
+         }
+         return result;
+     };
+     
  /********************************************************
   * Plus Menu
   ***********************************************************/
@@ -281,11 +324,11 @@
          "types": {
              "checkbox": "checkbox",
              "radio": "radio",
-             "select": "image",
+             "select": "dropdown",
              // "presettext" : "Preset Message",
-             "number": "Number",
-             "text": "Text",
-             "date": "Date"
+             "number": "number",
+             "text": "text",
+             "date": "date"
          },
          "type": ""
      };

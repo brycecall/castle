@@ -24,7 +24,7 @@
      var destinationType = null;
      $scope.editMode = false;
      $scope.toggleEditMode = function() {
-        $scope.editMode = !$scope.editMode;
+        castleService.editMode = !castleService.editMode;
      };
      $scope.addToSelectedImages = function(index) {
         var safeIndex = $.inArray(index, castleService.selectedImages);
@@ -49,7 +49,44 @@
      };
 
 
-
+     $scope.getIcon = function(type)
+     {
+         var result = "error";
+         switch (type)
+         {
+             case 'checkbox':
+                 result = "check_box";
+                 break;
+             case 'radio':
+                 result = "radio_button_checked";
+                 break;
+             case 'select':
+                 result = "arrow_drop_down_circle";
+                 break;
+             case 'presettext':
+                 result = "subject";
+                 break;
+             case 'text':
+                 result = "short_text";
+                 break;
+             case 'date':
+                 result = "today";
+                 break;
+             case 'time':
+                 result = "watch_later";
+                 break;
+             case 'number':
+                 result = "iso";
+                 break
+             case 'image':
+                 result = "image";
+                 break
+             default:
+                 result = "error";
+                 break;
+         }
+         return result;
+     };
 
      $scope.clearSelection = function() {
         castleService.selectedImages = [];

@@ -2,7 +2,7 @@
    <md-content>
    
 <span layout="row" layout-align="space-between center">
-    <h1 class="md-subhead insTitle">{{page.title}}</h1>
+    <h1 class="md-subhead insTitle">{{page.title}} Questions</h1>
                 <md-menu>
                     <md-button class="md-icon-button" aria-label="section menu" ng-click="$mdOpenMenu($event)">
                         <md-icon md-svg-icon="more_vert"></md-icon>
@@ -28,21 +28,28 @@
         <div ng-repeat="item in page.items" layout="column" style="background-color:white;">
            <span ng-if="item.type != 'presettext'">
             <div layout="row" layout-align="start center" style="min-height:52px">
-                <div class="handle" style="text-align:right">
+                
+                <div ng-show="castleService.editMode" class="handle" style="text-align:right">
                      <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
                 </div>
-                <div ng-if="editMode" style="padding:8px 0 8px 16px;">
+<!--
+                <div ng-if="castleService.editMode" style="padding:8px 0 8px 16px;">
                    <input type="text" 
                    ng-model="item.title" 
                    style="border:none; background-color:#ECEFF1;"/>
                 </div>
+-->
                 <md-button
-                    ng-if="!editMode"
+                    
                     class="md-subhead md-no-style" 
                     ui-sref="item({'sectionIndex':sectionIndex, 'pageIndex':pageIndex, 'itemIndex':$index})"
-                    style="width: 100%; margin:0; padding: 8px 0 8px 16px; 
-                           border-radius:0; text-align:left; text-transform:none;"
+                    style="margin:0; padding: 8px 0 8px 8px; 
+                           border-radius:0; 
+                           text-align:left; 
+                           text-transform:none; 
+                           width:100%;"
                 >
+                   <md-icon md-svg-icon="{{getIcon(item.type)}}"></md-icon>
                     <span flex="">{{item.title}}</span>
                 </md-button>
 

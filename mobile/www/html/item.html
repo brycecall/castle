@@ -23,6 +23,60 @@
         </md-button>
     </div>
 
+<div ng-if="castleService.editMode">
+   
+    <br/>
+
+    <md-input-container class="md-block">
+        <label>Type</label>
+        <md-select ng-model="item.type" value="typevalue">
+            <md-option ng-repeat="(typekey, typevalue) in itemTypes.types">
+ 
+            <md-icon md-svg-icon="{{getIcon(typevalue)}}"></md-icon>
+            {{typekey}}
+
+            </md-option>
+        </md-select>
+    </md-input-container>
+
+   
+<!--
+    <md-menu>
+        <md-button class="" 
+           style="width:200px; 
+                  background-color:#eee; 
+                  text-transform:none;
+                  text-align:left;
+                  margin: 6px 0 12px 0;" 
+           aria-label="select question type" 
+           ng-click="$mdOpenMenu($event)">
+            <span layout="row">
+            <md-icon md-menu-origin md-svg-icon="{{getIcon(item.type)}}" style="margin: 6px 8px 6px 4px;"></md-icon>
+            {{itemTypes.types[item.type]}}
+            <span flex=""></span>
+            <md-icon md-svg-icon="arrow_drop_down"></md-icon>
+            </span>
+        </md-button>
+        <md-menu-content>
+            <md-menu-item ng-repeat="(typekey, typevalue) in itemTypes.types" >
+            <md-button ng-click="setItemType(typevalue)" aria-label="Insert Question">
+            <md-icon md-menu-align-target md-svg-icon="{{getIcon(typekey)}}"></md-icon>
+            {{typekey}}
+            </md-button>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+-->
+    
+    <br/>
+    <md-input-container class="md-block">
+      <label>Title</label>
+      <input ng-model="item.title">
+    </md-input-container>
+
+
+</div>
+
 <div>
     <!--                       CLIENT INFO-->
     <div ng-if="item.type == 'clientinfo'  && (item.required == true || castleService.hideShowOptions.showNonRequired)">
@@ -88,7 +142,7 @@
                      layout-align="end center" 
                      class="list_item flex-wrap" 
                      style="position:relative">
-                     <div class="handle">
+                     <div class="handle" ng-show="castleService.editMode">
                          <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
                      </div>
                     <span md-ink-ripple class="md-body-1" style="margin:0; color:#000" aria-label="checkbox">
@@ -134,14 +188,16 @@
 
         <!--                            RADIO-->
         <div ng-if="item.type == 'radio'  && (item.required == true || castleService.hideShowOptions.showNonRequired)" id="radParent">
-            <md-radio-group ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#radParent'}"  ng-model="item.content">
-               <div ng-repeat="radiovalue in item.content track by $index" layout="row" layout-align="start center">
-                 <div class="handle">
-                     <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
-                 </div>
-                 <md-radio-button ng-value="radiovalue" class="">
-                    <span>{{radiovalue.title}}</span>
-                 </md-radio-button>
+            <md-radio-group ng-model="item.value">
+               <div ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#radParent'}"   ng-model="item.content">
+                    <div ng-repeat="radiovalue in item.content track by $index" layout="row" layout-align="start center">
+                     <div class="handle" ng-show="castleService.editMode">
+                         <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
+                     </div>
+                     <md-radio-button ng-value="radiovalue.title" class="">
+                        <span>{{radiovalue.title}}</span>
+                     </md-radio-button>
+                  </div>
               </div>
             </md-radio-group>
         </div>

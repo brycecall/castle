@@ -144,6 +144,15 @@ app.config(function ($mdIconProvider) {
         .icon('keyboard_arrow_down', './bower_components/material-design-icons/hardware/svg/production/ic_keyboard_arrow_down_48px.svg')
         .icon('keyboard_arrow_up', './bower_components/material-design-icons/hardware/svg/production/ic_keyboard_arrow_up_48px.svg')
         .icon('mode_edit', './bower_components/material-design-icons/editor/svg/production/ic_mode_edit_48px.svg')
+        .icon('arrow_drop_down_circle', './bower_components/material-design-icons/navigation/svg/production/ic_arrow_drop_down_circle_48px.svg')
+        .icon('arrow_drop_down', './bower_components/material-design-icons/navigation/svg/production/ic_arrow_drop_down_48px.svg')
+        .icon('subject', './bower_components/material-design-icons/action/svg/production/ic_subject_48px.svg')
+        .icon('today', './bower_components/material-design-icons/action/svg/production/ic_today_48px.svg')
+        .icon('watch_later', './bower_components/material-design-icons/action/svg/production/ic_watch_later_48px.svg')
+        .icon('iso', './bower_components/material-design-icons/image/svg/production/ic_iso_48px.svg')
+        .icon('error', './bower_components/material-design-icons/alert/svg/production/ic_error_48px.svg')
+        .icon('short_text', './bower_components/material-design-icons/editor/svg/production/ic_short_text_48px.svg')
+        .icon('work', './bower_components/material-design-icons/action/svg/production/ic_work_48px.svg')
     ;
 });
 
@@ -212,8 +221,8 @@ app.controller('indexController', function ($scope, castleService, $mdUtil, $mdS
             link: "account"
         },
         {
-            title: "Edit Templates",
-            icon: "build",
+            title: "Templates",
+            icon: "work",
             link: "templates"
         }
         ];
@@ -234,10 +243,35 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
     factory.selectedSection = null;
     factory.rapidRemarks = rapidRemarks;
     factory.reportTemplates = [
-        {"title":"reportOne", "id":"AHRDF-sdf4-sd34sd-3SDF"}
+        {
+         "title":"Standard Template", 
+         "id":"AHRDF-sdf4-sd34sd-1234",
+         "type":"Home Inspection"
+        },
+        {
+         "title":"Idaho", 
+         "id":"AHRDF-sdf4-sd34sd-1235",
+         "type":"Home Inspection"
+        },
+        {
+         "title":"Operating Agreement", 
+         "id":"AHRDF-sdf4-sd34sd-1236",
+         "type":"For Winners"
+        },
+        {
+         "title":"Tutorial", 
+         "id":"AHRDF-sdf4-sd34sd-1237",
+         "type":"Safety Home Inspection"
+        }
+        
     ];
+    
     factory.reportTemplate = null;
-
+    factory.editMode = false;
+    
+    factory.toggle = function(input) {
+        input = !input;
+    };
     //factory.serverURL = "http://dev.maurasoftware.com:9526";
     
     //TODO: change when send and delete differ

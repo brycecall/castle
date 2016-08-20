@@ -9,7 +9,7 @@
 
         <link rel='icon' href='./img/favicon.png' >
 
-<!--        <script type="text/javascript" src="cordova.js"></script>-->
+<!--    <script type="text/javascript" src="cordova.js"></script>-->
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
         <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.js"></script>
         <script src="bower_components/bootstrap/js/dropdown.js"></script>
@@ -128,18 +128,10 @@
                          </md-button>
 
                          <md-menu-content>
-<!--
                            <md-menu-item>
-                               <md-button ng-click="castleService.openItems(true)">Open All Items</md-button>
-                           </md-menu-item>
-
-                            <md-menu-item>
-                               <md-button ng-click="castleService.openItems(false)">Close All Items</md-button>
-                           </md-menu-item>
--->
-
-                           <md-menu-item>
-                               <md-button ng-click="castleService.filterRequired(true)">{{castleService.hideShowOptions.text}} Unrequired
+                               <md-button aria-label="toggle edit mode" 
+                                          ng-click="castleService.editMode = !castleService.editMode">
+                                          {{castleService.editMode ? 'Exit' : 'Enter'}} Edit Mode
                                </md-button>
                            </md-menu-item>
 

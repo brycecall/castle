@@ -26,7 +26,7 @@
        <!--           PAGES-->
     <md-card id="pageParent" style="margin-bottom:85px;" ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment':'#pageParent'}" ng-model="page.items">
         <div ng-repeat="item in page.items" layout="column" style="background-color:white;">
-           <span ng-if="item.type != 'presettext'">
+           <span >
             <div layout="row" layout-align="start center" style="min-height:52px">
                 
                 <div ng-show="castleService.editMode" class="handle" style="text-align:right">
@@ -50,7 +50,7 @@
                            width:100%;"
                 >
                    <md-icon md-svg-icon="{{getIcon(item.type)}}"></md-icon>
-                    <span flex="">{{item.title}}</span>
+                    <span style="padding-left:4px;">{{item.title}}</span>
                 </md-button>
 
                 <div ng-show="item.answered" 

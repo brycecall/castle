@@ -24,23 +24,6 @@
     </div>
 
 <div ng-if="castleService.editMode">
-   
-    <br/>
-
-    <md-input-container class="md-block">
-        <label>Type</label>
-        <md-select ng-model="item.type" value="typevalue">
-            <md-option ng-repeat="(typekey, typevalue) in itemTypes.types">
- 
-            <md-icon md-svg-icon="{{getIcon(typevalue)}}"></md-icon>
-            {{typekey}}
-
-            </md-option>
-        </md-select>
-    </md-input-container>
-
-   
-<!--
     <md-menu>
         <md-button class="" 
            style="width:200px; 
@@ -57,17 +40,15 @@
             <md-icon md-svg-icon="arrow_drop_down"></md-icon>
             </span>
         </md-button>
-        <md-menu-content>
-            <md-menu-item ng-repeat="(typekey, typevalue) in itemTypes.types" >
+        <md-menu-content width="3">
+            <md-menu-item ng-repeat="(typevalue, typekey) in itemTypes.types" >
             <md-button ng-click="setItemType(typevalue)" aria-label="Insert Question">
-            <md-icon md-menu-align-target md-svg-icon="{{getIcon(typekey)}}"></md-icon>
+            <md-icon md-menu-align-target md-svg-icon="{{getIcon(typevalue)}}"></md-icon>
             {{typekey}}
             </md-button>
             </md-menu-item>
         </md-menu-content>
     </md-menu>
--->
-    
     <br/>
     <md-input-container class="md-block">
       <label>Title</label>
@@ -119,29 +100,24 @@
         </div>
     </div>
 
-    <div layout="column" layout-fill="" layout-align="top left">
+    <div layout="column" layout-fill="" layout-align="top stretch">
 
         <!--                           PRE-SET TEXT-->
-<!--
         <div ng-if="item.type == 'presettext'  && (item.required == true || castleService.hideShowOptions.showNonRequired)">
-            <div class="relFlex" layout="column">
-                <md-switch ng-model="item.showcontent" aria-label="Show item.title" class="firstPosition md-body-1">Show {{item.title}} Message </md-switch>
-                <md-card>
-                    <md-card-content>{{item.content}}</md-card-content>
-                </md-card>
-
-            </div>
+                <md-input-container class="md-block" >
+                  <label>paragraph</label>
+                  <textarea ng-model="item.value" md-maxlength="5000" md-select-on-focus></textarea>
+                </md-input-container>
         </div>
--->
 
         <!--                           CHECKBOX-->
         <div ng-if="item.type == 'checkbox'  && (item.required == true || castleService.hideShowOptions.showNonRequired)">
             <div layout="column" ui-sortable="sortableOptions"  ng-model="item.content" >
                 <div ng-repeat="checkbox in item.content track by $index"                  
                      layout="row" 
-                     layout-align="end center" 
+                     layout-align="start center" 
                      class="list_item flex-wrap" 
-                     style="position:relative">
+                     style="position:relative; background-color:#FFF;">
                      <div class="handle" ng-show="castleService.editMode">
                          <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
                      </div>
@@ -150,7 +126,9 @@
                                     </md-checkbox>
                     </span>
                     <div flex=""></div>
-                    <div layout="row" layout-align="end center" ng-show="checkbox.c" class="flex-wrap">
+                    
+                    <div layout="row">
+                    <div layout="row" layout-align="end center" ng-show="checkbox.c" class="" style="margin-left:15px;">
                         <md-button ng-show="!castleService.assignPhotoMode" class="md-icon-button" ng-click="showRapidRemarksDialog($event, itemIndex, $index)" aria-label="add rapid remark">
                             <md-icon md-svg-icon="{{(checkbox.rrTitle == null) ? 'rrAdd' : 'rrEdit'}}" ng-class="(checkbox.rrTitle == null) ? '' : 'md-accent'"></md-icon>
                         </md-button>
@@ -169,37 +147,92 @@
                                 </md-content>
                             </md-menu-content>
                         </md-menu>
-                        <md-button ng-show="checkbox.c && !castleService.assignPhotoMode" class="md-icon-button" ng-click="initCameraAction(checkbox, true, true)" aria-label="capture photo">
+                        <md-button ng-show="checkbox.c && !castleService.assignPhotoMode" 
+                                   class="md-icon-button" 
+                                   ng-click="initCameraAction(checkbox, true, true)" 
+                                   aria-label="capture photo">
                             <md-icon md-svg-icon="camera" class=""></md-icon>
                         </md-button>
-                        <md-button ng-show="checkbox.c && castleService.assignPhotoMode && (checkbox.a == null || !checkbox.a)" class="" ng-click="assignPhotos(checkbox, 'assign')" aria-label="assign photo">
+                        <md-button ng-show="checkbox.c && castleService.assignPhotoMode && (checkbox.a == null || !checkbox.a)" 
+                                   class="" 
+                                   ng-click="assignPhotos(checkbox, 'assign')" 
+                                   aria-label="assign photo">
                             Assign
                         </md-button>
-                        <md-button ng-show="checkbox.c && castleService.assignPhotoMode && checkbox.a" class="" ng-click="assignPhotos(checkbox, 'accept')" aria-label="accept assigned photo">
+                        <md-button ng-show="checkbox.c && castleService.assignPhotoMode && checkbox.a" 
+                                   class="" ng-click="assignPhotos(checkbox, 'accept')" 
+                                   aria-label="accept assigned photo">
                             Accept
                         </md-button>
-                        <md-button ng-show="checkbox.c && castleService.assignPhotoMode && checkbox.a" class="" ng-click="assignPhotos(checkbox, 'cancel')" aria-label="cancel assigned photo">
+                        <md-button ng-show="checkbox.c && castleService.assignPhotoMode && checkbox.a" 
+                                   class="" ng-click="assignPhotos(checkbox, 'cancel')" 
+                                   aria-label="cancel assigned photo">
                             Cancel
                         </md-button>
                     </div>
+                         <span flex=""></span>
+                         <md-button ng-show="castleService.editMode" class="md-icon-button" 
+                               aria-label="add sub question"
+                               ng-click="remove(item.content, $index)" 
+                         >
+                            <md-icon md-svg-icon="cancel"></md-icon>
+                        </md-button> 
+                        </div>
                 </div>
             </div>
+            <form ng-if="castleService.editMode" 
+                  ng-submit="addSubQuestion(newstuff); newstuff = '';" 
+                  layout="row" 
+                  style="margin:5px 0 15px 4px">
+                <button type="submit" class="addButton">
+                    <md-icon style="color:gray" md-svg-icon="add"></md-icon>
+                </button>
+                <input required 
+                       style="border-width: 0 0 1px 0" 
+                       ng-model="newstuff" 
+                       type="text" 
+                       placeholder="{{item.type}} item">
+            </form>
         </div>
-
+        
+        
         <!--                            RADIO-->
         <div ng-if="item.type == 'radio'  && (item.required == true || castleService.hideShowOptions.showNonRequired)" id="radParent">
             <md-radio-group ng-model="item.value">
                <div ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#radParent'}"   ng-model="item.content">
-                    <div ng-repeat="radiovalue in item.content track by $index" layout="row" layout-align="start center">
+                  <div ng-repeat="radiovalue in item.content track by $index" 
+                       layout="row" 
+                       layout-align="start center"
+                       style="background-color:#FFF;">
                      <div class="handle" ng-show="castleService.editMode">
                          <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
                      </div>
                      <md-radio-button ng-value="radiovalue.title" class="">
                         <span>{{radiovalue.title}}</span>
                      </md-radio-button>
+                     <span flex=""></span>
+                     <md-button ng-show="castleService.editMode" class="md-icon-button" 
+                               aria-label="add sub question"
+                               ng-click="remove(item.content, $index)" 
+                     >
+                         <md-icon md-svg-icon="cancel"></md-icon>
+                     </md-button>
                   </div>
               </div>
             </md-radio-group>
+            <form ng-if="castleService.editMode" 
+                  ng-submit="addSubQuestion(newstuff); newstuff = '';" 
+                  layout="row" 
+                  style="margin:5px 0 15px 4px">
+                <button type="submit" class="addButton">
+                    <md-icon style="color:gray" md-svg-icon="add"></md-icon>
+                </button>
+                <input required 
+                       style="border-width: 0 0 1px 0" 
+                       ng-model="newstuff" 
+                       type="text" 
+                       placeholder="{{item.type}} item">
+            </form>
         </div>
 
         <!--                           NUMBER-->
@@ -225,6 +258,19 @@
                     <md-option ng-repeat="radiovalue in item.content track by $index" ng-value="radiovalue.title">{{radiovalue.title}}</md-option>
                 </md-select>
             </md-input-container>
+            <form ng-if="castleService.editMode" 
+                  ng-submit="addSubQuestion(newstuff); newstuff = '';" 
+                  layout="row" 
+                  style="margin:5px 0 15px 4px">
+                <button type="submit" class="addButton">
+                    <md-icon style="color:gray" md-svg-icon="add"></md-icon>
+                </button>
+                <input required 
+                       style="border-width: 0 0 1px 0" 
+                       ng-model="newstuff" 
+                       type="text" 
+                       placeholder="{{itemTypes.types[item.type]}} item">
+            </form>
         </div>
 
         <!--                           DATE-->
@@ -272,8 +318,21 @@
         </div>
       </div>
     </div>
-        <md-button ng-click="item.answered = !item.answered" aria-label="is answered" class="" style="">
-            <span>Completed</span> <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
+    <div layout="row" layout-align="start center">
+        <md-button ng-click="item.answered = !item.answered" 
+                   aria-label="is answered" 
+                   class="" 
+                   style="">
+            <span>Completed</span>
+            <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
         </md-button>
+        <md-button ng-click="clearQuestion(item)" 
+                   aria-label="clear" 
+                   class="md-raised md-primary" 
+                   style="">
+            <span>Clear Answer(s)</span> 
+            <md-icon md-svg-icon="cancel"></md-icon>
+        </md-button>
+    </div>
     </md-content>
 </div>

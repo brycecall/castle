@@ -153,7 +153,9 @@ app.config(function ($mdIconProvider) {
         .icon('error', './bower_components/material-design-icons/alert/svg/production/ic_error_48px.svg')
         .icon('short_text', './bower_components/material-design-icons/editor/svg/production/ic_short_text_48px.svg')
         .icon('work', './bower_components/material-design-icons/action/svg/production/ic_work_48px.svg')
-    ;
+        .icon('looks_one', './bower_components/material-design-icons/image/svg/production/ic_looks_one_48px.svg')
+        .icon('clear_all', './bower_components/material-design-icons/communication/svg/production/ic_clear_all_48px.svg')
+        ;
 });
 
 //RESET main navigation values on state change

@@ -49,7 +49,7 @@
      };
 
 
-     $scope.getIcon = function(type)
+      $scope.getIcon = function(type)
      {
          var result = "error";
          switch (type)
@@ -76,7 +76,7 @@
                  result = "watch_later";
                  break;
              case 'number':
-                 result = "iso";
+                 result = "looks_one";
                  break
              case 'image':
                  result = "image";

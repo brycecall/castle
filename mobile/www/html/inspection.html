@@ -71,33 +71,61 @@
             
             
     <md-card id="secParent" layout="column"  ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#secParent'}"  ng-model="report.sections">
+        
         <div ng-repeat="section in report.sections track by $index" 
              layout="column" 
-             layout-align="center left" 
+             layout-align="center stretch" 
              style="text-align-left"
-             ng-init="clicked = false" 
+             ng-init="clicked = false"
+             
               >             
                <div  style="padding:0px 0px 0px 16px; margin:0;
                          vertical-align:middle; border-radius:0; 
                          text-transform:none; background-color:white;  height:52px;" 
-               class="md-no-style" 
-               aria-label="{{section.title}}"
-               layout="row" 
-               layout-align="left center">
-                <div ng-show="castleService.editMode" class="handle" style="margin-right:6px;">
-                  <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
-                </div>
+                       class="md-no-style" 
+                       aria-label="{{section.title}}"
+                       layout="row" 
+                       layout-align="start center"
+                       ng-click="clicked = !clicked"
+                       ng-show="!castleService.editMode"
+               >
                 <input type="text" 
-                       ng-disabled="!castleService.editMode" 
+                       ng-disabled="true" 
                        ng-model="section.title" 
                        style="background-color:white;"
                        class="editInput nonEditInput"
                        ng-class="castleService.editMode ? 'inputBorder' : 'nonEditInput'" />
-
                 <span flex=""></span>
-                <md-button class="md-icon-button" 
+                <md-button
+                   aria-label="toggle pages menu"
+                   class="md-icon-button"
+                   >
+                    <md-icon md-svg-icon="{{clicked == false ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}"></md-icon>
+                </md-button>
+              </div>
+               <div  style="padding:0px 0px 0px 16px; margin:0;
+                         vertical-align:middle; border-radius:0; 
+                         text-transform:none; background-color:white;  height:52px;" 
+                       class="md-no-style" 
+                       aria-label="{{section.title}}"
+                       layout="row" 
+                       layout-align="start center"
+                       ng-show="castleService.editMode"
+               >
+                <div  class="handle" style="margin-right:6px;">
+                  <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
+                </div>
+                <input type="text" 
+                       ng-disabled="false" 
+                       ng-model="section.title" 
+                       style="background-color:white;"
+                       class="editInput nonEditInput"
+                       ng-class="castleService.editMode ? 'inputBorder' : 'nonEditInput'" />
+                <span flex=""></span>
+                <md-button
                    aria-label="toggle pages menu"
                    ng-click="clicked = !clicked"
+                   class="md-icon-button"
                    >
                     <md-icon md-svg-icon="{{clicked == false ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}"></md-icon>
                 </md-button>
@@ -134,8 +162,10 @@
                     <div ng-repeat="page in section.pages  track by $index" layout="column" layout-align="center stretch" class="sortdivider">
                       <md-divider></md-divider>
                       <div layout="row" layout-align="start center" style="background-color:#ECEFF1;">              
-                           <span class="subhandle" style="text-align:right; padding:8px 0 8px 28px;">
-                              <md-icon ng-show="castleService.editMode"  md-svg-icon="./img/drag.svg" style="width:30px;"></md-icon>
+                           <span style="padding:8px 0 8px 28px;">
+                             <span ng-show="castleService.editMode" class="subhandle" style="text-align:right;" >
+                              <md-icon   md-svg-icon="./img/drag.svg" style="width:30px;"></md-icon>
+                            </span>
                            </span>
                            <span ng-if="castleService.editMode" style="padding-left:8px;">
                                <input type="text" 
@@ -145,8 +175,7 @@
                            </span>
                                
                            <md-button  ui-sref="page({'sectionIndex':$parent.$index, 'pageIndex':$index})" 
-                                       style="padding:2px 0px 2px 8px; margin:0; text-align:left; 
-                                              vertical-align:middle; border-radius:0; text-transform:none; width:100%"
+                                       class="theButton"
                                        aria-label="navigate to page"> 
                                       <span flex=""><span ng-if="!castleService.editMode" >{{page.title}}</span></span>
                             </md-button>

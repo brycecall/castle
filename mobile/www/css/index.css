@@ -321,7 +321,11 @@ footer .container {
    color:rgb(76,175,80);
 }
 
-.md-headline, .md-title, .md-subhead, .md-display-1, .subHeader, input {
+.md-headline, .md-title, .md-subhead, .md-display-1, .subHeader, input, md-card,  {
+    outline: none;
+}
+
+*:focus {
     outline: none;
 }
 
@@ -910,4 +914,14 @@ border-width: 1px; border-style:solid; border-color:#ECEFF1;
     border-style: solid;
     background-color: #ECEFF1;
     border-color: rgb(238, 238, 238);
+}
+
+.theButton {
+    padding:2px 0px 2px 8px; 
+    margin:0; 
+    text-align:left; 
+    vertical-align:middle; 
+    border-radius:0; 
+    text-transform:none; 
+    width:100%
 }

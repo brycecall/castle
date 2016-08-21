@@ -96,6 +96,10 @@
             castleService.cancelAssignPhotoMode();
      };
      
+     $scope.buffer = [];
+     $scope.remove = function(level, index) {
+         $scope.buffer = level.splice(index, 1);
+     };
      
      $scope.setItemType = function(val) {
          $scope.item.type = val;
@@ -304,7 +308,7 @@
                  result = "watch_later";
                  break;
              case 'number':
-                 result = "iso";
+                 result = "looks_one";
                  break
              case 'image':
                  result = "image";
@@ -325,7 +329,7 @@
              "checkbox": "checkbox",
              "radio": "radio",
              "select": "dropdown",
-             // "presettext" : "Preset Message",
+             "presettext" : "paragraph",
              "number": "number",
              "text": "text",
              "date": "date"
@@ -333,6 +337,20 @@
          "type": ""
      };
 
+     $scope.addSubQuestion = function(newstuff) 
+     {
+         
+       var stuff = {
+           "title": newstuff,
+           "c": false
+           //,
+//           "rrTitle": '',
+//           "rrVal": ''
+        }
+         
+        $scope.item.content.push(stuff);
+     };
+     
      $scope.newItem = {
          "title": '',
          "required": false,
@@ -340,6 +358,20 @@
          "type": '',
          "value": '',
          "content": []
+     };
+     
+     $scope.clearQuestion = function(item) 
+     {
+         item.answered = false;
+         item.value = ''; 
+         if (item.type === 'checkbox')
+         {
+            for(var i = 0; i < item.content.length; i++)
+            {
+                item.content[i].c = false;
+            }
+         }
+         //item.content = []; 
      };
 
      $scope.removeItem = function (toRemove, theType) {

@@ -1,10 +1,14 @@
-// Create the main module
+// Main module
 var app = angular.module('castleApp', ['ui.router', 'ngMaterial', 'ui.sortable']);
 
+// Default color used to override the nav bar
 app.constant('DEFAULT_COLOR', '#009688'); //4CAF50
 
-app.config(
-    function ($stateProvider, $urlRouterProvider) {
+// Default server url for rest service
+app.constant('SERVER_URL', 'http://dev.maurasoftware.com:9526');
+
+// Page Router
+app.config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/account');
         $stateProvider
             .state('create', {
@@ -54,8 +58,9 @@ app.config(
             })
             ;
 
-    });
+});
 
+// Theme Provider
 app.config(function ($mdThemingProvider) {
     $mdThemingProvider.definePalette('inspectorPallet', {
         '50': 'E8F5E9',
@@ -96,11 +101,12 @@ app.config(function ($mdThemingProvider) {
         'contrastLightColors': undefined
     });
 
-$mdThemingProvider.theme('default')
-        .primaryPalette('teal')
-        .accentPalette('blue')
+    $mdThemingProvider.theme('default')
+            .primaryPalette('teal')
+            .accentPalette('blue')
 });
 
+// Icon Provider
 app.config(function ($mdIconProvider) {
     // Configure URLs for icons specified by [set:]id.
     $mdIconProvider
@@ -158,7 +164,8 @@ app.config(function ($mdIconProvider) {
         ;
 });
 
-//RESET main navigation values on state change
+// Reset main navigation values on state change to default values
+// This is meant to be overridden in each page individually
 app.run(function($rootScope, $urlRouter, castleService, DEFAULT_COLOR){
     $rootScope.$on('$stateChangeStart',
         function(event){
@@ -175,9 +182,6 @@ app.run(function($rootScope, $urlRouter, castleService, DEFAULT_COLOR){
             };
         });
 });
-
-
-
 
 // Controller for the index page
 app.controller('indexController', function ($scope, castleService, $mdUtil, $mdSidenav, $state) {
@@ -202,11 +206,6 @@ app.controller('indexController', function ($scope, castleService, $mdUtil, $mdS
     };
 
     $scope.navigationPages = [
-//        {
-//            title: "New Report",
-//            icon: "new_report",
-//            link: "inspection({sectionIndex:'default'})"
-//        },
         {
             title: "New Inspection",
             icon: "new_report",
@@ -231,13 +230,9 @@ app.controller('indexController', function ($scope, castleService, $mdUtil, $mdS
 
 });
 
-
-
-
 // Create the factory / service that is shared among all the controllers
 app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
     var factory = {};
-
     factory.reports = null;
     factory.currentReport = reportOne;
     factory.backdrop = false;
@@ -274,6 +269,7 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
     factory.toggle = function(input) {
         input = !input;
     };
+    
     //factory.serverURL = "http://dev.maurasoftware.com:9526";
     
     //TODO: change when send and delete differ
@@ -375,7 +371,8 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
     factory.photoAppendixIndex = null;
     factory.selectedImages = [];
     factory.headerLocked = false;
-    factory.cancelAssignPhotoMode = function() {
+    factory.cancelAssignPhotoMode = function() 
+    {
         factory.headerLocked = false;
         factory.currentPage.color = DEFAULT_COLOR;
         factory.assignPhotoMode = false;
@@ -400,53 +397,200 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
     return factory;
 });
 
+// Rest service
+app.factory('restService', function ($http, $q, SERVER_URL) {
+    var factory = {};
+
+    factory.sendRequest = function(method, url, data) {    
+        $http({
+             method: method,
+             url: SERVER_URL + url,
+             headers: {
+               'Content-Type': 'application/json'
+             },
+             data: data
+        }).then(
+
+        function successCallback(response) {
+            console.log(response.data);
+            return response.data;
+        }, 
+        function errorCallback(response) {
+            console.log(error);
+            return {'status':'error'};
+        });
+    };
 
 
-//****** Likely will be replaced by connectService *******
-// app.service("reportService", function () {
-
-//     var theReport = {};
-
-//     return {
-//         getTheReport: function () {
-//             return theReport;
-//         },
-//         setTheReport: function (value) {
-//             theReport = value;
-//         }
-//     };
-
-// });
+    factory.user = {
+                        "name":"",
+                        "email":"",
+                        "pw":""
+                   };
 
 
-// app.service("serverService", function ($http, $q) {
-//     return ({
-//         getReport: getReport
+    //  adding a user to the firebase db  
+    //  expected result
+    //	{
+    //		"status":"", //success, failure
+    //		"reason":"" //some error codes that make sense to us
+    //	}
+    factory.insertUser = function(data) {
+        var url = "api/insert/user/";
+        var result = factory.sendRequest("POST", url, data);
+    };
 
-//     });
 
-//     function getReport() {
-//         console.log("Get Report Called");
-//         var request = $http({
-//             method: "GET",
-//             url: "http://dev.maurasoftware.com:9526/report/c/1",
-//             params: {
-//                 action: "GET"
-//             }
-//         });
-//         return (request.then(handleSuccess, handleError));
-//     }
+    //authenticating a user in the firebase db  
+    //api/authuser/
+    //POST (JSON)
+    //	{
+    //		"email":"",
+    //		"pw":""
+    //	}
+    //return	
+    //	{
+    //		"status":"", //success, failure
+    //		"reason":"" //invalid email, invalid password, "" if successful
+    //	}
+    factory.authUser = function(data) {
+        var url = "api/authuser/";
+        var result = factory.sendRequest("POST", url, data);
+        return result;
+    };
 
-//     function handleError(response) {
-//         if (!angular.isObject(response.data) ||
-//             !response.data.message
-//         ) {
-//             return ($q.reject("An unknown error occurred."));
-//         }
-//         return ($q.reject(response.data.message));
-//     }
+    //inserting an inspection
+    //api/insert/inspection/
+    //POST (JSON)
+    //	{} //inspection JSON
+    //return
+    //	{
+    //		"id":"" //report id
+    //	}
+    factory.insertInspection = function(data) {
+        var url = "api/insert/inspection/";
+        var result = factory.sendRequest("POST", url, data);
+        return result;
+    };
 
-//     function handleSuccess(response) {
-//         return (response.data);
-//     }
-// });
+    //inserting an inspection from an id
+    //api/insert/inspection/{id}
+    //POST (JSON)
+    //	{
+    //		"id":"", //report id
+    //		"inspection": {} //report JSON
+    //	}
+    //return 
+    //	{
+    //		"status":"", //success, failure
+    //		"reason":"" //"" if successful
+    //	}
+    factory.insertInspectionById = function(data, id) {
+        var url = "api/insert/inspection/" + id;
+        var result = factory.sendRequest("POST", url, data);
+        return result;
+    };
+
+    //updating an inspection
+    //api/update/inspection/
+    //POST (JSON)
+    //	{
+    //		"id":"", //report id
+    //		"inspection": {} //report JSON
+    //	}
+    //return 
+    //	{
+    //		"status":"", //success, failure
+    //		"reason":"" //"" if successful
+    //	}
+    factory.updateInspection = function(data) {
+        var url = "api/update/inspection/";
+        var result = factory.sendRequest("POST", url, data);
+        return result;
+    };
+
+    //Accurately return a new date object adjusted by the number of days
+    factory.addDays = function(date, days) {
+        return new Date(
+            date.getFullYear(),
+            date.getMonth(),
+            date.getDate() + days,
+            date.getHours(),
+            date.getMinutes(),
+            date.getSeconds(),
+            date.getMilliseconds()
+        );
+    };
+
+    //selecting inspections from a user
+    //api/select/inspections/{email}/{type}/{sortfield = date}/{ascending=false}/{startdate = today-month}/{enddate=today}
+    //GET
+    //return
+    //[] //array of inspection JSON objects
+    //note:
+    //type //inspection, template
+    factory.selectInspectionByEmail = function(email, type, sortField = "date", ascending = false, startDate, endDate) {
+        var url = "api/select/inspections/" + email + "/" + type + "/";
+        if (startDate == null || startDate == undefined)
+        {
+            startDate = factory.addDays(new Date, -30).toUTCString();
+        }
+        if (endDate == null || endDate == undefined)
+        {
+            endDate = new Date().toUTCString();
+        }
+        url += sortField + "/" + ascending + "/" + startDate + "/" + endDate + "/";
+        return factory.sendRequest("GET", url);
+    };
+
+    //selecting inspections from a user
+    //api/select/inspections/meta/{email}/{type}/{sortfield = date}/{ascending=false}/{startdate = today-month}/{enddate=today}
+    //GET
+    //return
+    //[] //array of inspection meta data JSON objects
+    //note:
+    //type //inspection, template
+    factory.selectInspectionMetaByEmail = function(email, type, sortField = "date", ascending = false, startDate, endDate) {
+        var url = "api/select/meta/inspections/" + email + "/" + type + "/";
+        if (startDate == null || startDate == undefined)
+        {
+            startDate = factory.addDays(new Date, -30).toUTCString();
+        }
+        if (endDate == null || endDate == undefined)
+        {
+            endDate = new Date().toUTCString();
+        }
+        url += sortField + "/" + ascending + "/" + startDate + "/" + endDate + "/";
+        return factory.sendRequest("GET", url);
+    };
+
+    //selecting inspections by id
+    //api/select/inspection/{id}
+    //GET
+    //return
+    //{} //inspection json object
+    factory.selectInspectionByUser = function(id) {
+        var url = "api/select/inspections/" + id + "/";
+        return factory.sendRequest("GET", url);
+    };
+
+    //deleting an inspection
+    //api/delete/inspection/{id}
+    //DELETE (JSON)
+    //return 
+    //	{
+    //		"status":"", //success, failure
+    //		"reason":"" //"" if successful
+    //	}
+    factory.deleteInspection = function(id) {
+        var url = "api/delete/inspection/" + id + "/";
+        return factory.sendRequest("DELETE", url);
+    };
+
+    //selecting a user
+    //api/select/user
+
+    //deleting a user
+    //api/delete/user
+
+});

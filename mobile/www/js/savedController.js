@@ -1,16 +1,15 @@
 app.controller('savedController', function ($scope, castleService, $state) {
-$scope.castleService = castleService;
-castleService.currentPage.title = "Saved Reports";
-
-$scope.defaultReport = reportOne;
-$scope.switchReport = function(sReport) {
-    castleService.currentReport = sReport;
-    $state.go("create");
-};
-    
-$scope.reverse = false;
-$scope.orderAttribute = 'date';
-$scope.orderAttributeOptions = ['date', 'title'];
+    $scope.castleService = castleService;
+    castleService.currentPage.title = "Saved Reports";
+    $scope.defaultReport = reportOne;
+    $scope.switchReport = function(sReport) {
+        castleService.currentReport = sReport;
+        $state.go("create");
+    };
+    $scope.reverse = false;
+    $scope.orderAttribute = 'date';
+    $scope.orderAttributeOptions = ['date', 'title'];
+    $scope.schedule = $stateParams.schedule;
 
 
 

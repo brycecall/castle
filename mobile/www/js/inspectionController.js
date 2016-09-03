@@ -43,6 +43,22 @@
          $scope.buffer = level.splice(index, 1);
      };
      
+     $scope.accordianIndex = -1;
+     $scope.setAccordianIndex = function(index) {
+         
+         if (index == $scope.accordianIndex)
+         {
+            $scope.accordianIndex = -1;
+         }
+         else
+         {
+            $scope.accordianIndex = index;
+         }
+     };
+     $scope.matchesAccordianIndex = function(index) {
+        return (index == $scope.accordianIndex);
+     };
+     
      $scope.getTemplate = function() {
         
      };

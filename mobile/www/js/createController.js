@@ -1,13 +1,26 @@
  app.controller('createController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, castleService, $state) {
      $scope.castleService = castleService;
-     $scope.selectedSection = $stateParams.section;
+     $scope.selectedSection = $stateParams.sectionIndex;
      $scope.castleService.selectedSection = $scope.selectedSection;
      $scope.selectedPage = castleService.selectedPage;
      $scope.report = castleService.currentReport;
+     
+     // change main header image and title
+     castleService.currentPage.showIcon = true;
+     castleService.currentPage.toggleNavMenu = true;
+     castleService.currentPage.title = "New Report";
+     castleService.currentPage.icon = "menu";
+     castleService.currentPage.showExtraMenu = true;
+
      $scope.rapidRemarks = castleService.rapidRemarks;
      $scope.finishedRequired = false;
+     $scope.editMode = false;
+     
+     $scope.toggleEditMode = function() {
+        castleService.editMode = !castleService.editMode;
+     };
 
-     //$scope.reportTemplate = castleService.reportTemplate;
+     castleService.reportTemplate = reportOne;
      //$scope.report = reportOne; //REMOVE after testing
      $scope.subPage = '';
      $scope.isOpen = false;
@@ -25,36 +38,54 @@
         }
      };
 
-     $scope.isInArray = function (value, array) {
-        return ($.inArray(value, array) == -1) ? false : true;
+     $scope.buffer = [];
+     $scope.remove = function(level, index) {
+         $scope.buffer = level.splice(index, 1);
      };
-
+     
+     $scope.accordianIndex = -1;
+     $scope.setAccordianIndex = function(index) {
+         
+         if (index == $scope.accordianIndex)
+         {
+            $scope.accordianIndex = -1;
+         }
+         else
+         {
+            $scope.accordianIndex = index;
+         }
+     };
+     $scope.matchesAccordianIndex = function(index) {
+        return (index == $scope.accordianIndex);
+     };
+     
+     $scope.getTemplate = function() {
+        
+     };
+     
+     $scope.addSection = function(array, index) {
+         
+         var template = {
+              "title": "NEW SECTION TITLE",
+              "color": "#000000",
+              "pages": []
+         }
+         array.splice(index, 0, template);
+     };
+     
+     $scope.addSubsection = function(array, index) {
+         
+         var template = {
+              "title": "NEW SUBSECTION TITLE",
+              "color": "#000000",
+              "pages": []
+         }
+         array.splice(index, 0, template);
+     };
+     
      $scope.getAnsweredIcon = function(answered) {
          return (answered === true) ? 'check' : 'check_box_outline_blank';
      };
-
-     // change main header image and title
-//        if (castleService.assignPhotoMode && $scope.selectedSection == "default") {
-//            castleService.currentPage.showIcon = false;
-//         }
-//         else
-
-             if ($scope.selectedSection == "default" || $scope.report.sections[$scope.selectedSection] == null) {
-             castleService.currentPage.showIcon = true;
-             castleService.currentPage.toggleNavMenu = true;
-             castleService.currentPage.title = $scope.report.title;
-             castleService.currentPage.icon = "menu";
-
-         } else {
-             //console.log($scope.report.sections[$scope.selectedSection]);
-             castleService.currentPage.showIcon = true;
-             castleService.currentPage.title = $scope.report.sections[$scope.selectedSection].title;
-             castleService.currentPage.icon = "back";
-             castleService.currentPage.toggleNavMenu = false;
-             castleService.currentPage.link = "inspection({sectionIndex:'default'})";
-             castleService.currentPage.go = {state:"create", params:{sectionIndex:'default'}};
-             castleService.currentPage.showExtraMenu = true;
-         }
 
      $scope.clearSelection = function() {
         castleService.selectedImages = [];
@@ -70,6 +101,25 @@
          $state.go("create",{sectionIndex:'default'});
      };
 
+     
+     $scope.editItemDialog = function($event, item) {
+//         $rootScope.itemIndex = itemIndex;
+//         $rootScope.pageIndex = $scope.page;
+//         $rootScope.sectionIndex = $scope.section;
+         $rootScope.item = item;
+    
+          $mdDialog
+             .show({
+                 controller: 'itemController',
+                 templateUrl: 'html/item.html',
+                 parent: angular.element(document.body),
+                 targetEvent: event,
+                 clickOutsideToClose: false,
+                 fullscreen: true
+             });
+     };
+     
+     
      $scope.assignPhotos = function(subItem, action) {
          if (subItem.i == null)
              subItem.i = [];
@@ -436,6 +486,10 @@
              'value': ''
          };
      };
+     
+     $scope.logstuff = function(stuff) {
+        console.log(stuff);
+     };
 
      $scope.resetNewItemValueContents = function () {
              $scope.newItem.title = '';
@@ -468,42 +522,6 @@
          //console.log(JSON.stringify($scope.report[$scope.selectedSection][newPage], null, 2));
      };
 
-//     function jambaJSON() {
-//         for (var sectionkey in reportOne.sections) {
-//             var section = reportOne.sections[sectionkey];
-//            for (var pagekey in section.pages) {
-//                var page = section.pages[pagekey];
-//                for (var itemkey in page.items) {
-//                    var item = page.items[itemkey];
-//
-//                    if (item.type == 'radio' || item.type == 'select') {
-//                        var tcontent = [];
-//
-//                        if (item.content != []) {
-//                            for (var i in item.content) {
-//                                var key = "";
-//                                for (key in item.content[i]);
-//                                var temp = {'title':i,'rrTitle':key, 'rrVal':item.content[i][key]};
-//                                tcontent.push(temp);
-//                            }
-//                            reportOne.sections[sectionkey].pages[pagekey].items[itemkey].content = tcontent;
-//                        }
-//                    } else if (item.type == 'checkbox') {
-//                        var tcontent = [];
-//                        for (var i in item.value) {
-//                            var temp = {'title':i,'c':false};
-//                            tcontent.push(temp);
-//                        }
-//                        reportOne.sections[sectionkey].pages[pagekey].items[itemkey].content = tcontent;
-//                        item.value = [];
-//                        reportOne.sections[sectionkey].pages[pagekey].items[itemkey].value = [];
-//                    }
-//                }
-//            }
-//         }
-//         console.log(JSON.stringify(reportOne, null, 2));
-//     }
-//
-//     jambaJSON();
+
 
  });

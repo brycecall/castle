@@ -1,59 +1,8 @@
 <div ng-controller="inspectionController" flex="" layout="column" class="page" id="nav">
    <section>
     <md-content class="centerPage" style="margin-bottom:85px;" id="centerPage">
-        <h3 class="md-subhead insTitle" >Template</h3>
-        
-<md-card>
-            <md-input-container style="padding: 0px 16px 8px 16px;">
-                <md-select ng-model="castleService.reportTemplate" placeholder="Pick a Template">
-                    <md-option ng-repeat="template in castleService.reportTemplates track by $index" ng-value="template">{{template.title}}</md-option>
-                </md-select>
-            </md-input-container>
-<!--
-           <div style="">
-                <div layout="row" class="flex-wrap" layout-align="start center" style="padding: 0 0 0 8px;">
-                    <md-input-container>
-                        <md-icon md-svg-icon="sort"></md-icon>
-                        <label>Order by</label>
-                        <md-select ng-model="orderAttribute">
-                            <md-option ng-repeat="orderOption in orderAttributeOptions" 
-                                       ng-value="orderOption">{{orderOption}}</md-option>
-                        </md-select>
-                    </md-input-container>
-
-                    <md-button ng-click="reverse = !reverse" style="text-transform:none">
-                       <md-icon md-svg-icon="reverse"></md-icon>  Reverse Order
-                    </md-button>
-
-                    <md-button ui-sref="inspection({sectionIndex:'default'})" class="md-primary " >
-                        <md-icon md-svg-icon="new_report"></md-icon>  New Template
-                    </md-button>
-                </div>
-
-                <div layout="row" class="flex-wrap" >
-                    <md-card  ng-repeat="reportTemplate in castleService.reportTemplates | orderBy:orderAttribute:reverse"
-                              ng-click="switchTemplate(reportTemplate)" 
-                              layout-align="center center"
-                              class="frameStyle">
-                        <div class="md-body-2" >{{reportTemplate.title}}</div>
-                        <div class="md-caption" style="font-style:italic">{{reportTemplate.type}}</div>
-                    </md-card>
-                </div>
-            </div>
--->
-</md-card>
-        
-<div ng-show="castleService.reportTemplate != null">
-
-    <div>
-    <h3 class="md-subhead insTitle" >Meta-Data</h3>
-              <br />
-              <br />
-    </div>   
-           
-           
     <div layout="row" layout-align="space-between center">
-    <h3 class="md-subhead insTitle" >Sections &amp; Subsections</h3>
+        <h3 class="md-subhead insTitle" >Sections &amp; Subsections</h3>
         <md-menu>
         <md-button class="md-icon-button" aria-label="section menu" ng-click="$mdOpenMenu($event)">
             <md-icon md-svg-icon="more_vert"></md-icon>
@@ -68,9 +17,11 @@
          </md-menu-content>
         </md-menu>
     </div>
-            
-            
-    <md-card id="secParent" layout="column"  ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#secParent'}"  ng-model="report.sections">
+              
+    <md-card id="secParent" 
+       layout="column"  
+       ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#secParent'}"  
+       ng-model="report.sections">
         
         <div ng-repeat="section in report.sections track by $index" 
              layout="column" 
@@ -86,22 +37,22 @@
                        aria-label="{{section.title}}"
                        layout="row" 
                        layout-align="start center"
-                       ng-click="clicked = !clicked"
+                       ng-click="setAccordianIndex($index)"
                        ng-show="!castleService.editMode"
                >
-                <input type="text" 
-                       ng-disabled="true" 
-                       ng-model="section.title" 
-                       style="background-color:white;"
-                       class="editInput nonEditInput"
-                       ng-class="castleService.editMode ? 'inputBorder' : 'nonEditInput'" />
-                <span flex=""></span>
-                <md-button
-                   aria-label="toggle pages menu"
-                   class="md-icon-button"
-                   >
-                    <md-icon md-svg-icon="{{clicked == false ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}"></md-icon>
-                </md-button>
+                    <input type="text" 
+                           ng-disabled="true" 
+                           ng-model="section.title" 
+                           style="background-color:white;"
+                           class="editInput nonEditInput"
+                           ng-class="castleService.editMode ? 'inputBorder' : 'nonEditInput'" />
+                    <span flex=""></span>
+                    <md-button
+                       aria-label="toggle pages menu"
+                       class="md-icon-button"
+                       >
+                        <md-icon md-svg-icon="{{matchesAccordianIndex($index) ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}"></md-icon>
+                    </md-button>
               </div>
                <div  style="padding:0px 0px 0px 16px; margin:0;
                          vertical-align:middle; border-radius:0; 
@@ -124,10 +75,10 @@
                 <span flex=""></span>
                 <md-button
                    aria-label="toggle pages menu"
-                   ng-click="clicked = !clicked"
+                   ng-click="setAccordianIndex($index)"
                    class="md-icon-button"
                    >
-                    <md-icon md-svg-icon="{{clicked == false ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}"></md-icon>
+                    <md-icon md-svg-icon="{{matchesAccordianIndex($index) ? 'keyboard_arrow_up' : 'keyboard_arrow_down'}}"></md-icon>
                 </md-button>
                 <md-menu style="" ng-show="castleService.editMode">
                     <md-button class="md-icon-button" aria-label="section menu" ng-click="$mdOpenMenu($event)">
@@ -158,7 +109,10 @@
                      </md-menu-content>
                 </md-menu>
               </div>
-              <div ng-if="clicked" id="subsecParent" ui-sortable="{'ui-floating': false, 'handle': '.subhandle', 'containment': '#secParent'}"  ng-model="section.pages">
+              <div ng-if="matchesAccordianIndex($index)" 
+                   id="subsecParent" 
+                   ui-sortable="{'ui-floating': false, 'handle': '.subhandle', 'containment': '#secParent'}"  
+                   ng-model="section.pages">
                     <div ng-repeat="page in section.pages  track by $index" layout="column" layout-align="center stretch" class="sortdivider">
                       <md-divider></md-divider>
                       <div layout="row" layout-align="start center" style="background-color:#ECEFF1;">              
@@ -183,31 +137,24 @@
                             <md-button ng-show="castleService.editMode" class="md-icon-button" 
                                        ng-init="clicked = false" 
                                        aria-label="toggle pages menu"
-                                       ng-click="remove(section.pages, $index)" 
+                                       ng-click="remove(section.pages, $index)"
+                                      
                             >
-                                <md-icon md-svg-icon="cancel"></md-icon>
+                                <md-icon md-svg-icon="cancel" ></md-icon>
                             </md-button>
                        </div>
                     </div>
               </div>
 
-<!--
-            <div>
-            {{section.title}}
-            </div>
-            <span flex=""></span>
-            <md-icon md-svg-icon="keyboard_arrow_right"></md-icon>
--->
-
             <md-divider ng-if="!$last"></md-divider>
         </div>
     </md-card>
-            <div layout="row" style="padding: 0 0 10px 0;" ng-hide="castleService.assignPhotoMode" class="flex-wrap">
-                <md-button ng-click="checkRequired()" class="md-raised" aria-label="Preview Report">Preview Report</md-button>
-                <md-button ng-click="" class="md-raised" aria-label="Save Report">Save Report</md-button>
-                <md-button ng-click="castleService.reportTemplate = null" class="md-raised md-primary" aria-label="Reset Template">Reset Template</md-button>
-            </div>
-        </div>
+    <div layout="row" style="padding: 0 0 10px 0;" ng-hide="castleService.assignPhotoMode" class="flex-wrap">
+        <md-button ng-click="checkRequired()" class="md-raised" aria-label="Preview Report">Preview Report</md-button>
+        <md-button ng-click="" class="md-raised" aria-label="Save Report">Save Report</md-button>
+        <md-button ng-click="castleService.reportTemplate = null" class="md-raised md-primary" aria-label="Reset Template">Reset Template</md-button>
+    </div>
+        
         
     </md-content>
     </section>

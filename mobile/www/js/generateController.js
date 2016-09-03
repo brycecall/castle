@@ -25,7 +25,7 @@ app.controller('generateController', function ($rootScope, $scope, $mdUtil, $mdD
     castleService.currentPage.icon = "back";
     castleService.currentPage.toggleNavMenu = false;
     castleService.currentPage.link = "inspection({sectionIndex:'default'})";
-    castleService.currentPage.go = {state:"create", params:{sectionIndex:'default'}};
+    castleService.currentPage.go = {state:"inspection", params:{sectionIndex:'default'}};
     castleService.currentPage.showExtraMenu = false;
 
     $scope.initialzeFieldNotesVars = function() {

@@ -12,11 +12,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/account');
         $stateProvider
             .state('create', {
-                url: "/create/:section",
-                templateUrl: 'html/create.html',
-                params: {
-                    sectionIndex: 'default'
-                }
+                url: "/create",
+                templateUrl: 'html/create.html'
             })
 
             .state('account', {
@@ -25,8 +22,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
             })
 
             .state('saved', {
-                url: '/saved',
-                templateUrl: 'html/saved.html'
+                url: '/saved/:schedule',
+                templateUrl: 'html/saved.html',
+                params: {
+                    schedule:null
+                }
             })
 
             .state('generate', {
@@ -207,9 +207,9 @@ app.controller('indexController', function ($scope, castleService, $mdUtil, $mdS
 
     $scope.navigationPages = [
         {
-            title: "New Inspection",
+            title: "New Report",
             icon: "new_report",
-            link: "inspection({sectionIndex:'default'})"
+            link: "create({sectionIndex:'default'})"
         },
         {
             title: "Saved Reports",

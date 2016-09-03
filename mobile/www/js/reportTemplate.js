@@ -9,26 +9,19 @@ var reportOne =
   "status":"",
   "meta":[
       {
+          title:"Report Information",
           "items": [
             {
-              "title": "Clientinfo",
+              "title": "First Name",
               "required": true, "answered":false,
-              "type": "clientinfo",
-              "value": {
-                "firstName": "Cameron",
-                "lastName": "Lilly",
-                "address": "4119 E Juanita Ave",
-                "addressTwo": "",
-                "city": "Gilbert",
-                "state": "AZ",
-                "postalCode": "85234"
-              }
+              "type": "text",
+              "value": "Cameron"
             },
             {
               "title": "Report ID",
               "required": true, "answered":false,
               "type": "text",
-              "value": "111222"
+              "value": "R:111222"
             },
             {
               "title": "Report Date",
@@ -36,12 +29,6 @@ var reportOne =
               "type": "date",
               "value": "02-02-2016"
             },
-            {
-              "title": "Client Info Images",
-              "type": "image",
-              "content": []
-            },
-
             {
               "title": "Conditions",
               "type": "presettext",
@@ -696,6 +683,58 @@ var reportOne =
             },
             {
               "title": "Property Specifications Images",
+              "type": "image",
+              "content": []
+            }
+          ]
+    },
+    {
+          title:"Client Information",
+          "items": [
+            {
+              "title": "First Name",
+              "required": true, "answered":false,
+              "type": "text",
+              "value": "Cameron"
+            },
+            {
+              "title": "Last Name",
+              "required": true, "answered":false,
+              "type": "text",
+              "value": "Lilly"
+            },
+            {
+              "title": "Address",
+              "required": true, "answered":false,
+              "type": "text",
+              "value": "4119 E Juanita Ave"
+            },
+            {
+              "title": "Address Line 2",
+              "required": true, "answered":false,
+              "type": "text",
+              "value": ""
+            },
+            {
+              "title": "City",
+              "required": true, "answered":false,
+              "type": "text",
+              "value": "Gilbert"
+            },
+            {
+              "title": "State",
+              "required": true, "answered":false,
+              "type": "text",
+              "value": "AZ"
+            },
+            {
+              "title": "Postal Code",
+              "required": true, "answered":false,
+              "type": "number",
+              "value": 85234
+            },
+            {
+              "title": "Client Info Images",
               "type": "image",
               "content": []
             }

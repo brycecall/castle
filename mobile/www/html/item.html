@@ -238,7 +238,7 @@
         <!--                           NUMBER-->
         <div ng-if="item.type == 'number'  && (item.required == true || castleService.hideShowOptions.showNonRequired)">
             <md-input-container layout="row">
-                <label>{{item.label}}</label>
+                <label>{{item.title}}</label>
                 <input ng-model="item.value" type="number" flex="50" flex-sm="">
             </md-input-container>
         </div>
@@ -246,7 +246,7 @@
         <!--                           TEXT-->
         <div ng-if="item.type == 'text'  && (item.required == true || castleService.hideShowOptions.showNonRequired)">
             <md-input-container>
-                <label>{{item.label}}</label>
+                <label>{{item.title}}</label>
                 <input ng-model="item.value" type="text">
             </md-input-container>
         </div>
@@ -276,7 +276,7 @@
         <!--                           DATE-->
         <div ng-if="item.type == 'date'  && (item.required == true || castleService.hideShowOptions.showNonRequired)">
             <md-input-container layout="row">
-                <label>{{item.label}}</label>
+                <label>{{item.title}}</label>
                 <input ng-model="tempDate" onchange="setItem(item, tempDate)" type="date" flex-gt-sm="50" flex-sm="">
             </md-input-container>
         </div>

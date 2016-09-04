@@ -1,4 +1,4 @@
-app.controller('savedController', function ($scope, castleService, $state) {
+app.controller('savedController', function ($scope, castleService, $state, $stateParams) {
     $scope.castleService = castleService;
     castleService.currentPage.title = "Saved Reports";
     $scope.defaultReport = reportOne;

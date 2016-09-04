@@ -67,7 +67,12 @@
          </div>
 
         <!--                           DATE-->
-        <div ng-if="item.type == 'date'" class="padMe">
+        <div ng-if="item.type == 'date'" class="padMe md-block" style="padding:8px 0;">
+             <md-datepicker ng-model="tempDate" 
+                            md-placeholder="{{item.title}}" 
+                            >
+             </md-datepicker>
+<!--
             <md-input-container class="md-block">
                 <label>{{item.title}}</label>
                 <input 
@@ -75,15 +80,18 @@
                     onchange="setItem(item, tempDate)" 
                     type="date" 
                 >
+                
             </md-input-container>
+-->
         </div>
     </div>
     </md-card-content>
     </md-card>
 </div>
     <div layout="row" style="padding: 0 0 10px 0;" ng-hide="castleService.assignPhotoMode" class="flex-wrap">
-        <md-button ui-sref="saved" class="md-raised" aria-label="Schedule Report">Schedule Report</md-button>
-        <md-button ui-sref="inspection({sectionIndex:'default'})"  class="md-raised md-accent" aria-label="Save Report">Start Report Now!</md-button>
+        <md-button ui-sref="saved" class="md-raised" aria-label="Save Report">Save Report</md-button>
+<!--        <md-button ui-sref="saved" class="md-raised" aria-label="Schedule Report">Schedule Report</md-button>-->
+        <md-button ui-sref="inspection({sectionIndex:'default'})"  class="md-raised md-accent" aria-label="Start Report">Start Report Now!</md-button>
     </div>
    </div>
      </md-content>

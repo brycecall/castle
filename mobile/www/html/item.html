@@ -1,24 +1,10 @@
 <div ng-controller="itemController" flex="" layout="column" class="page" id="nav" >
    <md-content style="padding:16px;">
-     <!--
-    <md-toolbar layout="row" layout-align="center center">
-        <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" aria-label="close" ng-click="cancelDialog()">
-                <md-icon md-svg-icon="back"></md-icon>
-            </md-button>
-            <h3 class="md-subhead">{{item.title}}</h3>
-            <span flex></span>
-            <md-button class="md-icon-button" aria-label="close" ng-click="cancelDialog()">
-                <md-icon md-svg-icon="close"></md-icon>
-            </md-button>
-        </div>
-    </md-toolbar>
--->
 
     <div layout="row" layout-align="start center" >
         <h1 class="md-title">{{item.title}}</h1>
         <span flex=""></span>
-        <md-button ng-click="item.answered = !item.answered" aria-label="is answered" class="" style="">
+        <md-button ng-click="toggleAnswered()" aria-label="is answered" class="" style="">
             <span>Completed</span> <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
         </md-button>
     </div>
@@ -26,7 +12,7 @@
 <div ng-if="castleService.editMode">
     <md-menu>
         <md-button class="" 
-           style="width:200px; 
+           style="min-width:200px; 
                   background-color:#eee; 
                   text-transform:none;
                   text-align:left;
@@ -34,8 +20,9 @@
            aria-label="select question type" 
            ng-click="$mdOpenMenu($event)">
             <span layout="row">
-            <md-icon md-menu-origin md-svg-icon="{{getIcon(item.type)}}" style="margin: 6px 8px 6px 4px;"></md-icon>
-            {{itemTypes.types[item.type]}}
+            <md-icon md-menu-origin md-svg-icon="{{getIcon(item.type)}}" 
+                     style="margin: 6px 8px 6px 4px;"></md-icon>
+            {{getItemType(item.type)}}
             <span flex=""></span>
             <md-icon md-svg-icon="arrow_drop_down"></md-icon>
             </span>
@@ -60,7 +47,9 @@
 
 <div>
     <!--                       CLIENT INFO-->
-    <div ng-if="item.type == 'clientinfo'  && (item.required == true || castleService.hideShowOptions.showNonRequired)">
+    <div ng-if="item.type == 'clientinfo'  
+       && (item.required == true 
+       || castleService.hideShowOptions.showNonRequired)">
         <br /><br />
            <div layout="row" layout-sm="column">
             <div layout="" layout-sm="column">
@@ -282,22 +271,31 @@
         </div>
 
         <!--                           APPENDIX PHOTO-->
-        <div ng-if="item.type == 'photoAppendix'  && (item.required == true || castleService.hideShowOptions.showNonRequired)">
+        <div ng-if="item.type == 'photoAppendix'  && 
+                   (item.required == true || castleService.hideShowOptions.showNonRequired)">
             <div layout="row" ng-init="selectImage = false" class="flex-wrap">
-                <md-button class="md-raised" aria-label="Add Photos" ng-click="capturePhoto(1, item.content, true, true)">
+                <md-button class="md-raised" aria-label="Add Photos" 
+                           ng-click="capturePhoto(1, item.content, true, true)">
                     <md-icon md-svg-icon="camera"></md-icon> Add Photo
                 </md-button>
-                <md-button ng-show="castleService.assignPhotoMode != true" ng-click="selectImage = !selectImage" class="md-raised" aria-label="Select Image">
+                <md-button ng-show="castleService.assignPhotoMode != true" 
+                           ng-click="selectImage = !selectImage" 
+                           class="md-raised" 
+                           aria-label="Select Image">
                     <md-icon md-svg-icon="crop_free"></md-icon> Select
                 </md-button>
                 <div ng-if="castleService.selectedImages.length > 0 && selectImage">
-                    <md-button class="md-raised" ng-click="enterAssignPhotosMode()" aria-label="Assign to Item">
+                    <md-button class="md-raised" 
+                               ng-click="enterAssignPhotosMode()" 
+                               aria-label="Assign to Item">
                         <md-icon md-svg-icon="add_to_photos"></md-icon> Assign
                     </md-button>
-                    <md-button class="md-raised" ng-click="clearSelection()" aria-label="Clear selection">
+                    <md-button class="md-raised" ng-click="clearSelection()" 
+                               aria-label="Clear selection">
                         <md-icon md-svg-icon="clear"></md-icon> Clear
                     </md-button>
-                    <md-button class="md-raised" ng-click="deletePhotos()" aria-label="Delete Photos">
+                    <md-button class="md-raised" ng-click="deletePhotos()" 
+                               aria-label="Delete Photos">
                         <md-icon md-svg-icon="delete"></md-icon> Delete
                     </md-button>
                 </div>
@@ -319,7 +317,7 @@
       </div>
     </div>
     <div layout="row" layout-align="start center">
-        <md-button ng-click="item.answered = !item.answered" 
+        <md-button ng-click="toggleAnswered()" 
                    aria-label="is answered" 
                    class="" 
                    style="">

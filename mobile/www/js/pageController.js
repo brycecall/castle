@@ -39,7 +39,8 @@
          
          var template = {
               "title": "NEW QUESTION TITLE",
-              "items": []
+              "content": [],
+              "value":""
          }
          array.splice(index, 0, template);
      };

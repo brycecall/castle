@@ -8,7 +8,7 @@
      // change main header image and title
      castleService.currentPage.showIcon = true;
      castleService.currentPage.toggleNavMenu = true;
-     castleService.currentPage.title = "New Inspection";
+     castleService.currentPage.title = "Report: " + $scope.report.title;
      castleService.currentPage.icon = "menu";
      castleService.currentPage.showExtraMenu = true;
 
@@ -28,6 +28,21 @@
      $scope.showAddItemMenu = false;
      var pictureSource = null;
      var destinationType = null;
+     
+     $scope.isSectionComplete = function(section) {
+         var total = section.pages.length;
+         var count = 0;
+         for (var i = 0; i < total; i++) {
+            if (section.pages[i].answeredCount >= section.pages[i].items.length) {
+                count++;
+            }
+            else
+            {
+                return false;
+            }
+         }
+         return (count >= total);
+     };
 
      $scope.addToSelectedImages = function(index) {
         var safeIndex = $.inArray(index, castleService.selectedImages);

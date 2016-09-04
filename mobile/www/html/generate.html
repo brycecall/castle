@@ -7,13 +7,13 @@
          <div class="md-body-2" style="text-align:center;">
              <div>For the property at:</div>
              <div class="md-headline">
-                {{clientInfo.value.address}},
-                {{clientInfo.value.city}},
-                {{clientInfo.value.state}}
-                {{clientInfo.value.postalCode}}
+                {{metaInfo.address}},
+                {{metaInfo.city}},
+                {{metaInfo.state}}
+                {{metaInfo.postalCode}}
              </div>
-             <div>Prepared for: {{clientInfo.value.firstName}} {{clientInfo.value.lastName}}</div>
-             <div>Inspection Date: {{reportDate.value | date}}</div>
+             <div>Prepared for: {{metaInfo.firstName}} {{metaInfo.lastName}}</div>
+             <div>Inspection Date: {{metaInfo.reportDate | date}}</div>
              <div>Prepared by: {{castleService.io.user.username}}</div>
 <!--             <img src="" />-->
              <br/>
@@ -39,12 +39,12 @@
                         </div>
                         <div layout="row" layout-align="space-between end" class="md-caption">
                             <div>
-                                {{clientInfo.value.address}},
-                                {{clientInfo.value.city}},
-                                {{clientInfo.value.state}}
-                                {{clientInfo.value.postalCode}}
+                                {{metaInfo.address}},
+                                {{metaInfo.city}},
+                                {{metaInfo.state}}
+                                {{metaInfo.postalCode}}
                             </div>
-                            <div>{{reportDate.value | date}}</div>
+                            <div>{{metaInfo.reportDate | date}}</div>
                         </div>
                     </h1>
 
@@ -55,7 +55,7 @@
                             <div ng-if="item.type == 'presettext' && item.showcontent">
                                 <h2 class="md-headline">Inspection {{item.title}}</h2>
                                 <md-divider></md-divider>
-                                <p class="md-body-1">{{item.content}}</p>
+                                <p class="md-body-1">{{item.value}}</p>
                             </div>
 
 

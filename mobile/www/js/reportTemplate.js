@@ -10,7 +10,7 @@ var reportOne =
   "meta":[
       {
           title:"Report Information",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "First Name",
               "required": true, "answered":false,
@@ -688,9 +688,9 @@ var reportOne =
             }
           ]
     },
-    {
+      {
           title:"Client Information",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "First Name",
               "required": true, "answered":false,
@@ -743,718 +743,13 @@ var reportOne =
   ],
   "sections": [
     {
-      "title": "Field Notes",
-      "color": "#000000",
-      "pages": [
-        {
-          "title": "Client Info",
-          "items": [
-            {
-              "title": "Clientinfo",
-              "required": true, "answered":false,
-              "type": "clientinfo",
-              "value": {
-                "firstName": "Cameron",
-                "lastName": "Lilly",
-                "address": "4119 E Juanita Ave",
-                "addressTwo": "",
-                "city": "Gilbert",
-                "state": "AZ",
-                "postalCode": "85234"
-              }
-            },
-            {
-              "title": "Report ID",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": "111222"
-            },
-            {
-              "title": "Report Date",
-              "required": true, "answered":false,
-              "type": "date",
-              "value": "02-02-2016"
-            },
-            {
-              "title": "Client Info Images",
-              "type": "image",
-              "content": []
-            }
-          ],
-          "showvalue": false
-        },
-        {
-          "title": "Property Specifications",
-          "items": [
-            {
-              "title": "Conditions",
-              "type": "presettext",
-              "showvalue": false,
-              "showcontent": true,
-              "value": "This Report concerns the visual [INSERT OPTION] inspection of an approximately [CALCULATE & INSERT AGE] old, [INSERT SQFT], [INSERT TYPE OF HOME],[INSERT PROPERTY USE],[INSERT NUMBER OF STORIES],[INSERT HOUSE FRAME],[INSERT PROPERTY TYPE],[INSERT CONFIGURATIONS], built in [INSERT YEAR].  The main entrance, driveway, or street access appeared to be facing predominantely toward the [INSERT PROPERTY ORIENTATION].  The street surface was [INSERT DRIVEWAY TYPE], and vehicle parking was available [INSERT VEHICLE PARKING]. The Utilities servicing the Property identified were [INSERT UTILITES]. [UTILITES OFF] were off at the time of inspection. The locations of the main utility controls, shut-off valves, and or or disconnects are noted in the applicable mechanical sections."
-            },
-            {
-              "title": "Limitations",
-              "type": "presettext",
-              "showvalue": false,
-              "showcontent": true,
-              "value": "The [INSERT PROPERTY TYPE] was [INSERT PROPERTY OCCUPANCY] at the time of the inspection.  The inspection began at [*INSPECTION START TIME][AM or PM] and ended at roughly [*INSPECTION END TIME][AM or PM].  The weather at the time of the inspeciton was [GRAB WEATHER FORECAST FROM WEATHER.COM: Cloudy, Snowy, Icy, Windy] with [no precipitation, cloudy, sunny, rain, no rain, etc.].  Those in attendance at the time of the inspection were [INSERT PERSONS PRESENT].  Detached outbuildings, seasonally visible defects, poorly accessible components, areas that may have been hidden and or  or areas containing significant furnishings or storage are not included in the scope of this inspection."
-            },
-            {
-              "title": "Inspection Type",
-              "required": true, "answered":false,
-              "showvalue": false,
-              "type": "select",
-              "content": [
-                {
-                  "title": "Full",
-                  "rrTitle": 1,
-                  "rrVal": 2
-
-                },
-                {
-                  "title": "Partial",
-                  "rrTitle": 1,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Abbreviated",
-                  "rrTitle": 1,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Ancillary",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Limited",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "203(k)",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Rehabilitation",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                }
-              ],
-              "value": ""
-            },
-            {
-              "title": "Year Built",
-              "required": true, "answered":false,
-              "showvalue": false,
-              "type": "number",
-              "value": ""
-            },
-            {
-              "title": "Squarefeet of the Property",
-              "required": true, "answered":false,
-              "showvalue": false,
-              "type": "number",
-              "value":0
-            },
-            {
-              "title": "Type of Home",
-              "required": true, "answered":false,
-              "showvalue": false,
-              "type": "radio",
-              "content": [
-                {
-                  "title": "Single Family",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Single Use",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Multiple Use",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Duplex",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Triplex",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Multi Family",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Detatched",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                }
-              ],
-              "value": ""
-            },
-            {
-              "title": "Property Use",
-              "required": true, "answered":false,
-              "type": "radio",
-              "content": [
-                {
-                  "title": "Residential",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Apartment",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Retail Store",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Business",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Industrial",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Commercial",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                }
-              ],
-              "value": ""
-            },
-            {
-              "title": "Number of Stories",
-              "required": true, "answered":false,
-              "showvalue": false,
-              "type": "radio",
-              "content": [
-                {
-                  "title": "Rambler",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "One Level",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Split-Entry",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Split-Level",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "One Story",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "1 1 or 2 Story",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Two-Story",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Three-Story",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Mid-Rise",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Multi-Level",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                }
-              ],
-              "value": ""
-            },
-            {
-              "title": "House Frame",
-              "required": true, "answered":false,
-              "showvalue": false,
-              "type": "radio",
-              "content": [
-                {
-                  "title": "Wood-Framed",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Steel-Framed",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Concrete",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "CMU or Block",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Masonry",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Tilt-Up",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Wood-Frame on Steel Carriage",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "ICF",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                }
-              ],
-              "value": ""
-            },
-            {
-              "title": "Property Type",
-              "required": true, "answered":false,
-              "showvalue": false,
-              "type": "radio",
-              "content": [
-                {
-                  "title": "Home",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Twin Home",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Town Home",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Mobile Home",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Log Home",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Manufactured Home",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Prefabbed Structure",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Condominium",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Building",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Garage",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Low-Rise",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Mid-Rise",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "High-Rise",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                }
-              ],
-              "value": ""
-            },
-            {
-              "title": "Configurations",
-              "required": true, "answered":false,
-              "showvalue": true,
-              "type": "checkbox",
-              "value": [],
-              "content": [
-                {
-                  "title": "With Lower Parking Garage",
-                  "c": true,
-                  "i":["./img/Studphen.png", "./img/Studphen.png", "./img/Studphen.png"],
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "With Basement & Garage",
-                  "c": true,
-                  "i":["./img/rod.png", "./img/rod.png", "./img/rod.png"],
-                  "rrTitle": 1,
-                  "rrVal": 2
-                },
-                {
-                  "title": "With Garage",
-                  "c": true,
-                  "rrTitle": 0,
-                  "rrVal": 3
-                },
-                {
-                  "title": "With Garage & Crawlspace",
-                  "c": true
-                },
-                {
-                  "title": "With Full Basement",
-                  "c": false
-                },
-                {
-                  "title": "With Daylight Basement",
-                  "c": false
-                },
-                {
-                  "title": "With Basement & Crawlspace(s)",
-                  "c": false
-                },
-                {
-                  "title": "With Crawlspace",
-                  "c": false
-                },
-                {
-                  "title": "With Slab-On-Grade",
-                  "c": false
-                },
-                {
-                  "title": "Over Adjoining Unit(s)",
-                  "c": false
-                },
-                {
-                  "title": "Over Adjoining Basement Unit",
-                  "c": false
-                }
-              ]
-            },
-            {
-              "title": "Property Orientation",
-              "required": false, "answered":false,
-              "showvalue": false,
-              "type": "select",
-              "content": [
-                {
-                  "title": "North",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "East",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "West",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "South",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "North-East",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "North-West",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "South-East",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "South-West",
-                  "rrTitle": ""
-                }
-              ],
-              "value": ""
-            },
-            {
-              "title": "Vehicle Parking",
-              "required": false, "answered":false,
-              "showvalue": false,
-              "type": "checkbox",
-              "value": [],
-              "content": [
-                {
-                  "title": "At Curbside",
-                  "c": false
-                },
-                {
-                  "title": "In a Rear Alley",
-                  "c": false
-                },
-                {
-                  "title": "In the Driveway",
-                  "c": false
-                },
-                {
-                  "title": "In an Attached Garage(s)",
-                  "c": false
-                },
-                {
-                  "title": "In a Detached Garage(s)",
-                  "c": false
-                },
-                {
-                  "title": "In an Attached Carport",
-                  "c": false
-                },
-                {
-                  "title": "In a Detached Carport",
-                  "c": false
-                },
-                {
-                  "title": "In a Covered Parking Space",
-                  "c": false
-                },
-                {
-                  "title": "In an Open Parking Space",
-                  "c": false
-                },
-                {
-                  "title": "In a Secured Parking Garage",
-                  "c": false
-                },
-                {
-                  "title": "In an Open Parking Garage",
-                  "c": false
-                },
-                {
-                  "title": "In an Open, Striped Parking Lot",
-                  "c": false
-                }
-              ]
-            },
-            {
-              "title": "Utilities",
-              "required": false, "answered":false,
-              "showvalue": false,
-              "type": "checkbox",
-              "value": [],
-              "content": [
-                {
-                  "title": "Electricity",
-                  "c": false
-                },
-                {
-                  "title": "Water",
-                  "c": false
-                },
-                {
-                  "title": "Gas",
-                  "c": false
-                },
-                {
-                  "title": "Oil",
-                  "c": false
-                },
-                {
-                  "title": "Propane",
-                  "c": false
-                }
-              ]
-            },
-            {
-              "title": "What Utilities were OFF",
-              "required": false, "answered":false,
-              "showvalue": false,
-              "type": "checkbox",
-              "value": [],
-              "content": [
-                {
-                  "title": "Electricity",
-                  "c": false
-                },
-                {
-                  "title": "Water",
-                  "c": false
-                },
-                {
-                  "title": "Gas",
-                  "c": false
-                },
-                {
-                  "title": "Oil",
-                  "c": false
-                },
-                {
-                  "title": "Propane",
-                  "c": false
-                }
-              ]
-            },
-            {
-              "title": "Property Occupancy",
-              "required": true, "answered":false,
-              "type": "select",
-              "content": [
-                {
-                  "title": "Occupied",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "Mostly Occupied",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "Mostly Vacant",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "Vacant",
-                  "rrTitle": ""
-                }
-              ],
-              "value": ""
-            },
-            {
-              "title": "Persons Present",
-              "required": false, "answered":false,
-              "showvalue": false,
-              "type": "checkbox",
-              "value": [],
-              "content": [
-                {
-                  "title": "Inspector",
-                  "c": false
-                },
-                {
-                  "title": "Buyer",
-                  "c": false
-                },
-                {
-                  "title": "Resident",
-                  "c": false
-                },
-                {
-                  "title": "Builder or Builders Rep",
-                  "c": false
-                },
-                {
-                  "title": "Owner or Seller",
-                  "c": false
-                },
-                {
-                  "title": "Agent",
-                  "c": false
-                },
-                {
-                  "title": "Friends or Other",
-                  "c": false
-                }
-              ]
-            },
-            {
-              "title": "Person(s) Providing Property Access",
-              "required": false, "answered":false,
-              "showvalue": false,
-              "type": "radio",
-              "content": [
-                {
-                  "title": "Inspector",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "Buyer",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "Resident",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "Builder or Builders Rep",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "Owner or Seller",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "Agent",
-                  "rrTitle": ""
-                },
-                {
-                  "title": "Friends or Other",
-                  "rrTitle": ""
-                }
-              ],
-              "value": ""
-            },
-            {
-              "title": "Property Specifications Images",
-              "type": "image",
-              "content": []
-            }
-          ],
-          "showvalue": false
-        }
-      ]
-    },
-    {
-      "title": "Site",
-      "color": "#EC407A",
-      "pages": [
+        "title": "Site",
+        "color": "#EC407A",
+        "answeredCount":0, 
+        "pages": [
         {
           "title": "Evaluation",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Conditions",
               "required": false, "answered":false,
@@ -1958,7 +1253,7 @@ var reportOne =
         },
         {
           "title": "Attached Steps or Platforms",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Porch or Stoop",
               "required": false, "answered":false,
@@ -2221,10 +1516,10 @@ var reportOne =
     {
       "title": "Exterior",
       "color": "#795649",
-      "pages": [
+      "answeredCount":0, "pages": [
         {
           "title": "Siding  or  Wall Cladding",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Conditions",
               "required": false, "answered":false,
@@ -2599,7 +1894,7 @@ var reportOne =
         },
         {
           "title": "Wall Fenestrations",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Window Frame or Trim",
               "required": false, "answered":false,
@@ -2802,7 +2097,7 @@ var reportOne =
         },
         {
           "title": "Attached Garage or Carport",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Conditions",
               "required": false, "answered":false,
@@ -3309,10 +2604,10 @@ var reportOne =
     {
       "title": "Roofing",
       "color": "#607D8B",
-      "pages": [
+      "answeredCount":0, "pages": [
         {
           "title": "Roof Covering(s)",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Conditions",
               "required": false, "answered":false,
@@ -3697,7 +2992,7 @@ var reportOne =
         },
         {
           "title": "Fenestrations",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Perforations (through-roof)",
               "required": false, "answered":false,
@@ -3966,7 +3261,7 @@ var reportOne =
         },
         {
           "title": "Gutters & Down-Spouts",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Type",
               "required": false, "answered":false,
@@ -4152,10 +3447,10 @@ var reportOne =
     {
       "title": "Structural",
       "color": "#009688",
-      "pages": [
+      "answeredCount":0, "pages": [
         {
           "title": "Roof Framing (Visible In Attic)",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Conditions",
               "required": false, "answered":false,
@@ -4334,7 +3629,7 @@ var reportOne =
         },
         {
           "title": "Floor Framing",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Notice",
               "required": false, "answered":false,
@@ -4733,7 +4028,7 @@ var reportOne =
         },
         {
           "title": "Foundation",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Type of Foundation",
               "required": false, "answered":false,
@@ -5063,10 +4358,10 @@ var reportOne =
     {
       "title": "Thermal",
       "color": "#F8981D",
-      "pages": [
+      "answeredCount":0, "pages": [
         {
           "title": "Attic",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Conditions",
               "required": false, "answered":false,
@@ -5576,7 +4871,7 @@ var reportOne =
         },
         {
           "title": "Crawl Spaces or Unfinished Basements",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Access",
               "required": false, "answered":false,
@@ -6008,7 +5303,7 @@ var reportOne =
         },
         {
           "title": "Interior Ventilation or Exhaust Fans",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Whole House Ventiliation",
               "required": false, "answered":false,
@@ -6178,10 +5473,10 @@ var reportOne =
     {
       "title": "Plumbing",
       "color": "#903F98",
-      "pages": [
+      "answeredCount":0, "pages": [
         {
           "title": "Plumbing System",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Conditions",
               "required": false, "answered":false,
@@ -6670,7 +5965,7 @@ var reportOne =
         },
         {
           "title": "Faucets or Fixtures",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Faucets",
               "required": false, "answered":false,
@@ -7087,7 +6382,7 @@ var reportOne =
         },
         {
           "title": "Water Heater",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Energy Source",
               "required": false, "answered":false,
@@ -7443,10 +6738,10 @@ var reportOne =
     {
       "title": "Heating",
       "color": "#D32E2E",
-      "pages": [
+      "answeredCount":0, "pages": [
         {
           "title": "Heating System",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Conditions",
               "required": false, "answered":false,
@@ -7631,7 +6926,7 @@ var reportOne =
         },
         {
           "title": "Central Furnace or Heat Pump",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Brand Name",
               "required": false, "answered":false,
@@ -7751,7 +7046,7 @@ var reportOne =
         },
         {
           "title": "NEW SECTION?",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Ducting",
               "required": false, "answered":false,
@@ -7882,7 +7177,7 @@ var reportOne =
         },
         {
           "title": "Fireplaces or Stoves",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Conditions",
               "required": false, "answered":false,
@@ -8133,10 +7428,10 @@ var reportOne =
     {
       "title": "Cooling",
       "color": "#38A4DD",
-      "pages": [
+      "answeredCount":0, "pages": [
         {
           "title": "Cooling Systems",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Conditions",
               "required": false, "answered":false,
@@ -8236,7 +7531,7 @@ var reportOne =
         },
         {
           "title": "Evaporative Coil or Heat Pump (Inside)",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Brand Name",
               "required": false, "answered":false,
@@ -8294,7 +7589,7 @@ var reportOne =
         },
         {
           "title": "Compressor or Condenser (Outside)",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Compressor or Condenser Brand Name",
               "required": false, "answered":false,
@@ -8425,10 +7720,10 @@ var reportOne =
     {
       "title": "Electrical",
       "color": "#FDD836",
-      "pages": [
+      "answeredCount":0, "pages": [
         {
           "title": "Electrical System",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Conditions",
               "required": false, "answered":false,
@@ -9022,7 +8317,7 @@ var reportOne =
         },
         {
           "title": "Fixtures, Switches, or Detectors",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Fixtures",
               "required": false, "answered":false,
@@ -9254,10 +8549,10 @@ var reportOne =
     {
       "title": "Interior",
       "color": "#F06392",
-      "pages": [
+      "answeredCount":0, "pages": [
         {
           "title": "Living Room",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Conditions",
               "required": false, "answered":false,
@@ -9536,7 +8831,7 @@ var reportOne =
         },
         {
           "title": "Kitchen",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Appliances",
               "required": false, "answered":false,
@@ -9861,7 +9156,7 @@ var reportOne =
         },
         {
           "title": "Laundry",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Appliances",
               "required": false, "answered":false,
@@ -10013,7 +9308,7 @@ var reportOne =
         },
         {
           "title": "Bathroom(s)",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Walls or Ceilings",
               "required": false, "answered":false,
@@ -10243,7 +9538,7 @@ var reportOne =
         },
         {
           "title": "General",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Walls or Ceilings",
               "required": false, "answered":false,
@@ -10714,10 +10009,10 @@ var reportOne =
     {
       "title": "Life or Safety",
       "color": "#4DAF4E",
-      "pages": [
+      "answeredCount":0, "pages": [
         {
           "title": "Potential Safety Concerns",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Conditions",
               "required": false, "answered":false,
@@ -10979,10 +10274,10 @@ var reportOne =
     {
       "title": "Photo Appendix",
       "color": "#3C4DA1",
-      "pages": [
+      "answeredCount":0, "pages": [
         {
           "title": "Additional Photos for Further Clarification",
-          "items": [
+          "answeredCount":0, "items": [
             {
               "title": "Photo Appendix Images",
               "type": "photoAppendix",

@@ -20,9 +20,11 @@
         <md-button ng-click="reverse = !reverse" style="text-transform:none">
            <md-icon md-svg-icon="reverse"></md-icon>  Reverse Order
         </md-button>
-        <md-button ng-click="switchReport(defaultReport)" ui-sref="inspection({sectionIndex:'default'})" 
+        <md-button 
+           ng-click="switchReport(defaultReport)" 
+           ui-sref="inspection({sectionIndex:'default'})" 
            class="md-primary">
-            <md-icon md-svg-icon="new_report"></md-icon>  New Report
+           <md-icon md-svg-icon="new_report"></md-icon> New Report
         </md-button>
         </div>
         <div layout="row" class="flex-wrap" >
@@ -33,11 +35,13 @@
             </md-whiteframe>
 
             <md-whiteframe class="md-whiteframe-1dp frameStyle" 
-               ng-click="switchReport(defaultReport)" ui-sref="inspection({sectionIndex:'default'})" 
+               ng-click="switchReport(defaultReport)" 
+               ui-sref="inspection({sectionIndex:'default'})" 
                layout="column"
                layout-align="center center">
                <div>
-                <md-icon md-svg-icon="add_circle_outline" style="height:35px; width:35px; margin:5px;"></md-icon>
+                <md-icon md-svg-icon="add_circle_outline" 
+                    style="height:35px; width:35px; margin:5px;"></md-icon>
                 <div>Create New Report</div>
                 </div>
                 

@@ -1,27 +1,30 @@
   <div ng-controller="pageController" flex="" layout="column" class="page" id="nav">
    <md-content>
    
-<span layout="row" layout-align="space-between center">
-    <h1 class="md-subhead insTitle">{{page.title}} Questions</h1>
-                <md-menu>
-                    <md-button class="md-icon-button" aria-label="section menu" ng-click="$mdOpenMenu($event)">
-                        <md-icon md-svg-icon="more_vert"></md-icon>
-                    </md-button>
-                     <md-menu-content>
-                       <md-menu-item>
-                         <md-button ng-click="toggleEditMode()" aria-label="Toggle Edit Mode">
-                           <md-icon md-menu-align-target md-svg-icon="mode_edit"></md-icon>
-                           Toggle Edit Mode
-                         </md-button>
-                       </md-menu-item>
-                       <md-menu-item>
-                         <md-button ng-click="addQuestion(page.items, 0)" aria-label="Insert Question">
-                           <md-icon md-menu-align-target md-svg-icon="add"></md-icon>
-                           Add Question
-                         </md-button>
-                       </md-menu-item>
-                     </md-menu-content>
-                </md-menu>
+<span layout="row" layout-align="start center">
+    <h1 class="md-subhead insTitle">{{page.title}} Questions 
+                                    {{page.answeredCount}}/{{page.items.length}}</h1>
+    <span flex=""></span>
+    <md-menu>
+        <md-button class="md-icon-button" aria-label="section menu" ng-click="$mdOpenMenu($event)">
+            <md-icon md-svg-icon="more_vert"></md-icon>
+        </md-button>
+         <md-menu-content>
+           <md-menu-item>
+             <md-button ng-click="toggleEditMode()" aria-label="Toggle Edit Mode">
+               <md-icon md-menu-align-target md-svg-icon="mode_edit"></md-icon>
+               Toggle Edit Mode
+             </md-button>
+           </md-menu-item>
+           <md-menu-item>
+             <md-button ng-click="addQuestion(page.items, 0)" aria-label="Insert Question">
+               <md-icon md-menu-align-target md-svg-icon="add"></md-icon>
+               Add Question
+             </md-button> 
+           </md-menu-item>
+         </md-menu-content>
+    </md-menu>
+    
 </span>
        <!--           PAGES-->
     <md-card id="pageParent" style="margin-bottom:85px;" ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment':'#pageParent'}" ng-model="page.items">

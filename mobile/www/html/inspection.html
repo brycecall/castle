@@ -28,7 +28,6 @@
              layout-align="center stretch" 
              style="text-align-left"
              ng-init="clicked = false"
-             
               >             
                <div  style="padding:0px 0px 0px 16px; margin:0;
                          vertical-align:middle; border-radius:0; 
@@ -47,6 +46,7 @@
                            class="editInput nonEditInput"
                            ng-class="castleService.editMode ? 'inputBorder' : 'nonEditInput'" />
                     <span flex=""></span>
+                    <md-icon md-svg-icon="check" ng-show="isSectionComplete(section)"></md-icon>
                     <md-button
                        aria-label="toggle pages menu"
                        class="md-icon-button"
@@ -56,7 +56,7 @@
               </div>
                <div  style="padding:0px 0px 0px 16px; margin:0;
                          vertical-align:middle; border-radius:0; 
-                         text-transform:none; background-color:white;  height:52px;" 
+                         text-transform:none; background-color:white; height:52px;" 
                        class="md-no-style" 
                        aria-label="{{section.title}}"
                        layout="row" 
@@ -73,6 +73,7 @@
                        class="editInput nonEditInput"
                        ng-class="castleService.editMode ? 'inputBorder' : 'nonEditInput'" />
                 <span flex=""></span>
+                
                 <md-button
                    aria-label="toggle pages menu"
                    ng-click="setAccordianIndex($index)"
@@ -113,13 +114,14 @@
                    id="subsecParent" 
                    ui-sortable="{'ui-floating': false, 'handle': '.subhandle', 'containment': '#secParent'}"  
                    ng-model="section.pages">
-                    <div ng-repeat="page in section.pages  track by $index" layout="column" layout-align="center stretch" class="sortdivider">
+                    <div ng-repeat="page in section.pages  track by $index" 
+                         layout="column" layout-align="center stretch" class="sortdivider">
                       <md-divider></md-divider>
                       <div layout="row" layout-align="start center" style="background-color:#ECEFF1;">              
                            <span style="padding:8px 0 8px 28px;">
-                             <span ng-show="castleService.editMode" class="subhandle" style="text-align:right;" >
-                              <md-icon   md-svg-icon="./img/drag.svg" style="width:30px;"></md-icon>
-                            </span>
+                               <span ng-show="castleService.editMode" class="subhandle" style="text-align:right;" >
+                                  <md-icon   md-svg-icon="./img/drag.svg" style="width:30px;"></md-icon>
+                               </span>
                            </span>
                            <span ng-if="castleService.editMode" style="padding-left:8px;">
                                <input type="text" 
@@ -128,12 +130,14 @@
                                class="inputBorder" />
                            </span>
                                
-                           <md-button  ui-sref="page({'sectionIndex':$parent.$index, 'pageIndex':$index})" 
+                            <md-button  ui-sref="page({'sectionIndex':$parent.$index, 'pageIndex':$index})" 
                                        class="theButton"
                                        aria-label="navigate to page"> 
-                                      <span flex=""><span ng-if="!castleService.editMode" >{{page.title}}</span></span>
+                                      <span flex="">
+                                          <span ng-if="!castleService.editMode" >{{page.title}}</span>
+                                      </span>
                             </md-button>
-
+                            <span style="padding-right:4px;">{{page.answeredCount}}/{{page.items.length}}</span>
                             <md-button ng-show="castleService.editMode" class="md-icon-button" 
                                        ng-init="clicked = false" 
                                        aria-label="toggle pages menu"

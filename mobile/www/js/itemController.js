@@ -6,10 +6,10 @@
      $scope.itemIndex = $stateParams.itemIndex;
      castleService.selectedSection = $scope.sectionIndex;
      castleService.selectedPage = $scope.pageIndex;
-     $scope.item = $scope.report
+     $scope.page = $scope.report
            .sections[$scope.sectionIndex]
-           .pages[$scope.pageIndex]
-           .items[$scope.itemIndex];
+           .pages[$scope.pageIndex];
+     $scope.item = $scope.page.items[$scope.itemIndex];
 
      castleService.currentPage.showIcon = true;
      castleService.currentPage.title = $scope.report.sections[$scope.sectionIndex].pages[$scope.pageIndex].title;
@@ -339,15 +339,10 @@
 
      $scope.addSubQuestion = function(newstuff) 
      {
-         
-       var stuff = {
-           "title": newstuff,
-           "c": false
-           //,
-//           "rrTitle": '',
-//           "rrVal": ''
+        var stuff = {
+            "title": newstuff,
+            "c": false
         }
-         
         $scope.item.content.push(stuff);
      };
      
@@ -360,9 +355,26 @@
          "content": []
      };
      
+    $scope.toggleAnswered = function(value) {
+        if (value != null && value != undefined)
+        {
+            //only modify the answeredCount if the value of answered changed
+            if ($scope.item.answered != value)
+            {
+                $scope.item.answered = value;
+                $scope.page.answeredCount += (value) ? 1 : -1;
+            }
+        }
+        else
+        {
+            $scope.item.answered = !$scope.item.answered;
+            $scope.page.answeredCount += ($scope.item.answered) ? 1 : -1;
+        }
+    };
+     
      $scope.clearQuestion = function(item) 
      {
-         item.answered = false;
+         $scope.toggleAnswered(false);
          item.value = ''; 
          if (item.type === 'checkbox')
          {
@@ -408,7 +420,9 @@
                  "title":theValue,
                  "c": false,
                  "rrTitle":"",
-                 "rrVal":""
+                 "rrVal":"",
+                 "content":[],
+                 "value":""
              };
 
          switch (theType) {
@@ -421,7 +435,11 @@
         // console.log(JSON.stringify($scope.newItem, null, 2));
      };
 
-
-
-
+    $scope.getItemType = function(type){
+        var result = "Select a Question Type";
+        if (type != null && type != "" && type != undefined) {
+            result = $scope.itemTypes.types[type];
+        }
+        return result;
+    };
  });

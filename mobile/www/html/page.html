@@ -10,12 +10,14 @@
             <md-icon md-svg-icon="more_vert"></md-icon>
         </md-button>
          <md-menu-content>
+<!--
            <md-menu-item>
              <md-button ng-click="toggleEditMode()" aria-label="Toggle Edit Mode">
                <md-icon md-menu-align-target md-svg-icon="mode_edit"></md-icon>
                Toggle Edit Mode
              </md-button>
            </md-menu-item>
+-->
            <md-menu-item>
              <md-button ng-click="addQuestion(page.items, 0)" aria-label="Insert Question">
                <md-icon md-menu-align-target md-svg-icon="add"></md-icon>
@@ -52,7 +54,7 @@
                            text-transform:none; 
                            width:100%;"
                 >
-                   <md-icon md-svg-icon="{{getIcon(item.type)}}"></md-icon>
+                   <md-icon md-svg-icon="{{getIcon(item.type)}}" style="color:rgba(0,0,0,0.38)"></md-icon>
                     <span style="padding-left:4px;">{{item.title}}</span>
                 </md-button>
 

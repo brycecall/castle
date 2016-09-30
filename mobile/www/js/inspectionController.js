@@ -59,7 +59,7 @@
      };
      
      $scope.accordianIndex = -1;
-     $scope.setAccordianIndex = function(index) {
+     $scope.toggleAccordianIndex = function(index) {
          
          if (index == $scope.accordianIndex)
          {
@@ -69,6 +69,9 @@
          {
             $scope.accordianIndex = index;
          }
+     };
+     $scope.setAccordianIndex = function(index) {
+            $scope.accordianIndex = index;
      };
      $scope.matchesAccordianIndex = function(index) {
         return (index == $scope.accordianIndex);
@@ -93,7 +96,9 @@
          var template = {
               "title": "NEW SUBSECTION TITLE",
               "color": "#000000",
-              "pages": []
+              "answeredCount":0,
+              "items": [
+              ]
          }
          array.splice(index, 0, template);
      };

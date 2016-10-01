@@ -12,6 +12,18 @@ app.post('/api/insert/user/', function(req, res){
     //do magic to connect to firebase db
     
     //insert row
+    firebase.createUser({
+        name: req.param("name"),
+        email: req.param("email"),
+        password: req.param("pw")
+    }, function(error, userData) {
+        if(error){
+            console.log("Error creating user:", error);
+        } else {
+            console.log("Successfully created user account with uid:", userData.uid);
+        }
+    });
+
     
     //respond with status
     res.send("");
@@ -78,5 +90,11 @@ app.get('/api/select/inspection/id/', function(req, res){
 })
 
 // api/delete/inspection/id
-
 // api/select/users
+
+// api/getreport
+// -inputs: report id (hash id?), username?(to make sure they are authorized to view report)
+// - returns full report 
+app.get('/api/getreport', function(req,res){
+    
+})

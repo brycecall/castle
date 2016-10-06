@@ -34,16 +34,15 @@
            <span >
             <div layout="row" layout-align="start center" style="min-height:52px">
                 
-                <div ng-show="castleService.editMode" class="handle" style="text-align:right">
+                <div ng-show="castleService.editMode" class="handle" style="text-align:right; margin-left:8px;">
                      <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
                 </div>
-<!--
-                <div ng-if="castleService.editMode" style="padding:8px 0 8px 16px;">
+                <div ng-if="castleService.editMode" style="padding:8px 0 8px 8px;" layout="row">
+                  <md-icon md-svg-icon="{{getIcon(item.type)}}" style="color:rgba(0,0,0,0.38)"></md-icon>
                    <input type="text" 
                    ng-model="item.title" 
-                   style="border:none; background-color:#ECEFF1;"/>
+                   style="border-width:0 0 1px 0; background-color:inherit; margin-left:4px;"/>
                 </div>
--->
                 <md-button
                     
                     class="md-subhead md-no-style" 
@@ -54,8 +53,10 @@
                            text-transform:none; 
                            width:100%;"
                 >
+                  <span ng-show="!castleService.editMode">
                    <md-icon md-svg-icon="{{getIcon(item.type)}}" style="color:rgba(0,0,0,0.38)"></md-icon>
-                    <span style="padding-left:4px;">{{item.title}}</span>
+                    <span style="padding-left:4px;" >{{item.title}}</span>
+                    </span>
                 </md-button>
 
                 <div ng-show="item.answered" 

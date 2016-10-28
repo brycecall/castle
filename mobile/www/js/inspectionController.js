@@ -91,6 +91,22 @@
          array.splice(index, 0, template);
      };
      
+     $scope.newSectionTitle = "";
+     $scope.addNewSection = function() {
+         if ($scope.newSectionTitle == null 
+             || $scope.newSectionTitle == undefined 
+             || $scope.newSectionTitle == "") {
+            $scope.newSectionTitle = "NEW SECTION TITLE";
+         }
+         var template = {
+              "title": $scope.newSectionTitle,
+              "color": "#000000",
+              "pages": []
+         }
+         $scope.report.sections.push(template);
+         $scope.newSectionTitle = "";
+     };
+     
      $scope.addSubsection = function(array, index) {
          
          var template = {
@@ -173,7 +189,7 @@
             castleService.cancelAssignPhotoMode();
      };
      
-
+     
      $scope.setItem = function(item, val) {
          item.value = val;
      };

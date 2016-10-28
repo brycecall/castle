@@ -1,5 +1,4 @@
 var reportOne = 
-    
 {
   "name": "Name of the Report",
   "title": "Name of the Report",

@@ -160,7 +160,20 @@
 
             <md-divider ng-if="!$last"></md-divider>
         </div>
+
     </md-card>
+        <div>
+            <md-button class="md-icon-button"
+                       style="min-width:40px;" 
+                       aria-label="toggle pages menu"
+                       ng-click="addNewSection()">
+                <md-icon md-svg-icon="plus" ></md-icon>
+            </md-button>
+           <input type="text" 
+           ng-model="newSectionTitle" 
+           class="inputBorder" />
+
+        </div>
     <div layout="row" style="padding: 0 0 10px 0;" ng-hide="castleService.assignPhotoMode" class="flex-wrap">
         <md-button ng-click="checkRequired()" class="md-raised" aria-label="Preview Report">Preview Report</md-button>
         <md-button ng-click="" class="md-raised" aria-label="Save Report">Save Report</md-button>

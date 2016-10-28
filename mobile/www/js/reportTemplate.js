@@ -6597,14 +6597,14 @@ var reportOne =
               "title": "Model Number",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
               "title": "Serial Number",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
@@ -6972,14 +6972,14 @@ var reportOne =
               "title": "Model Number",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
               "title": "Serial Number",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
@@ -7536,7 +7536,7 @@ var reportOne =
               "title": "Brand Name",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": {
                 "Bryant": {
                   "c": false
@@ -7550,7 +7550,7 @@ var reportOne =
               "title": "Capacity",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": {
                 "Not Applicable": {
                   "c": false
@@ -7571,12 +7571,12 @@ var reportOne =
               "title": "Model Number",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
               "title": "Serial Number",
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
@@ -7635,14 +7635,14 @@ var reportOne =
               "title": "Model Number of Compressor or Condenser",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
               "title": "Serial Number of Compressor or Condenser",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
@@ -8818,7 +8818,7 @@ var reportOne =
             },
             {
               "title": "Comments",
-              "type": "textbox",
+              "type": "text",
               "value": {}
             },
             {
@@ -10258,7 +10258,7 @@ var reportOne =
               "title": "Comments",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": {}
             },
             {

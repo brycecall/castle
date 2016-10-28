@@ -38,13 +38,11 @@
                      <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
                 </div>
                 <div ng-if="castleService.editMode" style="padding:8px 0 8px 8px;" layout="row">
-                  <md-icon md-svg-icon="{{getIcon(item.type)}}" style="color:rgba(0,0,0,0.38)"></md-icon>
                    <input type="text" 
                    ng-model="item.title" 
                    style="border-width:0 0 1px 0; background-color:inherit; margin-left:4px;"/>
                 </div>
                 <md-button
-                    
                     class="md-subhead md-no-style" 
                     ui-sref="item({'sectionIndex':sectionIndex, 'pageIndex':pageIndex, 'itemIndex':$index})"
                     style="margin:0; padding: 8px 0 8px 8px; 
@@ -54,15 +52,15 @@
                            width:100%;"
                 >
                   <span ng-show="!castleService.editMode">
-                   <md-icon md-svg-icon="{{getIcon(item.type)}}" style="color:rgba(0,0,0,0.38)"></md-icon>
                     <span style="padding-left:4px;" >{{item.title}}</span>
-                    </span>
+                  </span>
                 </md-button>
-
-                <div ng-show="item.answered" 
+                    <span flex=""></span>
+                <div  
                      style="width:45px; text-align:center" 
                      >
-                    <md-icon md-svg-icon="check"></md-icon>
+                    <md-icon md-svg-icon="{{item.answered ? 'check' : getIcon(item.type)}}"
+                             ng-class="item.answered ? 'md-primary' : 'greyed'"></md-icon>
                 </div>
             </div>
             <md-divider ng-if="!$last"></md-divider>

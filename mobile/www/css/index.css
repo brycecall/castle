@@ -958,3 +958,7 @@ box-shadow:
     line-height:16px;
     
 }
+
+.greyed {
+    color:rgba(0,0,0,0.38);
+}

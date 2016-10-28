@@ -6596,14 +6596,14 @@
               "title": "Model Number",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
               "title": "Serial Number",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
@@ -6971,14 +6971,14 @@
               "title": "Model Number",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
               "title": "Serial Number",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
@@ -7535,7 +7535,7 @@
               "title": "Brand Name",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": {
                 "Bryant": {
                   "c": false
@@ -7549,7 +7549,7 @@
               "title": "Capacity",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": {
                 "Not Applicable": {
                   "c": false
@@ -7570,12 +7570,12 @@
               "title": "Model Number",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
               "title": "Serial Number",
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
@@ -7634,14 +7634,14 @@
               "title": "Model Number of Compressor or Condenser",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
               "title": "Serial Number of Compressor or Condenser",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": ""
             },
             {
@@ -8817,7 +8817,7 @@
             },
             {
               "title": "Comments",
-              "type": "textbox",
+              "type": "text",
               "value": {}
             },
             {
@@ -10257,7 +10257,7 @@
               "title": "Comments",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "textbox",
+              "type": "text",
               "value": {}
             },
             {

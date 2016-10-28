@@ -948,3 +948,13 @@ box-shadow:
 .btnBackground {
     background-color: rgba(158,158,158,0.2);
 }
+
+.navList {
+    color:rgb(33, 33, 33);
+    font-family: Roboto, sans-serif;
+    font-size:16px;
+    font-weight:normal;
+    height:16px;
+    line-height:16px;
+    
+}

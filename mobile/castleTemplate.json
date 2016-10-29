@@ -10,24 +10,6 @@
       {
           "title":"Report Information",
           "answeredCount":0, "items": [
-            {
-              "title": "Client First Name",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            },
-            {
-              "title": "Report ID",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            },
-            {
-              "title": "Report Date",
-              "required": true, "answered":false,
-              "type": "date",
-              "value": ""
-            },
 //            {
 //              "title": "Conditions",
 //              "type": "presettext",
@@ -43,48 +25,21 @@
 //              "value": "The [INSERT PROPERTY TYPE] was [INSERT PROPERTY OCCUPANCY] at the time of the inspection.  The inspection began at [*INSPECTION START TIME][AM or PM] and ended at roughly [*INSPECTION END TIME][AM or PM].  The weather at the time of the inspection was [GRAB WEATHER FORECAST FROM WEATHER.COM: Cloudy, Snowy, Icy, Windy] with [no precipitation, cloudy, sunny, rain, no rain, etc.].  Those in attendance at the time of the inspection were [INSERT PERSONS PRESENT].  Detached outbuildings, seasonally visible defects, poorly accessible components, areas that may have been hidden and or  or areas containing significant furnishings or storage are not included in the scope of this inspection."
 //            },
             {
-              "title": "Inspection Type",
+              "title": "Client Name",
               "required": true, "answered":false,
-              "showvalue": false,
-              "type": "select",
-              "content": [
-                {
-                  "title": "Full",
-                  "rrTitle": 1,
-                  "rrVal": 2
-
-                },
-                {
-                  "title": "Partial",
-                  "rrTitle": 1,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Abbreviated",
-                  "rrTitle": 1,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Ancillary",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Limited",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "203(k)",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
-                  "title": "Rehabilitation",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                }
-              ],
+              "type": "text",
+              "value": ""
+            },
+            {
+              "title": "Report ID #",
+              "required": true, "answered":false,
+              "type": "text",
+              "value": ""
+            },
+            {
+              "title": "Report Date",
+              "required": true, "answered":false,
+              "type": "date",
               "value": ""
             },
             {
@@ -102,7 +57,7 @@
               "value":0
             },
             {
-              "title": "Type of Home",
+              "title": "Type of Property",
               "required": true, "answered":false,
               "showvalue": false,
               "type": "radio",
@@ -215,11 +170,6 @@
                   "rrVal": 2
                 },
                 {
-                  "title": "1 1 or 2 Story",
-                  "rrTitle": 0,
-                  "rrVal": 2
-                },
-                {
                   "title": "Two-Story",
                   "rrTitle": 0,
                   "rrVal": 2
@@ -243,7 +193,7 @@
               "value": ""
             },
             {
-              "title": "House Frame",
+              "title": "Building Frame",
               "required": true, "answered":false,
               "showvalue": false,
               "type": "radio",
@@ -292,7 +242,7 @@
               "value": ""
             },
             {
-              "title": "Property Type",
+              "title": "Building Type",
               "required": true, "answered":false,
               "showvalue": false,
               "type": "radio",
@@ -366,7 +316,7 @@
               "value": ""
             },
             {
-              "title": "Configurations",
+              "title": "Property Configurations",
               "required": true, "answered":false,
               "showvalue": true,
               "type": "checkbox",
@@ -374,23 +324,15 @@
               "content": [
                 {
                   "title": "With Lower Parking Garage",
-                  "c": true,
-                  "i":["./img/Studphen.png", "./img/Studphen.png", "./img/Studphen.png"],
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "c": false
                 },
                 {
                   "title": "With Basement & Garage",
-                  "c": true,
-                  "i":["./img/rod.png", "./img/rod.png", "./img/rod.png"],
-                  "rrTitle": 1,
-                  "rrVal": 2
+                  "c": false
                 },
                 {
                   "title": "With Garage",
-                  "c": true,
-                  "rrTitle": 0,
-                  "rrVal": 3
+                  "c": false
                 },
                 {
                   "title": "With Garage & Crawlspace",

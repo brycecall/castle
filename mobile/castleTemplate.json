@@ -2,7 +2,7 @@
 {
   "name": "Name of the Report",
   "title": "Name of the Report",
-  "date":"3/22/2016",
+  "date":"",
   "type":"template",
   "inspectiontype":"",
   "status":"",
@@ -25,13 +25,13 @@
 //              "value": "The [INSERT PROPERTY TYPE] was [INSERT PROPERTY OCCUPANCY] at the time of the inspection.  The inspection began at [*INSPECTION START TIME][AM or PM] and ended at roughly [*INSPECTION END TIME][AM or PM].  The weather at the time of the inspection was [GRAB WEATHER FORECAST FROM WEATHER.COM: Cloudy, Snowy, Icy, Windy] with [no precipitation, cloudy, sunny, rain, no rain, etc.].  Those in attendance at the time of the inspection were [INSERT PERSONS PRESENT].  Detached outbuildings, seasonally visible defects, poorly accessible components, areas that may have been hidden and or  or areas containing significant furnishings or storage are not included in the scope of this inspection."
 //            },
             {
-              "title": "Client Name",
+              "title": "Report ID#",
               "required": true, "answered":false,
               "type": "text",
               "value": ""
             },
             {
-              "title": "Report ID #",
+              "title": "Report Title",
               "required": true, "answered":false,
               "type": "text",
               "value": ""
@@ -63,39 +63,25 @@
               "type": "radio",
               "content": [
                 {
-                  "title": "Single Family",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Single Family"
                 },
                 {
-                  "title": "Single Use",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Single Use"
                 },
                 {
-                  "title": "Multiple Use",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Multiple Use"
                 },
                 {
-                  "title": "Duplex",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Duplex"
                 },
                 {
-                  "title": "Triplex",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Triplex"
                 },
                 {
-                  "title": "Multi Family",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Multi Family"
                 },
                 {
-                  "title": "Detatched",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Detatched"
                 }
               ],
               "value": ""
@@ -106,34 +92,22 @@
               "type": "radio",
               "content": [
                 {
-                  "title": "Residential",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Residential"
                 },
                 {
-                  "title": "Apartment",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Apartment"
                 },
                 {
-                  "title": "Retail Store",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Retail Store"
                 },
                 {
-                  "title": "Business",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Business"
                 },
                 {
-                  "title": "Industrial",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Industrial"
                 },
                 {
-                  "title": "Commercial",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Commercial"
                 }
               ],
               "value": ""
@@ -145,49 +119,31 @@
               "type": "radio",
               "content": [
                 {
-                  "title": "Rambler",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Rambler"
                 },
                 {
-                  "title": "One Level",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "One Level"
                 },
                 {
-                  "title": "Split-Entry",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Split-Entry"
                 },
                 {
-                  "title": "Split-Level",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Split-Level"
                 },
                 {
-                  "title": "One Story",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "One Story"
                 },
                 {
-                  "title": "Two-Story",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Two-Story"
                 },
                 {
-                  "title": "Three-Story",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Three-Story"
                 },
                 {
-                  "title": "Mid-Rise",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Mid-Rise"
                 },
                 {
-                  "title": "Multi-Level",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Multi-Level"
                 }
               ],
               "value": ""
@@ -199,44 +155,28 @@
               "type": "radio",
               "content": [
                 {
-                  "title": "Wood-Framed",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Wood-Framed"
                 },
                 {
-                  "title": "Steel-Framed",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Steel-Framed"
                 },
                 {
-                  "title": "Concrete",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Concrete"
                 },
                 {
-                  "title": "CMU or Block",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "CMU or Block"
                 },
                 {
-                  "title": "Masonry",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Masonry"
                 },
                 {
-                  "title": "Tilt-Up",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Tilt-Up"
                 },
                 {
-                  "title": "Wood-Frame on Steel Carriage",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Wood-Frame on Steel Carriage"
                 },
                 {
-                  "title": "ICF",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "ICF"
                 }
               ],
               "value": ""
@@ -248,69 +188,43 @@
               "type": "radio",
               "content": [
                 {
-                  "title": "Home",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Home"
                 },
                 {
-                  "title": "Twin Home",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Twin Home"
                 },
                 {
-                  "title": "Town Home",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Town Home"
                 },
                 {
-                  "title": "Mobile Home",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Mobile Home"
                 },
                 {
-                  "title": "Log Home",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Log Home"
                 },
                 {
-                  "title": "Manufactured Home",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Manufactured Home"
                 },
                 {
-                  "title": "Prefabbed Structure",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Prefabbed Structure"
                 },
                 {
-                  "title": "Condominium",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Condominium"
                 },
                 {
-                  "title": "Building",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Building"
                 },
                 {
-                  "title": "Garage",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Garage"
                 },
                 {
-                  "title": "Low-Rise",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Low-Rise"
                 },
                 {
-                  "title": "Mid-Rise",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Mid-Rise"
                 },
                 {
-                  "title": "High-Rise",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "High-Rise"
                 }
               ],
               "value": ""
@@ -336,7 +250,7 @@
                 },
                 {
                   "title": "With Garage & Crawlspace",
-                  "c": true
+                  "c": false
                 },
                 {
                   "title": "With Full Basement",
@@ -375,36 +289,28 @@
               "type": "select",
               "content": [
                 {
-                  "title": "North",
-                  "rrTitle": ""
+                  "title": "North"
                 },
                 {
-                  "title": "East",
-                  "rrTitle": ""
+                  "title": "East"
                 },
                 {
-                  "title": "West",
-                  "rrTitle": ""
+                  "title": "West"
                 },
                 {
-                  "title": "South",
-                  "rrTitle": ""
+                  "title": "South"
                 },
                 {
-                  "title": "North-East",
-                  "rrTitle": ""
+                  "title": "North-East"
                 },
                 {
-                  "title": "North-West",
-                  "rrTitle": ""
+                  "title": "North-West"
                 },
                 {
-                  "title": "South-East",
-                  "rrTitle": ""
+                  "title": "South-East"
                 },
                 {
-                  "title": "South-West",
-                  "rrTitle": ""
+                  "title": "South-West"
                 }
               ],
               "value": ""
@@ -530,20 +436,16 @@
               "type": "select",
               "content": [
                 {
-                  "title": "Occupied",
-                  "rrTitle": ""
+                  "title": "Occupied"
                 },
                 {
-                  "title": "Mostly Occupied",
-                  "rrTitle": ""
+                  "title": "Mostly Occupied"
                 },
                 {
-                  "title": "Mostly Vacant",
-                  "rrTitle": ""
+                  "title": "Mostly Vacant"
                 },
                 {
-                  "title": "Vacant",
-                  "rrTitle": ""
+                  "title": "Vacant"
                 }
               ],
               "value": ""
@@ -592,32 +494,25 @@
               "type": "radio",
               "content": [
                 {
-                  "title": "Inspector",
-                  "rrTitle": ""
+                  "title": "Inspector"
                 },
                 {
-                  "title": "Buyer",
-                  "rrTitle": ""
+                  "title": "Buyer"
                 },
                 {
-                  "title": "Resident",
-                  "rrTitle": ""
+                  "title": "Resident"
                 },
                 {
-                  "title": "Builder or Builders Rep",
-                  "rrTitle": ""
+                  "title": "Builder or Builders Rep"
                 },
                 {
-                  "title": "Owner or Seller",
-                  "rrTitle": ""
+                  "title": "Owner or Seller"
                 },
                 {
-                  "title": "Agent",
-                  "rrTitle": ""
+                  "title": "Agent"
                 },
                 {
-                  "title": "Friends or Other",
-                  "rrTitle": ""
+                  "title": "Friends or Other"
                 }
               ],
               "value": ""
@@ -636,19 +531,19 @@
               "title": "First Name",
               "required": true, "answered":false,
               "type": "text",
-              "value": "Cameron"
+              "value": ""
             },
             {
               "title": "Last Name",
               "required": true, "answered":false,
               "type": "text",
-              "value": "Lilly"
+              "value": ""
             },
             {
               "title": "Address",
               "required": true, "answered":false,
               "type": "text",
-              "value": "4119 E Juanita Ave"
+              "value": ""
             },
             {
               "title": "Address Line 2",
@@ -660,19 +555,19 @@
               "title": "City",
               "required": true, "answered":false,
               "type": "text",
-              "value": "Gilbert"
+              "value": ""
             },
             {
               "title": "State",
               "required": true, "answered":false,
               "type": "text",
-              "value": "AZ"
+              "value": ""
             },
             {
               "title": "Postal Code",
               "required": true, "answered":false,
               "type": "number",
-              "value": 85234
+              "value": 0
             },
             {
               "title": "Client Info Images",
@@ -712,29 +607,19 @@
               "type": "radio",
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Concrete",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Concrete"
                 },
                 {
-                  "title": "Asphalt",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Asphalt"
                 },
                 {
-                  "title": "Pavers or stone or brick",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Pavers or stone or brick"
                 },
                 {
-                  "title": "Dirt or gravel",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Dirt or gravel"
                 }
               ],
               "value": ""
@@ -789,29 +674,19 @@
               "type": "radio",
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Concrete",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Concrete"
                 },
                 {
-                  "title": "Paver or stone or brick",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Paver or stone or brick"
                 },
                 {
-                  "title": "Wood or Composite",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Wood or Composite"
                 },
                 {
-                  "title": "Covered",
-                  "rrTitle": 0,
-                  "rrVal": 2
+                  "title": "Covered"
                 }
               ],
               "value": ""

@@ -155,7 +155,15 @@
                                 <md-icon md-svg-icon="cancel" ></md-icon>
                             </md-button>
                        </div>
+                       
                     </div>
+                        <md-button ng-show="castleService.editMode"
+                            class="md-raised md-accent"
+                            style="margin-left:28px;"
+                            aria-label="Add Subsection"
+                            ng-click="addNewSection()">
+                            <span>add subsection</span>
+                        </md-button>
               </div>
 
             <md-divider ng-if="!$last"></md-divider>
@@ -163,21 +171,25 @@
 
     </md-card>
         <div>
-            <md-button class="md-icon-button"
-                       style="min-width:40px;" 
-                       aria-label="toggle pages menu"
+            <md-button ng-show="castleService.editMode"
+                       class="md-raised md-accent"
+                       aria-label="Add new Section"
                        ng-click="addNewSection()">
-                <md-icon md-svg-icon="plus" ></md-icon>
+<!--                <md-icon md-svg-icon="add" ></md-icon>-->
+                <span>add section</span>
             </md-button>
+<!--
            <input type="text" 
            ng-model="newSectionTitle" 
+           placeholder="add section"
            class="inputBorder" />
+-->
 
         </div>
     <div layout="row" style="padding: 0 0 10px 0;" ng-hide="castleService.assignPhotoMode" class="flex-wrap">
-        <md-button ng-click="checkRequired()" class="md-raised" aria-label="Preview Report">Preview Report</md-button>
-        <md-button ng-click="" class="md-raised" aria-label="Save Report">Save Report</md-button>
-        <md-button ng-click="castleService.reportTemplate = null" class="md-raised md-primary" aria-label="Reset Template">Reset Template</md-button>
+<!--        <md-button ng-click="checkRequired()" class="md-raised" aria-label="Preview Report">Preview Report</md-button>-->
+<!--        <md-button ng-click="" class="md-raised" aria-label="Save Report">Save Report</md-button>-->
+<!--        <md-button ng-click="castleService.reportTemplate = null" class="md-raised md-primary" aria-label="Reset Template">Reset Template</md-button>-->
     </div>
         
         

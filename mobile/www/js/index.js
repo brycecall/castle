@@ -207,12 +207,12 @@ app.controller('indexController', function ($scope, castleService, $mdUtil, $mdS
 
     $scope.navigationPages = [
         {
-            title: "New Report",
+            title: "New Job",
             icon: "new_report",
             link: "create({sectionIndex:'default'})"
         },
         {
-            title: "Saved Reports",
+            title: "Scheduled Jobs",
             icon: "book",
             link: "saved"
         },

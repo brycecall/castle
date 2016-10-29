@@ -65,7 +65,93 @@
                        placeholder="{{itemTypes.types[item.type]}} item">
             </form>
          </div>
+         
+        <!--                            RADIO-->
+        <div ng-if="item.type == 'radio'" id="radParent">
+            <h1 class="md-title">{{item.title}}</h1>
+            <md-radio-group ng-model="item.value">
+               <div ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#radParent'}"   ng-model="item.content">
+                  <div ng-repeat="radiovalue in item.content track by $index" 
+                       layout="row" 
+                       layout-align="start center"
+                       style="background-color:#FFF;">
+                     <div class="handle" ng-show="castleService.editMode">
+                         <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
+                     </div>
+                     <md-radio-button ng-value="radiovalue.title" class="">
+                        <span>{{radiovalue.title}}</span>
+                     </md-radio-button>
+                     <span flex=""></span>
+                     <md-button ng-show="castleService.editMode" class="md-icon-button" 
+                               aria-label="add sub question"
+                               ng-click="remove(item.content, $index)" 
+                     >
+                         <md-icon md-svg-icon="cancel"></md-icon>
+                     </md-button>
+                  </div>
+              </div>
+            </md-radio-group>
+            <form ng-if="castleService.editMode" 
+                  ng-submit="addSubQuestion(newstuff); newstuff = '';" 
+                  layout="row" 
+                  style="margin:5px 0 15px 4px">
+                <button type="submit" class="addButton">
+                    <md-icon style="color:gray" md-svg-icon="add"></md-icon>
+                </button>
+                <input required 
+                       style="border-width: 0 0 1px 0" 
+                       ng-model="newstuff" 
+                       type="text" 
+                       placeholder="{{item.type}} item">
+            </form>
+        </div>
+         
 
+        <!--                           CHECKBOX-->
+        <div ng-if="item.type == 'checkbox'">
+            <h1 class="md-title">{{item.title}}</h1>
+            <div ui-sortable="sortableOptions"  ng-model="item.content" >
+                <div ng-repeat="checkbox in item.content track by $index"                  
+                     class="list_item flex-wrap" 
+                     style="background-color:#FFF;" layout="column" layout-align="center stretch">
+                     <div layout="column" layout-align="center stretch" >
+<!--                     <md-divider ng-show="checkbox.c" style="margin:8px 0 8px 0;"></md-divider>-->
+                     <div layout="row" layout-align="start center">
+                     
+                     <div class="handle" ng-show="castleService.editMode">
+                         <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
+                     </div>
+                     
+                    <md-checkbox class="md-secondary checkboxery" ng-model="checkbox.c" aria-label="{{checkbox.title}}"   style="position:relative; display:inline" >{{checkbox.title}}
+                    </md-checkbox>
+                    <span flex=""></span>
+                     <md-button ng-show="castleService.editMode" class="md-icon-button" 
+                               aria-label="add sub question"
+                               ng-click="remove(item.content, $index)" 
+                     >
+                            <md-icon md-svg-icon="cancel"></md-icon>
+                     </md-button> 
+                     </div>
+<!--                         <md-divider ng-show="checkbox.c" style="margin-bottom:8px;"></md-divider>-->
+                    </div>
+                   
+                </div>
+            </div>
+            <form ng-if="castleService.editMode" 
+                  ng-submit="addSubQuestion(newstuff); newstuff = '';" 
+                  layout="row" 
+                  style="margin:5px 0 15px 4px">
+                <button type="submit" class="addButton">
+                    <md-icon style="color:gray" md-svg-icon="add"></md-icon>
+                </button>
+                <input required 
+                       style="border-width: 0 0 1px 0" 
+                       ng-model="newstuff" 
+                       type="text" 
+                       placeholder="{{item.type}} item">
+            </form>
+        </div>
+       
         <!--                           DATE-->
         <div ng-if="item.type == 'date'" class="padMe md-block" style="padding:8px 0;">
              <md-datepicker ng-model="tempDate" 

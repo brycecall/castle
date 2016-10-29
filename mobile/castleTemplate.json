@@ -238,47 +238,36 @@ var reports = [
               "content": [
                 {
                   "title": "With Lower Parking Garage",
-                  "c": false
                 },
                 {
                   "title": "With Basement & Garage",
-                  "c": false
                 },
                 {
                   "title": "With Garage",
-                  "c": false
                 },
                 {
                   "title": "With Garage & Crawlspace",
-                  "c": false
                 },
                 {
                   "title": "With Full Basement",
-                  "c": false
                 },
                 {
                   "title": "With Daylight Basement",
-                  "c": false
                 },
                 {
                   "title": "With Basement & Crawlspace(s)",
-                  "c": false
                 },
                 {
                   "title": "With Crawlspace",
-                  "c": false
                 },
                 {
                   "title": "With Slab-On-Grade",
-                  "c": false
                 },
                 {
                   "title": "Over Adjoining Unit(s)",
-                  "c": false
                 },
                 {
                   "title": "Over Adjoining Basement Unit",
-                  "c": false
                 }
               ]
             },

@@ -30,6 +30,7 @@
              layout-align="center stretch" 
              style="text-align-left;"
              ng-init="clicked = false"
+             
               >             
                <div  style="padding:0px 0px 0px 16px; margin:0;
                          vertical-align:middle; border-radius:0; 
@@ -73,6 +74,7 @@
                        ng-model="section.title" 
                        style="background-color:white;"
                        class="editInput nonEditInput"
+                       id="{{'sectionId' + $index}}"
                        ng-class="castleService.editMode ? 'inputBorder' : 'nonEditInput'" />
                 <span flex=""></span>
                 
@@ -120,7 +122,8 @@
                     <div ng-repeat="page in section.pages  track by $index" 
                          layout="column" 
                          layout-align="center stretch" 
-                         class="sortdivider" 
+                         class="sortdivider"
+                          
                          style="height:40px;">
 <!--                      <md-divider></md-divider>-->
                       <div layout="row" layout-align="start center">              

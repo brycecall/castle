@@ -37,12 +37,135 @@ var reports = [
               "value": ""
             },
             {
-              "title": "Report Date",
+              "title": "Report Info Images",
+              "type": "image",
+              "content": []
+            }
+          ]
+    },
+      {
+          "title":"Client Information",
+          "answeredCount":0, "items": [
+            {
+              "title": "First Name",
               "required": true, "answered":false,
-              "type": "date",
+              "type": "text",
               "value": ""
             },
             {
+              "title": "Last Name",
+              "required": true, "answered":false,
+              "type": "text",
+              "value": ""
+            },
+            {
+              "title": "Address",
+              "required": true, "answered":false,
+              "type": "text",
+              "value": ""
+            },
+            {
+              "title": "Address Line 2",
+              "required": true, "answered":false,
+              "type": "text",
+              "value": ""
+            },
+            {
+              "title": "City",
+              "required": true, "answered":false,
+              "type": "text",
+              "value": ""
+            },
+            {
+              "title": "State",
+              "required": true, "answered":false,
+              "type": "text",
+              "value": ""
+            },
+            {
+              "title": "Postal Code",
+              "required": true, "answered":false,
+              "type": "number",
+              "value": 0
+            },
+            {
+              "title": "Client Info Images",
+              "type": "image",
+              "content": []
+            }
+          ]
+    }
+  ],
+  "sections": [
+         {
+        "title": "Field Notes",
+        "color": "#EC407A",
+        "answeredCount":0, 
+        "pages": [
+        {
+          "title": "Evaluation",
+          "answeredCount":0, "items": [
+            {
+              "title": "Persons Present",
+              "required": false, "answered":false,
+              "showvalue": false,
+              "type": "checkbox",
+              "value": [],
+              "content": [
+                {
+                  "title": "Inspector"
+                },
+                {
+                  "title": "Buyer"
+                },
+                {
+                  "title": "Resident"
+                },
+                {
+                  "title": "Builder or Builders Rep"
+                },
+                {
+                  "title": "Owner or Seller"
+                },
+                {
+                  "title": "Agent"
+                },
+                {
+                  "title": "Friends or Other"
+                }
+              ]
+            },
+            {
+              "title": "Person(s) Providing Property Access",
+              "required": false, "answered":false,
+              "showvalue": false,
+              "type": "radio",
+              "content": [
+                {
+                  "title": "Inspector"
+                },
+                {
+                  "title": "Buyer"
+                },
+                {
+                  "title": "Resident"
+                },
+                {
+                  "title": "Builder or Builders Rep"
+                },
+                {
+                  "title": "Owner or Seller"
+                },
+                {
+                  "title": "Agent"
+                },
+                {
+                  "title": "Friends or Other"
+                }
+                ],
+              "value": ""
+            },
+              {
               "title": "Year Built",
               "required": true, "answered":false,
               "showvalue": false,
@@ -237,48 +360,37 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "With Lower Parking Garage",
-                  "c": false
+                  "title": "With Lower Parking Garage"
                 },
                 {
-                  "title": "With Basement & Garage",
-                  "c": false
+                  "title": "With Basement & Garage"
                 },
                 {
-                  "title": "With Garage",
-                  "c": false
+                  "title": "With Garage"
                 },
                 {
-                  "title": "With Garage & Crawlspace",
-                  "c": false
+                  "title": "With Garage & Crawlspace"
                 },
                 {
-                  "title": "With Full Basement",
-                  "c": false
+                  "title": "With Full Basement"
                 },
                 {
-                  "title": "With Daylight Basement",
-                  "c": false
+                  "title": "With Daylight Basement"
                 },
                 {
-                  "title": "With Basement & Crawlspace(s)",
-                  "c": false
+                  "title": "With Basement & Crawlspace(s)"
                 },
                 {
-                  "title": "With Crawlspace",
-                  "c": false
+                  "title": "With Crawlspace"
                 },
                 {
-                  "title": "With Slab-On-Grade",
-                  "c": false
+                  "title": "With Slab-On-Grade"
                 },
                 {
-                  "title": "Over Adjoining Unit(s)",
-                  "c": false
+                  "title": "Over Adjoining Unit(s)"
                 },
                 {
-                  "title": "Over Adjoining Basement Unit",
-                  "c": false
+                  "title": "Over Adjoining Basement Unit"
                 }
               ]
             },
@@ -323,52 +435,40 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "At Curbside",
-                  "c": false
+                  "title": "At Curbside"
                 },
                 {
-                  "title": "In a Rear Alley",
-                  "c": false
+                  "title": "In a Rear Alley"
                 },
                 {
-                  "title": "In the Driveway",
-                  "c": false
+                  "title": "In the Driveway"
                 },
                 {
-                  "title": "In an Attached Garage(s)",
-                  "c": false
+                  "title": "In an Attached Garage(s)"
                 },
                 {
-                  "title": "In a Detached Garage(s)",
-                  "c": false
+                  "title": "In a Detached Garage(s)"
                 },
                 {
-                  "title": "In an Attached Carport",
-                  "c": false
+                  "title": "In an Attached Carport"
                 },
                 {
-                  "title": "In a Detached Carport",
-                  "c": false
+                  "title": "In a Detached Carport"
                 },
                 {
-                  "title": "In a Covered Parking Space",
-                  "c": false
+                  "title": "In a Covered Parking Space"
                 },
                 {
-                  "title": "In an Open Parking Space",
-                  "c": false
+                  "title": "In an Open Parking Space"
                 },
                 {
-                  "title": "In a Secured Parking Garage",
-                  "c": false
+                  "title": "In a Secured Parking Garage"
                 },
                 {
-                  "title": "In an Open Parking Garage",
-                  "c": false
+                  "title": "In an Open Parking Garage"
                 },
                 {
-                  "title": "In an Open, Striped Parking Lot",
-                  "c": false
+                  "title": "In an Open, Striped Parking Lot"
                 }
               ]
             },
@@ -380,24 +480,19 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Electricity",
-                  "c": false
+                  "title": "Electricity"
                 },
                 {
-                  "title": "Water",
-                  "c": false
+                  "title": "Water"
                 },
                 {
-                  "title": "Gas",
-                  "c": false
+                  "title": "Gas"
                 },
                 {
-                  "title": "Oil",
-                  "c": false
+                  "title": "Oil"
                 },
                 {
-                  "title": "Propane",
-                  "c": false
+                  "title": "Propane"
                 }
               ]
             },
@@ -409,24 +504,19 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Electricity",
-                  "c": false
+                  "title": "Electricity"
                 },
                 {
-                  "title": "Water",
-                  "c": false
+                  "title": "Water"
                 },
                 {
-                  "title": "Gas",
-                  "c": false
+                  "title": "Gas"
                 },
                 {
-                  "title": "Oil",
-                  "c": false
+                  "title": "Oil"
                 },
                 {
-                  "title": "Propane",
-                  "c": false
+                  "title": "Propane"
                 }
               ]
             },
@@ -451,133 +541,15 @@ var reports = [
               "value": ""
             },
             {
-              "title": "Persons Present",
-              "required": false, "answered":false,
-              "showvalue": false,
-              "type": "checkbox",
-              "value": [],
-              "content": [
-                {
-                  "title": "Inspector",
-                  "c": false
-                },
-                {
-                  "title": "Buyer",
-                  "c": false
-                },
-                {
-                  "title": "Resident",
-                  "c": false
-                },
-                {
-                  "title": "Builder or Builders Rep",
-                  "c": false
-                },
-                {
-                  "title": "Owner or Seller",
-                  "c": false
-                },
-                {
-                  "title": "Agent",
-                  "c": false
-                },
-                {
-                  "title": "Friends or Other",
-                  "c": false
-                }
-              ]
-            },
-            {
-              "title": "Person(s) Providing Property Access",
-              "required": false, "answered":false,
-              "showvalue": false,
-              "type": "radio",
-              "content": [
-                {
-                  "title": "Inspector"
-                },
-                {
-                  "title": "Buyer"
-                },
-                {
-                  "title": "Resident"
-                },
-                {
-                  "title": "Builder or Builders Rep"
-                },
-                {
-                  "title": "Owner or Seller"
-                },
-                {
-                  "title": "Agent"
-                },
-                {
-                  "title": "Friends or Other"
-                }
-              ],
-              "value": ""
-            },
-            {
-              "title": "Property Specifications Images",
+              "title": "Evaluation Images",
               "type": "image",
               "content": []
             }
-          ]
+          ],
+          "showvalue": false
+        }
+      ]
     },
-      {
-          "title":"Client Information",
-          "answeredCount":0, "items": [
-            {
-              "title": "First Name",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            },
-            {
-              "title": "Last Name",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            },
-            {
-              "title": "Address",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            },
-            {
-              "title": "Address Line 2",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            },
-            {
-              "title": "City",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            },
-            {
-              "title": "State",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            },
-            {
-              "title": "Postal Code",
-              "required": true, "answered":false,
-              "type": "number",
-              "value": 0
-            },
-            {
-              "title": "Client Info Images",
-              "type": "image",
-              "content": []
-            }
-          ]
-    }
-  ],
-  "sections": [
     {
         "title": "Site",
         "color": "#EC407A",
@@ -630,40 +602,31 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Marginal",
-                  "c": false
+                  "title": "Marginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 },
                 {
-                  "title": "Pitched towards home",
-                  "c": false
+                  "title": "Pitched towards home"
                 },
                 {
-                  "title": "Typical cracks",
-                  "c": false
+                  "title": "Typical cracks"
                 },
                 {
-                  "title": "Large cracks",
-                  "c": false
+                  "title": "Large cracks"
                 },
                 {
-                  "title": "Root heaving",
-                  "c": false
+                  "title": "Root heaving"
                 },
                 {
-                  "title": "Uneven",
-                  "c": false
+                  "title": "Uneven"
                 },
                 {
-                  "title": "Trip or Falling Hazard",
-                  "c": false
+                  "title": "Trip or Falling Hazard"
                 }
               ]
             },
@@ -699,52 +662,40 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Marginal",
-                  "c": false
+                  "title": "Marginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 },
                 {
-                  "title": "Typical cracks",
-                  "c": false
+                  "title": "Typical cracks"
                 },
                 {
-                  "title": "Large cracks",
-                  "c": false
+                  "title": "Large cracks"
                 },
                 {
-                  "title": "Gaps",
-                  "c": false
+                  "title": "Gaps"
                 },
                 {
-                  "title": "Holes",
-                  "c": false
+                  "title": "Holes"
                 },
                 {
-                  "title": "Mildew",
-                  "c": false
+                  "title": "Mildew"
                 },
                 {
-                  "title": "Damage",
-                  "c": false
+                  "title": "Damage"
                 },
                 {
-                  "title": "Settled",
-                  "c": false
+                  "title": "Settled"
                 },
                 {
-                  "title": "Uneven Surface",
-                  "c": false
+                  "title": "Uneven Surface"
                 },
                 {
-                  "title": "Trip or Falling Hazard",
-                  "c": false
+                  "title": "Trip or Falling Hazard"
                 }
               ]
             },
@@ -756,48 +707,37 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "c": false
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Uneven",
-                  "c": false
+                  "title": "Uneven"
                 },
                 {
-                  "title": "Large cracks",
-                  "c": false
+                  "title": "Large cracks"
                 },
                 {
-                  "title": "Root heaving",
-                  "c": false
+                  "title": "Root heaving"
                 },
                 {
-                  "title": "Moss build-up",
-                  "c": false
+                  "title": "Moss build-up"
                 },
                 {
-                  "title": "Missing spacers",
-                  "c": false
+                  "title": "Missing spacers"
                 },
                 {
-                  "title": "Settled",
-                  "c": false
+                  "title": "Settled"
                 },
                 {
-                  "title": "Trip hazard",
-                  "c": false
+                  "title": "Trip hazard"
                 },
                 {
-                  "title": "Missing handrails",
-                  "c": false
+                  "title": "Missing handrails"
                 },
                 {
-                  "title": "Missing safety glass",
-                  "c": false
+                  "title": "Missing safety glass"
                 }
               ]
             },
@@ -809,48 +749,37 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "None",
-                  "c": false
+                  "title": "None"
                 },
                 {
-                  "title": "Verify",
-                  "c": false
+                  "title": "Verify"
                 },
                 {
-                  "title": "Treated Wood",
-                  "c": false
+                  "title": "Treated Wood"
                 },
                 {
-                  "title": "Railroad Ties",
-                  "c": false
+                  "title": "Railroad Ties"
                 },
                 {
-                  "title": "Concrete",
-                  "c": false
+                  "title": "Concrete"
                 },
                 {
-                  "title": "Concrete Blocks",
-                  "c": false
+                  "title": "Concrete Blocks"
                 },
                 {
-                  "title": "CMU or Blocks",
-                  "c": false
+                  "title": "CMU or Blocks"
                 },
                 {
-                  "title": "Gabions",
-                  "c": false
+                  "title": "Gabions"
                 },
                 {
-                  "title": "Rockery",
-                  "c": false
+                  "title": "Rockery"
                 },
                 {
-                  "title": "Masonry",
-                  "c": false
+                  "title": "Masonry"
                 },
                 {
-                  "title": "Cemented Stone",
-                  "c": false
+                  "title": "Cemented Stone"
                 }
               ]
             },
@@ -862,32 +791,25 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Marginal",
-                  "c": false
+                  "title": "Marginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 },
                 {
-                  "title": "Damaged",
-                  "c": false
+                  "title": "Damaged"
                 },
                 {
-                  "title": "Leaning",
-                  "c": false
+                  "title": "Leaning"
                 },
                 {
-                  "title": "Leaking or Drainage Concern",
-                  "c": false
+                  "title": "Leaking or Drainage Concern"
                 },
                 {
-                  "title": "Trip or Falling Hazard",
-                  "c": false
+                  "title": "Trip or Falling Hazard"
                 }
               ]
             },
@@ -899,24 +821,19 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "c": false
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Water Feature",
-                  "c": false
+                  "title": "Water Feature"
                 },
                 {
-                  "title": "Drop-off or Retaining Wall",
-                  "c": false
+                  "title": "Drop-off or Retaining Wall"
                 },
                 {
-                  "title": "Steep Slope",
-                  "c": false
+                  "title": "Steep Slope"
                 },
                 {
-                  "title": "TYPE (Needs Greater Definition)",
-                  "c": false
+                  "title": "TYPE (Needs Greater Definition)"
                 }
               ]
             },
@@ -928,40 +845,31 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "c": false
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Concrete",
-                  "c": false
+                  "title": "Concrete"
                 },
                 {
-                  "title": "Wood",
-                  "c": false
+                  "title": "Wood"
                 },
                 {
-                  "title": "Privacy",
-                  "c": false
+                  "title": "Privacy"
                 },
                 {
-                  "title": "Chainlink",
-                  "c": false
+                  "title": "Chainlink"
                 },
                 {
-                  "title": "Masonry",
-                  "c": false
+                  "title": "Masonry"
                 },
                 {
-                  "title": "Rail",
-                  "c": false
+                  "title": "Rail"
                 },
                 {
-                  "title": "Wire",
-                  "c": false
+                  "title": "Wire"
                 },
                 {
-                  "title": "Plastic or Vinyl",
-                  "c": false
+                  "title": "Plastic or Vinyl"
                 }
               ]
             },
@@ -973,44 +881,34 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Maginal",
-                  "c": false
+                  "title": "Maginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 },
                 {
-                  "title": "Missing",
-                  "c": false
+                  "title": "Missing"
                 },
                 {
-                  "title": "Trip or Falling Hazard",
-                  "c": false
+                  "title": "Trip or Falling Hazard"
                 },
                 {
-                  "title": "Leaning",
-                  "c": false
+                  "title": "Leaning"
                 },
                 {
-                  "title": "Damaged",
-                  "c": false
+                  "title": "Damaged"
                 },
                 {
-                  "title": "Verify Adequate Height",
-                  "c": false
+                  "title": "Verify Adequate Height"
                 },
                 {
-                  "title": "Hazardous",
-                  "c": false
+                  "title": "Hazardous"
                 },
                 {
-                  "title": "Re-Evaluate",
-                  "c": false
+                  "title": "Re-Evaluate"
                 }
               ]
             },
@@ -1022,32 +920,25 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Not Inspected",
-                  "c": false
+                  "title": "Not Inspected"
                 },
                 {
-                  "title": "Poor Earth-to-Wood Separation",
-                  "c": false
+                  "title": "Poor Earth-to-Wood Separation"
                 },
                 {
-                  "title": "Yard Steps",
-                  "c": false
+                  "title": "Yard Steps"
                 },
                 {
-                  "title": "Drainage",
-                  "c": false
+                  "title": "Drainage"
                 },
                 {
-                  "title": "Negative Surrounding Grade",
-                  "c": false
+                  "title": "Negative Surrounding Grade"
                 },
                 {
-                  "title": "Overgrown Foliage",
-                  "c": false
+                  "title": "Overgrown Foliage"
                 },
                 {
-                  "title": "Re-Evaluate",
-                  "c": false
+                  "title": "Re-Evaluate"
                 }
               ]
             },
@@ -1078,24 +969,19 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "c": false
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Concrete",
-                  "c": false
+                  "title": "Concrete"
                 },
                 {
-                  "title": "Pavers or Stone or Brick",
-                  "c": false
+                  "title": "Pavers or Stone or Brick"
                 },
                 {
-                  "title": "Wood or Composite",
-                  "c": false
+                  "title": "Wood or Composite"
                 },
                 {
-                  "title": "Covered",
-                  "c": false
+                  "title": "Covered"
                 }
               ]
             },
@@ -1107,68 +993,52 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Marginal",
-                  "c": false
+                  "title": "Marginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 },
                 {
-                  "title": "Verify Attachment",
-                  "c": false
+                  "title": "Verify Attachment"
                 },
                 {
-                  "title": "Loose or Missing Railings",
-                  "c": false
+                  "title": "Loose or Missing Railings"
                 },
                 {
-                  "title": "Trip Hazard(s)",
-                  "c": false
+                  "title": "Trip Hazard(s)"
                 },
                 {
-                  "title": "Typical Cracks",
-                  "c": false
+                  "title": "Typical Cracks"
                 },
                 {
-                  "title": "Large Cracks",
-                  "c": false
+                  "title": "Large Cracks"
                 },
                 {
-                  "title": "Gaps or Holes",
-                  "c": false
+                  "title": "Gaps or Holes"
                 },
                 {
-                  "title": "Weathered Finish",
-                  "c": false
+                  "title": "Weathered Finish"
                 },
                 {
-                  "title": "Damaged",
-                  "c": false
+                  "title": "Damaged"
                 },
                 {
-                  "title": "Settled",
-                  "c": false
+                  "title": "Settled"
                 },
                 {
-                  "title": "Earth Contact",
-                  "c": false
+                  "title": "Earth Contact"
                 },
                 {
-                  "title": "Mildew",
-                  "c": false
+                  "title": "Mildew"
                 },
                 {
-                  "title": "Fungal Rot or Probed",
-                  "c": false
+                  "title": "Fungal Rot or Probed"
                 },
                 {
-                  "title": "Re-Evaluate",
-                  "c": false
+                  "title": "Re-Evaluate"
                 }
               ]
             },
@@ -1180,44 +1050,34 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "c": false
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Uneven",
-                  "c": false
+                  "title": "Uneven"
                 },
                 {
-                  "title": "Large Cracks",
-                  "c": false
+                  "title": "Large Cracks"
                 },
                 {
-                  "title": "Root Heaving",
-                  "c": false
+                  "title": "Root Heaving"
                 },
                 {
-                  "title": "Moss Build-Up",
-                  "c": false
+                  "title": "Moss Build-Up"
                 },
                 {
-                  "title": "Missing Spacers",
-                  "c": false
+                  "title": "Missing Spacers"
                 },
                 {
-                  "title": "Settled",
-                  "c": false
+                  "title": "Settled"
                 },
                 {
-                  "title": "Trip Hazard",
-                  "c": false
+                  "title": "Trip Hazard"
                 },
                 {
-                  "title": "Missing Handrails",
-                  "c": false
+                  "title": "Missing Handrails"
                 },
                 {
-                  "title": "Missing Safety Glass",
-                  "c": false
+                  "title": "Missing Safety Glass"
                 }
               ]
             },
@@ -1229,28 +1089,22 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "c": false
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Raised",
-                  "c": false
+                  "title": "Raised"
                 },
                 {
-                  "title": "Roof-top",
-                  "c": false
+                  "title": "Roof-top"
                 },
                 {
-                  "title": "Covered",
-                  "c": false
+                  "title": "Covered"
                 },
                 {
-                  "title": "Wood or Composite",
-                  "c": false
+                  "title": "Wood or Composite"
                 },
                 {
-                  "title": "PVC",
-                  "c": false
+                  "title": "PVC"
                 }
               ]
             },
@@ -1262,52 +1116,40 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Marginal",
-                  "c": false
+                  "title": "Marginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 },
                 {
-                  "title": "Loose or Missing Railings",
-                  "c": false
+                  "title": "Loose or Missing Railings"
                 },
                 {
-                  "title": "Weathered Finish",
-                  "c": false
+                  "title": "Weathered Finish"
                 },
                 {
-                  "title": "Damaged",
-                  "c": false
+                  "title": "Damaged"
                 },
                 {
-                  "title": "Settled",
-                  "c": false
+                  "title": "Settled"
                 },
                 {
-                  "title": "Earth Contact",
-                  "c": false
+                  "title": "Earth Contact"
                 },
                 {
-                  "title": "Mildew",
-                  "c": false
+                  "title": "Mildew"
                 },
                 {
-                  "title": "Fungal Rot or Probed",
-                  "c": false
+                  "title": "Fungal Rot or Probed"
                 },
                 {
-                  "title": "Verify Attachment",
-                  "c": false
+                  "title": "Verify Attachment"
                 },
                 {
-                  "title": "Re-Evaluate",
-                  "c": false
+                  "title": "Re-Evaluate"
                 }
               ]
             },
@@ -1360,80 +1202,61 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Brick",
-                  "c": false
+                  "title": "Brick"
                 },
                 {
-                  "title": "Stone",
-                  "c": false
+                  "title": "Stone"
                 },
                 {
-                  "title": "Stucco",
-                  "c": false
+                  "title": "Stucco"
                 },
                 {
-                  "title": "Metal",
-                  "c": false
+                  "title": "Metal"
                 },
                 {
-                  "title": "Vinyl",
-                  "c": false
+                  "title": "Vinyl"
                 },
                 {
-                  "title": "Cement Board",
-                  "c": false
+                  "title": "Cement Board"
                 },
                 {
-                  "title": "Wood",
-                  "c": false
+                  "title": "Wood"
                 },
                 {
-                  "title": "Fiberboard",
-                  "c": false
+                  "title": "Fiberboard"
                 },
                 {
-                  "title": "Hardi-Board or Plank",
-                  "c": false
+                  "title": "Hardi-Board or Plank"
                 },
                 {
-                  "title": "Panels or Sheets",
-                  "c": false
+                  "title": "Panels or Sheets"
                 },
                 {
-                  "title": "Shingles",
-                  "c": false
+                  "title": "Shingles"
                 },
                 {
-                  "title": "T-111",
-                  "c": false
+                  "title": "T-111"
                 },
                 {
-                  "title": "Lapped",
-                  "c": false
+                  "title": "Lapped"
                 },
                 {
-                  "title": "T&G",
-                  "c": false
+                  "title": "T&G"
                 },
                 {
-                  "title": "Vertical Channel",
-                  "c": false
+                  "title": "Vertical Channel"
                 },
                 {
-                  "title": "EIFS",
-                  "c": false
+                  "title": "EIFS"
                 },
                 {
-                  "title": "Pre 1996 EIFS",
-                  "c": false
+                  "title": "Pre 1996 EIFS"
                 },
                 {
-                  "title": "Recalled LP",
-                  "c": false
+                  "title": "Recalled LP"
                 },
                 {
-                  "title": "Friable PACM",
-                  "c": false
+                  "title": "Friable PACM"
                 }
               ]
             },
@@ -1445,76 +1268,58 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Marginal",
-                  "c": false
+                  "title": "Marginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 },
                 {
-                  "title": "Loose",
-                  "c": false
+                  "title": "Loose"
                 },
                 {
-                  "title": "Gaps or Holes",
-                  "c": false
+                  "title": "Gaps or Holes"
                 },
                 {
-                  "title": "Buckled",
-                  "c": false
+                  "title": "Buckled"
                 },
                 {
-                  "title": "Tight Butt Joints",
-                  "c": false
+                  "title": "Tight Butt Joints"
                 },
                 {
-                  "title": "Missing Joint Flashing",
-                  "c": false
+                  "title": "Missing Joint Flashing"
                 },
                 {
-                  "title": "Broken or Damaged",
-                  "c": false
+                  "title": "Broken or Damaged"
                 },
                 {
-                  "title": "Inadequate Coverage",
-                  "c": false
+                  "title": "Inadequate Coverage"
                 },
                 {
-                  "title": "Peeling Paint",
-                  "c": false
+                  "title": "Peeling Paint"
                 },
                 {
-                  "title": "Weathered",
-                  "c": false
+                  "title": "Weathered"
                 },
                 {
-                  "title": "Pest Issues",
-                  "c": false
+                  "title": "Pest Issues"
                 },
                 {
-                  "title": "Cracked or Bulging",
-                  "c": false
+                  "title": "Cracked or Bulging"
                 },
                 {
-                  "title": "Mildew",
-                  "c": false
+                  "title": "Mildew"
                 },
                 {
-                  "title": "Deteriorated",
-                  "c": false
+                  "title": "Deteriorated"
                 },
                 {
-                  "title": "Fungal Rot or Probed",
-                  "c": false
+                  "title": "Fungal Rot or Probed"
                 },
                 {
-                  "title": "Re-Evaluate",
-                  "c": false
+                  "title": "Re-Evaluate"
                 }
               ]
             },
@@ -1526,44 +1331,34 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "c": false
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Missing",
-                  "c": false
+                  "title": "Missing"
                 },
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Marginal",
-                  "c": false
+                  "title": "Marginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 },
                 {
-                  "title": "Defective",
-                  "c": false
+                  "title": "Defective"
                 },
                 {
-                  "title": "Loose",
-                  "c": false
+                  "title": "Loose"
                 },
                 {
-                  "title": "Gaps or Holes",
-                  "c": false
+                  "title": "Gaps or Holes"
                 },
                 {
-                  "title": "Exposed Structure",
-                  "c": false
+                  "title": "Exposed Structure"
                 },
                 {
-                  "title": "Recommend Re-Evaluate or Repair",
-                  "c": false
+                  "title": "Recommend Re-Evaluate or Repair"
                 }
               ]
             },
@@ -1575,44 +1370,34 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Wood",
-                  "c": false
+                  "title": "Wood"
                 },
                 {
-                  "title": "Fiberboard",
-                  "c": false
+                  "title": "Fiberboard"
                 },
                 {
-                  "title": "Masonry",
-                  "c": false
+                  "title": "Masonry"
                 },
                 {
-                  "title": "EIFS",
-                  "c": false
+                  "title": "EIFS"
                 },
                 {
-                  "title": "Metal",
-                  "c": false
+                  "title": "Metal"
                 },
                 {
-                  "title": "Vinyl",
-                  "c": false
+                  "title": "Vinyl"
                 },
                 {
-                  "title": "Enclosed Soffit",
-                  "c": false
+                  "title": "Enclosed Soffit"
                 },
                 {
-                  "title": "Open Eaves",
-                  "c": false
+                  "title": "Open Eaves"
                 },
                 {
-                  "title": "Screened Ventilation",
-                  "c": false
+                  "title": "Screened Ventilation"
                 },
                 {
-                  "title": "Unflashed BRT or Out-Lookers",
-                  "c": false
+                  "title": "Unflashed BRT or Out-Lookers"
                 }
               ]
             },
@@ -1624,80 +1409,61 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Marginal",
-                  "c": false
+                  "title": "Marginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 },
                 {
-                  "title": "Loose",
-                  "c": false
+                  "title": "Loose"
                 },
                 {
-                  "title": "Gaps or Holes",
-                  "c": false
+                  "title": "Gaps or Holes"
                 },
                 {
-                  "title": "Missing Pieces",
-                  "c": false
+                  "title": "Missing Pieces"
                 },
                 {
-                  "title": "Exposed Wood",
-                  "c": false
+                  "title": "Exposed Wood"
                 },
                 {
-                  "title": "Loose or Missing Flashing",
-                  "c": false
+                  "title": "Loose or Missing Flashing"
                 },
                 {
-                  "title": "Poor Protection or Coverage",
-                  "c": false
+                  "title": "Poor Protection or Coverage"
                 },
                 {
-                  "title": "Stains",
-                  "c": false
+                  "title": "Stains"
                 },
                 {
-                  "title": "Peeling Paint",
-                  "c": false
+                  "title": "Peeling Paint"
                 },
                 {
-                  "title": "Weathered or Worn",
-                  "c": false
+                  "title": "Weathered or Worn"
                 },
                 {
-                  "title": "Deterioration",
-                  "c": false
+                  "title": "Deterioration"
                 },
                 {
-                  "title": "Fungal Rot",
-                  "c": false
+                  "title": "Fungal Rot"
                 },
                 {
-                  "title": "Broken or Damaged",
-                  "c": false
+                  "title": "Broken or Damaged"
                 },
                 {
-                  "title": "Pest Issues",
-                  "c": false
+                  "title": "Pest Issues"
                 },
                 {
-                  "title": "Foliage Contact",
-                  "c": false
+                  "title": "Foliage Contact"
                 },
                 {
-                  "title": "Potential Hidden Damage",
-                  "c": false
+                  "title": "Potential Hidden Damage"
                 },
                 {
-                  "title": "Recommend Re-Evaluation",
-                  "c": false
+                  "title": "Recommend Re-Evaluation"
                 }
               ]
             },
@@ -1719,24 +1485,19 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Wood",
-                  "c": false
+                  "title": "Wood"
                 },
                 {
-                  "title": "Aluminum or Metal",
-                  "c": false
+                  "title": "Aluminum or Metal"
                 },
                 {
-                  "title": "Clad",
-                  "c": false
+                  "title": "Clad"
                 },
                 {
-                  "title": "Vinyl",
-                  "c": false
+                  "title": "Vinyl"
                 },
                 {
-                  "title": "Fiberglass",
-                  "c": false
+                  "title": "Fiberglass"
                 }
               ]
             },
@@ -1748,64 +1509,49 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Marginal",
-                  "c": false
+                  "title": "Marginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 },
                 {
-                  "title": "Gaps",
-                  "c": false
+                  "title": "Gaps"
                 },
                 {
-                  "title": "Missing Pieces",
-                  "c": false
+                  "title": "Missing Pieces"
                 },
                 {
-                  "title": "Exposed Wood",
-                  "c": false
+                  "title": "Exposed Wood"
                 },
                 {
-                  "title": "Missing Flashing",
-                  "c": false
+                  "title": "Missing Flashing"
                 },
                 {
-                  "title": "Weathered or Worn Finish",
-                  "c": false
+                  "title": "Weathered or Worn Finish"
                 },
                 {
-                  "title": "Peeling Paint or Inadequate Coverage",
-                  "c": false
+                  "title": "Peeling Paint or Inadequate Coverage"
                 },
                 {
-                  "title": "Missing Caulking",
-                  "c": false
+                  "title": "Missing Caulking"
                 },
                 {
-                  "title": "Broken Glass",
-                  "c": false
+                  "title": "Broken Glass"
                 },
                 {
-                  "title": "Failed Thermal Seal",
-                  "c": false
+                  "title": "Failed Thermal Seal"
                 },
                 {
-                  "title": "Damaged",
-                  "c": false
+                  "title": "Damaged"
                 },
                 {
-                  "title": "Deteriorated",
-                  "c": false
+                  "title": "Deteriorated"
                 },
                 {
-                  "title": "Fungal Rot",
-                  "c": false
+                  "title": "Fungal Rot"
                 }
               ]
             },
@@ -1817,16 +1563,13 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Metal",
-                  "c": false
+                  "title": "Metal"
                 },
                 {
-                  "title": "Wood",
-                  "c": false
+                  "title": "Wood"
                 },
                 {
-                  "title": "Fiberglass",
-                  "c": false
+                  "title": "Fiberglass"
                 }
               ]
             },
@@ -1838,32 +1581,25 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Marginal",
-                  "c": false
+                  "title": "Marginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 },
                 {
-                  "title": "Missing or Inadequate Threshold",
-                  "c": false
+                  "title": "Missing or Inadequate Threshold"
                 },
                 {
-                  "title": "Missing or Inadequate Weather-Strip",
-                  "c": false
+                  "title": "Missing or Inadequate Weather-Strip"
                 },
                 {
-                  "title": "Missing or Inadequate Hardware",
-                  "c": false
+                  "title": "Missing or Inadequate Hardware"
                 },
                 {
-                  "title": "Repairs Needed",
-                  "c": false
+                  "title": "Repairs Needed"
                 }
               ]
             },
@@ -1875,32 +1611,25 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Weathered",
-                  "c": false
+                  "title": "Weathered"
                 },
                 {
-                  "title": "Stretched",
-                  "c": false
+                  "title": "Stretched"
                 },
                 {
-                  "title": "Cracked",
-                  "c": false
+                  "title": "Cracked"
                 },
                 {
-                  "title": "Gaps",
-                  "c": false
+                  "title": "Gaps"
                 },
                 {
-                  "title": "Missing",
-                  "c": false
+                  "title": "Missing"
                 },
                 {
-                  "title": "Recommend sealing all perforations through the exterior wall surface",
-                  "c": false
+                  "title": "Recommend sealing all perforations through the exterior wall surface"
                 }
               ]
             },
@@ -1938,36 +1667,28 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "c": false
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Curbside",
-                  "c": false
+                  "title": "Curbside"
                 },
                 {
-                  "title": "Space",
-                  "c": false
+                  "title": "Space"
                 },
                 {
-                  "title": "Public Garage",
-                  "c": false
+                  "title": "Public Garage"
                 },
                 {
-                  "title": "Carport",
-                  "c": false
+                  "title": "Carport"
                 },
                 {
-                  "title": "Garage",
-                  "c": false
+                  "title": "Garage"
                 },
                 {
-                  "title": "Attached",
-                  "c": false
+                  "title": "Attached"
                 },
                 {
-                  "title": "Detached",
-                  "c": false
+                  "title": "Detached"
                 }
               ]
             },
@@ -1979,32 +1700,25 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "c": false
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Concrete Slab",
-                  "c": false
+                  "title": "Concrete Slab"
                 },
                 {
-                  "title": "Sealed",
-                  "c": false
+                  "title": "Sealed"
                 },
                 {
-                  "title": "Asphalt",
-                  "c": false
+                  "title": "Asphalt"
                 },
                 {
-                  "title": "Pavers or Cobblestone",
-                  "c": false
+                  "title": "Pavers or Cobblestone"
                 },
                 {
-                  "title": "Gravel",
-                  "c": false
+                  "title": "Gravel"
                 },
                 {
-                  "title": "Dirt",
-                  "c": false
+                  "title": "Dirt"
                 }
               ]
             },
@@ -2016,48 +1730,37 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Marginal",
-                  "c": false
+                  "title": "Marginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 },
                 {
-                  "title": "Sloping",
-                  "c": false
+                  "title": "Sloping"
                 },
                 {
-                  "title": "Typical Cracks",
-                  "c": false
+                  "title": "Typical Cracks"
                 },
                 {
-                  "title": "Large Cracks",
-                  "c": false
+                  "title": "Large Cracks"
                 },
                 {
-                  "title": "Trip Hazards",
-                  "c": false
+                  "title": "Trip Hazards"
                 },
                 {
-                  "title": "Efflorescence",
-                  "c": false
+                  "title": "Efflorescence"
                 },
                 {
-                  "title": "Not Visible",
-                  "c": false
+                  "title": "Not Visible"
                 },
                 {
-                  "title": "Excessive Storage",
-                  "c": false
+                  "title": "Excessive Storage"
                 },
                 {
-                  "title": "Re-Evaluate",
-                  "c": false
+                  "title": "Re-Evaluate"
                 }
               ]
             },
@@ -2069,20 +1772,16 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "c": false
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Above Living Space",
-                  "c": false
+                  "title": "Above Living Space"
                 },
                 {
-                  "title": "Below Living Space",
-                  "c": false
+                  "title": "Below Living Space"
                 },
                 {
-                  "title": "Adjoining Walls",
-                  "c": false
+                  "title": "Adjoining Walls"
                 }
               ]
             },
@@ -2094,24 +1793,19 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Penetrations",
-                  "c": false
+                  "title": "Penetrations"
                 },
                 {
-                  "title": "Pet Door",
-                  "c": false
+                  "title": "Pet Door"
                 },
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Marginal",
-                  "c": false
+                  "title": "Marginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 }
               ]
             },
@@ -2123,24 +1817,19 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Door",
-                  "c": false
+                  "title": "Door"
                 },
                 {
-                  "title": "Threshod",
-                  "c": false
+                  "title": "Threshod"
                 },
                 {
-                  "title": "Hinges",
-                  "c": false
+                  "title": "Hinges"
                 },
                 {
-                  "title": "Seal",
-                  "c": false
+                  "title": "Seal"
                 },
                 {
-                  "title": "Repairs Needed",
-                  "c": false
+                  "title": "Repairs Needed"
                 }
               ]
             },
@@ -2152,24 +1841,19 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "c": false
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Blocked or Inoperable",
-                  "c": false
+                  "title": "Blocked or Inoperable"
                 },
                 {
-                  "title": "Wood",
-                  "c": false
+                  "title": "Wood"
                 },
                 {
-                  "title": "Metal",
-                  "c": false
+                  "title": "Metal"
                 },
                 {
-                  "title": "Fiberglass",
-                  "c": false
+                  "title": "Fiberglass"
                 }
               ]
             },
@@ -2181,28 +1865,22 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Marginal",
-                  "c": false
+                  "title": "Marginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 },
                 {
-                  "title": "Damaged",
-                  "c": false
+                  "title": "Damaged"
                 },
                 {
-                  "title": "Needs Adjustment",
-                  "c": false
+                  "title": "Needs Adjustment"
                 },
                 {
-                  "title": "Re-Evaluate",
-                  "c": false
+                  "title": "Re-Evaluate"
                 }
               ]
             },
@@ -2214,56 +1892,43 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "c": false
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Overhead",
-                  "c": false
+                  "title": "Overhead"
                 },
                 {
-                  "title": "Sliding",
-                  "c": false
+                  "title": "Sliding"
                 },
                 {
-                  "title": "Roll-Up Panels",
-                  "c": false
+                  "title": "Roll-Up Panels"
                 },
                 {
-                  "title": "Tilt-Up Slab",
-                  "c": false
+                  "title": "Tilt-Up Slab"
                 },
                 {
-                  "title": "Lites",
-                  "c": false
+                  "title": "Lites"
                 },
                 {
-                  "title": "Wood",
-                  "c": false
+                  "title": "Wood"
                 },
                 {
-                  "title": "Hardboard",
-                  "c": false
+                  "title": "Hardboard"
                 },
                 {
-                  "title": "Metal",
-                  "c": false
+                  "title": "Metal"
                 },
                 {
-                  "title": "Fiberglass",
-                  "c": false
+                  "title": "Fiberglass"
                 },
                 {
-                  "title": "Solid",
-                  "c": false
+                  "title": "Solid"
                 },
                 {
-                  "title": "Hollow",
-                  "c": false
+                  "title": "Hollow"
                 },
                 {
-                  "title": "Insulated",
-                  "c": false
+                  "title": "Insulated"
                 }
               ]
             },
@@ -2275,48 +1940,37 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Marginal",
-                  "c": false
+                  "title": "Marginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 },
                 {
-                  "title": "Inoperable",
-                  "c": false
+                  "title": "Inoperable"
                 },
                 {
-                  "title": "Gaps",
-                  "c": false
+                  "title": "Gaps"
                 },
                 {
-                  "title": "Security Concerns",
-                  "c": false
+                  "title": "Security Concerns"
                 },
                 {
-                  "title": "Blocked or Inaccessible",
-                  "c": false
+                  "title": "Blocked or Inaccessible"
                 },
                 {
-                  "title": "Locked Shut",
-                  "c": false
+                  "title": "Locked Shut"
                 },
                 {
-                  "title": "Stained",
-                  "c": false
+                  "title": "Stained"
                 },
                 {
-                  "title": "De-Laminated",
-                  "c": false
+                  "title": "De-Laminated"
                 },
                 {
-                  "title": "Damaged",
-                  "c": false
+                  "title": "Damaged"
                 }
               ]
             },
@@ -2328,24 +1982,19 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "c": false
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Inoperable",
-                  "c": false
+                  "title": "Inoperable"
                 },
                 {
-                  "title": "Blocked",
-                  "c": false
+                  "title": "Blocked"
                 },
                 {
-                  "title": "No Access",
-                  "c": false
+                  "title": "No Access"
                 },
                 {
-                  "title": "No Remote",
-                  "c": false
+                  "title": "No Remote"
                 }
               ]
             },
@@ -2357,20 +2006,16 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Not Applicable",
-                  "c": false
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "Disconnected or Inoperable",
-                  "c": false
+                  "title": "Disconnected or Inoperable"
                 },
                 {
-                  "title": "Door Stops",
-                  "c": false
+                  "title": "Door Stops"
                 },
                 {
-                  "title": "Intermittent Function",
-                  "c": false
+                  "title": "Intermittent Function"
                 }
               ]
             },
@@ -2382,28 +2027,22 @@ var reports = [
               "value": [],
               "content": [
                 {
-                  "title": "Satisfactory",
-                  "c": false
+                  "title": "Satisfactory"
                 },
                 {
-                  "title": "Marginal",
-                  "c": false
+                  "title": "Marginal"
                 },
                 {
-                  "title": "Poor",
-                  "c": false
+                  "title": "Poor"
                 },
                 {
-                  "title": "Damaged",
-                  "c": false
+                  "title": "Damaged"
                 },
                 {
-                  "title": "Needs Adjustment",
-                  "c": false
+                  "title": "Needs Adjustment"
                 },
                 {
-                  "title": "Re-Evaluate",
-                  "c": false
+                  "title": "Re-Evaluate"
                 }
               ]
             },
@@ -10097,9 +9736,7 @@ var reports = [
             {
               "title": "Photo Appendix Images",
               "type": "photoAppendix",
-              "content": ["./img/Studphen.png", "./img/rod.png", "./img/Studphen.png", "./img/Studphen.png"
-                         , "./img/Studphen.png", "./img/rod.png", "./img/Studphen.png", "./img/rod.png"
-                         ]
+              "content": [""]
             }
           ]
         }

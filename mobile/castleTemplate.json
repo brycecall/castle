@@ -1,4 +1,4 @@
-{"reports":[
+var reports = [
 {
   "name": "Name of the Report",
   "title": "Name of the Report",
@@ -10109,4 +10109,3 @@
   ]
 }
 ]
-}

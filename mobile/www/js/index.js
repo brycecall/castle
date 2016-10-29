@@ -234,7 +234,7 @@ app.controller('indexController', function ($scope, castleService, $mdUtil, $mdS
 app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
     var factory = {};
     factory.reports = null;
-    factory.currentReport = reportOne;
+    factory.currentReport = reports[0];
     factory.backdrop = false;
     factory.selectedPage = null;
     factory.selectedSection = null;

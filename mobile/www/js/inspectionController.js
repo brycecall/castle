@@ -96,7 +96,7 @@
          if ($scope.newSectionTitle == null 
              || $scope.newSectionTitle == undefined 
              || $scope.newSectionTitle == "") {
-            $scope.newSectionTitle = "NEW SECTION TITLE";
+            $scope.newSectionTitle = null;
          }
          var template = {
               "title": $scope.newSectionTitle,
@@ -104,8 +104,11 @@
               "pages": []
          }
          $scope.report.sections.push(template);
-         $scope.newSectionTitle = "";
-     };
+//         $scope.newSectionTitle = "";
+         console.log('#sectionId' + ($scope.report.sections.length -1));
+         
+         $('#sectionId' + ($scope.report.sections.length -1)).focus();
+       };
      
      $scope.addSubsection = function(array, index) {
          

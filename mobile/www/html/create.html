@@ -4,18 +4,23 @@
         <h3 class="md-subhead insTitle" >Report Template</h3>
     <md-card>
         <md-input-container style="padding: 0px 16px 8px 16px;">
-            <md-select ng-model="castleService.reportTemplate" placeholder="Pick a Template">
-                <md-option ng-repeat="template in castleService.reportTemplates track by $index" ng-value="template">{{template.title}}</md-option>
+            <md-select ng-model="castleService.reportTemplate" 
+                       placeholder="Pick a Template"
+                       md-on-close="setTemplate()">
+                <md-option ng-repeat="template in castleService.reportTemplates 
+                                      track by $index" ng-value="template"
+                                      >
+                                      {{template.title}}</md-option>
             </md-select>
         </md-input-container>
     </md-card>
     
 <div ng-if="castleService.reportTemplate != null"> 
-<div  ng-repeat="section in report.meta">
+<div  ng-repeat="section in report.meta track by $index">
     <h3 class="md-subhead insTitle">{{section.title}}</h3>
     <md-card  >
     <md-card-content>
-    <div ng-repeat="item in section.items"  >
+    <div ng-repeat="item in section.items track by $index"  >
         <!--                           PRE-SET TEXT-->
         <div ng-if="item.type == 'presettext'" class="padMe">
             <md-input-container class="md-block">

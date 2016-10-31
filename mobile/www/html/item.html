@@ -1,11 +1,21 @@
 <div ng-controller="itemController" flex="" layout="column" class="page" id="nav" >
-   <md-content style="padding:16px;">
+<!--
+  <div class="subHeaderStyle shady" layout="row" layout-align="start center">
+      sub menu
+  </div>
+  <md-divider></md-divider>
+-->
+   <md-content style="padding: 8px">
 
     <div layout="row" layout-align="start center" >
-        <h1 class="md-title">{{item.title}}</h1>
+        <h3 class="md-title" style="margin-bottom:2px;">{{item.title}}</h3>
         <span flex=""></span>
+      <md-switch ng-model="item.required" style="margin:1px" aria-label="Is Required">
+        Required
+      </md-switch>
         <md-button ng-click="toggleAnswered()" aria-label="is answered" class="btnBackground" style="">
-            <span>Completed</span> <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
+            <span>Complete</span> 
+            <md-icon style="min-width:24px" md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
         </md-button>
     </div>
 
@@ -37,7 +47,7 @@
         </md-menu-content>
     </md-menu>
     <br/>
-    <md-input-container class="md-block">
+    <md-input-container class="md-block" style="margin-bottom:0">
       <label>Title</label>
       <input ng-model="item.title">
     </md-input-container>
@@ -314,8 +324,7 @@
         </div>
       </div>
     </div>
-    
-           <div ng-show="!itemSet() && !castleService.editMode">
+            <div ng-show="!itemSet() && !castleService.editMode">
                <div class="md-caption" style="margin-left:8px;">Question not defined yet.</div>
                 <md-button class="md-raised"
                            aria-label="edter edit mode"
@@ -329,7 +338,7 @@
                    aria-label="is answered" 
                    class="btnBackground" 
                    style="">
-            <span >Completed</span>
+            <span >Complete</span>
             <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
         </md-button>
         <md-button ng-click="clearQuestion(item)" 

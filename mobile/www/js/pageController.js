@@ -25,9 +25,7 @@
      var pictureSource = null;
      var destinationType = null;
      $scope.editMode = false;
-     $scope.toggleEditMode = function() {
-        castleService.editMode = !castleService.editMode;
-     };
+
      $scope.addToSelectedImages = function(index) {
         var safeIndex = $.inArray(index, castleService.selectedImages);
         if(safeIndex == -1) {
@@ -35,6 +33,10 @@
         } else {
             castleService.selectedImages.splice(safeIndex, 1);
         }
+     };
+     
+     $scope.remove = function(level, index) {
+         $scope.buffer = level.splice(index, 1);
      };
      
      $scope.isItemSet = function(item) {

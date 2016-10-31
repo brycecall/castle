@@ -17,10 +17,6 @@
      $scope.rapidRemarks = castleService.rapidRemarks;
      $scope.finishedRequired = false;
      $scope.editMode = false;
-     
-     $scope.toggleEditMode = function() {
-        castleService.editMode = !castleService.editMode;
-     };
 
      castleService.reportTemplate = reportOne;
      //$scope.report = reportOne; //REMOVE after testing
@@ -120,7 +116,7 @@
             document.getElementById('subSectionId' + (array.length -1)).focus();
          }, 0);
          
-       };
+    };
      
      $scope.addSubsection = function(array, index) {
          
@@ -175,7 +171,8 @@
          if (subItem.i == null)
              subItem.i = [];
          
-         var photoAppendix = $scope.report.sections[castleService.photoAppendixIndex].pages[0].items[0].content;
+         var photoAppendix = $scope.report.sections[castleService.photoAppendixIndex]
+                                   .pages[0].items[0].content;
 
          for(var i = 0; i < castleService.selectedImages.length; i++) {
              var index = castleService.selectedImages[i];
@@ -267,7 +264,7 @@
             }
           }
      $state.go('generate');
-    return true;
+        return true;
         // $scope.saveReport();
      };
      
@@ -301,8 +298,6 @@
 //          $scope.toggleItem($scope.showAddItemMenu);
 //     }
      
-
-
      $scope.showItemDialog = function (event) {
          $mdDialog.show({
              controller: 'createController',
@@ -344,13 +339,16 @@
       };
 
 
-      $scope.addRapidRemark = function (remarkTitle, remarkValue, itemIndex, checkboxIndex) {
-             console.log("Add rapid remark");
-             $scope.report.sections[$scope.selectedSection].pages[$scope.selectedPage].items[$rootScope.itemIndex].content[$rootScope.checkboxIndex].rrTitle = remarkTitle;
-             $scope.report.sections[$scope.selectedSection].pages[$scope.selectedPage].items[$rootScope.itemIndex].content[$rootScope.checkboxIndex].rrVal = remarkValue;
-            //console.log(JSON.stringify($scope.report.sections[$scope.selectedSection].pages[$scope.selectedPage], null, 2));
-         };
-
+     $scope.addRapidRemark = function (remarkTitle, remarkValue, itemIndex, checkboxIndex) {
+         console.log("Add rapid remark");
+         $scope.report.sections[$scope.selectedSection]
+               .pages[$scope.selectedPage].items[$rootScope.itemIndex]
+               .content[$rootScope.checkboxIndex].rrTitle = remarkTitle;
+         $scope.report.sections[$scope.selectedSection]
+               .pages[$scope.selectedPage].items[$rootScope.itemIndex]
+               .content[$rootScope.checkboxIndex].rrVal = remarkValue;
+        //console.log(JSON.stringify($scope.report.sections[$scope.selectedSection].pages[$scope.selectedPage], null, 2));
+     };
 
      $scope.editRapidRemarks = function($event) {
           $mdDialog
@@ -394,7 +392,6 @@
               $rootScope.checkboxIndex = null;
            // console.log("FINALLY!");
           });
-
      };
 
      $scope.previewReport = function($event) {
@@ -424,11 +421,9 @@
          $mdDialog.cancel();
      };
 
-
  /********************************************************
   * CAMERA
   ***********************************************************/
-
 
      // Retrieve image file location from specified source
      $scope.capturePhoto = function(sourceType, source, isArray, isDataUrl) {
@@ -437,7 +432,7 @@
              destination = destinationType.FILE_URI;
          }
 
-        navigator.camera.getPicture(function(imageData) {
+         navigator.camera.getPicture(function(imageData) {
              //console.log("Image Data: " + imageData);
 
              if (isDataUrl) {
@@ -459,7 +454,6 @@
              sourceType: sourceType
          });
      };
-
 
      $scope.removeIMG = function (source, index) {
          source.splice(index, 1);
@@ -523,7 +517,8 @@
 
      $scope.addItemToReport = function () {
          //console.log("sectionIndex " + $scope.selectedSection + " Page: " + $scope.selectedPage + " Title: " + $scope.newItem.title);
-         $scope.report.sections[$scope.selectedSection].pages[$scope.selectedPage].items.push($scope.newItem);
+         $scope.report.sections[$scope.selectedSection]
+               .pages[$scope.selectedPage].items.push($scope.newItem);
          $scope.resetNewItem();
      };
 
@@ -569,7 +564,8 @@
      };
 
      $scope.addPageToReport = function (newPage) {
-         $scope.report.sections[$scope.selectedSection].pages.push({'title':newPage, "items":[]});
+         $scope.report.sections[$scope.selectedSection]
+               .pages.push({'title':newPage, "items":[]});
          //console.log(JSON.stringify($scope.report[$scope.selectedSection][newPage], null, 2));
      };
 

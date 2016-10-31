@@ -13,10 +13,12 @@
      $scope.item = $scope.page.items[$scope.itemIndex];
 
      castleService.currentPage.showIcon = true;
-     castleService.currentPage.title = $scope.report.sections[$scope.sectionIndex].pages[$scope.pageIndex].title;
+     castleService.currentPage.title = $scope.report.sections[$scope.sectionIndex]
+                                             .pages[$scope.pageIndex].title;
      castleService.currentPage.icon = "back";
      castleService.currentPage.toggleNavMenu = false;
-     castleService.currentPage.go = {state:"page", params:{'sectionIndex':$scope.sectionIndex, 'pageIndex':$scope.pageIndex}};
+     castleService.currentPage.go = {state:"page", params:{'sectionIndex':$scope.sectionIndex, 
+                                                           'pageIndex':$scope.pageIndex}};
      castleService.currentPage.showEditMode = true;
 
      $scope.subPage = '';
@@ -74,7 +76,8 @@
          if (subItem.i == null)
              subItem.i = [];
          
-         var photoAppendix = $scope.report.sections[castleService.photoAppendixIndex].pages[0].items[0].content;
+         var photoAppendix = $scope.report.sections[castleService.photoAppendixIndex]
+                                   .pages[0].items[0].content;
 
          for(var i = 0; i < castleService.selectedImages.length; i++) {
              var index = castleService.selectedImages[i];

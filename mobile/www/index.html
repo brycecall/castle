@@ -70,11 +70,13 @@
     </head>
     <body style="height:100%" class="md-body-1">
         <div ng-app="castleApp" style="height:100%; width:100%">
-            <div ng-controller="indexController"  style="height:100%; width:100%; position:relative" layout="row">
+            <div ng-controller="indexController"  
+                 style="height:100%; width:100%; position:relative" 
+                 layout="row">
 
-                <md-sidenav class="md-sidenav-left lSideNav" md-component-id="main"  md-swipe-left="toggleNavigation()">
-                
-                        
+                <md-sidenav class="md-sidenav-left lSideNav" 
+                            md-component-id="main"  
+                            md-swipe-left="toggleNavigation()">
                 <md-toolbar class="md-tall castleBackground">
 <!--                   <div class="menuFlag"></div>-->
                     <div class="md-toolbar-tools" >
@@ -87,10 +89,14 @@
      
                         <br />
                         <md-list flex>
-                        <a ui-sref="{{page.link}}" ng-click="toggleNavigation()" ng-repeat="page in navigationPages"  flex="">
+                        <a ui-sref="{{page.link}}" 
+                           ng-click="toggleNavigation()" 
+                           ng-repeat="page in navigationPages" 
+                           flex="">
                               <md-list-item>
                                   <div md-ink-ripple="" >
-                                    <md-icon md-svg-icon="{{page.icon}}" class="marginRight"></md-icon>
+                                    <md-icon md-svg-icon="{{page.icon}}" 
+                                             class="marginRight"></md-icon>
                                     <h2 class="listHead navList" >{{page.title}}</h2>
                                   </div>
                               </md-list-item>
@@ -100,13 +106,19 @@
                     </md-content>
                 </md-sidenav>
 
-               <div layout="column" flex="" style="background-color:#fafafa">
+               <div layout="column" flex="" 
+                    style="background-color:#fafafa">
                 <header>
                     <md-toolbar class="shady">
 <!--                      <div class="md-toolbar-tools"  >-->
-                        <div class="md-toolbar-tools" ng-if="!castleService.assignPhotoMode" layout="row" layout-align="center center"
-                           ng-style="{'background-color':castleService.currentPage.color}" flex>
-                        <md-button class="md-icon-button" aria-label="Navigation" ng-click="menuNavigation()" ng-model-options="{ debounce: 1000 }">
+                        <div class="md-toolbar-tools" 
+                             ng-if="!castleService.assignPhotoMode" 
+                             layout="row" layout-align="center center"
+                             ng-style="{'background-color':castleService.currentPage.color}" flex>
+                        <md-button class="md-icon-button" 
+                                   aria-label="Navigation" 
+                                   ng-click="menuNavigation()" 
+                                   ng-model-options="{ debounce: 1000 }">
                              <md-icon md-svg-icon="{{castleService.currentPage.icon}}" ></md-icon>
                         </md-button>
 
@@ -114,27 +126,37 @@
                           <span>{{castleService.currentPage.title}}</span>
                         </h2>
                         <span flex></span>
-                        <a ui-sref="account" aria-label="Account" style="border:none" ng-if="castleService.io.user && castleService.currentPage.showAccount">
+                        <a ui-sref="account" aria-label="Account" 
+                           style="border:none" 
+                           ng-if="castleService.io.user && castleService.currentPage.showAccount">
                           <div class="profileWrapper" >
-                              <div class="profile_picture" style="background-image: url({{castleService.io.user.password.profileImageURL}});"></div>
+                              <div class="profile_picture" 
+                                   style="background-image: url({{castleService.io.user.password.profileImageURL}});"></div>
                           </div>
-                            <md-icon ng-if="castleService.io.user == null"  md-svg-icon="account_circle" class="profile_picture"></md-icon>
+                            <md-icon ng-if="castleService.io.user == null"  
+                                     md-svg-icon="account_circle" 
+                                     class="profile_picture"></md-icon>
                         </a>
 
-                         <md-button ng-show="castleService.assignPhotoMode" ng-click="castleService.cancelAssignPhotoMode()" class="md-icon-button" aria-label="cancel assign photo" >
+                         <md-button ng-show="castleService.assignPhotoMode" 
+                                    ng-click="castleService.cancelAssignPhotoMode()" 
+                                    class="md-icon-button" aria-label="cancel assign photo" >
                                 <md-icon md-svg-icon="close"></md-icon>
                          </md-button>
 
                            <md-button ng-show="castleService.currentPage.showEditMode"
                                       aria-label="toggle edit mode" 
                                       class="md-icon-button"
-                                      ng-click="castleService.editMode = !castleService.editMode">
+                                      ng-click="toggleEditMode()">
                                       <md-icon md-svg-icon="mode_edit"></md-icon>
                            </md-button>
                         </div>
                         <div class="md-toolbar-tools" layout="row" layout-align="center center"
                           style="background-color:#555" ng-if="castleService.assignPhotoMode" flex>
-                            <md-button ng-if="!castleService.currentPage.toggleNavMenu" class="md-icon-button" aria-label="Navigation" ui-sref="{{castleService.currentPage.link}}" ng-model-options="{ debounce: 1000 }">
+                            <md-button ng-if="!castleService.currentPage.toggleNavMenu" 
+                                       class="md-icon-button" aria-label="Navigation" 
+                                       ui-sref="{{castleService.currentPage.link}}" 
+                                       ng-model-options="{ debounce: 1000 }">
                                  <md-icon md-svg-icon="{{castleService.currentPage.icon}}" ></md-icon>
                             </md-button>
 
@@ -142,7 +164,8 @@
                           <span>Assign photo</span>
                         </h2>
                         <span flex></span>
-                         <md-button  ng-click="castleService.cancelAssignPhotoMode()" class="md-icon-button" aria-label="cancel assign photo" >
+                         <md-button  ng-click="castleService.cancelAssignPhotoMode()" 
+                                     class="md-icon-button" aria-label="cancel assign photo" >
                                 <md-icon md-svg-icon="close"></md-icon>
                          </md-button>
                         </div>

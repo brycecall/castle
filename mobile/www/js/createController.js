@@ -1,8 +1,12 @@
- app.controller('createController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, castleService, $state) {
+ app.controller('createController', function ($scope, $mdUtil, $mdDialog, 
+                                              $rootScope, $stateParams, 
+                                              castleService, $state) {
      $scope.castleService = castleService;
      $scope.selectedSection = $stateParams.sectionIndex;
      $scope.castleService.selectedSection = $scope.selectedSection;
      $scope.selectedPage = castleService.selectedPage;
+     castleService.reportTemplate = null;
+     castleService.currentReport = null;
      $scope.report = castleService.currentReport;
      
      // change main header image and title
@@ -10,7 +14,7 @@
      castleService.currentPage.toggleNavMenu = true;
      castleService.currentPage.title = "New Job";
      castleService.currentPage.icon = "menu";
-     castleService.currentPage.showExtraMenu = true;
+     castleService.currentPage.showEditMode = false;
 
      $scope.rapidRemarks = castleService.rapidRemarks;
      $scope.finishedRequired = false;
@@ -18,10 +22,11 @@
      
      $scope.toggleEditMode = function() {
         castleService.editMode = !castleService.editMode;
+        castleService.currentPage.color = editMode ? '#000' : 
+            castleService.defaultColor;
      };
 
-     castleService.reportTemplate = reportOne;
-     //$scope.report = reportOne; //REMOVE after testing
+
      $scope.subPage = '';
      $scope.isOpen = false;
      $scope.togglePlusMenu = false;
@@ -29,6 +34,11 @@
      var pictureSource = null;
      var destinationType = null;
 
+     $scope.setTemplate = function(){
+        $scope.report = castleService.reportTemplate;
+        castleService.currentReport = castleService.reportTemplate;
+     };
+     
      $scope.addToSelectedImages = function(index) {
         var safeIndex = $.inArray(index, castleService.selectedImages);
         if(safeIndex == -1) {
@@ -43,54 +53,14 @@
          $scope.buffer = level.splice(index, 1);
      };
      
-     $scope.accordianIndex = -1;
-     $scope.setAccordianIndex = function(index) {
-         
-         if (index == $scope.accordianIndex)
-         {
-            $scope.accordianIndex = -1;
-         }
-         else
-         {
-            $scope.accordianIndex = index;
-         }
-     };
-     $scope.matchesAccordianIndex = function(index) {
-        return (index == $scope.accordianIndex);
-     };
-     
+
      $scope.getTemplate = function() {
         
-     };
-     
-     $scope.addSection = function(array, index) {
-         
-         var template = {
-              "title": "NEW SECTION TITLE",
-              "color": "#000000",
-              "pages": []
-         }
-         array.splice(index, 0, template);
-     };
-     
-     $scope.addSubsection = function(array, index) {
-         
-         var template = {
-              "title": "NEW SUBSECTION TITLE",
-              "color": "#000000",
-              "pages": []
-         }
-         array.splice(index, 0, template);
-     };
-     
-     $scope.getAnsweredIcon = function(answered) {
-         return (answered === true) ? 'check' : 'check_box_outline_blank';
      };
 
      $scope.clearSelection = function() {
         castleService.selectedImages = [];
      };
-
 
      $scope.enterAssignPhotosMode = function() {
          castleService.assignPhotoMode = true;
@@ -101,25 +71,7 @@
          $state.go("create",{sectionIndex:'default'});
      };
 
-     
-     $scope.editItemDialog = function($event, item) {
-//         $rootScope.itemIndex = itemIndex;
-//         $rootScope.pageIndex = $scope.page;
-//         $rootScope.sectionIndex = $scope.section;
-         $rootScope.item = item;
-    
-          $mdDialog
-             .show({
-                 controller: 'itemController',
-                 templateUrl: 'html/item.html',
-                 parent: angular.element(document.body),
-                 targetEvent: event,
-                 clickOutsideToClose: false,
-                 fullscreen: true
-             });
-     };
-     
-     
+         
      $scope.assignPhotos = function(subItem, action) {
          if (subItem.i == null)
              subItem.i = [];

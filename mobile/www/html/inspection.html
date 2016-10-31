@@ -14,9 +14,7 @@
              layout="column" 
              layout-align="center stretch" 
              style="text-align-left;"
-             ng-init="clicked = false"
-             
-              >             
+             ng-init="clicked = false" >             
                <div  style="padding:0px 0px 0px 16px; margin:0;
                          vertical-align:middle; border-radius:0; 
                          text-transform:none; background-color:#FFF;  height:52px;" 
@@ -25,8 +23,7 @@
                        layout="row" 
                        layout-align="start center"
                        ng-click="toggleAccordianIndex($index)"
-                       ng-show="!castleService.editMode"
-               >
+                       ng-show="!castleService.editMode">
                     <input type="text" 
                            ng-disabled="true" 
                            ng-model="section.title" 
@@ -120,9 +117,7 @@
                                        style="min-width:40px;" 
                                        ng-init="clicked = false" 
                                        aria-label="toggle pages menu"
-                                       ng-click="remove(section.pages, $index)"
-                                      
-                            >
+                                       ng-click="remove(section.pages, $index)">
                                 <md-icon md-svg-icon="cancel" ></md-icon>
                             </md-button>
                        </div>
@@ -157,9 +152,14 @@
 -->
 
         </div>
-    <div layout="row" style="padding: 0 0 10px 0;" ng-hide="castleService.assignPhotoMode" class="flex-wrap">
-        <md-button ng-click="checkRequired()" class="md-raised" aria-label="Preview Report">Preview Report</md-button>
-        <md-button ng-click="" class="md-raised" aria-label="Save Report">Save Report</md-button>
+    <div layout="row" style="padding: 0 0 10px 0;" 
+         ng-hide="castleService.assignPhotoMode" 
+         class="flex-wrap">
+        <md-button ng-click="checkRequired()" 
+                   class="md-raised" 
+                   aria-label="Preview Report">Preview Report</md-button>
+        <md-button ng-click="" class="md-raised" 
+                   aria-label="Save Report">Save Report</md-button>
 <!--        <md-button ng-click="castleService.reportTemplate = null" class="md-raised md-primary" aria-label="Reset Template">Reset Template</md-button>-->
     </div>
         

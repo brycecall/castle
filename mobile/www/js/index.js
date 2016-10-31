@@ -110,57 +110,57 @@ app.config(function ($mdThemingProvider) {
 app.config(function ($mdIconProvider) {
     // Configure URLs for icons specified by [set:]id.
     $mdIconProvider
-        .icon('menu', './mdicons/ic_menu_48px.svg')
-        .icon('new_report', './mdicons/ic_assignment_48px.svg')
-        .icon('book', './mdicons/ic_book_48px.svg')
-        .icon('account', './mdicons/ic_account_box_48px.svg')
-        .icon('image', './mdicons/ic_image_48px.svg')
-        .icon('clear', './mdicons/ic_clear_48px.svg')
-        .icon('camera', './mdicons/ic_photo_camera_48px.svg')
-        .icon('cancel','./mdicons/ic_cancel_48px.svg')
-        .icon('add','./mdicons/ic_add_48px.svg')
-        .icon('remove','./mdicons/ic_remove_48px.svg')
-        .icon('close','./mdicons/ic_close_48px.svg')
-        .icon('back','./mdicons/ic_arrow_back_48px.svg')
-        .icon('more_vert','./mdicons/ic_more_vert_48px.svg')
-        .icon('more_horiz','./mdicons/ic_more_horiz_48px.svg')
-        .icon('account_circle','./mdicons/ic_account_circle_48px.svg')
-        .icon('rrAdd','./mdicons/ic_playlist_add_48px.svg')
-        .icon('rrEdit','./mdicons/ic_playlist_add_check_48px.svg')
-        .icon('chevron_right','./mdicons/ic_chevron_right_48px.svg')
-        .icon('check','./mdicons/ic_check_48px.svg')
-        .icon('check_box','./mdicons/ic_check_box_48px.svg')
-        //.icon('check_box_outline','./mdicons/ic_check_box_outline_48px.svg')
-        .icon('radio_button_checked','./mdicons/ic_radio_button_checked_48px.svg')
-        .icon('radio_button_unchecked','./mdicons/ic_radio_button_unchecked_48px.svg')
-        .icon('build','./mdicons/ic_build_48px.svg')
-        .icon('switch_camera','./mdicons/ic_switch_camera_48px.svg')
-        .icon('crop_free','./mdicons/ic_crop_free_48px.svg')
-        .icon('add_to_photos','./mdicons/ic_add_to_photos_48px.svg')
-        .icon('delete', './mdicons/ic_delete_48px.svg')
-        .icon('clear_selection', './mdicons/ic_settings_backup_restore_48px.svg')
-        .icon('new_report_folder', './mdicons/ic_create_new_folder_48px.svg')
-        .icon('reverse', './mdicons/ic_swap_vertical_circle_48px.svg')
-        .icon('sort', './mdicons/ic_sort_48px.svg')
-        .icon('check_box', './mdicons/ic_check_box_48px.svg')
-        .icon('check_box_outline_blank', './mdicons/ic_check_box_outline_blank_48px.svg')
-        .icon('expand_more', './mdicons/ic_expand_more_48px.svg')
-        .icon('add_circle_outline', './mdicons/ic_add_circle_outline_48px.svg')
-        .icon('keyboard_arrow_right', './mdicons/ic_keyboard_arrow_right_48px.svg')
-        .icon('keyboard_arrow_down', './mdicons/ic_keyboard_arrow_down_48px.svg')
-        .icon('keyboard_arrow_up', './mdicons/ic_keyboard_arrow_up_48px.svg')
-        .icon('mode_edit', './mdicons/ic_mode_edit_48px.svg')
-        .icon('arrow_drop_down_circle', './mdicons/ic_arrow_drop_down_circle_48px.svg')
-        .icon('arrow_drop_down', './mdicons/ic_arrow_drop_down_48px.svg')
-        .icon('subject', './mdicons/ic_subject_48px.svg')
-        .icon('today', './mdicons/ic_today_48px.svg')
-        .icon('watch_later', './mdicons/ic_watch_later_48px.svg')
-        .icon('iso', './mdicons/ic_iso_48px.svg')
-        .icon('error', './mdicons/ic_error_48px.svg')
-        .icon('short_text', './mdicons/ic_short_text_48px.svg')
-        .icon('work', './mdicons/ic_work_48px.svg')
-        .icon('looks_one', './mdicons/ic_looks_one_48px.svg')
-        .icon('clear_all', './mdicons/ic_clear_all_48px.svg')
+        .icon('menu', './mdicons/ic_menu_24px.svg')
+        .icon('new_report', './mdicons/ic_assignment_24px.svg')
+        .icon('book', './mdicons/ic_book_24px.svg')
+        .icon('account', './mdicons/ic_account_box_24px.svg')
+        .icon('image', './mdicons/ic_image_24px.svg')
+        .icon('clear', './mdicons/ic_clear_24px.svg')
+        .icon('camera', './mdicons/ic_photo_camera_24px.svg')
+        .icon('cancel','./mdicons/ic_cancel_24px.svg')
+        .icon('add','./mdicons/ic_add_24px.svg')
+        .icon('remove','./mdicons/ic_remove_24px.svg')
+        .icon('close','./mdicons/ic_close_24px.svg')
+        .icon('back','./mdicons/ic_arrow_back_24px.svg')
+        .icon('more_vert','./mdicons/ic_more_vert_24px.svg')
+        .icon('more_horiz','./mdicons/ic_more_horiz_24px.svg')
+        .icon('account_circle','./mdicons/ic_account_circle_24px.svg')
+        .icon('rrAdd','./mdicons/ic_playlist_add_24px.svg')
+        .icon('rrEdit','./mdicons/ic_playlist_add_check_24px.svg')
+        .icon('chevron_right','./mdicons/ic_chevron_right_24px.svg')
+        .icon('check','./mdicons/ic_check_24px.svg')
+        .icon('check_box','./mdicons/ic_check_box_24px.svg')
+        //.icon('check_box_outline','./mdicons/ic_check_box_outline_24px.svg')
+        .icon('radio_button_checked','./mdicons/ic_radio_button_checked_24px.svg')
+        .icon('radio_button_unchecked','./mdicons/ic_radio_button_unchecked_24px.svg')
+        .icon('build','./mdicons/ic_build_24px.svg')
+        .icon('switch_camera','./mdicons/ic_switch_camera_24px.svg')
+        .icon('crop_free','./mdicons/ic_crop_free_24px.svg')
+        .icon('add_to_photos','./mdicons/ic_add_to_photos_24px.svg')
+        .icon('delete', './mdicons/ic_delete_24px.svg')
+        .icon('clear_selection', './mdicons/ic_settings_backup_restore_24px.svg')
+        .icon('new_report_folder', './mdicons/ic_create_new_folder_24px.svg')
+        .icon('reverse', './mdicons/ic_swap_vertical_circle_24px.svg')
+        .icon('sort', './mdicons/ic_sort_24px.svg')
+        .icon('check_box', './mdicons/ic_check_box_24px.svg')
+        .icon('check_box_outline_blank', './mdicons/ic_check_box_outline_blank_24px.svg')
+        .icon('expand_more', './mdicons/ic_expand_more_24px.svg')
+        .icon('add_circle_outline', './mdicons/ic_add_circle_outline_24px.svg')
+        .icon('keyboard_arrow_right', './mdicons/ic_keyboard_arrow_right_24px.svg')
+        .icon('keyboard_arrow_down', './mdicons/ic_keyboard_arrow_down_24px.svg')
+        .icon('keyboard_arrow_up', './mdicons/ic_keyboard_arrow_up_24px.svg')
+        .icon('mode_edit', './mdicons/ic_mode_edit_24px.svg')
+        .icon('arrow_drop_down_circle', './mdicons/ic_arrow_drop_down_circle_24px.svg')
+        .icon('arrow_drop_down', './mdicons/ic_arrow_drop_down_24px.svg')
+        .icon('subject', './mdicons/ic_subject_24px.svg')
+        .icon('today', './mdicons/ic_today_24px.svg')
+        .icon('watch_later', './mdicons/ic_watch_later_24px.svg')
+        .icon('iso', './mdicons/ic_iso_24px.svg')
+        .icon('error', './mdicons/ic_error_24px.svg')
+        .icon('short_text', './mdicons/ic_short_text_24px.svg')
+        .icon('work', './mdicons/ic_work_24px.svg')
+        .icon('looks_one', './mdicons/ic_looks_one_24px.svg')
+        .icon('clear_all', './mdicons/ic_clear_all_24px.svg')
         ;
 });
 
@@ -171,31 +171,38 @@ app.run(function($rootScope, $urlRouter, castleService, DEFAULT_COLOR){
         function(event){
              castleService.currentPage =
              {
-                title: "Inspection",
+                title: "Account",
                 preventNavigation: false,
                 toggleNavMenu: true,
                 icon: "menu",
                 link: "account",
                 go: {state:"account"},
                 showEditMode: false,
-                color: DEFAULT_COLOR,
             };
         });
 });
 
 // Controller for the index page
-app.controller('indexController', function ($scope, castleService, $mdUtil, $mdSidenav, $state) {
+app.controller('indexController', function ($scope, castleService, $mdUtil, $mdSidenav, 
+                                            $state) {
     $scope.castleService = castleService;
 
     $scope.toggleNavigation = function () {
         $mdSidenav("main").toggle();
     };
     
+    $scope.toggleEditMode = function() {
+        castleService.editMode = !castleService.editMode;
+        castleService.currentPage.color = castleService.editMode ? '#555' : 
+            castleService.defaultColor;
+     };
+    
     $scope.menuNavigation = function() {
       if (castleService.currentPage.toggleNavMenu) {
           $scope.toggleNavigation();
       } else if (!castleService.currentPage.preventNavigation) {
-          $state.go(castleService.currentPage.go.state, castleService.currentPage.go.params);
+          $state.go(castleService.currentPage.go.state, 
+                    castleService.currentPage.go.params);
       }
     };
 
@@ -234,37 +241,37 @@ app.controller('indexController', function ($scope, castleService, $mdUtil, $mdS
 app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
     var factory = {};
     factory.reports = null;
-    factory.currentReport = reports[0];
+    factory.currentReport = reportTemplates[0];
     factory.backdrop = false;
     factory.selectedPage = null;
     factory.selectedSection = null;
     factory.rapidRemarks = rapidRemarks;
-    factory.reportTemplates = [
-        {
-         "title":"Standard Template", 
-         "id":"AHRDF-sdf4-sd34sd-1234",
-         "type":"Home Inspection"
-        },
-        {
-         "title":"Idaho", 
-         "id":"AHRDF-sdf4-sd34sd-1235",
-         "type":"Home Inspection"
-        },
-        {
-         "title":"Operating Agreement", 
-         "id":"AHRDF-sdf4-sd34sd-1236",
-         "type":"For Winners"
-        },
-        {
-         "title":"Tutorial", 
-         "id":"AHRDF-sdf4-sd34sd-1237",
-         "type":"Safety Home Inspection"
-        }
-        
-    ];
+    factory.reportTemplates = reportTemplates;
+//        [
+//        {
+//         "title":"Standard Template", 
+//         "id":"AHRDF-sdf4-sd34sd-1234",
+//         "type":"Home Inspection"
+//        },
+//        {
+//         "title":"Idaho", 
+//         "id":"AHRDF-sdf4-sd34sd-1235",
+//         "type":"Home Inspection"
+//        },
+//        {
+//         "title":"Operating Agreement", 
+//         "id":"AHRDF-sdf4-sd34sd-1236",
+//         "type":"For Winners"
+//        },
+//        {
+//         "title":"Tutorial", 
+//         "id":"AHRDF-sdf4-sd34sd-1237",
+//         "type":"Safety Home Inspection"
+//        }
+//        
+//    ];
     
     factory.reportTemplate = null;
-    factory.editMode = false;
     
     factory.toggle = function(input) {
         input = !input;
@@ -294,7 +301,14 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
         color: DEFAULT_COLOR,
         showIcon:true
     };
-
+    
+    factory.defaultColor = DEFAULT_COLOR;
+    factory.editMode = false;
+    factory.setEditMode = function(input) {
+        factory.editMode = input;
+        factory.currentPage.color = editMode ? '#555' : DEFAULT_COLOR;
+    };
+    
     factory.hideShowOptions = {
         'text': 'Hide',
         'showNonRequired': true

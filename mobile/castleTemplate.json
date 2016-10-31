@@ -1,7 +1,7 @@
-var reports = [
+var reportTemplates = [
 {
-  "name": "Name of the Report",
-  "title": "Name of the Report",
+  "name": "My New Template",
+  "title": "My New Template",
   "date":"",
   "type":"template",
   "inspectiontype":"",

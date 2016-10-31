@@ -314,7 +314,17 @@
         </div>
       </div>
     </div>
-    <div layout="row" layout-align="start center">
+    
+           <div ng-show="!itemSet() && !castleService.editMode">
+               <div class="md-caption" style="margin-left:8px;">Question not defined yet.</div>
+                <md-button class="md-raised"
+                           aria-label="edter edit mode"
+                           ng-click="castleService.editMode = true">
+                           <md-icon md-svg-icon="mode_edit" ></md-icon>
+                           Enter edit mode
+                 </md-button>
+           </div>
+    <div layout="row" layout-align="start center" ng-show="itemSet()">
         <md-button ng-click="toggleAnswered()" 
                    aria-label="is answered" 
                    class="btnBackground" 

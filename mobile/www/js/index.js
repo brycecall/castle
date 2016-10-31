@@ -116,7 +116,7 @@ app.config(function ($mdIconProvider) {
         .icon('account', './mdicons/ic_account_box_48px.svg')
         .icon('image', './mdicons/ic_image_48px.svg')
         .icon('clear', './mdicons/ic_clear_48px.svg')
-        .icon('camera', './mdicons/ic_camera_48px.svg')
+        .icon('camera', './mdicons/ic_photo_camera_48px.svg')
         .icon('cancel','./mdicons/ic_cancel_48px.svg')
         .icon('add','./mdicons/ic_add_48px.svg')
         .icon('remove','./mdicons/ic_remove_48px.svg')
@@ -177,7 +177,7 @@ app.run(function($rootScope, $urlRouter, castleService, DEFAULT_COLOR){
                 icon: "menu",
                 link: "account",
                 go: {state:"account"},
-                showExtraMenu: false,
+                showEditMode: false,
                 color: DEFAULT_COLOR,
             };
         });
@@ -289,7 +289,7 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
         icon: "menu",
         link: "account",
         go: {state:"account"},
-        showExtraMenu: false,
+        showEditMode: false,
         showAccount: true,
         color: DEFAULT_COLOR,
         showIcon:true

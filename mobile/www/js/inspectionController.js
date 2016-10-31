@@ -1,4 +1,6 @@
- app.controller('inspectionController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, castleService, $state) {
+ app.controller('inspectionController', function ($scope, $mdUtil, $mdDialog, 
+                                                  $rootScope, $stateParams, castleService, 
+                                                  $state, $timeout) {
      $scope.castleService = castleService;
      $scope.selectedSection = $stateParams.sectionIndex;
      $scope.castleService.selectedSection = $scope.selectedSection;
@@ -10,7 +12,7 @@
      castleService.currentPage.toggleNavMenu = true;
      castleService.currentPage.title = "Report: " + $scope.report.title;
      castleService.currentPage.icon = "menu";
-     castleService.currentPage.showExtraMenu = true;
+     castleService.currentPage.showEditMode = true;
 
      $scope.rapidRemarks = castleService.rapidRemarks;
      $scope.finishedRequired = false;
@@ -84,30 +86,40 @@
      $scope.addSection = function(array, index) {
          
          var template = {
-              "title": "NEW SECTION TITLE",
+              "title": "",
               "color": "#000000",
               "pages": []
          }
          array.splice(index, 0, template);
      };
      
-     $scope.newSectionTitle = "";
-     $scope.addNewSection = function() {
-         if ($scope.newSectionTitle == null 
-             || $scope.newSectionTitle == undefined 
-             || $scope.newSectionTitle == "") {
-            $scope.newSectionTitle = null;
-         }
+     $scope.addNewSection = function(array) {
          var template = {
-              "title": $scope.newSectionTitle,
+              "title": "",
               "color": "#000000",
               "pages": []
          }
-         $scope.report.sections.push(template);
-//         $scope.newSectionTitle = "";
-         console.log('#sectionId' + ($scope.report.sections.length -1));
+         array.push(template);
          
-         $('#sectionId' + ($scope.report.sections.length -1)).focus();
+         $timeout(function(){ 
+            document.getElementById('sectionId' + (array.length -1)).focus();
+         }, 0);
+         
+       };
+     
+    $scope.addNewSubSection = function(array) {
+         var template = {
+              "title": "",
+              "answeredCount":0,
+              "items": [
+              ]
+         }
+         array.push(template);
+         
+         $timeout(function(){ 
+            document.getElementById('subSectionId' + (array.length -1)).focus();
+         }, 0);
+         
        };
      
      $scope.addSubsection = function(array, index) {

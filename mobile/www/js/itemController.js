@@ -1,4 +1,5 @@
- app.controller('itemController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, castleService, $state) {
+ app.controller('itemController', function ($scope, $mdUtil, $mdDialog, $rootScope, 
+                                            $stateParams, castleService, $state) {
      $scope.castleService = castleService;
      $scope.report = castleService.currentReport;
      $scope.sectionIndex = $stateParams.sectionIndex;
@@ -16,7 +17,7 @@
      castleService.currentPage.icon = "back";
      castleService.currentPage.toggleNavMenu = false;
      castleService.currentPage.go = {state:"page", params:{'sectionIndex':$scope.sectionIndex, 'pageIndex':$scope.pageIndex}};
-     castleService.currentPage.showExtraMenu = true;
+     castleService.currentPage.showEditMode = true;
 
      $scope.subPage = '';
      $scope.isOpen = false;
@@ -32,6 +33,12 @@
         } else {
             castleService.selectedImages.splice(safeIndex, 1);
         }
+     };
+     
+     $scope.itemSet = function() {
+        return ($scope.item.type !== null && 
+                $scope.item.type !== undefined && 
+                $scope.item.type !== '')
      };
 
      $scope.sortableOptions = {

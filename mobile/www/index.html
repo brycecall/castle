@@ -41,12 +41,14 @@
         <!-- Stylesheets -->
 <!--        <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />-->
 <!--        <link type="text/css" rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css" />-->
+       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
         <link type="text/css" rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
         <link type="text/css" rel="stylesheet" href="css/index.css" />
         
         <!-- PDF Generation -->
 <!--        <script src="bower_components/html2canvas/build/html2canvas.js"></script>-->
 <!--        <script src="bower_components/jspdf/dist/jspdf.debug.js"></script>-->
+        
         
         
         <!-- Firebase       -->
@@ -66,7 +68,7 @@
         
         <title>Castle</title>
     </head>
-    <body style="height:100%">
+    <body style="height:100%" class="md-body-1">
         <div ng-app="castleApp" style="height:100%; width:100%">
             <div ng-controller="indexController"  style="height:100%; width:100%; position:relative" layout="row">
 
@@ -123,21 +125,12 @@
                                 <md-icon md-svg-icon="close"></md-icon>
                          </md-button>
 
-                         <md-menu style="margin:0; padding:0;" ng-if="castleService.currentPage.showExtraMenu">
-                         <md-button ng-click="$mdOpenMenu($event)" class="md-icon-button" aria-label="Open extra menu" >
-                                <md-icon md-svg-icon="more_vert"></md-icon>
-                         </md-button>
-
-                         <md-menu-content>
-                           <md-menu-item>
-                               <md-button aria-label="toggle edit mode" 
-                                          ng-click="castleService.editMode = !castleService.editMode">
-                                          {{castleService.editMode ? 'Exit' : 'Enter'}} Edit Mode
-                               </md-button>
-                           </md-menu-item>
-
-                         </md-menu-content>
-                        </md-menu>
+                           <md-button ng-show="castleService.currentPage.showEditMode"
+                                      aria-label="toggle edit mode" 
+                                      class="md-icon-button"
+                                      ng-click="castleService.editMode = !castleService.editMode">
+                                      <md-icon md-svg-icon="mode_edit"></md-icon>
+                           </md-button>
                         </div>
                         <div class="md-toolbar-tools" layout="row" layout-align="center center"
                           style="background-color:#555" ng-if="castleService.assignPhotoMode" flex>

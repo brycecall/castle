@@ -1,4 +1,6 @@
- app.controller('pageController', function ($scope, $mdUtil, $mdDialog, $rootScope, $stateParams, castleService, $state) {
+ app.controller('pageController', function ($scope, $mdUtil, $mdDialog, $rootScope, 
+                                            $stateParams, castleService, $state, 
+                                            $timeout) {
      $scope.castleService = castleService;
      $scope.report = castleService.currentReport;
      $scope.sectionIndex = $stateParams.sectionIndex;
@@ -11,7 +13,7 @@
      castleService.currentPage.icon = "back";
      castleService.currentPage.toggleNavMenu = false;
      castleService.currentPage.go = {state:"inspection", params:{'sectionIndex':'default'}};
-     castleService.currentPage.showExtraMenu = true;
+     castleService.currentPage.showEditMode = true;
      
      $scope.rapidRemarks = castleService.rapidRemarks;
      castleService.reportTemplate = reportOne;
@@ -34,6 +36,12 @@
             castleService.selectedImages.splice(safeIndex, 1);
         }
      };
+     
+     $scope.isItemSet = function(item) {
+        return (item.type !== null && 
+                item.type !== undefined && 
+                item.type !== '')
+     };
 
      $scope.addQuestion = function(array, index) {
          
@@ -43,6 +51,20 @@
               "value":""
          }
          array.splice(index, 0, template);
+     };
+     
+     $scope.addNewQuestion = function(array) {
+         var template = {
+              "title": "",
+              "content": [],
+              "value":""
+         }
+         
+         array.push(template);
+         
+         $timeout(function(){ 
+            document.getElementById('questionId' + (array.length -1)).focus();
+         }, 0);
      };
 
      $scope.getAnsweredIcon = function(answered) {
@@ -345,7 +367,6 @@
               $rootScope.checkboxIndex = null;
            // console.log("FINALLY!");
           });
-
      };
 
      $scope.previewReport = function($event) {

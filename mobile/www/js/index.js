@@ -130,7 +130,6 @@ app.config(function ($mdIconProvider) {
         .icon('chevron_right','./mdicons/ic_chevron_right_24px.svg')
         .icon('check','./mdicons/ic_check_24px.svg')
         .icon('check_box','./mdicons/ic_check_box_24px.svg')
-        //.icon('check_box_outline','./mdicons/ic_check_box_outline_24px.svg')
         .icon('radio_button_checked','./mdicons/ic_radio_button_checked_24px.svg')
         .icon('radio_button_unchecked','./mdicons/ic_radio_button_unchecked_24px.svg')
         .icon('build','./mdicons/ic_build_24px.svg')
@@ -169,23 +168,21 @@ app.config(function ($mdIconProvider) {
 app.run(function($rootScope, $urlRouter, castleService, DEFAULT_COLOR){
     $rootScope.$on('$stateChangeStart',
         function(event){
-             castleService.currentPage =
-             {
-                title: "Account",
-                preventNavigation: false,
-                toggleNavMenu: true,
-                icon: "menu",
-                link: "account",
-                go: {state:"account"},
-                showEditMode: false,
-            };
+            castleService.currentPage.title = "Account";
+            castleService.currentPage.preventNavigation = false;
+            castleService.currentPage.toggleNavMenu = true;
+            castleService.currentPage.icon = "menu";
+            castleService.currentPage.link = "account";
+            castleService.currentPage.go = {state:"account"};
+            castleService.currentPage.showEditMode = false;
         });
 });
 
 // Controller for the index page
-app.controller('indexController', function ($scope, castleService, $mdUtil, $mdSidenav, 
-                                            $state) {
+app.controller('indexController', function ($scope, castleService, 
+                                            $mdSidenav, $state) {
     $scope.castleService = castleService;
+    $scope.showMainNav = true;
 
     $scope.toggleNavigation = function () {
         $mdSidenav("main").toggle();
@@ -278,15 +275,6 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
     };
     
     //factory.serverURL = "http://dev.maurasoftware.com:9526";
-    
-    //TODO: change when send and delete differ
-//    $rootScope.deleteReport_handler = $rootScope.refresh_handler;
-//    $rootScope.sendReport_handler = $rootScope.refresh_handler;
-//    $rootScope.refresh_handler = function(data) {
-//        console.log("UPDATE ALL REPORTS");
-//        factory.reports = data.payload;
-//        console.info(factory.reports);
-//    };
 
     // Current page information
     factory.currentPage = {
@@ -298,7 +286,7 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
         go: {state:"account"},
         showEditMode: false,
         showAccount: true,
-        color: DEFAULT_COLOR,
+        //color: DEFAULT_COLOR,
         showIcon:true
     };
     
@@ -359,14 +347,11 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
                     'Content-Type': 'plain/text'
                 }
             };
-
             response = $http.post(factory.serverURL + endpoint, jsonData, config);
         } else {
             console.log("GET " + endpoint);
             response = $http.get(factory.serverURL + endpoint);
         }
-
-
         return response;
 
     };

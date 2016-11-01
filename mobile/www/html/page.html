@@ -1,11 +1,10 @@
-  <div ng-controller="pageController" flex="" layout="column" class="page" id="nav">
+<div ng-controller="pageController" flex="" layout="column" class="page" >
    <md-content>
-   
-<span layout="row" layout-align="start center">
-    <h1 class="md-subhead insTitle">{{page.title}} Questions 
-                                    {{page.answeredCount}}/{{page.items.length}}</h1>
-    <span flex=""></span>
-</span>
+    <span layout="row" layout-align="start center">
+        <h1 class="md-subhead insTitle">{{page.title}} Questions 
+                                        {{page.answeredCount}}/{{page.items.length}}</h1>
+        <span flex=""></span>
+    </span>
        <!--           PAGES-->
     <md-card id="pageParent" ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment':'#pageParent'}" ng-model="page.items">
         <div ng-repeat="item in page.items track by $index" layout="column" style="background-color:white;">

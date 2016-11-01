@@ -4,15 +4,15 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, 
+                                       maximum-scale=1, minimum-scale=1, width=device-width, 
+                                       height=device-height" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <link rel='icon' href='./img/favicon.png' >
 
 <!--    <script type="text/javascript" src="cordova.js"></script>-->
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
         <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.js"></script>
-<!--        <script src="bower_components/bootstrap/js/dropdown.js"></script>-->
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-sortable/sortable.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
@@ -20,8 +20,6 @@
         <script src="bower_components/angular-aria/angular-aria.js"></script>
         <script src="bower_components/angular-animate/angular-animate.js"></script>
         <script src="bower_components/angular-material/angular-material.js"></script>
-<!--        <script src="node_modules/socket.io-client/socket.io.js"></script>-->
-        
         
         <!-- Application Scripts -->
         <script src="js/rapidRemarks.js"></script>
@@ -39,17 +37,15 @@
         <script src="../castleTemplate.json"></script>
         
         <!-- Stylesheets -->
-<!--        <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />-->
-<!--        <link type="text/css" rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css" />-->
-       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+<!--    <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />-->
+<!--    <link type="text/css" rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css" />-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
         <link type="text/css" rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
         <link type="text/css" rel="stylesheet" href="css/index.css" />
         
         <!-- PDF Generation -->
 <!--        <script src="bower_components/html2canvas/build/html2canvas.js"></script>-->
 <!--        <script src="bower_components/jspdf/dist/jspdf.debug.js"></script>-->
-        
-        
         
         <!-- Firebase       -->
         <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
@@ -64,29 +60,21 @@
           firebase.initializeApp(config);
         </script>
     
-        
-        
         <title>Castle</title>
     </head>
-    <body style="height:100%" class="md-body-1">
-        <div ng-app="castleApp" style="height:100%; width:100%">
-            <div ng-controller="indexController"  
-                 style="height:100%; width:100%; position:relative" 
-                 layout="row">
-
+    <body ng-app="castleApp" style="height:100%" class="md-body-1">
+        <div style="height:100%; width:100% position:relative" 
+             ng-controller="indexController"  
+             layout="row">
                 <md-sidenav class="md-sidenav-left lSideNav" 
                             md-component-id="main"  
                             md-swipe-left="toggleNavigation()">
                 <md-toolbar class="md-tall castleBackground">
-<!--                   <div class="menuFlag"></div>-->
-                    <div class="md-toolbar-tools" >
-                       
-                        <img id="menuFavicon" src="img/icon.png" />
-                        
-                    </div>
+                <div class="md-toolbar-tools" >
+                    <img id="menuFavicon" src="img/icon.png" />
+                </div>
                 </md-toolbar>
                     <md-content flex layout="column">
-     
                         <br />
                         <md-list flex>
                         <a ui-sref="{{page.link}}" 
@@ -102,80 +90,68 @@
                               </md-list-item>
                           </a>
                         </md-list>
-<!--                        <md-button class="nav_button md-raised md-primary" ng-href="#account" ng-click="toggleNavigation()" arial-label="Sign in">Sign in</md-button>-->
                     </md-content>
                 </md-sidenav>
-
                <div layout="column" flex="" 
                     style="background-color:#fafafa">
-                <header>
-                    <md-toolbar class="shady">
-<!--                      <div class="md-toolbar-tools"  >-->
+                    <md-toolbar class="shady" 
+                                ng-style="{'background-color':castleService.currentPage.color}">
                         <div class="md-toolbar-tools" 
                              ng-if="!castleService.assignPhotoMode" 
                              layout="row" layout-align="center center"
-                             ng-style="{'background-color':castleService.currentPage.color}" flex>
-                        <md-button class="md-icon-button" 
-                                   aria-label="Navigation" 
-                                   ng-click="menuNavigation()" 
-                                   ng-model-options="{ debounce: 1000 }">
-                             <md-icon md-svg-icon="{{castleService.currentPage.icon}}" ></md-icon>
-                        </md-button>
-
-                        <h2 class="page_header">
-                          <span>{{castleService.currentPage.title}}</span>
-                        </h2>
-                        <span flex></span>
-                        <a ui-sref="account" aria-label="Account" 
-                           style="border:none" 
-                           ng-if="castleService.io.user && castleService.currentPage.showAccount">
-                          <div class="profileWrapper" >
-                              <div class="profile_picture" 
-                                   style="background-image: url({{castleService.io.user.password.profileImageURL}});"></div>
-                          </div>
-                            <md-icon ng-if="castleService.io.user == null"  
-                                     md-svg-icon="account_circle" 
-                                     class="profile_picture"></md-icon>
-                        </a>
-
-                         <md-button ng-show="castleService.assignPhotoMode" 
-                                    ng-click="castleService.cancelAssignPhotoMode()" 
-                                    class="md-icon-button" aria-label="cancel assign photo" >
-                                <md-icon md-svg-icon="close"></md-icon>
-                         </md-button>
-
-                           <md-button ng-show="castleService.currentPage.showEditMode"
-                                      aria-label="toggle edit mode" 
-                                      class="md-icon-button"
-                                      ng-click="toggleEditMode()">
-                                      <md-icon md-svg-icon="mode_edit"></md-icon>
-                           </md-button>
-                        </div>
-                        <div class="md-toolbar-tools" layout="row" layout-align="center center"
-                          style="background-color:#555" ng-if="castleService.assignPhotoMode" flex>
-                            <md-button ng-if="!castleService.currentPage.toggleNavMenu" 
-                                       class="md-icon-button" aria-label="Navigation" 
-                                       ui-sref="{{castleService.currentPage.link}}" 
-                                       ng-model-options="{ debounce: 1000 }">
+                             flex>
+                            <md-button class="md-icon-button" 
+                                       aria-label="Navigation" 
+                                       ng-click="menuNavigation()">
                                  <md-icon md-svg-icon="{{castleService.currentPage.icon}}" ></md-icon>
                             </md-button>
+                            <h2 class="page_header">
+                              <span>{{castleService.currentPage.title}}</span>
+                            </h2>
+                            <span flex></span>
+                            <a ui-sref="account" aria-label="Account" 
+                               style="border:none" 
+                               ng-if="castleService.io.user && castleService.currentPage.showAccount">
+                                  <div class="profileWrapper" >
+                                      <div class="profile_picture" 
+                                           style="background-image: 
+                                           url({{castleService.io.user.password.profileImageURL}});"></div>
+                                  </div>
+                                  <md-icon ng-if="castleService.io.user == null"  
+                                             md-svg-icon="account_circle" 
+                                             class="profile_picture"></md-icon>
+                            </a>
 
-                        <h2 class="page_header">
-                          <span>Assign photo</span>
-                        </h2>
-                        <span flex></span>
-                         <md-button  ng-click="castleService.cancelAssignPhotoMode()" 
-                                     class="md-icon-button" aria-label="cancel assign photo" >
-                                <md-icon md-svg-icon="close"></md-icon>
-                         </md-button>
+                             <md-button ng-show="castleService.assignPhotoMode" 
+                                        ng-click="castleService.cancelAssignPhotoMode()" 
+                                        class="md-icon-button" aria-label="cancel assign photo" >
+                                    <md-icon md-svg-icon="close"></md-icon>
+                             </md-button>
+                             <md-button ng-show="castleService.currentPage.showEditMode"
+                                          aria-label="toggle edit mode" 
+                                          class="md-icon-button"
+                                          ng-click="toggleEditMode()">
+                                          <md-icon md-svg-icon="mode_edit"></md-icon>
+                             </md-button>
                         </div>
-
+                        <div class="md-toolbar-tools" layout="row" layout-align="center center"
+                             style="background-color:#555" ng-if="castleService.assignPhotoMode" flex>
+                            <md-button ng-if="!castleService.currentPage.toggleNavMenu" 
+                                       class="md-icon-button" aria-label="Navigation" 
+                                       ui-sref="{{castleService.currentPage.link}}">
+                                 <md-icon md-svg-icon="{{castleService.currentPage.icon}}" ></md-icon>
+                            </md-button>
+                             <h2 class="page_header">
+                                <span>Assign photo</span>
+                             </h2>
+                             <span flex></span>
+                             <md-button  ng-click="castleService.cancelAssignPhotoMode()" 
+                                         class="md-icon-button" aria-label="cancel assign photo" >
+                                    <md-icon md-svg-icon="close"></md-icon>
+                             </md-button>
+                        </div>
                     </md-toolbar>
-                </header>
-
                    <md-content class="console-content ui-view" id="scrollArea" ></md-content>
-            </div>
-
             </div>
         </div>
     </body>

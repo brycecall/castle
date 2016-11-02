@@ -106,7 +106,7 @@ var reportTemplates = [
 //              "value": "The [INSERT PROPERTY TYPE] was [INSERT PROPERTY OCCUPANCY] at the time of the inspection.  The inspection began at [*INSPECTION START TIME][AM or PM] and ended at roughly [*INSPECTION END TIME][AM or PM].  The weather at the time of the inspection was [GRAB WEATHER FORECAST FROM WEATHER.COM: Cloudy, Snowy, Icy, Windy] with [no precipitation, cloudy, sunny, rain, no rain, etc.].  Those in attendance at the time of the inspection were [INSERT PERSONS PRESENT].  Detached outbuildings, seasonally visible defects, poorly accessible components, areas that may have been hidden and or  or areas containing significant furnishings or storage are not included in the scope of this inspection."
 //            },
             {
-              "title": "Persons Present",
+              "title": "Person(s) Present",
               "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
@@ -541,7 +541,7 @@ var reportTemplates = [
               "value": ""
             },
             {
-              "title": "Evaluation Images",
+              "title": "Observation Images",
               "type": "image",
               "content": []
             }
@@ -564,7 +564,7 @@ var reportTemplates = [
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
-              "value": "The inspection of the site includes the building perimeter, land grade, and water drainage directly adjacent to the foundation; trees and vegetation that adversely affect the structure; walks, grade steps, driveways, patios, and retaining walls contiguous with the structure.\n The report describes the material used for driveways, walkways, patios and other flatwork around the home, the serviceability of the driveways, steps, walkways, patios, flatwork and retaining walls contiguous with the structure, proper grading and drainage slope, vegetation in close proximity to the home, and a description of any deficiencies of these systems or components."
+              "value": "The inspection of the site includes the building perimeter, land grade, and water drainage directly adjacent to the foundation; trees and vegetation that adversely affect the structure; walks, grade steps, driveways, patios, and retaining walls contiguous with the structure.  The report describes the material used for driveways, walkways, patios and other flatwork around the home, the serviceability of the driveways, steps, walkways, patios, flatwork and retaining walls contiguous with the structure, proper grading and drainage slope, vegetation in close proximity to the home, and a description of any deficiencies of these systems or components."
             },
             {
               "title": "Limitations",
@@ -572,7 +572,7 @@ var reportTemplates = [
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
-              "value": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-170 of the Washington State Dept. of Licensing, the inspector is not required to: (1)inspect fences, privacy walls or retaining walls that are not contiguous with the structure, (2)report the condition of soil, trees, shrubs or vegetation unless they adversely affect the structure, (3)evaluate hydrological or geological conditions, (4)determine the adequacy of bulkheads, sea-walls, break- walls, and docks."
+              "value": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-170 of the Washington State Dept. of Licensing, the inspector is not required to: (1)inspect fences, privacy walls or retaining walls that are not contiguous with the structure, (2)report the condition of soil, trees, shrubs or vegetation unless they adversely affect the structure, (3)evaluate hydrological or geological conditions, (4)determine the adequacy of bulkheads, sea-walls, break-walls, and docks."
             },
             {
               "title": "Driveway",
@@ -588,10 +588,19 @@ var reportTemplates = [
                   "title": "Asphalt"
                 },
                 {
-                  "title": "Pavers or stone or brick"
+                  "title": "Pavers"
                 },
                 {
-                  "title": "Dirt or gravel"
+                  "title": "Stone"
+                },
+                {
+                  "title": "Brick"
+                },
+                {
+                  "title": "Dirt"
+                },
+                {
+                  "title": "Gravel"
                 }
               ],
               "value": ""
@@ -831,9 +840,6 @@ var reportTemplates = [
                 },
                 {
                   "title": "Steep Slope"
-                },
-                {
-                  "title": "TYPE (Needs Greater Definition)"
                 }
               ]
             },
@@ -975,7 +981,13 @@ var reportTemplates = [
                   "title": "Concrete"
                 },
                 {
-                  "title": "Pavers or Stone or Brick"
+                  "title": "Pavers"
+                },
+                {
+                  "title": "Stone"
+                },
+                {
+                  "title": "Brick"
                 },
                 {
                   "title": "Wood or Composite"
@@ -8440,7 +8452,7 @@ var reportTemplates = [
             {
               "title": "Photo Appendix Images",
               "type": "photoAppendix",
-              "content": [""]
+              "content": []
             }
           ]
         }

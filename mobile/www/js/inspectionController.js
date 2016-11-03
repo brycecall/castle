@@ -18,7 +18,7 @@
      $scope.finishedRequired = false;
      $scope.editMode = false;
 
-     castleService.reportTemplate = reportOne;
+//     castleService.reportTemplate = reportOne;
      //$scope.report = reportOne; //REMOVE after testing
      $scope.subPage = '';
      $scope.isOpen = false;
@@ -44,7 +44,7 @@
 
      $scope.addToSelectedImages = function(index) {
         var safeIndex = $.inArray(index, castleService.selectedImages);
-        if(safeIndex == -1) {
+        if (safeIndex == -1) {
             castleService.selectedImages.push(index);
         } else {
             castleService.selectedImages.splice(safeIndex, 1);

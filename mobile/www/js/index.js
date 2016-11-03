@@ -20,6 +20,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 url: '/account',
                 templateUrl: 'html/account.html'
             })
+        
+            .state('photoAppendix', {
+                url: '/images',
+                templateUrl: 'html/photoAppendix.html'
+            })
 
             .state('saved', {
                 url: '/saved/:schedule',
@@ -160,6 +165,10 @@ app.config(function ($mdIconProvider) {
         .icon('work', './mdicons/ic_work_24px.svg')
         .icon('looks_one', './mdicons/ic_looks_one_24px.svg')
         .icon('clear_all', './mdicons/ic_clear_all_24px.svg')
+        .icon('visibility', './mdicons/ic_visibility_24px.svg')
+        .icon('collections', './mdicons/ic_collections_24px.svg')
+        .icon('save', './mdicons/ic_save_24px.svg')
+        .icon('perm_media', './mdicons/ic_perm_media_24px.svg')
         ;
 });
 
@@ -232,6 +241,56 @@ app.controller('indexController', function ($scope, castleService,
         }
         ];
 
+});
+
+ /********************************************************
+  * CAMERA
+  ***********************************************************/
+  app.factory('cameraService', function() {
+      var factory = {};
+     // Retrieve image file location from specified source
+     factory.capturePhoto = function(sourceType, source, isArray, isDataUrl) {
+         var destination = destinationType.DATA_URL;
+         if (!isDataUrl) {
+             destination = destinationType.FILE_URI;
+         }
+         navigator.camera.getPicture(function(imageData) {
+             //console.log("Image Data: " + imageData);
+             if (isDataUrl) {
+                imageData = "data:image/jpeg;base64," + imageData
+             }
+             factory.$apply(function () {
+                 if (isArray) {
+                    source.push(imageData);
+                 } else {
+                    source = (imageData);
+                 }
+             });
+            }, factory.onFail, {
+             quality: 50,
+             correctOrientation: true,
+             destinationType: destination,
+             sourceType: sourceType
+         });
+     };
+
+     factory.removeIMG = function (source, index) {
+         source.splice(index, 1);
+     };
+
+     // set up object with image array then adds photos to the array
+     factory.initCameraAction = function (item, isArray, isDataUrl, title) {
+         var array = [];
+         if (item.i == null) {
+             item["i"] = array;
+         }
+         factory.capturePhoto(1, item.i, isArray, isDataUrl);
+     };
+
+     // Called if something bad happens.
+     factory.onFail = function(message) {
+          console.log('Failed because: ' + message);
+     };
 });
 
 // Create the factory / service that is shared among all the controllers
@@ -386,13 +445,6 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
         //factory.clearCache();
     }, false);
 
-    // Always to a refresh on index load, just to keep up to date.
-//    factory.io.refresh();
-    
-     factory.isInArray = function (value, array) {
-        return ($.inArray(value, array) == -1) ? false : true;
-     }
-    
     return factory;
 });
 

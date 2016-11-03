@@ -987,3 +987,17 @@ box-shadow:
 .centerScroll {
     overflow-x: hidden;
 }
+
+.navCard {
+    padding:0px 0px 0px 16px; 
+    background-color:#FFF;  
+    height:52px; 
+}
+
+.black {
+    color: black;
+}
+
+.black md-icon {
+   color: black;   
+}

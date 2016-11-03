@@ -278,50 +278,6 @@
                 <input ng-model="tempDate" onchange="setItem(item, tempDate)" type="date" flex-gt-sm="50" flex-sm="">
             </md-input-container>
         </div>
-
-        <!--                           APPENDIX PHOTO-->
-        <div ng-if="item.type == 'photoAppendix'">
-            <div layout="row" ng-init="selectImage = false" class="flex-wrap">
-                <md-button class="md-raised" aria-label="Add Photos" 
-                           ng-click="capturePhoto(1, item.content, true, true)">
-                    <md-icon md-svg-icon="camera"></md-icon> Add Photo
-                </md-button>
-                <md-button ng-show="castleService.assignPhotoMode != true" 
-                           ng-click="selectImage = !selectImage" 
-                           class="md-raised" 
-                           aria-label="Select Image">
-                    <md-icon md-svg-icon="crop_free"></md-icon> Select
-                </md-button>
-                <div ng-if="castleService.selectedImages.length > 0 && selectImage">
-                    <md-button class="md-raised" 
-                               ng-click="enterAssignPhotosMode()" 
-                               aria-label="Assign to Item">
-                        <md-icon md-svg-icon="add_to_photos"></md-icon> Assign
-                    </md-button>
-                    <md-button class="md-raised" ng-click="clearSelection()" 
-                               aria-label="Clear selection">
-                        <md-icon md-svg-icon="clear"></md-icon> Clear
-                    </md-button>
-                    <md-button class="md-raised" ng-click="deletePhotos()" 
-                               aria-label="Delete Photos">
-                        <md-icon md-svg-icon="delete"></md-icon> Delete
-                    </md-button>
-                </div>
-            </div>
-            <div layout="row" class="flex-wrap" style="display:flex; flex-wrap:wrap;">
-                <div ng-repeat="pageImage in item.content track by $index">
-
-                    <div class="UpPicture" style="background-image: url('{{pageImage}}')">
-                        <div layout="row" ng-show="selectImage">
-                            <span flex=""></span>
-                            <md-checkbox class="md-secondary" aria-label="select image" ng-checked="isInArray($index, castleService.selectedImages)" ng-click="addToSelectedImages($index)"></md-checkbox>
-                        </div>
-                        <div class="md-caption pictureBox"></div>
-                        <div class="centerTextVertical"><span class="md-caption imageTitle">{{item.title}}</span></div>
-                    </div>
-                </div>
-            </div>
-        </div>
       </div>
     </div>
    <div ng-show="!itemSet() && !castleService.editMode">

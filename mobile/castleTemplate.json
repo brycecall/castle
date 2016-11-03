@@ -82,6 +82,9 @@ var reportTemplates = [
           ]
     }
   ],
+  "photoAppendix":[
+  "./img/Castle_Logo.png"
+  ],
   "sections": [
          {
         "title": "Field Notes",

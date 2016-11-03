@@ -159,7 +159,17 @@
             <md-divider ng-if="!$last"></md-divider>
         </div>
     </md-card>
-        <md-button ng-show="castleService.editMode"
+    
+<!--
+    <md-card layout="row" layout-align="start center" class="navCard" style="margin-top:16px;"> 
+        <span>Photo Library</span>
+        <span flex=""></span>
+        <md-button class="md-icon-button">
+            <md-icon md-svg-icon="keyboard_arrow_right"></md-icon>
+        </md-button>
+    </md-card>   
+-->
+    <md-button ng-show="castleService.editMode"
                    class="md-raised md-accent"
                    aria-label="Add new Section"
                    ng-click="addNewSection(report.sections)">
@@ -168,6 +178,12 @@
         <div layout="row" style="padding: 0 0 10px 0;" 
              ng-hide="castleService.assignPhotoMode" 
              class="flex-wrap">
+            <md-button class="md-raised"
+                       aria-label="Unassigned Photos"
+                       ui-sref="photoAppendix">
+<!--                       <md-icon md-svg-icon="collections" style="color:#000" ></md-icon>-->
+                <span>Photo Appendix</span>
+            </md-button>
             <md-button ng-click="checkRequired()" 
                        class="md-raised" 
                        aria-label="Preview Report">Preview Report</md-button>

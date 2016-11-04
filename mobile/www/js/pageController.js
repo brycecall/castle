@@ -16,7 +16,7 @@
      castleService.currentPage.showEditMode = true;
      
      $scope.rapidRemarks = castleService.rapidRemarks;
-     castleService.reportTemplate = reportOne;
+     //castleService.reportTemplate = reportOne;
      //$scope.report = reportOne; //REMOVE after testing
      $scope.subPage = '';
      $scope.isOpen = false;

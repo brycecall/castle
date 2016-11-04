@@ -72,7 +72,7 @@ var reportTemplates = [
               "title": "Postal Code",
               "required": true, "answered":false,
               "type": "number",
-              "value": 0
+              "value": ""
             },
             {
               "title": "Client Info Images",
@@ -85,7 +85,7 @@ var reportTemplates = [
   "sections": [
          {
         "title": "Field Notes",
-        "color": "#EC407A",
+        "color": "#231f20",
         "answeredCount":0, 
         "pages": [
         {
@@ -552,7 +552,7 @@ var reportTemplates = [
     },
     {
         "title": "Site",
-        "color": "#EC407A",
+        "color": "#5c5e64",
         "answeredCount":0, 
         "pages": [
         {
@@ -2070,7 +2070,7 @@ var reportTemplates = [
     },
     {
       "title": "Roofing",
-      "color": "#607D8B",
+      "color": "#607d8b",
       "answeredCount":0, "pages": [
         {
           "title": "Roof Covering(s)",
@@ -3510,7 +3510,7 @@ var reportTemplates = [
     },
     {
       "title": "Thermal",
-      "color": "#F8981D",
+      "color": "#f8981d",
       "answeredCount":0, "pages": [
         {
           "title": "Attic",
@@ -4427,7 +4427,7 @@ var reportTemplates = [
     },
     {
       "title": "Plumbing",
-      "color": "#903F98",
+      "color": "#903f98",
       "answeredCount":0, "pages": [
         {
           "title": "Plumbing System",
@@ -4495,7 +4495,7 @@ var reportTemplates = [
                   "title": "Garage"
                 },
                 {
-                  "title": "Above Waterheater"
+                  "title": "Near Waterheater"
                 },
                 {
                   "title": "Yard Box"
@@ -4510,6 +4510,9 @@ var reportTemplates = [
                   "title": "Exterior Wall"
                 },
                 {
+                  "title": "Interior Wall"
+                },
+                {
                   "title": "Interior Utility Closet"
                 },
                 {
@@ -4520,6 +4523,9 @@ var reportTemplates = [
                 },
                 {
                   "title": "Bedroom"
+                },
+                {
+                  "title": "Mechanical Room"
                 }
               ]
             },
@@ -5268,10 +5274,16 @@ var reportTemplates = [
                   "title": "Lochinvar"
                 },
                 {
+                  "title": "Maytag"
+                },
+                {
+                  "title": "Mitsubishi"
+                },
+                {
                   "title": "Munchkin"
                 },
                 {
-                  "title": "Navien America"
+                  "title": "Navien"
                 },
                 {
                   "title": "Navion"
@@ -5331,28 +5343,94 @@ var reportTemplates = [
               "title": "Capacity (in Gallons)",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "checkbox",
-              "value": [],
+              "type": "select",
               "content": [
                 {
-                  "title": "10"
+                    "title": "Not Applicable"
                 },
                 {
-                  "title": "20"
+                    "title": "Verify"
                 },
                 {
-                  "title": "30"
+                    "title": "Tank-less / Unlimited"
                 },
                 {
-                  "title": "40"
+                    "title": "On Demand"
                 },
                 {
-                  "title": "50"
+                    "title": "Point of Use"
                 },
                 {
-                  "title": "OTHER (NEEDS MORE DATA)"
+                    "title": "2.5"
+                },
+                {
+                    "title": "6"
+                },
+                {
+                    "title": "12"
+                },
+                {
+                    "title": "30"
+                },
+                {
+                    "title": "40"
+                },
+                {
+                    "title": "41"
+                },
+                {
+                    "title": "42"
+                },
+                {
+                    "title": "45"
+                },
+                {
+                    "title": "47"
+                },
+                {
+                    "title": "48"
+                },
+                {
+                    "title": "50"
+                },
+                {
+                    "title": "52"
+                },
+                {
+                    "title": "55"
+                },
+                {
+                    "title": "60"
+                },
+                {
+                    "title": "62"
+                },
+                {
+                    "title": "65"
+                },
+                {
+                    "title": "66"
+                },
+                {
+                    "title": "70"
+                },
+                {
+                    "title": "75"
+                },
+                {
+                    "title": "80"
+                },
+                {
+                    "title": "91"
+                },
+                {
+                    "title": "100"
+                },
+                {
+                    "title": "boiler (119)"
                 }
-              ]
+              ],
+              "value": ""
             },
             {
               "title": "Model Number",
@@ -5477,7 +5555,7 @@ var reportTemplates = [
     },
     {
       "title": "Heating",
-      "color": "#D32E2E",
+      "color": "#d32e2e",
       "answeredCount":0, "pages": [
         {
           "title": "Heating System",
@@ -5645,31 +5723,343 @@ var reportTemplates = [
               "title": "Brand Name",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "checkbox",
-              "value": [],
+              "type": "select",
               "content": [
+                {
+                  "title": "Not Applicable"
+                },
+                {
+                  "title": "Missing or Not Installed"
+                },
+                {
+                  "title": "Verify"
+                },
+                {
+                  "title": "American"
+                },
+                {
+                  "title": "American Standard"
+                },
+                {
+                  "title": "Arcoaire"
+                },
+                {
+                  "title": "Armstrong"
+                },
+                {
+                  "title": "Amtrol"
+                },
+                {
+                  "title": "Bard"
+                },
+                {
+                  "title": "Beckett"
+                },
+                {
+                  "title": "Bradford White"
+                },
                 {
                   "title": "Bryant"
                 },
                 {
-                  "title": "OTHER (NEED MORE DATA)"
+                  "title": "Burnham"
+                },
+                {
+                  "title": "Cadet"
+                },
+                {
+                  "title": "Carrier"
+                },
+                {
+                  "title": "Coleman"
+                },
+                {
+                  "title": "Coleman Evcon"
+                },
+                {
+                  "title": "Comfortmaker"
+                },
+                {
+                  "title": "Concord"
+                },
+                {
+                  "title": "Daikin Industries"
+                },
+                {
+                  "title": "Evcon"
+                },
+                {
+                  "title": "First Co."
+                },
+                {
+                  "title": "Flo-Aire"
+                },
+                {
+                  "title": "Frigidaire"
+                },
+                {
+                  "title": "GE"
+                },
+                {
+                  "title": "Goodman"
+                },
+                {
+                  "title": "Greenheck"
+                },
+                {
+                  "title": "Heil"
+                },
+                {
+                  "title": "ICP"
+                },
+                {
+                  "title": "Intertherm"
+                },
+                {
+                  "title": "KD Navien"
+                },
+                {
+                  "title": "Kelvinator (Nordyne)"
+                },
+                {
+                  "title": "Kenmore"
+                },
+                {
+                  "title": "King"
+                },
+                {
+                  "title": "Lennox"
+                },
+                {
+                  "title": "MagicAire"
+                },
+                {
+                  "title": "Markel"
+                },
+                {
+                  "title": "Marley"
+                },
+                {
+                  "title": "Mayflower"
+                },
+                {
+                  "title": "Maytag"
+                },
+                {
+                  "title": "Mitsubishi"
+                },
+                {
+                  "title": "Munchkin"
+                },
+                {
+                  "title": "Navien"
+                },
+                {
+                  "title": "Nordyne"
+                },
+                {
+                  "title": "Payne"
+                },
+                {
+                  "title": "Quatro"
+                },
+                {
+                  "title": "Radco"
+                },
+                {
+                  "title": "Resco"
+                },
+                {
+                  "title": "Rheem"
+                },
+                {
+                  "title": "Rinnai"
+                },
+                {
+                  "title": "Ruud"
+                },
+                {
+                  "title": "Sears"
+                },
+                {
+                  "title": "Seisco"
+                },
+                {
+                  "title": "Steel Weld"
+                },
+                {
+                  "title": "Sundial / Square D"
+                },
+                {
+                  "title": "Tempstar"
+                },
+                {
+                  "title": "TPI Corporation"
+                },
+                {
+                  "title": "Thermo Pride"
+                },
+                {
+                  "title": "Trane"
+                },
+                {
+                  "title": "Turbonics"
+                },
+                {
+                  "title": "Vaillant"
+                },
+                {
+                  "title": "Weil-McLain"
+                },
+                {
+                  "title": "Wesco"
+                },
+                {
+                  "title": "Westinghouse"
+                },
+                {
+                  "title": "York"
                 }
-              ]
+              ],
+              "value": ""
             },
             {
               "title": "Capacity",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "checkbox",
-              "value": [],
+              "type": "select",
               "content": [
                 {
-                  "title": "Text Entry?"
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "OTHER (NEED MORE DATA)"
+                  "title": "Verify"
+                },
+                {
+                  "title": "Zone-Controlled"
+                },
+                {
+                  "title": "240 Volt"
+                },
+                {
+                  "title": ".50 - 1.01 GPH"
+                },
+                {
+                  "title": "80 Gallon"
+                },
+                {
+                  "title": "119 Gallon"
+                },
+                {
+                  "title": "1 Ton"
+                },
+                {
+                  "title": "1.5 Ton"
+                },
+                {
+                  "title": "2 Ton"
+                },
+                {
+                  "title": "2.5 Ton"
+                },
+                {
+                  "title": "3 Ton"
+                },
+                {
+                  "title": "3.5 Ton"
+                },
+                {
+                  "title": "4 Ton"
+                },
+                {
+                  "title": "4.5 Ton"
+                },
+                {
+                  "title": "5 Ton"
+                },
+                {
+                  "title": "5.5 Ton"
+                },
+                {
+                  "title": "6 Ton"
+                },
+                {
+                  "title": "18 K BTU / hr"
+                },
+                {
+                  "title": "40 K BTU / hr"
+                },
+                {
+                  "title": "<50 K BTU / hr"
+                },
+                {
+                  "title": "50 K BTU / hr"
+                },
+                {
+                  "title": "55 K BTU / hr"
+                },
+                {
+                  "title": "56 K BTU / hr"
+                },
+                {
+                  "title": "60 K BTU / hr"
+                },
+                {
+                  "title": "65 K BTU / hr"
+                },
+                {
+                  "title": "66 K BTU / hr"
+                },
+                {
+                  "title": "70 K BTU / hr"
+                },
+                {
+                  "title": "75 K BTU / hr"
+                },
+                {
+                  "title": "80 K BTU / hr"
+                },
+                {
+                  "title": "85 K BTU / hr"
+                },
+                {
+                  "title": "88 K BTU / hr"
+                },
+                {
+                  "title": "90 K BTU / hr"
+                },
+                {
+                  "title": "92 K BTU / hr"
+                },
+                {
+                  "title": "95 K BTU / hr"
+                },
+                {
+                  "title": "96 K BTU / hr"
+                },
+                {
+                  "title": "100 K BTU / hr"
+                },
+                {
+                  "title": ">100 K BTU / hr"
+                },
+                {
+                  "title": "100 - 125 K BTU / hr"
+                },
+                {
+                  "title": "125 K BTU / hr"
+                },
+                {
+                  "title": "140 K BTU / hr"
+                },
+                {
+                  "title": "125 - 150 K BTU / hr"
+                },
+                {
+                  "title": "> 150 K BTU / hr"
                 }
-              ]
+              ],
+              "value": ""
             },
             {
               "title": "Year of Manufacture",
@@ -6063,7 +6453,7 @@ var reportTemplates = [
     },
     {
       "title": "Cooling",
-      "color": "#38A4DD",
+      "color": "#38a4dd",
       "answeredCount":0, "pages": [
         {
           "title": "Cooling Systems",
@@ -6105,27 +6495,6 @@ var reportTemplates = [
                   "title": "Inoperable"
                 },
                 {
-                  "title": "OTHER (NEEDS MORE DATA)"
-                }
-              ]
-            },
-            {
-              "title": "Energy Source",
-              "required": false, "answered":false,
-              "showvalue": false,
-              "type": "checkbox",
-              "value": [],
-              "content": [
-                {
-                  "title": "Natural Gas"
-                },
-                {
-                  "title": "Propane"
-                },
-                {
-                  "title": "Electric"
-                },
-                {
                   "title": "Central Air"
                 },
                 {
@@ -6146,6 +6515,24 @@ var reportTemplates = [
               ]
             },
             {
+              "title": "Energy Source",
+              "required": false, "answered":false,
+              "showvalue": false,
+              "type": "checkbox",
+              "value": [],
+              "content": [
+                {
+                  "title": "Natural Gas"
+                },
+                {
+                  "title": "Propane"
+                },
+                {
+                  "title": "Electric"
+                },
+              ]
+            },
+            {
               "title": "Cooling Systems Images",
               "type": "image",
               "content": []
@@ -6163,13 +6550,202 @@ var reportTemplates = [
               "type": "select",
               "content": [
                 {
+                  "title": "Not Applicable"
+                },
+                {
+                  "title": "Missing or Not Installed"
+                },
+                {
+                  "title": "Verify"
+                },
+                {
+                  "title": "American"
+                },
+                {
+                  "title": "American Standard"
+                },
+                {
+                  "title": "Arcoaire"
+                },
+                {
+                  "title": "Armstrong"
+                },
+                {
+                  "title": "Amtrol"
+                },
+                {
+                  "title": "Bard"
+                },
+                {
+                  "title": "Beckett"
+                },
+                {
+                  "title": "Bradford White"
+                },
+                {
                   "title": "Bryant"
                 },
                 {
-                  "title": "OTHER (NEEDS MORE DATA)"
+                  "title": "Burnham"
+                },
+                {
+                  "title": "Cadet"
+                },
+                {
+                  "title": "Carrier"
+                },
+                {
+                  "title": "Coleman"
+                },
+                {
+                  "title": "Coleman Evcon"
+                },
+                {
+                  "title": "Comfortmaker"
+                },
+                {
+                  "title": "Concord"
+                },
+                {
+                  "title": "Daikin Industries"
+                },
+                {
+                  "title": "Evcon"
+                },
+                {
+                  "title": "First Co."
+                },
+                {
+                  "title": "Flo-Aire"
+                },
+                {
+                  "title": "Frigidaire"
+                },
+                {
+                  "title": "GE"
+                },
+                {
+                  "title": "Goodman"
+                },
+                {
+                  "title": "Greenheck"
+                },
+                {
+                  "title": "Heil"
+                },
+                {
+                  "title": "ICP"
+                },
+                {
+                  "title": "Intertherm"
+                },
+                {
+                  "title": "KD Navien"
+                },
+                {
+                  "title": "Kelvinator (Nordyne)"
+                },
+                {
+                  "title": "Kenmore"
+                },
+                {
+                  "title": "King"
+                },
+                {
+                  "title": "Lennox"
+                },
+                {
+                  "title": "MagicAire"
+                },
+                {
+                  "title": "Markel"
+                },
+                {
+                  "title": "Marley"
+                },
+                {
+                  "title": "Mayflower"
+                },
+                {
+                  "title": "Maytag"
+                },
+                {
+                  "title": "Mitsubishi"
+                },
+                {
+                  "title": "Munchkin"
+                },
+                {
+                  "title": "Navien"
+                },
+                {
+                  "title": "Nordyne"
+                },
+                {
+                  "title": "Payne"
+                },
+                {
+                  "title": "Quatro"
+                },
+                {
+                  "title": "Radco"
+                },
+                {
+                  "title": "Resco"
+                },
+                {
+                  "title": "Rheem"
+                },
+                {
+                  "title": "Rinnai"
+                },
+                {
+                  "title": "Ruud"
+                },
+                {
+                  "title": "Sears"
+                },
+                {
+                  "title": "Seisco"
+                },
+                {
+                  "title": "Steel Weld"
+                },
+                {
+                  "title": "Sundial / Square D"
+                },
+                {
+                  "title": "Tempstar"
+                },
+                {
+                  "title": "TPI Corporation"
+                },
+                {
+                  "title": "Thermo Pride"
+                },
+                {
+                  "title": "Trane"
+                },
+                {
+                  "title": "Turbonics"
+                },
+                {
+                  "title": "Vaillant"
+                },
+                {
+                  "title": "Weil-McLain"
+                },
+                {
+                  "title": "Wesco"
+                },
+                {
+                  "title": "Westinghouse"
+                },
+                {
+                  "title": "York"
                 }
               ],
-             "value": ""
+              "value": ""
             },
             {
               "title": "Capacity",
@@ -6178,10 +6754,133 @@ var reportTemplates = [
               "type": "select",
               "content": [
                 {
-                    "title": "Not Applicable"
+                  "title": "Not Applicable"
                 },
                 {
-                    "title": "OTHER (NEEDS MORE DATA)"
+                  "title": "Verify"
+                },
+                {
+                  "title": "Zone-Controlled"
+                },
+                {
+                  "title": "240 Volt"
+                },
+                {
+                  "title": ".50 - 1.01 GPH"
+                },
+                {
+                  "title": "80 Gallon"
+                },
+                {
+                  "title": "119 Gallon"
+                },
+                {
+                  "title": "1 Ton"
+                },
+                {
+                  "title": "1.5 Ton"
+                },
+                {
+                  "title": "2 Ton"
+                },
+                {
+                  "title": "2.5 Ton"
+                },
+                {
+                  "title": "3 Ton"
+                },
+                {
+                  "title": "3.5 Ton"
+                },
+                {
+                  "title": "4 Ton"
+                },
+                {
+                  "title": "4.5 Ton"
+                },
+                {
+                  "title": "5 Ton"
+                },
+                {
+                  "title": "5.5 Ton"
+                },
+                {
+                  "title": "6 Ton"
+                },
+                {
+                  "title": "18 K BTU / hr"
+                },
+                {
+                  "title": "40 K BTU / hr"
+                },
+                {
+                  "title": "<50 K BTU / hr"
+                },
+                {
+                  "title": "50 K BTU / hr"
+                },
+                {
+                  "title": "55 K BTU / hr"
+                },
+                {
+                  "title": "56 K BTU / hr"
+                },
+                {
+                  "title": "60 K BTU / hr"
+                },
+                {
+                  "title": "65 K BTU / hr"
+                },
+                {
+                  "title": "66 K BTU / hr"
+                },
+                {
+                  "title": "70 K BTU / hr"
+                },
+                {
+                  "title": "75 K BTU / hr"
+                },
+                {
+                  "title": "80 K BTU / hr"
+                },
+                {
+                  "title": "85 K BTU / hr"
+                },
+                {
+                  "title": "88 K BTU / hr"
+                },
+                {
+                  "title": "90 K BTU / hr"
+                },
+                {
+                  "title": "92 K BTU / hr"
+                },
+                {
+                  "title": "95 K BTU / hr"
+                },
+                {
+                  "title": "96 K BTU / hr"
+                },
+                {
+                  "title": "100 K BTU / hr"
+                },
+                {
+                  "title": ">100 K BTU / hr"
+                },
+                {
+                  "title": "100 - 125 K BTU / hr"
+                },
+                {
+                  "title": "125 K BTU / hr"
+                },
+                {
+                  "title": "140 K BTU / hr"
+                },
+                {
+                  "title": "125 - 150 K BTU / hr"
+                },
+                {
+                  "title": "> 150 K BTU / hr"
                 }
               ],
               "value": ""
@@ -6217,58 +6916,370 @@ var reportTemplates = [
           "title": "Compressor or Condenser (Outside)",
           "answeredCount":0, "items": [
               {
-              "title": "Compressor or Condenser Brand Name",
+              "title": "Brand Name",
               "required": false, "answered":false,
               "showvalue": false,
               "type": "select",
               "content": [
                 {
+                  "title": "Not Applicable"
+                },
+                {
+                  "title": "Missing or Not Installed"
+                },
+                {
+                  "title": "Verify"
+                },
+                {
+                  "title": "American"
+                },
+                {
+                  "title": "American Standard"
+                },
+                {
+                  "title": "Arcoaire"
+                },
+                {
+                  "title": "Armstrong"
+                },
+                {
+                  "title": "Amtrol"
+                },
+                {
+                  "title": "Bard"
+                },
+                {
+                  "title": "Beckett"
+                },
+                {
+                  "title": "Bradford White"
+                },
+                {
                   "title": "Bryant"
                 },
                 {
-                  "title": "OTHER (NEEDS MORE DATA)"
+                  "title": "Burnham"
+                },
+                {
+                  "title": "Cadet"
+                },
+                {
+                  "title": "Carrier"
+                },
+                {
+                  "title": "Coleman"
+                },
+                {
+                  "title": "Coleman Evcon"
+                },
+                {
+                  "title": "Comfortmaker"
+                },
+                {
+                  "title": "Concord"
+                },
+                {
+                  "title": "Daikin Industries"
+                },
+                {
+                  "title": "Evcon"
+                },
+                {
+                  "title": "First Co."
+                },
+                {
+                  "title": "Flo-Aire"
+                },
+                {
+                  "title": "Frigidaire"
+                },
+                {
+                  "title": "GE"
+                },
+                {
+                  "title": "Goodman"
+                },
+                {
+                  "title": "Greenheck"
+                },
+                {
+                  "title": "Heil"
+                },
+                {
+                  "title": "ICP"
+                },
+                {
+                  "title": "Intertherm"
+                },
+                {
+                  "title": "KD Navien"
+                },
+                {
+                  "title": "Kelvinator (Nordyne)"
+                },
+                {
+                  "title": "Kenmore"
+                },
+                {
+                  "title": "King"
+                },
+                {
+                  "title": "Lennox"
+                },
+                {
+                  "title": "MagicAire"
+                },
+                {
+                  "title": "Markel"
+                },
+                {
+                  "title": "Marley"
+                },
+                {
+                  "title": "Mayflower"
+                },
+                {
+                  "title": "Maytag"
+                },
+                {
+                  "title": "Mitsubishi"
+                },
+                {
+                  "title": "Munchkin"
+                },
+                {
+                  "title": "Navien"
+                },
+                {
+                  "title": "Nordyne"
+                },
+                {
+                  "title": "Payne"
+                },
+                {
+                  "title": "Quatro"
+                },
+                {
+                  "title": "Radco"
+                },
+                {
+                  "title": "Resco"
+                },
+                {
+                  "title": "Rheem"
+                },
+                {
+                  "title": "Rinnai"
+                },
+                {
+                  "title": "Ruud"
+                },
+                {
+                  "title": "Sears"
+                },
+                {
+                  "title": "Seisco"
+                },
+                {
+                  "title": "Steel Weld"
+                },
+                {
+                  "title": "Sundial / Square D"
+                },
+                {
+                  "title": "Tempstar"
+                },
+                {
+                  "title": "TPI Corporation"
+                },
+                {
+                  "title": "Thermo Pride"
+                },
+                {
+                  "title": "Trane"
+                },
+                {
+                  "title": "Turbonics"
+                },
+                {
+                  "title": "Vaillant"
+                },
+                {
+                  "title": "Weil-McLain"
+                },
+                {
+                  "title": "Wesco"
+                },
+                {
+                  "title": "Westinghouse"
+                },
+                {
+                  "title": "York"
                 }
               ],
-            "value": ""
+              "value": ""
             },
             {
-              "title": "Compressor or Condenser Capacity",
+              "title": "Capacity",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "checkbox",
-              "value": [],
+              "type": "select",
               "content": [
                 {
                   "title": "Not Applicable"
                 },
                 {
-                  "title": "OTHER (NEEDS MORE DATA)"
+                  "title": "Verify"
+                },
+                {
+                  "title": "Zone-Controlled"
+                },
+                {
+                  "title": "240 Volt"
+                },
+                {
+                  "title": ".50 - 1.01 GPH"
+                },
+                {
+                  "title": "80 Gallon"
+                },
+                {
+                  "title": "119 Gallon"
+                },
+                {
+                  "title": "1 Ton"
+                },
+                {
+                  "title": "1.5 Ton"
+                },
+                {
+                  "title": "2 Ton"
+                },
+                {
+                  "title": "2.5 Ton"
+                },
+                {
+                  "title": "3 Ton"
+                },
+                {
+                  "title": "3.5 Ton"
+                },
+                {
+                  "title": "4 Ton"
+                },
+                {
+                  "title": "4.5 Ton"
+                },
+                {
+                  "title": "5 Ton"
+                },
+                {
+                  "title": "5.5 Ton"
+                },
+                {
+                  "title": "6 Ton"
+                },
+                {
+                  "title": "18 K BTU / hr"
+                },
+                {
+                  "title": "40 K BTU / hr"
+                },
+                {
+                  "title": "<50 K BTU / hr"
+                },
+                {
+                  "title": "50 K BTU / hr"
+                },
+                {
+                  "title": "55 K BTU / hr"
+                },
+                {
+                  "title": "56 K BTU / hr"
+                },
+                {
+                  "title": "60 K BTU / hr"
+                },
+                {
+                  "title": "65 K BTU / hr"
+                },
+                {
+                  "title": "66 K BTU / hr"
+                },
+                {
+                  "title": "70 K BTU / hr"
+                },
+                {
+                  "title": "75 K BTU / hr"
+                },
+                {
+                  "title": "80 K BTU / hr"
+                },
+                {
+                  "title": "85 K BTU / hr"
+                },
+                {
+                  "title": "88 K BTU / hr"
+                },
+                {
+                  "title": "90 K BTU / hr"
+                },
+                {
+                  "title": "92 K BTU / hr"
+                },
+                {
+                  "title": "95 K BTU / hr"
+                },
+                {
+                  "title": "96 K BTU / hr"
+                },
+                {
+                  "title": "100 K BTU / hr"
+                },
+                {
+                  "title": ">100 K BTU / hr"
+                },
+                {
+                  "title": "100 - 125 K BTU / hr"
+                },
+                {
+                  "title": "125 K BTU / hr"
+                },
+                {
+                  "title": "140 K BTU / hr"
+                },
+                {
+                  "title": "125 - 150 K BTU / hr"
+                },
+                {
+                  "title": "> 150 K BTU / hr"
                 }
-              ]
+              ],
+              "value": ""
             },
             {
-              "title": "Compressor or Condenser Year of Manufacture",
+              "title": "Year of Manufacture",
               "required": false, "answered":false,
               "showvalue": false,
               "type": "number",
               "value": ""
             },
             {
-              "title": "Model Number of Compressor or Condenser",
+              "title": "Model Number",
               "required": false, "answered":false,
               "showvalue": false,
               "type": "text",
               "value": ""
             },
             {
-              "title": "Serial Number of Compressor or Condenser",
+              "title": "Serial Number",
               "required": false, "answered":false,
               "showvalue": false,
               "type": "text",
               "value": ""
             },
             {
-              "title": "Condition Compressor or Condenser",
+              "title": "Compressor or Condenser Condition",
               "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
@@ -6330,7 +7341,7 @@ var reportTemplates = [
     },
     {
       "title": "Electrical",
-      "color": "#FDD836",
+      "color": "#fdd836",
       "answeredCount":0, "pages": [
         {
           "title": "Electrical System",
@@ -6418,17 +7429,62 @@ var reportTemplates = [
               ]
             },
             {
-              "title": "Service Size",
+              "title": "Service Size (AMPS)",
               "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
               "content": [
                 {
-                  "title": "AMPS (NEED MORE DATA)"
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "VOLTS (NEED MORE DATA)"
+                  "title": "400"
+                },
+                {
+                  "title": "200"
+                },
+                {
+                  "title": "(2) 200"
+                },
+                {
+                  "title": "150"
+                },
+                {
+                  "title": "125"
+                },
+                {
+                  "title": "100"
+                },
+                {
+                  "title": "(2) 100"
+                },
+                {
+                  "title": "60"
+                },
+                {
+                  "title": "50"
+                },
+                {
+                  "title": "Various Amperages"
+                }
+              ]
+            },
+            {
+              "title": "Service Size (VOLTS)",
+              "required": false, "answered":false,
+              "showvalue": false,
+              "type": "checkbox",
+              "value": [],
+              "content": [
+                {
+                  "title": "Not Applicable"
+                },
+                {
+                  "title": "120 / 240"
+                },
+                {
+                  "title": "3-phase (208 - 230)"
                 }
               ]
             },
@@ -6620,7 +7676,31 @@ var reportTemplates = [
                   "title": "Not Applicable"
                 },
                 {
-                  "title": "OTHER (NEED MORE DATA)"
+                  "title": "3-Phase"
+                },
+                {
+                  "title": "Outside Scope of Inspection"
+                },
+                {
+                  "title": "No Access"
+                },
+                {
+                  "title": "Storage Blocked Access"
+                },
+                {
+                  "title": "Shelving Blocked Access"
+                },
+                {
+                  "title": "Cover Not Removable"
+                },
+                {
+                  "title": "Unsafe to Open"
+                },
+                {
+                  "title": "Unsafe Panel Type"
+                },
+                {
+                  "title": "No Power"
                 }
               ]
             },
@@ -7021,7 +8101,7 @@ var reportTemplates = [
     },
     {
       "title": "Interior",
-      "color": "#F06392",
+      "color": "#f06392",
       "answeredCount":0, "pages": [
         {
           "title": "Living Room",
@@ -7190,7 +8270,7 @@ var reportTemplates = [
               ]
             },
             {
-              "title": "Lights, Switches, or Receptacles (Refer To Electrical Section or SUB-HEADING? or DO WE NEED THIS SECTION?)",
+              "title": "Lights, Switches, or Receptacles (Refer To Electrical Section)",
               "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
@@ -8224,7 +9304,7 @@ var reportTemplates = [
     },
     {
       "title": "Life or Safety",
-      "color": "#4DAF4E",
+      "color": "#4daf4e",
       "answeredCount":0, "pages": [
         {
           "title": "Potential Safety Concerns",

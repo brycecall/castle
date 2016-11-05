@@ -175,7 +175,7 @@ var reportTemplates = [
               "required": true, "answered":false,
               "showvalue": false,
               "type": "number",
-              "value":0
+              "value":""
             },
             {
               "title": "Type of Property",
@@ -2777,7 +2777,7 @@ var reportTemplates = [
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
-              "value": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-070 of the Washington State Dept. of Licensing, The inspector is not required to enter: sub-floor crawl-spaces that require excavation or have an access opening less than eighteen inches by twenty-four inches or headroom less than eighteen inches beneath floor joists and twelve inches beneath girders (beams). Any areas that are not readily accessible due to obstructions, inadequate clearances or have conditions which, in the inspector's opinion, are hazardous to the health and safety of the inspector or will cause damage to components of the home, move stored items or debris or perform excavation to gain access. (BOLD THIS)Please refer to a licensed structural pest inspector (SPI) or pest control operator (PCO) to re-evaluate all issues that are suspected to be insect-related.(BOLD THIS)"
+              "value": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-070 of the Washington State Dept. of Licensing, The inspector is not required to enter: sub-floor crawl-spaces that require excavation or have an access opening less than eighteen inches by twenty-four inches or headroom less than eighteen inches beneath floor joists and twelve inches beneath girders (beams). Any areas that are not readily accessible due to obstructions, inadequate clearances or have conditions which, in the inspector's opinion, are hazardous to the health and safety of the inspector or will cause damage to components of the home, move stored items or debris or perform excavation to gain access. Please refer to a licensed structural pest inspector (SPI) or pest control operator (PCO) to re-evaluate all issues that are suspected to be insect-related."
             },
             {
               "title": "Roof System",
@@ -3527,7 +3527,7 @@ var reportTemplates = [
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
-              "value": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-150 of the Washington State Dept. of Licensing, the inspector is not required to determine the presence, extent, and type of insulation and vapor barriers concealed in the exterior walls, the thickness or R-value of insulation above the ceiling, in the walls or below the floors, or evaluate whether the type of material used to insulate pipes, ducts, jackets and boilers is a health hazard. (BOLD THIS)The efficiency and quantity of air ventilation and mechanical systems is not measured, calculated, or controls tested, other than to confirm that they exist, or actually turn a system on or off.(BOLD THIS)"
+              "value": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-150 of the Washington State Dept. of Licensing, the inspector is not required to determine the presence, extent, and type of insulation and vapor barriers concealed in the exterior walls, the thickness or R-value of insulation above the ceiling, in the walls or below the floors, or evaluate whether the type of material used to insulate pipes, ducts, jackets and boilers is a health hazard. The efficiency and quantity of air ventilation and mechanical systems is not measured, calculated, or controls tested, other than to confirm that they exist, or actually turn a system on or off."
             },
             {
               "title": "Access",
@@ -9498,7 +9498,7 @@ var reportTemplates = [
       "color": "#3C4DA1",
       "answeredCount":0, "pages": [
         {
-          "title": "Additional Photos for Further Clarification",
+          "title": "Additional Photos",
           "answeredCount":0, "items": [
             {
               "title": "Photo Appendix Images",

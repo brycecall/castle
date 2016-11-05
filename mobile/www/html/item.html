@@ -1,13 +1,13 @@
-<div ng-controller="itemController" flex="" layout="column" class="page">
+<div ng-controller="itemController" flex="" layout="column" class="page" style="background-color:white">
 <!--
   <div class="subHeaderStyle shady" layout="row" layout-align="start center">
       sub menu
   </div>
   <md-divider></md-divider>
 -->
-   <md-content style="padding: 8px">
+   <md-content style="padding: 8px; background-color:white">
 
-    <div layout="row" layout-align="start center"  flex-wrap>
+    <div layout="row" layout-align="start center">
         <h3 class="md-title" style="margin-bottom:2px;">{{item.title}}</h3>
         <span flex=""></span>
       <md-switch ng-if="castleService.editMode" ng-model="item.required" style="margin:1px" aria-label="Is Required">
@@ -111,6 +111,7 @@
                   <textarea ng-model="item.value" md-maxlength="5000" md-select-on-focus></textarea>
                 </md-input-container>
         </div>
+        
         <!--                           CHECKBOX-->
         <div ng-if="item.type == 'checkbox'">
             <div ui-sortable="sortableOptions"  ng-model="item.content" >
@@ -148,14 +149,14 @@
                                 <md-content style="max-height:480px;  overflow-y:scroll;">
                                     <md-card ng-repeat="checkboxImage in checkbox.i track by $index" style="position:relative;" layout="column" layout-align="center end">
                                         <md-button ng-click="removeIMG(checkbox.i, $index)" class="md-icon-button cancelIMG">
-                                            <md-icon md-svg-icon="clear" aria-label="rapid remarks"></md-icon>
+                                            <md-icon md-svg-icon="delete" aria-label="rapid remarks"></md-icon>
                                         </md-button>
                                         <div class="UpPicture" style="background-image: url('{{checkboxImage}}')" />
                                     </md-card>
                                        <md-menu-item ng-if="checkbox.i == null || checkbox.i.length <= 0" >
                                         <h3  
                                              class="md-caption"
-                                             style="padding: 4px 8px; text-align:center">empty</h3>
+                                             style="padding: 4px 8px; text-align:center">No photos yet!</h3>
                                         </md-menu-item>
                                 </md-content>
                             </md-menu-content>
@@ -203,28 +204,80 @@
             </form>
         </div>
         
-        
         <!--                            RADIO-->
         <div ng-if="item.type == 'radio'" id="radParent">
             <md-radio-group ng-model="item.value">
                <div ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#radParent'}"   ng-model="item.content">
-                  <div ng-repeat="radiovalue in item.content track by $index" 
-                       layout="row" 
-                       layout-align="start center"
-                       style="background-color:#FFF;">
-                     <div class="handle" ng-show="castleService.editMode">
-                         <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
+                  <div ng-repeat="radiovalue in item.content track by $index">
+                      <div layout="row" 
+                           layout-align="start center"
+                           style="background-color:#FFF;">
+                         <div class="handle" ng-show="castleService.editMode">
+                             <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
+                         </div>
+                         <md-radio-button ng-value="radiovalue.title" class="">
+                            <span>{{radiovalue.title}}</span>
+                         </md-radio-button>
+                         <span flex=""></span>
+                         <md-button ng-show="castleService.editMode" class="md-icon-button" 
+                                   aria-label="add sub question"
+                                   ng-click="remove(item.content, $index)">
+                             <md-icon md-svg-icon="cancel"></md-icon>
+                         </md-button>
                      </div>
-                     <md-radio-button ng-value="radiovalue.title" class="">
-                        <span>{{radiovalue.title}}</span>
-                     </md-radio-button>
-                     <span flex=""></span>
-                     <md-button ng-show="castleService.editMode" class="md-icon-button" 
-                               aria-label="add sub question"
-                               ng-click="remove(item.content, $index)" 
-                     >
-                         <md-icon md-svg-icon="cancel"></md-icon>
-                     </md-button>
+                    <div layout="row" layout-align="start center" 
+                         ng-show="radiovalue.title == item.value" class="" 
+                         style="margin-left:15px;">
+                        <md-button ng-show="!castleService.assignPhotoMode" 
+                                   class="md-icon-button" 
+                                   ng-click="showRapidRemarksDialog($event, itemIndex, $index)" 
+                                   aria-label="add rapid remark">
+                                   <md-icon md-svg-icon="{{(radiovalue.rrTitle == null) ? 'rrAdd' : 'rrEdit'}}" 
+                                            ng-class="(radiovalue.rrTitle == null) ? '' : 'md-accent'"></md-icon>
+                        </md-button>
+                        <md-menu style="text-align:center; padding:0;">
+                            <md-button class="md-icon-button" aria-label="view images" ng-click="$mdOpenMenu()" ng-show="radiovalue.title == item.value">
+                                <md-icon md-svg-icon="image" ng-class="(radiovalue.i != '' && radiovalue.i != null) ? 'md-accent' : ''"></md-icon>
+                            </md-button>
+                            <md-menu-content>
+                                <md-content style="max-height:480px;  overflow-y:scroll;">
+                                    <md-card ng-repeat="checkboxImage in radiovalue.i track by $index" style="position:relative;" layout="column" layout-align="center end">
+                                        <md-button ng-click="removeIMG(radiovalue.i, $index)" class="md-icon-button cancelIMG">
+                                            <md-icon md-svg-icon="delete" aria-label="rapid remarks"></md-icon>
+                                        </md-button>
+                                        <div class="UpPicture" style="background-image: url('{{checkboxImage}}')" />
+                                    </md-card>
+                                        <md-menu-item ng-if="radiovalue.i == null || radiovalue.i.length <= 0" >
+                                         <h3 class="md-caption"
+                                             style="padding: 4px 8px; text-align:center">No photos yet!</h3>
+                                        </md-menu-item>
+                                </md-content>
+                            </md-menu-content>
+                        </md-menu>
+                        <md-button ng-show="radiovalue.title == item.value && !castleService.assignPhotoMode" 
+                                   class="md-icon-button" 
+                                   ng-click="initCameraAction(radiovalue, true, true)" 
+                                   aria-label="capture photo">
+                            <md-icon md-svg-icon="camera" class=""></md-icon>
+                        </md-button>
+                        <md-button ng-show="radiovalue.title == item.value && castleService.assignPhotoMode && (radiovalue.a == null || !radiovalue.a)" 
+                                   class="" 
+                                   ng-click="castleService.assignPhotos(radiovalue, 'assign')" 
+                                   aria-label="assign photo">
+                            Assign
+                        </md-button>
+                        <md-button ng-show="radiovalue.title == item.value && castleService.assignPhotoMode && radiovalue.a" 
+                                   class="" ng-click="castleService.assignPhotos(radiovalue, 'accept')" 
+                                   aria-label="accept assigned photo">
+                            Accept
+                        </md-button>
+                        <md-button ng-show="radiovalue.title == item.value && castleService.assignPhotoMode && radiovalue.a" 
+                                   class="" ng-click="castleService.assignPhotos(radiovalue, 'cancel')" 
+                                   aria-label="cancel assigned photo">
+                            Cancel
+                        </md-button>
+                    </div>
+                  
                   </div>
               </div>
             </md-radio-group>
@@ -288,6 +341,113 @@
                 <input ng-model="tempDate" onchange="setItem(item, tempDate)" type="date" flex-gt-sm="50" flex-sm="">
             </md-input-container>
         </div>
+        
+        <!--        IMAGE-->
+        <div ng-if="item.type == 'image'">
+            <div layout="row" class="flex-wrap" style="display:flex; flex-wrap:wrap;">
+                <div ng-repeat="imageItem in item.i track by $index">
+                    <div class="UpPicture" style="background-image: url('{{imageItem}}')">
+                        <div layout="row">
+                            <span flex=""></span>
+                            <md-checkbox class="md-secondary" 
+                                        aria-label="select image" 
+                                        ng-checked="isInArray($index, castleService.selectedImages)" 
+                                        ng-click="addToSelectedImages($index)">
+                            </md-checkbox>
+                        </div>
+                        <div class="md-caption pictureBox"></div>
+                        <div class="centerTextVertical">
+                            <span class="md-caption imageTitle"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+                <div ng-if="item.i == null || item.i.length <= 0">
+                    <h1 class="md-caption">
+                        No photos yet!
+                    </h1>
+                </div>
+                        <md-button ng-show="castleService.assignPhotoMode && (item.a == null || !item.a)" 
+                                   class="" 
+                                   ng-click="castleService.assignPhotos(item, 'assign')" 
+                                   aria-label="assign photo">
+                            Assign
+                        </md-button>
+                        <md-button ng-show="castleService.assignPhotoMode && item.a" 
+                                   class="" ng-click="castleService.assignPhotos(item, 'accept')" 
+                                   aria-label="accept assigned photo">
+                            Accept
+                        </md-button>
+                        <md-button ng-show="castleService.assignPhotoMode && item.a" 
+                                   class="" ng-click="castleService.assignPhotos(item, 'cancel')" 
+                                   aria-label="cancel assigned photo">
+                            Cancel
+                        </md-button>
+                        
+            <div class="mainButtonMenu">
+                <md-button class="md-fab md-primary" 
+                           style="margin-right:27px;" 
+                           aria-label="capture photo"
+                           ng-click="capturePhoto(1, unassignedImages, true, true)">
+                    <md-icon md-svg-icon="camera" ></md-icon>
+                </md-button>
+            </div>   
+        </div>
+        
+        <div layout="row" layout-align="start center" 
+                          ng-if="item.type != 'checkbox' && item.type != 'radio' && item.type != 'image'">
+                        <md-button ng-show="!castleService.assignPhotoMode" 
+                                   class="md-icon-button" 
+                                   ng-click="showRapidRemarksDialog($event, itemIndex, $index)" 
+                                   aria-label="add rapid remark">
+                            <md-icon md-svg-icon="{{(item.rrTitle == null) ? 'rrAdd' : 'rrEdit'}}" 
+                                     ng-class="(item.rrTitle == null) ? '' : 'md-accent'"></md-icon>
+                        </md-button>
+                        <md-menu style="text-align:center; padding:0;">
+                            <md-button class="md-icon-button" aria-label="view images" ng-click="$mdOpenMenu()">
+                                <md-icon md-svg-icon="image" ng-class="(item.i != '' && item.i != null) ? 'md-accent' : ''"></md-icon>
+                            </md-button>
+                            <md-menu-content>
+                                <md-content style="max-height:480px;  overflow-y:scroll;">
+                                    <md-card ng-repeat="checkboxImage in item.i track by $index" style="position:relative;" layout="column" layout-align="center end">
+                                        <md-button ng-click="removeIMG(item.i, $index)" class="md-icon-button cancelIMG">
+                                            <md-icon md-svg-icon="delete" aria-label="rapid remarks"></md-icon>
+                                        </md-button>
+                                        <div class="UpPicture" style="background-image: url('{{checkboxImage}}')" />
+                                    </md-card>
+                                       <md-menu-item ng-if="item.i == null || item.i.length <= 0" >
+                                        <h3  
+                                             class="md-caption"
+                                             style="padding: 4px 8px; text-align:center">No photos yet!</h3>
+                                        </md-menu-item>
+                                </md-content>
+                            </md-menu-content>
+                        </md-menu>
+                        <md-button ng-show="!castleService.assignPhotoMode" 
+                                   class="md-icon-button" 
+                                   ng-click="initCameraAction(item, true, true)" 
+                                   aria-label="capture photo">
+                            <md-icon md-svg-icon="camera" class=""></md-icon>
+                        </md-button>
+                        <md-button ng-show="castleService.assignPhotoMode && (item.a == null || !item.a)" 
+                                   class="" 
+                                   ng-click="castleService.assignPhotos(item, 'assign')" 
+                                   aria-label="assign photo">
+                            Assign
+                        </md-button>
+                        <md-button ng-show="castleService.assignPhotoMode && item.a" 
+                                   class="" ng-click="castleService.assignPhotos(item, 'accept')" 
+                                   aria-label="accept assigned photo">
+                            Accept
+                        </md-button>
+                        <md-button ng-show="castleService.assignPhotoMode && item.a" 
+                                   class="" ng-click="castleService.assignPhotos(item, 'cancel')" 
+                                   aria-label="cancel assigned photo">
+                            Cancel
+                        </md-button>
+       </div>
+        
       </div>
     </div>
    <div ng-show="!itemSet() && !castleService.editMode">

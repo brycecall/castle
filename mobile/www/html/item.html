@@ -6,12 +6,13 @@
   <md-divider></md-divider>
 -->
    <md-content style="padding-left: 8px; background-color: white; overflow-x: hidden;">
+       <md-card style="padding-bottom: 2px;">
 
 
     <div layout="row" layout-align="start center"  flex-wrap>
         <h2 class="md-subhead insTitle" style="margin-bottom:2px;">{{item.title}}</h2>
         <span flex=""></span>
-      <md-switch ng-if="castleService.editMode" ng-model="item.required" style="margin:1px" aria-label="Is Required">
+      <md-switch ng-if="castleService.editMode" ng-model="item.required" style="margin:1px; padding-right:8px;" aria-label="Is Required">
         Required
       </md-switch>
 <!--
@@ -26,7 +27,7 @@
     </div>
  
 
-<div ng-if="castleService.editMode">
+<div ng-if="castleService.editMode" style="padding-left:16px;">
     <md-menu>
         <md-button class="" 
            style="min-width:200px; 
@@ -54,7 +55,7 @@
         </md-menu-content>
     </md-menu>
     <br/>
-    <md-input-container class="md-block" style="margin-bottom:0">
+    <md-input-container class="md-block" style="margin-bottom:0; width:65%;">
       <label>Title</label>
       <input ng-model="item.title">
     </md-input-container>
@@ -261,7 +262,7 @@
                 <input ng-model="item.value" type="text">
             </md-input-container>
         </div>
-
+        
         <!--                           SELECT-->
         <div ng-if="item.type == 'select'"  style="padding-left:8px;">
             <md-input-container>
@@ -319,5 +320,7 @@
             
         </md-button>
     </div>
+            </md-card>
     </md-content>
+      
 </div>

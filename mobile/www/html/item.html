@@ -1,11 +1,11 @@
-<div ng-controller="itemController" flex="" layout="column" class="page">
+<div ng-controller="itemController" flex="" layout="column" class="page" style="background-color: white;">
 <!--
   <div class="subHeaderStyle shady" layout="row" layout-align="start center">
       sub menu
   </div>
   <md-divider></md-divider>
 -->
-   <md-content style="padding: 8px">
+   <md-content style="padding: 8px; background-color: white;">
 
     <div layout="row" layout-align="start center"  flex-wrap>
         <h3 class="md-title" style="margin-bottom:2px;">{{item.title}}</h3>
@@ -114,7 +114,7 @@
         <!--                           CHECKBOX-->
         <div ng-if="item.type == 'checkbox'">
             <div ui-sortable="sortableOptions"  ng-model="item.content" >
-                <div ng-repeat="checkbox in item.content track by $index"                  
+                <div ng-repeat="checkbox in item.content track by $index"          ng-class="castleService.editMode ? 'edit_item' : 'list_item'"        
                      class="list_item flex-wrap" 
                      style="background-color:#FFF;" layout="column" layout-align="center stretch">
                      <div layout="column" layout-align="center stretch" ng-class="checkbox.c ? 'cStyles' : ''">
@@ -209,13 +209,14 @@
             <md-radio-group ng-model="item.value">
                <div ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#radParent'}"   ng-model="item.content">
                   <div ng-repeat="radiovalue in item.content track by $index" 
+                       ng-class="castleService.editMode ? 'edit_item' : 'list_item'"
                        layout="row" 
                        layout-align="start center"
                        style="background-color:#FFF;">
                      <div class="handle" ng-show="castleService.editMode">
                          <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
                      </div>
-                     <md-radio-button ng-value="radiovalue.title" class="">
+                     <md-radio-button ng-value="radiovalue.title" class="radioButton">
                         <span>{{radiovalue.title}}</span>
                      </md-radio-button>
                      <span flex=""></span>

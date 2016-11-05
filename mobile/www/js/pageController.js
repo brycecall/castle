@@ -117,69 +117,6 @@
         castleService.selectedImages = [];
      };
 
-
-     $scope.enterAssignPhotosMode = function() {
-         castleService.assignPhotoMode = true;
-         castleService.currentPage.showIcon = false;
-         castleService.currentPage.title = "Assign Photo";
-         castleService.currentPage.showExtraMenu = false;
-         castleService.photoAppendixIndex = $scope.selectedSection;
-         $state.go("create",{sectionIndex:'default'});
-     };
-
-     
-     $scope.editItemDialog = function($event, item) {
-//         $rootScope.itemIndex = itemIndex;
-//         $rootScope.pageIndex = $scope.page;
-//         $rootScope.sectionIndex = $scope.section;
-         $rootScope.item = item;
-    
-          $mdDialog
-             .show({
-                 controller: 'itemController',
-                 templateUrl: 'html/item.html',
-                 parent: angular.element(document.body),
-                 targetEvent: event,
-                 clickOutsideToClose: false,
-                 fullscreen: true
-             });
-     };
-     
-     
-     $scope.assignPhotos = function(subItem, action) {
-         if (subItem.i == null)
-             subItem.i = [];
-         
-         var photoAppendix = $scope.report.sections[castleService.photoAppendixIndex].pages[0].items[0].content;
-
-         for(var i = 0; i < castleService.selectedImages.length; i++) {
-             var index = castleService.selectedImages[i];
-             if (index >= 0 && index < photoAppendix.length) {
-                 if (action == 'assign') {
-                    subItem.i.push( photoAppendix[index] );
-                 } else if (action == 'accept') {
-                    photoAppendix.splice(index, 1);
-                 } else if (action == 'cancel') {
-                     var removeIndex = $.inArray(photoAppendix[index], subItem.i)
-                     if (removeIndex > -1) {
-                         subItem.i.splice(removeIndex, 1);
-                     }
-                     
-                 }
-             }
-         }
-         
-         if (action == 'assign') {
-             subItem.a = true;
-         } else if (action == 'cancel' || action == 'accept') {
-             subItem.a = false;
-         }
-         
-         if (action == 'accept')
-            castleService.cancelAssignPhotoMode();
-     };
-     
-
      $scope.setItem = function(item, val) {
          item.value = val;
      };

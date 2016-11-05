@@ -3,7 +3,11 @@
                                                      castleService, $state) {
      $scope.castleService = castleService;
      $scope.report = castleService.currentReport;
-
+     castleService.currentPage.showIcon = false;
+     castleService.currentPage.title = "Photo Appendix";
+     castleService.currentPage.showExtraMenu = false;
+     
+     
      $scope.enterAssignPhotosMode = function() {
          castleService.assignPhotoMode = true;
          castleService.currentPage.showIcon = false;

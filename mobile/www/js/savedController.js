@@ -1,7 +1,7 @@
 app.controller('savedController', function ($scope, castleService, $state, $stateParams) {
     $scope.castleService = castleService;
-    castleService.currentPage.title = "Saved Reports";
-    $scope.defaultReport = reportOne;
+    castleService.currentPage.title = "Scheduled Jobs";
+   // $scope.defaultReport = reportOne;
     $scope.switchReport = function(sReport) {
         castleService.currentReport = sReport;
         $state.go("create");

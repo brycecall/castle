@@ -28,15 +28,7 @@
      var pictureSource = null;
      var destinationType = null;
 
-     $scope.addToSelectedImages = function(index) {
-        var safeIndex = $.inArray(index, castleService.selectedImages);
-        if(safeIndex == -1) {
-            castleService.selectedImages.push(index);
-        } else {
-            castleService.selectedImages.splice(safeIndex, 1);
-        }
-     };
-     
+
      $scope.itemSet = function() {
         return ($scope.item.type !== null && 
                 $scope.item.type !== undefined && 
@@ -60,50 +52,6 @@
 
      $scope.clearSelection = function() {
         castleService.selectedImages = [];
-     };
-
-
-     $scope.enterAssignPhotosMode = function() {
-         castleService.assignPhotoMode = true;
-         castleService.currentPage.showIcon = false;
-         castleService.currentPage.title = "Assign Photo";
-         castleService.currentPage.showExtraMenu = false;
-         castleService.photoAppendixIndex = $scope.sectionIndex;
-         $state.go("create",{sectionIndex:'default'});
-     };
-
-     $scope.assignPhotos = function(subItem, action) {
-         if (subItem.i == null)
-             subItem.i = [];
-         
-         var photoAppendix = $scope.report.sections[castleService.photoAppendixIndex]
-                                   .pages[0].items[0].content;
-
-         for(var i = 0; i < castleService.selectedImages.length; i++) {
-             var index = castleService.selectedImages[i];
-             if (index >= 0 && index < photoAppendix.length) {
-                 if (action == 'assign') {
-                    subItem.i.push( photoAppendix[index] );
-                 } else if (action == 'accept') {
-                    photoAppendix.splice(index, 1);
-                 } else if (action == 'cancel') {
-                     var removeIndex = $.inArray(photoAppendix[index], subItem.i)
-                     if (removeIndex > -1) {
-                         subItem.i.splice(removeIndex, 1);
-                     }
-                     
-                 }
-             }
-         }
-         
-         if (action == 'assign') {
-             subItem.a = true;
-         } else if (action == 'cancel' || action == 'accept') {
-             subItem.a = false;
-         }
-         
-         if (action == 'accept')
-            castleService.cancelAssignPhotoMode();
      };
      
      $scope.buffer = [];
@@ -224,73 +172,6 @@
          $mdDialog.cancel();
      };
 
-
- /********************************************************
-  * CAMERA
-  ***********************************************************/
-
-
-     // Retrieve image file location from specified source
-     $scope.capturePhoto = function(sourceType, source, isArray, isDataUrl) {
-         var destination = destinationType.DATA_URL;
-         if (!isDataUrl) {
-             destination = destinationType.FILE_URI;
-         }
-
-        navigator.camera.getPicture(function(imageData) {
-             //console.log("Image Data: " + imageData);
-
-             if (isDataUrl) {
-                imageData = "data:image/jpeg;base64," + imageData
-             }
-
-             $scope.$apply(function () {
-                 if (isArray) {
-                    source.push(imageData);
-                 } else {
-                    source = (imageData);
-                 }
-             });
-
-            }, onFail, {
-             quality: 50,
-             correctOrientation: true,
-             destinationType: destination,
-             sourceType: sourceType
-         });
-     };
-
-
-     $scope.removeIMG = function (source, index) {
-         source.splice(index, 1);
-     };
-
-     // set up object with image array then adds photos to the array
-     $scope.initCameraAction = function (item, isArray, isDataUrl, title) {
-         var array = [];
-         if (item.i == null) {
-             item["i"] = array;
-         }
-         $scope.capturePhoto(1, item.i, isArray, isDataUrl);
-     };
-
-     // Called if something bad happens.
-     function onFail(message) {
-          console.log('Failed because: ' + message);
-     };
-
-     //Cancel the add opperation
-     $scope.cancel = function () {
-         window.history.back();
-     };
-
-     //Complete the save operation
-     $scope.save = function () {
-         $scope.addItem();
-         window.history.back();
-     };
-
-
       $scope.getIcon = function(type)
      {
          var result = "error";
@@ -395,7 +276,9 @@
          }
          //item.content = []; 
      };
-
+     $scope.removeIMG = function (source, index) {
+         source.splice(index, 1);
+     };
      $scope.removeItem = function (toRemove, theType) {
              $scope.newItem.content.splice(toRemove, 1);
      };

@@ -139,7 +139,7 @@
                              style="background-color:#555" ng-if="castleService.assignPhotoMode" flex>
                             <md-button ng-if="!castleService.currentPage.toggleNavMenu" 
                                        class="md-icon-button" aria-label="Navigation" 
-                                       ui-sref="{{castleService.currentPage.link}}">
+                                       ng-click="menuNavigation()">
                                  <md-icon md-svg-icon="{{castleService.currentPage.icon}}" ></md-icon>
                             </md-button>
                              <h2 class="page_header">

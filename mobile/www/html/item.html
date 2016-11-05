@@ -13,9 +13,12 @@
       <md-switch ng-model="item.required" style="margin:1px" aria-label="Is Required">
         Required
       </md-switch>
-        <md-button ng-click="toggleAnswered()" aria-label="is answered" class="btnBackground" style="">
+        <md-button ng-click="toggleAnswered()" 
+                   aria-label="is answered" 
+                   ng-class="item.answered ? 'md-primary' : 'btnBackground'" >
+            <md-icon style="min-width:24px" 
+                     md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
             <span>Complete</span> 
-            <md-icon style="min-width:24px" md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
         </md-button>
     </div>
 
@@ -147,6 +150,11 @@
                                         </md-button>
                                         <div class="UpPicture" style="background-image: url('{{checkboxImage}}')" />
                                     </md-card>
+                                       <md-menu-item ng-if="checkbox.i == null || checkbox.i.length <= 0" >
+                                        <h3  
+                                             class="md-caption"
+                                             style="padding: 4px 8px; text-align:center">empty</h3>
+                                        </md-menu-item>
                                 </md-content>
                             </md-menu-content>
                         </md-menu>
@@ -158,17 +166,17 @@
                         </md-button>
                         <md-button ng-show="checkbox.c && castleService.assignPhotoMode && (checkbox.a == null || !checkbox.a)" 
                                    class="" 
-                                   ng-click="assignPhotos(checkbox, 'assign')" 
+                                   ng-click="castleService.assignPhotos(checkbox, 'assign')" 
                                    aria-label="assign photo">
                             Assign
                         </md-button>
                         <md-button ng-show="checkbox.c && castleService.assignPhotoMode && checkbox.a" 
-                                   class="" ng-click="assignPhotos(checkbox, 'accept')" 
+                                   class="" ng-click="castleService.assignPhotos(checkbox, 'accept')" 
                                    aria-label="accept assigned photo">
                             Accept
                         </md-button>
                         <md-button ng-show="checkbox.c && castleService.assignPhotoMode && checkbox.a" 
-                                   class="" ng-click="assignPhotos(checkbox, 'cancel')" 
+                                   class="" ng-click="castleService.assignPhotos(checkbox, 'cancel')" 
                                    aria-label="cancel assigned photo">
                             Cancel
                         </md-button>
@@ -292,17 +300,18 @@
     <div layout="row" layout-align="start center" ng-show="itemSet()">
         <md-button ng-click="toggleAnswered()" 
                    aria-label="is answered" 
-                   class="btnBackground" 
-                   style="">
-            <span >Complete</span>
-            <md-icon md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
+                   ng-class="item.answered ? 'md-primary' : 'btnBackground'" >
+            <md-icon style="min-width:24px" 
+                     md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
+            <span>Complete</span> 
         </md-button>
         <md-button ng-click="clearQuestion(item)" 
                    aria-label="clear" 
                    class="md-raised md-primary" 
                    style="">
+<!--<md-icon md-svg-icon="cancel"></md-icon>-->
             <span>Clear Answers</span> 
-            <md-icon md-svg-icon="cancel"></md-icon>
+            
         </md-button>
     </div>
     </md-content>

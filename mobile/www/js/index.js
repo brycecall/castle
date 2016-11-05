@@ -145,6 +145,7 @@ app.config(function ($mdIconProvider) {
         .icon('clear_selection', './mdicons/ic_settings_backup_restore_24px.svg')
         .icon('new_report_folder', './mdicons/ic_create_new_folder_24px.svg')
         .icon('reverse', './mdicons/ic_swap_vertical_circle_24px.svg')
+        .icon('swap_vert', './mdicons/ic_swap_vert_24px.svg')
         .icon('sort', './mdicons/ic_sort_24px.svg')
         .icon('check_box', './mdicons/ic_check_box_24px.svg')
         .icon('check_box_outline_blank', './mdicons/ic_check_box_outline_blank_24px.svg')
@@ -296,7 +297,7 @@ app.controller('indexController', function ($scope, castleService,
 // Create the factory / service that is shared among all the controllers
 app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
     var factory = {};
-    factory.reports = null;
+    factory.reports = reportTemplates;
     factory.currentReport = reportTemplates[0];
     factory.backdrop = false;
     factory.selectedPage = null;
@@ -435,9 +436,41 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
         factory.currentPage.color = DEFAULT_COLOR;
         factory.assignPhotoMode = false;
         factory.selectedImages = [];
-        if (factory.photoAppendixIndex != null)
-            $state.go("create",{'sectionIndex':factory.photoAppendixIndex});
+        $state.go("photoAppendix");
     };
+    
+     factory.assignPhotos = function(array, action) {
+         if (array.i == null) {
+             array.i = [];
+         }
+         var photoAppendix = factory.currentReport.photoAppendix;
+
+         for(var i = 0; i < factory.selectedImages.length; i++) {
+             var index = factory.selectedImages[i];
+             if (index >= 0 && index < photoAppendix.length) {
+                 if (action == 'assign') {
+                    array.i.push( photoAppendix[index] );
+                 } else if (action == 'accept') {
+                    photoAppendix.splice(index, 1);
+                 } else if (action == 'cancel') {
+                     var removeIndex = $.inArray(photoAppendix[index], array.i)
+                     if (removeIndex > -1) {
+                         array.i.splice(removeIndex, 1);
+                     }
+                     
+                 }
+             }
+         }
+         
+         if (action == 'assign') {
+             array.a = true;
+         } else if (action == 'cancel' || action == 'accept') {
+             array.a = false;
+         }
+         
+         if (action == 'accept')
+            factory.cancelAssignPhotoMode();
+     };
 
     // Fires when Cordova is fully loaded
     document.addEventListener('deviceready', function () {

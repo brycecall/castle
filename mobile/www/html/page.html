@@ -5,7 +5,7 @@
                                         {{page.answeredCount}}/{{page.items.length}}</h1>
         <span flex=""></span>
     </span>
-       <!--           PAGES-->
+    <!--           PAGES-->
     <md-card id="pageParent" ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment':'#pageParent'}" ng-model="page.items">
         <div ng-repeat="item in page.items track by $index" layout="column" style="background-color:white;">
            <span>
@@ -71,7 +71,7 @@
                 <span>add question</span>
             </md-button>
             <div style="margin-bottom:85px;"></div>
-    
+     </md-content>
     <div class="mainButtonMenu">
             <md-button class="md-fab md-primary" 
                        style="margin-right:27px;" 
@@ -79,31 +79,6 @@
                        ng-click="capturePhoto(1, unassignedImages, true, true)">
                 <md-icon md-svg-icon="camera" ></md-icon>
             </md-button>
-<!--
-        <md-menu md-position-mode="target-right target">
-            <md-button class="md-fab md-primary" style="margin-right:27px;" ng-click="$mdOpenMenu($event)" aria-label="stuff">
-                <md-icon md-svg-icon="add" md-menu-origin ng-class="{'mainButton' : show_add_icons, 'mainButtonReverse' : !show_add_icons}"></md-icon>
-            </md-button>
-            <md-menu-content width="3">
-                <md-menu-item>
-                    <md-button ng-click="showItemDialog($event)" 
-                       layout="row" layout-align="start center"
-                       aria-label="add question">
-                        <md-icon md-svg-icon="add"></md-icon>
-                        <span>Question</span>
-                    </md-button>
-                </md-menu-item>
-                <md-menu-item>
-                    <md-button ng-click="capturePhoto(1, unassignedImages, true, true)" 
-                       layout="row" layout-align="start center"
-                       aria-label="add image">
-                        <md-icon md-svg-icon="camera"></md-icon>
-                        <span>Image</span>
-                    </md-button>
-                </md-menu-item>
-            </md-menu-content>
-        </md-menu>
--->
     </div>    
-    </md-content>
+   
 </div> <!--end controller-->

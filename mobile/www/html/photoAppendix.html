@@ -37,6 +37,12 @@
                         </div>
                     </div>
                 </div>
+                <div ng-if="report.photoAppendix.length <= 0">
+                <h1 class="md-subhead">
+                    No photos here!
+                </h1>
+                <span class="md-caption">All photos not assigned to a question will show up here.</span>
+                </div>
             </div>
     </md-content>
     <div class="mainButtonMenu">

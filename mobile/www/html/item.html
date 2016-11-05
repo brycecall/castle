@@ -5,10 +5,11 @@
   </div>
   <md-divider></md-divider>
 -->
-   <md-content style="padding: 8px; background-color: white;">
+   <md-content style="padding-left: 8px; background-color: white; overflow-x: hidden;">
+
 
     <div layout="row" layout-align="start center"  flex-wrap>
-        <h3 class="md-title" style="margin-bottom:2px;">{{item.title}}</h3>
+        <h2 class="md-subhead insTitle" style="margin-bottom:2px;">{{item.title}}</h2>
         <span flex=""></span>
       <md-switch ng-if="castleService.editMode" ng-model="item.required" style="margin:1px" aria-label="Is Required">
         Required
@@ -23,6 +24,7 @@
         </md-button>
 -->
     </div>
+ 
 
 <div ng-if="castleService.editMode">
     <md-menu>
@@ -245,7 +247,7 @@
         </div>
 
         <!--                           NUMBER-->
-        <div ng-if="item.type == 'number'">
+        <div ng-if="item.type == 'number'" style="padding-left:8px;">
             <md-input-container layout="row">
                 <label>{{item.title}}</label>
                 <input ng-model="item.value" type="number" flex="50" flex-sm="">
@@ -253,7 +255,7 @@
         </div>
 
         <!--                           TEXT-->
-        <div ng-if="item.type == 'text'  && (item.required == true || castleService.hideShowOptions.showNonRequired)">
+        <div ng-if="item.type == 'text'  && (item.required == true || castleService.hideShowOptions.showNonRequired)"  style="padding-left:8px;">
             <md-input-container>
                 <label>{{item.title}}</label>
                 <input ng-model="item.value" type="text">
@@ -261,7 +263,7 @@
         </div>
 
         <!--                           SELECT-->
-        <div ng-if="item.type == 'select'">
+        <div ng-if="item.type == 'select'"  style="padding-left:8px;">
             <md-input-container>
                 <md-select ng-model="item.value" placeholder="Select {{item.title}}">
                     <md-option ng-repeat="radiovalue in item.content track by $index" ng-value="radiovalue.title">{{radiovalue.title}}</md-option>
@@ -283,7 +285,7 @@
         </div>
 
         <!--                           DATE-->
-        <div ng-if="item.type == 'date'">
+        <div ng-if="item.type == 'date'"  style="padding-left:8px;">
             <md-input-container layout="row">
                 <label>{{item.title}}</label>
                 <input ng-model="tempDate" onchange="setItem(item, tempDate)" type="date" flex-gt-sm="50" flex-sm="">

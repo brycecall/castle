@@ -19049,7 +19049,7 @@ var reportTemplates = [
               ]
             },
             {
-              "title": "Building Materials (Refer To Specific Sections)",
+              "title": "Building Materials",
               "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",

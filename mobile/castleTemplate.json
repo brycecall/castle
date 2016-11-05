@@ -7427,66 +7427,6 @@ var reportTemplates = [
               ]
             },
             {
-              "title": "Service Size (AMPS)",
-              "required": false, "answered":false,
-              "showvalue": false,
-              "type": "checkbox",
-              "value": [],
-              "content": [
-                {
-                  "title": "Not Applicable"
-                },
-                {
-                  "title": "400"
-                },
-                {
-                  "title": "200"
-                },
-                {
-                  "title": "(2) 200"
-                },
-                {
-                  "title": "150"
-                },
-                {
-                  "title": "125"
-                },
-                {
-                  "title": "100"
-                },
-                {
-                  "title": "(2) 100"
-                },
-                {
-                  "title": "60"
-                },
-                {
-                  "title": "50"
-                },
-                {
-                  "title": "Various Amperages"
-                }
-              ]
-            },
-            {
-              "title": "Service Size (VOLTS)",
-              "required": false, "answered":false,
-              "showvalue": false,
-              "type": "checkbox",
-              "value": [],
-              "content": [
-                {
-                  "title": "Not Applicable"
-                },
-                {
-                  "title": "120 / 240"
-                },
-                {
-                  "title": "3-phase (208 - 230)"
-                }
-              ]
-            },
-            {
               "title": "Ground Connection",
               "required": false, "answered":false,
               "showvalue": false,
@@ -7718,29 +7658,62 @@ var reportTemplates = [
               ]
             },
             {
-              "title": "Amps",
+              "title": "Service Size (AMPS)",
               "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
               "content": [
                 {
-                  "title": "NEED MORE DATA"
+                  "title": "Not Applicable"
+                },
+                {
+                  "title": "400"
+                },
+                {
+                  "title": "200"
+                },
+                {
+                  "title": "(2) 200"
+                },
+                {
+                  "title": "150"
+                },
+                {
+                  "title": "125"
+                },
+                {
+                  "title": "100"
+                },
+                {
+                  "title": "(2) 100"
+                },
+                {
+                  "title": "60"
+                },
+                {
+                  "title": "50"
+                },
+                {
+                  "title": "Various Amperages"
                 }
               ]
             },
             {
-              "title": "Volts",
+              "title": "Service Size (VOLTS)",
               "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
               "content": [
                 {
-                  "title": "240"
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "OTHER (NEED MORE DATA)"
+                  "title": "120 / 240"
+                },
+                {
+                  "title": "3-phase (208 - 230)"
                 }
               ]
             },

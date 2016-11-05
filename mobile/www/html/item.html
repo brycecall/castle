@@ -7,12 +7,13 @@
 -->
    <md-content style="padding: 8px">
 
-    <div layout="row" layout-align="start center" >
+    <div layout="row" layout-align="start center"  flex-wrap>
         <h3 class="md-title" style="margin-bottom:2px;">{{item.title}}</h3>
         <span flex=""></span>
-      <md-switch ng-model="item.required" style="margin:1px" aria-label="Is Required">
+      <md-switch ng-if="castleService.editMode" ng-model="item.required" style="margin:1px" aria-label="Is Required">
         Required
       </md-switch>
+<!--
         <md-button ng-click="toggleAnswered()" 
                    aria-label="is answered" 
                    ng-class="item.answered ? 'md-primary' : 'btnBackground'" >
@@ -20,6 +21,7 @@
                      md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
             <span>Complete</span> 
         </md-button>
+-->
     </div>
 
 <div ng-if="castleService.editMode">

@@ -226,7 +226,7 @@ app.controller('indexController', function ($scope, castleService,
             link: "create({sectionIndex:'default'})"
         },
         {
-            title: "Scheduled Jobs",
+            title: "Saved Jobs",
             icon: "book",
             link: "saved"
         },

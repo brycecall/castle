@@ -3,7 +3,7 @@ app.controller('templateController', function ($scope, castleService, $state) {
     $scope.reportTemplates = [];
     castleService.currentPage.title = "Templates";
 
-    $scope.defaultReport = reportOne;
+//    $scope.defaultReport = reportOne;
     $scope.switchReport = function(sReport) {
         castleService.currentReport = sReport;
         $state.go("create");

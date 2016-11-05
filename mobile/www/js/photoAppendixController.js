@@ -5,8 +5,11 @@
      $scope.report = castleService.currentReport;
      castleService.currentPage.showIcon = false;
      castleService.currentPage.title = "Photo Appendix";
+     castleService.currentPage.toggleNavMenu = false;
      castleService.currentPage.showExtraMenu = false;
-     
+     castleService.currentPage.icon = "back";
+     castleService.currentPage.go = {state:"inspection", 
+                                     params:{'sectionIndex':'default'}};
      
      $scope.enterAssignPhotosMode = function() {
          castleService.assignPhotoMode = true;

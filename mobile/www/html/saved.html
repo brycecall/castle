@@ -9,7 +9,7 @@
         <div layout="row" class="flex-wrap" layout-align="start center">
              <md-input-container class="black">
                  <md-icon md-svg-icon="sort"></md-icon>
-                <md-select ng-model="orderAttribute">
+                <md-select ng-model="orderAttribute" aria-label="sort by">
                     <md-option ng-repeat="orderOption in orderAttributeOptions" 
                         ng-value="orderOption">{{orderOption}}</md-option>
                 </md-select>
@@ -19,35 +19,50 @@
                <md-icon md-svg-icon="swap_vert"></md-icon>  Reverse Order
             </md-button>
             <md-button 
-               ng-click="switchReport(defaultReport)" 
                ui-sref="create" 
                class="md-primary">
                <md-icon md-svg-icon="new_report"></md-icon> New Job
             </md-button>
         </div>
-        <div layout="row" layout-align="start center" class="flex-wrap" >
-            <md-card ng-repeat="sReport in castleService.reports | 
+        
+        <h1 class="md-subhead insTitle">Scheduled</h1>
+        <div layout="row" layout-align="start stretch" class="flex-wrap" >
+         <md-card ng-repeat="sReport in castleService.reports | 
                                 orderBy:orderAttribute:reverse"
                      ng-click="switchReport(sReport)" 
-                     ui-sref="inspection({sectionIndex:'default'})">
+                     class="click">
+                <md-card-content>
+                    <div class="">#12345 {{sReport.Id}}</div>
+                    <div class="md-subhead">{{sReport.title}}</div>
+                    <div class="md-caption">{{sReport.date | date}}</div>
+                </md-card-content>
+            </md-card>
+            <md-card class="frameStyle click" 
+                     ui-sref="create" 
+                     layout="column"
+                     layout-align="center center">
+                <div>
+                    <md-icon class="" md-svg-icon="add_circle_outline" 
+                    style="height:35px; width:35px; margin:5px;"></md-icon>
+                    <div>Create New Job</div>
+                </div>
+                
+            </md-card>
+        </div>
+        <h1 class="md-subhead insTitle">Recent</h1>
+        <div layout="row" layout-align="start stretch" class="flex-wrap" >
+         <md-card ng-repeat="sReport in castleService.reports | 
+                                orderBy:orderAttribute:reverse"
+                     ng-click="switchReport(sReport)" 
+                     class="click">
                 <md-card-content>
                     <div class="">#12345</div>
                     <div class="md-subhead">{{sReport.title}}</div>
                     <div class="md-caption">12/29/1989</div>
                 </md-card-content>
-            </md-card>
-            <md-card class="frameStyle" 
-                     ui-sref="create" 
-                     layout="column"
-                     layout-align="center center">
-               <div>
-                <md-icon class="" md-svg-icon="add_circle_outline" 
-                    style="height:35px; width:35px; margin:5px;"></md-icon>
-                <div>Create New Job</div>
-                </div>
-                
-            </md-card>
+        </md-card>
         </div>
+<!--        <div class="md-caption insTitle" ng-if="castleService.reports">no recent jobs</div>-->
         </md-content>
 <!--
         </md-card-content>

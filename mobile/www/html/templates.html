@@ -3,43 +3,43 @@
    <md-card >
         <md-card-content >
 -->
-       <div style="padding:16px">
+       <md-content style="padding: 4px 16px 16px 16px;">
         <div layout="row" class="flex-wrap" layout-align="start center">
-             <md-input-container>
-                <md-icon md-svg-icon="sort"></md-icon>
-                <label>Order by</label>
-                <md-select ng-model="orderAttribute">
+             <md-input-container class="black">
+                 <md-icon md-svg-icon="sort"></md-icon>
+                <md-select ng-model="orderAttribute" aria-label="sort by">
                     <md-option ng-repeat="orderOption in orderAttributeOptions" 
-                               ng-value="orderOption">{{orderOption}}</md-option>
+                        ng-value="orderOption">{{orderOption}}</md-option>
                 </md-select>
             </md-input-container>
 
-            <md-button ng-click="reverse = !reverse" style="text-transform:none">
-               <md-icon md-svg-icon="reverse"></md-icon>  Reverse Order
+            <md-button ng-click="reverse = !reverse" class="black">
+               <md-icon md-svg-icon="swap_vert"></md-icon>  Reverse Order
             </md-button>
-
-            <md-button ui-sref="inspection({sectionIndex:'default'})" class="md-primary " >
-                <md-icon md-svg-icon="new_report"></md-icon>  New Template
+            <md-button 
+               ui-sref="create" 
+               class="md-primary">
+               <md-icon md-svg-icon="new_report"></md-icon> New Job
             </md-button>
         </div>
 
         <div layout="row" class="flex-wrap" >
            
-            <md-whiteframe class="md-whiteframe-1dp frameStyle" 
+            <md-card class="frameStyle" 
                layout="column"
                layout-align="center center">
-               <div>
+               <md-card-content>
                 <md-icon md-svg-icon="add_circle_outline" style="height:35px; width:35px; margin:5px;"></md-icon>
                 <div>New Template</div>
-                </div>
-            </md-whiteframe>
+                </md-card-content>
+            </md-card>
             
             <md-card  ng-repeat="reportTemplate in castleService.templates | orderBy:orderAttribute:reverse"
                ng-click="switchTemplate(reportTemplate)" layout-align="center center">
                 <span>{{reportTemplate.title}}</span>
             </md-card>
         </div>
-        </div>
+           </md-content>
 <!--
         </md-card-content>
     </md-card>

@@ -21,11 +21,6 @@ var reportTemplates = [
               "required": true, "answered":false,
               "type": "text",
               "value": ""
-            },
-            {
-              "title": "Report Info Images",
-              "type": "image",
-              "content": []
             }
           ]
     },
@@ -45,13 +40,13 @@ var reportTemplates = [
               "value": ""
             },
             {
-              "title": "Address",
+              "title": "Property Address",
               "required": true, "answered":false,
               "type": "text",
               "value": ""
             },
             {
-              "title": "Address Line 2",
+              "title": "Property Address Line 2",
               "required": true, "answered":false,
               "type": "text",
               "value": ""
@@ -142,7 +137,8 @@ var reportTemplates = [
               "title": "Person(s) Providing Property Access",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "radio",
+              "type": "checkbox",
+              "value": [],
               "content": [
                 {
                   "title": "Inspector"
@@ -165,8 +161,7 @@ var reportTemplates = [
                 {
                   "title": "Friends or Other"
                 }
-                ],
-              "value": ""
+              ]
             },
               {
               "title": "Year Built",

@@ -8,7 +8,6 @@
     <!--           PAGES-->
     <md-card id="pageParent" ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment':'#pageParent'}" ng-model="page.items">
         <div ng-repeat="item in page.items track by $index" layout="column" style="background-color:white;">
-           <span>
             <div layout="row" layout-align="start center" style="min-height:52px">
                 <div ng-show="castleService.editMode" class="handle" style="text-align:right; margin-left:8px;">
                      <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
@@ -25,10 +24,11 @@
                 <md-button
                     class="md-no-style subsection wideButton"
                     aria-label="Go to {{item.title}}"
-                    ui-sref="item({'sectionIndex':sectionIndex, 'pageIndex':pageIndex, 'itemIndex':$index})"
+                    ui-sref="item({'sectionIndex':sectionIndex, 
+                            'pageIndex':pageIndex, 'itemIndex':$index})"
                     >
                   <span ng-show="!castleService.editMode">
-                    <span style="padding-left:4px;" >{{item.title}}</span>
+                    <span style="padding-left:16px;" >{{item.title}}</span>
                   </span>
                 </md-button>
                 <span flex=""></span>
@@ -39,7 +39,8 @@
                            ng-click="remove(page.items, $index)">
                     <md-icon md-svg-icon="cancel"></md-icon>
                 </md-button>
-                <div ng-show="!castleService.editMode" style="width:45px; text-align:center" >
+                <div ng-show="!castleService.editMode" 
+                     style="min-width:45px;  text-align:center"  >
                     <md-icon ng-if="isItemSet(item)"
                              md-svg-icon="{{item.answered ? 'check' : getIcon(item.type)}}"
                              ng-class="item.answered ? 'md-primary' : 'greyed'"></md-icon>
@@ -47,7 +48,6 @@
                 </div>
             </div>
             <md-divider ng-if="!$last"></md-divider>
-            </span>
         </div>
     </md-card>
            <div ng-if="page.items.length == 0 && !castleService.editMode" style="margin-left:16px;">

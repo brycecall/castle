@@ -9492,23 +9492,6 @@ var reportTemplates = [
           "showvalue": false
         }
       ]
-    },
-    {
-      "title": "Photo Appendix",
-      "color": "#3C4DA1",
-      "answeredCount":0, "pages": [
-        {
-          "title": "Additional Photos",
-          "answeredCount":0, "items": [
-            {
-              "title": "Photo Appendix Images",
-              "type": "photoAppendix",
-              "content": []
-            }
-          ]
-        }
-      ],
-      "showvalue": false
     }
   ]
 }

@@ -21,11 +21,6 @@ var reportTemplates = [
               "required": true, "answered":false,
               "type": "text",
               "value": ""
-            },
-            {
-              "title": "Report Info Images",
-              "type": "image",
-              "content": []
             }
           ]
     },
@@ -45,13 +40,13 @@ var reportTemplates = [
               "value": ""
             },
             {
-              "title": "Address",
+              "title": "Property Address",
               "required": true, "answered":false,
               "type": "text",
               "value": ""
             },
             {
-              "title": "Address Line 2",
+              "title": "Property Address Line 2",
               "required": true, "answered":false,
               "type": "text",
               "value": ""
@@ -142,7 +137,8 @@ var reportTemplates = [
               "title": "Person(s) Providing Property Access",
               "required": false, "answered":false,
               "showvalue": false,
-              "type": "radio",
+              "type": "checkbox",
+              "value": [],
               "content": [
                 {
                   "title": "Inspector"
@@ -165,8 +161,7 @@ var reportTemplates = [
                 {
                   "title": "Friends or Other"
                 }
-                ],
-              "value": ""
+              ]
             },
               {
               "title": "Year Built",
@@ -180,7 +175,7 @@ var reportTemplates = [
               "required": true, "answered":false,
               "showvalue": false,
               "type": "number",
-              "value":0
+              "value":""
             },
             {
               "title": "Type of Property",
@@ -2782,7 +2777,7 @@ var reportTemplates = [
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
-              "value": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-070 of the Washington State Dept. of Licensing, The inspector is not required to enter: sub-floor crawl-spaces that require excavation or have an access opening less than eighteen inches by twenty-four inches or headroom less than eighteen inches beneath floor joists and twelve inches beneath girders (beams). Any areas that are not readily accessible due to obstructions, inadequate clearances or have conditions which, in the inspector's opinion, are hazardous to the health and safety of the inspector or will cause damage to components of the home, move stored items or debris or perform excavation to gain access. (BOLD THIS)Please refer to a licensed structural pest inspector (SPI) or pest control operator (PCO) to re-evaluate all issues that are suspected to be insect-related.(BOLD THIS)"
+              "value": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-070 of the Washington State Dept. of Licensing, The inspector is not required to enter: sub-floor crawl-spaces that require excavation or have an access opening less than eighteen inches by twenty-four inches or headroom less than eighteen inches beneath floor joists and twelve inches beneath girders (beams). Any areas that are not readily accessible due to obstructions, inadequate clearances or have conditions which, in the inspector's opinion, are hazardous to the health and safety of the inspector or will cause damage to components of the home, move stored items or debris or perform excavation to gain access. Please refer to a licensed structural pest inspector (SPI) or pest control operator (PCO) to re-evaluate all issues that are suspected to be insect-related."
             },
             {
               "title": "Roof System",
@@ -3532,7 +3527,7 @@ var reportTemplates = [
               "showvalue": false,
               "type": "presettext",
               "showcontent": true,
-              "value": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-150 of the Washington State Dept. of Licensing, the inspector is not required to determine the presence, extent, and type of insulation and vapor barriers concealed in the exterior walls, the thickness or R-value of insulation above the ceiling, in the walls or below the floors, or evaluate whether the type of material used to insulate pipes, ducts, jackets and boilers is a health hazard. (BOLD THIS)The efficiency and quantity of air ventilation and mechanical systems is not measured, calculated, or controls tested, other than to confirm that they exist, or actually turn a system on or off.(BOLD THIS)"
+              "value": "According to the Home Inspection Standards of Practice WAC &#167; 308-408C-150 of the Washington State Dept. of Licensing, the inspector is not required to determine the presence, extent, and type of insulation and vapor barriers concealed in the exterior walls, the thickness or R-value of insulation above the ceiling, in the walls or below the floors, or evaluate whether the type of material used to insulate pipes, ducts, jackets and boilers is a health hazard. The efficiency and quantity of air ventilation and mechanical systems is not measured, calculated, or controls tested, other than to confirm that they exist, or actually turn a system on or off."
             },
             {
               "title": "Access",
@@ -7432,66 +7427,6 @@ var reportTemplates = [
               ]
             },
             {
-              "title": "Service Size (AMPS)",
-              "required": false, "answered":false,
-              "showvalue": false,
-              "type": "checkbox",
-              "value": [],
-              "content": [
-                {
-                  "title": "Not Applicable"
-                },
-                {
-                  "title": "400"
-                },
-                {
-                  "title": "200"
-                },
-                {
-                  "title": "(2) 200"
-                },
-                {
-                  "title": "150"
-                },
-                {
-                  "title": "125"
-                },
-                {
-                  "title": "100"
-                },
-                {
-                  "title": "(2) 100"
-                },
-                {
-                  "title": "60"
-                },
-                {
-                  "title": "50"
-                },
-                {
-                  "title": "Various Amperages"
-                }
-              ]
-            },
-            {
-              "title": "Service Size (VOLTS)",
-              "required": false, "answered":false,
-              "showvalue": false,
-              "type": "checkbox",
-              "value": [],
-              "content": [
-                {
-                  "title": "Not Applicable"
-                },
-                {
-                  "title": "120 / 240"
-                },
-                {
-                  "title": "3-phase (208 - 230)"
-                }
-              ]
-            },
-            {
               "title": "Ground Connection",
               "required": false, "answered":false,
               "showvalue": false,
@@ -7723,29 +7658,62 @@ var reportTemplates = [
               ]
             },
             {
-              "title": "Amps",
+              "title": "Service Size (AMPS)",
               "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
               "content": [
                 {
-                  "title": "NEED MORE DATA"
+                  "title": "Not Applicable"
+                },
+                {
+                  "title": "400"
+                },
+                {
+                  "title": "200"
+                },
+                {
+                  "title": "(2) 200"
+                },
+                {
+                  "title": "150"
+                },
+                {
+                  "title": "125"
+                },
+                {
+                  "title": "100"
+                },
+                {
+                  "title": "(2) 100"
+                },
+                {
+                  "title": "60"
+                },
+                {
+                  "title": "50"
+                },
+                {
+                  "title": "Various Amperages"
                 }
               ]
             },
             {
-              "title": "Volts",
+              "title": "Service Size (VOLTS)",
               "required": false, "answered":false,
               "showvalue": false,
               "type": "checkbox",
               "value": [],
               "content": [
                 {
-                  "title": "240"
+                  "title": "Not Applicable"
                 },
                 {
-                  "title": "OTHER (NEED MORE DATA)"
+                  "title": "120 / 240"
+                },
+                {
+                  "title": "3-phase (208 - 230)"
                 }
               ]
             },
@@ -9524,23 +9492,6 @@ var reportTemplates = [
           "showvalue": false
         }
       ]
-    },
-    {
-      "title": "Photo Appendix",
-      "color": "#3C4DA1",
-      "answeredCount":0, "pages": [
-        {
-          "title": "Additional Photos for Further Clarification",
-          "answeredCount":0, "items": [
-            {
-              "title": "Photo Appendix Images",
-              "type": "photoAppendix",
-              "content": []
-            }
-          ]
-        }
-      ],
-      "showvalue": false
     }
   ]
 },

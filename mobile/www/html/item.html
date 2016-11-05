@@ -1,16 +1,21 @@
+
 <div ng-controller="itemController" flex="" layout="column" class="page" style="background-color:white">
+
 <!--
   <div class="subHeaderStyle shady" layout="row" layout-align="start center">
       sub menu
   </div>
   <md-divider></md-divider>
 -->
-   <md-content style="padding: 8px; background-color:white">
 
-    <div layout="row" layout-align="start center">
-        <h3 class="md-title" style="margin-bottom:2px;">{{item.title}}</h3>
+   <md-content style="background-color: white; overflow-x: hidden;">
+       <md-card style="padding-bottom: 2px;">
+
+
+    <div layout="row" layout-align="start center"  flex-wrap>
+        <h2 class="md-subhead insTitle" style="margin-bottom:2px;">{{item.title}}</h2>
         <span flex=""></span>
-      <md-switch ng-if="castleService.editMode" ng-model="item.required" style="margin:1px" aria-label="Is Required">
+      <md-switch ng-if="castleService.editMode" ng-model="item.required" style="margin:1px; padding-right:8px;" aria-label="Is Required">
         Required
       </md-switch>
 <!--
@@ -23,8 +28,9 @@
         </md-button>
 -->
     </div>
+ 
 
-<div ng-if="castleService.editMode">
+<div ng-if="castleService.editMode" style="padding-left:16px;">
     <md-menu>
         <md-button class="" 
            style="min-width:200px; 
@@ -52,7 +58,7 @@
         </md-menu-content>
     </md-menu>
     <br/>
-    <md-input-container class="md-block" style="margin-bottom:0">
+    <md-input-container class="md-block" style="margin-bottom:0; width:65%;">
       <label>Title</label>
       <input ng-model="item.title">
     </md-input-container>
@@ -115,7 +121,7 @@
         <!--                           CHECKBOX-->
         <div ng-if="item.type == 'checkbox'">
             <div ui-sortable="sortableOptions"  ng-model="item.content" >
-                <div ng-repeat="checkbox in item.content track by $index"                  
+                <div ng-repeat="checkbox in item.content track by $index"          ng-class="castleService.editMode ? 'edit_item' : 'list_item'"        
                      class="list_item flex-wrap" 
                      style="background-color:#FFF;" layout="column" layout-align="center stretch">
                      <div layout="column" layout-align="center stretch" ng-class="checkbox.c ? 'cStyles' : ''">
@@ -207,15 +213,16 @@
         <!--                            RADIO-->
         <div ng-if="item.type == 'radio'" id="radParent">
             <md-radio-group ng-model="item.value">
-               <div ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#radParent'}"   ng-model="item.content">
-                  <div ng-repeat="radiovalue in item.content track by $index">
+               <div ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#radParent'}"   ng-model="item.content">             
+                 <div ng-repeat="radiovalue in item.content track by $index">
                       <div layout="row" 
                            layout-align="start center"
-                           style="background-color:#FFF;">
+                           style="background-color:#FFF;"
+                           ng-class="castleService.editMode ? 'edit_item' : 'list_item'">
                          <div class="handle" ng-show="castleService.editMode">
                              <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
                          </div>
-                         <md-radio-button ng-value="radiovalue.title" class="">
+                         <md-radio-button ng-value="radiovalue.title" class="radioButton">
                             <span>{{radiovalue.title}}</span>
                          </md-radio-button>
                          <span flex=""></span>
@@ -297,7 +304,7 @@
         </div>
 
         <!--                           NUMBER-->
-        <div ng-if="item.type == 'number'">
+        <div ng-if="item.type == 'number'" style="padding-left:8px;">
             <md-input-container layout="row">
                 <label>{{item.title}}</label>
                 <input ng-model="item.value" type="number" flex="50" flex-sm="">
@@ -305,15 +312,15 @@
         </div>
 
         <!--                           TEXT-->
-        <div ng-if="item.type == 'text'  && (item.required == true || castleService.hideShowOptions.showNonRequired)">
+        <div ng-if="item.type == 'text'  && (item.required == true || castleService.hideShowOptions.showNonRequired)"  style="padding-left:8px;">
             <md-input-container>
                 <label>{{item.title}}</label>
                 <input ng-model="item.value" type="text">
             </md-input-container>
         </div>
-
+        
         <!--                           SELECT-->
-        <div ng-if="item.type == 'select'">
+        <div ng-if="item.type == 'select'"  style="padding-left:8px;">
             <md-input-container>
                 <md-select ng-model="item.value" placeholder="Select {{item.title}}">
                     <md-option ng-repeat="radiovalue in item.content track by $index" ng-value="radiovalue.title">{{radiovalue.title}}</md-option>
@@ -335,7 +342,7 @@
         </div>
 
         <!--                           DATE-->
-        <div ng-if="item.type == 'date'">
+        <div ng-if="item.type == 'date'"  style="padding-left:8px;">
             <md-input-container layout="row">
                 <label>{{item.title}}</label>
                 <input ng-model="tempDate" onchange="setItem(item, tempDate)" type="date" flex-gt-sm="50" flex-sm="">
@@ -476,5 +483,7 @@
             
         </md-button>
     </div>
+            </md-card>
     </md-content>
+      
 </div>

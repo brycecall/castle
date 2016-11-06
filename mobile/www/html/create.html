@@ -1,7 +1,7 @@
 <div ng-controller="createController" flex="" layout="column" class="page" id="nav">
    <md-content>
     <div class="centerPage" style="margin-bottom:85px;" id="centerPage">
-        <h3 class="md-subhead insTitle" >Report Template</h3>
+        <h3 class="md-subhead insTitle">Report Template</h3>
     <md-card>
         <md-input-container style="padding: 0px 16px 8px 16px;">
             <md-select ng-model="castleService.reportTemplate" 
@@ -160,8 +160,7 @@
         <!--                           DATE-->
         <div ng-if="item.type == 'date'" class="padMe md-block" style="padding:8px 0;">
              <md-datepicker ng-model="tempDate" 
-                            md-placeholder="{{item.title}}" 
-                            >
+                            md-placeholder="{{item.title}}">
              </md-datepicker>
 <!--
             <md-input-container class="md-block">
@@ -180,13 +179,45 @@
     </md-card>
 </div>
     <div layout="row" style="padding: 0 0 10px 0;" ng-hide="castleService.assignPhotoMode" class="flex-wrap">
-        <md-button ui-sref="saved" class="md-raised" aria-label="Save Report">Save Job</md-button>
+        <md-button  ng-click="showPrerenderedDialog($event)" class="md-raised" aria-label="Schedule Job">Schedule Job</md-button>
 <!--        <md-button ui-sref="saved" class="md-raised" aria-label="Schedule Report">Schedule Report</md-button>-->
-        <md-button ui-sref="inspection({sectionIndex:'default'})"  class="md-raised md-accent" aria-label="Start Report">Start Report Now!</md-button>
+        <md-button ui-sref="inspection({sectionIndex:'default'})"  
+                   class="md-raised md-accent" aria-label="Start Report">Start Report Now!</md-button>
     </div>
    </div>
      </div>
+     
+<script type="text/ng-template" id="myDialog.html">
+        <md-dialog focusOnOpen="false">
+            <md-toolbar layout="row" layout-align="center center">
+                <h3 class="md-subhead" style="padding:0 25px">Schedule Job</h3>
+                <span flex></span>
+                <md-button class="md-icon-button" aria-label="cancel" 
+                           ng-click="cancelDialog()">
+                    <md-icon md-svg-icon="close"></md-icon>
+                </md-button>
+            </md-toolbar>
+            <md-dialog-content>
+                <div class="md-dialog-content">
+                 <md-datepicker ng-model="tempDate" 
+                                md-placeholder="date">
+                 </md-datepicker>
+                 <br />
+                 <md-button class="md-icon-button">
+                 <md-icon md-svg-icon="schedule"></md-icon>
+                 </md-button>
+                 <input type="time" ng-model="" class="nonEditInput"/>
+                </div>
+            </md-dialog-content>
+        </md-dialog>
+</script>
+   
     </md-content>
+    
+
+
+
+<!--          </div>-->
 </div>
 
 <!--<div class="inspectionDialog">This could be a problem</div>-->

@@ -164,12 +164,13 @@ app.config(function ($mdIconProvider) {
         .icon('error', './mdicons/ic_error_24px.svg')
         .icon('short_text', './mdicons/ic_short_text_24px.svg')
         .icon('work', './mdicons/ic_work_24px.svg')
-        .icon('looks_one', './mdicons/ic_looks_one_24px.svg')
+        .icon('looks_one', './mdicons/numeric.svg')
         .icon('clear_all', './mdicons/ic_clear_all_24px.svg')
         .icon('visibility', './mdicons/ic_visibility_24px.svg')
         .icon('collections', './mdicons/ic_collections_24px.svg')
         .icon('save', './mdicons/ic_save_24px.svg')
         .icon('perm_media', './mdicons/ic_perm_media_24px.svg')
+        .icon('schedule', './mdicons/ic_schedule_24px.svg')
         ;
 });
 
@@ -198,10 +199,16 @@ app.controller('indexController', function ($scope, castleService,
         $mdSidenav("main").toggle();
     };
     
-    $scope.toggleEditMode = function() {
-        castleService.editMode = !castleService.editMode;
+    $scope.toggleEditMode = function(input) {
+        if(input === null || input === undefined) {
+            castleService.editMode = !castleService.editMode;
+        }
+        else {
+            castleService.editMode = input;
+        }
+        
         castleService.currentPage.color = castleService.editMode ? '#555' : 
-            castleService.defaultColor;
+                                          castleService.defaultColor;
      };
     
     $scope.menuNavigation = function() {

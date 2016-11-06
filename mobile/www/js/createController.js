@@ -135,7 +135,7 @@
         // console.log($scope.selectedPage + ' ' + pagetitle);
      };
 
-   $scope.showRequiredDialog = function (event) {
+     $scope.showRequiredDialog = function (event) {
         var confirm = $mdDialog.confirm()
               .title('Not all required items have been completed')
               .textContent('Are you sure you want to continue?')
@@ -149,6 +149,31 @@
          
         });
       };
+     
+      $scope.showPrerenderedDialog = function(ev) {
+        $mdDialog.show({
+          controller: DialogController,
+          templateUrl: 'myDialog.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose: true
+        });
+      };
+     
+    function DialogController($scope, $mdDialog) {
+        $scope.hide = function() {
+          $mdDialog.hide();
+        };
+
+       $scope.cancelDialog = function () {
+           $mdDialog.cancel();
+       };
+
+        $scope.answer = function(answer) {
+          $mdDialog.hide(answer);
+        };
+      }
+
      
      // validate that all required items have been filled out
      $scope.checkRequired = function () {

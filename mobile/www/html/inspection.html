@@ -57,7 +57,9 @@
                            class="editInput nonEditInput"
                            ng-class="castleService.editMode ? 'inputBorder' : 'nonEditInput'" />
                     <span flex=""></span>
-                    <md-icon md-svg-icon="check" ng-show="isSectionComplete(section)"></md-icon>
+                    <md-icon md-svg-icon="check" 
+                             ng-show="isSectionComplete(section)"
+                             class="md-primary" style="min-width:24px;"></md-icon>
                     <md-button
                        aria-label="toggle pages menu"
                        class="md-icon-button">
@@ -169,7 +171,7 @@
         </md-button>
     </md-card>   
 -->
-    <md-button ng-show="castleService.editMode"
+        <md-button ng-show="castleService.editMode"
                    class="md-raised md-accent"
                    aria-label="Add new Section"
                    ng-click="addNewSection(report.sections)">

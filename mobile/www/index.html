@@ -153,6 +153,15 @@
                         </div>
                     </md-toolbar>
                    <md-content class="console-content ui-view" id="scrollArea" ></md-content>
+                    <div class="centerButtonMenu" ng-if="castleService.editMode">
+                        <md-button class="md-fab" 
+                                   style="background-color:#555; "
+                                   aria-label="capture photo"
+                                   ng-click="toggleEditMode(false);">
+                            <md-icon md-svg-icon="close" ></md-icon>
+
+                        </md-button>
+                    </div> 
             </div>
         </div>
     </body>

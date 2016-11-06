@@ -8,36 +8,24 @@
   <md-divider></md-divider>
 -->
 
-   <md-content style="background-color: white; overflow-x: hidden;">
-       <md-card style="padding-bottom: 2px;">
-
-
-    <div layout="row" layout-align="start center"  flex-wrap>
-        <h2 class="md-subhead insTitle" style="margin-bottom:2px;">{{item.title}}</h2>
-        <span flex=""></span>
-      <md-switch ng-if="castleService.editMode" ng-model="item.required" style="margin:1px; padding-right:8px;" aria-label="Is Required">
-        Required
-      </md-switch>
-<!--
-        <md-button ng-click="toggleAnswered()" 
-                   aria-label="is answered" 
-                   ng-class="item.answered ? 'md-primary' : 'btnBackground'" >
-            <md-icon style="min-width:24px" 
-                     md-svg-icon="{{getAnsweredIcon(item.answered)}}"></md-icon>
-            <span>Complete</span> 
-        </md-button>
--->
-    </div>
+   <md-content  style="background-color: white; overflow-x: hidden;">
+       <md-card style="padding-bottom: 2px;"  
+                md-swipe-left="onSwipe('left')"
+                md-swipe-right="onSwipe('right')">
+        <div layout="row" layout-align="start center"  flex-wrap>
+            <h2 class="md-subhead insTitle" style="margin-bottom:2px;">{{item.title}}</h2>
+            <span flex=""></span>
+            <md-switch ng-if="castleService.editMode" 
+                     ng-model="item.required" 
+                     style="margin:1px; padding-right:8px;" 
+                     aria-label="Is Required">Required
+            </md-switch>
+        </div>
  
 
-<div ng-if="castleService.editMode" style="padding-left:16px;">
+<div ng-if="castleService.editMode" style="padding-left:8px;">
     <md-menu>
-        <md-button class="" 
-           style="min-width:200px; 
-                  background-color:#eee; 
-                  text-transform:none;
-                  text-align:left;
-                  margin: 6px 0 12px 0;" 
+        <md-button class="dropButton" 
            aria-label="select question type" 
            ng-click="$mdOpenMenu($event)">
             <span layout="row">
@@ -321,7 +309,7 @@
         
         <!--                           SELECT-->
         <div ng-if="item.type == 'select'"  style="padding-left:8px;">
-            <md-input-container>
+            <md-input-container >
                 <md-select ng-model="item.value" placeholder="Select {{item.title}}">
                     <md-option ng-repeat="radiovalue in item.content track by $index" ng-value="radiovalue.title">{{radiovalue.title}}</md-option>
                 </md-select>
@@ -371,7 +359,7 @@
 
             </div>
                 <div ng-if="item.i == null || item.i.length <= 0">
-                    <h1 class="md-caption">
+                    <h1 class="md-caption" style="padding-left:8px;">
                         No photos yet!
                     </h1>
                 </div>
@@ -401,7 +389,15 @@
                 </md-button>
             </div>   
         </div>
-        
+   <div ng-show="!itemSet() && !castleService.editMode">
+       <div class="md-caption" style="margin-left:8px;">Question not defined yet.</div>
+        <md-button class="md-raised"
+                   aria-label="edter edit mode"
+                   ng-click="castleService.editMode = true">
+                   <md-icon md-svg-icon="mode_edit" ></md-icon>
+                   Enter edit mode
+         </md-button>
+    </div>
         <div layout="row" layout-align="start center" 
                           ng-if="item.type != 'checkbox' && item.type != 'radio' && item.type != 'image'">
                         <md-button ng-show="!castleService.assignPhotoMode" 
@@ -457,15 +453,6 @@
         
       </div>
     </div>
-   <div ng-show="!itemSet() && !castleService.editMode">
-       <div class="md-caption" style="margin-left:8px;">Question not defined yet.</div>
-        <md-button class="md-raised"
-                   aria-label="edter edit mode"
-                   ng-click="castleService.editMode = true">
-                   <md-icon md-svg-icon="mode_edit" ></md-icon>
-                   Enter edit mode
-         </md-button>
-    </div>
     <div layout="row" layout-align="start center" ng-show="itemSet()">
         <md-button ng-click="toggleAnswered()" 
                    aria-label="is answered" 
@@ -484,6 +471,7 @@
         </md-button>
     </div>
             </md-card>
+    <div style="margin-bottom:85px;"></div>
     </md-content>
       
 </div>

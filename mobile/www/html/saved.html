@@ -26,22 +26,24 @@
         </div>
         
         <h1 class="md-subhead insTitle">Scheduled</h1>
-        <div layout="row" layout-align="start stretch" class="flex-wrap" >
+        <div layout="column"   >
          <md-card ng-repeat="sReport in castleService.reports | 
                                 orderBy:orderAttribute:reverse"
                      ng-click="switchReport(sReport)" 
-                     class="click">
+                     class="click" flex="">
                 <md-card-content>
                     <div class="">#12345 {{sReport.Id}}</div>
                     <div class="md-subhead">{{sReport.title}}</div>
-                    <div class="md-caption">{{sReport.date | date}}</div>
+                    <div class="md-caption">{{sReport.date | date}}
+                    </div>
                 </md-card-content>
             </md-card>
-            <md-card class="frameStyle click" 
+            <md-card ng-if="castleService.reports.length <= 0" 
+                     class="frameStyle click" 
                      ui-sref="create" 
                      layout="column"
                      layout-align="center center">
-                <div>
+                <div >
                     <md-icon class="" md-svg-icon="add_circle_outline" 
                     style="height:35px; width:35px; margin:5px;"></md-icon>
                     <div>Create New Job</div>
@@ -50,7 +52,7 @@
             </md-card>
         </div>
         <h1 class="md-subhead insTitle">Recent</h1>
-        <div layout="row" layout-align="start stretch" class="flex-wrap" >
+        <div layout="column" >
          <md-card ng-repeat="sReport in castleService.reports | 
                                 orderBy:orderAttribute:reverse"
                      ng-click="switchReport(sReport)" 

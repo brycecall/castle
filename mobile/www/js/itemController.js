@@ -27,12 +27,39 @@
      $scope.showAddItemMenu = false;
      var pictureSource = null;
      var destinationType = null;
+     
+     $scope.onSwipe = function(direction) {
+        var itemIndex = $scope.itemIndex;
+        var pageLength = $scope.page.items.length;
+        switch(direction) {
+            case "left":
+                itemIndex++;
+                break;
+            case "right":
+                itemIndex--;
+                break;
+            default:
+                return;
+        }
+         if (itemIndex >= pageLength || itemIndex < 0)
+         {
+          $state.go("page", {'sectionIndex':$scope.sectionIndex, 
+                             'pageIndex':$scope.pageIndex});
+         }
+         else 
+         {
+         $state.go("item", {'sectionIndex':$scope.sectionIndex, 
+                            'pageIndex':$scope.pageIndex,
+                            'itemIndex':itemIndex
+                           });
+         }
+     };
 
 
      $scope.itemSet = function() {
-        return ($scope.item.type !== null && 
-                $scope.item.type !== undefined && 
-                $scope.item.type !== '')
+        return ($scope.item.type !== undefined
+             && $scope.item.type !== null 
+             && $scope.item.type !== '')
      };
 
      $scope.sortableOptions = {

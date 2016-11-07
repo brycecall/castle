@@ -157,10 +157,14 @@
           parent: angular.element(document.body),
           targetEvent: ev,
           clickOutsideToClose: true
-        });
+        }).then(function(answer) {
+            $state.go('saved');
+          }, function() {
+
+          });
       };
      
-    function DialogController($scope, $mdDialog) {
+    function DialogController($scope, $mdDialog, $state) {
         $scope.hide = function() {
           $mdDialog.hide();
         };

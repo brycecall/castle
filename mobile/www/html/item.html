@@ -126,13 +126,12 @@
                     <span flex=""></span>
                      <md-button ng-show="castleService.editMode" class="md-icon-button" 
                                aria-label="add sub question"
-                               ng-click="remove(item.content, $index)" 
-                     >
+                               ng-click="remove(item.content, $index)">
                             <md-icon md-svg-icon="cancel"></md-icon>
                      </md-button> 
                      </div>
                     <div layout="row" layout-align="start center" ng-show="checkbox.c" class="" style="margin-left:15px;">
-                        <md-button ng-show="!castleService.assignPhotoMode" class="md-icon-button" ng-click="showRapidRemarksDialog($event, itemIndex, $index)" aria-label="add rapid remark">
+                        <md-button ng-show="!castleService.assignPhotoMode" class="md-icon-button" ng-click="showRapidRemarksDialog($event, checkbox)" aria-label="add rapid remark">
                             <md-icon md-svg-icon="{{(checkbox.rrTitle == null) ? 'rrAdd' : 'rrEdit'}}" ng-class="(checkbox.rrTitle == null) ? '' : 'md-accent'"></md-icon>
                         </md-button>
                         <md-menu style="text-align:center; padding:0;">
@@ -201,7 +200,8 @@
         <!--                            RADIO-->
         <div ng-if="item.type == 'radio'" id="radParent">
             <md-radio-group ng-model="item.value">
-               <div ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#radParent'}"   ng-model="item.content">             
+               <div ui-sortable="{'ui-floating': false, 'handle': '.handle', 'containment': '#radParent'}" 
+                    ng-model="item.content">             
                  <div ng-repeat="radiovalue in item.content track by $index">
                       <div layout="row" 
                            layout-align="start center"
@@ -225,14 +225,17 @@
                          style="margin-left:15px;">
                         <md-button ng-show="!castleService.assignPhotoMode" 
                                    class="md-icon-button" 
-                                   ng-click="showRapidRemarksDialog($event, itemIndex, $index)" 
+                                   ng-click="showRapidRemarksDialog($event, radiovalue)" 
                                    aria-label="add rapid remark">
                                    <md-icon md-svg-icon="{{(radiovalue.rrTitle == null) ? 'rrAdd' : 'rrEdit'}}" 
                                             ng-class="(radiovalue.rrTitle == null) ? '' : 'md-accent'"></md-icon>
                         </md-button>
                         <md-menu style="text-align:center; padding:0;">
-                            <md-button class="md-icon-button" aria-label="view images" ng-click="$mdOpenMenu()" ng-show="radiovalue.title == item.value">
-                                <md-icon md-svg-icon="image" ng-class="(radiovalue.i != '' && radiovalue.i != null) ? 'md-accent' : ''"></md-icon>
+                            <md-button class="md-icon-button" aria-label="view images" 
+                                       ng-click="$mdOpenMenu()" 
+                                       ng-show="radiovalue.title == item.value">
+                                <md-icon md-svg-icon="image" ng-class="(radiovalue.i != '' && radiovalue.i != null) ? 
+                                                                        'md-accent' : ''"></md-icon>
                             </md-button>
                             <md-menu-content>
                                 <md-content style="max-height:480px;  overflow-y:scroll;">
@@ -402,7 +405,7 @@
                           ng-if="item.type != 'checkbox' && item.type != 'radio' && item.type != 'image'">
                         <md-button ng-show="!castleService.assignPhotoMode" 
                                    class="md-icon-button" 
-                                   ng-click="showRapidRemarksDialog($event, itemIndex, $index)" 
+                                   ng-click="showRapidRemarksDialog($event, item)" 
                                    aria-label="add rapid remark">
                             <md-icon md-svg-icon="{{(item.rrTitle == null) ? 'rrAdd' : 'rrEdit'}}" 
                                      ng-class="(item.rrTitle == null) ? '' : 'md-accent'"></md-icon>
@@ -413,7 +416,10 @@
                             </md-button>
                             <md-menu-content>
                                 <md-content style="max-height:480px;  overflow-y:scroll;">
-                                    <md-card ng-repeat="checkboxImage in item.i track by $index" style="position:relative;" layout="column" layout-align="center end">
+                                    <md-card ng-repeat="checkboxImage in item.i track by $index" 
+                                             style="position:relative;" 
+                                             layout="column" 
+                                             layout-align="center end">
                                         <md-button ng-click="removeIMG(item.i, $index)" class="md-icon-button cancelIMG">
                                             <md-icon md-svg-icon="delete" aria-label="rapid remarks"></md-icon>
                                         </md-button>

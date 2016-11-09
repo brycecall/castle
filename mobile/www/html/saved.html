@@ -1,5 +1,5 @@
 
-<div ng-controller="savedController"  class="page" layout="column">
+<div ng-controller="savedController"  class="page heightTabs" layout="column">
 
 <!--
     <md-card >
@@ -40,8 +40,8 @@
 -->
         
 <!--        <md-card>-->
-        <md-tabs md-border-bottom style="height:100%;">
-            <md-tab label="Scheduled" style="height:100%;">
+        <md-tabs md-border-bottom>
+            <md-tab label="Scheduled">
                 <md-content>
                  <div layout="row" class="flex-wrap" layout-align="start center">
                  <md-menu>
@@ -55,7 +55,7 @@
                                          style="padding: 8px 8px 0px 16px;">
                            <md-radio-button ng-repeat="orderOption in orderAttributeOptions"
                                             ng-value="orderOption"
-                                            aria-label="{{orderOption}}">
+                                            aria-label="{{orderOption}} ">
                              {{orderOption}}
                            </md-radio-button>
                          </md-radio-group>
@@ -63,7 +63,8 @@
                  </md-menu>
                  
                  <md-button ng-click="reverse = !reverse" 
-                            class="md-icon-button black">
+                            class="md-icon-button black"
+                            aria-label="reverse order">
                     <md-icon md-svg-icon="swap_vert"></md-icon>
                  </md-button>
                  
@@ -75,7 +76,7 @@
                 </div>
                 <div layout="column" >
                 <md-card ng-repeat="sReport in castleService.reports | 
-                                    orderBy:orderAttribute:reverse"
+                                    orderBy:orderAttribute:reverse track by $index"
                          ng-click="switchReport(sReport)" 
                          class="click" flex="">
                     <md-card-content>
@@ -133,7 +134,7 @@
         </div>
                 <div layout="column" >
                  <md-card ng-repeat="sReport in castleService.reports | 
-                                        orderBy:orderAttribute:reverse"
+                                        orderBy:orderAttribute:reverse track by $index"
                              ng-click="switchReport(sReport)" 
                              class="click">
                         <md-card-content>

@@ -119,35 +119,33 @@
      };
 
 
-
-      $scope.linkRemark = function(remarkItem, rItem, clear) {
+      $scope.linkRemark = function(item, rItem, clear) {
             if (clear) {
-                remarkItem.rrTitle = null;
-                remarkItem.rrVal = null;
-                $scope.rItem.rrTitle = null;
-                $scope.rItem.rrVal = null;
+                item.rrTitle = null;
+                item.rrVal = null;
+                rItem.rrTitle = null;
+                rItem.rrVal = null;
             } else {
-                remarkItem.rrTitle = rItem.rrTitle;
-                remarkItem.rrVal = rItem.rrVal;
+                item.rrTitle = rItem.rrTitle;
+                item.rrVal = rItem.rrVal;
             }
       };
 
-
-      $scope.addRapidRemark = function (remarkTitle, remarkValue, itemIndex, checkboxIndex) {
-             console.log("Add rapid remark");
-             $scope.report.sections[$scope.sectionIndex]
-                 .pages[$scope.selectedPage]
-                 .items[$rootScope.itemIndex]
-                 .content[$rootScope.checkboxIndex]
-                 .rrTitle = remarkTitle;
-             $scope.report.sections[$scope.sectionIndex]
-                 .pages[$scope.selectedPage]
-                 .items[$rootScope.itemIndex]
-                 .content[$rootScope.checkboxIndex]
-                 .rrVal = remarkValue;
-            //console.log(JSON.stringify($scope.report.sections[$scope.sectionIndex].pages[$scope.selectedPage], null, 2));
+     
+         $scope.showRapidRemarksDialog = function (event, item) {
+              $rootScope.item = item;
+              $mdDialog
+                 .show({
+                     controller: 'itemController',
+                     templateUrl: './html/rapidRemarksDialog.html',
+                     parent: angular.element(document.body),
+                     targetEvent: event,
+                     clickOutsideToClose: true
+                    // ,preserveScope: true
+                 }).finally(function(){
+                  $rootScope.item = null;
+              });
          };
-
 
      $scope.editRapidRemarks = function($event) {
           $mdDialog
@@ -172,28 +170,6 @@
         castleService.rapidRemarks.push(rapidRemark);
          $scope.sectionTitle = null;
      };
-
-     $scope.showRapidRemarksDialog = function (event, itemIndex, checkboxIndex) {
-          $rootScope.itemIndex = itemIndex;
-          $rootScope.checkboxIndex = checkboxIndex;
-
-                  //console.log("ItemIndex: " + itemIndex + " checkboxindex: " +  checkboxIndex);
-          $mdDialog
-             .show({
-                 controller: 'itemController',
-                 templateUrl: './html/rapidRemarksDialog.html',
-                 parent: angular.element(document.body),
-                 targetEvent: event,
-                 clickOutsideToClose: true
-                // ,preserveScope: true
-             }).finally(function(){
-              $rootScope.itemIndex = null;
-              $rootScope.checkboxIndex = null;
-           // console.log("FINALLY!");
-          });
-     };
-
-
 
      $scope.cancelDialog = function () {
          $mdDialog.cancel();

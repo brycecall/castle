@@ -158,6 +158,7 @@
           targetEvent: ev,
           clickOutsideToClose: true
         }).then(function(answer) {
+            castleService.reportTemplates.push(castleService.currentReport);
             $state.go('saved');
           }, function() {
 

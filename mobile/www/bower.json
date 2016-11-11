@@ -18,21 +18,23 @@
     "angular": "^1.5.8",
     "angular-animate": "^1.5.8",
     "angular-aria": "^1.5.8",
-    "angular-material": "^1.0.9",
-    "angular-touch": "~1.5.8",
-    "angular-ui": "~0.4.0",
-    "angular-ui-router": "^0.3.1",
-    "angular-ui-sortable": "~0.14.3",
-    "bootstrap": "~3.3.7",
-    "jquery": "~3.1.0",
-    "jquery-ui": "~1.12.0",
-    "material-design-icons": "^2.2.3"
+    "angular-material": "^1.1.1",
+    "angular-touch": "^1.5.8",
+    "angular-ui": "^0.4.0",
+    "angular-ui-router": "^0.3.2",
+    "angular-ui-sortable": "^0.15.0",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.1",
+    "jquery-ui": "^1.12.1",
+    "material-design-icons": "^3.0.1"
   },
   "resolutions": {
     "angular": "^1.5.8",
     "angular-route": "~1.4.5",
     "angular-touch": "~1.4.5",
-    "material-design-icons": "^2.2.3"
+    "material-design-icons": "^3.0.1",
+    "jquery": "1.9.1 - 3",
+    "angular-ui-sortable": "^0.15.0"
   },
   "dimitrk.exclude-indexing-filetree.excludeList": [
     ".git(?!ignore)",

@@ -3,82 +3,82 @@ var reportTemplates = [
   "name": "My New Template",
   "title": "My New Template",
   "date":"11/3/2016",
+  "time":"",
   "type":"template",
   "inspectiontype":"",
   "status":"",
-  "meta":[
-      {
-          "title":"Report Information",
-          "answeredCount":0, "items": [
-            {
-              "title": "Report ID#",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            },
-            {
-              "title": "Report Title",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            }
-          ]
-    },
-      {
-          "title":"Client Information",
-          "answeredCount":0, "items": [
-            {
-              "title": "First Name",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            },
-            {
-              "title": "Last Name",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            },
-            {
-              "title": "Property Address",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            },
-            {
-              "title": "Property Address Line 2",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            },
-            {
-              "title": "City",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            },
-            {
-              "title": "State",
-              "required": true, "answered":false,
-              "type": "text",
-              "value": ""
-            },
-            {
-              "title": "Postal Code",
-              "required": true, "answered":false,
-              "type": "number",
-              "value": ""
-            },
-            {
-              "title": "Client Info Images",
-              "type": "image",
-              "content": []
-            }
-          ]
-    }
+  "metaOrder":[
+      {"name":"ReportInformation"},
+      {"name":"ClientInformation"}
   ],
+  "meta": {
+      "ReportInformation": {
+            "title":"Report Information",
+            "items": {
+                "reportId":{
+                  "title": "Report ID#",
+                  "required": true, "answered":false,
+                  "type": "text",
+                  "value": ""
+                },
+                "reportTitle":{
+                  "title": "Report Title",
+                  "required": true, "answered":false,
+                  "type": "text",
+                  "value": ""
+                }
+            }
+      },
+      "ClientInformation":{
+            "title":"Client Information",
+            "items": {
+                "firstName":{
+                  "title": "First Name",
+                  "required": true, "answered":false,
+                  "type": "text",
+                  "value": ""
+                },
+                "lastName":{
+                  "title": "Last Name",
+                  "required": true, "answered":false,
+                  "type": "text",
+                  "value": ""
+                },
+                "address":{
+                  "title": "Property Address",
+                  "required": true, "answered":false,
+                  "type": "text",
+                  "value": ""
+                },
+                "propertyAd":{
+                  "title": "Property Address Line 2",
+                  "required": true, "answered":false,
+                  "type": "text",
+                  "value": ""
+                },
+                "city":{
+                  "title": "City",
+                  "required": true, "answered":false,
+                  "type": "text",
+                  "value": ""
+                },
+                "state":{
+                  "title": "State",
+                  "required": true, "answered":false,
+                  "type": "text",
+                  "value": ""
+                },
+                "postalCode":{
+                  "title": "Postal Code",
+                  "required": true, "answered":false,
+                  "type": "number",
+                  "value": ""
+                }
+            }
+        }
+  },
   "photoAppendix":[
-  "./img/Castle_Logo.png"
+      "./img/Castle_Logo.png"
   ],
   "sections": [
          {

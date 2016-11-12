@@ -116,7 +116,9 @@
                     <div ui-sortable="sortableOptions"  ng-model="item.content" >
                         <div ng-repeat="checkbox in item.content track by $index"                  
                              class="list_item flex-wrap" 
-                             style="background-color:#FFF;" layout="column" layout-align="center stretch">
+                             style="background-color:#FFF;" 
+                             layout="column" 
+                             layout-align="center stretch">
                              <div layout="column" layout-align="center stretch" >
         <!--                     <md-divider ng-show="checkbox.c" style="margin:8px 0 8px 0;"></md-divider>-->
                              <div layout="row" layout-align="start center">
@@ -125,13 +127,15 @@
                                  <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
                              </div>
 
-                            <md-checkbox class="md-secondary checkboxery" ng-model="checkbox.c" aria-label="{{checkbox.title}}"   style="position:relative; display:inline" >{{checkbox.title}}
+                            <md-checkbox class="md-secondary checkboxery" 
+                                        ng-model="checkbox.c" 
+                                        aria-label="{{checkbox.title}}"   
+                                        style="position:relative; display:inline" >{{checkbox.title}}
                             </md-checkbox>
                             <span flex=""></span>
                              <md-button ng-show="castleService.editMode" class="md-icon-button" 
-                                       aria-label="add sub question"
-                                       ng-click="remove(item.content, $index)" 
-                             >
+                                        aria-label="add sub question"
+                                        ng-click="remove(item.content, $index)">
                                     <md-icon md-svg-icon="cancel"></md-icon>
                              </md-button> 
                              </div>
@@ -176,11 +180,16 @@
             </md-card-content>
             </md-card>
         </div>
-    <div layout="row" style="padding: 0 0 10px 0;" ng-hide="castleService.assignPhotoMode" class="flex-wrap">
-        <md-button  ng-click="showPrerenderedDialog($event)" class="md-raised" aria-label="Schedule Job">Schedule Job</md-button>
+    <div layout="row" style="padding: 0 0 10px 0;" 
+         ng-hide="castleService.assignPhotoMode" 
+         class="flex-wrap">
+        <md-button  ng-click="showPrerenderedDialog($event)" 
+                    class="md-raised" 
+                    aria-label="Schedule Job">Schedule Job</md-button>
 <!--        <md-button ui-sref="saved" class="md-raised" aria-label="Schedule Report">Schedule Report</md-button>-->
         <md-button ui-sref="inspection({sectionIndex:'default'})"  
-                   class="md-raised md-accent" aria-label="Start Report">Start Report Now!</md-button>
+                   class="md-raised md-accent" 
+                   aria-label="Start Report">Start Report Now!</md-button>
     </div>
    </div>
     </div>
@@ -196,11 +205,12 @@
                 </md-button>
             </md-toolbar>
             <md-dialog-content>
-                <div class="md-dialog-content">
-                 <md-datepicker ng-model="tempDate" 
+                <div class="md-dialog-content" ng-init="tempDate = castleService.currentReport.date">
+                 <md-datepicker ng-change="castleService.currentReport.date = tempDate" ng-model="tempDate" 
                                 md-placeholder="date"
                                 aria-label="schedule job date">
                  </md-datepicker>
+                 {{tempDate}}
                  <br />
                  <md-button class="md-icon-button" 
                             aria-label="schedule job time icon">

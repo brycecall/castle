@@ -13,8 +13,9 @@
      $scope.item = $scope.page.items[$scope.itemIndex];
 
      castleService.currentPage.showIcon = true;
-     castleService.currentPage.title = $scope.report.sections[$scope.sectionIndex]
-                                             .pages[$scope.pageIndex].title;
+     castleService.currentPage.title = $scope.report.meta
+                                             .ReportInformation
+                                             .items.reportTitle.value;
      castleService.currentPage.icon = "back";
      castleService.currentPage.toggleNavMenu = false;
      castleService.currentPage.go = {state:"page", params:{'sectionIndex':$scope.sectionIndex, 

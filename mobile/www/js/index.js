@@ -377,7 +377,7 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
             factory.hideShowOptions.showNonRequired = true;
             factory.hideShowOptions.text = "Hide";
         }
-        console.log("CALLED: " + factory.hideShowOptions.showNonRequired);
+        //console.log("CALLED: " + factory.hideShowOptions.showNonRequired);
     };
 
 

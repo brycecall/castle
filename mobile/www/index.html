@@ -7,12 +7,13 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, 
                                        maximum-scale=1, minimum-scale=1, width=device-width, 
                                        height=device-height" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel='icon' href='./img/favicon.png' >
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel='icon' href='./img/favicon.png' />
 
 <!--    <script type="text/javascript" src="cordova.js"></script>-->
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
         <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.js"></script>
+        <script type="text/javascript" src="js/jquery.ui.touch-punch.min.js"></script>
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-sortable/sortable.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
@@ -35,7 +36,7 @@
         <script src="js/itemController.js"></script>
         <script src="js/inspectionController.js"></script>
         <script src="js/photoAppendixController.js"></script>
-        <script src="../castleTemplate.json"></script>
+        <script src="js/castleTemplate.json"></script>
         
         <!-- Stylesheets -->
 <!--    <link type="text/css" rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />-->
@@ -110,6 +111,7 @@
                               <span>{{castleService.currentPage.title}}</span>
                             </h2>
                             <span flex></span>
+<!--
                             <a ui-sref="account" aria-label="Account" 
                                style="border:none" 
                                ng-if="castleService.io.user && castleService.currentPage.showAccount">
@@ -122,6 +124,7 @@
                                              md-svg-icon="account_circle" 
                                              class="profile_picture"></md-icon>
                             </a>
+-->
 
                              <md-button ng-show="castleService.assignPhotoMode" 
                                         ng-click="castleService.cancelAssignPhotoMode()" 

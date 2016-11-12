@@ -9,7 +9,9 @@
      
      // change main header image and title
      castleService.currentPage.showIcon = true;
-     castleService.currentPage.title = $scope.report.sections[$scope.sectionIndex].title;
+     castleService.currentPage.title = $scope.report.meta
+                                             .ReportInformation
+                                             .items.reportTitle.value;
      castleService.currentPage.icon = "back";
      castleService.currentPage.toggleNavMenu = false;
      castleService.currentPage.go = {state:"inspection", params:{'sectionIndex':'default'}};

@@ -76,7 +76,7 @@
          if (subItem.i == null)
              subItem.i = [];
          
-         var photoAppendix = $scope.report.sections[castleService.photoAppendixIndex].pages[0].items[0].content;
+         var photoAppendix = $scope.report.photoAppendix;
 
          for(var i = 0; i < castleService.selectedImages.length; i++) {
              var index = castleService.selectedImages[i];

@@ -1,0 +1,23 @@
+{
+  "name": "castleserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.13.4",
+    "firebase": "^2.4.2",
+    "phantom": "^3.0.2",
+    "socket.io": "^1.4.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "castle"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,34 @@
+<!--
+//This is the Landing Page that shows the App (or even Company) Logo, and the following options:
+// - New Report
+// - Recent Reports
+//   - Reports Pending Upload (This would be a symbol and on the page "Recent Reports")
+// - Templates (This needs to be created)
+// - Options/Settings (This needs to be created)
+// - Account  (This is already a symbol and already created)
+
+//Once a user "signs in" they should be taken to the landing page.
+-->
+
+<div ng-controller="dashboardController" layout="column" class="page">
+    <md-content>
+        <md-card>
+            <md-card-content>
+                <h3>Dashboard</h3>
+            </md-card-content>
+        </md-card>
+       <h3 class="md-subhead insTitle">Scheduled Jobs</h3>
+        <md-card>
+            <md-card-content>
+                <span>No scheduled jobs!</span>
+            </md-card-content>
+        </md-card>
+        <h3 class="md-subhead insTitle">Recent Jobs</h3>
+        <md-card>
+            <md-card-content>
+                <span>No recent jobs!</span>
+            </md-card-content>
+        </md-card>
+ 
+    </md-content>
+</div>

@@ -38,6 +38,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
                 url: '/generate',
                 templateUrl: 'html/generate.html'
             })
+        
+            .state('dashboard', {
+                url: '/dashboard',
+                templateUrl: 'html/dashboard.html'
+            })
 
             .state('templates', {
                 url: '/templates',

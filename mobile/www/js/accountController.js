@@ -20,8 +20,7 @@ app.controller('accountController', function accountController($rootScope, $scop
                     $scope.error = "Please enter an email and password.";
                     return;
                 }
-
-                castleService.io.login($scope.email, $scope.password);
+                firebaseService.signIn($scope.email, $scope.password);
             };
             $scope.register = function() {
                 if (!$scope.name || !$scope.email || !$scope.password || !$scope.passwordTwo)
@@ -38,7 +37,7 @@ app.controller('accountController', function accountController($rootScope, $scop
                         return;
                     }
                 
-              firebaseService.createNewUser($scope.email, $scope.password);  //castleService.io.createNewUser($scope.email, $scope.password, $scope.name);
+              firebaseService.createNewUser($scope.email, $scope.password);
             };
     
             $rootScope.authenticateUser_handler = function(data) {

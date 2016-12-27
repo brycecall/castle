@@ -692,7 +692,7 @@ app.factory('restService', function ($http, $q, SERVER_URL) {
 });
 
 // Firebase service
-app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject, $firebase) {
+app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject, $firebase, $state) {
     var factory = {};
     
     // Create authObj which allows access to AngularFire functions
@@ -707,7 +707,15 @@ app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject, $fireba
       }) 
     };
     
-    // Auth user
+    // Sign in
+    factory.signIn = function(email, password) {
+        factory.authObj.$signInWithEmailAndPassword(email, password).then(function(response) {
+            console.log("Login Success: " + JSON.stringify(response));
+            $state.go('dashboard');
+        }).catch(function(error) {
+            console.log("Error: " + error);
+        });
+    };
     
     return factory;
 });

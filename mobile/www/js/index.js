@@ -1,5 +1,5 @@
 // Main module
-var app = angular.module('castleApp', ['ui.router', 'ngMaterial', 'ui.sortable']);
+var app = angular.module('castleApp', ['ui.router', 'ngMaterial', 'ui.sortable', 'firebase']);
 
 // Default color used to override the nav bar
 app.constant('DEFAULT_COLOR', '#009688'); //4CAF50
@@ -689,4 +689,25 @@ app.factory('restService', function ($http, $q, SERVER_URL) {
     //deleting a user
     //api/delete/user
 
+});
+
+// Firebase service
+app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject, $firebase) {
+    var factory = {};
+    
+    // Create authObj which allows access to AngularFire functions
+    //var ref = new Firebase("https://castle-a3a5d.firebaseio.com");
+    //var ref = firebase.database().ref();
+    factory.authObj = $firebaseAuth(); 
+    // Create user
+    factory.createNewUser = function(email, password) {
+        debugger;
+      factory.authObj.$createUserWithEmailAndPassword(email, password).then(function(userData) {
+          console.log("User " + userData.uid + " create successfully!");
+      }) 
+    };
+    
+    // Auth user
+    
+    return factory;
 });

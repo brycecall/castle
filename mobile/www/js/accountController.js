@@ -1,4 +1,4 @@
-app.controller('accountController', function accountController($rootScope, $scope, castleService, $state, $mdSidenav) {
+app.controller('accountController', function accountController($rootScope, $scope, castleService, $state, $mdSidenav, firebaseService) {
 
         castleService.currentPage.toggleNavMenu = true;
         castleService.currentPage.title = "Account";
@@ -38,7 +38,7 @@ app.controller('accountController', function accountController($rootScope, $scop
                         return;
                     }
                 
-                castleService.io.createNewUser($scope.email, $scope.password, $scope.name);
+              firebaseService.createNewUser($scope.email, $scope.password);  //castleService.io.createNewUser($scope.email, $scope.password, $scope.name);
             };
     
             $rootScope.authenticateUser_handler = function(data) {

@@ -1,5 +1,6 @@
 // Main module
-var app = angular.module('castleApp', ['ui.router', 'ngMaterial', 'ui.sortable', 'firebase']);
+var app = angular.module('castleApp', ['ui.router', 'ngMaterial', 
+                                       'ui.sortable', 'firebase']);
 
 // Default color used to override the nav bar
 app.constant('DEFAULT_COLOR', '#009688'); //4CAF50
@@ -9,64 +10,55 @@ app.constant('SERVER_URL', 'http://dev.maurasoftware.com:9526');
 
 // Page Router
 app.config(function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.otherwise('/account');
-        $stateProvider
-            .state('create', {
-                url: "/create",
-                templateUrl: 'html/create.html'
-            })
-
-            .state('account', {
-                url: '/account',
-                templateUrl: 'html/account.html'
-            })
-        
-            .state('photoAppendix', {
-                url: '/images',
-                templateUrl: 'html/photoAppendix.html'
-            })
-
-            .state('saved', {
-                url: '/saved/:schedule',
-                templateUrl: 'html/saved.html',
-                params: {
-                    schedule:null
-                }
-            })
-
-            .state('generate', {
-                url: '/generate',
-                templateUrl: 'html/generate.html'
-            })
-        
-            .state('dashboard', {
-                url: '/dashboard',
-                templateUrl: 'html/dashboard.html'
-            })
-
-            .state('templates', {
-                url: '/templates',
-                templateUrl: 'html/templates.html'
-            })
-        
-            .state('inspection', {
-                url: "/inspection/:sectionIndex",
-                templateUrl: 'html/inspection.html',
-                params: {
-                    sectionIndex: 'default'
-                }
-            })
-        
-            .state('page', {
-                url: '/inspection/{sectionIndex}/{pageIndex}',
-                templateUrl: 'html/page.html'
-            })
-        
-            .state('item', {
-                url: '/inspection/{sectionIndex}/{pageIndex}/{itemIndex}',
-                templateUrl: 'html/item.html'
-            })
-            ;
+    $urlRouterProvider.otherwise('/account');
+    $stateProvider
+        .state('create', {
+            url: "/create",
+            templateUrl: 'html/create.html'
+        })
+        .state('account', {
+            url: '/account',
+            templateUrl: 'html/account.html'
+        })
+        .state('photoAppendix', {
+            url: '/images',
+            templateUrl: 'html/photoAppendix.html'
+        })
+        .state('saved', {
+            url: '/saved/:schedule',
+            templateUrl: 'html/saved.html',
+            params: {
+                schedule:null
+            }
+        })
+        .state('generate', {
+            url: '/generate',
+            templateUrl: 'html/generate.html'
+        })
+        .state('dashboard', {
+            url: '/dashboard',
+            templateUrl: 'html/dashboard.html'
+        })
+        .state('templates', {
+            url: '/templates',
+            templateUrl: 'html/templates.html'
+        })
+        .state('inspection', {
+            url: "/inspection/:sectionIndex",
+            templateUrl: 'html/inspection.html',
+            params: {
+                sectionIndex: 'default'
+            }
+        })
+        .state('page', {
+            url: '/inspection/{sectionIndex}/{pageIndex}',
+            templateUrl: 'html/page.html'
+        })
+        .state('item', {
+            url: '/inspection/{sectionIndex}/{pageIndex}/{itemIndex}',
+            templateUrl: 'html/item.html'
+        })
+        ;
 
 });
 
@@ -176,6 +168,7 @@ app.config(function ($mdIconProvider) {
         .icon('save', './mdicons/ic_save_24px.svg')
         .icon('perm_media', './mdicons/ic_perm_media_24px.svg')
         .icon('schedule', './mdicons/ic_schedule_24px.svg')
+        .icon('dashboard', './mdicons/ic_dashboard_24px.svg')
         ;
 });
 
@@ -232,6 +225,11 @@ app.controller('indexController', function ($scope, castleService,
     };
 
     $scope.navigationPages = [
+        {
+            title: "Dashboard",
+            icon: "dashboard",
+            link: "dashboard"
+        },
         {
             title: "New Job",
             icon: "new_report",
@@ -316,38 +314,12 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
     factory.selectedSection = null;
     factory.rapidRemarks = rapidRemarks;
     factory.reportTemplates = reportTemplates;
-//        [
-//        {
-//         "title":"Standard Template", 
-//         "id":"AHRDF-sdf4-sd34sd-1234",
-//         "type":"Home Inspection"
-//        },
-//        {
-//         "title":"Idaho", 
-//         "id":"AHRDF-sdf4-sd34sd-1235",
-//         "type":"Home Inspection"
-//        },
-//        {
-//         "title":"Operating Agreement", 
-//         "id":"AHRDF-sdf4-sd34sd-1236",
-//         "type":"For Winners"
-//        },
-//        {
-//         "title":"Tutorial", 
-//         "id":"AHRDF-sdf4-sd34sd-1237",
-//         "type":"Safety Home Inspection"
-//        }
-//        
-//    ];
-    
     factory.reportTemplate = null;
-    
     factory.toggle = function(input) {
         input = !input;
     };
     
     //factory.serverURL = "http://dev.maurasoftware.com:9526";
-
     // Current page information
     factory.currentPage = {
         title: "Inspection",
@@ -384,7 +356,6 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
         }
         //console.log("CALLED: " + factory.hideShowOptions.showNonRequired);
     };
-
 
     factory.openItems = function (showVal) {
         angular.forEach(
@@ -451,7 +422,7 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
         $state.go("photoAppendix");
     };
     
-     factory.assignPhotos = function(array, action) {
+    factory.assignPhotos = function(array, action) {
          if (array.i == null) {
              array.i = [];
          }
@@ -473,13 +444,11 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
                  }
              }
          }
-         
          if (action == 'assign') {
              array.a = true;
          } else if (action == 'cancel' || action == 'accept') {
              array.a = false;
          }
-         
          if (action == 'accept')
             factory.cancelAssignPhotoMode();
      };
@@ -490,6 +459,79 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
         //factory.clearCache();
     }, false);
 
+    return factory;
+});
+
+// Firebase service
+app.factory('firebaseIO', function($firebaseAuth, $firebaseObject, $firebase, $state) {
+    var factory = {};
+    
+    var database = firebase.database();
+    
+    factory.insertUser = function (displayName, email) {
+       return firebase.database().ref('users/').push({
+         displayName: displayName,
+         email: email
+       }).key;
+    };
+    
+    factory.setUserData = function (userId, displayName, email) {
+       firebase.database().ref('users/' + userId).set({
+         displayName: displayName,
+         email: email
+       });
+    };
+    
+    // inserts a new report generating a new unique id
+    factory.insertReport = function (userId, report) {
+//       var key = firebase.database().ref('reports/').push(report).key;
+//       firebase.database().ref('users/' + userId + '/reports/' + key).set({
+//            title: report.title,
+//            date: report.date
+//       });
+          var key = firebase.database().ref('reports/' + userId).push(report).key;
+          firebase.database().ref('users/' + userId + '/reports/' + key).set({
+            title: report.title,
+            date: new Date(report.date).getTime()
+          });
+    };
+    
+    // insert a new report generating a new unique id
+    factory.insertTemplate = function (userId, template) {
+       var key = firebase.database().ref('templates/').push(template).key;
+       firebase.database().ref('users/' + userId + '/templates/' + key).set({
+            title: template.title,
+            date: template.date
+       }); 
+    };
+    
+    factory.setReport = function(userId, report, reportId) {
+        try {
+            firebase.database().ref('reports/' + reportId)
+                               .set(report);
+        } catch(e) {
+            console.log(e);
+        }
+    };
+    
+    factory.readUserReports = function (userId, startDate, endDate) {
+      firebase.database().ref('users/' + userId + '/reports').limitToLast(20)
+                         .once("value", function(results) {
+          results.forEach(function(report) {
+            console.log(report.key);                
+          }); 
+      });
+    };
+    
+    factory.readReports = function(userId, startDate, endDate) {
+      firebase.database().ref('reports/' + userId)
+                         .once("value", function(results) {
+          results.forEach(function(report) {
+             console.log(report.key);                
+          }); 
+      });
+    }
+    
     return factory;
 });
 
@@ -625,7 +667,8 @@ app.factory('restService', function ($http, $q, SERVER_URL) {
     //[] //array of inspection JSON objects
     //note:
     //type //inspection, template
-    factory.selectInspectionByEmail = function(email, type, sortField = "date", ascending = false, startDate, endDate) {
+    factory.selectInspectionByEmail = function(email, type, sortField = "date", 
+                                               ascending = false, startDate, endDate) {
         var url = "api/select/inspections/" + email + "/" + type + "/";
         if (startDate == null || startDate == undefined)
         {
@@ -646,7 +689,8 @@ app.factory('restService', function ($http, $q, SERVER_URL) {
     //[] //array of inspection meta data JSON objects
     //note:
     //type //inspection, template
-    factory.selectInspectionMetaByEmail = function(email, type, sortField = "date", ascending = false, startDate, endDate) {
+    factory.selectInspectionMetaByEmail = function(email, type, sortField = "date", 
+                                                   ascending = false, startDate, endDate) {
         var url = "api/select/meta/inspections/" + email + "/" + type + "/";
         if (startDate == null || startDate == undefined)
         {
@@ -692,7 +736,8 @@ app.factory('restService', function ($http, $q, SERVER_URL) {
 });
 
 // Firebase service
-app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject, $firebase, $state) {
+app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject, 
+                                         $firebase, $state) {
     var factory = {};
     
     // Create authObj which allows access to AngularFire functions

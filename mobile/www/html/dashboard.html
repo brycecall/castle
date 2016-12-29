@@ -11,13 +11,14 @@
 -->
 
 <div ng-controller="dashboardController" layout="column" class="page">
-    <md-content>
+   <div flex>
+    <md-content class="centerPage" >
         <md-card>
             <md-card-content>
                 <h3>Dashboard</h3>
             </md-card-content>
         </md-card>
-       <h3 class="md-subhead insTitle">Scheduled Jobs</h3>
+        <h3 class="md-subhead insTitle">Scheduled Jobs</h3>
         <md-card>
             <md-card-content>
                 <span>No scheduled jobs!</span>
@@ -29,6 +30,12 @@
                 <span>No recent jobs!</span>
             </md-card-content>
         </md-card>
+        <md-button ng-click="insertReport()">Insert Report</md-button>
+        <md-button ng-click="updateReport()">Set Report</md-button>
+        <md-button ng-click="readUserReports()">Read User Reports</md-button>
+        <md-button ng-click="readReports()">Read Reports</md-button>
+        <md-button ng-click="insertUser()">Insert User</md-button>
  
     </md-content>
+    </div>
 </div>

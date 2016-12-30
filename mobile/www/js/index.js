@@ -174,9 +174,20 @@ app.config(function ($mdIconProvider) {
 
 // Reset main navigation values on state change to default values
 // This is meant to be overridden in each page individually
-app.run(function($rootScope, $urlRouter, castleService, DEFAULT_COLOR){
+app.run(function($rootScope, $urlRouter, $state, castleService, firebaseService, DEFAULT_COLOR){
     $rootScope.$on('$stateChangeStart',
         function(event){
+            // check if user is still authenticated
+            firebaseService.authObj.$onAuthStateChanged(function(firebaseUser) {
+                if(firebaseUser) {
+                    console.log("Signed in as: " + firebaseUser.uid);
+                    firebaseService.isAuth = true;
+                } else {
+                    console.log("User not authed");
+                    firebaseService.isAuth = false;
+                    $state.go('account');
+                }
+            })
             castleService.currentPage.title = "Account";
             castleService.currentPage.preventNavigation = false;
             castleService.currentPage.toggleNavMenu = true;
@@ -666,14 +677,12 @@ app.factory('restService', function ($http, $q, SERVER_URL) {
 app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject, 
                                          $firebase, $state) {
     var factory = {};
-    
+    factory.isAuth = false;
     // Create authObj which allows access to AngularFire functions
-    //var ref = new Firebase("https://castle-a3a5d.firebaseio.com");
-    //var ref = firebase.database().ref();
     factory.authObj = $firebaseAuth(); 
+
     // Create user
     factory.createNewUser = function(email, password) {
-        debugger;
       factory.authObj.$createUserWithEmailAndPassword(email, password).then(function(userData) {
           console.log("User " + userData.uid + " created successfully!");
       }) 
@@ -682,13 +691,21 @@ app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject,
     // Sign in
     factory.signIn = function(email, password) {
         factory.authObj.$signInWithEmailAndPassword(email, password).then(function(response) {
-            console.log("Login Success: " + JSON.stringify(response));
+            console.log("Login Success: " + response.uid);
             $state.go('dashboard');
+            factory.isAuth = true;
         }).catch(function(error) {
             console.log("Error: " + error);
         });
     };
     
+    factory.signOut = function() {
+        factory.authObj.$signOut().then(function(response) {
+            console.log("Sign out successful");
+        }).catch(function(error) {
+            console.log("Error signing out: " + error);
+        });
+    };
     return factory;
 });
 

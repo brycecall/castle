@@ -99,7 +99,8 @@
                             ng-click="remove(report.sections, $index)" 
                             aria-label="delete section"
                             class="md-icon-button"
-                            style="min-width:40px;" >
+                            style="min-width:40px;" 
+                            ng-disabled="sectionHasRequired(section)">
                    <md-icon md-svg-icon="cancel"></md-icon>
                  </md-button>
               </div>
@@ -145,7 +146,8 @@
                                        style="min-width:40px;" 
                                        ng-init="clicked = false" 
                                        aria-label="toggle pages menu"
-                                       ng-click="remove(section.pages, $index)">
+                                       ng-click="remove(section.pages, $index)"
+                                       ng-disabled="pageHasRequired(page)">
                                 <md-icon md-svg-icon="cancel" ></md-icon>
                             </md-button>
                        </div>

@@ -1,5 +1,5 @@
 <div ng-controller="accountController" layout="column" class="page">
-    <md-content class="centerPage">
+    <md-content class="centerPage" ng-show="!firebaseService.isAuth">
         <md-card>
             <md-card-content>
                 <h2 style="text-align: center">Welcome<span ng-if="username">, {{username}}</span>!</h2>
@@ -56,6 +56,14 @@
                         </form>
                     </md-tab>
                 </md-tabs>
+            </md-card-content>
+        </md-card>
+    </md-content>
+    <md-content class="centerPage" ng-show="firebaseService.isAuth">
+        <md-card>
+            <md-card-content>
+                <h2>Hello. Click Below to sign out.</h2>
+                <md-button class="button signin_button md-primary md-raised" ng-click="signout()">Log Out</md-button>
             </md-card-content>
         </md-card>
     </md-content>

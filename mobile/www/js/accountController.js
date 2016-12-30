@@ -1,5 +1,5 @@
 app.controller('accountController', function accountController($rootScope, $scope, castleService, $state, $mdSidenav, firebaseService) {
-
+        $scope.firebaseService = firebaseService;
         castleService.currentPage.toggleNavMenu = true;
         castleService.currentPage.title = "Account";
         castleService.currentPage.icon = "menu";
@@ -11,8 +11,10 @@ app.controller('accountController', function accountController($rootScope, $scop
 //                $scope.password = castleService.io.user.plain_password;
 //            }
             $scope.error = "";
-            $scope.signin = function () {
 
+            // User account functions
+            $scope.signin = function () {
+                debugger;
 
                 if ($scope.email == null || $scope.email == null
                     || $scope.email == "" || $scope.password == "")
@@ -40,6 +42,10 @@ app.controller('accountController', function accountController($rootScope, $scop
               firebaseService.createNewUser($scope.email, $scope.password);
             };
     
+            $scope.signout = function() {
+                firebaseService.signOut();
+            };
+
             $rootScope.authenticateUser_handler = function(data) {
                     console.log("AUTH");
                     console.info(data);
@@ -55,8 +61,5 @@ app.controller('accountController', function accountController($rootScope, $scop
                 };
             $rootScope.createUser_handler = $rootScope.authenticateUser_handler;
     
-            $scope.signout = function() {
-                $scope.username = null;
-                castleService.io.logout();
-            };
+
         });

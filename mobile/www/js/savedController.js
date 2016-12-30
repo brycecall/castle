@@ -1,11 +1,20 @@
-app.controller('savedController', function ($scope, castleService, $state, $stateParams) {
+app.controller('savedController', function ($scope, castleService, 
+                                            $state, $stateParams, firebaseIO, $q) {
     $scope.castleService = castleService;
+    $scope.reports = [];
     castleService.currentPage.title = "Saved Jobs";
-   // $scope.defaultReport = reportOne;
-    $scope.switchReport = function(sReport) {
-        castleService.currentReport = sReport;
-        $state.go("inspection", {sectionIndex:'default'});
+
+    $scope.selectReport = function(sReport) {
+        console.log(sReport.$id);
+        firebaseIO.getReport(sReport.$id).then(function(report) {
+            console.log(report);
+            castleService.currentReport = report;
+            $state.go("inspection", {sectionIndex:'default'});
+        }, function(error) {
+            console.log("Error: " + error);
+        });
     };
+    
     $scope.reverse = false;
     $scope.orderAttribute = 'date';
     $scope.orderAttributeOptions = ['date', 'title'];
@@ -13,8 +22,23 @@ app.controller('savedController', function ($scope, castleService, $state, $stat
 
     $scope.getAsDate = function(dateString) {
          return new Date(dateString);
-     };
+    };
 
+    
+    
+    window.onload = function() {
+        console.log("called");
+//        $scope.reports = firebaseIO.readUserReports();
+//        console.log($scope.reports);
+        firebaseIO.getReportMeta().then(function(data){
+            $scope.reports = data;
+            console.log($scope.reports);
+           // $scope.$apply();
+        }, function(error){
+            console.log(error);
+            $state.go("account");
+        });
+    }();
 
 
 /********************************************************

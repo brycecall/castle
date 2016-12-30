@@ -18,7 +18,7 @@ app.controller('dashboardController', function ($rootScope, $scope, castleServic
         console.log(key);
     };
     
-    $scope.updateReport = function() {
+    $scope.updateReport = function() { 
         
     };
     

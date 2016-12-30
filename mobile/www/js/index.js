@@ -462,79 +462,6 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
     return factory;
 });
 
-// Firebase service
-app.factory('firebaseIO', function($firebaseAuth, $firebaseObject, $firebase, $state) {
-    var factory = {};
-    
-    var database = firebase.database();
-    
-    factory.insertUser = function (displayName, email) {
-       return firebase.database().ref('users/').push({
-         displayName: displayName,
-         email: email
-       }).key;
-    };
-    
-    factory.setUserData = function (userId, displayName, email) {
-       firebase.database().ref('users/' + userId).set({
-         displayName: displayName,
-         email: email
-       });
-    };
-    
-    // inserts a new report generating a new unique id
-    factory.insertReport = function (userId, report) {
-//       var key = firebase.database().ref('reports/').push(report).key;
-//       firebase.database().ref('users/' + userId + '/reports/' + key).set({
-//            title: report.title,
-//            date: report.date
-//       });
-          var key = firebase.database().ref('reports/' + userId).push(report).key;
-          firebase.database().ref('users/' + userId + '/reports/' + key).set({
-            title: report.title,
-            date: new Date(report.date).getTime()
-          });
-    };
-    
-    // insert a new report generating a new unique id
-    factory.insertTemplate = function (userId, template) {
-       var key = firebase.database().ref('templates/').push(template).key;
-       firebase.database().ref('users/' + userId + '/templates/' + key).set({
-            title: template.title,
-            date: template.date
-       }); 
-    };
-    
-    factory.setReport = function(userId, report, reportId) {
-        try {
-            firebase.database().ref('reports/' + reportId)
-                               .set(report);
-        } catch(e) {
-            console.log(e);
-        }
-    };
-    
-    factory.readUserReports = function (userId, startDate, endDate) {
-      firebase.database().ref('users/' + userId + '/reports').limitToLast(20)
-                         .once("value", function(results) {
-          results.forEach(function(report) {
-            console.log(report.key);                
-          }); 
-      });
-    };
-    
-    factory.readReports = function(userId, startDate, endDate) {
-      firebase.database().ref('reports/' + userId)
-                         .once("value", function(results) {
-          results.forEach(function(report) {
-             console.log(report.key);                
-          }); 
-      });
-    }
-    
-    return factory;
-});
-
 // Rest service
 app.factory('restService', function ($http, $q, SERVER_URL) {
     var factory = {};
@@ -748,7 +675,7 @@ app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject,
     factory.createNewUser = function(email, password) {
         debugger;
       factory.authObj.$createUserWithEmailAndPassword(email, password).then(function(userData) {
-          console.log("User " + userData.uid + " create successfully!");
+          console.log("User " + userData.uid + " created successfully!");
       }) 
     };
     
@@ -761,6 +688,87 @@ app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject,
             console.log("Error: " + error);
         });
     };
+    
+    return factory;
+});
+
+// Firebase service
+app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObject,
+                                    $firebase, $state, firebaseService) {
+    var factory = {};
+    var userId = "p60BAVy66gT0jLDaNUO0CfZfti22";//firebaseService.authObj.uid;
+    
+    var database = firebase.database();
+    
+    factory.insertUser = function (displayName, email) {
+       return firebase.database().ref('users/').push({
+          displayName: displayName,
+          email: email
+       }).key;
+    };
+    
+    factory.setUserData = function (displayName, email) {
+       firebase.database().ref('users/' + userId).set({
+         displayName: displayName,
+         email: email
+       });
+    };
+    
+    // inserts a new report generating a new unique id
+    factory.insertReport = function (report) {
+        var key = firebase.database()
+                          .ref('reports/' + userId)
+                          .push(report)
+                          .key;
+        firebase.database()
+                .ref('users/' + userId + '/reports/' + key)
+                .set({
+                    title: report.title,
+                    date: new Date(report.date).getTime()
+                });
+    };
+    
+    // insert a new report generating a new unique id
+    factory.insertTemplate = function (template) {
+       var key = firebase.database().ref('templates/').push(template).key;
+       firebase.database().ref('users/' + userId + '/templates/' + key).set({
+            title: template.title,
+            date: template.date
+       }); 
+    };
+    
+    // update report
+    factory.setReport = function(report, reportId) {
+        try {
+            firebase.database()
+                    .ref('reports/' + reportId)
+                    .set(report);
+        } catch(e) {
+            console.log(e);
+        }
+    };
+    
+    // get a report by its identifier
+    factory.getReport = function(id) {
+        var query = firebase.database().ref('reports/' + userId + '/' + id);
+        var item = $firebaseObject(query);
+        return item.$loaded();
+      // return query.once("value");
+    };
+    
+    // gets report data 
+    factory.getReportMeta = function (startDate, endDate) {
+        var query = firebase.database().ref('users/' + userId + '/reports');
+        var list = $firebaseArray(query);
+        return list.$loaded();
+    };
+    
+    // shouldn't be called
+    factory.getReports = function(startDate, endDate) {
+        var query = firebase.database().ref('reports/' + userId);
+        var list = $firebaseArray(query);
+        return list.$loaded(); 
+    }
     
     return factory;
 });

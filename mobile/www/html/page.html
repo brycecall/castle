@@ -28,7 +28,7 @@
                             'pageIndex':pageIndex, 'itemIndex':$index})"
                     >
                   <span ng-show="!castleService.editMode">
-                    <span style="padding-left:16px;" >{{item.title}}</span>
+                      <span style="padding-left:16px;" >{{item.title}} <span ng-show="item.required">*</span></span>
                   </span>
                 </md-button>
                 <span flex=""></span>

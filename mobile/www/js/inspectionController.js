@@ -270,6 +270,15 @@
         // $scope.saveReport();
      };
      
+     // check sections and pages to see if they have any required questions in them
+     // returning false allows these to be deleted. true prevents it.
+     $scope.sectionHasRequired(section) {
+            
+     }
+     $scope.pageHasRequired(page) {
+         
+     }
+     
      // Publish report to PDF
      $scope.publishReportPDF = function() {
          var report = document.querySelctor("");

@@ -1,5 +1,7 @@
-<div ng-controller="pageController" flex="" layout="column" class="page">
-   <md-content>
+<div ng-controller="pageController" 
+     layout="column" class="page" >
+   <md-content flex>
+   <div class="centerPage">
     <span layout="row" layout-align="start center">
         <h2 class="md-subhead insTitle" style="margin-bottom:0px;">{{page.title}} Questions 
                                         {{page.answeredCount}}/{{page.items.length}}</h2>
@@ -25,8 +27,7 @@
                     class="md-no-style subsection wideButton"
                     aria-label="Go to {{item.title}}"
                     ui-sref="item({'sectionIndex':sectionIndex, 
-                            'pageIndex':pageIndex, 'itemIndex':$index})"
-                    >
+                            'pageIndex':pageIndex, 'itemIndex':$index})">
                   <span ng-show="!castleService.editMode">
                     <span style="padding-left:16px;" >{{item.title}}</span>
                   </span>
@@ -50,7 +51,8 @@
             <md-divider ng-if="!$last"></md-divider>
         </div>
     </md-card>
-           <div ng-if="page.items.length == 0 && !castleService.editMode" style="margin-left:16px;">
+           <div ng-if="page.items.length == 0 && !castleService.editMode" 
+                style="margin-left:16px;">
                <md-card>
                <md-card-content>
                <div class="md-caption">No Questions here yet.</div>
@@ -71,6 +73,7 @@
                 <span>add question</span>
             </md-button>
             <div style="margin-bottom:85px;"></div>
+            </div>
      </md-content>
     <div class="mainButtonMenu">
             <md-button class="md-fab md-primary" 

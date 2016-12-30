@@ -1,6 +1,6 @@
  app.controller('inspectionController', function ($scope, $mdUtil, $mdDialog, 
                                                   $rootScope, $stateParams, castleService, 
-                                                  $state, $timeout) {
+                                                  $state, $timeout, firebaseIO, $q) {
      $scope.castleService = castleService;
      $scope.selectedSection = $stateParams.sectionIndex;
      $scope.castleService.selectedSection = $scope.selectedSection;
@@ -10,9 +10,10 @@
      // change main header image and title
      castleService.currentPage.showIcon = true;
      castleService.currentPage.toggleNavMenu = true;
-     castleService.currentPage.title = $scope.report.meta
-                                             .ReportInformation
-                                             .items.reportTitle.value;
+     castleService.currentPage.title = $scope.report.title || "No report loaded"; 
+                                           //$scope.report.meta
+                                           //  .ReportInformation
+                                           //  .items.reportTitle.value;
      castleService.currentPage.icon = "menu";
      castleService.currentPage.showEditMode = true;
 
@@ -42,6 +43,28 @@
             }
          }
          return (count >= total);
+     };
+     
+     
+    $scope.savedDialog = function(ev) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .clickOutsideToClose(true)
+        .title('Saved Successfully!')
+        .textContent('Your report progress has been saved to the cloud.')
+        .ariaLabel('Saved successfully dialog')
+        .ok('Got it!')
+        .targetEvent(ev)
+    );
+  };
+     $scope.saveReport = function() {
+         firebaseIO.setReport(castleService.currentReport)
+                   .then(function() {
+                        console.log("Success");
+                    $scope.savedDialog
+                    }, function(error){
+                        console.log("Error: " + error);
+         });
      };
 
      $scope.addToSelectedImages = function(index) {
@@ -275,12 +298,12 @@
          var report = document.querySelctor("");
      }
      
-     // Save report to server
-     $scope.saveReport = function() {
-         console.info("Sending report " + $scope.report.name + " with id #" + $scope.report.id);
-         // Must use angular.fromJson and angular.toJson to remove angular added $$hashkey.
-         castleService.io.sendReport(angular.fromJson(angular.toJson($scope.report)));
-     }
+//     // Save report to server
+//     $scope.saveReport = function() {
+//         console.info("Sending report " + $scope.report.name + " with id #" + $scope.report.id);
+//         // Must use angular.fromJson and angular.toJson to remove angular added $$hashkey.
+//         castleService.io.sendReport(angular.fromJson(angular.toJson($scope.report)));
+//     }
      $rootScope.sendReport_handler = function(data) {
        if (data.payload.id !== null)
            {

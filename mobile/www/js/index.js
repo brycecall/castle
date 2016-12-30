@@ -308,7 +308,7 @@ app.controller('indexController', function ($scope, castleService,
 app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
     var factory = {};
     factory.reports = reportTemplates;
-    factory.currentReport = reportTemplates[0];
+    factory.currentReport = {};
     factory.backdrop = false;
     factory.selectedPage = null;
     factory.selectedSection = null;
@@ -715,7 +715,7 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
     };
     
     // inserts a new report generating a new unique id
-    factory.insertReport = function (report) {
+    factory.insertReport = function(report) {
         var key = firebase.database()
                           .ref('reports/' + userId)
                           .push(report)
@@ -729,8 +729,11 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
     };
     
     // insert a new report generating a new unique id
-    factory.insertTemplate = function (template) {
-       var key = firebase.database().ref('templates/').push(template).key;
+    factory.insertTemplate = function(template) {
+       var key = firebase.database()
+                         .ref('templates/' + userId)
+                         .push(template)
+                         .key;
        firebase.database().ref('users/' + userId + '/templates/' + key).set({
             title: template.title,
             date: template.date
@@ -740,9 +743,13 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
     // update report
     factory.setReport = function(report, reportId) {
         try {
-            firebase.database()
-                    .ref('reports/' + reportId)
-                    .set(report);
+            if (reportId) {
+                firebase.database()
+                        .ref('reports/' + reportId)
+                        .set(report);
+            } else {
+              return report.$save();
+            }
         } catch(e) {
             console.log(e);
         }
@@ -754,6 +761,21 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
         var item = $firebaseObject(query);
         return item.$loaded();
       // return query.once("value");
+    };
+    
+    // get a report by its identifier
+    factory.getTemplate = function(id) {
+        var query = firebase.database().ref('templates/' + userId + '/' + id);
+        var item = $firebaseObject(query);
+        return item.$loaded();
+      // return query.once("value");
+    };
+    
+    // gets report data 
+    factory.getTemplateMeta = function (startDate, endDate) {
+        var query = firebase.database().ref('users/' + userId + '/templates');
+        var list = $firebaseArray(query);
+        return list.$loaded();
     };
     
     // gets report data 

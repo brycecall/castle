@@ -4,19 +4,19 @@
        <h3 class="md-subhead insTitle">Report Template</h3>
        <md-card>
            <md-input-container style="padding: 0px 16px 8px 16px;">
-               <md-select ng-model="castleService.reportTemplate" 
+               <md-select ng-model="sTemplate" 
                           placeholder="Pick a Template"
-                          md-on-close="setTemplate()">
-                   <md-option ng-repeat="template in castleService.reportTemplates 
+                          md-on-close="selectTemplate(sTemplate)">
+                   <md-option ng-repeat="template in templates
                                          track by $index" ng-value="template">
                                          {{template.title}}</md-option>
                </md-select>
            </md-input-container>
        </md-card>
-       <div ng-if="castleService.reportTemplate != null"> 
-        <div  ng-repeat="section in report.meta track by $index">
+        <div ng-if="report != null"> 
+        <div ng-repeat="section in report.meta track by $index">
             <h3 class="md-subhead insTitle">{{section.title}}</h3>
-            <md-card  >
+            <md-card>
             <md-card-content>
             <div ng-repeat="item in section.items track by $index"  >
                 <!--                           PRE-SET TEXT-->
@@ -180,18 +180,18 @@
             </md-card-content>
             </md-card>
         </div>
-    <div layout="row" style="padding: 0 0 10px 0;" 
-         ng-hide="castleService.assignPhotoMode" 
-         class="flex-wrap">
-        <md-button  ng-click="showPrerenderedDialog($event)" 
-                    class="md-raised" 
-                    aria-label="Schedule Job">Schedule Job</md-button>
-<!--        <md-button ui-sref="saved" class="md-raised" aria-label="Schedule Report">Schedule Report</md-button>-->
-        <md-button ui-sref="inspection({sectionIndex:'default'})"  
-                   class="md-raised md-accent" 
-                   aria-label="Start Report">Start Report Now!</md-button>
-    </div>
-   </div>
+        <div layout="row" style="padding: 0 0 10px 0;" 
+             ng-hide="castleService.assignPhotoMode" 
+             class="flex-wrap">
+            <md-button  ng-click="showPrerenderedDialog($event)" 
+                        class="md-raised" 
+                        aria-label="Schedule Job">Schedule Job</md-button>
+            <!--        <md-button ui-sref="saved" class="md-raised" aria-label="Schedule Report">Schedule Report</md-button>-->
+            <md-button ui-sref="inspection({sectionIndex:'default'})"  
+                       class="md-raised md-accent" 
+                       aria-label="Start Report">Start Report Now!</md-button>
+        </div>
+        </div>
     </div>
      
 <script type="text/ng-template" id="myDialog.html">

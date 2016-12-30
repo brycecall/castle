@@ -14,7 +14,7 @@ app.controller('savedController', function ($scope, castleService,
             console.log("Error: " + error);
         });
     };
-    
+
     $scope.reverse = false;
     $scope.orderAttribute = 'date';
     $scope.orderAttributeOptions = ['date', 'title'];
@@ -24,8 +24,6 @@ app.controller('savedController', function ($scope, castleService,
          return new Date(dateString);
     };
 
-    
-    
     window.onload = function() {
         console.log("called");
 //        $scope.reports = firebaseIO.readUserReports();

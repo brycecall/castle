@@ -14,8 +14,7 @@ app.controller('accountController', function accountController($rootScope, $scop
 
             // User account functions
             $scope.signin = function () {
-                debugger;
-
+                
                 if ($scope.email == null || $scope.email == null
                     || $scope.email == "" || $scope.password == "")
                 {

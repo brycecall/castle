@@ -1,7 +1,7 @@
 <div ng-controller="createController" flex="" layout="column" class="page" id="nav">
    <md-content>
     <div class="centerPage" style="margin-bottom:85px;" id="centerPage">
-       <h3 class="md-subhead insTitle">Report Template</h3>
+       <h3 class="md-subhead insTitle">Job Template</h3>
        <md-card>
            <md-input-container style="padding: 0px 16px 8px 16px;">
                <md-select ng-model="sTemplate" 
@@ -19,6 +19,7 @@
             <md-card>
             <md-card-content>
             <div ng-repeat="(itemKey, item) in section.items track by $index"  >
+               
                 <!--                           PRE-SET TEXT-->
                 <div ng-if="item.type == 'presettext'" class="padMe">
                     <md-input-container class="md-block">

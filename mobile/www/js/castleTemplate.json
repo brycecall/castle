@@ -7,10 +7,6 @@ var reportTemplates = [
   "type":"template",
   "inspectiontype":"",
   "status":"",
-  "metaOrder":[
-      {"name":"ReportInformation"},
-      {"name":"ClientInformation"}
-  ],
   "meta": {
       "ReportInformation": {
             "title":"Report Information",

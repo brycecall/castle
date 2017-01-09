@@ -44,10 +44,9 @@
          firebaseIO.getTemplateMeta().then(function(data) {
              
          $timeout(function() {
-          $scope.templates = data;
+             $scope.templates = data;
          });
              $scope.templates = data;
-             console.log($scope.templates);
          }, function(error) {
              console.log(error);
              $state.go("account");
@@ -58,11 +57,13 @@
          //console.log(sTemplate);
          //firebaseIO.insertTemplate(castleService.reportTemplates[0]);
          if (sTemplate) {
+             
              firebaseIO.getTemplateData(sTemplate.$id)
                        .then(function(template) {
-                 console.log(template.val());
-                 castleService.currentReport = template.val();
-                 $scope.report = template.val();
+                 $timeout(function() {
+                     castleService.currentReport = template.val();
+                     $scope.report = castleService.currentReport;
+                 });
              }, function(error) {
                  console.log("Error: " + error);
              });

@@ -51,7 +51,7 @@
       $mdDialog.alert()
         .clickOutsideToClose(true)
         .title('Saved Successfully!')
-        .textContent('Your report progress has been saved to the cloud.')
+        .textContent('Your report has been saved to the cloud.')
         .ariaLabel('Saved successfully dialog')
         .ok('Got it!')
         .targetEvent(ev)
@@ -61,7 +61,7 @@
          firebaseIO.setReport(castleService.currentReport)
                    .then(function() {
                         console.log("Success");
-                    $scope.savedDialog
+                        $scope.savedDialog();
                     }, function(error){
                         console.log("Error: " + error);
          });
@@ -295,17 +295,17 @@
      
      // check sections and pages to see if they have any required questions in them
      // returning false allows these to be deleted. true prevents it.
-     $scope.sectionHasRequired(section) {
+     $scope.sectionHasRequired = function(section) {
             
-     }
-     $scope.pageHasRequired(page) {
+     };
+     $scope.pageHasRequired = function(page) {
          
-     }
+     };
      
      // Publish report to PDF
      $scope.publishReportPDF = function() {
          var report = document.querySelctor("");
-     }
+     };
      
 //     // Save report to server
 //     $scope.saveReport = function() {

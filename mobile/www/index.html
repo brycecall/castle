@@ -9,7 +9,7 @@
                                        width=device-width, 
                                        height=device-height" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel='icon' href='./img/favicon.png' />
+        <link rel='icon' href='./img/Castle-Logo-type-small.png'/>
 
 <!--    <script type="text/javascript" src="cordova.js"></script>-->
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
@@ -43,10 +43,13 @@
                 <md-sidenav class="md-sidenav-left lSideNav" 
                             md-component-id="main"  
                             md-swipe-left="toggleNavigation()">
-                <md-toolbar class="md-tall castleBackground">
+                <md-toolbar class="md-tall castleBackground" style="background-color:#424242">
+                <div class=""></div>
+<!--
                 <div class="md-toolbar-tools" >
                     <img id="menuFavicon" src="img/icon.png" />
                 </div>
+-->
                 </md-toolbar>
                     <md-content flex layout="column">
                         <br />
@@ -153,6 +156,7 @@
             messagingSenderId: "810535030274"
           };
           firebase.initializeApp(config);
+            console.log("Firebase initialized!");
         </script>
         <!-- Application Scripts -->
         <script src="js/castleTemplate.json"></script>

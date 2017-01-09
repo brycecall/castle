@@ -841,11 +841,13 @@ md-toolbar {
 
 
 .castleBackground {
-    background-image: url(../img/Castle_Logo.png);
-    background-position: 60px -115px;
+    background-image: url(../img/Castle-Logo-white-green.png);
+    background-position: 54px 20px;
     background-repeat: no-repeat;
-    background-size:190px;
-  
+    background-size:200px;
+    height: 190px;
+/*    width: 190px;*/
+/*    margin: 0 auto;*/
    
 }
 

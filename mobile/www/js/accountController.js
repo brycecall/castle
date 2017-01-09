@@ -3,6 +3,7 @@ app.controller('accountController', function accountController($rootScope, $scop
         castleService.currentPage.toggleNavMenu = true;
         castleService.currentPage.title = "Account";
         castleService.currentPage.icon = "menu";
+//        castleService.currentPage.color = "#424242";
 
 
 //            if (castleService.io.user)
@@ -43,6 +44,10 @@ app.controller('accountController', function accountController($rootScope, $scop
     
             $scope.signout = function() {
                 firebaseService.signOut();
+            };
+    
+            $scope.regWithGoogle = function() {
+             //TODO register with google yo
             };
 
             $rootScope.authenticateUser_handler = function(data) {

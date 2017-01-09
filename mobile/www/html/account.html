@@ -11,7 +11,7 @@
                 </div>
                 <md-tabs md-dynamic-height>
                     <md-tab label="login">
-                        <form ng-submit="loginForm()">
+                        <form ng-submit="signin()">
 
                             <div class="signin_view" ng-show="!inspectorService.io.user">
                                 <div layout="column">
@@ -25,12 +25,12 @@
                                     </md-input-container>
                                 </div>
 
-                                <md-button class="button signin_button md-primary md-raised" ng-click="signin()">Login</md-button>
+                                <md-button class="button signin_button md-primary md-raised" type="submit">Login</md-button>
                             </div>
                         </form>
                     </md-tab>
                     <md-tab label="register">
-                        <form ng-submit="registerForm()">
+                        <form ng-submit="register()">
                             <div class="signin_view" ng-show="!inspectorService.io.user">
                                 <div layout="column">
                                     <md-input-container>
@@ -50,8 +50,8 @@
                                         <input class="field" type="password" ng-model="passwordTwo" />
                                     </md-input-container>
                                 </div>                                
-                                <md-button class="button signin_button md-primary md-raised" ng-click="register()">Register</md-button>
-                                <md-button style="float: right" class="button signin_button md-primary md-raised" ng-click="">Register with Google</md-button>
+                                <md-button class="button signin_button md-primary md-raised" type="submit">Register</md-button>
+                                <md-button style="float:right" class="button signin_button md-primary md-raised" ng-click="regWithGoogle()">Register with Google</md-button>
                             </div>
                         </form>
                     </md-tab>

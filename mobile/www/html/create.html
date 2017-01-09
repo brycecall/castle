@@ -14,11 +14,11 @@
            </md-input-container>
        </md-card>
         <div ng-if="report != null"> 
-        <div ng-repeat="section in report.meta track by $index">
+        <div ng-repeat="(sectionKey, section) in report.meta track by $index">
             <h3 class="md-subhead insTitle">{{section.title}}</h3>
             <md-card>
             <md-card-content>
-            <div ng-repeat="item in section.items track by $index"  >
+            <div ng-repeat="(itemKey, item) in section.items track by $index"  >
                 <!--                           PRE-SET TEXT-->
                 <div ng-if="item.type == 'presettext'" class="padMe">
                     <md-input-container class="md-block">
@@ -187,9 +187,9 @@
                         class="md-raised" 
                         aria-label="Schedule Job">Schedule Job</md-button>
             <!--        <md-button ui-sref="saved" class="md-raised" aria-label="Schedule Report">Schedule Report</md-button>-->
-            <md-button ui-sref="inspection({sectionIndex:'default'})"  
+            <md-button ng-click="saveJob()" 
                        class="md-raised md-accent" 
-                       aria-label="Start Report">Start Report Now!</md-button>
+                       aria-label="Start Report">Start Job Now!</md-button>
         </div>
         </div>
     </div>

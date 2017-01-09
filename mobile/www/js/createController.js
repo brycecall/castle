@@ -1,6 +1,7 @@
  app.controller('createController', function ($scope, $mdUtil, $mdDialog, 
                                               $rootScope, $stateParams, 
-                                              castleService, $state, firebaseIO) {
+                                              castleService, $state, firebaseIO, 
+                                              $timeout) {
      $scope.castleService = castleService;
      $scope.selectedSection = $stateParams.sectionIndex;
      $scope.castleService.selectedSection = $scope.selectedSection;
@@ -9,11 +10,11 @@
      castleService.currentReport = null;
      $scope.templates = [];
      $scope.report = null;
-     
+     $scope.title = "New Job";
      // change main header image and title
      castleService.currentPage.showIcon = true;
      castleService.currentPage.toggleNavMenu = true;
-     castleService.currentPage.title = "New Job";
+     castleService.currentPage.title = $scope.title;
      castleService.currentPage.icon = "menu";
      castleService.currentPage.showEditMode = false;
      
@@ -23,8 +24,13 @@
      
      $scope.toggleEditMode = function() {
         castleService.editMode = !castleService.editMode;
-        castleService.currentPage.color = editMode ? '#000' : 
-            castleService.defaultColor;
+        if (castleService.editMode) {
+            castleService.currentPage.color = '#000';
+            
+        } else {
+            castleService.currentPage.color = castleService.defaultColor;
+            castleService.currentPage.title = $scope.title;
+        }
      };
 
      $scope.subPage = '';
@@ -36,7 +42,12 @@
 
      window.onload = function() {
          firebaseIO.getTemplateMeta().then(function(data) {
+             
+         $timeout(function() {
+          $scope.templates = data;
+         });
              $scope.templates = data;
+             console.log($scope.templates);
          }, function(error) {
              console.log(error);
              $state.go("account");
@@ -47,14 +58,29 @@
          //console.log(sTemplate);
          //firebaseIO.insertTemplate(castleService.reportTemplates[0]);
          if (sTemplate) {
-             firebaseIO.getTemplate(sTemplate.$id)
+             firebaseIO.getTemplateData(sTemplate.$id)
                        .then(function(template) {
-                 console.log(template);
-                 castleService.currentReport = template;
-                 $scope.report = template;
+                 console.log(template.val());
+                 castleService.currentReport = template.val();
+                 $scope.report = template.val();
              }, function(error) {
                  console.log("Error: " + error);
              });
+         }
+     };
+     
+     $scope.saveJob = function() {
+         if (castleService.currentReport) {
+             var key = firebaseIO.insertReport(castleService.currentReport);
+             firebaseIO.getReport(key).then(function(data) {
+                castleService.currentReport = data;
+                $state.go("inspection", {sectionIndex:'default'});
+             }, function(error) {
+                console.log("Error retrieving the report: \n" + error);
+             });
+         }
+         else {
+            console.log("Save Job failed. Report cannot be undefined");
          }
      };
           
@@ -110,6 +136,11 @@
      };
 
 
-
+    $scope.showRequiredDialog = function(event) {
+        var confirm = $mdDialog.confirm()
+            .title("Not all required questions have been ansered")
+            .textContent("Are you sure you want to continue?")
+        ;
+    };
 
  });

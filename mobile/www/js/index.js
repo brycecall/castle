@@ -70,7 +70,7 @@ app.config(function ($mdThemingProvider) {
         '200': 'A5D6A7',
         '300': '81C784',
         '400': '66BB6A',
-        '500': '4CAF50',
+        '500': '424242',
         '600': '43A047',
         '700': '388E3C',
         '800': '2E7D32',
@@ -174,20 +174,23 @@ app.config(function ($mdIconProvider) {
 
 // Reset main navigation values on state change to default values
 // This is meant to be overridden in each page individually
-app.run(function($rootScope, $urlRouter, $state, castleService, firebaseService, DEFAULT_COLOR){
+app.run(function($rootScope, $urlRouter, $state, castleService, firebaseService, 
+                 $firebaseAuth, $q){
+    console.log("app run start");
+    $rootScope.first = true;
+    firebaseService.init();
     $rootScope.$on('$stateChangeStart',
-        function(event){
+        function(event, toState, toParams, fromState, fromParams){
             // check if user is still authenticated
-            firebaseService.authObj.$onAuthStateChanged(function(firebaseUser) {
-                if(firebaseUser) {
-                    console.log("Signed in as: " + firebaseUser.uid);
-                    firebaseService.isAuth = true;
-                } else {
-                    console.log("User not authed");
-                    firebaseService.isAuth = false;
-                    $state.go('account');
-                }
-            })
+            console.log(firebaseService.isAuth + " and " + $firebaseAuth().$getAuth());
+            if (firebaseService.isAuth) {
+                console.log("Signed in as: " + firebaseService.userId);
+            } else if (!$state.is('account') && toState.name != 'account') {
+                event.preventDefault();
+                console.log("User not authenticated");
+                $state.go('account');
+            }
+            $rootScope.first = false;
             castleService.currentPage.title = "Account";
             castleService.currentPage.preventNavigation = false;
             castleService.currentPage.toggleNavMenu = true;
@@ -677,9 +680,39 @@ app.factory('restService', function ($http, $q, SERVER_URL) {
 app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject, 
                                          $firebase, $state) {
     var factory = {};
-    factory.isAuth = false;
+    
     // Create authObj which allows access to AngularFire functions
-    factory.authObj = $firebaseAuth(); 
+    factory.authObj = $firebaseAuth();
+    factory.isAuth = false;
+    factory.userId = null;
+
+    
+    
+    factory.init = function() {
+        console.log("firebaseService init");
+        var authData1 = factory.authObj.$getAuth();
+        if (authData1) {
+            console.log("we are here: " + authData1);
+            factory.userId = authData1.uid;
+            factory.isAuth = true;
+        }
+        
+        factory.authObj.$onAuthStateChanged(function(authData) {
+          if (authData) {
+            factory.userId = authData.uid;
+            console.log("Logged in as:", factory.userId);
+            factory.isAuth = true;
+
+          } else {
+              factory.userId = null;
+              factory.isAuth = false;
+              console.log("Logged out");
+          }
+        });
+    };
+    //factory.init();
+        
+
 
     // Create user
     factory.createNewUser = function(email, password) {
@@ -692,6 +725,7 @@ app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject,
     factory.signIn = function(email, password) {
         factory.authObj.$signInWithEmailAndPassword(email, password).then(function(response) {
             console.log("Login Success: " + response.uid);
+            factory.userId = response.uid;
             $state.go('dashboard');
             factory.isAuth = true;
         }).catch(function(error) {
@@ -702,21 +736,34 @@ app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject,
     factory.signOut = function() {
         factory.authObj.$signOut().then(function(response) {
             console.log("Sign out successful");
+            factory.userId = null;
         }).catch(function(error) {
             console.log("Error signing out: " + error);
         });
     };
     return factory;
 });
+//
+//app.factory('SeriesArrayFactory', function($firebaseArray, $q){
+//  return $firebaseArray.$extend({
+//    findSeries:function(seriesName){
+//      var deferred = $q.defer();
+//      this.$ref().once("value", function(dataSnapshot){
+//        if(dataSnapshot.exists()){
+//          deferred.resolve(dataSnapshot.val());
+//        } else {
+//          deferred.reject("Not found.");
+//        }
+//      });
+//      return deferred.promise;
+//    }
+//  });
+//});
 
 // Firebase service
 app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObject,
                                     $firebase, $state, firebaseService) {
     var factory = {};
-    var userId = "p60BAVy66gT0jLDaNUO0CfZfti22";//firebaseService.authObj.uid;
-    
-    var database = firebase.database();
-    
     factory.insertUser = function (displayName, email) {
        return firebase.database().ref('users/').push({
           displayName: displayName,
@@ -724,8 +771,11 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
        }).key;
     };
     
+    //firebaseService.init();
+    //console.log(firebaseService.userId); //p60BAVy66gT0jLDaNUO0CfZfti22
+    
     factory.setUserData = function (displayName, email) {
-       firebase.database().ref('users/' + userId).set({
+       firebase.database().ref('users/' + firebaseService.userId).set({
          displayName: displayName,
          email: email
        });
@@ -733,28 +783,45 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
     
     // inserts a new report generating a new unique id
     factory.insertReport = function(report) {
+        
+        if (!report.title) {
+            report.title = "new report";
+        }
+        if (!report.date) {
+            report.date = null;
+        }
+        
         var key = firebase.database()
-                          .ref('reports/' + userId)
+                          .ref('reports/' + firebaseService.userId)
                           .push(report)
                           .key;
         firebase.database()
-                .ref('users/' + userId + '/reports/' + key)
+                .ref('users/' + firebaseService.userId + '/reports/' + key)
                 .set({
                     title: report.title,
                     date: new Date(report.date).getTime()
                 });
+        return key;
     };
     
     // insert a new report generating a new unique id
     factory.insertTemplate = function(template) {
+       if (!template.title) {
+           template.title = "new template";
+       }
+       if (!template.date) {
+           template.date = null;
+       }
        var key = firebase.database()
-                         .ref('templates/' + userId)
+                         .ref('templates/' + firebaseService.userId)
                          .push(template)
                          .key;
-       firebase.database().ref('users/' + userId + '/templates/' + key).set({
+       firebase.database().ref('users/' + firebaseService.userId + '/templates/' + key)
+                          .set({
             title: template.title,
             date: template.date
-       }); 
+       });
+      return key;
     };
     
     // update report
@@ -774,37 +841,89 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
     
     // get a report by its identifier
     factory.getReport = function(id) {
-        var query = firebase.database().ref('reports/' + userId + '/' + id);
+        var query = firebase.database().ref('reports/' + firebaseService.userId + '/' + id);
         var item = $firebaseObject(query);
         return item.$loaded();
+      // return query.once("value");
+    };
+    
+    // get a report data only by its identifier
+    factory.getReportData = function(id) {
+        var query = firebase.database()
+                            .ref('reports/' + firebaseService.userId + '/' + id)
+                            .once("value");
+        return query;
       // return query.once("value");
     };
     
     // get a report by its identifier
     factory.getTemplate = function(id) {
-        var query = firebase.database().ref('templates/' + userId + '/' + id);
+        var query = firebase.database().ref('templates/' + firebaseService.userId + '/' + id);
         var item = $firebaseObject(query);
         return item.$loaded();
       // return query.once("value");
     };
     
+        // get a report by its identifier
+    factory.getTemplateData = function(id) {
+        var query = firebase.database()
+                            .ref('templates/' + firebaseService.userId + '/' + id)
+        .once("value");
+        return query;
+      // return query.once("value");
+    };
+    
+//     $scope.findSeriesWithoutFactory = function() {
+//    var seriesRef = new Firebase(fbUrl+'/series');
+//    var seriesCollection = $firebaseArray(seriesRef);
+//    seriesCollection.$ref().orderByChild("name").equalTo($scope.seriesName).once("value", function(dataSnapshot){
+//        var series = dataSnapshot.val();
+//        if(dataSnapshot.exists()){
+//          console.log("Found", series);
+//          $scope.series = series;
+//        } else {
+//          console.warn("Not found.");
+//        }
+//    });
+//  };
+    
+//  return $firebaseArray.$extend({
+//    findSeries:function(seriesName){
+//      var deferred = $q.defer();
+//      // query by 'name'
+//      this.$ref().orderByChild("name").equalTo(seriesName).once("value", function(dataSnapshot){
+//        if(dataSnapshot.exists()){
+//          deferred.resolve(dataSnapshot.val());
+//        } else {
+//          deferred.reject("Not found.");
+//        }
+//      });
+//      return deferred.promise;
+//    }
+//  });
+    
     // gets report data 
     factory.getTemplateMeta = function (startDate, endDate) {
-        var query = firebase.database().ref('users/' + userId + '/templates');
+        console.log(firebaseService.userId);
+        var query = firebase.database().ref('users/' + firebaseService.userId + '/templates');
         var list = $firebaseArray(query);
+        //return query.once("value");
         return list.$loaded();
     };
     
     // gets report data 
     factory.getReportMeta = function (startDate, endDate) {
-        var query = firebase.database().ref('users/' + userId + '/reports');
+        console.log(firebaseService.userId);
+        var query = firebase.database().ref('users/' + firebaseService.userId + '/reports');
         var list = $firebaseArray(query);
+        //list.$destroy();
         return list.$loaded();
+        //return list.$loaded();
     };
     
     // shouldn't be called
     factory.getReports = function(startDate, endDate) {
-        var query = firebase.database().ref('reports/' + userId);
+        var query = firebase.database().ref('reports/' + firebaseService.userId);
         var list = $firebaseArray(query);
         return list.$loaded(); 
     }

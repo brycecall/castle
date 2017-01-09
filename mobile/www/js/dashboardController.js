@@ -23,7 +23,7 @@ app.controller('dashboardController', function ($rootScope, $scope, castleServic
     };
     
     $scope.readUserReports = function() {
-        firebaseIO.readUserReports("p60BAVy66gT0jLDaNUO0CfZfti22");
+        firebaseIO.getReportMeta();
     };
     
     $scope.readReports = function() {

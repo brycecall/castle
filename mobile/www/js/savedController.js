@@ -33,8 +33,15 @@ app.controller('savedController', function ($scope, castleService,
             console.log($scope.reports);
            // $scope.$apply();
         }, function(error){
-            console.log(error);
-            $state.go("account");
+            
+            if (error === "User not authed") {
+                console.log("You must sign in before accessing this page.\n" +
+                            "redirecting to account page.");
+                $state.go("account");
+            } else {
+                console.log(error);
+            }
+                
         });
     }();
 

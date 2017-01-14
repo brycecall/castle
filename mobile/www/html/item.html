@@ -316,7 +316,8 @@
         <div ng-if="item.type == 'select'"  style="padding-left:8px;">
             <md-input-container >
                 <md-select ng-model="item.value" placeholder="Select {{item.title}}">
-                    <md-option ng-repeat="radiovalue in item.content track by $index" ng-value="radiovalue.title">{{radiovalue.title}}</md-option>
+                    <md-option ng-repeat="radiovalue in item.content track by $index" 
+                               ng-value="radiovalue.title">{{radiovalue.title}}</md-option>
                 </md-select>
             </md-input-container>
             <form ng-if="castleService.editMode" 

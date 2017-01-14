@@ -1,6 +1,5 @@
 var reportOne = 
 {
-  "name": "Name of the Report",
   "title": "Name of the Report",
   "date":"3/22/2016",
   "type":"template",
@@ -9,7 +8,8 @@ var reportOne =
   "meta":[
       {
           title:"Report Information",
-          "answeredCount":0, "items": [
+          "answeredCount":0, 
+          "items": [
             {
               "title": "First Name",
               "required": true, "answered":false,

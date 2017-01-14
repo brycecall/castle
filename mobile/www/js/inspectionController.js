@@ -67,6 +67,59 @@
          });
      };
 
+     $scope.saveAsTemplate = function() {
+         
+         var template = castleService.currentReport;
+          template.photoAppendix = [];
+          for (var sectionkey in template.sections) {
+             var section = template.sections[sectionkey];
+             if (section.answeredCount) {
+                section.answeredCount = 0;
+             }
+             for (var pagekey in section.pages) {
+                var page = section.pages[pagekey];
+                 if (page.answeredCount) {
+                    page.answeredCount = 0;
+                 }
+                 for (var itemkey in page.items) {
+                     var item = page.items[itemkey];
+                     if (item.value) {
+                        if (item.type == "presettext") {
+                           item.showvalue = false;
+                        } else if (item.type == "image") {
+                           item.i = [];
+                        } else {
+                            item.value = ""
+                        }
+                     }
+                     item.answered = false;
+                        
+                     for (var subItemKey in item.content) {
+                          var subItem = item.content[subItemKey];
+                          if (subItem.i) {
+                            subItem.i = [];
+                          }
+                          if (subItem.c) {
+                            subItem.c = false;
+                          }
+                          
+                     }
+                }
+             }
+          }
+         console.log("Template: ");
+         console.log(template);
+
+//         
+//         firebaseIO.setTemplate(template)
+//                   .then(function() {
+//                        console.log("Success");
+//                        $scope.savedDialog();
+//                    }, function(error){
+//                        console.log("Error: " + error);
+//         });
+     };
+
      $scope.addToSelectedImages = function(index) {
         var safeIndex = $.inArray(index, castleService.selectedImages);
         if (safeIndex == -1) {
@@ -454,6 +507,8 @@
      $scope.cancelDialog = function () {
          $mdDialog.cancel();
      };
+     
+     
 
  /********************************************************
   * CAMERA

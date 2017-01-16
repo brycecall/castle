@@ -7,14 +7,14 @@
          <div class="md-body-2" style="text-align:center;">
              <div>For the property at:</div>
              <div class="md-headline">
-                {{metaInfo.address}},
-                {{metaInfo.city}},
-                {{metaInfo.state}}
-                {{metaInfo.postalCode}}
+                {{job.clientInf.address.value}},
+                {{job.clientInf.city.value}},
+                {{job.clientInf.state.value}}
+                {{job.clientInf.postalCode.value}}
              </div>
-             <div>Prepared for: {{metaInfo.firstName}} {{metaInfo.lastName}}</div>
-             <div>Inspection Date: {{metaInfo.reportDate | date}}</div>
-             <div>Prepared by: {{castleService.io.user.username}}</div>
+             <div>Prepared for: {{job.clientInf.firstName.value}} {{job.clientInf.lastName.value}}</div>
+             <div>Inspection Date: {{job.reportInf.reportDate.value | date}}</div>
+<!--             <div>Prepared by: {{castleService.io.user.username}}</div>-->
 <!--             <img src="" />-->
              <br/>
              <p>"A great investment deserves a great investigation"</p>
@@ -35,16 +35,16 @@
 <!--                                <span style="color:{{section.color}}">{{section.title}}</span><md-icon md-svg-icon="chevron_right" class="headNavIcon"></md-icon>-->
                                 {{page.title}}
                             </div>
-                            <div class="md-caption" style="min-width:125px; text-align:right">Report ID: {{reportId.value}}</div>
+                            <div class="md-caption" style="min-width:125px; text-align:right">Report ID: {{job.reportInf.reportId.value}}</div>
                         </div>
                         <div layout="row" layout-align="space-between end" class="md-caption">
                             <div>
-                                {{metaInfo.address}},
-                                {{metaInfo.city}},
-                                {{metaInfo.state}}
-                                {{metaInfo.postalCode}}
+                                {{job.clientInf.address.value}},
+                                {{job.clientInf.city.value}},
+                                {{job.clientInf.state.value}}
+                                {{job.clientInf.postalCode.value}}
                             </div>
-                            <div>{{metaInfo.reportDate | date}}</div>
+                            <div>{{job.reportInf.reportDate.value | date}}</div>
                         </div>
                     </h1>
 
@@ -64,8 +64,13 @@
                                 <h3 class="md-headline">{{item.title}}:</h3>
                                 <div class="lMarg">
                                 <div class="flex flex-wrap" style="display:flex; flex-wrap:wrap;">
-                                   <div ng-repeat="checkbox in item.content track by $index" flex="50">
-                                        <md-checkbox class="md-secondary checkboxery" ng-model="checkbox.c" md-no-ink style="position:relative; display:inline">{{checkbox.title}}
+                                   <div ng-repeat="checkbox in item.content track by $index" flex="50"
+                                        style="min-height:24px;">
+                                        <md-checkbox class="md-secondary checkboxery" 
+                                        ng-model="checkbox.c" 
+                                        md-no-ink 
+                                        style="position:relative; display:inline">
+                                        {{checkbox.title}}
                                         </md-checkbox>
                                     </div>
                                 </div>

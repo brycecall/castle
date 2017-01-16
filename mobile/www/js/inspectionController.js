@@ -5,15 +5,13 @@
      $scope.selectedSection = $stateParams.sectionIndex;
      $scope.castleService.selectedSection = $scope.selectedSection;
      $scope.selectedPage = castleService.selectedPage;
-     $scope.report = castleService.currentReport;
+     $scope.report = castleService.currentReport.data;
      
      // change main header image and title
      castleService.currentPage.showIcon = true;
      castleService.currentPage.toggleNavMenu = true;
-     castleService.currentPage.title = $scope.report.title || "No report loaded"; 
-                                           //$scope.report.meta
-                                           //  .ReportInformation
-                                           //  .items.reportTitle.value;
+     castleService.currentPage.title = $scope.report.job.reportInf.reportTitle.value 
+                                        || "No report loaded"; 
      castleService.currentPage.icon = "menu";
      castleService.currentPage.showEditMode = true;
 

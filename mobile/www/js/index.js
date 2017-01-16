@@ -191,7 +191,7 @@ app.run(function($rootScope, $urlRouter, $state, castleService, firebaseService,
                 $state.go('account');
             }
             $rootScope.first = false;
-            castleService.currentPage.title = "Account";
+            castleService.currentPage.title = "";
             castleService.currentPage.preventNavigation = false;
             castleService.currentPage.toggleNavMenu = true;
             castleService.currentPage.icon = "menu";
@@ -783,12 +783,14 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
     
     // inserts a new report generating a new unique id
     factory.insertReport = function(report) {
+        console.log("insertReport");
+        console.log(report);
         
-        if (!report.title) {
-            report.title = "new report";
+        if (!report.data.job.reportInf.reportTitle.value) {
+            report.data.job.reportInf.reportTitle.value = "new report";
         }
-        if (!report.date) {
-            report.date = null;
+        if (!report.data.job.reportInf.reportDate.value) {
+            report.data.job.reportInf.reportDate.value = new Date().getTime();
         }
         
         var key = firebase.database()
@@ -798,29 +800,26 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
         firebase.database()
                 .ref('users/' + firebaseService.userId + '/reports/' + key)
                 .set({
-                    title: report.title,
-                    date: new Date(report.date).getTime()
+                    title: report.data.job.reportInf.reportTitle.value,
+                    date: new Date(report.data.job.reportInf.reportDate.value).getTime()
                 });
         return key;
     };
     
     // insert a new report generating a new unique id
     factory.insertTemplate = function(template) {
-       if (!template.title) {
-           template.title = "new template";
+       if (!template.data.templateStatic.title) {
+           template.data.templateStatic.title = "new template";
        }
-       if (!template.date) {
-           template.date = null;
+       if (!template.data.templateStatic.date || template.data.templateStatic.date == "") {
+           template.data.templateStatic.date = new Date().getTime();
        }
        var key = firebase.database()
                          .ref('templates/' + firebaseService.userId)
                          .push(template)
                          .key;
        firebase.database().ref('users/' + firebaseService.userId + '/templates/' + key)
-                          .set({
-            title: template.title,
-            date: template.date
-       });
+                          .set(template.data.templateStatic);
       return key;
     };
     

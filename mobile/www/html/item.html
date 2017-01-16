@@ -111,7 +111,8 @@
         <!--                           CHECKBOX-->
         <div ng-if="item.type == 'checkbox'">
             <div ui-sortable="sortableOptions"  ng-model="item.content" >
-                <div ng-repeat="checkbox in item.content track by $index"          ng-class="castleService.editMode ? 'edit_item' : 'list_item'"        
+                <div ng-repeat="checkbox in item.content track by $index"         
+                     ng-class="castleService.editMode ? 'edit_item' : 'list_item'"        
                      class="list_item flex-wrap" 
                      style="background-color:#FFF;" layout="column" layout-align="center stretch">
                      <div layout="column" layout-align="center stretch" ng-class="checkbox.c ? 'cStyles' : ''">
@@ -123,7 +124,9 @@
                          <md-icon md-svg-icon="./img/drag.svg" ></md-icon>
                      </div>
                      
-                    <md-checkbox class="md-secondary checkboxery" ng-model="checkbox.c" aria-label="{{checkbox.title}}"   style="position:relative; display:inline" >{{checkbox.title}}
+                    <md-checkbox class="md-secondary checkboxery" ng-model="checkbox.c" 
+                        aria-label="{{checkbox.title}}"   
+                        style="position:relative; display:inline" >{{checkbox.title}}
                     </md-checkbox>
                     <span flex=""></span>
                      <md-button ng-show="castleService.editMode" class="md-icon-button" 

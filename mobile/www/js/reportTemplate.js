@@ -1,5 +1,6 @@
-var reportOne = 
-{
+var reportOne = {
+"report":
+ {
   "title": "Name of the Report",
   "date":"3/22/2016",
   "type":"template",
@@ -10290,4 +10291,5 @@ var reportOne =
       "showvalue": false
     }
   ]
+}
 }

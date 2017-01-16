@@ -2,16 +2,15 @@
                                             $stateParams, castleService, $state, 
                                             $timeout) {
      $scope.castleService = castleService;
-     $scope.report = castleService.currentReport;
+     $scope.report = castleService.currentReport.data;
      $scope.sectionIndex = $stateParams.sectionIndex;
      $scope.pageIndex = $stateParams.pageIndex;
      $scope.page = $scope.report.sections[$scope.sectionIndex].pages[$scope.pageIndex];
      
      // change main header image and title
      castleService.currentPage.showIcon = true;
-     castleService.currentPage.title = $scope.report.meta
-                                             .ReportInformation
-                                             .items.reportTitle.value;
+     castleService.currentPage.title = $scope.report.job.reportInf.reportTitle.value 
+                                        || "No report loaded"; 
      castleService.currentPage.icon = "back";
      castleService.currentPage.toggleNavMenu = false;
      castleService.currentPage.go = {state:"inspection", params:{'sectionIndex':'default'}};

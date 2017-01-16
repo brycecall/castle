@@ -5,9 +5,22 @@ app.controller('dashboardController', function ($rootScope, $scope, castleServic
     castleService.currentPage.icon = "menu";
     $scope.firebaseIO = firebaseIO;
     $scope.insertReport = function() {
+        castleService.currentReport = reportTemplates[0];
+        console.log(castleService.currentReport);
+        
         try {
-               firebaseIO.insertReport("p60BAVy66gT0jLDaNUO0CfZfti22", 
-                                       castleService.currentReport)
+               firebaseIO.insertReport(castleService.currentReport)
+            } catch(result) {
+            console.log(result);
+        };
+    };
+    
+    $scope.insertTemplate = function() {
+        castleService.currentReport = reportTemplates[0];
+        console.log(castleService.currentReport);
+        
+        try {
+               firebaseIO.insertTemplate(castleService.currentReport)
             } catch(result) {
             console.log(result);
         };
@@ -27,7 +40,7 @@ app.controller('dashboardController', function ($rootScope, $scope, castleServic
     };
     
     $scope.readReports = function() {
-        firebaseIO.readReports("p60BAVy66gT0jLDaNUO0CfZfti22");
+        firebaseIO.readReports();
     };
     
     function checkSetup() {

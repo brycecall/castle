@@ -42,11 +42,9 @@
 
      window.onload = function() {
          firebaseIO.getTemplateMeta().then(function(data) {
-             
-         $timeout(function() {
-             $scope.templates = data;
-         });
-             $scope.templates = data;
+             $timeout(function() {
+                 $scope.templates = data;
+             });
          }, function(error) {
              console.log(error);
              $state.go("account");

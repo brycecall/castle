@@ -30,7 +30,7 @@ app.controller('savedController', function ($scope, castleService,
 //        console.log($scope.reports);
         firebaseIO.getReportMeta().then(function(data){
             $scope.reports = data;
-            console.log($scope.reports);
+           // console.log($scope.reports);
            // $scope.$apply();
         }, function(error){
             

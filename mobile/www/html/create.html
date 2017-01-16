@@ -182,7 +182,7 @@
             </md-card>
         </div>
         <div layout="row" style="padding: 0 0 10px 0;" 
-             ng-hide="castleService.assignPhotoMode" 
+             ng-hide="castleService.assignPhotoMode || type === 'info'" 
              class="flex-wrap">
             <md-button  ng-click="showPrerenderedDialog($event)" 
                         class="md-raised" 
@@ -191,6 +191,11 @@
             <md-button ng-click="saveJob()" 
                        class="md-raised md-accent" 
                        aria-label="Start Report">Start Job Now!</md-button>
+        </div>
+        <div ng-hide="castleService.assignPhotoMode || type !== 'info'">
+            <md-button  ui-sref="inspection"
+                       class="md-raised md-accent" 
+                       aria-label="Continue">Continue Job!</md-button>
         </div>
         </div>
     </div>

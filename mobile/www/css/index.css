@@ -1045,3 +1045,6 @@ box-shadow:
 .faded-button {
     color: rgba(0, 0, 0, 0.2) !important;
 }
+.menuHeader {
+    font-size: 18px;
+}

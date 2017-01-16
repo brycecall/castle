@@ -7,7 +7,7 @@ app.controller('savedController', function ($scope, castleService,
     $scope.selectReport = function(sReport) {
         console.log(sReport.$id);
         firebaseIO.getReport(sReport.$id).then(function(report) {
-            console.log(report);
+            //console.log(report);
             castleService.currentReport = report;
             $state.go("inspection", {sectionIndex:'default'});
         }, function(error) {

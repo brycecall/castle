@@ -3,14 +3,18 @@
                                               castleService, $state, firebaseIO, 
                                               $timeout) {
      $scope.castleService = castleService;
-     $scope.selectedSection = $stateParams.sectionIndex;
-     $scope.castleService.selectedSection = $scope.selectedSection;
-     $scope.selectedPage = castleService.selectedPage;
+     $scope.type = $stateParams.type;
      castleService.reportTemplate = null;
-     castleService.currentReport = null;
      $scope.templates = [];
      $scope.report = null;
      $scope.title = "New Job";
+     if($scope.type !== 'info') {
+        castleService.currentReport = null;
+     } else {
+        $scope.title = "Job Information";
+     }
+    
+
      // change main header image and title
      castleService.currentPage.showIcon = true;
      castleService.currentPage.toggleNavMenu = true;
@@ -19,9 +23,7 @@
      castleService.currentPage.showEditMode = false;
      
      $scope.rapidRemarks = castleService.rapidRemarks;
-     $scope.finishedRequired = false;
      $scope.editMode = false;
-     
      $scope.toggleEditMode = function() {
         castleService.editMode = !castleService.editMode;
         if (castleService.editMode) {
@@ -37,18 +39,25 @@
      $scope.isOpen = false;
      $scope.togglePlusMenu = false;
      $scope.showAddItemMenu = false;
-     var pictureSource = null;
-     var destinationType = null;
-
+     
      window.onload = function() {
-         firebaseIO.getTemplateMeta().then(function(data) {
-             $timeout(function() {
-                 $scope.templates = data;
+         if ($scope.type !== 'info') {
+             firebaseIO.getTemplateMeta().then(function(data) {
+                 $timeout(function() {
+                     $scope.templates = data;
+                 });
+             }, function(error) {
+                 console.log(error);
+                 $state.go("account");
              });
-         }, function(error) {
-             console.log(error);
-             $state.go("account");
-         });
+         } else {
+             console.log("We got here! Wha?");
+             
+                 $timeout(function() {
+                      $scope.report = castleService.currentReport;
+                 });
+             console.log($scope.report);
+         }
      }();
      
      $scope.selectTemplate = function(sTemplate) {

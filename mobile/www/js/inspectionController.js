@@ -6,6 +6,7 @@
      $scope.castleService.selectedSection = $scope.selectedSection;
      $scope.selectedPage = castleService.selectedPage;
      $scope.report = castleService.currentReport.data;
+
      
      // change main header image and title
      castleService.currentPage.showIcon = true;
@@ -14,7 +15,18 @@
                                         || "No report loaded"; 
      castleService.currentPage.icon = "menu";
      castleService.currentPage.showEditMode = true;
-
+     castleService.currentPage.downMenu = [
+         {
+             title:castleService.currentPage.title,
+             link:"inspection({'sectionIndex':'default'})"
+         },
+         {
+             title:"Job Information",
+             link:"create({'type':'info'})"
+         }
+     ];
+     castleService.currentPage.showDownMenu = true;
+     
      $scope.rapidRemarks = castleService.rapidRemarks;
      $scope.finishedRequired = false;
      $scope.editMode = false;

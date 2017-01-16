@@ -82,7 +82,21 @@
                                        ng-click="menuNavigation()">
                                  <md-icon md-svg-icon="{{castleService.currentPage.icon}}" ></md-icon>
                             </md-button>
-                            <h2 class="page_header">
+                            <md-menu ng-if="castleService.currentPage.showDownMenu">
+                                <div aria-label="downMenu" class="menuHeader" 
+                                           ng-click="openMenu($mdOpenMenu, $event)">
+                                        {{castleService.currentPage.title}}
+                                    <md-icon md-menu-origin md-svg-icon="arrow_drop_down"></md-icon>
+                                </div>
+                                <md-menu-content width="4">
+                                    <md-menu-item ng-repeat="menuItem in castleService.currentPage.downMenu">
+                                          <md-button aria-label="menuItem" ui-sref="{{menuItem.link}}" >
+                                            {{menuItem.title}}
+                                          </md-button>
+                                    </md-menu-item>
+                                </md-menu-content>
+                            </md-menu>
+                            <h2 class="page_header" ng-if="!castleService.currentPage.showDownMenu">
                               <span>{{castleService.currentPage.title}}</span>
                             </h2>
                             <span flex></span>

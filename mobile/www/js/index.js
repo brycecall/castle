@@ -9,12 +9,15 @@ app.constant('DEFAULT_COLOR', '#009688'); //4CAF50
 app.constant('SERVER_URL', 'http://dev.maurasoftware.com:9526');
 
 // Page Router
-app.config(function ($stateProvider, $urlRouterProvider) {
+app.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/account');
     $stateProvider
         .state('create', {
-            url: "/create",
-            templateUrl: 'html/create.html'
+            url: "/create/{type}",
+            templateUrl: 'html/create.html',
+            params: {
+                type:'new'
+            }
         })
         .state('account', {
             url: '/account',
@@ -169,6 +172,7 @@ app.config(function ($mdIconProvider) {
         .icon('perm_media', './mdicons/ic_perm_media_24px.svg')
         .icon('schedule', './mdicons/ic_schedule_24px.svg')
         .icon('dashboard', './mdicons/ic_dashboard_24px.svg')
+        .icon('message', './mdicons/ic_message_24px.svg')
         ;
 });
 
@@ -198,6 +202,7 @@ app.run(function($rootScope, $urlRouter, $state, castleService, firebaseService,
             castleService.currentPage.link = "account";
             castleService.currentPage.go = {state:"account"};
             castleService.currentPage.showEditMode = false;
+            castleService.currentPage.showDownMenu = false;
         });
 });
 
@@ -247,7 +252,7 @@ app.controller('indexController', function ($scope, castleService,
         {
             title: "New Job",
             icon: "new_report",
-            link: "create({sectionIndex:'default'})"
+            link: "create"
         },
         {
             title: "Saved Jobs",
@@ -265,6 +270,10 @@ app.controller('indexController', function ($scope, castleService,
             link: "templates"
         }
         ];
+    
+    $scope.openMenu = function($mdOpenMenu, $event) {
+        $mdOpenMenu($event);
+    };
 
 });
 

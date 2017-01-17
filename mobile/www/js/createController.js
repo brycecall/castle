@@ -12,6 +12,13 @@
         castleService.currentReport = null;
      } else {
         $scope.title = "Job Information";
+         castleService.currentPage.downMenu = [
+             {
+                 title: castleService.currentReport.data.job.reportInf.reportTitle.value || "untitled",
+                 link:"inspection({'sectionIndex':'default'})"
+             }
+         ];
+     castleService.currentPage.showDownMenu = true;
      }
     
 

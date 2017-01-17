@@ -17,10 +17,6 @@
      castleService.currentPage.showEditMode = true;
      castleService.currentPage.downMenu = [
          {
-             title:castleService.currentPage.title,
-             link:"inspection({'sectionIndex':'default'})"
-         },
-         {
              title:"Job Information",
              link:"create({'type':'info'})"
          }

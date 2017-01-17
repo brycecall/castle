@@ -694,8 +694,6 @@ app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject,
     factory.authObj = $firebaseAuth();
     factory.isAuth = false;
     factory.userId = null;
-
-    
     
     factory.init = function() {
         console.log("firebaseService init");
@@ -719,10 +717,7 @@ app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject,
           }
         });
     };
-    //factory.init();
-        
-
-
+    
     // Create user
     factory.createNewUser = function(email, password) {
       factory.authObj.$createUserWithEmailAndPassword(email, password).then(function(userData) {
@@ -752,22 +747,6 @@ app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject,
     };
     return factory;
 });
-//
-//app.factory('SeriesArrayFactory', function($firebaseArray, $q){
-//  return $firebaseArray.$extend({
-//    findSeries:function(seriesName){
-//      var deferred = $q.defer();
-//      this.$ref().once("value", function(dataSnapshot){
-//        if(dataSnapshot.exists()){
-//          deferred.resolve(dataSnapshot.val());
-//        } else {
-//          deferred.reject("Not found.");
-//        }
-//      });
-//      return deferred.promise;
-//    }
-//  });
-//});
 
 // Firebase service
 app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObject,
@@ -779,9 +758,6 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
           email: email
        }).key;
     };
-    
-    //firebaseService.init();
-    //console.log(firebaseService.userId); //p60BAVy66gT0jLDaNUO0CfZfti22
     
     factory.setUserData = function (displayName, email) {
        firebase.database().ref('users/' + firebaseService.userId).set({
@@ -872,7 +848,7 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
       // return query.once("value");
     };
     
-        // get a report by its identifier
+    // get a report by its identifier
     factory.getTemplateData = function(id) {
         var query = firebase.database()
                             .ref('templates/' + firebaseService.userId + '/' + id)
@@ -880,35 +856,6 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
         return query;
       // return query.once("value");
     };
-    
-//     $scope.findSeriesWithoutFactory = function() {
-//    var seriesRef = new Firebase(fbUrl+'/series');
-//    var seriesCollection = $firebaseArray(seriesRef);
-//    seriesCollection.$ref().orderByChild("name").equalTo($scope.seriesName).once("value", function(dataSnapshot){
-//        var series = dataSnapshot.val();
-//        if(dataSnapshot.exists()){
-//          console.log("Found", series);
-//          $scope.series = series;
-//        } else {
-//          console.warn("Not found.");
-//        }
-//    });
-//  };
-    
-//  return $firebaseArray.$extend({
-//    findSeries:function(seriesName){
-//      var deferred = $q.defer();
-//      // query by 'name'
-//      this.$ref().orderByChild("name").equalTo(seriesName).once("value", function(dataSnapshot){
-//        if(dataSnapshot.exists()){
-//          deferred.resolve(dataSnapshot.val());
-//        } else {
-//          deferred.reject("Not found.");
-//        }
-//      });
-//      return deferred.promise;
-//    }
-//  });
     
     // gets report data 
     factory.getTemplateMeta = function (startDate, endDate) {

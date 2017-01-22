@@ -218,7 +218,7 @@
          if (array) {
             cameraService.capturePhoto(array, index, isDataUrl);
          } else {
-            cameraService.capturePhoto($scope.report, "photoAppendix", true);
+            cameraService.capturePhoto(castleService.currentReport, "photoAppendix", true);
          }
         
      };  

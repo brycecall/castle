@@ -281,30 +281,33 @@ app.controller('indexController', function ($scope, castleService,
  /********************************************************
   * CAMERA
   ***********************************************************/
-  app.factory('cameraService', function() {
+  app.factory('cameraService', function($timeout) {
       var factory = {};
      // Retrieve image file location from specified source
      factory.capture = function(sourceType, source, isDataUrl) {
-         var destination = destinationType.DATA_URL;
+         var destination = Camera.DestinationType.DATA_URL;
          if (!isDataUrl) {
-             destination = destinationType.FILE_URI;
+             destination = Camera.DestinationType.FILE_URI;
          }
-         navigator.camera.getPicture(function(imageData) {
-             //console.log("Image Data: " + imageData);
-             if (isDataUrl) {
-                imageData = "data:image/jpeg;base64," + imageData
-             }
-             
-             factory.$apply(function () {
+         
+         $timeout(function() {
+             navigator.camera.getPicture(function(imageData) {
+                 //console.log("Image Data: " + imageData);
+                 if (isDataUrl) {
+                    imageData = "data:image/jpeg;base64," + imageData
+                 }
+                
                  source.push(imageData);
+
+                }, factory.onFail, {
+                 quality: 50,
+                 correctOrientation: true,
+                 mediaType: Camera.MediaType.PICTURE,
+                 encodingType: Camera.EncodingType.JPEG,
+                 destinationType: destination,
+                 sourceType: sourceType
              });
-             
-            }, factory.onFail, {
-             quality: 50,
-             correctOrientation: true,
-             destinationType: destination,
-             sourceType: sourceType
-         });
+         }, 0);
      };
 
      factory.removeIMG = function(source, index) {

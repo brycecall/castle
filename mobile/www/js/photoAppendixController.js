@@ -1,6 +1,6 @@
  app.controller('photoAppendixController', function ($scope, $mdUtil, $mdDialog, 
                                                      $rootScope, $stateParams, 
-                                                     castleService, $state) {
+                                                     castleService, $state, cameraService) {
      $scope.castleService = castleService;
      $scope.report = castleService.currentReport;
      castleService.currentPage.showIcon = false;
@@ -105,7 +105,7 @@
          if (array) {
             cameraService.capturePhoto(array, index, isDataUrl);
          } else {
-            cameraService.capturePhoto($scope.report, "photoAppendix", true);
+            cameraService.capturePhoto(castleService.currentReport, "photoAppendix", true);
          }
         
      };  

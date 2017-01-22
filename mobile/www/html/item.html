@@ -145,7 +145,8 @@
                             </md-button>
                             <md-menu-content>
                                 <md-content style="max-height:480px;  overflow-y:scroll;">
-                                    <md-card ng-repeat="checkboxImage in checkbox.i track by $index" style="position:relative;" layout="column" layout-align="center end">
+                                    <md-card ng-repeat="checkboxImage in checkbox.i track by $index"
+                                             style="position:relative;" layout="column" layout-align="center end">
                                         <md-button ng-click="removeIMG(checkbox.i, $index)" class="md-icon-button cancelIMG">
                                             <md-icon md-svg-icon="delete" aria-label="rapid remarks"></md-icon>
                                         </md-button>
@@ -161,7 +162,7 @@
                         </md-menu>
                         <md-button ng-show="checkbox.c && !castleService.assignPhotoMode" 
                                    class="md-icon-button" 
-                                   ng-click="capturePhoto(item, 'i', true)" 
+                                   ng-click="capturePhoto(checkbox, 'i', true)" 
                                    aria-label="capture photo">
                             <md-icon md-svg-icon="camera" class=""></md-icon>
                         </md-button>
@@ -259,7 +260,7 @@
                         </md-menu>
                         <md-button ng-show="radiovalue.title == item.value && !castleService.assignPhotoMode" 
                                    class="md-icon-button" 
-                                   ng-click="capturePhoto(item, 'i', true)" 
+                                   ng-click="capturePhoto(radiovalue, 'i', true)" 
                                    aria-label="capture photo">
                             <md-icon md-svg-icon="camera" class=""></md-icon>
                         </md-button>

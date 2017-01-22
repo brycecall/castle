@@ -161,7 +161,7 @@
                         </md-menu>
                         <md-button ng-show="checkbox.c && !castleService.assignPhotoMode" 
                                    class="md-icon-button" 
-                                   ng-click="initCameraAction(checkbox, true, true)" 
+                                   ng-click="capturePhoto(item, 'i', true)" 
                                    aria-label="capture photo">
                             <md-icon md-svg-icon="camera" class=""></md-icon>
                         </md-button>
@@ -259,7 +259,7 @@
                         </md-menu>
                         <md-button ng-show="radiovalue.title == item.value && !castleService.assignPhotoMode" 
                                    class="md-icon-button" 
-                                   ng-click="initCameraAction(radiovalue, true, true)" 
+                                   ng-click="capturePhoto(item, 'i', true)" 
                                    aria-label="capture photo">
                             <md-icon md-svg-icon="camera" class=""></md-icon>
                         </md-button>
@@ -393,7 +393,7 @@
                 <md-button class="md-fab md-primary" 
                            style="margin-right:27px;" 
                            aria-label="capture photo"
-                           ng-click="capturePhoto(1, unassignedImages, true, true)">
+                           ng-click="capturePhoto(item, 'i', true)">
                     <md-icon md-svg-icon="camera" ></md-icon>
                 </md-button>
             </div>   
@@ -441,7 +441,7 @@
                         </md-menu>
                         <md-button ng-show="!castleService.assignPhotoMode" 
                                    class="md-icon-button" 
-                                   ng-click="initCameraAction(item, true, true)" 
+                                   ng-click="capturePhoto(item, 'i', true)" 
                                    aria-label="capture photo">
                             <md-icon md-svg-icon="camera" class=""></md-icon>
                         </md-button>
@@ -489,7 +489,7 @@
             <md-button class="md-fab md-primary" 
                        style="margin-right:27px;" 
                        aria-label="capture photo"
-                       ng-click="capturePhoto(1, unassignedImages, true, true)">
+                       ng-click="capturePhoto()">
                 <md-icon md-svg-icon="camera" ></md-icon>
             </md-button>
     </div>  

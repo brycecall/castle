@@ -1,6 +1,6 @@
  app.controller('pageController', function ($scope, $mdUtil, $mdDialog, $rootScope, 
                                             $stateParams, castleService, $state, 
-                                            $timeout) {
+                                            $timeout, cameraService) {
      $scope.castleService = castleService;
      $scope.report = castleService.currentReport.data;
      $scope.sectionIndex = $stateParams.sectionIndex;
@@ -337,70 +337,14 @@
      };
 
 
- /********************************************************
-  * CAMERA
-  ***********************************************************/
-
-
-     // Retrieve image file location from specified source
-     $scope.capturePhoto = function(sourceType, source, isArray, isDataUrl) {
-         var destination = destinationType.DATA_URL;
-         if (!isDataUrl) {
-             destination = destinationType.FILE_URI;
+     $scope.capturePhoto = function(array, index, isDataUrl) {
+         if (array) {
+            cameraService.capturePhoto(array, index, isDataUrl);
+         } else {
+            cameraService.capturePhoto($scope.report, "photoAppendix", true);
          }
-
-        navigator.camera.getPicture(function(imageData) {
-             //console.log("Image Data: " + imageData);
-
-             if (isDataUrl) {
-                imageData = "data:image/jpeg;base64," + imageData
-             }
-
-             $scope.$apply(function () {
-                 if (isArray) {
-                    source.push(imageData);
-                 } else {
-                    source = (imageData);
-                 }
-             });
-
-            }, onFail, {
-             quality: 50,
-             correctOrientation: true,
-             destinationType: destination,
-             sourceType: sourceType
-         });
-     };
-
-
-     $scope.removeIMG = function (source, index) {
-         source.splice(index, 1);
-     };
-
-     // set up object with image array then adds photos to the array
-     $scope.initCameraAction = function (item, isArray, isDataUrl, title) {
-         var array = [];
-         if (item.i == null) {
-             item["i"] = array;
-         }
-         $scope.capturePhoto(1, item.i, isArray, isDataUrl);
-     };
-
-     // Called if something bad happens.
-     function onFail(message) {
-          console.log('Failed because: ' + message);
-     };
-
-     //Cancel the add opperation
-     $scope.cancel = function () {
-         window.history.back();
-     };
-
-     //Complete the save operation
-     $scope.save = function () {
-         $scope.addItem();
-         window.history.back();
-     };
+        
+     };  
 
 
  /********************************************************

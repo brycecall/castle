@@ -204,6 +204,7 @@ app.run(function($rootScope, $urlRouter, $state, castleService, firebaseService,
             castleService.currentPage.showEditMode = false;
             castleService.currentPage.showDownMenu = false;
         });
+    
 });
 
 // Controller for the index page
@@ -283,7 +284,7 @@ app.controller('indexController', function ($scope, castleService,
   app.factory('cameraService', function() {
       var factory = {};
      // Retrieve image file location from specified source
-     factory.capturePhoto = function(sourceType, source, isArray, isDataUrl) {
+     factory.capture = function(sourceType, source, isDataUrl) {
          var destination = destinationType.DATA_URL;
          if (!isDataUrl) {
              destination = destinationType.FILE_URI;
@@ -293,13 +294,11 @@ app.controller('indexController', function ($scope, castleService,
              if (isDataUrl) {
                 imageData = "data:image/jpeg;base64," + imageData
              }
+             
              factory.$apply(function () {
-                 if (isArray) {
-                    source.push(imageData);
-                 } else {
-                    source = (imageData);
-                 }
+                 source.push(imageData);
              });
+             
             }, factory.onFail, {
              quality: 50,
              correctOrientation: true,
@@ -308,23 +307,24 @@ app.controller('indexController', function ($scope, castleService,
          });
      };
 
-     factory.removeIMG = function (source, index) {
+     factory.removeIMG = function(source, index) {
          source.splice(index, 1);
      };
 
      // set up object with image array then adds photos to the array
-     factory.initCameraAction = function (item, isArray, isDataUrl, title) {
-         var array = [];
-         if (item.i == null) {
-             item["i"] = array;
+     factory.capturePhoto = function(list, index, isDataUrl) {
+         if (list[index] == null) {
+             list[index] = [];
          }
-         factory.capturePhoto(1, item.i, isArray, isDataUrl);
+         factory.capture(1, list[index], isDataUrl);
      };
 
      // Called if something bad happens.
      factory.onFail = function(message) {
           console.log('Failed because: ' + message);
      };
+      
+     return factory;
 });
 
 // Create the factory / service that is shared among all the controllers
@@ -380,17 +380,6 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
         //console.log("CALLED: " + factory.hideShowOptions.showNonRequired);
     };
 
-    factory.openItems = function (showVal) {
-        angular.forEach(
-            factory.currentReport
-                   .sections[factory.selectedSection]
-                   .pages[factory.selectedPage]
-                   .items, 
-                   function(itemval, itemkey) {
-                       itemval.showvalue = showVal;
-                   });
-    };
-
     //Setup data
     factory.init = function () {
         if (factory.io.user === null) {
@@ -398,38 +387,6 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
             return false;
         }
         return true;
-    };
-
-    //Endpoint respondant
-    factory.request = function (endpoint, jsonData) {
-        var response;
-
-        if (jsonData) {
-            console.log(JSON.parse(JSON.stringify(jsonData)));
-
-            var config = {
-                headers: {
-                    'Cache-Control': 'no-cache',
-                    'Content-Type': 'plain/text'
-                }
-            };
-            response = $http.post(factory.serverURL + endpoint, jsonData, config);
-        } else {
-            console.log("GET " + endpoint);
-            response = $http.get(factory.serverURL + endpoint);
-        }
-        return response;
-
-    };
-
-    factory.navigateExternalUrl = function (url) {
-        if (navigator.app) {
-            navigator.app.loadUrl(url, {
-                openExternal: true
-            });
-        } else {
-            window.open(url, '_system');
-        }
     };
 
     factory.assignPhotoMode = false;
@@ -475,215 +432,32 @@ app.factory('castleService', function ($rootScope, $state, DEFAULT_COLOR) {
          if (action == 'accept')
             factory.cancelAssignPhotoMode();
      };
+    
+    //Accurately return a new date object adjusted by the number of days
+//    factory.addDays = function(date, days) {
+//        return new Date(
+//            date.getFullYear(),
+//            date.getMonth(),
+//            date.getDate() + days,
+//            date.getHours(),
+//            date.getMinutes(),
+//            date.getSeconds(),
+//            date.getMilliseconds()
+//        );
+//    };
 
     // Fires when Cordova is fully loaded
     document.addEventListener('deviceready', function () {
         console.log('Cordova Ready!');
-        //factory.clearCache();
     }, false);
 
     return factory;
 });
 
-// Rest service
-app.factory('restService', function ($http, $q, SERVER_URL) {
-    var factory = {};
-
-    factory.sendRequest = function(method, url, data) {    
-        $http({
-             method: method,
-             url: SERVER_URL + url,
-             headers: {
-               'Content-Type': 'application/json'
-             },
-             data: data
-        }).then(
-
-        function successCallback(response) {
-            console.log(response.data);
-            return response.data;
-        }, 
-        function errorCallback(response) {
-            console.log(error);
-            return {'status':'error'};
-        });
-    };
 
 
-    factory.user = {
-                        "name":"",
-                        "email":"",
-                        "pw":""
-                   };
 
 
-    //  adding a user to the firebase db  
-    //  expected result
-    //	{
-    //		"status":"", //success, failure
-    //		"reason":"" //some error codes that make sense to us
-    //	}
-    factory.insertUser = function(data) {
-        var url = "api/insert/user/";
-        var result = factory.sendRequest("POST", url, data);
-    };
-
-
-    //authenticating a user in the firebase db  
-    //api/authuser/
-    //POST (JSON)
-    //	{
-    //		"email":"",
-    //		"pw":""
-    //	}
-    //return	
-    //	{
-    //		"status":"", //success, failure
-    //		"reason":"" //invalid email, invalid password, "" if successful
-    //	}
-    factory.authUser = function(data) {
-        var url = "api/authuser/";
-        var result = factory.sendRequest("POST", url, data);
-        return result;
-    };
-
-    //inserting an inspection
-    //api/insert/inspection/
-    //POST (JSON)
-    //	{} //inspection JSON
-    //return
-    //	{
-    //		"id":"" //report id
-    //	}
-    factory.insertInspection = function(data) {
-        var url = "api/insert/inspection/";
-        var result = factory.sendRequest("POST", url, data);
-        return result;
-    };
-
-    //inserting an inspection from an id
-    //api/insert/inspection/{id}
-    //POST (JSON)
-    //	{
-    //		"id":"", //report id
-    //		"inspection": {} //report JSON
-    //	}
-    //return 
-    //	{
-    //		"status":"", //success, failure
-    //		"reason":"" //"" if successful
-    //	}
-    factory.insertInspectionById = function(data, id) {
-        var url = "api/insert/inspection/" + id;
-        var result = factory.sendRequest("POST", url, data);
-        return result;
-    };
-
-    //updating an inspection
-    //api/update/inspection/
-    //POST (JSON)
-    //	{
-    //		"id":"", //report id
-    //		"inspection": {} //report JSON
-    //	}
-    //return 
-    //	{
-    //		"status":"", //success, failure
-    //		"reason":"" //"" if successful
-    //	}
-    factory.updateInspection = function(data) {
-        var url = "api/update/inspection/";
-        var result = factory.sendRequest("POST", url, data);
-        return result;
-    };
-
-    //Accurately return a new date object adjusted by the number of days
-    factory.addDays = function(date, days) {
-        return new Date(
-            date.getFullYear(),
-            date.getMonth(),
-            date.getDate() + days,
-            date.getHours(),
-            date.getMinutes(),
-            date.getSeconds(),
-            date.getMilliseconds()
-        );
-    };
-
-    //selecting inspections from a user
-    //api/select/inspections/{email}/{type}/{sortfield = date}/{ascending=false}/{startdate = today-month}/{enddate=today}
-    //GET
-    //return
-    //[] //array of inspection JSON objects
-    //note:
-    //type //inspection, template
-    factory.selectInspectionByEmail = function(email, type, sortField = "date", 
-                                               ascending = false, startDate, endDate) {
-        var url = "api/select/inspections/" + email + "/" + type + "/";
-        if (startDate == null || startDate == undefined)
-        {
-            startDate = factory.addDays(new Date, -30).toUTCString();
-        }
-        if (endDate == null || endDate == undefined)
-        {
-            endDate = new Date().toUTCString();
-        }
-        url += sortField + "/" + ascending + "/" + startDate + "/" + endDate + "/";
-        return factory.sendRequest("GET", url);
-    };
-
-    //selecting inspections from a user
-    //api/select/inspections/meta/{email}/{type}/{sortfield = date}/{ascending=false}/{startdate = today-month}/{enddate=today}
-    //GET
-    //return
-    //[] //array of inspection meta data JSON objects
-    //note:
-    //type //inspection, template
-    factory.selectInspectionMetaByEmail = function(email, type, sortField = "date", 
-                                                   ascending = false, startDate, endDate) {
-        var url = "api/select/meta/inspections/" + email + "/" + type + "/";
-        if (startDate == null || startDate == undefined)
-        {
-            startDate = factory.addDays(new Date, -30).toUTCString();
-        }
-        if (endDate == null || endDate == undefined)
-        {
-            endDate = new Date().toUTCString();
-        }
-        url += sortField + "/" + ascending + "/" + startDate + "/" + endDate + "/";
-        return factory.sendRequest("GET", url);
-    };
-
-    //selecting inspections by id
-    //api/select/inspection/{id}
-    //GET
-    //return
-    //{} //inspection json object
-    factory.selectInspectionByUser = function(id) {
-        var url = "api/select/inspections/" + id + "/";
-        return factory.sendRequest("GET", url);
-    };
-
-    //deleting an inspection
-    //api/delete/inspection/{id}
-    //DELETE (JSON)
-    //return 
-    //	{
-    //		"status":"", //success, failure
-    //		"reason":"" //"" if successful
-    //	}
-    factory.deleteInspection = function(id) {
-        var url = "api/delete/inspection/" + id + "/";
-        return factory.sendRequest("DELETE", url);
-    };
-
-    //selecting a user
-    //api/select/user
-
-    //deleting a user
-    //api/delete/user
-
-});
 
 // Firebase service
 app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject, 
@@ -747,6 +521,7 @@ app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject,
     };
     return factory;
 });
+
 
 // Firebase service
 app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObject,

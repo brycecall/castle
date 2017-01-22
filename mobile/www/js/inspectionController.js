@@ -1,6 +1,6 @@
  app.controller('inspectionController', function ($scope, $mdUtil, $mdDialog, 
                                                   $rootScope, $stateParams, castleService, 
-                                                  $state, $timeout, firebaseIO, $q) {
+                                                  $state, $timeout, firebaseIO, $q, cameraService) {
      $scope.castleService = castleService;
      $scope.selectedSection = $stateParams.sectionIndex;
      $scope.castleService.selectedSection = $scope.selectedSection;
@@ -35,6 +35,16 @@
      $scope.showAddItemMenu = false;
      var pictureSource = null;
      var destinationType = null;
+     
+     $scope.capturePhoto = function(array, index, isDataUrl) {
+         if (array) {
+            cameraService.capturePhoto(array, index, isDataUrl);
+         } else {
+            cameraService.capturePhoto($scope.report, "photoAppendix", true);
+         }
+        
+     };  
+     
      
      $scope.isSectionComplete = function(section) {
          var total = section.pages.length;
@@ -115,6 +125,7 @@
           }
          console.log("Template: ");
          console.log(template);
+         
 
 //         
 //         firebaseIO.setTemplate(template)
@@ -512,55 +523,6 @@
 
      $scope.cancelDialog = function () {
          $mdDialog.cancel();
-     };
-     
-     
-
- /********************************************************
-  * CAMERA
-  ***********************************************************/
-
-     // Retrieve image file location from specified source
-     $scope.capturePhoto = function(sourceType, source, isArray, isDataUrl) {
-         var destination = destinationType.DATA_URL;
-         if (!isDataUrl) {
-             destination = destinationType.FILE_URI;
-         }
-
-         navigator.camera.getPicture(function(imageData) {
-             //console.log("Image Data: " + imageData);
-
-             if (isDataUrl) {
-                imageData = "data:image/jpeg;base64," + imageData
-             }
-
-             $scope.$apply(function () {
-                 if (isArray) {
-                    source.push(imageData);
-                 } else {
-                    source = (imageData);
-                 }
-             });
-
-            }, onFail, {
-             quality: 50,
-             correctOrientation: true,
-             destinationType: destination,
-             sourceType: sourceType
-         });
-     };
-
-     $scope.removeIMG = function (source, index) {
-         source.splice(index, 1);
-     };
-
-     // set up object with image array then adds photos to the array
-     $scope.initCameraAction = function (item, isArray, isDataUrl, title) {
-         var array = [];
-         if (item.i == null) {
-             item["i"] = array;
-         }
-         $scope.capturePhoto(1, item.i, isArray, isDataUrl);
      };
 
      // Called if something bad happens.

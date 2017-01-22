@@ -100,5 +100,14 @@
      $scope.toggleItem = function (pItem) {
          pItem.showvalue = !pItem.showvalue;
      };
+     
+     $scope.capturePhoto = function(array, index, isDataUrl) {
+         if (array) {
+            cameraService.capturePhoto(array, index, isDataUrl);
+         } else {
+            cameraService.capturePhoto($scope.report, "photoAppendix", true);
+         }
+        
+     };  
     
  });

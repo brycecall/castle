@@ -1,5 +1,6 @@
  app.controller('itemController', function ($scope, $mdUtil, $mdDialog, $rootScope, 
-                                            $stateParams, castleService, $state) {
+                                            $stateParams, castleService, $state, 
+                                            cameraService) {
      $scope.castleService = castleService;
      $scope.report = castleService.currentReport.data;
      $scope.sectionIndex = $stateParams.sectionIndex;
@@ -213,6 +214,15 @@
          return result;
      };
      
+     $scope.capturePhoto = function(array, index, isDataUrl) {
+         if (array) {
+            cameraService.capturePhoto(array, index, isDataUrl);
+         } else {
+            cameraService.capturePhoto($scope.report, "photoAppendix", true);
+         }
+        
+     };  
+     
  /********************************************************
   * Plus Menu
   ***********************************************************/
@@ -225,7 +235,8 @@
              "presettext" : "paragraph",
              "number": "number",
              "text": "text",
-             "date": "date"
+             "date": "date",
+             "image":"image"
          },
          "type": ""
      };

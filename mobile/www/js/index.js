@@ -10,7 +10,7 @@ app.constant('SERVER_URL', 'http://dev.maurasoftware.com:9526');
 
 // Page Router
 app.config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/account');
+    $urlRouterProvider.otherwise('/dashboard');
     $stateProvider
         .state('create', {
             url: "/create/{type}",
@@ -635,14 +635,30 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
       // return query.once("value");
     };
     
-    // gets report data 
+    // get a report by its identifier
+    factory.getdefTemplateData = function(id) {
+        var query = firebase.database()
+                            .ref('templates/' + "home" + '/' + id)
+        .once("value");
+        return query;
+      // return query.once("value");
+    };
+    
+    // gets template data 
     factory.getTemplateMeta = function (startDate, endDate) {
         console.log(firebaseService.userId);
         var query = firebase.database().ref('users/' + firebaseService.userId + '/templates');
         var list = $firebaseArray(query);
-        //return query.once("value");
         return list.$loaded();
     };
+            
+    // gets default template data 
+    factory.getDefaultTemplateMeta = function (startDate, endDate) {
+        console.log(firebaseService.userId);
+        var query = firebase.database().ref('/defTemplates/home');
+        var list = $firebaseArray(query);
+        return list.$loaded();
+    };      
     
     // gets report data 
     factory.getReportMeta = function (startDate, endDate) {

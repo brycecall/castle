@@ -122,8 +122,8 @@
                 }
              }
           }
-         console.log("Template: ");
-         console.log(template);
+         //console.log("Template: ");
+         //console.log(template);
          
 
 //         

@@ -1048,3 +1048,47 @@ box-shadow:
 .menuHeader {
     font-size: 18px;
 }
+
+.sphere {
+    height: 130px;
+    width: 130px;
+    border-radius:50%; 
+    background-color: white;
+    overflow: hidden;
+    text-align: center;
+    position: relative;
+}
+
+.bottomSphere {
+    height: 35%;
+    color: white;
+    vertical-align: middle;
+    font-size: 16px;
+    line-height: 35px;
+}
+
+.topSphere {
+    background-color:white;
+    height: 65%;
+    vertical-align: middle;
+
+}
+
+.big {
+    padding: 15px 0 0 0;
+    font-size: 55px;
+    line-height: 48px;
+}
+
+.small {
+    position: relative;
+    top:-5px;
+}
+
+.tallRows tr td {
+    padding:10px 0 10px 0;
+}
+
+.table-responsive {
+    border:none;
+}

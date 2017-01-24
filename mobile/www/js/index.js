@@ -496,10 +496,21 @@ app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject,
     };
     
     // Create user
+    // Create user
     factory.createNewUser = function(email, password) {
       factory.authObj.$createUserWithEmailAndPassword(email, password).then(function(userData) {
           console.log("User " + userData.uid + " created successfully!");
-      }) 
+          
+          // Add new user to user, template, and report tables
+          firebase.database().ref('users/' + userData.uid).set({
+              email: email
+          });
+          firebase.database().ref('reports/' + userData.uid).set({
+          });
+          firebase.database().ref('templates/' + userData.uid).set({
+          });
+          // Add default template to new user
+      })
     };
     
     // Sign in

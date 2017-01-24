@@ -553,24 +553,23 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
     // inserts a new report generating a new unique id
     factory.insertReport = function(report) {
         console.log("insertReport");
-        console.log(report);
-        
-        if (!report.data.job.reportInf.reportTitle.value) {
-            report.data.job.reportInf.reportTitle.value = "new report";
+        if (!report.data.job.reportInf.reportTitle) {
+            report.data.job.reportInf.reportTitle = "new report";
         }
-        if (!report.data.job.reportInf.reportDate.value) {
-            report.data.job.reportInf.reportDate.value = new Date().getTime();
+        if (!report.data.job.reportInf.reportDate) {
+            report.data.job.reportInf.reportDate = new Date().getTime();
         }
         
         var key = firebase.database()
                           .ref('reports/' + firebaseService.userId)
                           .push(report)
                           .key;
+        
         firebase.database()
                 .ref('users/' + firebaseService.userId + '/reports/' + key)
                 .set({
-                    title: report.data.job.reportInf.reportTitle.value,
-                    date: new Date(report.data.job.reportInf.reportDate.value).getTime()
+                    title: report.data.job.reportInf.reportTitle,
+                    date: new Date(report.data.job.reportInf.reportDate).getTime()
                 });
         return key;
     };

@@ -122,18 +122,17 @@
      
      $scope.saveJob = function() {
          if (castleService.currentReport) {
+            
             for (var i = 0; i < castleService.currentReport.data.jobStatic.length; i++) {
                 var job = castleService.currentReport.data.jobStatic[i];
-                castleService.currentReport.data.job = job.key;
-                for (var j = 0; j < job.items; j++) {
-                    castleService.currentReport
-                                 .data.job[job.key] = job.items[j].key;
+                castleService.currentReport
+                             .data.job[job.key] = {};
+                for (var j = 0; j < job.items.length; j++) {
                     castleService.currentReport
                                  .data.job[job.key][job.items[j].key] = job.items[j].value;
                 }
             }
-         
-         
+ 
              var key = firebaseIO.insertReport(castleService.currentReport);
              firebaseIO.getReport(key).then(function(data) {
                 castleService.currentReport = data;

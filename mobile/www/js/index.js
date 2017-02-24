@@ -10,7 +10,7 @@ app.constant('SERVER_URL', 'http://dev.maurasoftware.com:9526');
 
 // Page Router
 app.config(function($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/account');
+    $urlRouterProvider.otherwise('/dashboard');
     $stateProvider
         .state('create', {
             url: "/create/{type}",
@@ -496,10 +496,16 @@ app.factory( 'firebaseService', function($firebaseAuth, $firebaseObject,
     };
     
     // Create user
+    // Create user
     factory.createNewUser = function(email, password) {
       factory.authObj.$createUserWithEmailAndPassword(email, password).then(function(userData) {
           console.log("User " + userData.uid + " created successfully!");
-      }) 
+
+          // Add new user to user, template, and report tables
+          firebase.database().ref('users/' + userData.uid).set({
+              email: email
+          });
+      })
     };
     
     // Sign in
@@ -547,24 +553,23 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
     // inserts a new report generating a new unique id
     factory.insertReport = function(report) {
         console.log("insertReport");
-        console.log(report);
-        
-        if (!report.data.job.reportInf.reportTitle.value) {
-            report.data.job.reportInf.reportTitle.value = "new report";
+        if (!report.data.job.reportInf.reportTitle) {
+            report.data.job.reportInf.reportTitle = "new report";
         }
-        if (!report.data.job.reportInf.reportDate.value) {
-            report.data.job.reportInf.reportDate.value = new Date().getTime();
+        if (!report.data.job.reportInf.reportDate) {
+            report.data.job.reportInf.reportDate = new Date().getTime();
         }
         
         var key = firebase.database()
                           .ref('reports/' + firebaseService.userId)
                           .push(report)
                           .key;
+        
         firebase.database()
                 .ref('users/' + firebaseService.userId + '/reports/' + key)
                 .set({
-                    title: report.data.job.reportInf.reportTitle.value,
-                    date: new Date(report.data.job.reportInf.reportDate.value).getTime()
+                    title: report.data.job.reportInf.reportTitle,
+                    date: new Date(report.data.job.reportInf.reportDate).getTime()
                 });
         return key;
     };
@@ -635,14 +640,30 @@ app.factory('firebaseIO', function($firebaseAuth, $firebaseArray, $firebaseObjec
       // return query.once("value");
     };
     
-    // gets report data 
+    // get a report by its identifier
+    factory.getdefTemplateData = function(id) {
+        var query = firebase.database()
+                            .ref('templates/' + "home" + '/' + id)
+        .once("value");
+        return query;
+      // return query.once("value");
+    };
+    
+    // gets template data 
     factory.getTemplateMeta = function (startDate, endDate) {
         console.log(firebaseService.userId);
         var query = firebase.database().ref('users/' + firebaseService.userId + '/templates');
         var list = $firebaseArray(query);
-        //return query.once("value");
         return list.$loaded();
     };
+            
+    // gets default template data 
+    factory.getDefaultTemplateMeta = function (startDate, endDate) {
+        console.log(firebaseService.userId);
+        var query = firebase.database().ref('/defTemplates/home');
+        var list = $firebaseArray(query);
+        return list.$loaded();
+    };      
     
     // gets report data 
     factory.getReportMeta = function (startDate, endDate) {

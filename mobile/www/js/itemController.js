@@ -13,7 +13,7 @@
            .pages[$scope.pageIndex];
      $scope.item = $scope.page.items[$scope.itemIndex];
      castleService.currentPage.showIcon = true;
-     castleService.currentPage.title = $scope.report.job.reportInf.reportTitle.value 
+     castleService.currentPage.title = $scope.report.job.reportInf.reportTitle 
                                         || "No report loaded"; 
      castleService.currentPage.icon = "back";
      castleService.currentPage.toggleNavMenu = false;

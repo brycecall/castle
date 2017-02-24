@@ -1,7 +1,7 @@
  app.controller('createController', function ($scope, $mdUtil, $mdDialog, 
                                               $rootScope, $stateParams, 
                                               castleService, $state, firebaseIO, 
-                                              $timeout) {
+                                              $timeout, $q) {
      $scope.castleService = castleService;
      $scope.type = $stateParams.type;
      castleService.reportTemplate = null;
@@ -19,7 +19,7 @@
                  link:"inspection({'sectionIndex':'default'})"
              }
          ];
-     castleService.currentPage.showDownMenu = true;
+        castleService.currentPage.showDownMenu = true;
      }
     
 
@@ -50,21 +50,43 @@
      
      window.onload = function() {
          if ($scope.type !== 'info') {
-             firebaseIO.getTemplateMeta().then(function(data) {
+             var array = [];
+             array.push(firebaseIO.getDefaultTemplateMeta());
+             array.push(firebaseIO.getTemplateMeta());
+             $q.all(array).then(
+             function(data) {
                  $timeout(function() {
-                     $scope.templates = data;
-                 });
-             }, function(error) {
-                 console.log(error);
-                 $state.go("account");
-             });
-         } else {
-             console.log("We got here! Wha?");
+                     var list = [];
+                     
+                     list = list.concat(data[0]);
+                     list = list.concat(data[1]);
+                     $scope.templates = list;
+                    // console.log(list);
+                 }, 0)});
              
+//             firebaseIO.getTemplateMeta().then(function(data) {
+//                 $timeout(function() {
+//                     $scope.templates = data;
+//                 }, 0);
+//             }, function(error) {
+//                 console.log(error);
+//                 //$state.go("account");
+//             });
+//             firebaseIO.getTemplateMeta().then(function(data) {
+//                 $timeout(function() {
+//                     $scope.templates = data;
+//                 }, 0);
+//             }, function(error) {
+//                 console.log(error);
+//                 $state.go("account");
+//             });
+             
+             
+         } else {     
                  $timeout(function() {
                       $scope.report = castleService.currentReport;
-                 });
-             console.log($scope.report);
+                 }, 0);
+            // console.log($scope.report);
          }
      }();
      
@@ -72,6 +94,18 @@
          //console.log(sTemplate);
          //firebaseIO.insertTemplate(castleService.reportTemplates[0]);
          if (sTemplate) {
+             
+             if (sTemplate.type == "defTemplate") {
+                 firebaseIO.getdefTemplateData(sTemplate.$id)
+                           .then(function(template) {
+                     $timeout(function() {
+                         castleService.currentReport = template.val();
+                         $scope.report = castleService.currentReport;
+                     });
+                 }, function(error) {
+                     console.log("Error: " + error);
+                 });
+             } else {
              
              firebaseIO.getTemplateData(sTemplate.$id)
                        .then(function(template) {
@@ -82,23 +116,23 @@
              }, function(error) {
                  console.log("Error: " + error);
              });
+             }
          }
      };
      
      $scope.saveJob = function() {
          if (castleService.currentReport) {
+            
             for (var i = 0; i < castleService.currentReport.data.jobStatic.length; i++) {
                 var job = castleService.currentReport.data.jobStatic[i];
-                castleService.currentReport.data.job = job.key;
-                for (var j = 0; j < job.items; j++) {
-                    castleService.currentReport
-                                 .data.job[job.key] = job.items[j].key;
+                castleService.currentReport
+                             .data.job[job.key] = {};
+                for (var j = 0; j < job.items.length; j++) {
                     castleService.currentReport
                                  .data.job[job.key][job.items[j].key] = job.items[j].value;
                 }
             }
-         
-         
+ 
              var key = firebaseIO.insertReport(castleService.currentReport);
              firebaseIO.getReport(key).then(function(data) {
                 castleService.currentReport = data;

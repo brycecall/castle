@@ -13,29 +13,75 @@
 <div ng-controller="dashboardController" layout="column" class="page">
    <div flex>
     <md-content class="centerPage" >
+    <md-button aria-label="new Job"
+               class="md-raised md-primary"  ui-sref="create">
+        New Job
+    </md-button>
+<div layout="row" class="flex-wrap" style="padding:16px; position:relative" flex-wrap>
+        <div class="sphere">
+            <div class="topSphere">
+                <div class="big">2</div>
+               <span class="small">reports</span> 
+            </div>
+            <div class="bottomSphere" style="background-color:orange;">
+                DUE SOON
+            </div>
+        </div>
+    <span flex></span>
+        <div class="sphere">
+            <div class="topSphere">
+                <div class="big">1</div>
+               <span class="small">job</span> 
+            </div>
+            <div class="bottomSphere" style="background-color:#009688;">
+                TODAY
+            </div>
+        </div>
+    <span flex></span>
+        <div class="sphere">
+            <div class="topSphere">
+                <div class="big">2</div>
+               <span class="small">jobs</span> 
+            </div>
+            <div class="bottomSphere" style="background-color:#424242;">
+                UPCOMING
+            </div>
+        </div>
+</div>
         <md-card>
-            <md-card-content>
-                <h3>Dashboard</h3>
+            <h3 class="md-subhead" style="padding-left:16px">Upcoming Jobs</h3>
+            <md-card-content class="table-responsive">
+                <table class="table table-hover" style="border:none !important">
+                    <thead>
+                     <tr>
+                        <th>Day</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Event</th>
+                    </tr>
+                    </thead>
+                    <tbody class="tallRows">
+                        <tr ng-repeat="job in upcomingJobs">
+                        <td>{{job.day}}</td>
+                        <td>{{job.date}}</td>
+                        <td>{{job.time}}</td>
+                        <td>{{job.client}}
+                            <div>{{job.address}}</div>
+                            </td>
+                        </tr>
+                    
+                    </tbody>
+                </table>
             </md-card-content>
         </md-card>
-        <h3 class="md-subhead insTitle">Scheduled Jobs</h3>
-        <md-card>
-            <md-card-content>
-                <span>No scheduled jobs!</span>
-            </md-card-content>
-        </md-card>
-        <h3 class="md-subhead insTitle">Recent Jobs</h3>
-        <md-card>
-            <md-card-content>
-                <span>No recent jobs!</span>
-            </md-card-content>
-        </md-card>
+<!--
         <md-button ng-click="insertReport()">Insert Report</md-button>
         <md-button ng-click="insertTemplate()">Insert Template</md-button>
         <md-button ng-click="updateReport()">Set Report</md-button>
         <md-button ng-click="readUserReports()">Read User Reports</md-button>
         <md-button ng-click="readReports()">Read Reports</md-button>
         <md-button ng-click="insertUser()">Insert User</md-button>
+-->
  
     </md-content>
     </div>

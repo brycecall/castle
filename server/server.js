@@ -1,171 +1,90 @@
-// Libraries
 var express = require('express');
+var mysql = require('mysql');
 var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var Firebase = require("firebase");
-var firebase = new Firebase("https://maura-inspector-pro.firebaseio.com/");
 
-/************************************
- * Retrieve report via HTML
- *************************************/
-// TODO: Setup as HTTPS site so that tranfer on website and API is encrypted
-app.set('port', 8080);
-
-var http_handler = function () {
-    console.log("FBI Server running on *:" + app.get('port'));
-};
-
-http.listen(app.get('port'), http_handler);
-app.use('/', express.static(__dirname + '/report_view'));
+var pool = mysql.createPool({
+  connectionLimit : 100,
+  host     : '162.243.212.249',
+  user     : 'boss',
+  password : 'AlphaBeta_',
+  database : 'castledb'
+});
 
 
-/************************************
- * FBI API
- *************************************/
-var connection_handler = function (socket) {
-    var initialize = function () {
-        console.log(socket.id + ' user connected');
-    };
+var server = app.listen(8081, function () {
+   console.log("Starting!");
+});
 
-    var send_report_handler = function (data) {
-        // Check the format of the report
-        // TODO: Check more than just the id
-        if (!data.payload.id)
-            data.payload.id = helpers.generateGUID();
-
-        var reports_ref = firebase.child("Organizations/FBI/Reports");
-        
-        // Populate report data
-        var object = {};
-        object[data.payload.id] = data.payload;
-        
-        // Submit to database
-        reports_ref.update(object, function() {
-            refresh_handler(data)
-        });
-    };
+// Eventually be the default endpoint
+app.get("/", function(req, res) {
     
-    var create_template_handler = function (data) {
-        // TODO: Check more than just the id
-        if (!data.payload.id)
-            data.payload.id = helpers.generateGUID();
+    pool.getConnection(function(err, connection) {
         
-        var templates_ref = firebase.child("Organizations/FBI/Templates");
+        connection.query('SELECT * from User', function (error, results, fields) {
+            
+          if (error) throw error; // handle query errors
+            
+          for (var i = 0; i < results.length; i++) {
+            console.log(results[i]);
+          } 
+            
+          res.json(results);
+            
+        });
         
-        // Populate report data
-        var object = {};
-        object[data.payload.id] = data.payload;
+        connection.release(); // release connection
+        if (err) throw err; // handle pool connection errors
+    });
+});
+
+
+
+/*
+<{usrAddress: }>, string
+<{usrFirstName: }>, string 
+<{usrLastName: }>, string
+<{usrPhone: }>, string
+<{usrEmail: }>, string
+<{usrType: }>, string
+<{usrUserAccessId: }>, string
+<{usrOrganizationId: }> string
+*/
+// create user
+app.post("/createUser", function(req, res) {
+    pool.getConnection(function(err, connection) {
         
-        // Submit to database
-        templates_ref.update(object, function() {
-            refresh_handler(data)
+        connection.query('', function (error, results, fields) {
+          if (error) {
+              res.send(error);
+              throw error;
+          }  // handle query errors
+          res.send("success");
         });
-    };
+        
+        connection.release(); // release connection
+        if (err) throw err; // handle pool connection errors
+    });
+});
 
-    var delete_report_handler = function (data) {
-        console.log(data);
-        data = "ERROR: Not yet implemented.";
-        socket.emit("update", data);
-    };
 
-    var delete_template_handler = function (data) {
-        console.log(data);
-        data = "ERROR: Not yet implemented.";
-        socket.emit("update", data);
-    };
-    
-    var save_image_handler = function (data) {
-        console.log(data);
-        data = "ERROR: Not yet implemented.";
-        socket.emit("update", data);
-    };
-    
-    var delete_image_handler = function (data) {
-        console.log(data);
-        data = "ERROR: Not yet implemented.";
-        socket.emit("update", data);
-    };
-    
-    var refresh_handler = function (data) {
-        console.log(data);
-        var org_ref = firebase.child("Organizations/FBI");
+/*
 
-        org_ref.on("value", function (org_data) {
-            console.log(org_data.val());
-            data.payload = org_data.val();
-            socket.emit("update", data);
-        }, function (error) {
-            console.log(error);
-            socket.emit("update", "Could not get organization data.");
+
+*/
+app.get("/authenticateUser", function(req, res) {
+    pool.getConnection(function(err, connection) {
+        
+        connection.query('', function (error, results, fields) {
+          if (error) {
+              res.send(error);
+              throw error;
+          }  // handle query errors
+          res.send("success");
         });
-
-    };
-
-    var authenticate_user_handler = function (data) {
-        console.log(data);
-
-        firebase.authWithPassword({
-            email: data.payload.username,
-            password: data.payload.password
-        }, function handler(error, authResponse) {
-            if (error)
-                data.payload = error;
-            else {
-                data.user = authResponse;
-                data.user.username = data.payload.username;
-                data.payload = null; // Payload must be null if sucessful!
-            }
-
-            socket.emit("update", data);
-        });
-    };
-
-    var create_user_handler = function (data) {
-        console.log(data);
-
-        firebase.createUser({
-            email: data.payload.username,
-            password: data.payload.password
-        }, function handler(error, authResponse) {
-            if (error)
-                data.payload = error;
-            else {
-                authenticate_user_handler(data);
-            }
-        });
-    };
-
-    socket.on('create template', create_template_handler);
-    socket.on('send report', send_report_handler);
-    socket.on('delete report', delete_report_handler);
-    socket.on('delete template', delete_template_handler);
-    socket.on('save image', save_image_handler);
-    socket.on('delete image', save_image_handler);
-    socket.on('refresh', refresh_handler);
-    socket.on('authenticate user', authenticate_user_handler);
-    socket.on('create user', create_user_handler);
-
-    initialize();
-};
-io.on('connection', connection_handler);
+        
+        connection.release(); // release connection
+        if (err) throw err; // handle pool connection errors
+    });
+});
 
 
-/************************************
- * HELPERS
- *************************************/
-var helpers = function () {
-    var instance = {};
-
-    instance.generateGUID = function () {
-        var d = new Date().getTime();
-        var guid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-            var r = (d + Math.random() * 16) % 16 | 0;
-            d = Math.floor(d / 16);
-            return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
-        });
-        return guid;
-    };
-    
-    return instance;
-}();

@@ -1,0 +1,242 @@
+Question mark button on the welcome page for tutorials 
+lightbox tutorials
+Dashboard homepage - similar to Tave Studio Manager
+	Add a New Report circle
+	upcoming reports card
+New Job > start Report now
+Saved Reports
+	Completed Reports versus Scheduled reports
+--Camera icon instead of shutter icon
+Change colors per drilldown - play with colors per section, thin bar and main header color change
+Edit mode 
+Gray add question when the page is blank after the
+--required slider
+--gray add item for sections and subsections, remove the three dot icon for that
+Obvious exit edit mode button at the bottom , color change on edit mode main bar
+
+
+Make new answers the same as adding a new section
+upgrade the number icon
+fix assign photos mode
+clean up the code
+fix capture photos
+use meta title for the report title
+add colors
+required items have star icon
+don't allow removing required items!
+static job stuff
+--back button on photo appendix
+--trash can for photos icon, text to say "no photos yet"
+--spacing on titles in job menu
+--implement image question with button and default text
+--add photos to any type of question 
+deleted photos to photo appendix then delete permanently
+count of photoappendix in the button
+--section padding same as subsection question padding
+Save as template!
+--edit mode enter and exit button
+toast for deletes
+can't delete items from a dropdown list in edit mode
+--swipe
+make the icons on subsection questions clickable to get to the question
+maybe move the checked checkboxes away from the non-checked ones?
+have the saved jobs go to the job not the report
+have create job actually create a new job from the selected template instead of referencing the template
+make the saved menu tabs swipeable
+rapid remark icon, call them summary remarks
+make menu icons in nav menu the same color as the text
+animate swiping
+use library for time
+add time as a question type
+
+
+// Rest service
+app.factory('restService', function ($http, $q, SERVER_URL) {
+    var factory = {};
+
+    factory.sendRequest = function(method, url, data) {    
+        $http({
+             method: method,
+             url: SERVER_URL + url,
+             headers: {
+               'Content-Type': 'application/json'
+             },
+             data: data
+        }).then(
+
+        function successCallback(response) {
+            console.log(response.data);
+            return response.data;
+        }, 
+        function errorCallback(response) {
+            console.log(error);
+            return {'status':'error'};
+        });
+    };
+
+
+    factory.user = {
+                        "name":"",
+                        "email":"",
+                        "pw":""
+                   };
+
+
+    /*      adding a user to the firebase db  
+      expected result
+    	{
+    		"status":"", //success, failure
+    		"reason":"" //some error codes that make sense to us
+    	}*/
+    factory.insertUser = function(data) {
+        var url = "api/insert/user/";
+        var result = factory.sendRequest("POST", url, data);
+    };
+
+
+    /*authenticating a user in the firebase db  
+    api/authuser/
+    POST (JSON)
+    	{
+    		"email":"",
+    		"pw":""
+    	}
+    return	
+    	{
+    		"status":"", //success, failure
+    		"reason":"" //invalid email, invalid password, "" if successful
+    	}*/
+    factory.authUser = function(data) {
+        var url = "api/authuser/";
+        var result = factory.sendRequest("POST", url, data);
+        return result;
+    };
+
+/*    inserting an inspection
+    api/insert/inspection/
+    POST (JSON)
+    	{} //inspection JSON
+    return
+    	{
+    		"id":"" //report id
+    	}*/
+    factory.insertInspection = function(data) {
+        var url = "api/insert/inspection/";
+        var result = factory.sendRequest("POST", url, data);
+        return result;
+    };
+
+/*    inserting an inspection from an id
+    api/insert/inspection/{id}
+    POST (JSON){
+    		"id":"", //report id
+    		"inspection": {} //report JSON}
+    return {"status":"", //success, failure
+    		"reason":"" //"" if successful}*/
+    factory.insertInspectionById = function(data, id) {
+        var url = "api/insert/inspection/" + id;
+        var result = factory.sendRequest("POST", url, data);
+        return result;
+    };
+
+/*    updating an inspection
+    api/update/inspection/
+    POST (JSON){
+    		"id":"", //report id
+    		"inspection": {} //report JSON}
+    return {
+    		"status":"", //success, failure
+    		"reason":"" //"" if successful}*/
+    factory.updateInspection = function(data) {
+        var url = "api/update/inspection/";
+        var result = factory.sendRequest("POST", url, data);
+        return result;
+    };
+
+    //Accurately return a new date object adjusted by the number of days
+    factory.addDays = function(date, days) {
+        return new Date(
+            date.getFullYear(),
+            date.getMonth(),
+            date.getDate() + days,
+            date.getHours(),
+            date.getMinutes(),
+            date.getSeconds(),
+            date.getMilliseconds()
+        );
+    };
+
+    //selecting inspections from a user
+    //api/select/inspections/{email}/{type}/{sortfield = date}/{ascending=false}/{startdate = today-month}/{enddate=today}
+    //GET
+    //return
+    //[] //array of inspection JSON objects
+    //note:
+    //type //inspection, template
+    factory.selectInspectionByEmail = function(email, type, sortField = "date", 
+                                               ascending = false, startDate, endDate) {
+        var url = "api/select/inspections/" + email + "/" + type + "/";
+        if (startDate == null || startDate == undefined)
+        {
+            startDate = factory.addDays(new Date, -30).toUTCString();
+        }
+        if (endDate == null || endDate == undefined)
+        {
+            endDate = new Date().toUTCString();
+        }
+        url += sortField + "/" + ascending + "/" + startDate + "/" + endDate + "/";
+        return factory.sendRequest("GET", url);
+    };
+
+    //selecting inspections from a user
+    //api/select/inspections/meta/{email}/{type}/{sortfield = date}/{ascending=false}/{startdate = today-month}/{enddate=today}
+    //GET
+    //return
+    //[] //array of inspection meta data JSON objects
+    //note:
+    //type //inspection, template
+    factory.selectInspectionMetaByEmail = function(email, type, sortField = "date", 
+                                                   ascending = false, startDate, endDate) {
+        var url = "api/select/meta/inspections/" + email + "/" + type + "/";
+        if (startDate == null || startDate == undefined)
+        {
+            startDate = factory.addDays(new Date, -30).toUTCString();
+        }
+        if (endDate == null || endDate == undefined)
+        {
+            endDate = new Date().toUTCString();
+        }
+        url += sortField + "/" + ascending + "/" + startDate + "/" + endDate + "/";
+        return factory.sendRequest("GET", url);
+    };
+
+    //selecting inspections by id
+    //api/select/inspection/{id}
+    //GET
+    //return
+    //{} //inspection json object
+    factory.selectInspectionByUser = function(id) {
+        var url = "api/select/inspections/" + id + "/";
+        return factory.sendRequest("GET", url);
+    };
+
+    //deleting an inspection
+    //api/delete/inspection/{id}
+    //DELETE (JSON)
+    //return 
+    //	{
+    //		"status":"", //success, failure
+    //		"reason":"" //"" if successful
+    //	}
+    factory.deleteInspection = function(id) {
+        var url = "api/delete/inspection/" + id + "/";
+        return factory.sendRequest("DELETE", url);
+    };
+
+    //selecting a user
+    //api/select/user
+    //deleting a user
+    //api/delete/user
+
+});
+

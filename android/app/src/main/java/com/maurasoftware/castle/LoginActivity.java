@@ -3,6 +3,7 @@ package com.maurasoftware.castle;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -118,28 +119,30 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mLoginTab.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO handle same tab being clicked more than once
                 // Get forms
-                mLoginFormView.setVisibility(View.VISIBLE);
-                ColorStateList oldColor = mLoginTab.getTextColors();
-                //TODO the below statement says it is deprecated in API 23. ? Add if() for API # ?
-                //Change styling to show selection
-                mLoginTab.setTextColor(getResources().getColor(R.color.colorPrimary));
-
-                mRegisterTab.setTextColor(oldColor);
-                //TODO add underline styling to Login tab
-                mRegisterFormView.setVisibility(View.GONE);
+                if(mLoginFormView.getVisibility() != View.VISIBLE) {
+                    mLoginFormView.setVisibility(View.VISIBLE);
+                    ColorStateList oldColor = mLoginTab.getTextColors();
+                    //TODO the below statement says it is deprecated in API 23. ? Add if() for API # ?
+                    //Change styling to show selection
+                    mLoginTab.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    mRegisterTab.setTextColor(oldColor);
+                    //TODO add underline styling to Login tab
+                    mRegisterFormView.setVisibility(View.GONE);
+                }
             }
         });
         mRegisterTab.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Get forms
-                mLoginFormView.setVisibility(View.GONE);
-                ColorStateList oldColor = mRegisterTab.getTextColors();
-                mRegisterTab.setTextColor(getResources().getColor(R.color.colorPrimary));
-                mLoginTab.setTextColor(oldColor);
-                mRegisterFormView.setVisibility(View.VISIBLE);
+                if(mLoginFormView.getVisibility() != View.GONE) {
+                    mLoginFormView.setVisibility(View.GONE);
+                    ColorStateList oldColor = mRegisterTab.getTextColors();
+                    mRegisterTab.setTextColor(getResources().getColor(R.color.colorPrimary));
+                    mLoginTab.setTextColor(oldColor);
+                    mRegisterFormView.setVisibility(View.VISIBLE);
+                }
             }
         });
 
@@ -400,6 +403,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
+                Intent i = new Intent(LoginActivity.this, DashboardActivity.class);
+                startActivity(i);
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));

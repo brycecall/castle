@@ -25,4 +25,5 @@
         completions."
     </string>
     <string name="welcome_message">Login to access your reports and templates, or register to begin using Castle&#174;</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
 </resources>

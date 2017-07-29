@@ -2,8 +2,8 @@
 # Official docker image.
 image: ubuntu:latest
 
-init:
-  stage: init
+startup:
+  stage: startup
   script:
     - echo Hello World
 

@@ -3,7 +3,6 @@
 image: ubuntu:latest
 
 startup:
-  stage: startup
   script:
     - echo Hello World
 

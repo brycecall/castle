@@ -13,3 +13,5 @@
 /mobile/www/bower_components/
 /server/node_modules/
 /mobile/res/
+
+.DS_Store

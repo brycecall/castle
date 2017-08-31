@@ -17,12 +17,10 @@ app.config(function($routeProvider){
 });
 
 // Define the page controller
-app.controller('reports', function($scope, $rootScope) {
-    console.log('hi');
-    $scope.capturePhoto = function() {
-        
-    };
-    
+app.controller('reports', function($scope, $rootScope, camera) {
+    console.log('welcome to reports');
+    $scope.camera = camera;
+
 });
 
 app.controller('reports_detail', function($scope, $rootScope) {

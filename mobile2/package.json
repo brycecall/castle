@@ -7,11 +7,13 @@
             "android"
         ],
         "plugins": {
-            "cordova-plugin-whitelist": {}
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-camera-preview": {}
         }
     },
     "dependencies": {
         "cordova-android": "~6.2.3",
+        "cordova-plugin-camera-preview": "git+https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview.git",
         "cordova-plugin-whitelist": "1"
     }
 }

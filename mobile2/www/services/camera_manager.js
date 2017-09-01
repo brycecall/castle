@@ -1,4 +1,4 @@
-app.factory('camera_manager', function (camera_mock, $location) {
+app.factory('camera_manager', function (camera_mock, $state) {
   var public = {};
   var private = {};
   var CameraPreview = CameraPreview || camera_mock;
@@ -75,7 +75,7 @@ app.factory('camera_manager', function (camera_mock, $location) {
   };
 
   public.openCameraControl = function() {
-       $location.path("/camera");
+       $state.go("camera");
   };
     
   public.accept = function() {

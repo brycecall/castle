@@ -1,7 +1,12 @@
 app.factory('camera_manager', function (camera_mock, $state) {
   var public = {};
   var private = {};
-  var CameraPreview = CameraPreview || camera_mock;
+    
+    
+  if (window["CameraPreview"] === undefined)
+  {
+      CameraPreview = camera_mock;
+  }
     
   private.options = {
       x: 0,

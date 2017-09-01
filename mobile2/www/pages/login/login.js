@@ -29,6 +29,7 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager) {
   action_manager.addAction("Exit", "close", function () {
     $scope.user = {};
     $scope.new_user = {};
+    document.activeElement.blur();
   }, "md-accent");
 
   action_manager.addAction("Login", "check", function () {

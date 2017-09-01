@@ -20,13 +20,13 @@ app.factory('action_manager', function ($rootScope) {
     public.enabled = false;
   }
 
-  public.addAction = function (name, icon, method, color) {
+  public.addAction = function (name, icon, method, classname) {
     if (name && icon && method) {
       public.actions.push({
         name: name,
         icon: icon,
         method: method,
-        color: color
+        classname: classname
       });
     } else {
       throw {

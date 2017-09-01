@@ -1,10 +1,10 @@
-app.factory('action', function ($rootScope) {
+app.factory('action_manager', function ($rootScope) {
   var public = {};
   var private = {};
 
   public.actions = [];
   public.enabled = true;
-  public.mode = ACTION_MODES.Action;
+  public.mode = ACTION_MODES.Default;
 
   public.enable = function () {
     public.enabled = true;
@@ -20,12 +20,13 @@ app.factory('action', function ($rootScope) {
     public.enabled = false;
   }
 
-  public.addAction = function (name, icon, method) {
+  public.addAction = function (name, icon, method, classname) {
     if (name && icon && method) {
       public.actions.push({
         name: name,
         icon: icon,
-        method: method
+        method: method,
+        classname: classname
       });
     } else {
       throw {
@@ -44,21 +45,15 @@ app.factory('action', function ($rootScope) {
 
   public.clearActions = function () {
     public.actions = [];
-    public.mode = ACTION_MODES.Action;
+    public.mode = ACTION_MODES.Default;
   }
 
   return public;
 });
 
-app.controller('action_manager', function ($scope, $rootScope, $timeout, $window, action) {
+app.controller('action', function ($scope, $rootScope, $timeout, $window, action_manager) {
 
-  /*
-    $scope.$watch('service.mode', function (oldValue, newValue) {
-      // Watch the open variable to update the tooltips
-      
-    }); */
-
-  $scope.service = action;
+  $scope.service = action_manager;
   $scope.open = false;
 
   $scope.run = function (method) {
@@ -71,13 +66,14 @@ app.controller('action_manager', function ($scope, $rootScope, $timeout, $window
 });
 
 // Reset the actions on every navigation
-app.run(function ($rootScope, $location, action) {
-  $rootScope.$on("$routeChangeStart", function (event, next, current) {
-    action.clearActions();
-  })
+app.run(function ($transitions, action_manager) {
+  $transitions.onStart({}, function (trans) {
+    action_manager.clearActions();
+  });
 });
 
 var ACTION_MODES = {
-  Action: 1,
-  Confirm: 2
+  Default: 1,
+  Action: 2,
+  Toolbar: 3
 };

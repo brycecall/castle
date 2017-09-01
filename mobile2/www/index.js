@@ -1,7 +1,5 @@
-var app = angular.module("castle", ['ngRoute', 'ngMaterial']);
+var app = angular.module("castle", ['ui.router', 'ngMaterial']);
 
-app.config(function ($routeProvider) {
-  $routeProvider.otherwise({
-    redirectTo: "/error"
-  });
+app.config(function ($urlRouterProvider) {
+     $urlRouterProvider.otherwise("/error");
 });

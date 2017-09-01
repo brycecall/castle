@@ -1,6 +1,7 @@
-app.factory('camera', function () {
+app.factory('camera_manager', function (camera_mock, $state) {
   var public = {};
   var private = {};
+  var CameraPreview = CameraPreview || camera_mock;
     
   private.options = {
       x: 0,
@@ -65,7 +66,7 @@ app.factory('camera', function () {
     }
   };
 
-  public.showSupportedPictureSizes = function(){
+  public.showSupportedPictureSizes = function() {
     CameraPreview.getSupportedPictureSizes(function(dimensions){
       dimensions.forEach(function(dimension) {
         console.log(dimension.width + 'x' + dimension.height);
@@ -73,10 +74,17 @@ app.factory('camera', function () {
     });
   };
 
+  public.openCameraControl = function() {
+       $state.go("camera");
+  };
+    
+  public.accept = function() {
+         
+  };
+    
+  public.cancel = function() {
+         
+  };
+    
   return public;
 });
-
-/*app.controller('camera_manager', function ($scope, $rootScope, $timeout, $window, camera) {
-  $scope.service = camera;
-});*/
-

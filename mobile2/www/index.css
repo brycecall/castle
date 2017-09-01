@@ -4,6 +4,16 @@ body {
 
 .action {
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  bottom: 0;
+  right: 0;
+}
+
+
+/** HACKS to get the toolbar action working **/
+
+
+/** TODO: Don't have the toolbar cover the content from click event. **/
+
+md-fab-toolbar {
+  width: 100vw;
 }

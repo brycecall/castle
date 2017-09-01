@@ -1,36 +1,47 @@
 // Register the Page
-app.config(function ($routeProvider) {
-  $routeProvider.when('/login', {
+app.config(function ($stateProvider) {
+  $stateProvider
+    .state("login", {
+      url: "/login",
     templateUrl: "pages/login/login.html",
     controller: "login"
   });
 });
 
-app.run(function ($rootScope, $location) {
-  $rootScope.$on("$routeChangeStart", function (event, next, current) {
-    if ($rootScope.authenticated !== true) {
-      $location.path("/login");
+app.run(function ($transitions, $rootScope) {
+  $transitions.onStart({}, function (trans) {
+    //TODO: use real authentication
+    if ($rootScope.authenticated !== true && trans.$to().name !== 'login') {
+      // User isn't authenticated. Redirect to a new Target State
+      return trans.router.stateService.target('login');
     }
-  })
+});
 });
 
 // Define the page controller
-app.controller('login', function ($scope, $rootScope, $location, action, database) {
+app.controller('login', function ($scope, $rootScope, $state, action_manager, database) {
   console.log('hi');
     
   // Execute db initialization to insert dummy data user info
   document.addEventListener('deviceready', function() {
       database.initDb();
   });
+  $scope.user = {};
+  $scope.new_user = {};
 
-  action.addAction("accept", "check", function () {
+  action_manager.addAction("Exit", "close", function () {
+    $scope.user = {};
+    $scope.new_user = {};
+  }, "md-accent");
+
+  action_manager.addAction("Login", "check", function () {
     if(database.validCredentials($scope.user.name, $scope.user.pass)) {
       $rootScope.authenticated = true;
-      $location.path("/home");   
+    $state.go("home");
     } else {
       console.log('Access Denied!!!!!!!!!!!!!!!!');
     }
   });
-    
-  action.mode = ACTION_MODES.Confirm;
-})
+
+  action_manager.mode = ACTION_MODES.Action;
+});

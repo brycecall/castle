@@ -23,8 +23,12 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager) {
   console.log('hi');
   $rootScope.authenticated = true; //For DEBUG
 
+  $scope.user = {};
+  $scope.new_user = {};
+
   action_manager.addAction("Exit", "close", function () {
-    navigator.app.exitApp();
+    $scope.user = {};
+    $scope.new_user = {};
   }, "md-accent");
 
   action_manager.addAction("Login", "check", function () {

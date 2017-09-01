@@ -1,6 +1,7 @@
-app.factory('camera', function () {
+app.factory('camera', function (camera_mock) {
   var public = {};
   var private = {};
+  var CameraPreview = CameraPreview || camera_mock;
     
   private.options = {
       x: 0,

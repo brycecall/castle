@@ -7,17 +7,17 @@ app.config(function ($routeProvider) {
 });
 
 // Define the page controller
-app.controller('home', function ($scope, $rootScope, action, $location) {
+app.controller('home', function ($scope, $rootScope, $location, action_manager) {
   console.log('Welcome Home');
 
-  action.addAction("New Appointment", "watch_later", function () {
+  action_manager.addAction("New Appointment", "watch_later", function () {
     console.log("NEW APT");
   });
-  action.addAction("Create Report", "mode_edit", function () {
+  action_manager.addAction("Create Report", "mode_edit", function () {
     console.log("CREATE");
     $location.path("/reports")
   });
-  action.addAction("Send a Report", "send", function () {
+  action_manager.addAction("Send a Report", "send", function () {
     console.log("CREATE");
   });
 })

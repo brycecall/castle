@@ -66,10 +66,10 @@ app.controller('action', function ($scope, $rootScope, $timeout, $window, action
 });
 
 // Reset the actions on every navigation
-app.run(function ($rootScope, $location, action_manager) {
-  $rootScope.$on("$routeChangeStart", function (event, next, current) {
+app.run(function ($transitions, action_manager) {
+  $transitions.onStart({}, function (trans) {
     action_manager.clearActions();
-  })
+  });
 });
 
 var ACTION_MODES = {

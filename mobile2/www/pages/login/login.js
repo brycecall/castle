@@ -8,14 +8,14 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.run(function($transitions, $rootScope) {
-    $transitions.onStart({ }, function(trans) {
-        //TODO: use real authentication
-        if ($rootScope.authenticated !== true && trans.$to().name !== 'login') {
-          // User isn't authenticated. Redirect to a new Target State
-          return trans.router.stateService.target('login');
-        }
-    });
+app.run(function ($transitions, $rootScope) {
+  $transitions.onStart({}, function (trans) {
+    //TODO: use real authentication
+    if ($rootScope.authenticated !== true && trans.$to().name !== 'login') {
+      // User isn't authenticated. Redirect to a new Target State
+      return trans.router.stateService.target('login');
+    }
+  });
 });
 
 // Define the page controller
@@ -36,8 +36,5 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager) {
     $state.go("home");
   });
 
-  action_manager.addAction("Exit", "close", function () {
-    navigator.app.exitApp();
-  });
-  action_manager.mode = ACTION_MODES.Toolbar;
+  action_manager.mode = ACTION_MODES.Action;
 });

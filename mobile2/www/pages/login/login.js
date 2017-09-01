@@ -15,13 +15,17 @@ app.run(function ($rootScope, $location) {
 });
 
 // Define the page controller
-app.controller('login', function ($scope, $rootScope, $location, action) {
+app.controller('login', function ($scope, $rootScope, $location, action_manager) {
   console.log('hi');
-  $rootScope.authenticated = true;  //For DEBUG
+  $rootScope.authenticated = true; //For DEBUG
 
-  action.addAction("accept", "check", function () {
+  action_manager.addAction("Login", "check", function () {
     $rootScope.authenticated = true;
     $location.path("/home");
   });
-  action.mode = ACTION_MODES.Confirm;
+
+  action_manager.addAction("Exit", "close", function () {
+    navigator.app.exitApp();
+  });
+  action_manager.mode = ACTION_MODES.Toolbar;
 })

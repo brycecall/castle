@@ -15,13 +15,22 @@ app.run(function ($rootScope, $location) {
 });
 
 // Define the page controller
-app.controller('login', function ($scope, $rootScope, $location, action) {
+app.controller('login', function ($scope, $rootScope, $location, action, database) {
   console.log('hi');
-  $rootScope.authenticated = true;  //For DEBUG
+    
+  // Execute db initialization to insert dummy data user info
+  document.addEventListener('deviceready', function() {
+      database.initDb();
+  });
 
   action.addAction("accept", "check", function () {
-    $rootScope.authenticated = true;
-    $location.path("/home");
+    if(database.validCredentials($scope.user.name, $scope.user.pass)) {
+      $rootScope.authenticated = true;
+      $location.path("/home");   
+    } else {
+      console.log('Access Denied!!!!!!!!!!!!!!!!');
+    }
   });
+    
   action.mode = ACTION_MODES.Confirm;
 })

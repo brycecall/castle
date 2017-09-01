@@ -32,14 +32,14 @@
   </div>
 
   <div class="action" ng-controller="action">
-    <div class="button" ng-cloak ng-show="service.mode == 1">
+    <div class="button" ng-cloak ng-show="service.mode == 1" layout-align="end end">
       <!-- service mode 1 is Action -->
       <md-button ng-cloakclass="md-fab md-primary" aria-label="action" ng-show="service.enabled && (service.actions.length == 1)">
         <md-icon md-svg-icon="{{service.actions[0].icon}}" ng-click="run(service.actions[0].method)"></md-icon>
       </md-button>
       <md-fab-speed-dial md-open="open" md-direction="up" class="md-scale" ng-cloak ng-show="service.enabled && (service.actions.length > 1)">
         <md-fab-trigger>
-          <md-button ng-cloak class="md-fab md-primary" aria-label="Action Menu">
+          <md-button ng-cloak class="md-fab md-primary button" aria-label="Action Menu">
             <md-icon md-svg-icon="more_vert"></md-icon>
           </md-button>
         </md-fab-trigger>
@@ -55,16 +55,16 @@
       </md-fab-speed-dial>
     </div>
 
-    <div class="button" ng-cloak ng-show="service.mode == 2">
+    <div ng-cloak ng-show="service.mode == 2" layout="row">
       <!-- service mode 2 is Action -->
       <div ng-repeat="action in service.actions">
-        <md-button ng-cloak class="md-fab md-primary md-fab-bottom-right" ng-click="run(action.method)" aria-label="{{action.name}}">
+        <md-button ng-cloak class="md-fab md-primary" ng-click="run(action.method)" aria-label="{{action.name}}" ng-class="action.classname">
           <md-icon md-svg-icon="{{action.icon}}"></md-icon>
         </md-button>
       </div>
     </div>
 
-    <div ng-cloak ng-show="service.mode == 3">
+    <div class="button" ng-cloak ng-show="service.mode == 3">
       <!-- service mode 3 is Toolbar -->
       <md-fab-toolbar md-direction="left">
         <md-fab-trigger>
@@ -73,14 +73,11 @@
           </md-button>
         </md-fab-trigger>
 
-        <md-toolbar class="md-toolbar-tools">
+        <md-toolbar class="md-toolbar-tools" layout-align="center center">
           <md-fab-actions>
-            <div ng-repeat="action in service.actions">
-              <md-button ng-cloak class="md-fab md-mini md-accent" aria-label="{{action.name}}" ng-click="run(action.method)">
-                <md-tooltip ng-cloak md-direction="top">{{action.name}}</md-tooltip>
-                <md-icon ng-cloak md-svg-icon="{{action.icon}}"></md-icon>
-              </md-button>
-            </div>
+            <md-button ng-cloak class="md-fab md-mini md-accent" aria-label="{{action.name}}" ng-click="run(action.method)" ng-repeat="action in service.actions" style="margin-left: 10px;">
+              <md-icon ng-cloak md-svg-icon="{{action.icon}}"></md-icon>
+            </md-button>
           </md-fab-actions>
         </md-toolbar>
       </md-fab-toolbar>

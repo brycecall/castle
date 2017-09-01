@@ -19,13 +19,14 @@ app.controller('login', function ($scope, $rootScope, $location, action_manager)
   console.log('hi');
   $rootScope.authenticated = true; //For DEBUG
 
+  action_manager.addAction("Exit", "close", function () {
+    navigator.app.exitApp();
+  }, "md-accent");
+
   action_manager.addAction("Login", "check", function () {
     $rootScope.authenticated = true;
     $location.path("/home");
   });
 
-  action_manager.addAction("Exit", "close", function () {
-    navigator.app.exitApp();
-  });
-  action_manager.mode = ACTION_MODES.Toolbar;
+  action_manager.mode = ACTION_MODES.Action;
 })

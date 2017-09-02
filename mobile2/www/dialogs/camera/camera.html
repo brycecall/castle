@@ -1,75 +1,48 @@
-<div style="padding: 8px;">
-     <div class="controls">
-      <div class="block">
-        <md-button aria-label="start camera" 
-                   id="startCameraAboveButton"
-                   ng-click="camera_manager.startCamera()"
-                   class="md-raised">Start Camera</md-button>
-        <md-button aria-label="stop camera" 
-                   id="stopCameraButton"
-                   ng-click="camera_manager.stopCamera()"
-                   class="md-raised">Stop Camera</md-button>
-      </div>
+<link type="text/css" rel="stylesheet" href="dialogs/camera/camera.css" />
+<div style="padding: 8px; margin-top: 52%">
+  <div class="controls">
+    <!-- <div class="block">
+      <md-button aria-label="start camera" id="startCameraAboveButton" ng-click="camera_manager.startCamera()" class="md-raised">Start Camera</md-button>
+      <md-button aria-label="stop camera" id="stopCameraButton" ng-click="camera_manager.stopCamera()" class="md-raised">Stop Camera</md-button>
+    </div> -->
 
-      <div class="block">
-    
-       <div layout="row" layout-align="space-between center">
+    <div class="block">
+
+      <div layout="row" layout-align="space-between center">
         <span>Flash Mode:</span>
-        <md-select ng-model="flashMode" placeholder="Flash Mode"
-                   class="md-no-underline"
-                   id="selectFlashMode" >
+        <md-select ng-model="flashMode" placeholder="Flash Mode" class="md-no-underline" id="selectFlashMode">
           <md-option value="auto">auto</md-option>
           <md-option value="on">on</md-option>
           <md-option value="off">off</md-option>
           <md-option value="torch">torch</md-option>
         </md-select>
-       </div>
-        
-        <div>
-            <md-slider-container>
-              <span class="md-body-1">Slider: </span>
-              <md-slider flex md-discrete 
-                         ng-model="zoomSlider" 
-                         step="1" min="1" max="5" 
-                         aria-label="zoom slider">
-              </md-slider>
-            </md-slider-container>
-        </div>
       </div>
-      
-      <div class="block">
-        <md-button class="md-primary md-raised" 
-                   id="takePictureButton" 
-                   ng-click="camera_manager.takePicture()" 
-                   aria-label="take picture">Take Picture</md-button>
-        <md-button class="md-primary md-raised" 
-                   id="switchCameraButton"
-                   ng-click="camera_manager.switchCamera()" 
-                   aria-label="switch camera" >Switch Camera</md-button>
-      </div>
-      
-      <div class="block">
-        <md-button id="hideButton" 
-                   aria-label="Hide" 
-                   ng-click="camera_manager.hide()"
-                   class="md-raised">Hide</md-button>
-        <md-button id="showButton" 
-                   aria-label="Show" 
-                   ng-click="camera_manager.show()"
-                   class="md-raised">Show</md-button>
+
+      <div>
+        <md-slider-container>
+          <span class="md-body-1">Slider: </span>
+          <md-slider flex md-discrete ng-model="zoomSlider" step="1" min="1" max="5" aria-label="zoom slider">
+          </md-slider>
+        </md-slider-container>
       </div>
     </div>
 
-    <div class="pictures">
-      <p><img id="originalPicture" width="200"/></p>
+    <div class="block">
+      <md-button class="md-primary md-raised" id="takePictureButton" ng-click="camera_manager.takePicture()" aria-label="take picture">Take Picture</md-button>
+      <md-button class="md-primary md-raised" id="switchCameraButton" ng-click="camera_manager.switchCamera()" aria-label="switch camera">Switch Camera</md-button>
     </div>
 
-    <md-button aria-label="Cancel" 
-           ng-click="camera_manager.cancel()"
-           class="md-raised">Cancel</md-button>
-    <md-button aria-label="Accept" 
-           ng-click="camera_manager.accept()"
-           class="md-raised">Accept</md-button>
-    
+    <div class="block">
+      <md-button id="hideButton" aria-label="Hide" ng-click="camera_manager.hide()" class="md-raised">Hide</md-button>
+      <md-button id="showButton" aria-label="Show" ng-click="camera_manager.show()" class="md-raised">Show</md-button>
+    </div>
+  </div>
+
+  <div class="pictures">
+    <p><img id="originalPicture" width="200" /></p>
+  </div>
+
+  <md-button aria-label="Cancel" ng-click="camera_manager.cancel()" class="md-raised">Cancel</md-button>
+  <md-button aria-label="Accept" ng-click="camera_manager.accept()" class="md-raised">Accept</md-button>
+
 </div>
-   

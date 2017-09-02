@@ -34,7 +34,7 @@
   <div class="action" ng-controller="action">
     <div class="button" ng-cloak ng-show="service.mode == 1" layout-align="end end">
       <!-- service mode 1 is Action -->
-      <md-button ng-cloakclass="md-fab md-primary" aria-label="action" ng-show="service.enabled && (service.actions.length == 1)">
+      <md-button ng-cloak class="md-fab md-primary" aria-label="action" ng-show="service.enabled && (service.actions.length == 1)">
         <md-icon md-svg-icon="{{service.actions[0].icon}}" ng-click="run(service.actions[0].method)"></md-icon>
       </md-button>
       <md-fab-speed-dial md-open="open" md-direction="up" class="md-scale" ng-cloak ng-show="service.enabled && (service.actions.length > 1)">
@@ -84,7 +84,7 @@
     </div>
 
   </div>
-    
+
   <!--  External Libraries -->
   <script src="node_modules/angular/angular.min.js"></script>
   <script src="node_modules/angular-animate/angular-animate.min.js"></script>
@@ -121,4 +121,5 @@
   <script type="text/javascript" src="cordova.js"></script>
 
 </body>
+
 </html>

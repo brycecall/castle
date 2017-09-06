@@ -1,0 +1,54 @@
+.home {
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: stretch;
+  padding: 10px;
+  padding-bottom: 120px;
+}
+
+.home .button {
+  min-width: 45%;
+  flex: 1;
+  margin: 10px;
+  padding: 12px 0;
+  display: inline-flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.home .button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #333;
+  opacity: .25;
+  z-index: 128;
+}
+
+.home .button span {
+  font-size: 18pt;
+  font-weight: bold;
+  z-index: 129;
+}
+
+.home .button:nth-child(2n) {
+  page-break-after: always;
+}
+
+.home md-icon {
+  height: 60px;
+  width: 60px;
+}

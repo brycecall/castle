@@ -10,6 +10,7 @@ app.config(function ($mdIconProvider) {
     .icon('image', icon_root + '/ic_image_24px.svg')
     .icon('clear', icon_root + '/ic_clear_24px.svg')
     .icon('camera', icon_root + '/ic_photo_camera_24px.svg')
+    .icon('shutter_camera', icon_root + '/ic_camera_24px.svg')
     .icon('cancel', icon_root + '/ic_cancel_24px.svg')
     .icon('add', icon_root + '/ic_add_24px.svg')
     .icon('remove', icon_root + '/ic_remove_24px.svg')
@@ -65,5 +66,13 @@ app.config(function ($mdIconProvider) {
     .icon('send', icon_root + '/ic_send_black_24px.svg')
     .icon('password', icon_root + '/ic_verified_user_black_24px.svg')
     .icon('email', icon_root + '/ic_email_black_24px.svg')
-    .icon('lock', icon_root + '/ic_lock_open_black_24px.svg');
+    .icon('lock', icon_root + '/ic_lock_open_black_24px.svg')
+    .icon('zoom_in', icon_root + '/ic_zoom_in_24px.svg')
+    .icon('zoom_out', icon_root + '/ic_zoom_out_24px.svg')
+    .icon('search', icon_root + '/ic_search_24px.svg')
+    .icon('flash_auto', icon_root + '/ic_flash_auto_24px.svg')
+    .icon('flash_on', icon_root + '/ic_flash_on_24px.svg')
+    .icon('flash_off', icon_root + '/ic_flash_off_24px.svg')
+    .icon('flare', icon_root + '/ic_flare_24px.svg')
+    ;
 });

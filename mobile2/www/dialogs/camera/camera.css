@@ -4,3 +4,13 @@
     overflow: hidden;
 /*    background-color: black;*/
 }
+
+.fixedFooter {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    opacity: .8;
+    border-style:solid;
+    border-color: darkgray;
+    border-width: 1px 0 0 0;
+}

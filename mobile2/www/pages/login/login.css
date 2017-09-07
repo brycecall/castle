@@ -1,5 +1,7 @@
 .login {
-  padding: 20px;
+  background-image: url(../../assets/login_background.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 .login md-tab-content {

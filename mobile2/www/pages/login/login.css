@@ -1,11 +1,16 @@
 #view {
-overflow: hidden;
+  overflow: hidden;
 }
 
 .login {
   background-image: url(../../assets/login_background.jpg);
   background-size: cover;
   background-position: center;
+  position: relative;
+}
+
+.login .content {
+  padding: 20px;
 }
 
 .login md-tab-content {

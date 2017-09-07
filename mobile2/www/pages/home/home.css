@@ -1,15 +1,10 @@
 .home {
   display: flex;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
   flex-flow: row wrap;
   justify-content: space-around;
   align-items: stretch;
+  box-sizing: border-box;
   padding: 10px;
-  padding-bottom: 120px;
 }
 
 .home .button {

@@ -1,7 +1,7 @@
-app.factory('database', function() {
+app.factory('database', function($rootScope, $state) {
   var private = {};
   private.dbOptions = {
-      'name': 'demo.db',
+      'name': 'castle.db',
       'location': 'default'
   };
   var public = {};
@@ -9,37 +9,34 @@ app.factory('database', function() {
   document.addEventListener('deviceready', function() {
     db = window.sqlitePlugin.openDatabase(private.dbOptions);
       
-    public.initDb = function () {
-      console.log('initDb executing');
+    public.createUser = function (name, pass, email) {
+      console.log('Creating User');
       db.transaction(function(tx) {
-        tx.executeSql('CREATE TABLE IF NOT EXISTS User (name, pass)');
-        tx.executeSql('INSERT INTO User VALUES (?,?)', ['test', 'test']);
-        tx.executeSql('INSERT INTO User VALUES (?,?)', ['poo@test.com', 'test']);
+        tx.executeSql('CREATE TABLE IF NOT EXISTS User (name, pass, email)');
+        tx.executeSql('INSERT INTO User VALUES (?,?,?)', [name, pass, email]);
       }, function(error) {
-        console.log('Transaction ERROR: ' + error.message);
+        // TODO: Make sure insertion is unique / report that error to user
+        console.log('Error Creating User: ' + error.message);
       }, function() {
-        console.log('Successful dummy data insertion');
-      });       
+          // Successful creation, navigate to home page
+          console.log('Successful user creation');
+          $rootScope.authenticated = true;
+          $state.go('home');
+      });  
     }
-    public.validCredentials = function (name, pass) {    
-      console.log('checkCreds executing');
-      db.transaction(function(tx) {
-        tx.executeSql('SELECT * FROM User WHERE name = ? AND pass = ?;', [name, pass]), function(tx, res) {
-          console.log('Number of rows that match user creds: ' + res.rows.length);
-            if (res.rows.length > 0) {
-              console.log('We should authenticate');
-              return true;
-            } else {
-              console.log('do not authenticate');
-              return false;
-            }
-        } 
-      }), function(error) {
-          console.log('Transaction checkCreds ERROR: ' + error.message);
-      }
-    }
+    public.validCredentials = function (name, pass) {
+      db.executeSql('SELECT * FROM User WHERE name = ? AND pass = ?', [name, pass], function(res) {
+        if (res.rows.length > 0) {
+          $rootScope.authenticated = true;
+          $state.go("home");
+        } else {
+          $rootScope.authenticated = false;
+        }
+       }, function(error) {
+         console.log('Error attempting SELECT to check user credentials');
+       }); 
+     }
   });
-  console.log(public);
   return public;
   
 });

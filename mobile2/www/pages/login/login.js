@@ -22,10 +22,6 @@ app.run(function ($transitions, $rootScope) {
 app.controller('login', function ($scope, $rootScope, $state, action_manager, database) {
   console.log('hi');
     
-  // Execute db initialization to insert dummy data user info
-  document.addEventListener('deviceready', function() {
-      database.initDb();
-  });
   $scope.user = {};
   $scope.new_user = {};
 
@@ -35,12 +31,16 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, da
   }, "md-accent");
 
   action_manager.addAction("Login", "check", function () {
-    if(database.validCredentials($scope.user.name, $scope.user.pass)) {
-      $rootScope.authenticated = true;
-    $state.go("home");
-    } else {
-      console.log('Access Denied!!!!!!!!!!!!!!!!');
-    }
+    database.validCredentials($scope.user.username, $scope.user.password);
+    //  $rootScope.authenticated = true;
+    //  $state.go("home");
+    //} else {
+    //  console.log('Access Denied!!!!!!!!!!!!!!!!');
+    //}
+  });
+    
+  action_manager.addAction("Register", "check", function() {
+    database.createUser($scope.new_user.username, $scope.new_user.password, $scope.new_user.email); 
   });
 
   action_manager.mode = ACTION_MODES.Action;

@@ -4,6 +4,7 @@ app.factory('camera_manager', function (camera_mock, $state) {
 
 
   if (window["CameraPreview"] === undefined) {
+    console.log("Initialized Mock Camera");
     CameraPreview = camera_mock;
   }
 
@@ -11,9 +12,9 @@ app.factory('camera_manager', function (camera_mock, $state) {
     x: 0,
     y: 0,
     width: window.innerWidth,
-    height: (window.innerHeight / 2),
+    height: (window.innerHeight - 82),
     camera: CameraPreview.CAMERA_DIRECTION.BACK,
-    toBack: false,
+    toBack: true,
     tapPhoto: false,
     tapFocus: true,
     previewDrag: false
@@ -34,7 +35,7 @@ app.factory('camera_manager', function (camera_mock, $state) {
 
   public.takePicture = function () {
     CameraPreview.takePicture(function (imgData) {
-      document.getElementById('originalPicture').src = 'data:image/jpeg;base64,' + imgData;
+ document.getElementById('originalPicture').style.backgroundImage = 'url(data:image/jpeg;base64,' + imgData + ')';
     });
   };
 

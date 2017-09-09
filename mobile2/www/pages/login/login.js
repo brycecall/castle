@@ -15,6 +15,10 @@ app.run(function ($transitions, $rootScope) {
       // User isn't authenticated. Redirect to a new Target State
       return trans.router.stateService.target('login');
     }
+/*    if ($rootScope.authenticated !== true && trans.$to().name !== 'camera') {
+      // User isn't authenticated. Redirect to a new Target State
+      return trans.router.stateService.target('camera');
+    }*/
   });
 });
 

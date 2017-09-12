@@ -20,10 +20,36 @@ app.config(function ($stateProvider) {
 });
 
 // Define the page controller
-app.controller('reports', function($scope, $rootScope, camera_manager) {
+app.controller('reports', function($scope, $rootScope, camera_manager, database) {
+    $scope.reports = {};
     console.log('welcome to reports');
     $scope.camera_manager = camera_manager;
     
+    //insert dummy report data
+    /*var reportData = database.initReports();
+    reportData.then(
+        //Success
+        function(promise) {
+          console.log(promise.message);
+        },
+        //Fail
+        function(promise) {
+          console.log(promise.message);
+        }
+    );*/
+    
+    var reports = database.getReports();
+    reports.then(
+      //Success
+      function(promise) {
+        console.log(promise.message);
+        console.log(promise.row);
+        $scope.reports = promise.row;
+      //Fail
+      }, function(promise) {
+        console.log(promise.message);
+      }
+    );
 });
 
 app.controller('reports_detail', function($scope, $rootScope) {

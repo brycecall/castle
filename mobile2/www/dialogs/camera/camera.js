@@ -19,22 +19,39 @@ app.run(function ($transitions, camera_manager) {
       if (trans.$from().name == 'camera') {
         camera_manager.stopCamera();
       }
+      
+      var fromStateName = trans.$from().name;
+      if ( fromStateName != 'camera' && fromStateName != 'camera_preview' ) {
+         camera_manager.returnState = fromStateName;
+      }
+      
   });
 });
 
 
+
 // Define the page controller
-app.controller('camera', function ($scope, camera_manager) {
+app.controller('camera', function ($scope, camera_manager, header_manager, $state) {
   $scope.camera_manager = camera_manager;
   camera_manager.startCamera();
+  header_manager.mode = HEADER_MODES.Action;
+  header_manager.setAction('Back', 'back', function() {
+      $state.go(camera_manager.returnState);
+  });
+
     
 });
 
 
 // Define the page controller
-app.controller('camera_preview', function ($scope, $mdToast, $mdDialog) {
+app.controller('camera_preview', function ($scope, $mdToast, $mdDialog, header_manager, $state) {
     var private = {};
     private.deletedPhotoIndexes = [];
+    header_manager.mode = HEADER_MODES.Action;
+    header_manager.setAction('Back', 'back', function() {
+        $state.go('camera');
+    });
+
     
     $scope.photos = [
         {link:'../../assets/Castle-Logo-Main.png'},

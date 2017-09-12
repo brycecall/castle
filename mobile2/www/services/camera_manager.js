@@ -7,7 +7,7 @@ app.factory('camera_manager', function (camera_mock, $state) {
     console.log("Initialized Mock Camera");
     CameraPreview = camera_mock;
   }
-
+    
   private.options = {
     x: 0,
     y: 0,
@@ -19,7 +19,10 @@ app.factory('camera_manager', function (camera_mock, $state) {
     tapFocus: true,
     previewDrag: false
   };
-
+  
+  /* meant to store the state to return to after the Camera usage is done. */
+  public.returnState = '';
+    
   public.setOptionsSize = function (width, height) {
     private.options.width = width;
     private.options.height = height;

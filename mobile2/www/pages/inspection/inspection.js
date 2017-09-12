@@ -34,10 +34,10 @@ app.controller('inspection_detail', function ($scope, $rootScope) {
 
 });
 
-app.controller('inspection_preview', function ($scope, $rootScope) {
+app.controller('report_preview', function ($scope, $rootScope) {
 
 });
 
-app.controller('inspection_send', function ($scope, $rootScope) {
+app.controller('report_send', function ($scope, $rootScope) {
 
 });

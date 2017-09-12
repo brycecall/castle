@@ -36,8 +36,8 @@ app.factory('header_manager', function ($rootScope) {
 
   public.clearAction = function () {
     public.action = null;
-    public.enable();
     public.mode = HEADER_MODES.Default;
+    public.enable();
   }
 
   return public;
@@ -52,7 +52,7 @@ app.controller('header', function ($scope, $rootScope, header_manager) {
 });
 
 app.run(function ($transitions, header_manager) {
-  $transitions.onStart({}, function () {
+  $transitions.onExit({}, function () {
     header_manager.clearAction();
   });
 });

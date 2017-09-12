@@ -1,17 +1,22 @@
-app.factory('database', function($rootScope, $state, $q) {
+app.factory('database', function ($rootScope, $state, $q, database_mock) {
   var private = {};
   private.dbOptions = {
-      'name': 'castle.db',
-      'location': 'default'
+    'name': 'castle.db',
+    'location': 'default'
   };
   var public = {};
-  var db = null;    
-  document.addEventListener('deviceready', function() {
+  var db = null;
+
+  if (window['sqlitePlugin'] == undefined) {
+    public = database_mock;
+  }
+
+  document.addEventListener('deviceready', function () {
     db = window.sqlitePlugin.openDatabase(private.dbOptions);
-    
-    public.initTables = function() {
+
+    public.initTables = function () {
       console.log('calling initTables');
-        // Batch script to create all tables in db
+      // Batch script to create all tables in db
       db.sqlBatch([
           'CREATE TABLE IF NOT EXISTS Answer (ansQuestionId, value, answerCol, FOREIGN KEY(ansQuestionid) REFERENCES Question(rowId))',
           'CREATE TABLE IF NOT EXISTS Client (cliFirstName, cliLastName, cliAddress, cliCity, cliState, cliZipCode, cliPhone, cliEmail)',
@@ -28,46 +33,55 @@ app.factory('database', function($rootScope, $state, $q) {
           'CREATE TABLE IF NOT EXISTS UserAccess (usaTitle, usaOrganizationId, usaEditUsers, usaEditOrgInfo, usaEditTemplate, usaEditRequired, FOREIGN KEY(usaOrganizationId) REFERENCES Organization(rowId))',
           'CREATE TABLE IF NOT EXISTS UserOrganizations (usoUserId, usoOrganizationId, FOREIGN KEY(usoUserId) REFERENCES User(rowId), FOREIGN KEY(usoOrganizationId) REFERENCES Organization(rowId))',
           'CREATE TABLE IF NOT EXISTS UserUsers (usuUserId, usuUserChildId, FOREIGN KEY(usuUserId) REFERENCES User(rowId))',
-      ], function() {
-          console.log('Batch statement completed successfully');
-      }, function(error) {
-          console.log('Error processing batch: ' + error.message);
+      ], function () {
+        console.log('Batch statement completed successfully');
+      }, function (error) {
+        console.log('Error processing batch: ' + error.message);
       });
     }
     public.createUser = function (name, pass, email) {
       console.log('Creating User');
-      db.transaction(function(tx) {
+      db.transaction(function (tx) {
         tx.executeSql('INSERT INTO User VALUES (?,?,?)', [name, pass, email]);
-      }, function(error) {
+      }, function (error) {
         // TODO: Make sure insertion is unique / report that error to user
         console.log('Error Creating User: ' + error.message);
-      }, function() {
-          // Successful creation, navigate to home page
-          console.log('Successful user creation');
-          $rootScope.authenticated = true;
-          $state.go('home');
-      });  
+      }, function () {
+        // Successful creation, navigate to home page
+        console.log('Successful user creation');
+        $rootScope.authenticated = true;
+        $state.go('home');
+      });
     }
     public.validCredentials = function (name, pass) {
       var valid = false;
       var deferred = $q.defer();
-        
-      db.executeSql('SELECT * FROM User WHERE name = ? AND pass = ?', [name, pass], function(res) {
+
+      db.executeSql('SELECT * FROM User WHERE name = ? AND pass = ?', [name, pass], function (res) {
         if (res.rows.length > 0) {
           valid = true;
           console.log('valid set to true');
-          deferred.resolve({validCreds: true, message: 'name found'});
+          deferred.resolve({
+            validCreds: true,
+            message: 'name found'
+          });
         } else {
           console.log('Username not found in database');
-          deferred.resolve({validCreds: false, message: 'name not found'});
+          deferred.resolve({
+            validCreds: false,
+            message: 'name not found'
+          });
         }
-       }, function(error) {
-         console.log('Error attempting SELECT to check user credentials');
-         deferred.reject({validCreds: false, message: 'error attempting to execute SQL'});
-       });
-     return deferred.promise;
-     }
+      }, function (error) {
+        console.log('Error attempting SELECT to check user credentials');
+        deferred.reject({
+          validCreds: false,
+          message: 'error attempting to execute SQL'
+        });
+      });
+      return deferred.promise;
+    }
   });
   return public;
-  
+
 });

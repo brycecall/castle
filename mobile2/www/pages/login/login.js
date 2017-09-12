@@ -23,9 +23,7 @@ app.run(function ($transitions, $rootScope) {
 });
 
 // Define the page controller
-app.controller('login', function ($scope, $rootScope, $state, action_manager, header_manager) {
-  $rootScope.authenticated = true; //For DEBUG
-
+app.controller('login', function ($scope, $rootScope, $state, action_manager, header_manager, database) {
   header_manager.disable();
 
   $scope.user = {};

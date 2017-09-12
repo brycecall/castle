@@ -13,10 +13,11 @@
 </head>
 
 <body ng-app="castle">
- 
-  <div layout="column" layout-fill >
-    <md-toolbar md-scroll-shrink="false" ng-controller="header_manager" md-whiteframe="1">
-      <div class="md-toolbar-tools">
+
+  <div layout="column" layout-fill>
+    <md-toolbar md-scroll-shrink="false" ng-controller="header" md-whiteframe="1" ng-show="service.enabled" ng-cloak>
+      <div class="md-toolbar-tools" ng-show="service.mode == 1">
+        <!-- service mode 1 is Default (Home Icon only) -->
         <span flex>
           <h2>Castle</h2>
         </span>
@@ -24,16 +25,36 @@
           <md-icon md-svg-icon="home_white"></md-icon>
         </md-button>
       </div>
+
+      <div class="md-toolbar-tools" ng-show="service.mode == 2">
+        <!-- service mode 1 is Action -->
+        <md-button class="md-icon-button" aria-label="{{service.action.name}}" ng-click="run(service.action.method)" ng-class="service.action.classname" ng-show="service.action">
+          <md-icon md-svg-icon="{{service.action.icon}}"></md-icon>
+        </md-button>
+        <span flex>
+          <h2>Castle</h2>
+        </span>
+        <md-button class="md-icon-button" aria-label="home" href="#!home">
+          <md-icon md-svg-icon="home_white"></md-icon>
+        </md-button>
+      </div>
+
+      <div class="md-toolbar-tools" ng-show="service.mode == 3">
+        <!-- service mode 1 is Title -->
+        <span flex>
+          <h2>Castle</h2>
+        </span>
+      </div>
     </md-toolbar>
-      <md-content id="view" ui-view  ></md-content>
+    <md-content id="view" ui-view></md-content>
 
   </div>
 
   <div class="action" ng-controller="action">
     <div class="button" ng-cloak ng-show="service.mode == 1" layout-align="end end">
       <!-- service mode 1 is Action -->
-      <md-button ng-cloak class="md-fab md-primary" aria-label="action" ng-show="service.enabled && (service.actions.length == 1)">
-        <md-icon md-svg-icon="{{service.actions[0].icon}}" ng-click="run(service.actions[0].method)"></md-icon>
+      <md-button ng-cloak class="md-fab md-primary" aria-label="action" ng-show="service.enabled && (service.actions.length == 1)" ng-click="run(service.actions[0].method)">
+        <md-icon md-svg-icon="{{service.actions[0].icon}}"></md-icon>
       </md-button>
       <md-fab-speed-dial md-open="open" md-direction="up" class="md-scale" ng-cloak ng-show="service.enabled && (service.actions.length > 1)">
         <md-fab-trigger>
@@ -92,10 +113,10 @@
 
   <script type="text/javascript" src="cordova.js"></script>
   <script type="text/javascript" src="CameraPreview.js"></script>
-    
+
   <!--  Internal Libraries-->
   <script src="index.js"></script>
-    
+
 
   <script src="services/camera_mock.js"></script>
   <script src="services/camera_manager.js"></script>

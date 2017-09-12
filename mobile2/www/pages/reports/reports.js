@@ -34,11 +34,19 @@ app.controller('reports_detail', function ($scope, $rootScope) {
 
 });
 
-app.controller('reports_preview', function ($scope, $rootScope) {
-  var doc = new jsPDF;
-  doc.fromHTML(document.querySelector('body').innerHTML, 15, 15);
-  $scope.pdf = doc.output('bloburi');
-  console.log($scope.pdf);
+app.controller('reports_preview', function ($scope, $rootScope, $sce) {
+  $scope.report = "";
+
+  $scope.getPreview = function () {
+    return $sce.trustAsResourceUrl($scope.pdf);
+  }
+
+  $scope.refreshPreview = function () {
+    var doc = new jsPDF;
+    doc.fromHTML($scope.report, 15, 15);
+    $scope.pdf = doc.output('datauristring');
+  }
+  $scope.refreshPreview();
 });
 
 app.controller('reports_send', function ($scope, $rootScope) {

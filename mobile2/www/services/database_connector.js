@@ -1,4 +1,4 @@
-app.factory('database', function($rootScope, $state, $q) {
+app.factory('database', function ($rootScope, $state, $q, database_mock) {
   var private = {};
   private.dbOptions = {
       'name': 'castle.db',
@@ -6,6 +6,11 @@ app.factory('database', function($rootScope, $state, $q) {
   };
   var public = {};
   var db = null;    
+
+  if (window['sqlitePlugin'] == undefined) {
+    public = database_mock;
+  }
+
   document.addEventListener('deviceready', function() {
     db = window.sqlitePlugin.openDatabase(private.dbOptions);
     
@@ -55,15 +60,24 @@ app.factory('database', function($rootScope, $state, $q) {
         
       db.executeSql('SELECT * FROM User WHERE name = ? AND pass = ?', [name, pass], function(res) {
         if (res.rows.length > 0) {
-          deferred.resolve({validCreds: true, message: 'name found'});
+          deferred.resolve({
+            validCreds: true,
+            message: 'name found'
+          });
         } else {
           console.log('Username not found in database');
-          deferred.resolve({validCreds: false, message: 'name not found'});
+          deferred.resolve({
+            validCreds: false,
+            message: 'name not found'
+          });
         }
        }, function(error) {
          console.log('Error attempting SELECT to check user credentials');
-         deferred.reject({validCreds: false, message: 'error attempting to execute SQL'});
+        deferred.reject({
+          validCreds: false,
+          message: 'error attempting to execute SQL'
        });
+      });
        return deferred.promise;
      }
     // report init

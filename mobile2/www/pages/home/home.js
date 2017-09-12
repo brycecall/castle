@@ -9,6 +9,8 @@ app.config(function ($stateProvider) {
 });
 
 // Define the page controller
-app.controller('home', function ($scope, $rootScope) {
+app.controller('home', function ($scope, $rootScope, header_manager) {
+  header_manager.mode = HEADER_MODES.Title;
+
   console.log('Welcome Home');
 })

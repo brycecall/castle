@@ -61,7 +61,7 @@ app.controller('action', function ($scope, $rootScope, $timeout, $window, action
 
 // Reset the actions on every navigation
 app.run(function ($transitions, action_manager) {
-  $transitions.onStart({}, function () {
+  $transitions.onExit({}, function () {
     action_manager.clearActions();
   });
 });

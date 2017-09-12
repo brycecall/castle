@@ -3,9 +3,9 @@ app.config(function ($stateProvider) {
   $stateProvider
     .state("login", {
       url: "/login",
-      templateUrl: "pages/login/login.html",
-      controller: "login"
-    });
+    templateUrl: "pages/login/login.html",
+    controller: "login"
+  });
 });
 
 app.run(function ($transitions, $rootScope) {
@@ -23,9 +23,7 @@ app.run(function ($transitions, $rootScope) {
 });
 
 // Define the page controller
-app.controller('login', function ($scope, $rootScope, $state, action_manager, header_manager) {
-  $rootScope.authenticated = true; //For DEBUG
-
+app.controller('login', function ($scope, $rootScope, $state, action_manager, header_manager, database) {
   header_manager.disable();
 
   $scope.user = {};
@@ -38,8 +36,26 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
   }, "md-accent");
 
   action_manager.addAction("Login", "check", function () {
-    $rootScope.authenticated = true;
-    $state.go("home");
+    console.log('login clicked');
+    // TODO: chain initTables -> validCreds
+    database.initTables();
+    var valid = database.validCredentials($scope.user.username, $scope.user.password);
+    valid.then(
+      //success - valid user
+      function(promise) {
+        console.log(promise.message);
+        $rootScope.authenticated = true;
+        $state.go("home");
+      },
+      //fail - invalid user
+      function(promise) {
+        console.log(promise.message);
+      }
+    );
+  });
+    
+  action_manager.addAction("Register", "check", function() {
+    database.createUser($scope.new_user.username, $scope.new_user.password, $scope.new_user.email); 
   });
 
   action_manager.mode = ACTION_MODES.Action;

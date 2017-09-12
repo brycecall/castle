@@ -1,0 +1,13 @@
+<md-dialog aria-label="Preview Photo">
+    <md-toolbar>
+      <div class="md-toolbar-tools" style="background-color: black;">
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-svg-src="back" aria-label="Go back"></md-icon>
+        </md-button>
+        <h2>Preview Photo</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content  style="background-image: url( {{photo.link}} );">
+        
+    </md-dialog-content>
+</md-dialog>

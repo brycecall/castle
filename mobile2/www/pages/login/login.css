@@ -1,0 +1,24 @@
+#view {
+  overflow: hidden;
+}
+
+.login {
+  background-image: url(../../assets/login_background.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.login .content {
+  padding: 20px;
+}
+
+.login md-tab-content {
+  padding-right: 20px;
+}
+
+.login .logo {
+  display: block;
+  width: 50%;
+  margin: 25px auto;
+}

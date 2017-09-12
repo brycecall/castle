@@ -15,13 +15,19 @@ app.run(function ($transitions, $rootScope) {
       // User isn't authenticated. Redirect to a new Target State
       return trans.router.stateService.target('login');
     }
-});
+    /*    if ($rootScope.authenticated !== true && trans.$to().name !== 'camera') {
+          // User isn't authenticated. Redirect to a new Target State
+          return trans.router.stateService.target('camera');
+        }*/
+  });
 });
 
 // Define the page controller
-app.controller('login', function ($scope, $rootScope, $state, action_manager, database) {
-  console.log('hi');
-    
+app.controller('login', function ($scope, $rootScope, $state, action_manager, header_manager) {
+  $rootScope.authenticated = true; //For DEBUG
+
+  header_manager.disable();
+
   $scope.user = {};
   $scope.new_user = {};
 

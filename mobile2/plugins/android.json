@@ -7,10 +7,13 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-camera-preview": {
+            "PACKAGE_NAME": "com.castle.inspect"
+        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.castle.inspect"
         },
-        "cordova-plugin-camera-preview": {
+        "cordova-sqlite-storage": {
             "PACKAGE_NAME": "com.castle.inspect"
         }
     },

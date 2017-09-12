@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "com.castle.inspect",
   "version": "1.0.0",
   "displayName": "Castle",
@@ -9,6 +10,26 @@
     "plugins": {
       "cordova-plugin-whitelist": {},
       "cordova-plugin-camera-preview": {}
+=======
+    "name": "com.castle.inspect",
+    "version": "1.0.0",
+    "displayName": "Castle",
+    "cordova": {
+        "platforms": [
+            "android"
+        ],
+        "plugins": {
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-camera-preview": {},
+            "cordova-sqlite-storage": {}
+        }
+    },
+    "dependencies": {
+        "cordova-android": "^6.2.3",
+        "cordova-plugin-camera-preview": "git+https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview.git",
+        "cordova-plugin-whitelist": "1",
+        "cordova-sqlite-storage": "^2.0.4"
+>>>>>>> master
     }
   },
   "dependencies": {

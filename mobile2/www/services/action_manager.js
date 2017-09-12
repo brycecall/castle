@@ -8,12 +8,11 @@ app.factory('action_manager', function ($rootScope) {
 
   public.enable = function () {
     public.enabled = true;
-    if (public.mode != ACTION_MODES.Confirm && public.actions.length <= 0) {
+    if (public.mode == ACTION_MODES.Action && public.actions.length <= 0) {
       throw {
         "NoActions": "There are no actions to perform. The action button will display when actions are added."
       }
     }
-
   }
 
   public.disable = function () {
@@ -52,22 +51,17 @@ app.factory('action_manager', function ($rootScope) {
 });
 
 app.controller('action', function ($scope, $rootScope, $timeout, $window, action_manager) {
-
   $scope.service = action_manager;
   $scope.open = false;
 
   $scope.run = function (method) {
     method();
   }
-
-  $scope.cancel = function () {
-    $window.history.back();
-  }
 });
 
 // Reset the actions on every navigation
 app.run(function ($transitions, action_manager) {
-  $transitions.onStart({}, function (trans) {
+  $transitions.onStart({}, function () {
     action_manager.clearActions();
   });
 });

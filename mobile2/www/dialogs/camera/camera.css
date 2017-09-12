@@ -2,7 +2,10 @@
     height:100%; 
     width:100%; 
     overflow: hidden;
-/*    background-color: black;*/
+}
+
+.pagePadding {
+    padding: 8px;
 }
 
 .fixedFooter {
@@ -10,16 +13,13 @@
     bottom: 0;
     width: 100%;
     opacity: .8;
-/*    border-style:solid;
-    border-color: darkgray;
-    border-width: 1px 0 0 0;*/
     background-color: black;
 }
 
  html, body, md-content {
     background-color: transparent !important;
-    
-}
+ }
+
 .previewCircle {
     display: inline-block;
     z-index: 20;
@@ -48,3 +48,7 @@
     height: 70px;
     width: 70px;
 }
+
+
+
+

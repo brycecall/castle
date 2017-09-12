@@ -32,12 +32,22 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, da
   }, "md-accent");
 
   action_manager.addAction("Login", "check", function () {
-    database.validCredentials($scope.user.username, $scope.user.password);
-    //  $rootScope.authenticated = true;
-    //  $state.go("home");
-    //} else {
-    //  console.log('Access Denied!!!!!!!!!!!!!!!!');
-    //}
+    console.log('login clicked');
+    // TODO: chain initTables -> validCreds
+    database.initTables();
+    var valid = database.validCredentials($scope.user.username, $scope.user.password);
+    valid.then(
+      //success - valid user
+      function(promise) {
+        console.log(promise.message);
+        $rootScope.authenticated = true;
+        $state.go("home");
+      },
+      //fail - invalid user
+      function(promise) {
+        console.log(promise.message);
+      }
+    );
   });
     
   action_manager.addAction("Register", "check", function() {

@@ -5,6 +5,10 @@
 /*    background-color: black;*/
 }
 
+.pagePadding {
+    padding: 8px;
+}
+
 .fixedFooter {
     position: fixed;
     bottom: 0;
@@ -20,6 +24,7 @@
     background-color: transparent !important;
     
 }
+
 .previewCircle {
     display: inline-block;
     z-index: 20;
@@ -48,3 +53,35 @@
     height: 70px;
     width: 70px;
 }
+
+.photo {
+    height:200px;
+    width:200px;
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+/*    background-color: black;*/
+}
+
+.cancelPhoto {
+    position: absolute;
+    top: -19px;
+    right: -25px;
+    
+}
+.cancelPhoto md-icon {
+    opacity: 1 !important;
+    color: rgba(0,0,0,.8);
+    background-color: white;
+    border-radius: 50%;
+}
+
+.photoWrapper {
+    position: relative;
+    height:200px;
+    width:200px;
+    margin: 10px;
+
+}
+
+

@@ -7,16 +7,19 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-pdf-generator": {
+            "PACKAGE_NAME": "com.castle.inspect"
+        },
         "cordova-plugin-camera-preview": {
+            "PACKAGE_NAME": "com.castle.inspect"
+        },
+        "cordova-plugin-file": {
             "PACKAGE_NAME": "com.castle.inspect"
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.castle.inspect"
         },
         "cordova-sqlite-storage": {
-            "PACKAGE_NAME": "com.castle.inspect"
-        },
-        "cordova-plugin-file": {
             "PACKAGE_NAME": "com.castle.inspect"
         }
     },

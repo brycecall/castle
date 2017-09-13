@@ -10,11 +10,13 @@
             "cordova-plugin-whitelist": {},
             "cordova-plugin-camera-preview": {},
             "cordova-sqlite-storage": {},
-            "cordova-plugin-file": {}
+            "cordova-plugin-file": {},
+            "cordova-pdf-generator": {}
         }
     },
     "dependencies": {
         "cordova-android": "^6.2.3",
+        "cordova-pdf-generator": "^1.5.4",
         "cordova-plugin-camera-preview": "git+https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview.git",
         "cordova-plugin-compat": "^1.0.0",
         "cordova-plugin-file": "^4.3.3",

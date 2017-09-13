@@ -40,21 +40,22 @@ app.controller('inspection', function ($scope, $rootScope, camera_manager, datab
           console.log(promise.message);
         }
     );*/
-    
-    var reports = database.getReports();
-    reports.then(
-      //Success
-      function(promise) {
-        console.log(promise.message);
-        console.log(promise.row);
-        for (var i = 0; i < promise.row.length; i++) {
-          $scope.reports.push(promise.row.item(i));
-        }
-      //Fail
-      }, function(promise) {
-        console.log(promise.message);
+
+  var reports = database.getReports();
+  reports.then(
+    //Success
+    function (promise) {
+      console.log(promise.message);
+      console.log(promise.row);
+      for (var i = 0; i < promise.row.length; i++) {
+        $scope.reports.push(promise.row.item(i));
       }
-    );
+      //Fail
+    },
+    function (promise) {
+      console.log(promise.message);
+    }
+  );
 
 });
 
@@ -63,10 +64,6 @@ app.controller('inspection_detail', function ($scope, $rootScope) {
 });
 
 app.controller('report_preview', function ($scope, $rootScope, $sce, $document) {
-  var generator = new jsPDF({
-    unit: 'px',
-    format: 'a4'
-  });
 
   $scope.pdf = "";
   $scope.data = "";
@@ -76,6 +73,18 @@ app.controller('report_preview', function ($scope, $rootScope, $sce, $document) 
   }
 
   $scope.update = function () {
+    pdf.htmlToPDF({
+      data: "<html>" + $scope.data + "</html>",
+      documentSize: "A4",
+      landscape: "portrait",
+      type: "share"
+    }, function (data) {
+      data = data.replace('\n', '');
+      $scope.pdf = "data:application/pdf;base64," + data;
+      console.log($scope.pdf);
+    });
+
+
     /*var element = document.createElement("div");
     document.querySelector("#buffer").appendChild(element);
     element.innerHTML = $scope.data;

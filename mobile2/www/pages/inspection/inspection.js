@@ -62,7 +62,51 @@ app.controller('inspection_detail', function ($scope, $rootScope) {
 
 });
 
-app.controller('report_preview', function ($scope, $rootScope) {
+app.controller('report_preview', function ($scope, $rootScope, $sce, $document) {
+  var generator = new jsPDF({
+    unit: 'px',
+    format: 'a4'
+  });
+
+  $scope.pdf = "";
+  $scope.data = "";
+
+  $scope.getReport = function () {
+    return $sce.trustAsResourceUrl($scope.pdf);
+  }
+
+  $scope.update = function () {
+    /*var element = document.createElement("div");
+    document.querySelector("#buffer").appendChild(element);
+    element.innerHTML = $scope.data;
+    var canvas_promise = html2canvas(element, {
+      imageTimeout: 2000,
+      removeContainer: true
+    });
+
+    canvas_promise.then(function (canvas) {
+      var image = canvas.toDataURL("image/png");
+      document.querySelector("#buffer").removeChild(element);
+      generator.addImage(image, 'JPEG', 20, 20);
+      $scope.pdf = generator.output("datauristring");
+    })*/
+
+    /*if (generator) {
+      delete generator;
+      generator = new jsPDF();
+    }
+
+    var element = document.createElement("div");
+    element.innerHTML = $scope.data;
+    var promise = generator.addHTML($scope.data, 15, 15, {
+      proxy: "http://127.0.0.1:60201/"
+    });
+    promise.then(function (canvas) {
+      console.log(canvas.toDataURL("image/png"))
+      document.querySelector("#buffer").appendChild(canvas);
+      $scope.pdf = generator.output("datauristring");
+    });*/
+  }
 
 });
 

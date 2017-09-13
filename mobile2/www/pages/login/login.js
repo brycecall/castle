@@ -32,26 +32,26 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
   }, "md-accent");
 
   action_manager.addAction("Login", "check", function () {
-    console.log('login clicked');
-    // TODO: chain initTables -> validCreds
     database.initTables();
-    var valid = database.validCredentials($scope.user.username, $scope.user.password);
-    valid.then(
-      //success - valid user
-      function (promise) {
-        console.log(promise.message);
-        $rootScope.authenticated = true;
-        $state.go("home");
-      },
-      //fail - invalid user
-      function (promise) {
-        console.log(promise.message);
-      }
-    );
-  });
 
-  action_manager.addAction("Register", "check", function () {
-    database.createUser($scope.new_user.username, $scope.new_user.password, $scope.new_user.email);
+    if ($scope.new_user.username && $scope.new_user.password && $scope.new_user.email) {
+      database.createUser($scope.new_user.username, $scope.new_user.password, $scope.new_user.email);
+    } else {
+      var valid = database.validCredentials($scope.user.username, $scope.user.password);
+      valid.then(
+        //success - valid user
+        function (promise) {
+          console.log(promise.message);
+          $rootScope.authenticated = true;
+          $state.go("home");
+        },
+        //fail - invalid user
+        function (promise) {
+          console.log(promise.message);
+        }
+      );
+    }
+
   });
 
   action_manager.mode = ACTION_MODES.Action;

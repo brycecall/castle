@@ -2,61 +2,54 @@
 <div class="page">
     <div>
       <div class="controls">
-        <!-- <div class="block">
-          <md-button aria-label="start camera" id="startCameraAboveButton" ng-click="camera_manager.startCamera()" class="md-raised">Start Camera</md-button>
-          <md-button aria-label="stop camera" id="stopCameraButton" ng-click="camera_manager.stopCamera()" class="md-raised">Stop Camera</md-button>
-        </div> -->
-
         <div>
             <md-menu>
               <md-button aria-label="Flash Mode" 
                          class="md-icon-button" 
                          ng-click="$mdMenu.open($event)"
                          >
-                <md-icon md-menu-origin md-svg-icon="flash_auto" style="color: white;"></md-icon>
+                <md-icon md-menu-origin md-svg-icon="{{flashModeIcon}}" class="lightIcon"></md-icon>
               </md-button>
               <md-menu-content width="2">
                 <md-menu-item>
-                  <md-button ng-click="setFlashMode('auto')">
+                  <md-button ng-click="setFlashMode('auto', 'flash_auto')">
                       <md-icon md-svg-icon="flash_auto"></md-icon> auto
                   </md-button>
                 </md-menu-item>
                 <md-menu-item>
-                  <md-button ng-click="setFlashMode('on')">
-                     <md-icon md-svg-icon="flash_on"></md-icon> auto on
+                  <md-button ng-click="setFlashMode('on', 'flash_on')">
+                     <md-icon md-svg-icon="flash_on"></md-icon> on
                   </md-button>
                 </md-menu-item>
                 <md-menu-item>
-                  <md-button ng-click="setFlashMode('off')">
+                  <md-button ng-click="setFlashMode('off','flash_off')">
                      <md-icon md-svg-icon="flash_off"></md-icon> off
                   </md-button>
                 </md-menu-item>
                 <md-menu-item>
-                  <md-button ng-click="setFlashMode('torch')">
+                  <md-button ng-click="setFlashMode('torch','flare')">
                       <md-icon md-svg-icon="flare"></md-icon> torch
                   </md-button>
                 </md-menu-item>
               </md-menu-content>
             </md-menu>
-
             <md-menu>
               <md-button aria-label="Zoom zoom" 
                          class="md-icon-button" 
-                         ng-click="$mdMenu.open($event)"
+                         ng-click="$mdMenu.open($event, zoomSlider)"
                          >
-                <md-icon md-menu-origin md-svg-icon="zoom_in" style="color: white;"></md-icon>
+                <md-icon md-menu-origin md-svg-icon="zoom_in" class="lightIcon"></md-icon>
               </md-button>
               <md-menu-content width="6">
                 <md-menu-item style="padding: 14px 4px 4px 4px;">
-                
                 <md-slider-container class="md-primary">
                   <span class="md-body-1">Zoom: </span>
 <!--                  <md-icon md-svg-icon="remove"></md-icon>-->
-                  <md-slider flex md-discrete 
+                  <md-slider flex  
                   ng-model="zoomSlider" 
-                  step="1" min="1" max="5" 
-                  aria-label="zoom slider"
-                  >
+                  ng-change="changeZoom(zoomSlider)"
+                  step="1" min="1" max="30" 
+                  aria-label="zoom slider">
                   </md-slider>
 <!--                  <md-icon md-svg-icon="add"></md-icon>-->
                 </md-slider-container>
@@ -91,7 +84,6 @@
                           aria-label="preview images">
                          
               </div>
-
       </div>
 
 <!--

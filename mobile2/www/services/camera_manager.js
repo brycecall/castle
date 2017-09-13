@@ -19,7 +19,16 @@ app.factory('camera_manager', function (camera_mock, $state) {
     tapFocus: true,
     previewDrag: false
   };
-  
+    
+  /* Stores a list of photos returned from takePicture */
+  public.photos = [
+        {link:'../../assets/Castle-Logo-Main.png'},
+        {link:'../../assets/Castle-Logo-Main.png'},
+        {link:'../../assets/Castle-Logo-Main.png'},
+        {link:'../../assets/Castle-Logo-Main.png'},
+        {link:'../../assets/Castle-Logo-Main.png'}
+  ];
+    
   /* meant to store the state to return to after the Camera usage is done. */
   public.returnState = '';
     
@@ -38,8 +47,11 @@ app.factory('camera_manager', function (camera_mock, $state) {
 
   public.takePicture = function () {
     CameraPreview.takePicture(function (imgData) {
- document.getElementById('originalPicture').style.backgroundImage = 'url(data:image/jpeg;base64,' + imgData + ')';
+    var photoURL = 'data:image/jpeg;base64,' + imgData;
+    document.getElementById('originalPicture').style.backgroundImage = 'url(' + photoURL + ')';
+        public.photos.push({'link':photoURL});
     });
+    
   };
 
   public.switchCamera = function () {
@@ -54,14 +66,11 @@ app.factory('camera_manager', function (camera_mock, $state) {
     CameraPreview.hide();
   };
 
-  public.changeFlashMode = function () {
-    var mode = document.getElementById('selectFlashMode').value;
+  public.changeFlashMode = function (mode) {
     CameraPreview.setFlashMode(mode);
   };
 
-  public.changeZoom = function () {
-    var zoom = document.getElementById('zoomSlider').value;
-    document.getElementById('zoomValue').innerHTML = zoom;
+  public.changeZoom = function (zoom) {
     CameraPreview.setZoom(zoom);
   };
 
@@ -91,6 +100,8 @@ app.factory('camera_manager', function (camera_mock, $state) {
   public.openCameraControl = function () {
     $state.go("camera");
   };
+    
+
 
   public.accept = function () {
 

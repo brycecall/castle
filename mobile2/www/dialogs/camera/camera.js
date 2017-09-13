@@ -9,7 +9,10 @@ app.config(function ($stateProvider) {
     .state('camera_preview', {
       url: "/camera_preview",
       templateUrl: "dialogs/camera/camera_preview.html",
-      controller: "camera_preview"
+      controller: "camera_preview",
+      params: {
+          button:'back'
+      }
     })
     ;
 });
@@ -36,32 +39,43 @@ app.controller('camera', function ($scope, camera_manager, header_manager, $stat
   camera_manager.startCamera();
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function() {
-      $state.go(camera_manager.returnState);
+      if (camera_manager.photos.length > 0) {
+         $state.go('camera_preview', {'button':'accept'})
+      } else {
+         $state.go(camera_manager.returnState);
+      }
   });
-
+    
+  $scope.flashModeIcon = 'flash_auto'; 
+  $scope.setFlashMode = function(mode, icon) {
+      camera_manager.changeFlashMode(mode);
+      $scope.flashModeIcon = icon;
+  };
+    
+  $scope.changeZoom = function(zoom) {
+      camera_manager.changeZoom(zoom);
+  };
+        
     
 });
 
 
 // Define the page controller
-app.controller('camera_preview', function ($scope, $mdToast, $mdDialog, header_manager, $state) {
+app.controller('camera_preview', function ($scope, $mdToast, $mdDialog, header_manager, $state, camera_manager, $stateParams) {
     var private = {};
     private.deletedPhotoIndexes = [];
     header_manager.mode = HEADER_MODES.Action;
-    header_manager.setAction('Back', 'back', function() {
-        $state.go('camera');
-    });
-
     
-    $scope.photos = [
-        {link:'../../assets/Castle-Logo-Main.png'},
-        {link:'../../assets/Castle-Logo-Main.png'},
-        {link:'../../assets/Castle-Logo-Main.png'},
-        {link:'../../assets/Castle-Logo-Main.png'},
-        {link:'../../assets/Castle-Logo-Main.png'}
-    ];
-    
-    
+    if ($stateParams.button === 'accept') {
+        header_manager.setAction('Accept', 'check', function() {
+            $state.go(camera_manager.returnState);
+        });
+    } else {
+        header_manager.setAction('Back', 'back', function() {
+            $state.go('camera');
+        });
+    }
+    $scope.photos = camera_manager.photos;
 
     private.showActionToast = function() {
         var pinTo = 'bottom';

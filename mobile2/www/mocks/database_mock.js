@@ -6,16 +6,6 @@ app.factory('database_mock', function ($q) {
     console.info("DATABASE: " + arguments);
   };
     
-    'INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
-        ['9-12-17', '9-12-17', 10, 'Residential', 'Smith Inspection', 1]],
-      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
-        ['10-1-17', '9-11-17', 9, 'Residential', 'Jones Inspection', 1]],
-      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
-        ['6-12-17', '6-12-17', 13, 'Residential', 'Smith Inspection', 1]],
-      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
-        ['9-1-17', '9-1-17', 21, 'Residential', 'Smith Inspection', 1]],
-      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
-        ['9-12-17', '9-12-17', 1, 'Commercial', 'Walmart Inspection', 1]]
   public.getReports = function() {
     console.info("DATABASE: " + arguments);
     var deferred = $q.defer();

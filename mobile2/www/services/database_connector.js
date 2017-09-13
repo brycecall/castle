@@ -106,7 +106,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     public.getReports = function () {
       var deferred = $q.defer();
         
-      db.executeSql('SELECT * FROM Inspection', [], function(res) {
+      db.executeSql('SELECT * FROM Inspection ORDER BY insLastSubmitted DESC', [], function(res) {
         if(res.rows.length > 0) {
           deferred.resolve({row: res.rows, message: 'Successful select from Inspection table'});
         } else {

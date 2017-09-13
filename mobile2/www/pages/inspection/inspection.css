@@ -1,1 +1,16 @@
-
+.inspection {
+  margin-top: 10px;
+}
+.report-thumbnail {
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+  vertical-align: top;
+}
+.report-meta {
+  display: inline-block;
+  vertical-align: top;
+}
+.report-meta > a{
+  display: block;
+}

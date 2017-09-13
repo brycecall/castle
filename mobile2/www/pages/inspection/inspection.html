@@ -1,8 +1,14 @@
-<div ng-hide="angular.equals([], reports)" ng-repeat="report in reports">
-    <p>Report Name: {{report.insName}}</p>
-    <p>Report Type: {{report.insType}}</p>
-    <p>Report Date: {{report.insLastSubmitted}}</p>
+<link type="text/css" rel="stylesheet" href="pages/inspection/inspection.css" />
+<div class="page">
+  <div class="inspection" ng-hide="angular.equals([], reports)" ng-repeat="report in reports">
+    <img class="report-thumbnail" src="assets/inspection_background.jpg"/>
+    <div class="report-meta">
+      <a>Report Name: {{report.insName}}</a>
+      <a>Report Type: {{report.insType}}</a>
+      <a>Report Date: {{report.insLastSubmitted}}</a>
+    </div>
     <hr>
+  </div>
+  <md-button class="md-raised" ng-click="camera_manager.openCameraControl()">Take Picture</md-button>
+  <md-button class="md-raised" ui-sref="report_preview">View PDF</md-button>
 </div>
-<md-button class="md-raised" ng-click="camera_manager.openCameraControl()">Take Picture</md-button>
-<md-button class="md-raised" ui-sref="report_preview">View PDF</md-button>

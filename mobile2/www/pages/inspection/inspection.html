@@ -1,2 +1,8 @@
+<div ng-hide="angular.equals([], reports)" ng-repeat="report in reports">
+    <p>Report Name: {{report.insName}}</p>
+    <p>Report Type: {{report.insType}}</p>
+    <p>Report Date: {{report.insLastSubmitted}}</p>
+    <hr>
+</div>
 <md-button class="md-raised" ng-click="camera_manager.openCameraControl()">Take Picture</md-button>
 <md-button class="md-raised" ui-sref="report_preview">View PDF</md-button>

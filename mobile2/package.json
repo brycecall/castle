@@ -1,37 +1,24 @@
 {
-  "name": "com.castle.inspect",
-  "version": "1.0.0",
-  "displayName": "Castle",
-  "cordova": {
-    "platforms": [
+    "name": "com.castle.inspect",
+    "version": "1.0.0",
+    "displayName": "Castle",
+    "cordova": {
+        "platforms": [
             "android"
         ],
-    "plugins": {
-      "cordova-plugin-whitelist": {},
-      "cordova-plugin-camera-preview": {},
-      "cordova-sqlite-storage": {},
-      "cordova-plugin-file": {}
+        "plugins": {
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-camera-preview": {},
+            "cordova-sqlite-storage": {},
+            "cordova-plugin-file": {}
+        }
+    },
+    "dependencies": {
+        "cordova-android": "^6.2.3",
+        "cordova-plugin-camera-preview": "git+https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview.git",
+        "cordova-plugin-compat": "^1.0.0",
+        "cordova-plugin-file": "^4.3.3",
+        "cordova-plugin-whitelist": "1",
+        "cordova-sqlite-storage": "^2.0.4"
     }
-  },
-  "dependencies": {
-    "cordova-android": "^6.2.3",
-    "cordova-plugin-camera-preview": "git+https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview.git",
-    "cordova-plugin-compat": "^1.0.0",
-    "cordova-plugin-file": "^4.3.3",
-    "cordova-plugin-whitelist": "1",
-    "cordova-sqlite-storage": "^2.0.4"
-  }
-},
-"dependencies": {
-  "cordova-android": "^6.2.3",
-  "cordova-plugin-camera-preview": "git+https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview.git",
-  "cordova-plugin-whitelist": "1",
-  "cordova-sqlite-storage": "^2.0.4"
-}
-},
-"dependencies": {
-  "cordova-android": "~6.2.3",
-  "cordova-plugin-camera-preview": "git+https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview.git",
-  "cordova-plugin-whitelist": "1"
-}
 }

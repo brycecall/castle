@@ -84,8 +84,18 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     public.initReports = function () {
       var deferred = $q.defer();
         
-      db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
-                    ['9-12-17', '9-12-17', 10, 'Residential', 'Smith Inspection', 1], function(res) {
+      db.sqlBatch([
+      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
+        ['9-12-17', '9-12-17', 10, 'Residential', 'Smith Inspection', 1]],
+      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
+        ['10-1-17', '9-11-17', 9, 'Residential', 'Jones Inspection', 1]],
+      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
+        ['6-12-17', '6-12-17', 13, 'Residential', 'Smith Inspection', 1]],
+      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
+        ['9-1-17', '9-1-17', 21, 'Residential', 'Smith Inspection', 1]],
+      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
+        ['9-12-17', '9-12-17', 1, 'Commercial', 'Walmart Inspection', 1]],
+      ], function(res) {
         deferred.resolve({success: true, message: 'successful dummy data insertion'});
       }, function(error) {
         deferred.reject({success: false, message: 'failure inserting dummy data'});
@@ -98,7 +108,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
         
       db.executeSql('SELECT * FROM Inspection', [], function(res) {
         if(res.rows.length > 0) {
-          deferred.resolve({row: res.rows.item(0), message: 'Successful select from Inspection table'});
+          deferred.resolve({row: res.rows, message: 'Successful select from Inspection table'});
         } else {
           deferred.resolve({message: 'No data in Inspection table'});    
         }     
@@ -107,6 +117,19 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       });
       return deferred.promise;
     }
+    
+    // General use insert function to be used by controllers
+    /*public.insert = function(query, params) {
+        var deferred = $q.defer();
+        
+        db.executeSql(query, params, function(res) {
+          console.log('Success: ' + res.rowsAffected);
+          deferred.resolve({success: true, message: 'successful insertion of query: ' + query + ' using params: ' + params});
+        }, function(error) {
+          deferred.reject({success: false, message: 'error inserting using query: ' + query + ' using params: ' + params});
+        });
+        return deferred.promise;
+    }*/
   });
   return public;
   

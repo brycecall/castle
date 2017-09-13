@@ -5,6 +5,29 @@ app.factory('database_mock', function ($q) {
   public.initTables = function () {
     console.info("DATABASE: " + arguments);
   };
+    
+    'INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
+        ['9-12-17', '9-12-17', 10, 'Residential', 'Smith Inspection', 1]],
+      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
+        ['10-1-17', '9-11-17', 9, 'Residential', 'Jones Inspection', 1]],
+      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
+        ['6-12-17', '6-12-17', 13, 'Residential', 'Smith Inspection', 1]],
+      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
+        ['9-1-17', '9-1-17', 21, 'Residential', 'Smith Inspection', 1]],
+      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)', 
+        ['9-12-17', '9-12-17', 1, 'Commercial', 'Walmart Inspection', 1]]
+  public.getReports = function() {
+    console.info("DATABASE: " + arguments);
+    var deferred = $q.defer();
+    deferred.resolve({
+      row: [{insLastModified: '9-12-17', insLastSubmitted: '9-12-17', insJobId: 10, insType: 'Residential', insName: 'Smith Inspection', insUserId: 1},
+                {insLastModified: '10-1-17', insLastSubmitted: '9-11-17', insJobId: 9, insType: 'Residential', insName: 'Jones Inspection', insUserId: 1},
+                {insLastModified: '6-12-17', insLastSubmitted: '6-12-17', insJobId: 13, insType: 'Residential', insName: 'Smith Inspection', insUserId: 1},
+                {insLastModified: '9-1-17', insLastSubmitted: '9-1-17', insJobId: 21, insType: 'Residential', insName: 'Smith Inspection', insUserId: 1},
+                {insLastModified: '9-12-17', insLastSubmitted: '9-12-17', insJobId: 1, insType: 'Commercial', insName: 'Walmart Inspection', insUserId: 1}]
+    });
+    return deferred.promise;
+  };
 
   public.createUser = function () {
     console.info("DATABASE: " + arguments);

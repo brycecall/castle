@@ -1,0 +1,103 @@
+<link type="text/css" rel="stylesheet" href="./pages/inspection/inspection_detail.css" />
+<div class="page">
+    <form name="questionForm" class="pagePadding" ng-class="question.notApplicable ? 'disabled' : ''">
+        <div layout="row">
+            <div flex=""></div>
+            <md-switch md-invert 
+                       ng-model="question.notApplicable"
+                       style="color:rgba(0,0,0,0.87);">
+            Not Applicable
+            </md-switch>
+        </div>
+        <div class="md-title">{{question.title}}</div>
+        <div class="md-caption description">{{question.description}}</div>
+        <div ng-if="question.type == 'checkbox'">
+            <div ng-repeat="checkBox in question.values" class="questionIndent">
+                <md-checkbox ng-checked="exists(checkBox.key, question.answers)" 
+                             ng-click="toggle(checkBox.key, question.answers)"
+                             ng-disabled="question.notApplicable">
+                    {{checkBox.key}}
+                </md-checkbox>
+            </div>
+        </div>
+        <div ng-if="question.type == 'checkbox'">
+            <md-radio-group ng-model="question.answer"
+                            ng-required="question.validation.isRequired"
+                            ng-disabled="question.notApplicable">
+                <md-radio-button ng-repeat="radioButton in question.values" 
+                                 class="questionIndent" 
+                                 ng-value="radioButton.key">{{radioButton.key}}</md-radio-button>
+            </md-radio-group>
+        </div>
+        <div ng-if="question.type == 'checkbox'">
+            <md-select ng-model="question.answer" 
+                       placeholder="Choose" 
+                       class="md-no-underline"
+                       ng-required="question.validation.isRequired"
+                       ng-disabled="question.notApplicable">
+                <md-option ng-repeat="selectOption in question.values" ng-value="selectOption.key">{{selectOption.key}}
+                </md-option>
+            </md-select>
+        </div>
+        <div ng-if="question.type == 'checkbox'">
+            <md-input-container>
+                <label>Your Answer</label>
+                <input ng-model="question.answer" 
+                       type="{{question.validation ? question.validation.type : 'text'}}" 
+                       md-minlength='question.validation.min' 
+                       md-maxlength='question.validation.max'
+                       md-select-on-focus
+                       ng-required="question.validation.isRequired"
+                       ng-disabled="question.notApplicable"
+                       name="shortText"
+                       >
+                <div ng-messages="questionForm.shortText.$error" 
+                     ng-show="questionForm.shortText.$dirty">
+                  <div ng-message="required">This is required!</div>
+                  <div ng-message="md-minlength">That's too short!</div>
+                  <div ng-message="md-maxlength">That's too long!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div ng-if="question.type == 'checkbox'">
+            <md-input-container class="md-block" >
+                <label>Your Answer</label>
+                <textarea ng-model="question.answer" 
+                          md-minlength="question.validation.min" 
+                          md-maxlength="question.validation.max" 
+                          md-select-on-focus
+                          ng-required="question.validation.isRequired"
+                          ng-disabled="question.notApplicable"
+                          name="testArea"></textarea>
+                <div ng-messages="questionForm.testArea.$error" 
+                     ng-show="questionForm.testArea.$dirty">
+                  <div ng-message="required">This is required!</div>
+                  <div ng-message="md-minlength">That's too short!</div>
+                  <div ng-message="md-maxlength">That's too long!</div>
+                </div>
+            </md-input-container>
+        </div>
+
+        <div style="margin: 0px 0px 0px 0px;">
+            <div class="md-title">Summary Remarks</div>
+            <div class="md-caption" style="margin: 4px 0 4px 0;" >Summary Remarks are appended to the Summary Page</div>
+            <div layout="row" layout-wrap>
+                <div class="md-caption"></div>
+                <div ng-repeat="fabButton in severityList" 
+                     class="buttonWrapper"
+                     layout="column" layout-align="center center">
+                    <md-button class="md-fab md-mini" 
+                               ng-class="question.severity == fabButton.title ? 'md-accent selectedBtn' : 'md-raised'"
+                               aria-label="fabButton.title"
+                               ng-click="setSeverity(fabButton.title)">
+                        <md-icon md-svg-icon="{{fabButton.icon}}"></md-icon>
+                    </md-button>
+                    <div class="label">{{fabButton.title}}</div>
+                </div>
+            </div>
+        </div>
+        
+    </form>
+</div>
+
+

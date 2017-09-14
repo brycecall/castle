@@ -49,6 +49,60 @@ app.controller('inspection', function ($scope, $rootScope, camera_manager, datab
 
 });
 
-app.controller('inspection_detail', function ($scope, $rootScope) {
+app.factory('$', function($window) { return $window.jQuery; });
 
+app.controller('inspection_detail', function ($scope, $) {
+    $scope.question = {
+        'title':'What are your favorite colors?',
+        'description':'Just pick the ones you actually like.',
+        'type':'checkbox',
+        'values': [
+            {'key':'orange', 'remark':''},
+            {'key':'red'},
+            {'key':'green'},
+            {'key':'pink'},
+            {'key':'purple mountain magesty'},
+            {'key':'yellow'}
+        ],
+        'answers': [
+            'orange'
+        ],
+        'answer':null,
+        'value':null,
+        'validation':{
+            'type':'number',
+            'min':null,
+            'max':null,
+            'isRequired':true
+        },
+        'notApplicable':false,
+        'severity':null
+  
+    };
+
+    $scope.toggle = function(item, list) {
+        var index = list.indexOf(item);
+        if (index > -1) {
+          list.splice(index, 1);
+        }
+        else {
+          list.push(item);
+        }
+    };
+
+    $scope.exists = function(value, array) {
+        return $.inArray( value, array ) > -1;
+    };
+    
+    $scope.setSeverity = function(value) {
+        $scope.question.severity = value;
+    };
+    
+    $scope.severityList = [
+        { 'icon': 'cancel', 'title': 'Non-Issue' }, 
+        { 'icon': 'info_outline', 'title': 'Informational' }, 
+        { 'icon': 'warning', 'title': 'Minor Concerns' }, 
+        { 'icon': 'error', 'title': 'Major Concerns' }
+    ];
+    
 });

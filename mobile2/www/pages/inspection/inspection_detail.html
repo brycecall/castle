@@ -1,6 +1,7 @@
 <link type="text/css" rel="stylesheet" href="./pages/inspection/inspection_detail.css" />
 <div class="page">
-    <form name="questionForm" class="pagePadding" ng-class="question.notApplicable ? 'disabled' : ''">
+    <div class="pagePadding">
+    <form name="questionForm" class="pagePadding"  ng-class="question.notApplicable ? 'disabled' : ''">
         <div layout="row">
             <div flex=""></div>
             <md-switch md-invert 
@@ -20,7 +21,7 @@
                 </md-checkbox>
             </div>
         </div>
-        <div ng-if="question.type == 'checkbox'">
+        <div ng-if="question.type == 'radioButton'">
             <md-radio-group ng-model="question.answer"
                             ng-required="question.validation.isRequired"
                             ng-disabled="question.notApplicable">
@@ -29,7 +30,7 @@
                                  ng-value="radioButton.key">{{radioButton.key}}</md-radio-button>
             </md-radio-group>
         </div>
-        <div ng-if="question.type == 'checkbox'">
+        <div ng-if="question.type == 'selectOption'">
             <md-select ng-model="question.answer" 
                        placeholder="Choose" 
                        class="md-no-underline"
@@ -39,7 +40,7 @@
                 </md-option>
             </md-select>
         </div>
-        <div ng-if="question.type == 'checkbox'">
+        <div ng-if="question.type == 'shortText'">
             <md-input-container>
                 <label>Your Answer</label>
                 <input ng-model="question.answer" 
@@ -59,7 +60,7 @@
                 </div>
             </md-input-container>
         </div>
-        <div ng-if="question.type == 'checkbox'">
+        <div ng-if="question.type == 'textArea'">
             <md-input-container class="md-block" >
                 <label>Your Answer</label>
                 <textarea ng-model="question.answer" 
@@ -77,10 +78,12 @@
                 </div>
             </md-input-container>
         </div>
-
-        <div style="margin: 0px 0px 0px 0px;">
-            <div class="md-title">Summary Remarks</div>
-            <div class="md-caption" style="margin: 4px 0 4px 0;" >Summary Remarks are appended to the Summary Page</div>
+    </form>
+        
+<!--
+         <div ng-repeat="stuff in question.values" 
+              layout="row" 
+              layout-align="start center">
             <div layout="row" layout-wrap>
                 <div class="md-caption"></div>
                 <div ng-repeat="fabButton in severityList" 
@@ -89,15 +92,50 @@
                     <md-button class="md-fab md-mini" 
                                ng-class="question.severity == fabButton.title ? 'md-accent selectedBtn' : 'md-raised'"
                                aria-label="fabButton.title"
-                               ng-click="setSeverity(fabButton.title)">
+                               ng-click="setSeverity(fabButton.title)"
+                               ng-disabled="question.notApplicable">
                         <md-icon md-svg-icon="{{fabButton.icon}}"></md-icon>
                     </md-button>
                     <div class="label">{{fabButton.title}}</div>
                 </div>
             </div>
+             <div>{{stuff.key}}</div>
         </div>
-        
-    </form>
+-->
+         
+        <div style="margin: 4px 0px 0px 0px;">
+            <div class="md-title">Summary Remarks</div>
+            <div class="md-caption" style="margin: 4px 0 4px 0;" >Summary Remarks are appended to the Summary Section</div>
+            <div layout="row" layout-wrap>
+                <div class="md-caption"></div>
+                <div ng-repeat="fabButton in severityList" 
+                     class="buttonWrapper"
+                     layout="column" layout-align="center center">
+                    <md-button class="md-fab md-mini" 
+                               ng-class="question.severity == fabButton.title ? 'md-accent selectedBtn' : 'md-raised'"
+                               aria-label="fabButton.title"
+                               ng-click="setSeverity(fabButton.title)"
+                               ng-disabled="question.notApplicable">
+                        <md-icon md-svg-icon="{{fabButton.icon}}"></md-icon>
+                    </md-button>
+                    <div class="label">{{fabButton.title}}</div>
+                </div>
+            </div>
+            <md-card>
+                <md-card-content>
+                <div ng-if="question.severity && question.severity !== 'Non-Issue'" >
+                    <div class="md-subhead"><b>{{question.severity}}</b></div>
+                    <div ng-repeat="answer in question.answers">
+                        {{question.title}} {{answer}}
+                    </div>
+                </div>
+                    <div ng-show="!question.severity || question.severity === 'Non-Issue'" class="md-caption" style="color:rgba(0, 0, 0, 0.54);">
+                    <i>summary remark preview</i>
+                    </div>
+                </md-card-content>
+            </md-card>
+        </div>
+     </div>   
 </div>
 
 

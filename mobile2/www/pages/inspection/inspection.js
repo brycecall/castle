@@ -61,7 +61,7 @@ app.controller('inspection_detail', function ($scope, $) {
             {'key':'red'},
             {'key':'green'},
             {'key':'pink'},
-            {'key':'purple mountain magesty'},
+            {'key':'purple mountain majesty'},
             {'key':'yellow'}
         ],
         'answers': [

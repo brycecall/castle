@@ -32,7 +32,8 @@ md-fab-toolbar {
 
 .page {
     height: 100%;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .actionSpace {
@@ -44,3 +45,5 @@ md-fab-toolbar {
     width:100%; 
     overflow: hidden;
 }
+
+

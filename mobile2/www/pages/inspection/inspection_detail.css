@@ -1,0 +1,37 @@
+#view {
+    height:100%; 
+    width:100%; 
+    overflow: hidden;
+}
+
+.pagePadding {
+    padding: 8px;
+}
+.questionIndent {
+/*    margin-left: 8px;*/
+}
+
+.disabled, .disabled md-input-container label,
+.disabled md-input-container .md-input-message-animation {
+    color:rgba(0,0,0,0.38) !important;
+}
+
+.description {
+    margin: 4px 0 8px 0;
+    
+}
+
+
+
+.label {
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.buttonWrapper {
+    padding: 4px 4px 4px 4px;
+}
+
+.selectedBtn {
+
+}

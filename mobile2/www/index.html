@@ -19,7 +19,7 @@
       <div class="md-toolbar-tools" ng-show="service.mode == 1">
         <!-- service mode 1 is Default (Home Icon only) -->
         <span flex>
-          <h2>Castle</h2>
+          <h2>{{service.title}}</h2>
         </span>
         <md-button class="md-icon-button" aria-label="home" href="#!home">
           <md-icon md-svg-icon="home_white"></md-icon>
@@ -32,7 +32,7 @@
           <md-icon md-svg-icon="{{service.action.icon}}"></md-icon>
         </md-button>
         <span flex>
-          <h2>Castle</h2>
+          <h2>{{service.title}}</h2>
         </span>
         <md-button class="md-icon-button" aria-label="home" href="#!home">
           <md-icon md-svg-icon="home_white"></md-icon>
@@ -42,7 +42,7 @@
       <div class="md-toolbar-tools" ng-show="service.mode == 3">
         <!-- service mode 1 is Title -->
         <span flex>
-          <h2>Castle</h2>
+          <h2>{{service.title}}</h2>
         </span>
       </div>
     </md-toolbar>

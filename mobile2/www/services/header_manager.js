@@ -5,6 +5,7 @@ app.factory('header_manager', function ($rootScope) {
   public.action = null;
   public.enabled = true;
   public.mode = HEADER_MODES.Default;
+  public.title = "";
 
   public.enable = function () {
     public.enabled = true;
@@ -36,10 +37,12 @@ app.factory('header_manager', function ($rootScope) {
 
   public.clearAction = function () {
     public.action = null;
+    public.title = "Castle";
     public.mode = HEADER_MODES.Default;
     public.enable();
   }
 
+  public.clearAction();
   return public;
 });
 

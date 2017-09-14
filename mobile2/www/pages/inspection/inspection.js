@@ -23,6 +23,8 @@ app.config(function ($stateProvider) {
 app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, database) {
   $scope.reports = [];
 
+  header_manager.title = "Inspection";
+  
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {
     $state.go('home');

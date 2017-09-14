@@ -1,7 +1,7 @@
 <link type="text/css" rel="stylesheet" href="pages/inspection/inspection.css" />
 <div class="page">
   <div class="inspection" ng-hide="angular.equals([], reports)" ng-repeat="report in reports">
-    <img class="report-thumbnail" src="assets/inspection_background.jpg"/>
+    <img class="report-thumbnail" src="assets/inspection_background.jpg" />
     <div class="report-meta">
       <a>Report Name: {{report.insName}}</a>
       <a>Report Type: {{report.insType}}</a>
@@ -10,5 +10,5 @@
     <hr>
   </div>
   <md-button class="md-raised" ng-click="camera_manager.openCameraControl()">Take Picture</md-button>
-  <md-button class="md-raised" ui-sref="report_preview">View PDF</md-button>
+  <md-button class="md-raised" ui-sref="report">View PDF</md-button>
 </div>

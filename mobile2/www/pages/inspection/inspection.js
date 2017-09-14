@@ -10,16 +10,6 @@ app.config(function ($stateProvider) {
       url: "/inspection/detail",
       templateUrl: "pages/inspection/inspection_detail.html",
       controller: "inspection_detail"
-    })
-    .state('report_preview', {
-      url: "/report/preview",
-      templateUrl: "pages/inspection/report_preview.html",
-      controller: "report_preview"
-    })
-    .state('report_send', {
-      url: "/report/send",
-      templateUrl: "pages/inspection/report_send.html",
-      controller: "report_send"
     });
 });
 
@@ -60,65 +50,5 @@ app.controller('inspection', function ($scope, $rootScope, camera_manager, datab
 });
 
 app.controller('inspection_detail', function ($scope, $rootScope) {
-
-});
-
-app.controller('report_preview', function ($scope, $rootScope, $sce, $document) {
-
-  $scope.pdf = "";
-  $scope.data = "";
-
-  $scope.getReport = function () {
-    return $sce.trustAsResourceUrl($scope.pdf);
-  }
-
-  $scope.update = function () {
-    pdf.htmlToPDF({
-      data: "<html>" + $scope.data + "</html>",
-      documentSize: "A4",
-      landscape: "portrait",
-      type: "share"
-    }, function (data) {
-      data = data.replace('\n', '');
-      $scope.pdf = "data:application/pdf;base64," + data;
-      console.log($scope.pdf);
-    });
-
-
-    /*var element = document.createElement("div");
-    document.querySelector("#buffer").appendChild(element);
-    element.innerHTML = $scope.data;
-    var canvas_promise = html2canvas(element, {
-      imageTimeout: 2000,
-      removeContainer: true
-    });
-
-    canvas_promise.then(function (canvas) {
-      var image = canvas.toDataURL("image/png");
-      document.querySelector("#buffer").removeChild(element);
-      generator.addImage(image, 'JPEG', 20, 20);
-      $scope.pdf = generator.output("datauristring");
-    })*/
-
-    /*if (generator) {
-      delete generator;
-      generator = new jsPDF();
-    }
-
-    var element = document.createElement("div");
-    element.innerHTML = $scope.data;
-    var promise = generator.addHTML($scope.data, 15, 15, {
-      proxy: "http://127.0.0.1:60201/"
-    });
-    promise.then(function (canvas) {
-      console.log(canvas.toDataURL("image/png"))
-      document.querySelector("#buffer").appendChild(canvas);
-      $scope.pdf = generator.output("datauristring");
-    });*/
-  }
-
-});
-
-app.controller('report_send', function ($scope, $rootScope) {
 
 });

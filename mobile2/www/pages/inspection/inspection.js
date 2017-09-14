@@ -14,7 +14,12 @@ app.config(function ($stateProvider) {
 });
 
 // Define the page controller
-app.controller('inspection', function ($scope, $rootScope, camera_manager, database) {
+app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, database) {
+  header_manager.mode = HEADER_MODES.Action;
+  header_manager.setAction("Back", "back", function () {
+    $state.go('home');
+  });
+
   $scope.reports = [];
   console.log('welcome to reports');
   $scope.camera_manager = camera_manager;

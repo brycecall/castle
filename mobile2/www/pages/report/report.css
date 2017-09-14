@@ -1,3 +1,13 @@
 #view {
   overflow: hidden;
 }
+
+.control {
+  position: fixed;
+  bottom: 10px;
+  opacity: .8;
+}
+
+.control:active {
+  opacity: 1;
+}

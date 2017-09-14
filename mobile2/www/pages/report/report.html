@@ -1,3 +1,8 @@
 <link type="text/css" rel="stylesheet" href="pages/report/report.css" />
 <iframe id="preview" height="100%" width="100%" src="libs/pdf.js/web/viewer.html"></iframe>
-<iframe id="render" style="display: none"
+<md-button class="control md-raised" style="left: 20px" ng-click="save()">Save</md-button>
+<md-button class="control md-raised md-accent" style="right: 20px" ng-click="send()">Send</md-button>
+<div id="render" style="display: none" ng-controller="report_render">
+  {{data.item}}
+  <div style="height: 1000px"></div>
+</div>

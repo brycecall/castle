@@ -29,7 +29,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, camera_manage
   //  
   });
   //insert dummy report data
-    var reportData = database.initReports();
+/*    var reportData = database.initReports();
     reportData.then(
         //Success
         function (promise) {
@@ -39,7 +39,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, camera_manage
             console.log(promise.message);
              //Fail
         }
-    );
+    );*/
         
     var reports = database.getReports();
     reports.then(

@@ -14,3 +14,11 @@
 .report-meta > a{
   display: block;
 }
+.centerPage {
+    max-width:950px;
+    margin:0 auto;
+}
+.insTitle {
+    margin-left:8px;
+    margin-bottom: 0px;
+}

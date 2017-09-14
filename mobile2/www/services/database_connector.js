@@ -33,7 +33,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       db.sqlBatch([
           'CREATE TABLE IF NOT EXISTS Answer (ansQuestionId, value, answerCol, FOREIGN KEY(ansQuestionid) REFERENCES Question(rowId))',
           'CREATE TABLE IF NOT EXISTS Client (cliFirstName, cliLastName, cliAddress, cliCity, cliState, cliZipCode, cliPhone, cliEmail)',
-          'CREATE TABLE IF NOT EXISTS Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId, insThemeId, insThemeBlob, insTemplateId, insTemplateBlob, FOREIGN KEY(insUserId) REFERENCES User(rowId), FOREIGN KEY(insJobId) REFERENCES Job(rowId), FOREIGN KEY(insThemeId) REFERENCES Theme(rowId), FOREIGN KEY(insTemplateId) REFERENCES Template(rowId))',
+          'CREATE TABLE IF NOT EXISTS Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId, insThemeId, insThemeResponseBlob, insTemplateId, insTemplateResponseBlob, FOREIGN KEY(insUserId) REFERENCES User(rowId), FOREIGN KEY(insJobId) REFERENCES Job(rowId), FOREIGN KEY(insThemeId) REFERENCES Theme(rowId), FOREIGN KEY(insTemplateId) REFERENCES Template(rowId))',
           'CREATE TABLE IF NOT EXISTS Job (jobUserId, jobDate, jobAddress, jobZipCode, jobCity, jobState, jobStatus, jobSubmittedDate, FOREIGN KEY(jobUserId) REFERENCES User(rowId))',
           'CREATE TABLE IF NOT EXISTS Organization (orgName, orgAddress, orgLogo, orgCity, orgState, orgZipCode)',
           'CREATE TABLE IF NOT EXISTS Question (queTitle, queType, queSubSectionId, queAnswered, queRequired, FOREIGN KEY(queSubSectionId) REFERENCES SubSection(rowId))',
@@ -41,8 +41,8 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
           'CREATE TABLE IF NOT EXISTS ReportHistory (rehInspectionId, rehLastModified, rehSubmittedDate, FOREIGN KEY(rehInspectionId) REFERENCES Inspection(rowId))',
           'CREATE TABLE IF NOT EXISTS Section (secTitle, secInspectionId, secColor, FOREIGN KEY(secInspectionId) REFERENCES Inspection(rowId))',
           'CREATE TABLE IF NOT EXISTS SubSection (susTitle, susSectionId, FOREIGN KEY(susSectionId) REFERENCES Section(rowId))',
-          'CREATE TABLE IF NOT EXISTS Template (temOrganizationId, temTitle, temBlob, FOREIGN KEY(temOrganizationId) REFERENCES Organization(rowId))',
-          'CREATE TABLE IF NOT EXISTS Theme (themeTitle, themeBlob)',
+          'CREATE TABLE IF NOT EXISTS Template (temOrganizationId, temTitle, temBlob, userId, FOREIGN KEY(userId) REFERENCES User(rowId), FOREIGN KEY(temOrganizationId) REFERENCES Organization(rowId))',
+          'CREATE TABLE IF NOT EXISTS Theme (themeTitle, themeBlob, userId, FOREIGN KEY(userId) REFERENCES User(rowId))', 
           'CREATE TABLE IF NOT EXISTS User (usrAddress, usrFirstName, usrLastName, usrPhone, usrEmail, usrType, usrUserAccessId, usrOrganizationId, name, pass, email)',
           'CREATE TABLE IF NOT EXISTS UserAccess (usaTitle, usaOrganizationId, usaEditUsers, usaEditOrgInfo, usaEditTemplate, usaEditRequired, FOREIGN KEY(usaOrganizationId) REFERENCES Organization(rowId))',
           'CREATE TABLE IF NOT EXISTS UserOrganizations (usoUserId, usoOrganizationId, FOREIGN KEY(usoUserId) REFERENCES User(rowId), FOREIGN KEY(usoOrganizationId) REFERENCES Organization(rowId))',
@@ -143,7 +143,58 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       });
       return deferred.promise;
     }
+
+    public.initThemes = function() {
+      var deferred = $q.defer();
+      db.executeSql('INSERT INTO Theme(themeTitle, themeBlob, userId) VALUES (?, ?, ?)', 
+                    ['Home Theme', 'a whole bunch of text', 1], function(res) {
+        deferred.resolve({message: 'Theme insertion successful'});  
+      }, function(error) {
+        deferred.resolve({message: 'Theme insertion failed: ' + error.message});
+      });
+      return deferred.promise;
+    }
+    
+    public.initTemplates = function() {
+      var deferred = $q.defer();
+      db.executeSql('INSERT INTO Template(temOrganizationId, temTitle, temBlob, userId) VALUES (?, ?, ?, ?)', 
+                    [1, 'Home Template', 'a whole bunch more text', 1], function(res) {
+        deferred.resolve({message: 'Template insertion successful'});  
+      }, function(error) {
+        deferred.resolve({message: 'Template insertion failed: ' + error.message});
+      });
+      return deferred.promise;
+    }
+    
+    public.getThemes = function() {
+      var deferred = $q.defer();
+        
+      db.executeSql('SELECT * FROM Theme', [], function(res) {
+          if(res.rows.length > 0) {
+            deferred.resolve({row: res.rows, message: 'Successful select from Theme table'});
+          } else {
+            deferred.resolve({message: 'No data in Theme table'});
+          }
+      }, function(error) {
+          deferred.reject({message: 'Error trying to select from Theme table'});
+      }); 
+      return deferred.promise;
+    }
+    
+    public.getTemplates = function() {
+      var deferred = $q.defer();
+        
+      db.executeSql('SELECT * FROM Template', [], function(res) {
+          if(res.rows.length > 0) {
+            deferred.resolve({row: res.rows, message: 'Successful select from Template table'});
+          } else {
+            deferred.resolve({message: 'No data in Template table'});
+          }
+      }, function(error) {
+          deferred.reject({message: 'Error trying to select from Template table'});
+      }); 
+      return deferred.promise;
+    }
   }
   return public;
-
 });

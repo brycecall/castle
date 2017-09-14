@@ -20,14 +20,23 @@ app.config(function ($stateProvider) {
       url: "/report/send",
       templateUrl: "pages/inspection/report_send.html",
       controller: "report_send"
+    })
+    .state('inspection_new', {
+      url: "/inspection/new",
+      templateUrl: "pages/inspection/inspection_new.html",
+      controller: "inspection_new"
     });
 });
 
 // Define the page controller
-app.controller('inspection', function ($scope, $rootScope, camera_manager, database) {
+app.controller('inspection', function ($scope, $rootScope, $state, camera_manager, action_manager, database) {
   $scope.reports = [];
   console.log('welcome to reports');
   $scope.camera_manager = camera_manager;
+  action_manager.addAction('New Inspection', 'add', function() {
+    $state.go("inspection_new");
+  //  
+  });
   //insert dummy report data
   /*  var reportData = database.initReports();
     reportData.then(
@@ -57,6 +66,68 @@ app.controller('inspection', function ($scope, $rootScope, camera_manager, datab
     }
   );
 
+});
+
+app.controller('inspection_new', function ($scope, $rootScope, database) {
+  $scope.themes = [];
+  $scope.templates = [];
+  
+  // Init themes & templates
+  /*var themeData = database.initThemes();
+  themeData.then(
+      //Success
+      function(promise) {
+        console.log(promise.message);
+      }, 
+      //Fail
+      function(promise) {
+        console.log(promise.message);
+      }
+  );*/
+  /*var templateData = database.initTemplates();
+  templateData.then(
+      //Success
+      function(promise) {
+        console.log(promise.message);
+      }, 
+      //Fail
+      function(promise) {
+        console.log(promise.message);
+      }
+  );*/
+  
+  // Get themes & templates
+  var themeGetter = database.getThemes();
+  themeGetter.then(
+    //Success
+    function (promise) {
+      console.log(promise.message);
+      console.log(promise.row);
+      for (var i = 0; i < promise.row.length; i++) {
+        $scope.themes.push(promise.row.item(i));
+      }
+      //Fail
+    },
+    function (promise) {
+      console.log(promise.message);
+    }
+  );
+    
+  var templateGetter = database.getTemplates();
+  templateGetter.then(
+    //Success
+    function (promise) {
+      console.log(promise.message);
+      for (var i = 0; i < promise.row.length; i++) {
+        $scope.templates.push(promise.row.item(i));
+      }
+      //Fail
+    },
+    function (promise) {
+      console.log(promise.message);
+    }
+  );
+    
 });
 
 app.controller('inspection_detail', function ($scope, $rootScope) {

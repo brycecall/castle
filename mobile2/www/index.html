@@ -51,7 +51,7 @@
   </div>
 
   <div class="action" ng-controller="action">
-    <div class="button" ng-cloak ng-show="service.mode == 1" layout-align="end end">
+    <div class="button" ng-cloak ng-show="service.mode == 1" layout="row" layout-align="end">
       <!-- service mode 1 is Default -->
       <md-button ng-cloak class="md-fab md-primary" aria-label="action" ng-show="service.enabled && (service.actions.length == 1)" ng-click="run(service.actions[0].method)">
         <md-icon md-svg-icon="{{service.actions[0].icon}}"></md-icon>

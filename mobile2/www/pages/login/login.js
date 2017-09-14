@@ -13,7 +13,7 @@ app.run(function ($transitions, $rootScope) {
     if ($rootScope.authenticated !== true && trans.$to().name !== 'login') {
       // User isn't authenticated. Redirect to a new Target State
       // TODO: Disabled for debugging
-      //return trans.router.stateService.target('login');
+      return trans.router.stateService.target('login');
     } else if ($rootScope.authenticated == true && trans.$to().name == 'login') {
       navigator.app.exitApp();
     }

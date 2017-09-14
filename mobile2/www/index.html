@@ -52,7 +52,7 @@
 
   <div class="action" ng-controller="action">
     <div class="button" ng-cloak ng-show="service.mode == 1" layout-align="end end">
-      <!-- service mode 1 is Action -->
+      <!-- service mode 1 is Default -->
       <md-button ng-cloak class="md-fab md-primary" aria-label="action" ng-show="service.enabled && (service.actions.length == 1)" ng-click="run(service.actions[0].method)">
         <md-icon md-svg-icon="{{service.actions[0].icon}}"></md-icon>
       </md-button>
@@ -74,7 +74,7 @@
       </md-fab-speed-dial>
     </div>
 
-    <div ng-cloak ng-show="service.mode == 2" layout="row">
+    <div ng-cloak ng-show="service.mode == 2" layout="row" layout-align="space-between">
       <!-- service mode 2 is Action -->
       <div ng-repeat="action in service.actions">
         <md-button ng-cloak class="md-fab md-primary" ng-click="run(action.method)" aria-label="{{action.name}}" ng-class="action.classname">
@@ -129,6 +129,7 @@
   <script src="services/action_manager.js"></script>
   <script src="services/database_connector.js"></script>
   <script src="services/header_manager.js"></script>
+  <script src="services/report_manager.js"></script>
   <script src="services/icons.js"></script>
   <script src="services/template_manager.js"></script>
 

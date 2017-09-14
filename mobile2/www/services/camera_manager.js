@@ -21,13 +21,7 @@ app.factory('camera_manager', function (camera_mock, $state) {
   };
     
   /* Stores a list of photos returned from takePicture */
-  public.photos = [
-        {link:'../../assets/Castle-Logo-Main.png'},
-        {link:'../../assets/Castle-Logo-Main.png'},
-        {link:'../../assets/Castle-Logo-Main.png'},
-        {link:'../../assets/Castle-Logo-Main.png'},
-        {link:'../../assets/Castle-Logo-Main.png'}
-  ];
+  public.photos = [];
     
   /* meant to store the state to return to after the Camera usage is done. */
   public.returnState = '';

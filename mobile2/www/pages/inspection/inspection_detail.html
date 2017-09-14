@@ -1,7 +1,7 @@
 <link type="text/css" rel="stylesheet" href="./pages/inspection/inspection_detail.css" />
 <div class="page">
     <div class="pagePadding">
-    <form name="questionForm" class="pagePadding"  ng-class="question.notApplicable ? 'disabled' : ''">
+
         <div layout="row">
             <div flex=""></div>
             <md-switch md-invert 
@@ -12,6 +12,7 @@
         </div>
         <div class="md-title">{{question.title}}</div>
         <div class="md-caption description">{{question.description}}</div>
+    <form name="questionForm" style="padding-left: 0px;"  ng-class="question.notApplicable ? 'disabled' : ''">
         <div ng-if="question.type == 'checkbox'">
             <div ng-repeat="checkBox in question.values" class="questionIndent">
                 <md-checkbox ng-checked="exists(checkBox.key, question.answers)" 
@@ -20,6 +21,15 @@
                     {{checkBox.key}}
                 </md-checkbox>
             </div>
+            <md-checkbox ng-model="newCheckBoxKey" 
+                         ng-click="toggle(otherValue.value, question.answers, true)">
+                Other:
+            </md-checkbox>
+            <input  ng-show="newCheckBoxKey"
+                    ng-model="otherValue.value" 
+                    type="text" 
+                    class="inlineInput"
+                   >
         </div>
         <div ng-if="question.type == 'radioButton'">
             <md-radio-group ng-model="question.answer"
@@ -27,7 +37,15 @@
                             ng-disabled="question.notApplicable">
                 <md-radio-button ng-repeat="radioButton in question.values" 
                                  class="questionIndent" 
-                                 ng-value="radioButton.key">{{radioButton.key}}</md-radio-button>
+                                 ng-value="radioButton.key">{{radioButton.key}}
+                </md-radio-button>
+                <md-radio-button class="questionIndent" 
+                                 ng-value="otherValue.singleSelect">Other
+                </md-radio-button>
+                <input  ng-model="otherValue.singleSelect" 
+                        type="text" 
+                        class="inlineInput"
+                       >
             </md-radio-group>
         </div>
         <div ng-if="question.type == 'selectOption'">
@@ -122,16 +140,29 @@
                 </div>
             </div>
             <md-card>
-                <md-card-content>
-                <div ng-if="question.severity && question.severity !== 'Non-Issue'" >
-                    <div class="md-subhead"><b>{{question.severity}}</b></div>
-                    <div ng-repeat="answer in question.answers">
-                        {{question.title}} {{answer}}
+                <md-card-content layout="row" layout-align="start center">
+                    <div ng-if="question.type === 'checkBox' && question.severity && question.severity !== 'Non-Issue'" >
+                        <div class="md-subhead"><b>{{question.severity}}</b></div>
+                        <div ng-repeat="answer in question.answers">
+                            {{question.title}} {{answer}}
+                        </div>
                     </div>
-                </div>
+                    <div ng-if="question.type !== checkBox && question.severity && question.severity !== 'Non-Issue'" >
+                        <div class="md-subhead"><b>{{question.severity}}</b></div>
+                        <div >
+                            {{question.title}} {{question.answer}}
+                        </div>
+                    </div>
                     <div ng-show="!question.severity || question.severity === 'Non-Issue'" class="md-caption" style="color:rgba(0, 0, 0, 0.54);">
                     <i>summary remark preview</i>
                     </div>
+                    <div flex=""></div>
+                    <md-button class="md-accent"
+                               ng-click="editSummaryRemarks()"
+                               ng-show="question.severity">
+                        Edit
+<!--                        <md-icon md-svg-icon="mode_edit"></md-icon>-->
+                    </md-button>
                 </md-card-content>
             </md-card>
         </div>

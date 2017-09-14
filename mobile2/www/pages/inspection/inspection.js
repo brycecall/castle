@@ -11,16 +11,6 @@ app.config(function ($stateProvider) {
       templateUrl: "pages/inspection/inspection_detail.html",
       controller: "inspection_detail"
     })
-    .state('report_preview', {
-      url: "/report/preview",
-      templateUrl: "pages/inspection/report_preview.html",
-      controller: "report_preview"
-    })
-    .state('report_send', {
-      url: "/report/send",
-      templateUrl: "pages/inspection/report_send.html",
-      controller: "report_send"
-    })
     .state('inspection_new', {
       url: "/inspection/new",
       templateUrl: "pages/inspection/inspection_new.html",
@@ -70,9 +60,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, camera_manage
 });
 
 
-app.factory('$', function ($window) {
-    return $window.jQuery;
-});
+
 
 app.controller('inspection_new', function ($scope, $rootScope, database) {
   $scope.themes = [];
@@ -136,7 +124,9 @@ app.controller('inspection_new', function ($scope, $rootScope, database) {
     
 });
 
-
+app.factory('$', function ($window) {
+    return $window.jQuery;
+});
 
 app.controller('inspection_detail', function ($scope, $) {
     $scope.question = {

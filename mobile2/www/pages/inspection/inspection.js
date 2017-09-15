@@ -169,11 +169,22 @@ app.factory('$', function ($window) {
   return $window.jQuery;
 });
 
-app.controller('inspection_detail', function ($scope, $) {
+app.controller('inspection_detail', function ($scope, $, $state, header_manager, camera_manager, $timeout) {
+    
+  header_manager.mode = HEADER_MODES.Action;
+  header_manager.setAction('Back', 'back', function() {
+         $state.go('inspection');
+  });
+    
+  $scope.addPhotos = function() {
+        angular.copy($scope.question.photos, camera_manager.photos);
+        $state.go('camera');
+  };
+    
   $scope.question = {
     'title': 'What are your favorite colors?',
     'description': 'Just pick the ones you actually like.',
-    'type': 'radioButton',
+    'type': 'photo',
     'values': [
       {
         'key': 'orange',
@@ -207,13 +218,29 @@ app.controller('inspection_detail', function ($scope, $) {
       'isRequired': true
     },
     'notApplicable': false,
-    'severity': null
+    'severity': null,
+    'showSummaryRemark':true,
+    'showDescription':true,
+    'photos':[]
   };
 
   $scope.otherValue = {
     'value': '',
     'singleSelect': ''
   };
+    
+  (function() {
+    if ($scope.question.type == 'photo') {
+        $scope.question.photos = [];
+        for (var photoIndex in camera_manager.photos) {
+            var photo = camera_manager.photos[photoIndex];
+            if (!photo.deleted) {
+                $scope.question.photos.push(photo);
+            }
+        }
+    }
+    camera_manager.photos = [];
+  })();
 
   $scope.$watch('otherValue.value', function (newVal, oldVal) {
     var list = $scope.question.answers;
@@ -227,12 +254,11 @@ app.controller('inspection_detail', function ($scope, $) {
   });
 
   $scope.$watch('otherValue.singleSelect', function (newVal, oldVal) {
-    $scope.question.answer = newVal;
+    if (newVal) {
+       $scope.question.answer = newVal;
+    }
+      
   });
-
-  $scope.editSummaryRemarks = function () {
-
-  };
 
   $scope.toggle = function (item, list, ignoreEmpty) {
     var index = list.indexOf(item);

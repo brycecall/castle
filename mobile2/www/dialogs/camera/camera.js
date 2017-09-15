@@ -37,12 +37,29 @@ app.run(function ($transitions, camera_manager) {
 app.controller('camera', function ($scope, camera_manager, header_manager, $state) {
   $scope.camera_manager = camera_manager;
   camera_manager.startCamera();
+(function(){
+  var nonDeletedPhotos = [];
+  for (var index in camera_manager.photos) {
+      var photo = camera_manager.photos[index];
+      if (!photo.deleted) {
+        nonDeletedPhotos.push(photo);
+      }
+  }
+  camera_manager.photos = nonDeletedPhotos;  
+})();
+    
+
+
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function() {
       if (camera_manager.photos.length > 0) {
          $state.go('camera_preview', {'button':'accept'})
       } else {
-         $state.go(camera_manager.returnState);
+            if (camera_manager.returnState) {
+                $state.go(camera_manager.returnState);
+            } else {
+                $state.go('home');
+            }
       }
   });
     
@@ -68,7 +85,11 @@ app.controller('camera_preview', function ($scope, $mdToast, $mdDialog, header_m
     
     if ($stateParams.button === 'accept') {
         header_manager.setAction('Accept', 'check', function() {
-            $state.go(camera_manager.returnState);
+            if (camera_manager.returnState) {
+                $state.go(camera_manager.returnState);
+            } else {
+                $state.go('home');
+            }
         });
     } else {
         header_manager.setAction('Back', 'back', function() {
@@ -77,27 +98,31 @@ app.controller('camera_preview', function ($scope, $mdToast, $mdDialog, header_m
     }
     $scope.photos = camera_manager.photos;
 
+    private.toast = null;
     private.showActionToast = function() {
-        var pinTo = 'bottom';
-        var toast = $mdToast.simple()
-          .textContent('Photo Deleted')
-          .action('UNDO')
-          .highlightAction(true)
-          .highlightClass('md-accent')
-          .position(pinTo);
-
-        $mdToast.show(toast).then(function(response) {
+        private.toast = $mdToast.simple()
+                  .textContent('Photo Deleted')
+                  .action('UNDO')
+                  .highlightAction(true)
+                  .highlightClass('md-accent')
+                  .position('bottom');
+        $mdToast.show(private.toast).then(function(response) {
           if ( response == 'ok' ) {
              var index = private.deletedPhotoIndexes.pop();
              $scope.photos[index].deleted = false;
           }
-        });
+        }, function(){console.log("You delete fast don't ya!");});
     };
 
     $scope.remove = function(list, index) {
+        if ($scope.photos && $scope.photos.length > 0) {
         $scope.photos[index].deleted = true;
         private.deletedPhotoIndexes.push(index);
+        if (private.toast) {
+            $mdToast.hide(private.toast);
+        }
         private.showActionToast();
+        }
     };
  
     function preview_fullscreen($scope, $mdDialog, locals) {

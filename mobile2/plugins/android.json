@@ -13,6 +13,9 @@
         "cordova-plugin-camera-preview": {
             "PACKAGE_NAME": "com.castle.inspect"
         },
+        "cordova-plugin-email": {
+            "PACKAGE_NAME": "com.castle.inspect"
+        },
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.castle.inspect"
         },
@@ -20,9 +23,6 @@
             "PACKAGE_NAME": "com.castle.inspect"
         },
         "cordova-sqlite-storage": {
-            "PACKAGE_NAME": "com.castle.inspect"
-        },
-        "cordova-plugin-email": {
             "PACKAGE_NAME": "com.castle.inspect"
         }
     },

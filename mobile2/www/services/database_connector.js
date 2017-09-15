@@ -39,7 +39,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
           'CREATE TABLE IF NOT EXISTS Question (queTitle, queType, queSubSectionId, queAnswered, queRequired, FOREIGN KEY(queSubSectionId) REFERENCES SubSection(rowId))',
           'CREATE TABLE IF NOT EXISTS QuestionAnswers (quaQuestionId, quaAnswerId, FOREIGN KEY (quaQuestionId) REFERENCES Question(rowId), FOREIGN KEY(quaAnswerId) REFERENCES Answer(rowId))',
           'CREATE TABLE IF NOT EXISTS ReportHistory (rehInspectionId, rehLastModified, rehSubmittedDate, FOREIGN KEY(rehInspectionId) REFERENCES Inspection(rowId))',
-          'CREATE TABLE IF NOT EXISTS Section (secTitle, secInspectionId, secColor, FOREIGN KEY(secInspectionId) REFERENCES Inspection(rowId))',
+          'CREATE TABLE IF NOT EXISTS Section (secTitle, secInspectionId, FOREIGN KEY(secInspectionId) REFERENCES Inspection(rowId))',
           'CREATE TABLE IF NOT EXISTS SubSection (susTitle, susSectionId, FOREIGN KEY(susSectionId) REFERENCES Section(rowId))',
           'CREATE TABLE IF NOT EXISTS Template (temOrganizationId, temTitle, temBlob, userId, FOREIGN KEY(userId) REFERENCES User(rowId), FOREIGN KEY(temOrganizationId) REFERENCES Organization(rowId))',
           'CREATE TABLE IF NOT EXISTS Theme (themeTitle, themeBlob, userId, FOREIGN KEY(userId) REFERENCES User(rowId))', 
@@ -193,6 +193,49 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       }, function(error) {
           deferred.reject({message: 'Error trying to select from Template table'});
       }); 
+      return deferred.promise;
+    }
+
+    public.initSections = function() {
+      var deferred = $q.defer();
+      db.sqlBatch([
+        ['INSERT INTO Section (secTitle, secInspectionId) Values (?, ?)', ['Field Notes', 1]],
+        ['INSERT INTO Section (secTitle, secInspectionId) Values (?, ?)', ['Site', 1]],
+        ['INSERT INTO Section (secTitle, secInspectionId) Values (?, ?)', ['Exterior', 1]],
+        ['INSERT INTO Section (secTitle, secInspectionId) Values (?, ?)', ['Roofing', 1]],
+        ['INSERT INTO Section (secTitle, secInspectionId) Values (?, ?)', ['Structural', 1]],
+        ['INSERT INTO Section (secTitle, secInspectionId) Values (?, ?)', ['Thermal', 1]],
+        ['INSERT INTO Section (secTitle, secInspectionId) Values (?, ?)', ['Plumbing', 1]],
+        ['INSERT INTO Section (secTitle, secInspectionId) Values (?, ?)', ['Heating', 1]],
+        ['INSERT INTO Section (secTitle, secInspectionId) Values (?, ?)', ['Cooling', 1]],
+        ['INSERT INTO Section (secTitle, secInspectionId) Values (?, ?)', ['Electrical', 1]],
+        ['INSERT INTO Section (secTitle, secInspectionId) Values (?, ?)', ['Interior', 1]],
+        ['INSERT INTO Section (secTitle, secInspectionId) Values (?, ?)', ['Life or Safety', 1]],
+      ], function (res) {
+        deferred.resolve({
+          success: true,
+          message: 'successful dummy data insertion'
+        });
+      }, function (error) {
+        deferred.reject({
+          success: false,
+          message: 'failure inserting dummy data'
+        });
+      });
+      return deferred.promise;        
+    }
+    
+    public.getSections = function() {
+      var deferred = $q.defer();
+      db.executeSql('SELECT * FROM Section', [], function(res) {
+        if(res.rows.length > 0) {
+          deferred.resolve({row: res.rows, message: 'Successful select from Section'});
+        } else {
+          deferred.resolve({message: 'No data in Section table'});
+        }
+      }, function(error) {
+        deferred.reject({message: 'Error trying to select from Section table'});
+      });
       return deferred.promise;
     }
   }

@@ -15,6 +15,11 @@ app.config(function ($stateProvider) {
       url: "/inspection/new",
       templateUrl: "pages/inspection/inspection_new.html",
       controller: "inspection_new"
+    })
+    .state('inspection_section', {
+      url: "/inspection/section",
+      templateUrl: "pages/inspection/inspection_section.html",
+      controller: "inspection_section"
     });
 });
 
@@ -66,13 +71,12 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
 
 });
 
-
-
-
-app.controller('inspection_new', function ($scope, $rootScope, database) {
+app.controller('inspection_new', function ($scope, $state, $rootScope, database) {
   $scope.themes = [];
   $scope.templates = [];
-
+  $scope.toSection = function() {
+      $state.go('inspection_section');
+  }
   // Init themes & templates
   /*var themeData = database.initThemes();
   themeData.then(
@@ -129,6 +133,36 @@ app.controller('inspection_new', function ($scope, $rootScope, database) {
     }
   );
 
+});
+
+app.controller('inspection_section', function($scope, database) {
+  // All the sections for a specific inspection/report
+  $scope.sections = [];
+    
+  // Init Section Data
+  // Only run once to generate data in db
+  /*var initSection = database.initSections();
+  initSection.then(
+    function(promise) {
+      console.log(promise.message);
+    }, function(promise) {
+      console.log(promise.message);    
+    }
+  );*/
+    
+  var sectionGetter = database.getSections();
+  sectionGetter.then(
+    function(promise) {
+      console.log(promise.message);
+      console.log(promise.row);
+      for (var i = 0; i < promise.row.length; i++) {
+        $scope.sections.push(promise.row.item(i));
+      }
+    }, function(promise) {
+      console.log(promise.message);
+    }
+  );
+  
 });
 
 app.factory('$', function ($window) {

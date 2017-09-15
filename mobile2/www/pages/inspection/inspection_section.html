@@ -1,0 +1,50 @@
+<link type="text/css" rel="stylesheet" href="pages/inspection/inspection.css" />
+<div flex="" layout="column" class="page">
+   <md-content class="centerScroll">
+    <div class="centerPage" style="margin-bottom:85px;" id="centerPage">
+    <div layout="row" layout-align="space-between center">
+        <h2 class="md-subhead insTitle" 
+            style="margin-bottom:0px;">Sections</h2>
+    </div>
+              
+    <md-card id="secParent" 
+             layout="column"  
+             ui-sortable="{'ui-floating': false, 'handle': '.handle', 
+                           'containment': '#secParent'}"  
+             ng-model="sections">
+        <div ng-repeat="section in sections track by $index" 
+             layout="column" 
+             layout-align="center stretch" 
+             style="text-align-left;"
+             ng-init="clicked = false" >             
+               <div  style="padding:0px 0px 0px 16px; margin:0;
+                         vertical-align:middle; border-radius:0; 
+                         text-transform:none; background-color:#FFF;  height:52px;" 
+                       class="md-no-style" 
+                       aria-label="{{section.secTitle}}"
+                       layout="row" 
+                       layout-align="start center"
+                       ng-click="">
+                    <input type="text" 
+                           ng-disabled="true" 
+                           ng-model="section.secTitle"
+                           class="nonEditInput"
+                           style="background-color:inherit;" />
+                    <span flex=""></span>
+                   <! TODO: Add boolean to below Checkmark icon (should only show when the section is 'done'-->
+                    <md-icon md-svg-icon="check" 
+                             class="md-primary" style="min-width:24px;"></md-icon>
+                    <md-button
+                       aria-label="toggle pages menu"
+                       class="md-icon-button">
+                        <md-icon md-svg-icon="keyboard_arrow_right"></md-icon>
+                    </md-button>
+              </div>
+        </div>
+    </md-card>
+    <md-button ng-click="" class="md-raised" aria-label="Save Report">
+        Save Report
+    </md-button>
+    </div>
+  </md-content>
+</div>

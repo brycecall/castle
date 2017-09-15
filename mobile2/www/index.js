@@ -4,9 +4,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/error");
 });
 
-
+// Control to set application in DEBUG mode
 app.run(function () {
-  // Control to set application in DEBUG mode
   window.debug = function (state) {
     if (state) {
       localStorage.setItem("debug", "true");

@@ -2,6 +2,10 @@
   overflow: hidden;
 }
 
+.action {
+  opacity: .8;
+}
+
 .control {
   position: fixed;
   bottom: 10px;

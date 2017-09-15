@@ -8,6 +8,8 @@
   "last_modified": "11/13/2017 11:30:25 PM",
   "author": "Invenio",
   "entry_point": "index.html",
+  "preview": "preview.pdf",
+  "thumbnail": "thumbnail.png",
   "template": [
     {
       "title": "Client Information",

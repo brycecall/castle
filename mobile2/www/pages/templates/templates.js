@@ -8,6 +8,27 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('templates', function ($scope, $rootScope) {
+app.controller('templates', function ($scope, $rootScope, header_manager) {
+  header_manager.title = "Templates";
+  $scope.templates = [
+    {
+      "hello": "hi"
+    },
+    {
+      "hello": "hi"
+    },
+    {
+      "hello": "hi"
+    },
+    {
+      "hello": "hi"
+    },
+    {
+      "hello": "hi"
+    }
+  ];
 
+  $scope.reports = [
+    1, 2, 3, 4
+  ]
 });

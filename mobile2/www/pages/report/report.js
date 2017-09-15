@@ -13,7 +13,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('report', function ($scope, $rootScope, $state, $q, $timeout, header_manager, theme_manager) {
+app.controller('report', function ($scope, $rootScope, $state, $q, $timeout, header_manager, theme_manager, action_manager) {
   var preview_frame = document.querySelector("#preview");
   var render_frame = document.querySelector("#render");
 
@@ -47,6 +47,7 @@ app.controller('report', function ($scope, $rootScope, $state, $q, $timeout, hea
                 data = "data:application/pdf;base64," + data;
                 $scope.report = data;
                 preview_frame.contentWindow.PDFViewerApplication.open(data);
+                action_manager.enable();
               });
             }
           }, 500);
@@ -65,21 +66,21 @@ app.controller('report', function ($scope, $rootScope, $state, $q, $timeout, hea
     window.history.back();
   });
 
-
-
-  $scope.send = function () {
-    if (window['cordova'] !== undefined && report) {
+  action_manager.disable();
+  action_manager.mode = ACTION_MODES.Action;
+  action_manager.addAction("Send", 'send', function () {
+    if (window['cordova'] !== undefined && $scope.report) {
       cordova.plugins.email.open({
         body: "Here is your report!!!",
         subject: "Home Inspection Report from Castle",
         attachments: $scope.report.replace("data:application/pdf;base64,", 'base64:Home Inspection.pdf//')
       })
     }
-  }
+  }, 'md-accent');
 
-  $scope.save = function () {
+  action_manager.addAction("Save", 'save', function () {
     window.history.back();
-  }
+  });
 
 });
 

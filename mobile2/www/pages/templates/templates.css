@@ -1,0 +1,31 @@
+md-input-container {
+  min-width: 100px;
+  min-height: 58px;
+  margin: 0;
+}
+
+.template {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  padding: 0;
+}
+
+.preview {
+  display: block;
+  height: 100px;
+  margin: 10px;
+}
+
+.filter-bar {
+  padding-top: 20px;
+  padding-bottom: 0;
+}
+
+.centerScroll {
+  overflow-x: hidden;
+}
+
+.page {
+  padding-bottom: 60px;
+}

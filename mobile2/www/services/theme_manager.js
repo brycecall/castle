@@ -4,6 +4,14 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q) {
 
   private.themeRoot = "themes";
 
+  public.getThemes = function () {
+    var defered = $q.defer();
+
+    // TODO: get all themes
+
+    return defered.promise;
+  }
+
   public.getThemeManifest = function (key) {
     var defered = $q.defer();
     var resource = private.themeRoot + "/" + key + "/manifest.json";

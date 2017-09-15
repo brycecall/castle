@@ -11,7 +11,7 @@ app.config(function ($stateProvider) {
       templateUrl: "pages/inspection/inspection_detail.html",
       controller: "inspection_detail",
       params: {
-          'questionId':null
+        'questionId': null
       }
     })
     .state('inspection_new', {
@@ -29,10 +29,9 @@ app.config(function ($stateProvider) {
       templateUrl: "pages/inspection/inspection_subsection.html",
       controller: "inspection_subsection",
       params: {
-          'sectionId':null
+        'sectionId': null
       }
-    })
-    ;
+    });
 });
 
 
@@ -54,9 +53,24 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   )
   
   $scope.reports = [];
+  $scope.sort = "";
+  $scope.sort_filters = [
+    "Name",
+    "Type",
+    "Date"
+  ];
 
-  header_manager.title = "Inspection";
-  
+  $scope.state = "";
+  $scope.state_filters = [
+    "New",
+    "Started",
+    "Complete",
+    "Sent",
+    "Archived"
+  ];
+
+  header_manager.title = "Inspections";
+
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {
     $state.go('home');
@@ -67,7 +81,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     $state.go("inspection_new");
     //  
   });
-  
+
 
   var reports = inspection_manager.getReports();
   reports.then(
@@ -90,10 +104,10 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
 app.controller('inspection_new', function ($scope, $state, $rootScope, inspection_manager) {
   $scope.themes = [];
   $scope.templates = [];
-  $scope.toSection = function() {
-      $state.go('inspection_section');
+  $scope.toSection = function () {
+    $state.go('inspection_section');
   }
-  
+
   // Get themes & templates
   var themeGetter = inspection_manager.getThemes();
   themeGetter.then(
@@ -128,49 +142,51 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
 
 });
 
-app.controller('inspection_section', function($scope, inspection_manager, header_manager, $state) {
+app.controller('inspection_section', function ($scope, inspection_manager, header_manager, $state) {
   header_manager.mode = HEADER_MODES.Action;
-  header_manager.setAction('Back', 'back', function() {
-         $state.go('inspection');
+  header_manager.setAction('Back', 'back', function () {
+    $state.go('inspection');
   });
-    
+
   // All the sections for a specific inspection/report
   $scope.sections = [];
-        
+
   var sectionGetter = inspection_manager.getSections();
   sectionGetter.then(
-    function(promise) {
+    function (promise) {
       console.log(promise.message);
       for (var i = 0; i < promise.row.length; i++) {
         $scope.sections.push(promise.row.item(i));
       }
-    }, function(promise) {
+    },
+    function (promise) {
       console.log(promise.message);
     }
   );
-  
+
 });
 
-app.controller('inspection_subsection', function($scope, inspection_manager, header_manager, $state, $stateParams) {
+app.controller('inspection_subsection', function ($scope, inspection_manager, header_manager, $state, $stateParams) {
   header_manager.mode = HEADER_MODES.Action;
-  header_manager.setAction('Back', 'back', function() {
-         $state.go('inspection_section');
+  header_manager.setAction('Back', 'back', function () {
+    $state.go('inspection_section');
   });
   // Section ID passed in to tell us which subSections to use
   $scope.sectionId = $stateParams.sectionId;
-  console.log('Section Id: ' + $scope.sectionId);    
+  console.log('Section Id: ' + $scope.sectionId);
   // All the sections for a specific inspection/report
   $scope.subsections = [];
 
   var subsectionGetter = inspection_manager.getSubSections($scope.sectionId);
   subsectionGetter.then(
-    function(promise) {
+    function (promise) {
       console.log(promise.message);
       console.log(promise.row);
       for (var i = 0; i < promise.row.length; i++) {
         $scope.subsections.push(promise.row.item(i));
       }
-    }, function(promise) {
+    },
+    function (promise) {
       console.log(promise.message);
     }
   );
@@ -181,24 +197,20 @@ app.factory('$', function ($window) {
 });
 
 app.controller('inspection_detail', function ($scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager) {
-    
 
-    
   header_manager.mode = HEADER_MODES.Action;
-  header_manager.setAction('Back', 'back', function() {
-         $state.go('inspection_subsection');
+  header_manager.setAction('Back', 'back', function () {
+    $state.go('inspection_subsection');
   });
   action_manager.mode = ACTION_MODES.Action;
-  action_manager.addAction("Previous", "keyboard_arrow_left", function () {
-  },'md-raised');
-  action_manager.addAction("Next", "keyboard_arrow_right", function () {
-  },'md-raised');
-    
-  $scope.addPhotos = function() {
-        angular.copy($scope.question.photos, camera_manager.photos);
-        $state.go('camera');
+  action_manager.addAction("Previous", "keyboard_arrow_left", function () {}, 'md-raised');
+  action_manager.addAction("Next", "keyboard_arrow_right", function () {}, 'md-raised');
+
+  $scope.addPhotos = function () {
+    angular.copy($scope.question.photos, camera_manager.photos);
+    $state.go('camera');
   };
-    
+
   $scope.question = {
     'title': 'What are your favorite colors?',
     'description': 'Just pick the ones you actually like.',
@@ -237,25 +249,25 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
     },
     'notApplicable': false,
     'severity': null,
-    'showSummaryRemark':true,
-    'showDescription':true,
-    'photos':[]
+    'showSummaryRemark': true,
+    'showDescription': true,
+    'photos': []
   };
 
   $scope.otherValue = {
     'value': '',
     'singleSelect': ''
   };
-    
-  (function() {
+
+  (function () {
     if ($scope.question.type == 'photo') {
-        $scope.question.photos = [];
-        for (var photoIndex in camera_manager.photos) {
-            var photo = camera_manager.photos[photoIndex];
-            if (!photo.deleted) {
-                $scope.question.photos.push(photo);
-            }
+      $scope.question.photos = [];
+      for (var photoIndex in camera_manager.photos) {
+        var photo = camera_manager.photos[photoIndex];
+        if (!photo.deleted) {
+          $scope.question.photos.push(photo);
         }
+      }
     }
     camera_manager.photos = [];
   })();
@@ -273,9 +285,9 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
 
   $scope.$watch('otherValue.singleSelect', function (newVal, oldVal) {
     if (newVal) {
-       $scope.question.answer = newVal;
+      $scope.question.answer = newVal;
     }
-      
+
   });
 
   $scope.toggle = function (item, list, ignoreEmpty) {

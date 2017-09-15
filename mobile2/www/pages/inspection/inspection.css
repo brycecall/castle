@@ -1,31 +1,56 @@
+md-input-container {
+  min-width: 100px;
+  min-height: 58px;
+  margin: 0;
+}
+
 .inspection {
-  margin-top: 10px;
-}
-.report-thumbnail {
-  height: 100px;
-  width: 100px;
-  display: inline-block;
-  vertical-align: top;
-}
-.report-meta {
-  display: inline-block;
-  vertical-align: top;
-}
-.report-meta > a{
+  position: relative;
+  overflow: hidden;
   display: block;
+  padding: 0;
 }
+
+.report-thumbnail {
+  display: block;
+  width: 200px;
+  height: auto;
+}
+
+.report-meta {
+  display: block;
+  margin-left: 10px;
+  vertical-align: top;
+}
+
+.report-meta>p {
+  margin: 10px 5px;
+}
+
+.filter-bar {
+  padding-top: 20px;
+  padding-bottom: 0;
+}
+
 .centerPage {
-    max-width:950px;
-    margin:0 auto;
+  max-width: 950px;
+  margin: 0 auto;
 }
+
 .insTitle {
-    margin-left:8px;
-    margin-bottom: 0px;
+  margin-left: 8px;
+  margin-bottom: 0px;
 }
+
 .nonEditInput {
-    background-color: white;
-    border: none;
+  background-color: white;
+  border: none;
 }
+
 .centerScroll {
-    overflow-x: hidden;
+  overflow-x: hidden;
+}
+
+.page {
+  padding-bottom: 60px;
 }

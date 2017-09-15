@@ -26,12 +26,6 @@
         <md-tab-body>
           <md-input-container class="md-icon-float md-block">
             <!-- Use floating label instead of placeholder -->
-            <label>Access Code</label>
-            <md-icon md-svg-icon="lock"></md-icon>
-            <input ng-model="new_user.access_code" type="number">
-          </md-input-container>
-          <md-input-container class="md-icon-float md-block">
-            <!-- Use floating label instead of placeholder -->
             <label>Username</label>
             <md-icon md-svg-icon="account_circle"></md-icon>
             <input ng-model="new_user.username" type="text">
@@ -47,6 +41,12 @@
             <label>Email</label>
             <md-icon md-svg-icon="email"></md-icon>
             <input ng-model="new_user.email" type="email">
+          </md-input-container>
+          <md-input-container class="md-icon-float md-block">
+            <!-- Use floating label instead of placeholder -->
+            <label>Team Code</label>
+            <md-icon md-svg-icon="lock"></md-icon>
+            <input ng-model="new_user.team_code" type="number">
           </md-input-container>
         </md-tab-body>
       </md-tab>

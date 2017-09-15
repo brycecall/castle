@@ -1,8 +1,11 @@
 <link type="text/css" rel="stylesheet" href="pages/report/report.css" />
-<iframe id="preview" height="100%" width="100%" src="libs/pdf.js/web/viewer.html"></iframe>
-<md-button class="control md-raised" style="left: 20px" ng-click="save()">Save</md-button>
-<md-button class="control md-raised md-accent" style="right: 20px" ng-click="send()">Send</md-button>
-<div id="render" style="display: none" ng-controller="report_render">
-  {{data.item}}
-  <div style="height: 1000px"></div>
+<div class="loading" layout-fill layout="column" layout-align="center center" ng-hide="report">
+  <div class="tilt">
+    <h1>Just a Minute...</h1>
+    <p>We're getting your report ready.</p>
+  </div>
 </div>
+<div class="ready" layout-fill ng-show="report">
+  <iframe id="preview" layout-fill src="libs/pdf.js/web/viewer.html"></iframe>
+</div>
+<iframe id="render" style="display: none;" height="100%" width="100%"></iframe>

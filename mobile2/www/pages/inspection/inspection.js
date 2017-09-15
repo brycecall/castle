@@ -37,7 +37,7 @@ app.config(function ($stateProvider) {
 
 
 // Define the page controller
-app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, database) {
+app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
   $scope.reports = [];
 
   header_manager.title = "Inspection";
@@ -52,20 +52,9 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     $state.go("inspection_new");
     //  
   });
-  //insert dummy report data
-  /*    var reportData = database.initReports();
-      reportData.then(
-          //Success
-          function (promise) {
-              console.log(promise.message);
-               //Fail
-          },function (promise) {
-              console.log(promise.message);
-               //Fail
-          }
-      );*/
+  
 
-  var reports = database.getReports();
+  var reports = inspection_manager.getReports();
   reports.then(
     //Success
     function (promise) {
@@ -83,38 +72,15 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
 
 });
 
-app.controller('inspection_new', function ($scope, $state, $rootScope, database) {
+app.controller('inspection_new', function ($scope, $state, $rootScope, inspection_manager) {
   $scope.themes = [];
   $scope.templates = [];
   $scope.toSection = function() {
       $state.go('inspection_section');
   }
-  // Init themes & templates
-  /*var themeData = database.initThemes();
-  themeData.then(
-      //Success
-      function(promise) {
-        console.log(promise.message);
-      }, 
-      //Fail
-      function(promise) {
-        console.log(promise.message);
-      }
-  );*/
-  /*var templateData = database.initTemplates();
-  templateData.then(
-      //Success
-      function(promise) {
-        console.log(promise.message);
-      }, 
-      //Fail
-      function(promise) {
-        console.log(promise.message);
-      }
-  );*/
-
+  
   // Get themes & templates
-  var themeGetter = database.getThemes();
+  var themeGetter = inspection_manager.getThemes();
   themeGetter.then(
     //Success
     function (promise) {
@@ -130,7 +96,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, database)
     }
   );
 
-  var templateGetter = database.getTemplates();
+  var templateGetter = inspection_manager.getTemplates();
   templateGetter.then(
     //Success
     function (promise) {
@@ -147,7 +113,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, database)
 
 });
 
-app.controller('inspection_section', function($scope, database, header_manager, $state) {
+app.controller('inspection_section', function($scope, inspection_manager, header_manager, $state) {
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function() {
          $state.go('inspection');
@@ -158,7 +124,7 @@ app.controller('inspection_section', function($scope, database, header_manager, 
     
   // Init Section Data
   // Only run once to generate data in db
-  var initSection = database.initSections();
+  var initSection = inspection_manager.initSections();
   initSection.then(
     function(promise) {
       console.log(promise.message);
@@ -167,7 +133,7 @@ app.controller('inspection_section', function($scope, database, header_manager, 
     }
   );
     
-  var sectionGetter = database.getSections();
+  var sectionGetter = inspection_manager.getSections();
   sectionGetter.then(
     function(promise) {
       console.log(promise.message);
@@ -182,7 +148,7 @@ app.controller('inspection_section', function($scope, database, header_manager, 
   
 });
 
-app.controller('inspection_subsection', function($scope, database, header_manager, $state) {
+app.controller('inspection_subsection', function($scope, inspection_manager, header_manager, $state) {
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function() {
          $state.go('inspection_section');
@@ -192,7 +158,7 @@ app.controller('inspection_subsection', function($scope, database, header_manage
     
   // Init Section Data
   // Only run once to generate data in db
-  var initSubsection = database.initSubSections();
+  var initSubsection = inspection_manager.initSubSections();
   initSubsection.then(
     function(promise) {
       console.log(promise.message);
@@ -201,7 +167,7 @@ app.controller('inspection_subsection', function($scope, database, header_manage
     }
   );
     
-  var subsectionGetter = database.getSubSections();
+  var subsectionGetter = inspection_manager.getSubSections();
   subsectionGetter.then(
     function(promise) {
       console.log(promise.message);
@@ -224,7 +190,7 @@ app.factory('$', function ($window) {
   return $window.jQuery;
 });
 
-app.controller('inspection_detail', function ($scope, $, $state, header_manager, camera_manager, action_manager) {
+app.controller('inspection_detail', function ($scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager) {
     
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function() {

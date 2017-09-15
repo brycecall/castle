@@ -20,7 +20,16 @@ app.config(function ($stateProvider) {
       url: "/inspection/section",
       templateUrl: "pages/inspection/inspection_section.html",
       controller: "inspection_section"
-    });
+    })
+    .state('inspection_subsection', {
+      url: "/inspection/subsection",
+      templateUrl: "pages/inspection/inspection_subsection.html",
+      controller: "inspection_subsection",
+      params: {
+          'sectionId':null
+      }
+    })
+    ;
 });
 
 
@@ -135,7 +144,12 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, database)
 
 });
 
-app.controller('inspection_section', function($scope, database) {
+app.controller('inspection_section', function($scope, database, header_manager) {
+  header_manager.mode = HEADER_MODES.Action;
+  header_manager.setAction('Back', 'back', function() {
+         $state.go('inspection');
+  });
+    
   // All the sections for a specific inspection/report
   $scope.sections = [];
     
@@ -165,15 +179,54 @@ app.controller('inspection_section', function($scope, database) {
   
 });
 
+app.controller('inspection_subsection', function($scope, database, header_manager) {
+  header_manager.mode = HEADER_MODES.Action;
+  header_manager.setAction('Back', 'back', function() {
+         $state.go('inspection_section');
+  });
+  // All the sections for a specific inspection/report
+  $scope.subsections = [];
+    
+  // Init Section Data
+  // Only run once to generate data in db
+  /*var initSection = database.initSections();
+  initSection.then(
+    function(promise) {
+      console.log(promise.message);
+    }, function(promise) {
+      console.log(promise.message);    
+    }
+  );*/
+    
+  var sectionGetter = database.getSubsections();
+  subsectionGetter.then(
+    function(promise) {
+      console.log(promise.message);
+      console.log(promise.row);
+      for (var i = 0; i < promise.row.length; i++) {
+        $scope.subsections.push(promise.row.item(i));
+      }
+    }, function(promise) {
+      console.log(promise.message);
+    }
+  );
+  
+});
+
 app.factory('$', function ($window) {
   return $window.jQuery;
 });
 
-app.controller('inspection_detail', function ($scope, $, $state, header_manager, camera_manager, $timeout) {
+app.controller('inspection_detail', function ($scope, $, $state, header_manager, camera_manager, action_manager) {
     
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function() {
-         $state.go('inspection');
+         $state.go('inspection_subsection');
+  });
+    
+  action_manager.addAction("Previous", "back", function () {
+  });
+  action_manager.addAction("Next", "keyboard_arrow_right", function () {
   });
     
   $scope.addPhotos = function() {

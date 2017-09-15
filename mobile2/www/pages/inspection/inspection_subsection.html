@@ -4,7 +4,7 @@
     <div class="centerPage" style="margin-bottom:85px;" id="centerPage">
     <div layout="row" layout-align="space-between center">
         <h2 class="md-subhead insTitle" 
-            style="margin-bottom:0px;">Sections</h2>
+            style="margin-bottom:0px;">Subsections</h2>
     </div>
               
     <md-card id="secParent" 
@@ -36,12 +36,10 @@
                              class="md-primary" style="min-width:24px;"></md-icon>
                     <md-button
                        aria-label="toggle pages menu"
-                       class="md-icon-button"
-                       ui-sref="inspection_subsection({'sectionId':'{{section.rowId}}'})">
+                       class="md-icon-button">
                         <md-icon md-svg-icon="keyboard_arrow_right"></md-icon>
                     </md-button>
               </div>
-            <md-divider ng-if="!$last"></md-divider>
         </div>
     </md-card>
     <md-button ng-click="" class="md-raised" aria-label="Save Report">

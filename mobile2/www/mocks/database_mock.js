@@ -33,7 +33,7 @@ app.factory('database_mock', function ($q) {
     var deferred = $q.defer();
     deferred.resolve({
       row: {
-          length:5,
+          length: 2,
           item: function(index){
               return columns[index];
           }
@@ -48,7 +48,7 @@ app.factory('database_mock', function ($q) {
     var deferred = $q.defer();
     deferred.resolve({
       row: {
-          length:5,
+          length: 2,
           item: function(index){
               return columns[index];
           }
@@ -70,6 +70,35 @@ app.factory('database_mock', function ($q) {
     });
     return deferred.promise;
   };
-
+  
+  public.initSections = function () {
+    console.info("DATABASE: " + arguments);   
+  }
+  
+  public.getSections = function () {
+    console.info("DATABASE: " + arguments);
+    var columns = [{secTitle: 'Field Notes', secInspectionId: 1},
+                   {secTitle: 'Site', secInspectionId: 1},
+                   {secTitle: 'Exterior', secInspectionId: 1},
+                   {secTitle: 'Roofing', secInspectionId: 1},
+                   {secTitle: 'Structural', secInspectionId: 1},
+                   {secTitle: 'Thermal', secInspectionId: 1},
+                   {secTitle: 'Plumbing', secInspectionId: 1},
+                   {secTitle: 'Heating', secInspectionId: 1},
+                   {secTitle: 'Cooling', secInspectionId: 1},
+                   {secTitle: 'Electrical', secInspectionId: 1},
+                   {secTitle: 'Interior', secInspectionId: 1},
+                   {secTitle: 'Life or Safety', secInspectionId: 1}];
+    var deferred = $q.defer();
+    deferred.resolve({
+      row: {
+          length: 12,
+          item: function(index){
+              return columns[index];
+          }
+      },message: 'Successful database select'
+    });
+    return deferred.promise;      
+  }
   return public;
 });

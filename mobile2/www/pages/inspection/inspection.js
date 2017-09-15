@@ -36,10 +36,23 @@ app.config(function ($stateProvider) {
 
 
 // Define the page controller
-app.controller('inspection', function ($scope, $rootScope, $state, $sha, header_manager, camera_manager, action_manager, inspection_manager) {
+app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
   $scope.reports = [];
-  $sha.setConfig();
-  $scope.hash = $sha.hash("hello world");
+  $scope.sort = "";
+  $scope.sort_filters = [
+    "Name",
+    "Type",
+    "Date"
+  ];
+
+  $scope.state = "";
+  $scope.state_filters = [
+    "New",
+    "Started",
+    "Complete",
+    "Sent",
+    "Archived"
+  ];
 
   header_manager.title = "Inspection";
 

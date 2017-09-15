@@ -1,16 +1,37 @@
 <link type="text/css" rel="stylesheet" href="pages/inspection/inspection.css" />
 <div class="page">
-  <div class="inspection" ng-hide="angular.equals([], reports)" ng-repeat="report in reports">
-    <img class="report-thumbnail" src="assets/inspection_background.jpg" />
-    <div class="report-meta">
-      <a>Report Name: {{report.insName}}</a>
-      <a>Report Type: {{report.insType}}</a>
-      <a>Report Date: {{report.insLastSubmitted}}</a>
-    </div>
-    <hr>
+  <div class="filter-bar" layout="row" layout-align="space-around center">
+    <md-input-container>
+      <label>Search</label>
+      <input ng-model="search">
+    </md-input-container>
+    <md-input-container>
+      <md-select ng-model="sort" placeholder="Sort">
+        <md-option ng-value="">None</md-option>
+        <md-option ng-value="filter" ng-repeat="filter in sort_filters">{{ filter }}</md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container>
+      <md-select ng-model="state" placeholder="Status">
+        <md-option ng-value="">None</md-option>
+        <md-option ng-value="state" ng-repeat="state in state_filters">{{ state }}</md-option>
+      </md-select>
+    </md-input-container>
   </div>
-  <md-button class="md-raised" ng-click="camera_manager.openCameraControl()">Take Picture</md-button>
-  <md-button class="md-raised" ui-sref="report">View PDF</md-button>
-  <md-button class="md-raised" ui-sref="inspection_detail">Inspection Detail</md-button>
-  <p>{{hash}}</p>
+  <md-card class="inspection" ng-hide="angular.equals([], reports)" ng-repeat="report in reports">
+    <md-card-content layout="row" layout-align="start center">
+      <img class="report-thumbnail" src="assets/inspection_background.jpg" />
+      <div layout-fill>
+        <div class="report-meta">
+          <p>Report Name: {{report.insName}}</p>
+          <p>Report Type: {{report.insType}}</p>
+          <p>Report Date: {{report.insLastSubmitted}}</p>
+        </div>
+        <div layout-fill layout="row" layout-align="end center">
+          <md-button class="md-raised" ui-sref="inspection_detail">Edit</md-button>
+          <md-button class="md-raised" ui-sref="report">Preview</md-button>
+        </div>
+      </div>
+    </md-card-content>
+  </md-card>
 </div>

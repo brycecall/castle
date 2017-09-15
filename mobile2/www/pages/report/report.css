@@ -12,7 +12,21 @@
   opacity: 1;
 }
 
+.tilt {
+  transform: rotateZ(-9deg);
+  padding-bottom: 60%;
+  padding-right: 10%;
+}
+
 .loading {
+  background-image: url(../../assets/clipboard_background.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: cursive;
+}
+
+.loading * {
   animation: pulse .6s infinite;
   animation-direction: alternate;
 }

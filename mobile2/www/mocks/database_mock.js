@@ -13,7 +13,9 @@ app.factory('database_mock', function ($q) {
   /* TODO actually mock the inspection */
   public.getInspection = function (id) {
     var deferred = $q.defer();
-    deferred.resolve({'messages':'success', 'value':{
+    deferred.resolve({'messages':'success', 
+                      'value':
+      {
         'insLastModified': '9-12-17', 
         'insLastSubmitted': '9-12-17', 
         'insJobId': 10, 
@@ -21,48 +23,137 @@ app.factory('database_mock', function ($q) {
         'insName': 'Smith Inspection', 
         'insUserId': 1,
         'rowId': 0, 
-        'sections':[{'subSections':[{'questions':[{
-        'title': 'What are your favorite colors?',
-        'description': 'Just pick the ones you actually like.',
-        'type': 'photo',
-        'values': [
-              {
-                'key': 'orange',
-                'remark': ''
+        'sections':[{'subSections':[
+            {'questions':[
+                {
+                'title': 'What are your favorite colors?',
+                'description': 'Just pick the ones you actually like.',
+                'type': 'photo',
+                'values': [
+                      {
+                        'key': 'orange',
+                        'remark': ''
+                      },
+                      {
+                        'key': 'red'
+                      },
+                      {
+                        'key': 'green'
+                      },
+                      {
+                        'key': 'pink'
+                      },
+                      {
+                        'key': 'purple mountain majesty'
+                      },
+                      {
+                        'key': 'yellow'
+                      }
+                ],
+                'answers': [
+                        'orange'
+                    ],
+                'answer': null,
+                'value': null,
+                'validation': {
+                  'type': 'number',
+                  'min': null,
+                  'max': null,
+                  'isRequired': true
+                },
+                'notApplicable': false,
+                'severity': null,
+                'showSummaryRemark':true,
+                'showDescription':true,
+                'photos':[]
               },
-              {
-                'key': 'red'
+               {
+                'title': 'What are your favorite colors?',
+                'description': 'Just pick the ones you actually like.',
+                'type': 'checkbox',
+                'values': [
+                      {
+                        'key': 'orange',
+                        'remark': ''
+                      },
+                      {
+                        'key': 'red'
+                      },
+                      {
+                        'key': 'green'
+                      },
+                      {
+                        'key': 'pink'
+                      },
+                      {
+                        'key': 'purple mountain majesty'
+                      },
+                      {
+                        'key': 'yellow'
+                      }
+                ],
+                'answers': [
+                        'orange'
+                    ],
+                'answer': null,
+                'value': null,
+                'validation': {
+                  'type': 'number',
+                  'min': null,
+                  'max': null,
+                  'isRequired': true
+                },
+                'notApplicable': false,
+                'severity': null,
+                'showSummaryRemark':true,
+                'showDescription':true,
+                'photos':[]
               },
-              {
-                'key': 'green'
-              },
-              {
-                'key': 'pink'
-              },
-              {
-                'key': 'purple mountain majesty'
-              },
-              {
-                'key': 'yellow'
+               {
+                'title': "What is Stephen's favorite color?",
+                'description': 'Just pick the ones you actually like.',
+                'type': 'radioButton',
+                'values': [
+                      {
+                        'key': 'orange',
+                        'remark': ''
+                      },
+                      {
+                        'key': 'red'
+                      },
+                      {
+                        'key': 'green'
+                      },
+                      {
+                        'key': 'pink'
+                      },
+                      {
+                        'key': 'purple mountain majesty'
+                      },
+                      {
+                        'key': 'yellow'
+                      }
+                ],
+                'answers': [
+                        'orange'
+                    ],
+                'answer': null,
+                'value': null,
+                'validation': {
+                  'type': 'number',
+                  'min': null,
+                  'max': null,
+                  'isRequired': true
+                },
+                'notApplicable': false,
+                'severity': null,
+                'showSummaryRemark':true,
+                'showDescription':true,
+                'photos':[]
               }
-        ],
-        'answers': [
-                'orange'
-            ],
-        'answer': null,
-        'value': null,
-        'validation': {
-          'type': 'number',
-          'min': null,
-          'max': null,
-          'isRequired': true
-        },
-        'notApplicable': false,
-        'severity': null,
-        'showSummaryRemark':true,
-        'showDescription':true,
-        'photos':[]
-      }]}]}]}});
+            ]}
+        ]}]
+      }});
     return deferred.promise;
   };
        

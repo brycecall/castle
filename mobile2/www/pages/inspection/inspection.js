@@ -59,6 +59,22 @@ app.config(function ($stateProvider) {
     });
 });
 
+/*app.run(function ($transitions, inspection_manager) {
+  $transitions.onExit({}, function (trans) {
+      if (trans.$from().name == 'camera') {
+        camera_manager.stopCamera();
+      }
+
+      var fromStateName = trans.$from().name;
+      if ( fromStateName != 'camera' && fromStateName != 'camera_preview' ) {
+         camera_manager.returnState = {
+             'name':trans.$from().name,
+             'params':trans.params('from')
+        }
+      }
+      
+  });
+});*/
 
 // Define the page controller
 app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
@@ -285,49 +301,15 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
     angular.copy($scope.question.photos, camera_manager.photos);
     $state.go('camera');
   };
-
-  $scope.question = {
-    'title': 'What are your favorite colors?',
-    'description': 'Just pick the ones you actually like.',
-    'type': 'photo',
-    'values': [
-      {
-        'key': 'orange',
-        'remark': ''
-            },
-      {
-        'key': 'red'
-            },
-      {
-        'key': 'green'
-            },
-      {
-        'key': 'pink'
-            },
-      {
-        'key': 'purple mountain majesty'
-            },
-      {
-        'key': 'yellow'
-            }
-        ],
-    'answers': [
-            'orange'
-        ],
-    'answer': null,
-    'value': null,
-    'validation': {
-      'type': 'number',
-      'min': null,
-      'max': null,
-      'isRequired': true
-    },
-    'notApplicable': false,
-    'severity': null,
-    'showSummaryRemark': true,
-    'showDescription': true,
-    'photos': []
-  };
+  $scope.question = {};
+  inspection_manager.getQuestion($scope.insId, $scope.sectionIndex, $scope.subsectionIndex, $scope.questionIndex).then(
+      function(data){
+          $scope.question = data;
+      },
+      function(data){
+          console.log("Error... no question exists in the database");
+      }
+  );    
 
   $scope.otherValue = {
     'value': '',
@@ -379,8 +361,6 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
       }
     }
   };
-
-
 
   $scope.exists = function (value, array) {
     return $.inArray(value, array) > -1;

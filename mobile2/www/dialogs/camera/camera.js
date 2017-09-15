@@ -22,10 +22,13 @@ app.run(function ($transitions, camera_manager) {
       if (trans.$from().name == 'camera') {
         camera_manager.stopCamera();
       }
-      
+
       var fromStateName = trans.$from().name;
       if ( fromStateName != 'camera' && fromStateName != 'camera_preview' ) {
-         camera_manager.returnState = fromStateName;
+         camera_manager.returnState = {
+             'name':trans.$from().name,
+             'params':trans.params('from')
+        }
       }
       
   });
@@ -56,7 +59,7 @@ app.controller('camera', function ($scope, camera_manager, header_manager, $stat
          $state.go('camera_preview', {'button':'accept'})
       } else {
             if (camera_manager.returnState) {
-                $state.go(camera_manager.returnState);
+                $state.go(camera_manager.returnState.name, camera_manager.returnState.params);
             } else {
                 $state.go('home');
             }
@@ -86,7 +89,7 @@ app.controller('camera_preview', function ($scope, $mdToast, $mdDialog, header_m
     if ($stateParams.button === 'accept') {
         header_manager.setAction('Accept', 'check', function() {
             if (camera_manager.returnState) {
-                $state.go(camera_manager.returnState);
+                $state.go(camera_manager.returnState.name, camera_manager.returnState.params);
             } else {
                 $state.go('home');
             }

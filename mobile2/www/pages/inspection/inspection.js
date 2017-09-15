@@ -70,7 +70,6 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   ];
 
   header_manager.title = "Inspections";
-
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {
     $state.go('home');
@@ -82,22 +81,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     //  
   });
 
-
   var reports = inspection_manager.getReports();
-  reports.then(
-    //Success
-    function (promise) {
-      console.log(promise.message);
-      console.log(promise.row);
-      for (var i = 0; i < promise.row.length; i++) {
-        $scope.reports.push(promise.row.item(i));
-      }
-      //Fail
-    },
-    function (promise) {
-      console.log(promise.message);
-    }
-  );
 
 });
 
@@ -177,6 +161,17 @@ app.controller('inspection_subsection', function ($scope, inspection_manager, he
   // All the sections for a specific inspection/report
   $scope.subsections = [];
 
+  // Init Section Data
+  // Only run once to generate data in db
+  var initSubsection = inspection_manager.initSubSections();
+  initSubsection.then(
+    function(promise) {
+      console.log(promise.message);
+    }, function(promise) {
+      console.log(promise.message);    
+    }
+  );
+    
   var subsectionGetter = inspection_manager.getSubSections($scope.sectionId);
   subsectionGetter.then(
     function (promise) {
@@ -190,6 +185,10 @@ app.controller('inspection_subsection', function ($scope, inspection_manager, he
       console.log(promise.message);
     }
   );
+
+    
+
+
 });
 
 app.factory('$', function ($window) {

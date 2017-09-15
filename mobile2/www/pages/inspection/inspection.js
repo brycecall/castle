@@ -38,6 +38,21 @@ app.config(function ($stateProvider) {
 
 // Define the page controller
 app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
+  $scope.inspections = [];
+ 
+  var getInsp = inspection_manager.getInspectionById(1);
+  getInsp.then(
+    function(promise) {
+      console.log(promise.message);
+      for (var i = 0; i < promise.row.length; i++) {
+        $scope.inspections.push(promise.row.item(i));
+        console.log(promise.row.item(i));
+      }
+    }, function(promise) {
+      console.log(promise.message);
+    }
+  )
+  
   $scope.reports = [];
 
   header_manager.title = "Inspection";
@@ -128,7 +143,6 @@ app.controller('inspection_section', function($scope, inspection_manager, header
       console.log(promise.message);
       for (var i = 0; i < promise.row.length; i++) {
         $scope.sections.push(promise.row.item(i));
-        console.log(promise.row.item(i));
       }
     }, function(promise) {
       console.log(promise.message);
@@ -167,6 +181,8 @@ app.factory('$', function ($window) {
 });
 
 app.controller('inspection_detail', function ($scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager) {
+    
+
     
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function() {

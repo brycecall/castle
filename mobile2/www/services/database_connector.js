@@ -33,12 +33,12 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       console.log('calling initTables');
       // Batch script to create all tables in db
       db.sqlBatch([
-          'CREATE TABLE IF NOT EXISTS Answer (ansQuestionId INT, value, answerCol, FOREIGN KEY(ansQuestionid) REFERENCES Question(rowId))',
+          'CREATE TABLE IF NOT EXISTS Answer (ansQuestionId INT, ansValue, ansType, FOREIGN KEY(ansQuestionid) REFERENCES Question(rowId))',
           'CREATE TABLE IF NOT EXISTS Client (cliFirstName, cliLastName, cliAddress, cliCity, cliState, cliZipCode, cliPhone, cliEmail)',
           'CREATE TABLE IF NOT EXISTS Inspection (insLastModified, insLastSubmitted, insJobId INT, insType, insName, insUserId INT, insThemeId INT, insThemeResponseBlob, insTemplateId INT, insTemplateResponseBlob, FOREIGN KEY(insUserId) REFERENCES User(rowId), FOREIGN KEY(insJobId) REFERENCES Job(rowId), FOREIGN KEY(insThemeId) REFERENCES Theme(rowId), FOREIGN KEY(insTemplateId) REFERENCES Template(rowId))',
           'CREATE TABLE IF NOT EXISTS Job (jobUserId INT, jobDate, jobAddress, jobZipCode, jobCity, jobState, jobStatus, jobSubmittedDate, FOREIGN KEY(jobUserId) REFERENCES User(rowId))',
           'CREATE TABLE IF NOT EXISTS Organization (orgName, orgAddress, orgLogo, orgCity, orgState, orgZipCode)',
-          'CREATE TABLE IF NOT EXISTS Question (queTitle, queType, queSubSectionId INT, queAnswered, queRequired, FOREIGN KEY(queSubSectionId) REFERENCES SubSection(rowId))',
+          'CREATE TABLE IF NOT EXISTS Question (queTitle, queDescription, queSubSectionId INT, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, FOREIGN KEY(queSubSectionId) REFERENCES SubSection(rowId))',
           'CREATE TABLE IF NOT EXISTS QuestionAnswers (quaQuestionId INT, quaAnswerId INT, FOREIGN KEY (quaQuestionId) REFERENCES Question(rowId), FOREIGN KEY(quaAnswerId) REFERENCES Answer(rowId))',
           'CREATE TABLE IF NOT EXISTS ReportHistory (rehInspectionId INT, rehLastModified, rehSubmittedDate, FOREIGN KEY(rehInspectionId) REFERENCES Inspection(rowId))',
           'CREATE TABLE IF NOT EXISTS Section (secTitle, secInspectionId INT, FOREIGN KEY(secInspectionId) REFERENCES Inspection(rowId))',
@@ -56,6 +56,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
         public.initTemplates();
         public.initSections();
         public.initSubSections();
+        public.initFullInspection();
       }, function (error) {
         deferred.reject({message: 'Error processing batch: ' + error.message});
       });
@@ -343,6 +344,177 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       return deferred.promise;       
    }
    
+   // Insert Necessary Data for Full Inspection
+   public.initFullInspection = function() {
+     var deferred = $q.defer();
+     db.sqlBatch([
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Person(s) Present', '', 1, false, false, 'checkbox', null, null, false, true, true]],
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Person(s) Providing Property Access', '', 1, false, false, 'checkbox', null, null, false, true, true]],
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Year Built', '', 1, false, true, 'number', 1700, 2017, false, true, true]],
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Square Feet of the Property', '', 1, false, true, 'number', 0, 50000, false, true, true]],
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Type of Property', '', 1, false, true, 'radio', null, null, false, true, true]],
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Property Use', '', 1, false, true, 'radio', null, null, false, true, true]],
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Number of Stories', '', 1, false, true, 'radio', null, null, false, true, true]],
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Building Frame', '', 1, false, true, 'radio', null, null, false, true, true]],
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Building Type', '', 1, false, true, 'radio', null, null, false, true, true]],
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Property Configurations', '', 1, false, true, 'checkbox', null, null, false, true, true]],
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Property Orientation', '', 1, false, false, 'dropdown', null, null, false, true, true]],
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Vehicle Parking', '', 1, false, false, 'checkbox', null, null, false, true, true]],
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Utilities', '', 1, false, false, 'checkbox', null, null, false, true, true]],
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['What Utilities were OFF', '', 1, false, false, 'checkbox', null, null, false, true, true]],
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Property Occupancy', '', 1, false, true, 'dropdown', null, null, false, true, true]],
+        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Observation Images', '', 1, false, false, 'photo', null, null, false, true, true]],
+        // Person(s) Present
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [1, 'Inspector', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [1, 'Buyer', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [1, 'Resident', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [1, 'Builder of Builders Rep', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [1, 'Owner or Seller', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [1, 'Agent', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [1, 'Friends or Other', 'multi']],
+        // Person(s) Providing Property Access
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [2, 'Inspector', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [2, 'Buyer', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [2, 'Resident', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [2, 'Builder of Builders Rep', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [2, 'Owner or Seller', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [2, 'Agent', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [2, 'Friends or Other', 'multi']],
+        // Year Built
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [3, null, 'single']],
+        // Square Feet of the Property
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [4, null, 'single']],
+        // Type of Property
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [5, 'Single Family', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [5, 'Single Use', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [5, 'Multiple Use', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [5, 'Duplex', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [5, 'Triplex', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [5, 'Multi Family', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [5, 'Detached', 'single']],
+        // Property Use
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [6, 'Residential', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [6, 'Apartment', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [6, 'Retail Store', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [6, 'Business', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [6, 'Industrial', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [6, 'Commercial', 'single']],
+        // Number of Stories
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [7, 'Rambler', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [7, 'One Level', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [7, 'Split-Entry', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [7, 'Split-Level', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [7, 'One Story', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [7, 'Two Story', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [7, 'Three Story', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [7, 'Mid-Rise', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [7, 'Multi-Level', 'single']],
+        // Building Frame
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [8, 'Wood-Framed', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [8, 'Steel-Framed', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [8, 'Concrete', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [8, 'CMU or Block', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [8, 'Masonry', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [8, 'Tilt-Up', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [8, 'Wood-Frame on Steel Carriage', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [8, 'ICF', 'single']],
+        //Building Type
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [9, 'Home', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [9, 'Twin Home', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [9, 'Town Home', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [9, 'Mobile Home', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [9, 'Log Home', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [9, 'Manucfactured Home', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [9, 'Prefabbed Structure', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [9, 'Condominium', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [9, 'Building', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [9, 'Garage', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [9, 'Low-Rise', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [9, 'Mid-Rise', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [9, 'High-Rise', 'single']],
+        // Property Configurations
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [10, 'With Lower Parking Garage', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [10, 'With Basement & Garage', 'multi']], 
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [10, 'With Garage', 'multi']], 
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [10, 'With Garage & Crawlspace', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [10, 'With Full Basement', 'multi']], 
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [10, 'With Daylight Basement', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [10, 'With Basement & Crawlspace(s)', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [10, 'With Slab-On-Grade', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [10, 'Over Adjoining Unit(s)', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [10, 'Over Adjoining Basement Unit', 'multi']],
+        // Property Orientation
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [11, 'North', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [11, 'East', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [11, 'West', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [11, 'South', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [11, 'North-East', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [11, 'North-West', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [11, 'South-East', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [11, 'South-West', 'single']],
+        // Vehicle Parking
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [12, 'At Curbside', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [12, 'In a Rear Alley', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [12, 'In the Driveway', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [12, 'In an Attached Garage(s)', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [12, 'In a Detached Garage(s)', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [12, 'In an Attached Carport', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [12, 'In a Detached Carport', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [12, 'In a Covered Parking Space', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [12, 'In an Open Parking Space', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [12, 'In a Secured Parking Garage', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [12, 'In an Open Parking Garage', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [12, 'In an Open, Striped Parking Lot', 'multi']],
+        // Utilities
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [13, 'Electricity', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [13, 'Water', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [13, 'Gas', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [13, 'Oil', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [13, 'Propane', 'multi']],
+        // What Utilities Were Off
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [14, 'Electricity', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [14, 'Water', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [14, 'Gas', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [14, 'Oil', 'multi']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [14, 'Propane', 'multi']],
+        // Property occupancy
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [15, 'Occupied', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [15, 'Mostly Occupied', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [15, 'Mostly Vacant', 'single']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [15, 'Vacant', 'single']],
+        // Observation Images
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType) Values (?, ?, ?)', [16, null, 'photo']],
+        //['INSERT INTO QuestionAnswers (quaQuestionId INT, quaAnswerId INT) VALUES (?, ?)', []],
+        //['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', []],
+        //['INSERT INTO Section (secTitle, secInspectionId) Values (?, ?)', []],
+        //['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId, insThemeId, insThemeResponseBlob, insTemplateId, insTemplateResponseBlob) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', []],
+      ], function (res) {
+        deferred.resolve({
+          success: true,
+          message: 'successful full inspection dummy data insertion'
+        });
+      }, function (error) {
+        deferred.reject({
+          success: false,
+          message: 'failure inserting full inspection dummy data ' + error.message
+        });
+      });
+       return deferred.promise;
+   }
+   
+   public.getInspectionById = function(inspectionId) {
+       var deferred = $q.defer();
+       db.executeSql('SELECT * FROM Answer AS ans LEFT JOIN Question AS ques ON ques.rowid = ans.ansQuestionId LEFT JOIN SubSection AS subsec ON subsec.rowid = ques.queSubSectionId LEFT JOIN Section AS sec ON sec.rowid = subsec.susSectionId LEFT JOIN Inspection AS insp on insp.rowid = sec.secInspectionId WHERE insp.rowid = ?', [inspectionId], function(res) {
+           if(res.rows.length > 0) {
+             deferred.resolve({row: res.rows, message: "Successful select of all Inspection data for Inspection#: " + inspectionId});
+           } else {
+             deferred.resolve({row: [], message: 'No associated tables had data'});
+           }
+       }, function(error) {
+           deferred.reject({message: 'Error executing full inspection select statement: ' + error.message});
+       });
+       return deferred.promise;
+   }
    /* SELECT USAGE
      var select = database.select('SELECT * FROM USER', []);
      select.then(

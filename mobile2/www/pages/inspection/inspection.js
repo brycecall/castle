@@ -9,7 +9,10 @@ app.config(function ($stateProvider) {
     .state('inspection_detail', {
       url: "/inspection/detail",
       templateUrl: "pages/inspection/inspection_detail.html",
-      controller: "inspection_detail"
+      controller: "inspection_detail",
+      params: {
+          'questionId':null
+      }
     })
     .state('inspection_new', {
       url: "/inspection/new",
@@ -144,7 +147,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, database)
 
 });
 
-app.controller('inspection_section', function($scope, database, header_manager) {
+app.controller('inspection_section', function($scope, database, header_manager, $state) {
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function() {
          $state.go('inspection');
@@ -179,7 +182,7 @@ app.controller('inspection_section', function($scope, database, header_manager) 
   
 });
 
-app.controller('inspection_subsection', function($scope, database, header_manager) {
+app.controller('inspection_subsection', function($scope, database, header_manager, $state) {
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function() {
          $state.go('inspection_section');
@@ -198,7 +201,7 @@ app.controller('inspection_subsection', function($scope, database, header_manage
     }
   );*/
     
-  var sectionGetter = database.getSubsections();
+/*  var sectionGetter = database.getSubsections();
   subsectionGetter.then(
     function(promise) {
       console.log(promise.message);
@@ -209,8 +212,12 @@ app.controller('inspection_subsection', function($scope, database, header_manage
     }, function(promise) {
       console.log(promise.message);
     }
-  );
+  );*/
   
+    $scope.subsections = [{'susSectionId':1, 'susSectionTitle':'FieldNotes'},
+                          {'susSectionId':2, 'susSectionTitle':'Section 2 ness'}
+                         ];
+    
 });
 
 app.factory('$', function ($window) {
@@ -223,11 +230,11 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
   header_manager.setAction('Back', 'back', function() {
          $state.go('inspection_subsection');
   });
-    
-  action_manager.addAction("Previous", "back", function () {
-  });
+  action_manager.mode = ACTION_MODES.Action;
+  action_manager.addAction("Previous", "keyboard_arrow_left", function () {
+  },'md-raised');
   action_manager.addAction("Next", "keyboard_arrow_right", function () {
-  });
+  },'md-raised');
     
   $scope.addPhotos = function() {
         angular.copy($scope.question.photos, camera_manager.photos);

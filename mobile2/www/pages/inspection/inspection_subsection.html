@@ -11,8 +11,8 @@
              layout="column"  
              ui-sortable="{'ui-floating': false, 'handle': '.handle', 
                            'containment': '#secParent'}"  
-             ng-model="sections">
-        <div ng-repeat="section in sections track by $index" 
+             ng-model="subsections">
+        <div ng-repeat="subsection in subsections track by $index" 
              layout="column" 
              layout-align="center stretch" 
              style="text-align-left;"
@@ -21,22 +21,24 @@
                          vertical-align:middle; border-radius:0; 
                          text-transform:none; background-color:#FFF;  height:52px;" 
                        class="md-no-style" 
-                       aria-label="{{section.secTitle}}"
+                       aria-label="{{subsection.susSectionTitle}}"
                        layout="row" 
                        layout-align="start center"
                        ng-click="">
                     <input type="text" 
                            ng-disabled="true" 
-                           ng-model="section.secTitle"
+                           ng-model="subsection.susSectionTitle"
                            class="nonEditInput"
                            style="background-color:inherit;" />
                     <span flex=""></span>
-                   <! TODO: Add boolean to below Checkmark icon (should only show when the section is 'done'-->
+                   <! TODO: Add boolean to below Checkmark icon (should only show when the subsection is 'done'-->
                     <md-icon md-svg-icon="check" 
                              class="md-primary" style="min-width:24px;"></md-icon>
                     <md-button
                        aria-label="toggle pages menu"
-                       class="md-icon-button">
+                       class="md-icon-button"
+                    ui-sref="inspection_detail({'questionId':'{{subsection.susSectionId}}'})">
+                        
                         <md-icon md-svg-icon="keyboard_arrow_right"></md-icon>
                     </md-button>
               </div>

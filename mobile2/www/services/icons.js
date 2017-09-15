@@ -40,6 +40,7 @@ app.config(function ($mdIconProvider) {
     .icon('check_box_outline_blank', icon_root + '/ic_check_box_outline_blank_24px.svg')
     .icon('expand_more', icon_root + '/ic_expand_more_24px.svg')
     .icon('add_circle_outline', icon_root + '/ic_add_circle_outline_24px.svg')
+    .icon('keyboard_arrow_left', icon_root + '/ic_keyboard_arrow_left_24px.svg')
     .icon('keyboard_arrow_right', icon_root + '/ic_keyboard_arrow_right_24px.svg')
     .icon('keyboard_arrow_down', icon_root + '/ic_keyboard_arrow_down_24px.svg')
     .icon('keyboard_arrow_up', icon_root + '/ic_keyboard_arrow_up_24px.svg')

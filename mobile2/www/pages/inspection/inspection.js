@@ -9,18 +9,34 @@ app.config(function ($stateProvider) {
     .state('inspection_detail', {
       url: "/inspection/detail",
       templateUrl: "pages/inspection/inspection_detail.html",
-      controller: "inspection_detail"
+      controller: "inspection_detail",
+      params: {
+        'questionId': null
+      }
     })
     .state('inspection_new', {
       url: "/inspection/new",
       templateUrl: "pages/inspection/inspection_new.html",
       controller: "inspection_new"
+    })
+    .state('inspection_section', {
+      url: "/inspection/section",
+      templateUrl: "pages/inspection/inspection_section.html",
+      controller: "inspection_section"
+    })
+    .state('inspection_subsection', {
+      url: "/inspection/subsection",
+      templateUrl: "pages/inspection/inspection_subsection.html",
+      controller: "inspection_subsection",
+      params: {
+        'sectionId': null
+      }
     });
 });
 
 
 // Define the page controller
-app.controller('inspection', function ($scope, $rootScope, $state, $sha, header_manager, camera_manager, action_manager, database) {
+app.controller('inspection', function ($scope, $rootScope, $state, $sha, header_manager, camera_manager, action_manager, inspection_manager) {
   $scope.reports = [];
   $sha.setConfig();
   $scope.hash = $sha.hash("hello world");
@@ -37,20 +53,9 @@ app.controller('inspection', function ($scope, $rootScope, $state, $sha, header_
     $state.go("inspection_new");
     //  
   });
-  //insert dummy report data
-  /*    var reportData = database.initReports();
-      reportData.then(
-          //Success
-          function (promise) {
-              console.log(promise.message);
-               //Fail
-          },function (promise) {
-              console.log(promise.message);
-               //Fail
-          }
-      );*/
 
-  var reports = database.getReports();
+
+  var reports = inspection_manager.getReports();
   reports.then(
     //Success
     function (promise) {
@@ -68,39 +73,15 @@ app.controller('inspection', function ($scope, $rootScope, $state, $sha, header_
 
 });
 
-
-
-
-app.controller('inspection_new', function ($scope, $rootScope, database) {
+app.controller('inspection_new', function ($scope, $state, $rootScope, inspection_manager) {
   $scope.themes = [];
   $scope.templates = [];
-
-  // Init themes & templates
-  /*var themeData = database.initThemes();
-  themeData.then(
-      //Success
-      function(promise) {
-        console.log(promise.message);
-      }, 
-      //Fail
-      function(promise) {
-        console.log(promise.message);
-      }
-  );*/
-  /*var templateData = database.initTemplates();
-  templateData.then(
-      //Success
-      function(promise) {
-        console.log(promise.message);
-      }, 
-      //Fail
-      function(promise) {
-        console.log(promise.message);
-      }
-  );*/
+  $scope.toSection = function () {
+    $state.go('inspection_section');
+  }
 
   // Get themes & templates
-  var themeGetter = database.getThemes();
+  var themeGetter = inspection_manager.getThemes();
   themeGetter.then(
     //Success
     function (promise) {
@@ -116,7 +97,7 @@ app.controller('inspection_new', function ($scope, $rootScope, database) {
     }
   );
 
-  var templateGetter = database.getTemplates();
+  var templateGetter = inspection_manager.getTemplates();
   templateGetter.then(
     //Success
     function (promise) {
@@ -133,15 +114,80 @@ app.controller('inspection_new', function ($scope, $rootScope, database) {
 
 });
 
+app.controller('inspection_section', function ($scope, inspection_manager, header_manager, $state) {
+  header_manager.mode = HEADER_MODES.Action;
+  header_manager.setAction('Back', 'back', function () {
+    $state.go('inspection');
+  });
+
+  // All the sections for a specific inspection/report
+  $scope.sections = [];
+
+  var sectionGetter = inspection_manager.getSections();
+  sectionGetter.then(
+    function (promise) {
+      console.log(promise.message);
+      for (var i = 0; i < promise.row.length; i++) {
+        $scope.sections.push(promise.row.item(i));
+        console.log(promise.row.item(i));
+      }
+    },
+    function (promise) {
+      console.log(promise.message);
+    }
+  );
+
+});
+
+app.controller('inspection_subsection', function ($scope, inspection_manager, header_manager, $state, $stateParams) {
+  header_manager.mode = HEADER_MODES.Action;
+  header_manager.setAction('Back', 'back', function () {
+    $state.go('inspection_section');
+  });
+  // Section ID passed in to tell us which subSections to use
+  $scope.sectionId = $stateParams.sectionId;
+  console.log('Section Id: ' + $scope.sectionId);
+  // All the sections for a specific inspection/report
+  $scope.subsections = [];
+
+  var subsectionGetter = inspection_manager.getSubSections($scope.sectionId);
+  subsectionGetter.then(
+    function (promise) {
+      console.log(promise.message);
+      console.log(promise.row);
+      for (var i = 0; i < promise.row.length; i++) {
+        $scope.subsections.push(promise.row.item(i));
+      }
+    },
+    function (promise) {
+      console.log(promise.message);
+    }
+  );
+});
+
 app.factory('$', function ($window) {
   return $window.jQuery;
 });
 
-app.controller('inspection_detail', function ($scope, $) {
+app.controller('inspection_detail', function ($scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager) {
+
+  header_manager.mode = HEADER_MODES.Action;
+  header_manager.setAction('Back', 'back', function () {
+    $state.go('inspection_subsection');
+  });
+  action_manager.mode = ACTION_MODES.Action;
+  action_manager.addAction("Previous", "keyboard_arrow_left", function () {}, 'md-raised');
+  action_manager.addAction("Next", "keyboard_arrow_right", function () {}, 'md-raised');
+
+  $scope.addPhotos = function () {
+    angular.copy($scope.question.photos, camera_manager.photos);
+    $state.go('camera');
+  };
+
   $scope.question = {
     'title': 'What are your favorite colors?',
     'description': 'Just pick the ones you actually like.',
-    'type': 'radioButton',
+    'type': 'photo',
     'values': [
       {
         'key': 'orange',
@@ -175,13 +221,29 @@ app.controller('inspection_detail', function ($scope, $) {
       'isRequired': true
     },
     'notApplicable': false,
-    'severity': null
+    'severity': null,
+    'showSummaryRemark': true,
+    'showDescription': true,
+    'photos': []
   };
 
   $scope.otherValue = {
     'value': '',
     'singleSelect': ''
   };
+
+  (function () {
+    if ($scope.question.type == 'photo') {
+      $scope.question.photos = [];
+      for (var photoIndex in camera_manager.photos) {
+        var photo = camera_manager.photos[photoIndex];
+        if (!photo.deleted) {
+          $scope.question.photos.push(photo);
+        }
+      }
+    }
+    camera_manager.photos = [];
+  })();
 
   $scope.$watch('otherValue.value', function (newVal, oldVal) {
     var list = $scope.question.answers;
@@ -195,12 +257,11 @@ app.controller('inspection_detail', function ($scope, $) {
   });
 
   $scope.$watch('otherValue.singleSelect', function (newVal, oldVal) {
-    $scope.question.answer = newVal;
+    if (newVal) {
+      $scope.question.answer = newVal;
+    }
+
   });
-
-  $scope.editSummaryRemarks = function () {
-
-  };
 
   $scope.toggle = function (item, list, ignoreEmpty) {
     var index = list.indexOf(item);

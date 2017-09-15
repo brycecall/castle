@@ -12,6 +12,9 @@
                  style="background-image: url( {{photo.link}} );" 
                  ng-click="showFullScreen($event, photo)"></div>
         </div>
+        <div ng-show="photos.length <= 0">
+            No Photos Yet!
+        </div>
     </div>
      <div>
     

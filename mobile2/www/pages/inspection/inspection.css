@@ -22,3 +22,10 @@
     margin-left:8px;
     margin-bottom: 0px;
 }
+.nonEditInput {
+    background-color: white;
+    border: none;
+}
+.centerScroll {
+    overflow-x: hidden;
+}

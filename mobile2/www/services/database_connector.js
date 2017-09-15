@@ -227,7 +227,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     
     public.getSections = function() {
       var deferred = $q.defer();
-      db.executeSql('SELECT * FROM Section', [], function(res) {
+      db.executeSql('SELECT rowId, * FROM Section', [], function(res) {
         if(res.rows.length > 0) {
           deferred.resolve({row: res.rows, message: 'Successful select from Section'});
         } else {
@@ -238,6 +238,70 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       });
       return deferred.promise;
     }
+    
+   public.initSubSection = function() {
+      var deferred = $q.defer();
+      db.sqlBatch([
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Observations', 1]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Evaluation', 2]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Attached Steps or Platforms', 2]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Siding or Wall Cladding', 3]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Wall Fenestrations', 3]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Attached Garage or Carport', 3]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Roof Covering(s)', 4]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Fenestrations', 4]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Gutters & Down-Spouts', 4]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Roof Framing (Visible in Attic)', 5]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Floor Framing', 5]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Foundation', 5]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Attic', 6]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Crawl Spaces or Unfinished Basements', 6]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Interior Ventilation or Exhaust Fans', 6]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Plumbing System', 7]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Faucets or Fixtures', 7]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Water Heater', 7]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Heating System', 8]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Central Furnace or Heat Pump', 8]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Ducting', 8]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Fireplaces or Stoves', 8]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Cooling Systems', 9]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Evaporative Coil or Heat Pump (Inside)', 9]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Compressor or Condenser (Outside)', 9]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Electrical System', 10]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Fixtures, Switches, or Detectors', 10]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Living Room', 11]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Kitchen', 11]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Laundry', 11]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Bathroom(s)', 11]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['General', 11]],
+        ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Concerns', 12]],
+      ], function (res) {
+        deferred.resolve({
+          success: true,
+          message: 'successful dummy data insertion'
+        });
+      }, function (error) {
+        deferred.reject({
+          success: false,
+          message: 'failure inserting dummy data'
+        });
+      });
+      return deferred.promise;           
+   }
+   
+   public.getSubSection = function() {
+      var deferred = $q.defer();
+      db.executeSql('SELECT rowId, * FROM SubSection', [], function(res) {
+        if(res.rows.length > 0) {
+          deferred.resolve({row: res.rows, message: 'Successful select from SubSection'});
+        } else {
+          deferred.resolve({message: 'No data in SubSection table'});
+        }
+      }, function(error) {
+        deferred.reject({message: 'Error trying to select from SubSection table'});
+      });
+      return deferred.promise;       
+   }
   }
   return public;
 });

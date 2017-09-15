@@ -302,6 +302,33 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       });
       return deferred.promise;       
    }
+   
+   /* SELECT USAGE
+     var select = database.select('SELECT * FROM USER', []);
+     select.then(
+         function(promise) {
+           console.log(promise.message);
+           for(var i=0; i < promise.rows.length; i++) {
+             console.log(promise.rows.item(i));
+           }
+         }, function(promise) {
+           console.log(promise.message);
+         }
+     );
+   */
+   public.select = function(query, params) {
+     var deferred = $q.defer();
+     db.executeSql(query, params, function(res) {
+       if(res.rows.length > 0) {
+           deferred.resolve({rows: res.rows, message: 'Successful select'});
+       } else {
+           deferred.resolve({rows: [], message: 'No items found with current query: ' + query});
+       }
+     }, function(error) {
+        deferred.reject({message: 'Error trying to run select query: ' + query});
+     });
+     return deferred.promise;
+   }
   }
   return public;
 });

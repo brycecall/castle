@@ -54,7 +54,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     "Archived"
   ];
 
-  header_manager.title = "Inspection";
+  header_manager.title = "Inspections";
 
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {

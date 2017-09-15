@@ -154,9 +154,9 @@ app.controller('inspection_section', function($scope, database) {
   sectionGetter.then(
     function(promise) {
       console.log(promise.message);
-      console.log(promise.row);
       for (var i = 0; i < promise.row.length; i++) {
         $scope.sections.push(promise.row.item(i));
+        console.log(promise.row.item(i));
       }
     }, function(promise) {
       console.log(promise.message);

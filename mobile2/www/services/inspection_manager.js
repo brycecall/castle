@@ -28,17 +28,21 @@ app.factory('inspection_manager', function (database, $q) {
       }
   );*/
     public.getInspection = function(id) {   
+        var defer = $q.defer();
+
         if (angular.equals(private.inspection, {}) || private.inspection.rowId !== id) {
-            database.getInspection(id).then(
+                database.getInspection(id).then(
                 function (promise) {
-                    private.inspection = promise; //success
+                   private.inspection = promise.value; //success
+                   defer.resolve(private.inspection);
                 },
                 function (promise) {
                     private.inspection = {}; //failure eh?
+                    defer.reject(private.inspection);
                 }
             );
         } 
-        return private.inspection;
+        return defer.promise;
     };
     
     public.getReports = function() {
@@ -58,110 +62,147 @@ app.factory('inspection_manager', function (database, $q) {
     };
     
     public.getSections = function(insId) {
+        var defer = $q.defer();
         var sections = [];
-        /* load private.inspection */
-        public.getInspection(insId);
-        
-        if (private.inspection.sections) {
-            sections = private.inspection.sections;
-        }
-        return sections;
-       // return database.getSections();
+        public.getInspection(insId).then(function(data){
+            if (data.sections) {
+                sections = data.sections;
+                defer.resolve(sections);
+            } else {
+                defer.reject(sections);
+            }
+        }, function() {
+            defer.reject(sections);
+        });
+        return defer.promise;
     };
     
-    public.getSection = function(insId, sectionId) {
+    public.getSection = function(insId, sectionIndex) {
+        var defer = $q.defer();
         var section = {};
-        /* load private.inspection */
-        public.getInspection(insId);
-        
-        if (private.inspection.sections) {
-            section = private.inspection.sections[sectionId];
-        }
-        return section;
+        public.getInspection(insId).then(function(data){
+            if (data.sections) {
+                section = data.sections[sectionIndex];
+                defer.resolve(section);
+            } else {
+                defer.reject(section);
+            }
+        }, function() {
+            defer.reject(section);
+        });
+        return defer.promise;
        // return database.getSections();
     };
-    
-    public.initSubSections = function() {
-        return database.initSubSections();
-    };
-    
+
     public.initFullInspection = function() {
         return database.initFullInspection();
     }
 
-/*    public.getSubSections = function(sectionId) {
-        return database.getSubSections(sectionId);
-    };*/
-    
-    public.getInspectionById = function(id) {
-        return database.getInspectionById(id);
-    }
-
-    public.getSubSections = function(insId, sectionId) {
+    public.getSubSections = function(insId, sectionIndex) {
+        var defer = $q.defer();
         var section = {};
         var subSections = [];
-        /* load private.inspection */
-        public.getInspection(insId);
-        if (private.inspection.sections) {
-            section = private.inspection.sections[sectionId];
-            if (section.subSections) {
-                subSections = section.subSections;
+        public.getInspection(insId).then(function(data) {
+            if (data.sections) {
+                subSections = data.sections[sectionIndex];
+                    defer.resolve(subSections);
+            } else {
+                defer.reject(subSections);
             }
-        }
-        return subSections;
+        }, function() {
+            defer.reject(subSections);
+        });
+        return defer.promise;
         //return database.getSubSections();
     };
     
-    public.getSubSection = function(insId, sectionId, subSectionId) {
+    public.getSubSection = function(insId, sectionIndex, subsectionIndex) {
+        var defer = $q.defer();
         var section = {};
         var subsection = {};
         /* load private.inspection */
-        public.getInspection(insId);
-        
-        if (private.inspection.sections) {
-            section = private.inspection.sections[sectionId];
-            if (section.subSections) {
-                subsection = section.subSections[subSectionId];
+        public.getInspection(insId).then(
+            function(data){
+                if (private.inspection.sections) {
+                    section = private.inspection.sections[sectionIndex];
+                    if (section.subSections) {
+                        subsection = section.subSections[subsectionIndex];
+                        defer.resolve(subsection);
+                    } else {
+                        defer.reject(subsection);
+                    }
+                } else {
+                    defer.reject(subsection);
+                }
+            }, function(data){
+                defer.reject(subsection);
             }
-        }
-        return subsection;
+        );
+    
+        return defer.promise;
     };
     
     
-    public.getQuestions = function(insId, sectionId, subSectionId) {
+    public.getQuestions = function(insId, sectionIndex, subsectionIndex) {
+        var defer = $q.defer();
         var section = {};
         var subsection = {};
         var questions = [];
         /* load private.inspection */
-        public.getInspection(insId);
-        if (private.inspection.sections) {
-            section = private.inspection.sections[sectionId];
-            if (section.subSections) {
-                subsection = section.subSections[subSectionId];
-                if (subsection.questions) {
-                    questions = subsection.questions;
+        public.getInspection(insId).then(
+            function(data){
+                if (private.inspection.sections) {
+                    section = private.inspection.sections[sectionIndex];
+                    if (section.subSections) {
+                        subsection = section.subSections[subsectionIndex];
+                        if (subsection.questions) {
+                            questions = subsection.questions;
+                            defer.resolve(questions);
+                        } else {
+                            defer.reject(questions);
+                        }
+                    } else {
+                        defer.reject(questions);
+                    }
+                } else {
+                    defer.reject(questions);
                 }
+            }, function(data){
+                defer.reject(questions);
             }
-        }
-        return questions;
+        );
+        return defer.promise;
     };
     
-    public.getQuestion = function(insId, sectionId, subSectionId, questionId) {
+    public.getQuestion = function(insId, sectionIndex, subsectionIndex, questionIndex) {
+        var defer = $q.defer();
         var section = {};
         var subsection = {};
         var question = {};
         /* load private.inspection */
-        public.getInspection(insId);
-        if (private.inspection.sections) {
-            section = private.inspection.sections[sectionId];
-            if (section.subSections) {
-                subsection = section.subSections[subSectionId];
-                if (subsection.questions) {
-                    question = subsection.questions[questionId];
+        public.getInspection(insId).then(
+            function(data){
+                if (private.inspection.sections) {
+                    section = private.inspection.sections[sectionIndex];
+                    if (section.subSections) {
+                        subsection = section.subSections[subsectionIndex];
+                        if (subsection.questions) {
+                            question = subsection.questions[questionIndex];
+                            defer.resolve(question);
+                        } else {
+                            defer.reject(question);
+                        }
+                    } else {
+                        defer.reject(question);
+                    }
+                } else {
+                    defer.reject(question);
                 }
+            }, function(data){
+                defer.reject(question);
             }
-        }
-        return question;
+        );
+        return defer.promise;    
     };
 
     return public;

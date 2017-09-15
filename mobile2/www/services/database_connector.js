@@ -162,6 +162,62 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       });
       return deferred.promise;
     }
+    
+ /* TODO actually use the database */
+  public.getInspection = function (id) {
+    var deferred = $q.defer();
+    deferred.resolve({
+        insLastModified: '9-12-17', 
+        insLastSubmitted: '9-12-17', 
+        insJobId: 10, 
+        insType: 'Residential', 
+        insName: 'Smith Inspection', 
+        insUserId: 1,
+        'rowId':0, 
+        'sections':[{'subSections':[{'questions':[{
+        'title': 'What are your favorite colors?',
+        'description': 'Just pick the ones you actually like.',
+        'type': 'photo',
+        'values': [
+          {
+            'key': 'orange',
+            'remark': ''
+                },
+          {
+            'key': 'red'
+                },
+          {
+            'key': 'green'
+                },
+          {
+            'key': 'pink'
+                },
+          {
+            'key': 'purple mountain majesty'
+                },
+          {
+            'key': 'yellow'
+                }
+            ],
+        'answers': [
+                'orange'
+            ],
+        'answer': null,
+        'value': null,
+        'validation': {
+          'type': 'number',
+          'min': null,
+          'max': null,
+          'isRequired': true
+        },
+        'notApplicable': false,
+        'severity': null,
+        'showSummaryRemark':true,
+        'showDescription':true,
+        'photos':[]
+      }]}]}]});
+    return deferred.promise;
+  };
 
     public.getReports = function () {
       var deferred = $q.defer();

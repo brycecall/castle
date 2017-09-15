@@ -52,8 +52,8 @@ app.factory('inspection_manager', function (database) {
         return database.initSubSections();
     };
     
-    public.getSubSections = function() {
-        return database.getSubSections();
+    public.getSubSections = function(sectionId) {
+        return database.getSubSections(sectionId);
     };
     return public;
 });

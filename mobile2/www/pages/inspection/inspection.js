@@ -121,18 +121,7 @@ app.controller('inspection_section', function($scope, inspection_manager, header
     
   // All the sections for a specific inspection/report
   $scope.sections = [];
-    
-  // Init Section Data
-  // Only run once to generate data in db
-  var initSection = inspection_manager.initSections();
-  initSection.then(
-    function(promise) {
-      console.log(promise.message);
-    }, function(promise) {
-      console.log(promise.message);    
-    }
-  );
-    
+        
   var sectionGetter = inspection_manager.getSections();
   sectionGetter.then(
     function(promise) {
@@ -148,26 +137,18 @@ app.controller('inspection_section', function($scope, inspection_manager, header
   
 });
 
-app.controller('inspection_subsection', function($scope, inspection_manager, header_manager, $state) {
+app.controller('inspection_subsection', function($scope, inspection_manager, header_manager, $state, $stateParams) {
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function() {
          $state.go('inspection_section');
   });
+  // Section ID passed in to tell us which subSections to use
+  $scope.sectionId = $stateParams.sectionId;
+  console.log('Section Id: ' + $scope.sectionId);    
   // All the sections for a specific inspection/report
   $scope.subsections = [];
-    
-  // Init Section Data
-  // Only run once to generate data in db
-  var initSubsection = inspection_manager.initSubSections();
-  initSubsection.then(
-    function(promise) {
-      console.log(promise.message);
-    }, function(promise) {
-      console.log(promise.message);    
-    }
-  );
-    
-  var subsectionGetter = inspection_manager.getSubSections();
+
+  var subsectionGetter = inspection_manager.getSubSections($scope.sectionId);
   subsectionGetter.then(
     function(promise) {
       console.log(promise.message);
@@ -179,11 +160,6 @@ app.controller('inspection_subsection', function($scope, inspection_manager, hea
       console.log(promise.message);
     }
   );
-  
-/*    $scope.subsections = [{'susSectionId':1, 'susSectionTitle':'FieldNotes'},
-                          {'susSectionId':2, 'susSectionTitle':'Section 2 ness'}
-                         ];*/
-    
 });
 
 app.factory('$', function ($window) {

@@ -87,18 +87,18 @@ app.factory('database_mock', function ($q) {
   
   public.getSections = function () {
     console.info("DATABASE: " + arguments);
-    var columns = [{secTitle: 'Field Notes', secInspectionId: 1},
-                   {secTitle: 'Site', secInspectionId: 1},
-                   {secTitle: 'Exterior', secInspectionId: 1},
-                   {secTitle: 'Roofing', secInspectionId: 1},
-                   {secTitle: 'Structural', secInspectionId: 1},
-                   {secTitle: 'Thermal', secInspectionId: 1},
-                   {secTitle: 'Plumbing', secInspectionId: 1},
-                   {secTitle: 'Heating', secInspectionId: 1},
-                   {secTitle: 'Cooling', secInspectionId: 1},
-                   {secTitle: 'Electrical', secInspectionId: 1},
-                   {secTitle: 'Interior', secInspectionId: 1},
-                   {secTitle: 'Life or Safety', secInspectionId: 1}];
+    var columns = [{rowId: 1, secTitle: 'Field Notes', secInspectionId: 1},
+                   {rowId: 2, secTitle: 'Site', secInspectionId: 1},
+                   {rowId: 3, secTitle: 'Exterior', secInspectionId: 1},
+                   {rowId: 4, secTitle: 'Roofing', secInspectionId: 1},
+                   {rowId: 5, secTitle: 'Structural', secInspectionId: 1},
+                   {rowId: 6, secTitle: 'Thermal', secInspectionId: 1},
+                   {rowId: 7, secTitle: 'Plumbing', secInspectionId: 1},
+                   {rowId: 8, secTitle: 'Heating', secInspectionId: 1},
+                   {rowId: 9, secTitle: 'Cooling', secInspectionId: 1},
+                   {rowId: 10, secTitle: 'Electrical', secInspectionId: 1},
+                   {rowId: 11, secTitle: 'Interior', secInspectionId: 1},
+                   {rowId: 12, secTitle: 'Life or Safety', secInspectionId: 1}];
     var deferred = $q.defer();
     deferred.resolve({
       row: {
@@ -119,9 +119,9 @@ app.factory('database_mock', function ($q) {
     return deferred.promise;
   }
   
-  public.getSubSections = function () {
+  public.getSubSections = function (sectionId) {
     console.info("DATABASE: " + arguments);
-    var columns = [{susTitle: 'Observations', susSectionId: 1},
+    var allColumns = [{susTitle: 'Observations', susSectionId: 1},
                    {susTitle: 'Evaluation', susSectionId: 2},
                    {susTitle: 'Attached Steps or Platforms', susSectionId: 2},
                    {susTitle: 'Siding or Wall Cladding', susSectionId: 3},
@@ -154,11 +154,25 @@ app.factory('database_mock', function ($q) {
                    {susTitle: 'Bathroom(s)', susSectionId: 11},
                    {susTitle: 'General', susSectionId: 11},
                    {susTitle: 'Concerns', susSectionId: 12}];
-      
+    var columns = [];
+    for (var i = 0; i < allColumns.length; i++) {
+      console.log('Section Id before loop: ' + sectionId);
+      console.log('allColumn sectionId value: ' + allColumns[i].susSectionId);
+      if(allColumns[i].susSectionId.toString() === sectionId) {
+          console.log('match found');
+          var obj = {};
+          obj.susTitle = allColumns[i].susTitle;
+          obj.susSectionId = allColumns[i].susSectionId;
+          columns.push(obj);
+          console.log(columns);
+      }
+    }
+    
+    console.log(columns);
     var deferred = $q.defer();
     deferred.resolve({
       row: {
-          length: 33,
+          length: columns.length,
           item: function(index){
               return columns[index];
           }

@@ -34,7 +34,8 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
   }, "md-accent");
 
   action_manager.addAction("Login", "check", function () {
-    database.initTables();
+    //Call initTables to refresh the database, and have it contain some dummy data
+    //database.initTables();
 
     if ($scope.new_user.username && $scope.new_user.password && $scope.new_user.email) {
       database.createUser($scope.new_user.username, $scope.new_user.password, $scope.new_user.email);

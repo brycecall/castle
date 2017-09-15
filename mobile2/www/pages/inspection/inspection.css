@@ -1,3 +1,10 @@
+#view {
+    height:100%; 
+    width:100%; 
+    overflow: hidden;
+}
+
+
 md-input-container {
   min-width: 100px;
   min-height: 58px;

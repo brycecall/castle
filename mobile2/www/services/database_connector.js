@@ -174,6 +174,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
         insName: 'Smith Inspection', 
         insUserId: 1,
         'rowId':0, 
+        'insId': 0, 
         'sections':[{'subSections':[{'questions':[{
         'title': 'What are your favorite colors?',
         'description': 'Just pick the ones you actually like.',
@@ -222,7 +223,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     public.getReports = function () {
       var deferred = $q.defer();
 
-      db.executeSql('SELECT * FROM Inspection ORDER BY insLastSubmitted DESC', [], function (res) {
+      db.executeSql('SELECT rowId as insId, * FROM Inspection ORDER BY insLastSubmitted DESC', [], function (res) {
         if (res.rows.length > 0) {
           deferred.resolve({
             row: res.rows,

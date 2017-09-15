@@ -6,14 +6,6 @@ app.config(function ($stateProvider) {
       templateUrl: "pages/inspection/inspection.html",
       controller: "inspection"
     })
-    .state('inspection_detail', {
-      url: "/inspection/detail",
-      templateUrl: "pages/inspection/inspection_detail.html",
-      controller: "inspection_detail",
-      params: {
-        'questionId': null
-      }
-    })
     .state('inspection_new', {
       url: "/inspection/new",
       templateUrl: "pages/inspection/inspection_new.html",
@@ -80,7 +72,7 @@ app.config(function ($stateProvider) {
 app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
   $scope.inspections = [];
  
-  var getInsp = inspection_manager.getInspectionById(1);
+/*  var getInsp = inspection_manager.getInspectionById(1);
   getInsp.then(
     function(promise) {
       console.log(promise.message);
@@ -91,8 +83,11 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     }, function(promise) {
       console.log(promise.message);
     }
-  )
-  
+  )*/
+  $scope.goToInspection = function(insId) {
+      $state.go('inspection_section', {'insId':insId});
+  };
+    
   $scope.reports = [];
   $scope.sort = "";
   $scope.sort_filters = [
@@ -188,7 +183,15 @@ app.controller('inspection_section', function($scope, inspection_manager, header
   $scope.insId = $stateParams.insId;
   // All the sections for a specific inspection/report
   $scope.sections = [];
+    $scope.goToSubsection = function(sectionIndex) {
+        $state.go('inspection_subsection', {
+            'insId':$scope.insId,
+            'sectionIndex':sectionIndex
+        });
+    };
+    
 
+    
   inspection_manager.getSections($scope.insId).then(
     function(data){
         $scope.sections = data;
@@ -209,18 +212,6 @@ app.controller('inspection_subsection', function($scope, inspection_manager, hea
   header_manager.setAction('Back', 'back', function() {
          $state.go('inspection_section', {'insId':$scope.insId});
   });
-
-
-  // Init Section Data
-  // Only run once to generate data in db
-  var initSubsection = inspection_manager.initSubSections();
-  initSubsection.then(
-    function(promise) {
-      console.log(promise.message);
-    }, function(promise) {
-      console.log(promise.message);    
-    }
-  );
     
   inspection_manager.getSubSections($scope.insId, $scope.sectionIndex).then(
     function(data){
@@ -327,7 +318,6 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
             }
         }
       }
-    }
     camera_manager.photos = [];
   })();
 

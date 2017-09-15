@@ -6,24 +6,24 @@
         <div layout="row">
             <div flex=""></div>
             <md-switch md-invert 
-                       ng-model="question.notApplicable"
+                       ng-model="question.value.notApplicable"
                        style="color:rgba(0,0,0,0.87);">
             Not Applicable
             </md-switch>
         </div>
-        <div class="md-title">{{question.title}}</div>
-        <div class="md-caption description">{{question.description}}</div>
-    <form name="questionForm" style="padding-left: 0px;"  ng-class="question.notApplicable ? 'disabled' : ''">
-        <div ng-if="question.type == 'checkbox'">
-            <div ng-repeat="checkBox in question.values" class="questionIndent">
-                <md-checkbox ng-checked="exists(checkBox.key, question.answers)" 
-                             ng-click="toggle(checkBox.key, question.answers)"
-                             ng-disabled="question.notApplicable">
+        <div class="md-title">{{question.value.title}}</div>
+        <div class="md-caption description">{{question.value.description}}</div>
+    <form name="questionForm" style="padding-left: 0px;"  ng-class="question.value.notApplicable ? 'disabled' : ''">
+        <div ng-if="question.value.type == 'checkbox'">
+            <div ng-repeat="checkBox in question.value.values track by $index" class="questionIndent">
+                <md-checkbox ng-checked="exists(checkBox.key, question.value.answers)" 
+                             ng-click="toggle(checkBox.key, question.value.answers)"
+                             ng-disabled="question.value.notApplicable">
                     {{checkBox.key}}
                 </md-checkbox>
             </div>
             <md-checkbox ng-model="newCheckBoxKey" 
-                         ng-click="toggle(otherValue.value, question.answers, true)">
+                         ng-click="toggle(otherValue.value, question.value.answers, true)">
                 Other:
             </md-checkbox>
             <input  ng-show="newCheckBoxKey"
@@ -32,11 +32,11 @@
                     class="inlineInput"
                    >
         </div>
-        <div ng-if="question.type == 'radioButton'">
-            <md-radio-group ng-model="question.answer"
-                            ng-required="question.validation.isRequired"
-                            ng-disabled="question.notApplicable">
-                <md-radio-button ng-repeat="radioButton in question.values" 
+        <div ng-if="question.value.type == 'radioButton'">
+            <md-radio-group ng-model="question.value.answer"
+                            ng-required="question.value.validation.isRequired"
+                            ng-disabled="question.value.notApplicable">
+                <md-radio-button ng-repeat="radioButton in question.value.values" 
                                  class="questionIndent" 
                                  ng-value="radioButton.key">{{radioButton.key}}
                 </md-radio-button>
@@ -52,26 +52,26 @@
                  </div>
             </md-radio-group>
         </div>
-        <div ng-if="question.type == 'selectOption'">
-            <md-select ng-model="question.answer" 
+        <div ng-if="question.value.type == 'selectOption'">
+            <md-select ng-model="question.value.answer" 
                        placeholder="Choose" 
                        class="md-no-underline"
-                       ng-required="question.validation.isRequired"
-                       ng-disabled="question.notApplicable">
-                <md-option ng-repeat="selectOption in question.values" ng-value="selectOption.key">{{selectOption.key}}
+                       ng-required="question.value.validation.isRequired"
+                       ng-disabled="question.value.notApplicable">
+                <md-option ng-repeat="selectOption in question.value.values" ng-value="selectOption.key">{{selectOption.key}}
                 </md-option>
             </md-select>
         </div>
-        <div ng-if="question.type == 'shortText'">
+        <div ng-if="question.value.type == 'shortText'">
             <md-input-container>
                 <label>Your Answer</label>
-                <input ng-model="question.answer" 
-                       type="{{question.validation ? question.validation.type : 'text'}}" 
-                       md-minlength='question.validation.min' 
-                       md-maxlength='question.validation.max'
+                <input ng-model="question.value.answer" 
+                       type="{{question.value.validation ? question.value.validation.type : 'text'}}" 
+                       md-minlength='question.value.validation.min' 
+                       md-maxlength='question.value.validation.max'
                        md-select-on-focus
-                       ng-required="question.validation.isRequired"
-                       ng-disabled="question.notApplicable"
+                       ng-required="question.value.validation.isRequired"
+                       ng-disabled="question.value.notApplicable"
                        name="shortText"
                        >
                 <div ng-messages="questionForm.shortText.$error" 
@@ -82,15 +82,15 @@
                 </div>
             </md-input-container>
         </div>
-        <div ng-if="question.type == 'textArea'">
+        <div ng-if="question.value.type == 'textArea'">
             <md-input-container class="md-block" >
                 <label>Your Answer</label>
-                <textarea ng-model="question.answer" 
-                          md-minlength="question.validation.min" 
-                          md-maxlength="question.validation.max" 
+                <textarea ng-model="question.value.answer" 
+                          md-minlength="question.value.validation.min" 
+                          md-maxlength="question.value.validation.max" 
                           md-select-on-focus
-                          ng-required="question.validation.isRequired"
-                          ng-disabled="question.notApplicable"
+                          ng-required="question.value.validation.isRequired"
+                          ng-disabled="question.value.notApplicable"
                           name="testArea"></textarea>
                 <div ng-messages="questionForm.testArea.$error" 
                      ng-show="questionForm.testArea.$dirty">
@@ -100,13 +100,13 @@
                 </div>
             </md-input-container>
         </div>
-        <div ng-if="question.type == 'photo'">
-            <div ng-show="question.photos.length <= 0">
+        <div ng-if="question.value.type == 'photo'">
+            <div ng-show="question.value.photos.length <= 0">
                 No Photos Yet!
             </div>
 
             <div layout="row" layout-align="start center" layout-wrap>
-            <div ng-repeat="photo in question.photos"
+            <div ng-repeat="photo in question.value.photos"
                  class="photo md-whiteframe-1dp"
                  
                  style="background-image: url( {{photo.link}} ); margin: 10px;" 
@@ -114,35 +114,12 @@
                 </div>
             </div>
                         <md-button class="md-accent md-raised"
-                       ng-disabled="question.notApplicable"
+                       ng-disabled="question.value.notApplicable"
                        ng-click="addPhotos()">  
                 Add Photos
             </md-button>
         </div>
     </form>
-        
-<!--
-         <div ng-repeat="stuff in question.values" 
-              layout="row" 
-              layout-align="start center">
-            <div layout="row" layout-wrap>
-                <div class="md-caption"></div>
-                <div ng-repeat="fabButton in severityList" 
-                     class="buttonWrapper"
-                     layout="column" layout-align="center center">
-                    <md-button class="md-fab md-mini" 
-                               ng-class="question.severity == fabButton.title ? 'md-accent selectedBtn' : 'md-raised'"
-                               aria-label="fabButton.title"
-                               ng-click="setSeverity(fabButton.title)"
-                               ng-disabled="question.notApplicable">
-                        <md-icon md-svg-icon="{{fabButton.icon}}"></md-icon>
-                    </md-button>
-                    <div class="label">{{fabButton.title}}</div>
-                </div>
-            </div>
-             <div>{{stuff.key}}</div>
-        </div>
--->
          
         <div style="margin: 8px 0px 0px 0px;">
             <div class="md-title">Summary Remarks</div>
@@ -153,45 +130,45 @@
                      class="buttonWrapper"
                      layout="column" layout-align="center center">
                     <md-button class="md-fab md-mini" 
-                               ng-class="question.severity == fabButton.title ? 'md-accent selectedBtn' : 'md-raised'"
+                               ng-class="question.value.severity == fabButton.title ? 'md-accent selectedBtn' : 'md-raised'"
                                aria-label="fabButton.title"
                                ng-click="setSeverity(fabButton.title)"
-                               ng-disabled="question.notApplicable">
+                               ng-disabled="question.value.notApplicable">
                         <md-icon md-svg-icon="{{fabButton.icon}}"></md-icon>
                     </md-button>
                     <div class="label">{{fabButton.title}}</div>
                 </div>
             </div>
             <div>
-            <md-switch ng-model="question.showSummaryRemark"
-                       ng-disabled="question.notApplicable"
+            <md-switch ng-model="question.value.showSummaryRemark"
+                       ng-disabled="question.value.notApplicable"
                        >
             Include Response
             </md-switch>
-            <md-switch ng-model="question.showDescription"
-                       ng-disabled="question.notApplicable"
+            <md-switch ng-model="question.value.showDescription"
+                       ng-disabled="question.value.notApplicable"
                        >
             Include Description
             </md-switch>
             </div>
             <md-card>
                 <md-card-content>
-                    <div ng-if="question.type === 'checkBox' && question.severity && question.severity !== 'Non-Issue' && question.showSummaryRemark" >
-                        <div class="md-subhead"><b>{{question.severity}}</b></div>
-                        <div ng-repeat="answer in question.answers">
-                            {{question.title}} {{answer}}
+                    <div ng-if="question.value.type === 'checkBox' && question.value.severity && question.value.severity !== 'Non-Issue' && question.value.showSummaryRemark" >
+                        <div class="md-subhead"><b>{{question.value.severity}}</b></div>
+                        <div ng-repeat="answer in question.value.answers">
+                            {{question.value.title}} {{answer}}
                         </div>
                     </div>
-                    <div ng-if="question.type !== checkBox && question.severity && question.severity !== 'Non-Issue' && question.showSummaryRemark" >
-                        <div class="md-subhead"><b>{{question.severity}}</b></div>
+                    <div ng-if="question.value.type !== checkBox && question.value.severity && question.value.severity !== 'Non-Issue' && question.value.showSummaryRemark" >
+                        <div class="md-subhead"><b>{{question.value.severity}}</b></div>
                         <div >
-                            {{question.title}} {{question.answer}}
+                            {{question.value.title}} {{question.value.answer}}
                         </div>
                     </div>
-                    <div ng-show="question.showDescription && question.severity && question.severity !== 'Non-Issue'">
-                        {{question.description}}
+                    <div ng-show="question.value.showDescription && question.value.severity && question.value.severity !== 'Non-Issue'">
+                        {{question.value.description}}
                     </div>
-                    <div ng-show="!question.severity || question.severity === 'Non-Issue' || (!question.showSummaryRemark && !question.showDescription)" class="md-caption" style="color:rgba(0, 0, 0, 0.54);">
+                    <div ng-show="!question.value.severity || question.value.severity === 'Non-Issue' || (!question.value.showSummaryRemark && !question.value.showDescription)" class="md-caption" style="color:rgba(0, 0, 0, 0.54);">
                     <i>summary remark preview</i>
                     </div>
                 </md-card-content>

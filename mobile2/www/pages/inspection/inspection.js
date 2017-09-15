@@ -301,7 +301,8 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
     angular.copy($scope.question.photos, camera_manager.photos);
     $state.go('camera');
   };
-  $scope.question = {};
+    
+  $scope.question = {'value':''};
   inspection_manager.getQuestion($scope.insId, $scope.sectionIndex, $scope.subsectionIndex, $scope.questionIndex).then(
       function(data){
           $scope.question = data;
@@ -315,14 +316,15 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
     'value': '',
     'singleSelect': ''
   };
-
-  (function () {
-    if ($scope.question.type == 'photo') {
-      $scope.question.photos = [];
-      for (var photoIndex in camera_manager.photos) {
-        var photo = camera_manager.photos[photoIndex];
-        if (!photo.deleted) {
-          $scope.question.photos.push(photo);
+    
+  (function() {
+    if ($scope.question.value.type == 'photo') {
+        $scope.question.value.photos = [];
+        for (var photoIndex in camera_manager.photos) {
+            var photo = camera_manager.photos[photoIndex];
+            if (!photo.deleted) {
+                $scope.question.value.photos.push(photo);
+            }
         }
       }
     }
@@ -330,19 +332,19 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
   })();
 
   $scope.$watch('otherValue.value', function (newVal, oldVal) {
-    var list = $scope.question.answers;
-    var index = $scope.question.answers.indexOf(oldVal);
+    var list = $scope.question.value.answers;
+    var index = $scope.question.value.answers.indexOf(oldVal);
     if (index > -1) {
-      $scope.question.answers.splice(index, 1);
+      $scope.question.value.answers.splice(index, 1);
     }
     if (newVal) {
-      $scope.question.answers.push(newVal);
+      $scope.question.value.answers.push(newVal);
     }
   });
 
   $scope.$watch('otherValue.singleSelect', function (newVal, oldVal) {
     if (newVal) {
-      $scope.question.answer = newVal;
+       $scope.question.value.answer = newVal;
     }
 
   });
@@ -367,7 +369,7 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
   };
 
   $scope.setSeverity = function (value) {
-    $scope.question.severity = value;
+    $scope.question.value.severity = value;
   };
 
   $scope.severityList = [

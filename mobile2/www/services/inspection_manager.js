@@ -30,7 +30,7 @@ app.factory('inspection_manager', function (database, $q) {
     public.getInspection = function(id) {   
         var defer = $q.defer();
 
-        if (angular.equals(private.inspection, {}) || private.inspection.rowId !== id) {
+        if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== id) {
                 database.getInspection(id).then(
                 function (promise) {
                    private.inspection = promise.value; //success
@@ -41,7 +41,10 @@ app.factory('inspection_manager', function (database, $q) {
                     defer.reject(private.inspection);
                 }
             );
-        } 
+        } else {
+            defer.resolve(private.inspection);
+        }
+        
         return defer.promise;
     };
     
@@ -188,7 +191,7 @@ app.factory('inspection_manager', function (database, $q) {
                         subsection = section.subSections[subsectionIndex];
                         if (subsection.questions) {
                             question = subsection.questions[questionIndex];
-                            defer.resolve(question);
+                            defer.resolve({ 'value':question });
                         } else {
                             defer.reject(question);
                         }

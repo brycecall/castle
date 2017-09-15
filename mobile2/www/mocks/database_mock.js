@@ -3,7 +3,11 @@ app.factory('database_mock', function ($q) {
   var private = {};
 
   public.initTables = function () {
-    console.info("DATABASE: " + arguments);
+    console.info("DATABASE: ");
+    console.log(arguments);
+    var deferred = $q.defer();
+    deferred.resolve({message: 'successful init tables'});
+    return deferred.promise;
   };
     
   public.getReports = function() {
@@ -58,11 +62,13 @@ app.factory('database_mock', function ($q) {
   };
 
   public.createUser = function () {
-    console.info("DATABASE: " + arguments);
+    console.info("DATABASE: ");
+    console.log(arguments);
   };
 
   public.validCredentials = function () {
-    console.info("DATABASE: " + arguments);
+    console.info("DATABASE: ");
+    console.log(arguments);
     var deferred = $q.defer();
     deferred.resolve({
       validCreds: true,
@@ -72,7 +78,11 @@ app.factory('database_mock', function ($q) {
   };
   
   public.initSections = function () {
-    console.info("DATABASE: " + arguments);   
+    console.info("DATABASE: ");
+    console.log(arguments);
+    var deferred = $q.defer();
+    deferred.resolve({message: 'successful init section'});
+    return deferred.promise;
   }
   
   public.getSections = function () {
@@ -102,7 +112,11 @@ app.factory('database_mock', function ($q) {
   }
   
   public.initSubSections = function () {
-    console.info("DATABASE: " + arguments);
+    console.info("DATABASE: ");
+    console.log(arguments);
+    var deferred = $q.defer();
+    deferred.resolve({message: 'successful init Subsectionss'});
+    return deferred.promise;
   }
   
   public.getSubSections = function () {

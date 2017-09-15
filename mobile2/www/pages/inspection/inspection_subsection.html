@@ -21,13 +21,13 @@
                          vertical-align:middle; border-radius:0; 
                          text-transform:none; background-color:#FFF;  height:52px;" 
                        class="md-no-style" 
-                       aria-label="{{subsection.susSectionTitle}}"
+                       aria-label="{{subsection.susTitle}}"
                        layout="row" 
                        layout-align="start center"
                        ng-click="">
                     <input type="text" 
                            ng-disabled="true" 
-                           ng-model="subsection.susSectionTitle"
+                           ng-model="subsection.susTitle"
                            class="nonEditInput"
                            style="background-color:inherit;" />
                     <span flex=""></span>
@@ -42,6 +42,7 @@
                         <md-icon md-svg-icon="keyboard_arrow_right"></md-icon>
                     </md-button>
               </div>
+                        <md-divider ng-if="!$last"></md-divider>
         </div>
     </md-card>
     <md-button ng-click="" class="md-raised" aria-label="Save Report">

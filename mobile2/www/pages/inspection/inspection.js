@@ -158,14 +158,14 @@ app.controller('inspection_section', function($scope, database, header_manager, 
     
   // Init Section Data
   // Only run once to generate data in db
-  /*var initSection = database.initSections();
+  var initSection = database.initSections();
   initSection.then(
     function(promise) {
       console.log(promise.message);
     }, function(promise) {
       console.log(promise.message);    
     }
-  );*/
+  );
     
   var sectionGetter = database.getSections();
   sectionGetter.then(
@@ -192,16 +192,16 @@ app.controller('inspection_subsection', function($scope, database, header_manage
     
   // Init Section Data
   // Only run once to generate data in db
-  /*var initSection = database.initSections();
-  initSection.then(
+  var initSubsection = database.initSubSections();
+  initSubsection.then(
     function(promise) {
       console.log(promise.message);
     }, function(promise) {
       console.log(promise.message);    
     }
-  );*/
+  );
     
-/*  var sectionGetter = database.getSubsections();
+  var subsectionGetter = database.getSubSections();
   subsectionGetter.then(
     function(promise) {
       console.log(promise.message);
@@ -212,11 +212,11 @@ app.controller('inspection_subsection', function($scope, database, header_manage
     }, function(promise) {
       console.log(promise.message);
     }
-  );*/
+  );
   
-    $scope.subsections = [{'susSectionId':1, 'susSectionTitle':'FieldNotes'},
+/*    $scope.subsections = [{'susSectionId':1, 'susSectionTitle':'FieldNotes'},
                           {'susSectionId':2, 'susSectionTitle':'Section 2 ness'}
-                         ];
+                         ];*/
     
 });
 

@@ -20,11 +20,13 @@ app.config(function ($stateProvider) {
 
 
 // Define the page controller
-app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, database) {
+app.controller('inspection', function ($scope, $rootScope, $state, $sha, header_manager, camera_manager, action_manager, database) {
   $scope.reports = [];
+  $sha.setConfig();
+  $scope.hash = $sha.hash("hello world");
 
   header_manager.title = "Inspection";
-  
+
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {
     $state.go('home');

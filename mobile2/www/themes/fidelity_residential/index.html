@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script src="../../node_modules/angular/angular.min.js"></script>
+  <script src="main.js"></script>
+  <script src="images.js"></script>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      font-family: serif;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .page {
+      page-break-inside: avoid;
+      page-break-after: always;
+      position: static;
+      height: 99%;
+      width: 100%;
+    }
+    
+    .main-color {
+      background-color: dodgerblue;
+    }
+    
+    .full-bar {
+      text-align: center;
+      font-size: 20pt;
+      padding: 10px;
+      color: white;
+      width: 100%;
+      margin: 10px 0;
+    }
+    
+    img {
+      max-width: 100%;
+    }
+  </style>
+</head>
+
+<body ng-app="fidelity" ng-controller="main">
+  <div class="page">
+    <div class="main-color full-bar">INSPECTION REPORT</div>
+    <div style="text-align: center; font-family: san-serif;">
+      <img src="{{$root.images.placeholder}}" style="margin: 10px; width: 50%;" />
+      <h3>For the property at:</h3>
+      <h1>11151 Champagne Point Rd</h1>
+      <h3>Kirkland, WA 98034</h3>
+      <h3><i>Prepared for:</i> The Man</h3>
+      <h3><i>Inspection Date:</i> Saturday, January 4, 2014</h3>
+      <h3><i>Prepared by:</i> Rod Beacham, ACI</h3>
+    </div>
+    <div style="margin-top: 35px; text-align: center; font-family: san-serif;">
+      <img src="{{$root.images.placeholder}}" style="margin: 10px; width: 100px; height: 50px;" />
+      <p>Fidelity Bulding Inspections
+        <br /> 16904 Juanita Dr. NE #123
+        <br /> Kenmore, WA 98028
+        <br /> 206-467-7328
+        <br /> 877-278-5940
+        <br /> www.206inspect.com
+        <br /> 206inspect@gmail.com
+      </p>
+    </div>
+    <div class="main-color full-bar" style="position: absolute; bottom: 0;">"a great investment deserves a great inspection"</div>
+  </div>
+  <div class="page">
+    {{manifest.title}}
+  </div>
+</body>
+</html>

@@ -19,23 +19,19 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('themes', function ($scope, $rootScope, $state, theme_manager, header_manager) {
-  $scope.themes = [
-    {
-      "hello": "hi"
-    },
-    {
-      "hello": "hi"
-    },
-    {
-      "hello": "hi"
-    },
-    {
-      "hello": "hi"
-    },
-    {
-      "hello": "hi"
+  $scope.themes = null;
+
+  var theme_promise = theme_manager.getThemes();
+  theme_promise.then(function (themes) {
+    $scope.themes = [];
+    for (var index in themes) {
+      var theme = themes[index];
+      var theme_promise = theme_manager.getThemeManifest(theme);
+      theme_promise.then(function (data) {
+        $scope.themes.push(data);
+      })
     }
-  ];
+  });
 
   header_manager.title = "Themes";
 
@@ -54,18 +50,26 @@ app.controller('themes', function ($scope, $rootScope, $state, theme_manager, he
   $scope.edit = function (theme) {
     console.log(theme);
     $state.go("theme_edit", {
-      "theme": theme
+      params: {
+        "theme": theme
+      }
     });
   };
 
   $scope.preview = function (theme) {
-    console.log(theme);
-    $state.go("theme_preview", {
-      "theme": theme
-    });
+    theme_manager.current = theme;
+    $state.go("theme_preview");
   };
 });
 
 app.controller('theme_edit', function () {});
 
-app.controller('theme_preview', function () {});
+app.controller('theme_preview', function ($scope, $rootScope, theme_manager) {
+  var preview_frame = document.querySelector("#preview");
+  var preview_url = "../../../" + theme_manager.current.preview;
+
+  preview_frame.addEventListener('load', function () {
+    preview_frame.contentWindow.PDFViewerApplication.open(preview_url);
+  })
+
+});

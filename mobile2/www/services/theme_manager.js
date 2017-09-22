@@ -4,10 +4,37 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q) {
 
   private.themeRoot = "themes";
 
+  public.current = null;
+
   public.getThemes = function () {
     var defered = $q.defer();
+    if (window['cordova'] == undefined) {
+      // Desktop Browser Implementation
+      defered.resolve(["fidelity_residential", "fidelity_commercial"]);
 
-    // TODO: get all themes
+    } else {
+      // Device Implementation
+      var file_system = resolveLocalFileSystemURL;
+      var path = cordova.file.applicationDirectory + "www/themes/";
+
+      var result = file_system(path, function (fileSystem) {
+        var reader = fileSystem.createReader();
+        reader.readEntries(success, error);
+      }, error);
+      //postMessage(result);
+
+      var success = function (files) {
+        var themes = [];
+        for (var index in files) {
+          themes.push(files[index].name);
+        }
+        defered.resolve(themes);
+      };
+
+      var error = function (err) {
+        defered.reject(err);
+      }
+    }
 
     return defered.promise;
   }
@@ -18,8 +45,12 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q) {
     $sce.trustAsUrl(resource);
 
     $http.get(resource)
-      .then(function (reponse) {
-          defered.resolve(reponse.data);
+      .then(function (response) {
+          response.data['entry_point'] = private.themeRoot + "/" + key + "/" + response.data['entry_point'];
+          response.data['preview'] = private.themeRoot + "/" + key + "/" + response.data['preview'];
+          response.data['thumbnail'] = private.themeRoot + "/" + key + "/" + response.data['thumbnail'];
+          public.current = response;
+          defered.resolve(response.data);
         },
         function (error) {
           defered.reject(error);
@@ -33,7 +64,7 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q) {
 
     manifest_promise.then(
       function (manifest) {
-        defered.resolve(private.themeRoot + "/" + key + "/" + manifest.entry_point);
+        defered.resolve(manifest.entry_point);
       },
       function (error) {
         defered.reject(error);

@@ -162,7 +162,157 @@ app.factory('database_mock', function ($q) {
       }});
     return deferred.promise;
   };
-       
+ public.getInspectionById = function (id) {
+    var deferred = $q.defer();
+    deferred.resolve({'messages':'success', 
+                      'value':
+      {
+        'insLastModified': '9-12-17', 
+        'insLastSubmitted': '9-12-17', 
+        'insJobId': 10, 
+        'insType': 'Residential', 
+        'insName': 'Smith Inspection', 
+        'insUserId': 1,
+        'rowId': 0, 
+        'insId': 0, 
+        'sections':[
+            {   
+                'title':'Colors',
+                'subsections':[
+            {
+                'title':'Good Colors',
+                'questions':[
+                {
+                'title': 'What are your favorite colors?',
+                'description': 'Just pick the ones you actually like.',
+                'type': 'photo',
+                'values': [
+                      {
+                        'key': 'orange',
+                        'remark': ''
+                      },
+                      {
+                        'key': 'red'
+                      },
+                      {
+                        'key': 'green'
+                      },
+                      {
+                        'key': 'pink'
+                      },
+                      {
+                        'key': 'purple mountain majesty'
+                      },
+                      {
+                        'key': 'yellow'
+                      }
+                ],
+                'answers': [
+                        'orange'
+                    ],
+                'answer': null,
+                'value': null,
+                'validation': {
+                  'type': 'number',
+                  'min': null,
+                  'max': null,
+                  'isRequired': true
+                },
+                'notApplicable': false,
+                'severity': null,
+                'showSummaryRemark':true,
+                'showDescription':true,
+                'photos':[]
+              },
+               {
+                'title': 'What are your favorite colors?',
+                'description': 'Just pick the ones you actually like.',
+                'type': 'checkbox',
+                'values': [
+                      {
+                        'key': 'orange',
+                        'remark': ''
+                      },
+                      {
+                        'key': 'red'
+                      },
+                      {
+                        'key': 'green'
+                      },
+                      {
+                        'key': 'pink'
+                      },
+                      {
+                        'key': 'purple mountain majesty'
+                      },
+                      {
+                        'key': 'yellow'
+                      }
+                ],
+                'answers': [
+                        'orange'
+                    ],
+                'answer': null,
+                'value': null,
+                'validation': {
+                  'type': 'number',
+                  'min': null,
+                  'max': null,
+                  'isRequired': true
+                },
+                'notApplicable': false,
+                'severity': null,
+                'showSummaryRemark':true,
+                'showDescription':true,
+                'photos':[]
+              },
+               {
+                'title': "What is Stephen's favorite color?",
+                'description': 'Just pick the ones you actually like.',
+                'type': 'radioButton',
+                'values': [
+                      {
+                        'key': 'orange',
+                        'remark': ''
+                      },
+                      {
+                        'key': 'red'
+                      },
+                      {
+                        'key': 'green'
+                      },
+                      {
+                        'key': 'pink'
+                      },
+                      {
+                        'key': 'purple mountain majesty'
+                      },
+                      {
+                        'key': 'yellow'
+                      }
+                ],
+                'answers': [
+                        'orange'
+                    ],
+                'answer': null,
+                'value': null,
+                'validation': {
+                  'type': 'number',
+                  'min': null,
+                  'max': null,
+                  'isRequired': true
+                },
+                'notApplicable': false,
+                'severity': null,
+                'showSummaryRemark':true,
+                'showDescription':true,
+                'photos':[]
+              }
+            ]}
+        ]}]
+      }});
+    return deferred.promise;
+  };
     
   public.getReports = function() {
     console.info("DATABASE: " + arguments);

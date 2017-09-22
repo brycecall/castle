@@ -173,7 +173,7 @@ app.factory('inspection_manager', function (database, $q) {
                         subsection = section.subsections[subsectionIndex];
                         if (subsection.questions) {
                             questions = subsection.questions;
-                            defer.resolve(questions);
+                            defer.resolve({'value':questions});
                         } else {
                             defer.reject(questions);
                         }

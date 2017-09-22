@@ -240,10 +240,10 @@ app.controller('inspection_question', function($scope, inspection_manager, heade
              'subsectionIndex':$scope.subsectionIndex                         
          });
   });
-  
+    
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
-    function(data){
-        $scope.questions = data;
+    function (data) {
+      $scope.questions = data.value;
     },
     function(data){
         console.log("Error... no questions exist in the database");
@@ -277,59 +277,89 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
              'subsectionIndex':$scope.subsectionIndex
          });
   });
+
+  $scope.question = {
+  };
+  $scope.questionCount = -1;
+  inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
+    function (data) {
+        $scope.questionCount = data.value.length;
+        $scope.question = data.value[$scope.questionIndex];
+    },
+    function (data) {
+      console.log("Error... no question exists in the database");
+    }
+  );
+    
+  var navigateQuestions = function(forward) {
+      if ($scope.questionCount !== -1 && $scope.questionCount > 1) {
+      var newQuestionIndex = $scope.questionIndex;
+      if (forward) {
+          if ($scope.questionIndex >= $scope.questionCount -1) {
+              newQuestionIndex = 0;
+          } else {
+              newQuestionIndex++;
+          }
+      } else {
+          if ($scope.questionIndex <= 0) { 
+              newQuestionIndex = $scope.questionCount - 1;
+          } else {
+              newQuestionIndex--;
+          }
+      }
+      $state.go('inspection_detail', {
+        'insId': $scope.insId,
+        'sectionIndex': $scope.sectionIndex,
+        'subsectionIndex': $scope.subsectionIndex,
+        'questionIndex': newQuestionIndex
+      });
+      }
+  }; 
+    
   action_manager.mode = ACTION_MODES.Action;
-  action_manager.addAction("Previous", "keyboard_arrow_left", function () {}, 'md-raised');
-  action_manager.addAction("Next", "keyboard_arrow_right", function () {}, 'md-raised');
+  action_manager.addAction("Previous", "keyboard_arrow_left", function(){
+      navigateQuestions(false);
+  }, 'md-raised');
+  action_manager.addAction("Next", "keyboard_arrow_right", function(){
+      navigateQuestions(true);
+  }, 'md-raised');
 
   $scope.addPhotos = function () {
     angular.copy($scope.question.photos, camera_manager.photos);
     $state.go('camera');
   };
-    
-  $scope.question = {
-    'value': ''
-  };
-  inspection_manager.getQuestion($scope.insId, $scope.sectionIndex, $scope.subsectionIndex, $scope.questionIndex).then(
-      function(data){
-          $scope.question = data;
-      },
-      function(data){
-          console.log("Error... no question exists in the database");
-      }
-  );    
 
   $scope.otherValue = {
-    'value': '',
     'singleSelect': ''
   };
-    
-  (function() {
-    if ($scope.question.value.type == 'photo') {
-        $scope.question.value.photos = [];
-        for (var photoIndex in camera_manager.photos) {
-            var photo = camera_manager.photos[photoIndex];
-            if (!photo.deleted) {
-                $scope.question.value.photos.push(photo);
-            }
+
+  (function () {
+    if ($scope.question.type == 'photo') {
+      $scope.question.photos = [];
+      for (var photoIndex in camera_manager.photos) {
+        var photo = camera_manager.photos[photoIndex];
+        if (!photo.deleted) {
+          $scope.question.photos.push(photo);
         }
       }
     camera_manager.photos = [];
+    }
   })();
 
-  $scope.$watch('otherValue.value', function (newVal, oldVal) {
-    var list = $scope.question.value.answers;
-    var index = $scope.question.value.answers.indexOf(oldVal);
+  $scope.$watch('otherValue', function (newVal, oldVal) {
+    var list = $scope.question.answers;
+    var index = $scope.question.answers.indexOf(oldVal);
     if (index > -1) {
-      $scope.question.value.answers.splice(index, 1);
+      $scope.question.answers.splice(index, 1);
     }
     if (newVal) {
-      $scope.question.value.answers.push(newVal);
+      $scope.question.answers.push(newVal);
     }
   });
 
   $scope.$watch('otherValue.singleSelect', function (newVal, oldVal) {
     if (newVal) {
-       $scope.question.value.answer = newVal;
+      $scope.question.answer = newVal;
     }
 
   });
@@ -354,7 +384,7 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
   };
 
   $scope.setSeverity = function (value) {
-    $scope.question.value.severity = value;
+    $scope.question.severity = value;
   };
 
   $scope.severityList = [

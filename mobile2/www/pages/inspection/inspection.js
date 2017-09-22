@@ -71,19 +71,7 @@ app.config(function ($stateProvider) {
 // Define the page controller
 app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
   $scope.inspections = [];
- 
-/*  var getInsp = inspection_manager.getInspectionById(1);
-  getInsp.then(
-    function(promise) {
-      console.log(promise.message);
-      for (var i = 0; i < promise.row.length; i++) {
-        $scope.inspections.push(promise.row.item(i));
-        console.log(promise.row.item(i));
-      }
-    }, function(promise) {
-      console.log(promise.message);
-    }
-  )*/
+
   $scope.goToInspection = function(insId) {
       $state.go('inspection_section', {'insId':insId});
   };
@@ -138,7 +126,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
   $scope.themes = [];
   $scope.templates = [];
   $scope.toSection = function(insId) {
-      $state.go('inspection_section', { 'insId': 0});
+      $state.go('inspection_section', { 'insId': 1});
   }
 
   // Get themes & templates

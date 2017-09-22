@@ -27,14 +27,20 @@ app.factory('inspection_manager', function (database, $q) {
         console.log(promise.message);
       }
   );*/
-    public.getInspection = function(id) {   
+    public.getInspection = function(id) {
+        console.log('Inspection Manager Get Inspection ID: ' + id);
         var defer = $q.defer();
 
         if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== id) {
-                database.getInspection(id).then(
+                database.getInspectionById(id).then(
                 function (promise) {
-                   private.inspection = promise.value; //success
+                   //private.inspection = promise.value; //success
+                   //console.log(private.inspection);
+                   for (var i = 0; i < promise.row.length; i++) {
+                     console.log(promise.row.item(i));
+                   }
                    defer.resolve(private.inspection);
+                   console.log(promise.message);
                 },
                 function (promise) {
                     private.inspection = {}; //failure eh?
@@ -67,13 +73,14 @@ app.factory('inspection_manager', function (database, $q) {
     public.getSections = function(insId) {
         var defer = $q.defer();
         var sections = [];
-        public.getInspection(insId).then(function(data){
-            if (data.sections) {
-                sections = data.sections;
-                defer.resolve(sections);
-            } else {
-                defer.reject(sections);
+        database.getSections(insId).then(function(data){
+            var section = {};
+            for (var i = 0; i < data.row.length; i++) {
+              section.title = data.row.item(i).title;
+              sections.push(section);
+              section = {};
             }
+            defer.resolve(sections);
         }, function() {
             defer.reject(sections);
         });

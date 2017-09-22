@@ -295,6 +295,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     }
 
     public.initSections = function() {
+      console.log('db initSections being called');
       var deferred = $q.defer();
       db.sqlBatch([
         ['INSERT INTO Section (secTitle, secInspectionId) Values (?, ?)', ['Field Notes', 1]],
@@ -323,9 +324,12 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       return deferred.promise;        
     }
     
-    public.getSections = function() {
+    public.getSections = function(inspectionId) {
+      var inspId = parseInt(inspectionId);
+      console.log('db getSections Inspection Id: ' + inspId);
+      console.log(typeof(inspId));
       var deferred = $q.defer();
-      db.executeSql('SELECT rowId AS [rowId], * FROM Section', [], function(res) {
+      db.executeSql('SELECT rowId AS [rowId], secTitle AS [title], secInspectionId FROM Section WHERE secInspectionId = ?', [inspId], function(res) {
         if(res.rows.length > 0) {
           deferred.resolve({row: res.rows, message: 'Successful select from Section'});
         } else {
@@ -338,6 +342,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     }
     
    public.initSubSections = function() {
+      console.log('db initSubSections');
       var deferred = $q.defer();
       db.sqlBatch([
         ['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', ['Observations', 1]],
@@ -388,8 +393,9 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
    }
    
    public.getSubSections = function(sectionId) {
+      console.log('db getSubSections');
       var deferred = $q.defer();
-      db.executeSql('SELECT rowId AS [rowId], * FROM SubSection WHERE susSectionId = ?', [sectionId], function(res) {
+      db.executeSql('SELECT rowId AS [rowId], susTitle AS [title], susSectionId FROM SubSection WHERE susSectionId = ?', [sectionId], function(res) {
         if(res.rows.length > 0) {
           deferred.resolve({row: res.rows, message: 'Successful select from SubSection'});
         } else {
@@ -401,8 +407,23 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       return deferred.promise;       
    }
    
+   public.getQuestions = function(subSectionId) {
+      console.log('db getQuestions');
+      var deferred = $q.defer();
+      db.executeSql('SELECT rowId AS [rowId], queTitle AS [title], queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription FROM Question WHERE queSubSectionId = ?', [sectionId], function(res) {
+        if(res.rows.length > 0) {
+          deferred.resolve({row: res.rows, message: 'Successful select from Question'});
+        } else {
+          deferred.resolve({message: 'No data in Question table'});
+        }
+      }, function(error) {
+        deferred.reject({message: 'Error trying to select from Question table'});
+      });
+      return deferred.promise;    
+   }
    // Insert Necessary Data for Full Inspection
    public.initFullInspection = function() {
+     console.log('db initFullInspection');
      var deferred = $q.defer();
      db.sqlBatch([
         ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Person(s) Present', '', 1, false, false, 'checkbox', null, null, false, true, true]],
@@ -559,11 +580,14 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
        return deferred.promise;
    }
    
-   public.getInspectionById = function(inspectionId) {
+   public.getFullInspectionById = function(inspectionId) {
+       var inspId = parseInt(inspectionId); // ensure id is an int
+       console.log('db getInspectionById ID: ' + inspId);
+       console.log(typeof(inspId));
        var deferred = $q.defer();
-       db.executeSql('SELECT * FROM Answer AS ans LEFT JOIN Question AS ques ON ques.rowid = ans.ansQuestionId LEFT JOIN SubSection AS subsec ON subsec.rowid = ques.queSubSectionId LEFT JOIN Section AS sec ON sec.rowid = subsec.susSectionId LEFT JOIN Inspection AS insp on insp.rowid = sec.secInspectionId WHERE insp.rowid = ?', [inspectionId], function(res) {
+       db.executeSql('SELECT * FROM Answer AS ans LEFT JOIN Question AS ques ON ques.rowid = ans.ansQuestionId LEFT JOIN SubSection AS subsec ON subsec.rowid = ques.queSubSectionId LEFT JOIN Section AS sec ON sec.rowid = subsec.susSectionId LEFT JOIN Inspection AS insp on insp.rowid = sec.secInspectionId WHERE insp.rowid = ?', [inspId], function(res) {
            if(res.rows.length > 0) {
-             deferred.resolve({row: res.rows, message: "Successful select of all Inspection data for Inspection#: " + inspectionId});
+             deferred.resolve({row: res.rows, message: "Successful select of all Inspection data for Inspection#: " + inspId});
            } else {
              deferred.resolve({row: [], message: 'No associated tables had data'});
            }
@@ -572,6 +596,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
        });
        return deferred.promise;
    }
+   
    /* SELECT USAGE
      var select = database.select('SELECT * FROM USER', []);
      select.then(

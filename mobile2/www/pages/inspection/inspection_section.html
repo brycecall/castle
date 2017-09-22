@@ -10,8 +10,8 @@
       <div ng-repeat="section in sections track by $index" layout="column" layout-align="center stretch" style="text-align-left;" ng-init="clicked = false">
         <div style="padding:0px 0px 0px 16px; margin:0;
                          vertical-align:middle; border-radius:0; 
-                         text-transform:none; background-color:#FFF;  height:52px;" class="md-no-style" aria-label="{{section.secTitle}}" layout="row" layout-align="start center" ng-click="">
-          <input type="text" ng-disabled="true" ng-model="section.secTitle" class="nonEditInput" style="background-color:inherit;" />
+                         text-transform:none; background-color:#FFF;  height:52px;" class="md-no-style" aria-label="{{section.title}}" layout="row" layout-align="start center" ng-click="">
+          <input type="text" ng-disabled="true" ng-model="section.title" class="nonEditInput" style="background-color:inherit;" />
           <span flex=""></span>
           <!-- TODO: Add boolean to below Checkmark icon (should only show when the section is 'done'-->
           <md-icon md-svg-icon="check" class="md-primary" style="min-width:24px;"></md-icon>

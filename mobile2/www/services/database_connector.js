@@ -586,12 +586,12 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
        return deferred.promise;
    }
    
-   public.getFullInspectionById = function(inspectionId) {
+   public.getInspectionById = function(inspectionId) {
        var inspId = parseInt(inspectionId); // ensure id is an int
        console.log('db getInspectionById ID: ' + inspId);
        console.log(typeof(inspId));
        var deferred = $q.defer();
-       db.executeSql('SELECT * FROM Answer AS ans LEFT JOIN Question AS ques ON ques.rowid = ans.ansQuestionId LEFT JOIN SubSection AS subsec ON subsec.rowid = ques.queSubSectionId LEFT JOIN Section AS sec ON sec.rowid = subsec.susSectionId LEFT JOIN Inspection AS insp on insp.rowid = sec.secInspectionId WHERE insp.rowid = ?', [inspId], function(res) {
+       db.executeSql('SELECT *, insp.rowid AS [rowId] FROM Answer AS ans LEFT JOIN Question AS ques ON ques.rowid = ans.ansQuestionId LEFT JOIN SubSection AS subsec ON subsec.rowid = ques.queSubSectionId LEFT JOIN Section AS sec ON sec.rowid = subsec.susSectionId LEFT JOIN Inspection AS insp on insp.rowid = sec.secInspectionId WHERE insp.rowid = ?', [inspId], function(res) {
            if(res.rows.length > 0) {
              deferred.resolve({row: res.rows, message: "Successful select of all Inspection data for Inspection#: " + inspId});
            } else {

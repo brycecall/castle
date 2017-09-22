@@ -36,11 +36,53 @@ app.factory('inspection_manager', function (database, $q) {
                 function (promise) {
                    //private.inspection = promise.value; //success
                    //console.log(private.inspection);
-                   for (var i = 0; i < promise.row.length; i++) {
-                     console.log(promise.row.item(i));
-                   }
+                   //for (var i = 0; i < promise.row.length; i++) {
+                //     console.log(promise.row.item(i));
+                //   }
+                  // build inspection object
+                private.inspection.insLastModified = promise.row.item(0).insLastModified;
+                private.inspection.insLastSubmitted = promise.row.item(0).insLastSubmitted;
+                private.inspection.insJobId = promise.row.item(0).insJobId;
+                private.inspection.insType = promise.row.item(0).insType;
+                private.inspection.insName = promise.row.item(0).insName;
+                private.inspection.insUserId = promise.row.item(0).insUserId;
+                private.inspection.rowId = promise.row.item(0).rowId;
+                private.inspection.insId = promise.row.item(0).rowId;
+                private.inspection.sections = [];
+                console.log(private.inspection);
+                for (var i = 0; i < promise.row.length; i++) {
+                    // Check if sections array is empty
+                    if(private.inspection.sections.length == 0) {
+                      console.log('Sections empty, adding first title found');
+                      var section = {
+                          title: promise.row.item(i).secTitle, 
+                          subsections: []
+                      };
+                      private.inspection.sections.push(section);
+                    } else {
+                      console.log('sections not empty');
+                      //Otherwise, loop through sections to see if we already have that one
+                      var foundTitle = false;
+                      for (var j = 0; j < private.inspection.sections.length; j++) {
+                        // If found, no pushy
+                        if (private.inspection.sections[j].title == promise.row.item(i).secTitle) {
+                            foundTitle = true;
+                            break;
+                        }
+                      }
+                      if(!foundTitle) {
+                        var section = {
+                          title: promise.row.item(i).secTitle, 
+                          subsections: []
+                        };
+                        private.inspection.sections.push(section);
+                        console.log('sections is not empty, and title was not found. added new title');
+                      }
+                    }
+                }
+                    
                    defer.resolve(private.inspection);
-                   console.log(promise.message);
+                   //console.log(promise.message);
                 },
                 function (promise) {
                     private.inspection = {}; //failure eh?
@@ -73,13 +115,14 @@ app.factory('inspection_manager', function (database, $q) {
     public.getSections = function(insId) {
         var defer = $q.defer();
         var sections = [];
-        database.getSections(insId).then(function(data){
+        public.getInspection(insId).then(function(data){
             var section = {};
-            for (var i = 0; i < data.row.length; i++) {
+            console.log(data);
+            /*for (var i = 0; i < data.row.length; i++) {
               section.title = data.row.item(i).title;
               sections.push(section);
               section = {};
-            }
+            }*/
             defer.resolve(sections);
         }, function() {
             defer.reject(sections);

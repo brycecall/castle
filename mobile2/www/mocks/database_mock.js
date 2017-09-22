@@ -24,8 +24,13 @@ app.factory('database_mock', function ($q) {
         'insUserId': 1,
         'rowId': 0, 
         'insId': 0, 
-        'sections':[{'subSections':[
-            {'questions':[
+        'sections':[
+            {   
+                'title':'Colors',
+                'subsections':[
+            {
+                'title':'Good Colors',
+                'questions':[
                 {
                 'title': 'What are your favorite colors?',
                 'description': 'Just pick the ones you actually like.',

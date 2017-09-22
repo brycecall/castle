@@ -73,7 +73,9 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   $scope.inspections = [];
 
   $scope.goToInspection = function(insId) {
-      $state.go('inspection_section', {'insId':insId});
+    $state.go('inspection_section', {
+      'insId': insId
+    });
   };
     
   $scope.reports = [];
@@ -122,7 +124,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   );
 });
 
-app.controller('inspection_new', function ($scope, $state, $rootScope, inspection_manager) {
+app.controller('inspection_new', function ($scope, $state, $rootScope, inspection_manager, theme_manager) {
   $scope.themes = [];
   $scope.templates = [];
   $scope.toSection = function(insId) {
@@ -130,14 +132,15 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
   }
 
   // Get themes & templates
-  var themeGetter = inspection_manager.getThemes();
+  var themeGetter = theme_manager.getThemes();
   themeGetter.then(
     //Success
     function (promise) {
-      console.log(promise.message);
-      console.log(promise.row);
-      for (var i = 0; i < promise.row.length; i++) {
-        $scope.themes.push(promise.row.item(i));
+      for (var i in promise) {
+        var manifest_promise = theme_manager.getThemeManifest(promise[i]);
+        manifest_promise.then(function (data) {
+          $scope.themes.push(data.title)
+        })
       }
       //Fail
     },
@@ -198,7 +201,9 @@ app.controller('inspection_subsection', function($scope, inspection_manager, hea
   $scope.subsections = [];
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function() {
-         $state.go('inspection_section', {'insId':$scope.insId});
+    $state.go('inspection_section', {
+      'insId': $scope.insId
+  });
   });
     
   inspection_manager.getSubSections($scope.insId, $scope.sectionIndex).then(
@@ -281,7 +286,9 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
     $state.go('camera');
   };
     
-  $scope.question = {'value':''};
+  $scope.question = {
+    'value': ''
+  };
   inspection_manager.getQuestion($scope.insId, $scope.sectionIndex, $scope.subsectionIndex, $scope.questionIndex).then(
       function(data){
           $scope.question = data;

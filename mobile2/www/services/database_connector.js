@@ -175,7 +175,13 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
         insUserId: 1,
         'rowId':0, 
         'insId': 0, 
-        'sections':[{'subSections':[{'questions':[{
+        'sections':[
+            {
+                'title':'Colors',
+                'subSections':[
+            {
+            'title':'Cool Colors',
+            'questions':[{
         'title': 'What are your favorite colors?',
         'description': 'Just pick the ones you actually like.',
         'type': 'photo',

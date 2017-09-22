@@ -2,33 +2,29 @@
 <div flex="" layout="column" class="page" id="nav">
   <md-content>
     <div class="centerPage" id="centerPage">
-       <h3 class="md-subhead insTitle">Select Theme</h3>
-       <md-card>
-           <md-input-container style="padding: 0px 16px 8px 16px;">
-               <md-select ng-model="sTheme" 
-                          placeholder="Pick a Theme"
-                          md-on-close="">
-                   <md-option ng-repeat="theme in themes
+      <h3 class="md-subhead insTitle">Select Theme</h3>
+      <md-card>
+        <md-input-container style="padding: 0px 16px 8px 16px;">
+          <md-select ng-model="sTheme" placeholder="Pick a Theme" md-on-close="">
+            <md-option ng-repeat="theme in themes
                                          track by $index" ng-value="theme">
-                                         {{theme.themeTitle}}</md-option>
-               </md-select>
-           </md-input-container>
-       </md-card>
-       <h3 class="md-subhead insTitle">Select Template</h3>
-       <md-card>
-           <md-input-container style="padding: 0px 16px 8px 16px;">
-               <md-select ng-model="sTemplate" 
-                          placeholder="Pick a Template"
-                          md-on-close="">
-                   <md-option ng-repeat="template in templates
+              {{theme}}</md-option>
+          </md-select>
+        </md-input-container>
+      </md-card>
+      <h3 class="md-subhead insTitle">Select Template</h3>
+      <md-card>
+        <md-input-container style="padding: 0px 16px 8px 16px;">
+          <md-select ng-model="sTemplate" placeholder="Pick a Template" md-on-close="">
+            <md-option ng-repeat="template in templates
                                          track by $index" ng-value="template">
-                                         {{template.temTitle}}</md-option>
-               </md-select>
-           </md-input-container>
-       </md-card>
-       <md-button ng-click="toSection()" class="md-raised md-primary" aria-label="Start Report">
-         Start Inspection
-       </md-button>
+              {{template.temTitle}}</md-option>
+          </md-select>
+        </md-input-container>
+      </md-card>
+      <md-button ng-click="toSection()" class="md-raised md-primary" aria-label="Start Report">
+        Start Inspection
+      </md-button>
     </div>
   </md-content>
 </div>

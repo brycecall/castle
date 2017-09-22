@@ -111,16 +111,22 @@ app.factory('inspection_manager', function (database, $q) {
     public.getSubSections = function(insId, sectionIndex) {
         var defer = $q.defer();
         var section = {};
-        var subSections = [];
+        var subsections = [];
         public.getInspection(insId).then(function(data) {
             if (data.sections) {
-                subSections = data.sections[sectionIndex];
-                    defer.resolve(subSections);
+                section = data.sections[sectionIndex];
+                if (section.subsections) {
+                    subsections = section.subsections;
+                    defer.resolve(subsections);
+                } else {
+                    defer.reject(subsections);
+                }
+                    
             } else {
-                defer.reject(subSections);
+                defer.reject(subsections);
             }
         }, function() {
-            defer.reject(subSections);
+            defer.reject(subsections);
         });
         return defer.promise;
         //return database.getSubSections();
@@ -135,8 +141,8 @@ app.factory('inspection_manager', function (database, $q) {
             function(data){
                 if (private.inspection.sections) {
                     section = private.inspection.sections[sectionIndex];
-                    if (section.subSections) {
-                        subsection = section.subSections[subsectionIndex];
+                    if (section.subsections) {
+                        subsection = section.subsections[subsectionIndex];
                         defer.resolve(subsection);
                     } else {
                         defer.reject(subsection);
@@ -163,8 +169,8 @@ app.factory('inspection_manager', function (database, $q) {
             function(data){
                 if (private.inspection.sections) {
                     section = private.inspection.sections[sectionIndex];
-                    if (section.subSections) {
-                        subsection = section.subSections[subsectionIndex];
+                    if (section.subsections) {
+                        subsection = section.subsections[subsectionIndex];
                         if (subsection.questions) {
                             questions = subsection.questions;
                             defer.resolve(questions);
@@ -194,8 +200,8 @@ app.factory('inspection_manager', function (database, $q) {
             function(data){
                 if (private.inspection.sections) {
                     section = private.inspection.sections[sectionIndex];
-                    if (section.subSections) {
-                        subsection = section.subSections[subsectionIndex];
+                    if (section.subsections) {
+                        subsection = section.subsections[subsectionIndex];
                         if (subsection.questions) {
                             question = subsection.questions[questionIndex];
                             defer.resolve({ 'value':question });

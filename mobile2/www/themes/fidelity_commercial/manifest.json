@@ -1,0 +1,41 @@
+{
+  "title": "Fidelity Commercial",
+  "unique": "fidelity_commercial",
+  "hash": "b94d27b9934d3e08a52e52d7da7dabfac484ef237a5380ee9088f7ace2efcde0",
+  "version": 0.1,
+  "api_version": 0.1,
+  "date_created": "11/13/2017 11:30:25 PM",
+  "last_modified": "11/13/2017 11:30:25 PM",
+  "author": "Invenio",
+  "entry_point": "index.html",
+  "preview": "preview.pdf",
+  "thumbnail": "thumbnail.png",
+  "template": [
+    {
+      "title": "Client Information",
+      "subsections": [
+        {
+          "title": "Property Information",
+          "questions": [
+            {
+              "title": "Street Address",
+              "type": "text"
+            },
+            {
+              "title": "City / Town",
+              "type": "text"
+            },
+            {
+              "title": "State",
+              "type": "text"
+            },
+            {
+              "title": "Zip Code",
+              "type": "text"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

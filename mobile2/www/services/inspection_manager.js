@@ -48,9 +48,9 @@ app.factory('inspection_manager', function (database, $q) {
                 private.inspection.insUserId = promise.row.item(0).insUserId;
                 private.inspection.rowId = promise.row.item(0).rowId;
                 private.inspection.insId = promise.row.item(0).rowId;
-                private.inspection.sections = [];
-                console.log(private.inspection);
+                private.inspection.sections = [];             
                 for (var i = 0; i < promise.row.length; i++) {
+                    console.log(promise.row.item(i));
                     // Check if sections array is empty
                     if(private.inspection.sections.length == 0) {
                       console.log('Sections empty, adding first title found');
@@ -80,13 +80,17 @@ app.factory('inspection_manager', function (database, $q) {
                       }
                     }
                 }
+                
+                // Build subsection piece
+                    
+                // Build question piece
                     
                    defer.resolve(private.inspection);
-                   //console.log(promise.message);
                 },
                 function (promise) {
                     private.inspection = {}; //failure eh?
                     defer.reject(private.inspection);
+                    console.log('failure: ' + promise.message)
                 }
             );
         } else {

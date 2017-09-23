@@ -34,12 +34,7 @@ app.factory('inspection_manager', function (database, $q) {
         if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== id) {
                 database.getInspectionById(id).then(
                 function (promise) {
-                   //private.inspection = promise.value; //success
-                   //console.log(private.inspection);
-                   //for (var i = 0; i < promise.row.length; i++) {
-                //     console.log(promise.row.item(i));
-                //   }
-                  // build inspection object
+                // Build Inspection Fields
                 private.inspection.insLastModified = promise.row.item(0).insLastModified;
                 private.inspection.insLastSubmitted = promise.row.item(0).insLastSubmitted;
                 private.inspection.insJobId = promise.row.item(0).insJobId;
@@ -50,7 +45,7 @@ app.factory('inspection_manager', function (database, $q) {
                 private.inspection.insId = promise.row.item(0).rowId;
                 private.inspection.sections = [];             
                 for (var i = 0; i < promise.row.length; i++) {
-                    console.log(promise.row.item(i));
+                    // Build sections
                     // Check if sections array is empty
                     if(private.inspection.sections.length == 0) {
                       console.log('Sections empty, adding first title found');
@@ -79,12 +74,9 @@ app.factory('inspection_manager', function (database, $q) {
                         console.log('sections is not empty, and title was not found. added new title');
                       }
                     }
+                    // Build subsection piece
                 }
-                
-                // Build subsection piece
-                    
                 // Build question piece
-                    
                    defer.resolve(private.inspection);
                 },
                 function (promise) {
@@ -96,7 +88,6 @@ app.factory('inspection_manager', function (database, $q) {
         } else {
             defer.resolve(private.inspection);
         }
-        
         return defer.promise;
     };
     
@@ -120,13 +111,7 @@ app.factory('inspection_manager', function (database, $q) {
         var defer = $q.defer();
         var sections = [];
         public.getInspection(insId).then(function(data){
-            var section = {};
-            console.log(data);
-            /*for (var i = 0; i < data.row.length; i++) {
-              section.title = data.row.item(i).title;
-              sections.push(section);
-              section = {};
-            }*/
+            sections = data.sections;
             defer.resolve(sections);
         }, function() {
             defer.reject(sections);

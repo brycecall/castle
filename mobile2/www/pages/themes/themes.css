@@ -39,6 +39,18 @@ md-input-container {
   page-break-after: always;
 }
 
+.theme .title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  opacity: .85;
+  padding: 10px;
+}
+
 .buttons {
   position: absolute;
   bottom: 10px;

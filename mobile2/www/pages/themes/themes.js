@@ -69,7 +69,9 @@ app.controller('theme_preview', function ($scope, $rootScope, theme_manager) {
   var preview_url = "../../../" + theme_manager.current.preview;
 
   preview_frame.addEventListener('load', function () {
-    preview_frame.contentWindow.PDFViewerApplication.open(preview_url);
+    setTimeout(function () {
+      preview_frame.contentWindow.PDFViewerApplication.open(preview_url);
+    }, 500);
   })
 
 });

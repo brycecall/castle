@@ -78,5 +78,5 @@ app.config(function ($mdIconProvider) {
     .icon('flash_on', icon_root + '/ic_flash_on_24px.svg')
     .icon('flash_off', icon_root + '/ic_flash_off_24px.svg')
     .icon('flare', icon_root + '/ic_flare_24px.svg')
-    ;
+    .icon('help_outline', icon_root + "/help-circle-outline.svg");
 });

@@ -3,7 +3,7 @@
 <html>
 
 <head>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: * 'unsafe-eval' 'unsafe-inline'; style-src * 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
@@ -24,6 +24,9 @@
         <md-button class="md-icon-button" aria-label="home" href="#!home">
           <md-icon md-svg-icon="home_white"></md-icon>
         </md-button>
+        <md-button class="md-icon-button" aria-label="support" href="#!support">
+          <md-icon md-svg-icon="help_outline"></md-icon>
+        </md-button>
       </div>
 
       <div class="md-toolbar-tools" ng-show="service.mode == 2">
@@ -37,6 +40,9 @@
         <md-button class="md-icon-button" aria-label="home" href="#!home">
           <md-icon md-svg-icon="home_white"></md-icon>
         </md-button>
+        <md-button class="md-icon-button" aria-label="support" href="#!support">
+          <md-icon md-svg-icon="help_outline"></md-icon>
+        </md-button>
       </div>
 
       <div class="md-toolbar-tools" ng-show="service.mode == 3">
@@ -44,6 +50,9 @@
         <span flex>
           <h2>{{service.title}}</h2>
         </span>
+        <md-button class="md-icon-button" aria-label="support" href="#!support">
+          <md-icon md-svg-icon="help_outline"></md-icon>
+        </md-button>
       </div>
     </md-toolbar>
     <md-content id="view" ui-view></md-content>
@@ -148,8 +157,7 @@
   <script src="pages/settings/settings.js"></script>
   <script src="pages/templates/templates.js"></script>
   <script src="pages/themes/themes.js"></script>
-
-
+  <script src="pages/support/support.js"></script>
 </body>
 
 </html>

@@ -180,12 +180,10 @@ app.controller('inspection_section', function($scope, inspection_manager, header
             'sectionIndex':sectionIndex
         });
     };
-    
 
-    
   inspection_manager.getSections($scope.insId).then(
     function(data){
-        $scope.sections = data;
+        $scope.sections = data.value;
     },
     function(data){
         console.log("Error... no sections exist in the database");
@@ -206,9 +204,9 @@ app.controller('inspection_subsection', function($scope, inspection_manager, hea
   });
   });
     
-  inspection_manager.getSubSections($scope.insId, $scope.sectionIndex).then(
+  inspection_manager.getSubsections($scope.insId, $scope.sectionIndex).then(
     function(data){
-        $scope.subsections = data;
+        $scope.subsections = data.value;
     },
     function(data){
         console.log("Error... no subsections exist in the database");

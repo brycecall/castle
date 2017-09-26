@@ -24,6 +24,9 @@
         },
         "cordova-sqlite-storage": {
             "PACKAGE_NAME": "com.castle.inspect"
+        },
+        "cordova-plugin-ios-camera-permissions": {
+            "PACKAGE_NAME": "com.castle.inspect"
         }
     },
     "dependent_plugins": {

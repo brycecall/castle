@@ -43,40 +43,69 @@ app.factory('inspection_manager', function (database, $q) {
                 private.inspection.insUserId = promise.row.item(0).insUserId;
                 private.inspection.rowId = promise.row.item(0).rowId;
                 private.inspection.insId = promise.row.item(0).rowId;
-                private.inspection.sections = [];             
-                for (var i = 0; i < promise.row.length; i++) {
-                    // Build sections
-                    // Check if sections array is empty
-                    if(private.inspection.sections.length == 0) {
-                      console.log('Sections empty, adding first title found');
-                      var section = {
-                          title: promise.row.item(i).secTitle, 
-                          subsections: []
-                      };
-                      private.inspection.sections.push(section);
-                    } else {
-                      console.log('sections not empty');
-                      //Otherwise, loop through sections to see if we already have that one
-                      var foundTitle = false;
-                      for (var j = 0; j < private.inspection.sections.length; j++) {
-                        // If found, no pushy
-                        if (private.inspection.sections[j].title == promise.row.item(i).secTitle) {
-                            foundTitle = true;
-                            break;
-                        }
-                      }
-                      if(!foundTitle) {
-                        var section = {
-                          title: promise.row.item(i).secTitle, 
-                          subsections: []
-                        };
-                        private.inspection.sections.push(section);
-                        console.log('sections is not empty, and title was not found. added new title');
-                      }
+                private.inspection.sections = [];
+                var i = 0;
+                var increment = 0;
+                do {
+                    // Build section
+                    var section = {
+                      title: promise.row.item(i).secTitle,
+                      subsections: []
                     }
-                    // Build subsection piece
-                }
-                // Build question piece
+                    // Build subsections
+                    for (var j = i; promise.row.item(i).secRowId == promise.row.item(j).secRowId; j++) {
+                      debugger;
+                      // Build subsection
+                      var subsection = {
+                          title: promise.row.item(j).susTitle,
+                          questions: []
+                      }                        
+                      // Build questions
+                      // Validation check to make sure there are questions (many subs dont have them currently but this will likely not be the case in the future)
+                      if (promise.row.item(j).queRowId) {
+                        for (var k = j; promise.row.item(j).susRowId == promise.row.item(k).susRowId; k++) {
+                          // Build question object
+                          var question = {
+                              title: promise.row.item(k).queTitle,
+                              description: promise.row.item(k).queDescription,
+                              type: promise.row.item(k).queType,
+                              values: [],
+                              validation: {
+                                type: null,
+                                min: promise.row.item(k).queMin,
+                                max: promise.row.item(k).queMax,
+                                isRequired: promise.row.item(k).queRequired
+                              },
+                              notApplicable: promise.row.item(k).queNotApplicable,
+                              severity: null,
+                              showSummaryRemark: promise.row.item(k).queShowSummaryRemark,
+                              showDescription: promise.row.item(k).queShowDescription,
+                              photos: []
+                          }                          
+                          // Build answers
+                          for (var l = k; promise.row.item(k).queRowId == promise.row.item(l).queRowId; l++) {
+                            var answer = {
+                                key: promise.row.item(l).ansValue,
+                                remark: ''
+                            }
+                            question.values.push(answer);
+                            // Use increment variable to track progress in promise.row data block
+                            increment = l;
+                          }
+                          k = increment;
+                          subsection.questions.push(question);
+                        }
+                        j = increment; 
+                      } else {
+                        // This needs to happen if there are no questions for a subsection, otherwise
+                        // increment will be tracked in questions loop
+                        increment++;
+                      }
+                      section.subsections.push(subsection);
+                    }
+                    private.inspection.sections.push(section);
+                    i = increment + 1;
+                } while (i < promise.row.length - 1);
                    defer.resolve(private.inspection);
                 },
                 function (promise) {

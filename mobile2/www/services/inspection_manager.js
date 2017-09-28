@@ -54,7 +54,6 @@ app.factory('inspection_manager', function (database, $q) {
                     }
                     // Build subsections
                     for (var j = i; promise.row.item(i).secRowId == promise.row.item(j).secRowId; j++) {
-                      debugger;
                       // Build subsection
                       var subsection = {
                           title: promise.row.item(j).susTitle,

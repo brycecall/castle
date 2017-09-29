@@ -35,7 +35,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       db.sqlBatch([
           'CREATE TABLE IF NOT EXISTS Answer (ansQuestionId INT, ansValue, ansType, FOREIGN KEY(ansQuestionid) REFERENCES Question(rowId))',
           'CREATE TABLE IF NOT EXISTS Client (cliFirstName, cliLastName, cliAddress, cliCity, cliState, cliZipCode, cliPhone, cliEmail)',
-          'CREATE TABLE IF NOT EXISTS Inspection (insLastModified, insLastSubmitted, insJobId INT, insType, insName, insUserId INT, insThemeId INT, insThemeResponseBlob, insTemplateId INT, insTemplateResponseBlob, FOREIGN KEY(insUserId) REFERENCES User(rowId), FOREIGN KEY(insJobId) REFERENCES Job(rowId), FOREIGN KEY(insThemeId) REFERENCES Theme(rowId), FOREIGN KEY(insTemplateId) REFERENCES Template(rowId))',
+          'CREATE TABLE IF NOT EXISTS Inspection (insLastModified, insLastSubmitted, insJobId INT, insSourceType, insType, insName, insUserId INT, insThemeId INT, insThemeResponseBlob, insTemplateResponseBlob, insOrganizationId, insTemplateTitle, FOREIGN KEY(insOrganizationId) REFERENCES Organization(rowId), FOREIGN KEY(insUserId) REFERENCES User(rowId), FOREIGN KEY(insJobId) REFERENCES Job(rowId), FOREIGN KEY(insThemeId) REFERENCES Theme(rowId))',
           'CREATE TABLE IF NOT EXISTS Job (jobUserId INT, jobDate, jobAddress, jobZipCode, jobCity, jobState, jobStatus, jobSubmittedDate, FOREIGN KEY(jobUserId) REFERENCES User(rowId))',
           'CREATE TABLE IF NOT EXISTS Organization (orgName, orgAddress, orgLogo, orgCity, orgState, orgZipCode)',
           'CREATE TABLE IF NOT EXISTS Question (queTitle, queDescription, queSubSectionId INT, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, FOREIGN KEY(queSubSectionId) REFERENCES SubSection(rowId))',
@@ -43,7 +43,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
           'CREATE TABLE IF NOT EXISTS ReportHistory (rehInspectionId INT, rehLastModified, rehSubmittedDate, FOREIGN KEY(rehInspectionId) REFERENCES Inspection(rowId))',
           'CREATE TABLE IF NOT EXISTS Section (secTitle, secInspectionId INT, FOREIGN KEY(secInspectionId) REFERENCES Inspection(rowId))',
           'CREATE TABLE IF NOT EXISTS SubSection (susTitle, susSectionId INT, FOREIGN KEY(susSectionId) REFERENCES Section(rowId))',
-          'CREATE TABLE IF NOT EXISTS Template (temOrganizationId INT, temTitle, temBlob, userId INT, FOREIGN KEY(userId) REFERENCES User(rowId), FOREIGN KEY(temOrganizationId) REFERENCES Organization(rowId))',
           'CREATE TABLE IF NOT EXISTS Theme (themeTitle, themeBlob, userId INT, FOREIGN KEY(userId) REFERENCES User(rowId))', 
           'CREATE TABLE IF NOT EXISTS User (usrAddress, usrFirstName, usrLastName, usrPhone, usrEmail, usrType, usrUserAccessId, usrOrganizationId, name, pass, email)',
           'CREATE TABLE IF NOT EXISTS UserAccess (usaTitle, usaOrganizationId, usaEditUsers, usaEditOrgInfo, usaEditTemplate, usaEditRequired, FOREIGN KEY(usaOrganizationId) REFERENCES Organization(rowId))',
@@ -137,18 +136,17 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     // report init
     public.initReports = function () {
       var deferred = $q.defer();
-
       db.sqlBatch([
-      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)',
-        ['9-12-17', '9-12-17', 10, 'Residential', 'Smith Inspection', 1]],
-      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)',
-        ['10-1-17', '9-11-17', 9, 'Residential', 'Jones Inspection', 1]],
-      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)',
-        ['6-12-17', '6-12-17', 13, 'Residential', 'Smith Inspection', 1]],
-      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)',
-        ['9-1-17', '9-1-17', 21, 'Residential', 'Smith Inspection', 1]],
-      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insType, insName, insUserId) Values (?, ?, ?, ?, ?, ?)',
-        ['9-12-17', '9-12-17', 1, 'Commercial', 'Walmart Inspection', 1]],
+      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?, ?, ?)',
+        ['9-12-17', '9-12-17', 10, 'Template', 'Residential', 'Smith Inspection', 1, 'Residential Template']],
+      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?, ?, ?)',
+        ['10-1-17', '9-11-17', 9, 'Inspection', 'Residential', 'Jones Inspection', 1, null]],
+      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?, ?, ?)',
+        ['6-12-17', '6-12-17', 13, 'Inspection', 'Residential', 'Smith Inspection', 1, null]],
+      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?, ?, ?)',
+        ['9-1-17', '9-1-17', 21, 'Inspection', 'Residential', 'Smith Inspection', 1, null]],
+      ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?, ?, ?)',
+        ['9-12-17', '9-12-17', 1, 'Template', 'Commercial', 'Walmart Inspection', 1, 'Commercial Template']],
       ], function (res) {
         deferred.resolve({
           success: true,
@@ -288,7 +286,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     public.getTemplates = function() {
       var deferred = $q.defer();
         
-      db.executeSql('SELECT * FROM Template', [], function(res) {
+      db.executeSql('SELECT * FROM Inspection ins WHERE insSourceType = ?', ['Template'], function(res) {
           if(res.rows.length > 0) {
             deferred.resolve({row: res.rows, message: 'Successful select from Template table'});
           } else {

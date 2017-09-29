@@ -317,8 +317,8 @@ app.factory('database_mock', function ($q) {
   };
   
   public.getTemplates = function() {
-    var columns = [{temOrganizationId: 1, temTitle: 'Home Template', temBlob: 'a whole bunch more text', userId: 1},
-                   {temOrganizationId: 1, temTitle: 'Commercial Template', temBlob: 'a whole bunch more text', userId: 1}];
+    var columns = [{insOrganizationId: 1, insTemplateTitle: 'Home Template', insTemplateResponseBlob: 'a whole bunch more text', insUserId: 1},
+                   {insOrganizationId: 1, insTemplateTitle: 'Commercial Template', insTemplateResponseBlob: 'a whole bunch more text', insUserId: 1}];
     var deferred = $q.defer();
     deferred.resolve({
       row: {

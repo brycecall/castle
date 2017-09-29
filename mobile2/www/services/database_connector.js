@@ -227,7 +227,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     public.getReports = function () {
       var deferred = $q.defer();
 
-      db.executeSql('SELECT rowId as insId, * FROM Inspection ORDER BY insLastSubmitted DESC', [], function (res) {
+      db.executeSql('SELECT rowId as insId, * FROM Inspection WHERE insSourceType = ? ORDER BY insLastSubmitted DESC', ['Inspection'], function (res) {
         if (res.rows.length > 0) {
           deferred.resolve({
             row: res.rows,

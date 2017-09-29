@@ -68,6 +68,30 @@ app.config(function ($stateProvider) {
   });
 });*/
 
+app.service('shareService', function($state) {
+   var shareService = {};
+   shareService.navigate = function(insId, sectionIndex, subsectionIndex ) {
+       if (insId && sectionIndex && subsectionIndex ) 
+       {
+           $state.go('inspection_question', {
+               'insId':insId,
+               'sectionIndex':sectionIndex,
+               'subsectionIndex':subsectionIndex
+           });
+       } else if (insId && sectionIndex ) {
+           $state.go('inspection_subsection', {
+               'insId':insId,
+               'sectionIndex':sectionIndex
+           });
+       } else if (insId) {
+           $state.go('inspection_section', {
+               'insId':insId
+           });
+       }
+   };
+   return shareService;
+}); 
+
 // Define the page controller
 app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
   $scope.inspections = [];
@@ -166,12 +190,13 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
 
 });
 
-app.controller('inspection_section', function($scope, inspection_manager, header_manager, $state, $stateParams) {
+app.controller('inspection_section', function($scope, inspection_manager, header_manager, $state, $stateParams, shareService) {
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
     $state.go('inspection');
   });
   $scope.insId = $stateParams.insId;
+  $scope.navigate = shareService.navigate;
   // All the sections for a specific inspection/report
   $scope.sections = [];
     $scope.goToSubsection = function(sectionIndex) {
@@ -192,9 +217,10 @@ app.controller('inspection_section', function($scope, inspection_manager, header
     
 });
 
-app.controller('inspection_subsection', function($scope, inspection_manager, header_manager, $state, $stateParams) {
+app.controller('inspection_subsection', function($scope, inspection_manager, header_manager, $state, $stateParams, shareService) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
+  $scope.navigate = shareService.navigate;
   // All the sections for a specific inspection/report
   $scope.subsections = [];
   header_manager.mode = HEADER_MODES.Action;
@@ -224,10 +250,11 @@ app.controller('inspection_subsection', function($scope, inspection_manager, hea
 });
 
 
-app.controller('inspection_question', function($scope, inspection_manager, header_manager, $state, $stateParams) {
+app.controller('inspection_question', function($scope, inspection_manager, header_manager, $state, $stateParams, shareService) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
+  $scope.navigate = shareService.navigate;
   // All the sections for a specific inspection/report
   $scope.questions = [];
   header_manager.mode = HEADER_MODES.Action;
@@ -256,13 +283,14 @@ app.controller('inspection_question', function($scope, inspection_manager, heade
             'questionIndex':questionIndex
         });
     };
+    
 });
 
 app.factory('$', function ($window) {
   return $window.jQuery;
 });
 
-app.controller('inspection_detail', function ($scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $stateParams) {
+app.controller('inspection_detail', function ($scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $stateParams, shareService) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
@@ -275,6 +303,8 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
              'subsectionIndex':$scope.subsectionIndex
          });
   });
+    
+  $scope.navigate = shareService.navigate;
 
   $scope.question = {
   };

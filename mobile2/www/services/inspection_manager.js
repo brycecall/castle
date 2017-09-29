@@ -33,9 +33,7 @@ app.factory('inspection_manager', function (database, $q) {
 
         if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== id) {
                 database.getInspectionById(id).then(
-                function (promise) {                
-                    private.inspection = promise.value; //success
-
+                function (promise) {  
                 // Build Inspection Fields
                 private.inspection.insLastModified = promise.row.item(0).insLastModified;
                 private.inspection.insLastSubmitted = promise.row.item(0).insLastSubmitted;
@@ -55,7 +53,7 @@ app.factory('inspection_manager', function (database, $q) {
                       subsections: []
                     }
                     // Build subsections
-                    for (var j = i; promise.row.item(i).secRowId == promise.row.item(j).secRowId; j++) {
+                    for (var j = i; promise.row.item(j) && promise.row.item(i).secRowId == promise.row.item(j).secRowId; j++) {
                       // Build subsection
                       var subsection = {
                           title: promise.row.item(j).susTitle,
@@ -64,7 +62,7 @@ app.factory('inspection_manager', function (database, $q) {
                       // Build questions
                       // Validation check to make sure there are questions (many subs dont have them currently but this will likely not be the case in the future)
                       if (promise.row.item(j).queRowId) {
-                        for (var k = j; promise.row.item(j).susRowId == promise.row.item(k).susRowId; k++) {
+                        for (var k = j; promise.row.item(k) && promise.row.item(j).susRowId == promise.row.item(k).susRowId; k++) {
                           // Build question object
                           var question = {
                               title: promise.row.item(k).queTitle,
@@ -82,9 +80,9 @@ app.factory('inspection_manager', function (database, $q) {
                               showSummaryRemark: promise.row.item(k).queShowSummaryRemark,
                               showDescription: promise.row.item(k).queShowDescription,
                               photos: []
-                          }                          
+                          }
                           // Build answers
-                          for (var l = k; promise.row.item(k).queRowId == promise.row.item(l).queRowId; l++) {
+                          for (var l = k; promise.row.item(l) && promise.row.item(k).queRowId == promise.row.item(l).queRowId; l++) {
                             var answer = {
                                 key: promise.row.item(l).ansValue,
                                 remark: ''
@@ -150,6 +148,22 @@ app.factory('inspection_manager', function (database, $q) {
               section = {};
             }
             defer.resolve(sections);
+        }, function() {
+            defer.reject(sections);
+        });
+        return defer.promise;
+    };
+
+    public.getSections = function(insId) {
+        var defer = $q.defer();
+        var sections = [];
+        public.getInspection(insId).then(function(data){
+            try {
+                sections = data.sections;
+                defer.resolve({'value':sections});
+            } catch(e) {
+                defer.reject(sections);
+            }
         }, function() {
             defer.reject(sections);
         });

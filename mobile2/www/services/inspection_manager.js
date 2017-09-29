@@ -33,9 +33,8 @@ app.factory('inspection_manager', function (database, $q) {
 
         if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== id) {
                 database.getInspectionById(id).then(
-                function (promise) {
-
-  //                 private.inspection = promise.value; //success
+                function (promise) {                
+                    private.inspection = promise.value; //success
 
                 // Build Inspection Fields
                 private.inspection.insLastModified = promise.row.item(0).insLastModified;

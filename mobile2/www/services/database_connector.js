@@ -603,6 +603,50 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
        return deferred.promise;
    }
    
+   // Copies inspection, section, subsection, question, answer to new rows so they can be altered
+   // without affecting the 'master copy'
+   public.copyTemplateToInspection = function(inspectionId) {
+       
+   }
+   
+   // Overwrite the copied template with the actual data of the save
+   public.saveInspection = function(ins) {
+     var timestamp = new Date();
+     console.log('saveInspection start');
+     console.log(ins);
+     var deferred = $q.defer();
+     // Insert Inspection Table Data
+     db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insThemeId, insOrganizationId, insTemplateTitle) VALUES (?,?,?,?,?,?,?,?,?,?)', [timestamp, timestamp, ins.insJobId, ins.insSourceType, ins.insType, ins.insName, ins.insUserId, ins.insThemeId, ins.insOrganizationId, ins.insTemplateTitle], function(res) {
+         //if this is successful, attempt to insert section data
+         ins.sections.forEach(function(section) {
+           db.executeSql('INSERT INTO Section (secTitle, secInspectionId) VALUES (?,?)', [section.title, res.insertId], function(secRes) {
+               console.log(section.title + ' section succesfully inserted. ID: ' + secRes.insertId);
+               //if this is successful, attempt to insert subsection data
+               section.subsections.forEach(function(subsection) {
+                 db.executeSql('INSERT INTO SubSection (susTitle, susSectionId) VALUES (?,?)', [subsection.title, secRes.insertId], function(susRes) {
+                   console.log(subsection.title + ' subsection successfully inserted. ID: ' + susRes.insertId);
+                 }, function(susError) {
+                   console.log('failed subsec insert: ' + susError.message);
+                   deferred.reject({message: 'Error with SubSection save: ' + susError.message});
+                 });
+               });
+           }, function(secError) {
+               deferred.reject({message: 'Error with Section save: ' + secError.message});
+           });
+         });
+         deferred.resolve({rowId: res.insertId, message: 'Successful save into inspection table'});
+     }, function(error) {
+         //if failure, log the failure
+         deferred.reject({message: 'Error saving Inspection: ' + error.message}); 
+     });
+     // Insert Section Data
+     // Insert SubSection Data
+     // Insert Question Data
+     // Insert Answer Data
+     // Insert Question-Answer Data
+     return deferred.promise;
+   }
+   
    /* SELECT USAGE
      var select = database.select('SELECT * FROM USER', []);
      select.then(

@@ -625,6 +625,30 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                section.subsections.forEach(function(subsection) {
                  db.executeSql('INSERT INTO SubSection (susTitle, susSectionId) VALUES (?,?)', [subsection.title, secRes.insertId], function(susRes) {
                    console.log(subsection.title + ' subsection successfully inserted. ID: ' + susRes.insertId);
+                   // If this is successful, attempt to insert question data
+                   subsection.questions.forEach(function(question) {
+                     db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) VALUES (?,?,?,?,?,?,?,?,?,?,?)', [question.title, question.description, secRes.insertId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.validation.type, question.validation.min, question.validation.max, question.notApplicable, question.showSummaryRemark, question.showDescription], function(queRes) {
+                       console.log(question.title + ' question successfully inserted. ID: ' + queRes.insertId); 
+                       // If this is successful, attempt to insert answer data
+                       question.values.forEach(function(answer) {
+                         db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType) VALUES (?,?,?)', [queRes.insertId, answer.key, ], function(ansRes) {
+                           console.log(answer.key + ' answer successfully inserted. ID: ' + ansRes.insertId);
+                           // If this is successful, attempt to insert question-answer data
+                           if(answer.key == question.answer || (question.answers && question.answers.indexOf(answer.key) > -1)) {
+                             db.executeSql('INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId) VALUES (?,?)', [queRes.insertId, ansRes.insertId], function(queAnsRes) {
+                               console.log('Successfully inserted saved answer: ' + answer.key + ' for question title: ' + question.title + '.');
+                             }, function(queAnsError) {
+                               deferred.reject({message: 'Error with QuestionAnswer save: ' + queAnsError.message});     
+                             });
+                           }
+                         }, function(ansError) {
+                           deferred.reject({message: 'Error with Answer save: ' + ansError.message});
+                         });
+                       });
+                     }, function(queError) {
+                       deferred.reject({message: 'Error with Question save: ' + queError.message});   
+                     });
+                   });
                  }, function(susError) {
                    console.log('failed subsec insert: ' + susError.message);
                    deferred.reject({message: 'Error with SubSection save: ' + susError.message});
@@ -639,11 +663,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
          //if failure, log the failure
          deferred.reject({message: 'Error saving Inspection: ' + error.message}); 
      });
-     // Insert Section Data
-     // Insert SubSection Data
-     // Insert Question Data
-     // Insert Answer Data
-     // Insert Question-Answer Data
      return deferred.promise;
    }
    

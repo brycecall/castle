@@ -266,6 +266,18 @@ app.factory('inspection_manager', function (database, $q) {
         });
         return defer.promise;
     };
+    
+    public.saveInspection = function() {
+      var deferred = $q.defer();
+      database.saveInspection(private.inspection).then(function(data) {
+        console.log(data.message);
+        deferred.resolve();
+      }, function(data) {
+        console.log(data.message);
+        deferred.reject();
+      });
+      return deferred.promise;
+    };
 
     return public;
 });

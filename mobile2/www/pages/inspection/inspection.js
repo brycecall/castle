@@ -214,6 +214,10 @@ app.controller('inspection_section', function($scope, inspection_manager, header
         console.log("Error... no sections exist in the database");
     }
   );
+  
+  $scope.saveReport = function() {
+    inspection_manager.saveInspection();
+  }
     
 });
 

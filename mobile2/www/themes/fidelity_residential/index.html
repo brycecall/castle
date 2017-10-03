@@ -58,6 +58,30 @@
       white-space: pre-wrap;
       width: calc(100% - 40px);
     }
+    
+    .section_title {
+      height: 56px;
+      display: flex;
+      justify-content: fles-start;
+      align-items: center;
+      padding: 0 10px;
+      margin: 10px 0;
+      background-color: lightblue;
+      font-weight: bold;
+      font-size: 20pt;
+      color: #333;
+    }
+    
+    .subsection {
+      margin-left: 25px;
+      padding: 10px;
+      border-left: solid 5px #333;
+      min-height: 100px;
+    }
+    
+    .subsection_title {
+      font-size: 18pt;
+    }
   </style>
 </head>
 
@@ -86,6 +110,8 @@
     </div>
     <div class="main-color full-bar" style="position: absolute; bottom: 0;">"a great investment deserves a great inspection"</div>
   </div>
+
+
   <div class="page">
     <img ng-src="{{images.fidelity_logo}}" style="width: 160px; float: right;" />
     <pre>
@@ -117,6 +143,8 @@ Rod Beacham, ACI
 on behalf of
 Fidelity Building Inspections, LLC</pre>
   </div>
+
+
   <div class="page">
     <div style="height: 35px"></div>
     <h2>What a Home Inspection <u>IS</u>:</h2>
@@ -149,6 +177,15 @@ Fidelity Building Inspections, LLC</pre>
     
 <span style="font-size: 9.5pt;">[Statutory Authority: RCW 18.280.050 and 18.280.060(6). 09-08-014, § 308-408C-010-030, filed 3/20/09, effective 4/20/09.]</span>
     </pre>
+  </div>
+
+  <div class="page" ng-repeat="section in castle.data.sections">
+    <div class="page_header"></div>
+    <div class="section_title" ng-show="section.title">{{section.title}}</div>
+    <div class="subsection" ng-repeat="subsection in section.subsections">
+      <div class="subsection_title" ng-show="subsection.title">{{subsection.title}}</div>
+    </div>
+    <div class="page_footer"></div>
   </div>
 </body>
 </html>

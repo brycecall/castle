@@ -12,8 +12,7 @@ app.run(function ($transitions, $rootScope) {
   $transitions.onStart({}, function (trans) {
     if ($rootScope.authenticated !== true && trans.$to().name !== 'login') {
       // User isn't authenticated. Redirect to a new Target State
-      var debug = localStorage.getItem("debug");
-      if (debug !== "true") {
+      if (!$rootScope.debug) {
         return trans.router.stateService.target('login');
       }
     } else if ($rootScope.authenticated == true && trans.$to().name == 'login') {

@@ -5,12 +5,14 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 });
 
 // Control to set application in DEBUG mode
-app.run(function () {
+app.run(function ($rootScope) {
   window.debug = function (state) {
     if (state) {
       localStorage.setItem("debug", "true");
     } else {
       localStorage.removeItem("debug");
     }
+    $rootScope.debug = state;
   }
+  $rootScope.debug = (localStorage.getItem("debug") == "true" ? true : false);
 });

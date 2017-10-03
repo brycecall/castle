@@ -1,11 +1,11 @@
 <link type="text/css" rel="stylesheet" href="pages/report/report.css" />
-<div class="loading" layout-fill layout="column" layout-align="center center" ng-hide="report">
+<div class="loading" layout-fill layout="column" layout-align="center center" ng-hide="report || debug">
   <div class="tilt">
     <h1>Just a Minute...</h1>
     <p>We're getting your report ready.</p>
   </div>
 </div>
-<div class="ready" layout-fill ng-show="report">
+<div class="ready" layout-fill ng-show="report" ng-hide="debug">
   <iframe id="preview" layout-fill src="libs/pdf.js/web/viewer.html"></iframe>
 </div>
-<iframe id="render" style="display: none;" height="100%" width="100%"></iframe>
+<iframe id="render" height="100%" width="100%" ng-show="debug"></iframe>

@@ -2,22 +2,18 @@
 app.config(function ($stateProvider) {
   $stateProvider
     .state('report', {
-      url: "/report",
+      url: "/report/{insId}",
       templateUrl: "pages/report/report.html",
       controller: "report"
-    })
-    .state('report_send', {
-      url: "/report/send",
-      templateUrl: "pages/report/report_send.html",
-      controller: "report_send"
     });
 });
 
-app.controller('report', function ($scope, $rootScope, $state, $q, $timeout, header_manager, theme_manager, action_manager) {
+app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, header_manager, theme_manager, action_manager, inspection_manager) {
   var preview_frame = document.querySelector("#preview");
   var render_frame = document.querySelector("#render");
 
   $scope.report = null;
+  $scope.insId = $stateParams.insId;
 
   var entry_promise = theme_manager.getThemeEntryPoint("fidelity_residential");
 
@@ -26,38 +22,45 @@ app.controller('report', function ($scope, $rootScope, $state, $q, $timeout, hea
     var manifest_promise = theme_manager.getThemeManifest("fidelity_residential");
 
     manifest_promise.then(function (manifest) {
-      render_frame.addEventListener('load', function (event) {
-        var object = {};
-        object.manifest = manifest;
-        object.data = {};
+      var inspection_promise = inspection_manager.getInspection($scope.insId);
 
-        object.apply = function () {
-          // Timeout to force render
-          $timeout(function () {
-            var data = render_frame.contentDocument.querySelector('html').outerHTML;
+      inspection_promise.then(function (inspection) {
+        render_frame.addEventListener('load', function (event) {
+          var object = {};
+          object.manifest = manifest;
+          object.meta = manifest.template;
+          object.data = inspection;
 
-            if (window['pdf'] !== undefined) {
-              pdf.htmlToPDF({
-                data: data,
-                documentSize: "A4",
-                landscape: "portrait",
-                type: "base64"
-              }, function (data) {
-                data = data.replace('\n', '');
-                data = "data:application/pdf;base64," + data;
-                $scope.report = data;
-                preview_frame.contentWindow.PDFViewerApplication.open(data);
-                action_manager.enable();
-              });
-            }
-          }, 500);
-        }
+          object.apply = function () {
+            // Timeout to force render
+            $timeout(function () {
+              var data = render_frame.contentDocument.querySelector('html').outerHTML;
 
-        // But the castle object on the iframe
-        render_frame.contentWindow.castle = object;
-      }, true);
+              if (window['pdf'] !== undefined) {
+                pdf.htmlToPDF({
+                  data: data,
+                  documentSize: "A4",
+                  landscape: "portrait",
+                  type: "base64"
+                }, function (data) {
+                  data = data.replace('\n', '');
+                  data = "data:application/pdf;base64," + data;
+                  $scope.report = data;
+                  preview_frame.contentWindow.PDFViewerApplication.open(data);
+                  action_manager.enable();
+                }, function (error) {
+                  $scope.report = "null";
+                });
+              }
+            }, 500);
+          }
 
-      render_frame.src = entry_point;
+          // But the castle object on the iframe
+          render_frame.contentWindow.castle = object;
+        }, true);
+
+        render_frame.src = entry_point;
+      })
     });
   });
 
@@ -79,14 +82,6 @@ app.controller('report', function ($scope, $rootScope, $state, $q, $timeout, hea
   }, 'md-accent');
 
   action_manager.addAction("Save", 'save', function () {
-    window.history.back();
-  });
-
-});
-
-app.controller('report_send', function ($scope, $rootScope, header_manager) {
-  header_manager.mode = HEADER_MODES.Action;
-  header_manager.setAction("Back", "back", function () {
     window.history.back();
   });
 

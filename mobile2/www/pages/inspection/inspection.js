@@ -16,7 +16,7 @@ app.config(function ($stateProvider) {
       templateUrl: "pages/inspection/inspection_section.html",
       controller: "inspection_section",
       params: {
-          insId:null
+        insId: null
       }
     })
     .state('inspection_subsection', {
@@ -24,8 +24,8 @@ app.config(function ($stateProvider) {
       templateUrl: "pages/inspection/inspection_subsection.html",
       controller: "inspection_subsection",
       params: {
-          'insId':null,
-          'sectionIndex':null,
+        'insId': null,
+        'sectionIndex': null,
       }
     })
     .state('inspection_question', {
@@ -33,9 +33,9 @@ app.config(function ($stateProvider) {
       templateUrl: "pages/inspection/inspection_question.html",
       controller: "inspection_question",
       params: {
-          'insId':null,
-          'sectionIndex':null,
-          'subsectionIndex':null
+        'insId': null,
+        'sectionIndex': null,
+        'subsectionIndex': null
       }
     })
     .state('inspection_detail', {
@@ -43,10 +43,10 @@ app.config(function ($stateProvider) {
       templateUrl: "pages/inspection/inspection_detail.html",
       controller: "inspection_detail",
       params: {
-          'insId':null,
-          'sectionIndex':null,
-          'subsectionIndex':null,
-          'questionIndex':null
+        'insId': null,
+        'sectionIndex': null,
+        'subsectionIndex': null,
+        'questionIndex': null
       }
     });
 });
@@ -68,40 +68,45 @@ app.config(function ($stateProvider) {
   });
 });*/
 
-app.service('shareService', function($state) {
-   var shareService = {};
-   shareService.navigate = function(insId, sectionIndex, subsectionIndex ) {
-       if (insId && sectionIndex && subsectionIndex ) 
-       {
-           $state.go('inspection_question', {
-               'insId':insId,
-               'sectionIndex':sectionIndex,
-               'subsectionIndex':subsectionIndex
-           });
-       } else if (insId && sectionIndex ) {
-           $state.go('inspection_subsection', {
-               'insId':insId,
-               'sectionIndex':sectionIndex
-           });
-       } else if (insId) {
-           $state.go('inspection_section', {
-               'insId':insId
-           });
-       }
-   };
-   return shareService;
-}); 
+app.service('shareService', function ($state) {
+  var shareService = {};
+  shareService.navigate = function (insId, sectionIndex, subsectionIndex) {
+    if (insId && sectionIndex && subsectionIndex) {
+      $state.go('inspection_question', {
+        'insId': insId,
+        'sectionIndex': sectionIndex,
+        'subsectionIndex': subsectionIndex
+      });
+    } else if (insId && sectionIndex) {
+      $state.go('inspection_subsection', {
+        'insId': insId,
+        'sectionIndex': sectionIndex
+      });
+    } else if (insId) {
+      $state.go('inspection_section', {
+        'insId': insId
+      });
+    }
+  };
+  return shareService;
+});
 
 // Define the page controller
 app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
   $scope.inspections = [];
 
-  $scope.goToInspection = function(insId) {
+  $scope.goToInspection = function (insId) {
     $state.go('inspection_section', {
       'insId': insId
     });
   };
-    
+
+  $scope.goToPreview = function (insId) {
+    $state.go('report', {
+      'insId': insId
+    });
+  };
+
   $scope.reports = [];
   $scope.sort = "";
   $scope.sort_filters = [
@@ -151,8 +156,10 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
 app.controller('inspection_new', function ($scope, $state, $rootScope, inspection_manager, theme_manager) {
   $scope.themes = [];
   $scope.templates = [];
-  $scope.toSection = function(insId) {
-      $state.go('inspection_section', { 'insId': 1});
+  $scope.toSection = function (insId) {
+    $state.go('inspection_section', {
+      'insId': 1
+    });
   }
 
   // Get themes & templates
@@ -190,7 +197,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
 
 });
 
-app.controller('inspection_section', function($scope, inspection_manager, header_manager, $state, $stateParams, shareService) {
+app.controller('inspection_section', function ($scope, inspection_manager, header_manager, $state, $stateParams, shareService) {
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
     $state.go('inspection');
@@ -199,62 +206,62 @@ app.controller('inspection_section', function($scope, inspection_manager, header
   $scope.navigate = shareService.navigate;
   // All the sections for a specific inspection/report
   $scope.sections = [];
-    $scope.goToSubsection = function(sectionIndex) {
-        $state.go('inspection_subsection', {
-            'insId':$scope.insId,
-            'sectionIndex':sectionIndex
-        });
-    };
+  $scope.goToSubsection = function (sectionIndex) {
+    $state.go('inspection_subsection', {
+      'insId': $scope.insId,
+      'sectionIndex': sectionIndex
+    });
+  };
 
   inspection_manager.getSections($scope.insId).then(
-    function(data){
-        $scope.sections = data.value;
+    function (data) {
+      $scope.sections = data.value;
     },
-    function(data){
-        console.log("Error... no sections exist in the database");
+    function (data) {
+      console.log("Error... no sections exist in the database");
     }
   );
-  
-  $scope.saveReport = function() {
+
+  $scope.saveReport = function () {
     inspection_manager.saveInspection();
   }
-    
+
 });
 
-app.controller('inspection_subsection', function($scope, inspection_manager, header_manager, $state, $stateParams, shareService) {
+app.controller('inspection_subsection', function ($scope, inspection_manager, header_manager, $state, $stateParams, shareService) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.navigate = shareService.navigate;
   // All the sections for a specific inspection/report
   $scope.subsections = [];
   header_manager.mode = HEADER_MODES.Action;
-  header_manager.setAction('Back', 'back', function() {
+  header_manager.setAction('Back', 'back', function () {
     $state.go('inspection_section', {
       'insId': $scope.insId
+    });
   });
-  });
-    
+
   inspection_manager.getSubsections($scope.insId, $scope.sectionIndex).then(
-    function(data){
-        $scope.subsections = data.value;
+    function (data) {
+      $scope.subsections = data.value;
     },
-    function(data){
-        console.log("Error... no subsections exist in the database");
+    function (data) {
+      console.log("Error... no subsections exist in the database");
     }
   );
 
-    $scope.questionDrill = function(subsectionIndex) {
-        $state.go('inspection_question', {
-            'insId':$scope.insId,
-            'sectionIndex':$scope.sectionIndex,
-            'subsectionIndex':subsectionIndex
-        });
-    };
-    
+  $scope.questionDrill = function (subsectionIndex) {
+    $state.go('inspection_question', {
+      'insId': $scope.insId,
+      'sectionIndex': $scope.sectionIndex,
+      'subsectionIndex': subsectionIndex
+    });
+  };
+
 });
 
 
-app.controller('inspection_question', function($scope, inspection_manager, header_manager, $state, $stateParams, shareService) {
+app.controller('inspection_question', function ($scope, inspection_manager, header_manager, $state, $stateParams, shareService) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
@@ -262,32 +269,32 @@ app.controller('inspection_question', function($scope, inspection_manager, heade
   // All the sections for a specific inspection/report
   $scope.questions = [];
   header_manager.mode = HEADER_MODES.Action;
-  header_manager.setAction('Back', 'back', function() {
-         $state.go('inspection_subsection', {
-             'insId':$scope.insId,
-             'sectionIndex':$scope.sectionIndex,
-             'subsectionIndex':$scope.subsectionIndex                         
-         });
+  header_manager.setAction('Back', 'back', function () {
+    $state.go('inspection_subsection', {
+      'insId': $scope.insId,
+      'sectionIndex': $scope.sectionIndex,
+      'subsectionIndex': $scope.subsectionIndex
+    });
   });
-    
+
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
     function (data) {
       $scope.questions = data.value;
     },
-    function(data){
-        console.log("Error... no questions exist in the database");
+    function (data) {
+      console.log("Error... no questions exist in the database");
     }
   );
 
-    $scope.questionDrill = function(questionIndex) {
-        $state.go('inspection_detail', {
-            'insId':$scope.insId,
-            'sectionIndex':$scope.sectionIndex,
-            'subsectionIndex':$scope.subsectionIndex,
-            'questionIndex':questionIndex
-        });
-    };
-    
+  $scope.questionDrill = function (questionIndex) {
+    $state.go('inspection_detail', {
+      'insId': $scope.insId,
+      'sectionIndex': $scope.sectionIndex,
+      'subsectionIndex': $scope.subsectionIndex,
+      'questionIndex': questionIndex
+    });
+  };
+
 });
 
 app.factory('$', function ($window) {
@@ -298,46 +305,45 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
-  $scope.questionIndex = $stateParams.questionIndex;  
+  $scope.questionIndex = $stateParams.questionIndex;
   header_manager.mode = HEADER_MODES.Action;
-  header_manager.setAction('Back', 'back', function() {
-         $state.go('inspection_question', {
-             'insId':$scope.insId, 
-             'sectionIndex':$scope.sectionIndex,
-             'subsectionIndex':$scope.subsectionIndex
-         });
+  header_manager.setAction('Back', 'back', function () {
+    $state.go('inspection_question', {
+      'insId': $scope.insId,
+      'sectionIndex': $scope.sectionIndex,
+      'subsectionIndex': $scope.subsectionIndex
+    });
   });
-    
+
   $scope.navigate = shareService.navigate;
 
-  $scope.question = {
-  };
+  $scope.question = {};
   $scope.questionCount = -1;
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
     function (data) {
-        $scope.questionCount = data.value.length;
-        $scope.question = data.value[$scope.questionIndex];
+      $scope.questionCount = data.value.length;
+      $scope.question = data.value[$scope.questionIndex];
     },
     function (data) {
       console.log("Error... no question exists in the database");
     }
   );
-    
-  var navigateQuestions = function(forward) {
-      if ($scope.questionCount !== -1 && $scope.questionCount > 1) {
+
+  var navigateQuestions = function (forward) {
+    if ($scope.questionCount !== -1 && $scope.questionCount > 1) {
       var newQuestionIndex = $scope.questionIndex;
       if (forward) {
-          if ($scope.questionIndex >= $scope.questionCount -1) {
-              newQuestionIndex = 0;
-          } else {
-              newQuestionIndex++;
-          }
+        if ($scope.questionIndex >= $scope.questionCount - 1) {
+          newQuestionIndex = 0;
+        } else {
+          newQuestionIndex++;
+        }
       } else {
-          if ($scope.questionIndex <= 0) { 
-              newQuestionIndex = $scope.questionCount - 1;
-          } else {
-              newQuestionIndex--;
-          }
+        if ($scope.questionIndex <= 0) {
+          newQuestionIndex = $scope.questionCount - 1;
+        } else {
+          newQuestionIndex--;
+        }
       }
       $state.go('inspection_detail', {
         'insId': $scope.insId,
@@ -345,15 +351,15 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
         'subsectionIndex': $scope.subsectionIndex,
         'questionIndex': newQuestionIndex
       });
-      }
-  }; 
-    
+    }
+  };
+
   action_manager.mode = ACTION_MODES.Action;
-  action_manager.addAction("Previous", "keyboard_arrow_left", function(){
-      navigateQuestions(false);
+  action_manager.addAction("Previous", "keyboard_arrow_left", function () {
+    navigateQuestions(false);
   }, 'md-raised');
-  action_manager.addAction("Next", "keyboard_arrow_right", function(){
-      navigateQuestions(true);
+  action_manager.addAction("Next", "keyboard_arrow_right", function () {
+    navigateQuestions(true);
   }, 'md-raised');
 
   $scope.addPhotos = function () {
@@ -374,7 +380,7 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
           $scope.question.photos.push(photo);
         }
       }
-    camera_manager.photos = [];
+      camera_manager.photos = [];
     }
   })();
 

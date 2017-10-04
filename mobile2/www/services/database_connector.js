@@ -33,16 +33,16 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       console.log('calling initTables');
       // Batch script to create all tables in db
       db.sqlBatch([
-          'CREATE TABLE IF NOT EXISTS Answer (ansQuestionId INT, ansValue, ansType, FOREIGN KEY(ansQuestionid) REFERENCES Question(rowId))',
+          'CREATE TABLE IF NOT EXISTS Answer (ansQuestionId INT, ansValue, ansType, ansInspectionId, ansSourceType, FOREIGN KEY(ansInspectionId) REFERENCES Inspection(rowId), FOREIGN KEY(ansQuestionid) REFERENCES Question(rowId))',
           'CREATE TABLE IF NOT EXISTS Client (cliFirstName, cliLastName, cliAddress, cliCity, cliState, cliZipCode, cliPhone, cliEmail)',
           'CREATE TABLE IF NOT EXISTS Inspection (insLastModified, insLastSubmitted, insJobId INT, insSourceType, insType, insName, insUserId INT, insThemeId INT, insThemeResponseBlob, insTemplateResponseBlob, insOrganizationId, insTemplateTitle, FOREIGN KEY(insOrganizationId) REFERENCES Organization(rowId), FOREIGN KEY(insUserId) REFERENCES User(rowId), FOREIGN KEY(insJobId) REFERENCES Job(rowId), FOREIGN KEY(insThemeId) REFERENCES Theme(rowId))',
           'CREATE TABLE IF NOT EXISTS Job (jobUserId INT, jobDate, jobAddress, jobZipCode, jobCity, jobState, jobStatus, jobSubmittedDate, FOREIGN KEY(jobUserId) REFERENCES User(rowId))',
           'CREATE TABLE IF NOT EXISTS Organization (orgName, orgAddress, orgLogo, orgCity, orgState, orgZipCode)',
-          'CREATE TABLE IF NOT EXISTS Question (queTitle, queDescription, queSubSectionId INT, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, FOREIGN KEY(queSubSectionId) REFERENCES SubSection(rowId))',
-          'CREATE TABLE IF NOT EXISTS QuestionAnswers (quaQuestionId INT, quaAnswerId INT, FOREIGN KEY (quaQuestionId) REFERENCES Question(rowId), FOREIGN KEY(quaAnswerId) REFERENCES Answer(rowId))',
+          'CREATE TABLE IF NOT EXISTS Question (queTitle, queDescription, queSubSectionId INT, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType, FOREIGN KEY(queInspectionId) REFERENCES Inspection(rowId), FOREIGN KEY(queSubSectionId) REFERENCES SubSection(rowId))',
+          'CREATE TABLE IF NOT EXISTS QuestionAnswers (quaQuestionId INT, quaAnswerId INT, quaInspectionId, quaSourceType, FOREIGN KEY (quaQuestionId) REFERENCES Question(rowId), FOREIGN KEY(quaAnswerId) REFERENCES Answer(rowId), FOREIGN KEY(quaInspectionId) REFERENCES Inspection(rowId))',
           'CREATE TABLE IF NOT EXISTS ReportHistory (rehInspectionId INT, rehLastModified, rehSubmittedDate, FOREIGN KEY(rehInspectionId) REFERENCES Inspection(rowId))',
-          'CREATE TABLE IF NOT EXISTS Section (secTitle, secInspectionId INT, FOREIGN KEY(secInspectionId) REFERENCES Inspection(rowId))',
-          'CREATE TABLE IF NOT EXISTS SubSection (susTitle, susSectionId INT, FOREIGN KEY(susSectionId) REFERENCES Section(rowId))',
+          'CREATE TABLE IF NOT EXISTS Section (secTitle, secInspectionId INT, secSourceType, FOREIGN KEY(secInspectionId) REFERENCES Inspection(rowId))',
+          'CREATE TABLE IF NOT EXISTS SubSection (susTitle, susSectionId INT, susInspectionId, susSourceType, FOREIGN KEY(susSectionId) REFERENCES Section(rowId), FOREIGN KEY(susInspectionId) REFRENCES Inspection(rowId))',
           'CREATE TABLE IF NOT EXISTS Theme (themeTitle, themeBlob, userId INT, FOREIGN KEY(userId) REFERENCES User(rowId))', 
           'CREATE TABLE IF NOT EXISTS User (usrAddress, usrFirstName, usrLastName, usrPhone, usrEmail, usrType, usrUserAccessId, usrOrganizationId, name, pass, email)',
           'CREATE TABLE IF NOT EXISTS UserAccess (usaTitle, usaOrganizationId, usaEditUsers, usaEditOrgInfo, usaEditTemplate, usaEditRequired, FOREIGN KEY(usaOrganizationId) REFERENCES Organization(rowId))',

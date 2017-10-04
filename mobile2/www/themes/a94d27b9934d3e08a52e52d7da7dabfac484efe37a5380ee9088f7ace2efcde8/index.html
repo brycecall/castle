@@ -59,17 +59,9 @@
       width: calc(100% - 40px);
     }
     
-    .section_title {
-      height: 56px;
-      display: flex;
-      justify-content: fles-start;
-      align-items: center;
-      padding: 0 10px;
-      margin: 10px 0;
-      background-color: lightblue;
-      font-weight: bold;
-      font-size: 20pt;
-      color: #333;
+    .page_header h2,
+    .page_header h4 {
+      display: inline-block;
     }
     
     .subsection {
@@ -77,6 +69,7 @@
       padding: 10px;
       border-left: solid 5px #333;
       min-height: 100px;
+      background-color: #333;
     }
     
     .subsection_title {
@@ -180,10 +173,24 @@ Fidelity Building Inspections, LLC</pre>
   </div>
 
   <div class="page" ng-repeat="section in castle.data.sections">
-    <div class="page_header"></div>
-    <div class="section_title" ng-show="section.title">{{section.title}}</div>
+    <div class="page_header">
+      <div>
+        <h2 ng-show="section.title">{{section.title}}</h2>
+        <h2 style="float: right" ng-show="section.title">Report #{{castle.data.id}}</h2>
+      </div>
+      <div>
+        <h4 ng-show="section.title">{{section.title}}</h4>
+        <h4 style="float: right" ng-show="section.title">Report #{{castle.data.id}}</h4>
+      </div>
+    </div>
     <div class="subsection" ng-repeat="subsection in section.subsections">
       <div class="subsection_title" ng-show="subsection.title">{{subsection.title}}</div>
+      <div class="questions">
+        <div class="question" ng-repeat="question in subsection.questions">
+          <p>{{question.title}}</p>
+          <span ng-repeat="value in question.values">{{value.key}}, </span>
+        </div>
+      </div>
     </div>
     <div class="page_footer"></div>
   </div>

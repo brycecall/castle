@@ -1,7 +1,7 @@
 {
-  "title": "Fidelity Residential",
-  "unique": "fidelity_residential",
-  "hash": "b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9",
+  "title": "Fidelity Commercial",
+  "unique": "b94d27b9934d3e08a52e52d7da7dabfac484ef237a5380ee9088f7ace2efcde1",
+  "hash": "b94d27b9934d3e08a52e52d7da7dabfac484ef237a5380ee9088f7ace2efcde0",
   "version": 0.1,
   "api_version": 0.1,
   "date_created": "11/13/2017 11:30:25 PM",

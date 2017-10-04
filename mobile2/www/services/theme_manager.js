@@ -6,11 +6,12 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q) {
 
   public.current = null;
 
-  public.getThemes = function () {
+  public.update = function () {
     var defered = $q.defer();
+
     if (window['cordova'] == undefined) {
       // Desktop Browser Implementation
-      defered.resolve(["fidelity_residential", "fidelity_commercial"]);
+      defered.resolve(["a94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde8", "b94d27b9934d3e08a52e52d7da7dabfac484ef237a5380ee9088f7ace2efcde1"]);
 
     } else {
       // Device Implementation
@@ -21,20 +22,29 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q) {
         var reader = fileSystem.createReader();
         reader.readEntries(success, error);
       }, error);
-      //postMessage(result);
 
       var success = function (files) {
         var themes = [];
         for (var index in files) {
           themes.push(files[index].name);
         }
-        defered.resolve(themes);
+        private.updateThemeDatabase(themes);
       };
 
       var error = function (err) {
         defered.reject(err);
       }
     }
+
+    return defered.promise;
+  }
+
+  private.updateThemeDatabase = function (theme) {
+    // TODO: Perform the Update to the DB here
+  }
+
+  public.getThemes = function () {
+    var defered = $q.defer();
 
     return defered.promise;
   }

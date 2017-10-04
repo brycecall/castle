@@ -37,6 +37,7 @@ md-input-container {
 #view {
   height: 100%;
   width: 100%;
+  overflow:auto;
 }
 
 md-input-container {

@@ -162,7 +162,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     }
     
  /* TODO actually use the database */
-  public.getInspection = function (id) {
+  public.getInspection = function(id) {
     var deferred = $q.defer();
     deferred.resolve({
         insLastModified: '9-12-17', 

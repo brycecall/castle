@@ -237,7 +237,7 @@ app.controller('template_section', function($scope, inspection_manager, header_m
   $scope.remove = templateShareService.remove;
     
   action_manager.addAction('Save', 'save', function () {
-    inspection_manager.saveInspection($scope.insId); 
+  inspection_manager.saveInspection($scope.insId); 
   });
     
   // All the sections for a specific inspection/report
@@ -408,6 +408,9 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
   action_manager.addAction("Previous", "keyboard_arrow_left", function(){
       navigateQuestions(false);
   }, 'md-raised');
+  action_manager.addAction('Save', 'save', function () {
+    inspection_manager.saveInspection($scope.insId); 
+  });
   action_manager.addAction("Next", "keyboard_arrow_right", function(){
       navigateQuestions(true);
   }, 'md-raised');

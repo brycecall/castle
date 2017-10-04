@@ -1,0 +1,60 @@
+<link type="text/css" rel="stylesheet" href="pages/templates/templates.css" />
+<div flex="" layout="column" class="page">
+   <md-content class="centerScroll">
+    <div class="centerPage" style="margin-bottom:85px;" id="centerPage">
+<div style="width:100%; height: 50px; background-color: white; color: darkgrey;" layout="row" layout-align="start center">
+        <md-button style="min-width:20px; text-transform: none" class="md-caption" ng-click="navigate(insId)">Sec</md-button>
+        <div>/</div>
+        <md-button style="min-width:20px; text-transform: none" class="md-caption" ng-click="navigate(insId, sectionIndex)">Sub</md-button>
+        <div>/</div>
+        <md-button style="min-width:20px; text-transform: none; font-weight:600;" class="md-caption md-accent" ng-click="navigate(insId, sectionIndex, subsectionIndex)">Qns</md-button>
+    <div flex=""></div>
+</div>
+    <div layout="row" layout-align="space-between center">
+        <h2 class="md-subhead insTitle" 
+            style="margin-bottom:0px;">Questions</h2>
+    </div>
+              
+    <md-card id="secParent" 
+             layout="column"  
+             ui-sortable="{'ui-floating': false, 'handle': '.handle', 
+                           'containment': '#secParent'}"  
+             ng-model="questions">
+        <div ng-repeat="question in questions track by $index" 
+             layout="column" 
+             layout-align="center stretch" 
+             style="text-align-left;"
+             ng-init="clicked = false" >             
+               <div  style="padding:0px 0px 0px 16px; margin:0;
+                         vertical-align:middle; border-radius:0; 
+                         text-transform:none; background-color:#FFF;  height:52px;" 
+                       class="md-no-style" 
+                       aria-label="{{question.title}}"
+                       layout="row" 
+                       layout-align="start center"
+                       ng-click="">
+                    <input type="text" 
+                           ng-disabled="true" 
+                           ng-model="question.title"
+                           class="nonEditInput"
+                           style="background-color:inherit;" />
+                    <span flex=""></span>
+                   <! TODO: Add boolean to below Checkmark icon (should only show when the question is 'done'-->
+                    <md-icon md-svg-icon="check" 
+                             class="md-primary" style="min-width:24px;"></md-icon>
+                    <md-button
+                       aria-label="toggle pages menu"
+                       class="md-icon-button"
+                       ng-click="questionDrill($index)">
+                        <md-icon md-svg-icon="keyboard_arrow_right"></md-icon>
+                    </md-button>
+              </div>
+                        <md-divider ng-if="!$last"></md-divider>
+        </div>
+    </md-card>
+    <md-button ng-click="" class="md-raised" aria-label="Save Report">
+        Save Report
+    </md-button>
+    </div>
+  </md-content>
+</div>

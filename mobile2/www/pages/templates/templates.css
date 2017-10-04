@@ -26,6 +26,73 @@ md-input-container {
   overflow-x: hidden;
 }
 
+/*
 .page {
+  padding-bottom: 60px;
+}
+*/
+
+
+
+#view {
+  height: 100%;
+  width: 100%;
+}
+
+md-input-container {
+  min-width: 100px;
+  min-height: 58px;
+  margin: 0;
+}
+
+.inspection {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  padding: 0;
+}
+
+.report-thumbnail {
+  display: block;
+  width: 200px;
+  height: auto;
+}
+
+.report-meta {
+  display: block;
+  margin-left: 10px;
+  vertical-align: top;
+}
+
+.report-meta>p {
+  margin: 10px 5px;
+}
+
+.filter-bar {
+  padding-top: 20px;
+  padding-bottom: 0;
+}
+
+.centerPage {
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+.insTitle {
+  margin-left: 8px;
+  margin-bottom: 0px;
+}
+
+.nonEditInput {
+  background-color: white;
+  border: none;
+}
+
+.centerScroll {
+  overflow-x: hidden;
+}
+
+.page {
+  height: auto;
   padding-bottom: 60px;
 }

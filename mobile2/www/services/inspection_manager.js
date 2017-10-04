@@ -75,6 +75,8 @@ app.factory('inspection_manager', function (database, $q) {
                                 max: promise.row.item(k).queMax,
                                 isRequired: promise.row.item(k).queRequired
                               },
+                              answer: null,
+                              answers: [],
                               notApplicable: promise.row.item(k).queNotApplicable,
                               severity: null,
                               showSummaryRemark: promise.row.item(k).queShowSummaryRemark,
@@ -88,6 +90,15 @@ app.factory('inspection_manager', function (database, $q) {
                                 remark: ''
                             }
                             question.values.push(answer);
+                            // Check to see if this answer was a selected answer by inspector
+                            if(promise.row.item(l).ansRowId == promise.row.item(l).quaAnswerId && promise.row.item(l).queRowId == promise.row.item(l).quaQuestionId) {
+                              // If multi, push onto answers list. Otherwise, store in single answer key.
+                              if(promise.row.item(l).ansType == 'multi') {
+                                question.answers.push(answer.key);
+                              } else {
+                                question.answer = answer.key;
+                              }
+                            }
                             // Use increment variable to track progress in promise.row data block
                             increment = l;
                           }

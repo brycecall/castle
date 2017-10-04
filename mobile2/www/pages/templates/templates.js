@@ -54,7 +54,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
       'insId': insId
     });
   };
-    
+
   $scope.reports = [];
   $scope.sort = "";
   $scope.sort_filters = [
@@ -121,6 +121,10 @@ app.service('templateShareService', function($state) {
                'insId':insId
            });
        }
+   };
+    
+   shareService.remove = function(index, list) {
+       list.splice(index, 1);
    };
    return shareService;
 }); 
@@ -223,21 +227,34 @@ app.controller('template_new', function ($scope, $state, $rootScope, inspection_
 
 });
 
-app.controller('template_section', function($scope, inspection_manager, header_manager, $state, $stateParams, templateShareService) {
+app.controller('template_section', function($scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
     $state.go('templates');
   });
   $scope.insId = $stateParams.insId;
   $scope.navigate = templateShareService.navigate;
+  $scope.remove = templateShareService.remove;
+    
+  action_manager.addAction('Save', 'save', function () {
+    inspection_manager.saveInspection($scope.insId); 
+  });
+    
   // All the sections for a specific inspection/report
   $scope.sections = [];
+    
     $scope.goToSubsection = function(sectionIndex) {
         $state.go('template_subsection', {
             'insId':$scope.insId,
             'sectionIndex':sectionIndex
         });
     };
+    
+  $scope.addSection = function() {
+      $scope.sections.push({
+          'title':''
+      });
+  };
 
   inspection_manager.getSections($scope.insId).then(
     function(data){
@@ -250,10 +267,11 @@ app.controller('template_section', function($scope, inspection_manager, header_m
     
 });
 
-app.controller('template_subsection', function($scope, inspection_manager, header_manager, $state, $stateParams, templateShareService) {
+app.controller('template_subsection', function($scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.navigate = templateShareService.navigate;
+  $scope.remove = templateShareService.remove;
   // All the sections for a specific inspection/report
   $scope.subsections = [];
   header_manager.mode = HEADER_MODES.Action;
@@ -262,7 +280,14 @@ app.controller('template_subsection', function($scope, inspection_manager, heade
       'insId': $scope.insId
     });
   });
-    
+  action_manager.addAction('Save', 'save', function () {
+    inspection_manager.saveInspection($scope.insId); 
+  });
+  $scope.addSubsection = function() {
+      $scope.subsections.push({
+          'title':''
+      });
+  };
   inspection_manager.getSubsections($scope.insId, $scope.sectionIndex).then(
     function(data){
         $scope.subsections = data.value;
@@ -280,11 +305,12 @@ app.controller('template_subsection', function($scope, inspection_manager, heade
     };
 });
 
-app.controller('template_question', function($scope, inspection_manager, header_manager, $state, $stateParams, templateShareService) {
+app.controller('template_question', function($scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
   $scope.navigate = templateShareService.navigate;
+  $scope.remove = templateShareService.remove;
   // All the sections for a specific inspection/report
   $scope.questions = [];
   header_manager.mode = HEADER_MODES.Action;
@@ -295,6 +321,14 @@ app.controller('template_question', function($scope, inspection_manager, header_
              'subsectionIndex':$scope.subsectionIndex                         
          });
   });
+  action_manager.addAction('Save', 'save', function () {
+    inspection_manager.saveInspection($scope.insId); 
+  });
+  $scope.addQuestion = function() {
+      $scope.questions.push({
+          'title':''
+      });
+  };
     
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
     function (data) {

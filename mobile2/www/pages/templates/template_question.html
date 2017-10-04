@@ -25,7 +25,7 @@
              layout-align="center stretch" 
              style="text-align-left;"
              ng-init="clicked = false" >             
-               <div  style="padding:0px 0px 0px 16px; margin:0;
+               <div  style="padding:0px 0px 0px px; margin:0;
                          vertical-align:middle; border-radius:0; 
                          text-transform:none; background-color:#FFF;  height:52px;" 
                        class="md-no-style" 
@@ -33,15 +33,20 @@
                        layout="row" 
                        layout-align="start center"
                        ng-click="">
-                    <input type="text" 
-                           ng-disabled="true" 
-                           ng-model="question.title"
-                           class="nonEditInput"
-                           style="background-color:inherit;" />
+                   <md-button
+                           class="md-icon-button"
+                           aria-label="delete question"
+                           ng-click="remove($index, questions)">
+                    <md-icon md-svg-src="cancel"></md-icon>
+                </md-button>
+                  <input type="text" ng-disabled="false" ng-model="question.title" class="editInput" style="background-color:inherit;" />
+
                     <span flex=""></span>
-                   <! TODO: Add boolean to below Checkmark icon (should only show when the question is 'done'-->
+<!--
+
                     <md-icon md-svg-icon="check" 
                              class="md-primary" style="min-width:24px;"></md-icon>
+-->
                     <md-button
                        aria-label="toggle pages menu"
                        class="md-icon-button"
@@ -52,8 +57,8 @@
                         <md-divider ng-if="!$last"></md-divider>
         </div>
     </md-card>
-    <md-button ng-click="" class="md-raised" aria-label="Save Report">
-        Save Report
+    <md-button ng-click="addQuestion()" class="md-raised" aria-label="Add Question">
+      Add Question
     </md-button>
     </div>
   </md-content>

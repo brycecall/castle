@@ -25,7 +25,7 @@
              layout-align="center stretch" 
              style="text-align-left;"
              ng-init="clicked = false" >       
-               <div  style="padding:0px 0px 0px 16px; margin:0;
+               <div  style="padding:0px 0px 0px 0px; margin:0;
                          vertical-align:middle; border-radius:0; 
                          text-transform:none; background-color:#FFF;  height:52px;" 
                        class="md-no-style" 
@@ -33,6 +33,11 @@
                        layout="row" 
                        layout-align="start center"
                        ng-click="">
+                <md-button class="md-icon-button" 
+                           aria-label="delete section"
+                           ng-click="remove($index, subsections)">
+                    <md-icon md-svg-src="cancel"></md-icon>
+                </md-button>
                     <input type="text" 
                            ng-disabled="true" 
                            ng-model="subsection.title"
@@ -52,8 +57,8 @@
                         <md-divider ng-if="!$last"></md-divider>
         </div>
     </md-card>
-    <md-button ng-click="" class="md-raised" aria-label="Save Report">
-        Save Report
+    <md-button ng-click="addSubsection()" class="md-raised" aria-label="Add Section">
+      Add Subsection
     </md-button>
     </div>
   </md-content>

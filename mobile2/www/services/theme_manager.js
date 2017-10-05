@@ -157,6 +157,10 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q, $sh
     return defered.promise;
   };
 
+  public.copyTheme = function (theme) {
+    //TODO: modify the manifest in memory then copy the theme folder and save the new manifest
+  }
+
   private.generateHash = function (theme) {
     return $sha.hash(JSON.stringify(theme));
   }

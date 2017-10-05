@@ -6,11 +6,6 @@ app.config(function ($stateProvider) {
       templateUrl: "pages/themes/themes.html",
       controller: "themes"
     })
-    .state('theme_edit', {
-      url: "/themes/edit",
-      templateUrl: "pages/themes/theme_edit.html",
-      controller: "theme_edit"
-    })
     .state('theme_preview', {
       url: "/themes/preview",
       templateUrl: "pages/themes/theme_preview.html",
@@ -59,6 +54,7 @@ app.controller('themes', function ($scope, $rootScope, $state, theme_manager, he
   };
 });
 
+// TODO: we may want to not use this at all...
 app.controller('theme_edit', function ($scope, $rootScope, theme_manager) {
   $scope.theme = theme_manager.current;
   $scope.update = function () {

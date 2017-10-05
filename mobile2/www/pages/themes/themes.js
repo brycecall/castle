@@ -21,7 +21,7 @@ app.config(function ($stateProvider) {
 app.controller('themes', function ($scope, $rootScope, $state, theme_manager, header_manager) {
   $scope.themes = null;
 
-  var theme_promise = theme_manager.getThemes();
+  var theme_promise = theme_manager.update();
   theme_promise.then(function (themes) {
     $scope.themes = [];
     for (var index in themes) {
@@ -49,11 +49,8 @@ app.controller('themes', function ($scope, $rootScope, $state, theme_manager, he
 
   $scope.edit = function (theme) {
     console.log(theme);
-    $state.go("theme_edit", {
-      params: {
-        "theme": theme
-      }
-    });
+    theme_manager.current = theme;
+    $state.go("theme_edit");
   };
 
   $scope.preview = function (theme) {
@@ -62,7 +59,12 @@ app.controller('themes', function ($scope, $rootScope, $state, theme_manager, he
   };
 });
 
-app.controller('theme_edit', function () {});
+app.controller('theme_edit', function ($scope, $rootScope, theme_manager) {
+  $scope.theme = theme_manager.current;
+  $scope.update = function () {
+    theme_manager.saveTheme($scope.theme);
+  }
+});
 
 app.controller('theme_preview', function ($scope, $rootScope, theme_manager) {
   var preview_frame = document.querySelector("#preview");

@@ -1,4 +1,4 @@
-var app = angular.module("castle", ['ui.router', 'ngMaterial', 'ngMessages', 'ngSha']);
+var app = angular.module("castle", ['ngCordova', 'ui.router', 'ngMaterial', 'ngMessages', 'ngSha']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/error");
@@ -15,4 +15,8 @@ app.run(function ($rootScope) {
     $rootScope.debug = state;
   }
   $rootScope.debug = (localStorage.getItem("debug") == "true" ? true : false);
+});
+
+app.run(function (theme_manager) {
+  document.addEventListener('deviceready', theme_manager.init);
 });

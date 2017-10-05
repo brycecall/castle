@@ -15,11 +15,13 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, h
   $scope.report = null;
   $scope.insId = $stateParams.insId;
 
-  var entry_promise = theme_manager.getThemeEntryPoint("fidelity_residential");
+  // TODO: This is currently hard coded
+  var entry_promise = theme_manager.getThemeEntryPoint("a94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde8");
 
   entry_promise.then(function (entry_point) {
     var entry_point = entry_point;
-    var manifest_promise = theme_manager.getThemeManifest("fidelity_residential");
+    // TODO: This is currently hard coded
+    var manifest_promise = theme_manager.getThemeManifest("a94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde8");
 
     manifest_promise.then(function (manifest) {
       var inspection_promise = inspection_manager.getInspection($scope.insId);

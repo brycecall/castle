@@ -30,7 +30,7 @@ app.factory('inspection_manager', function (database, $q) {
     public.getInspection = function(id) {
         console.log('Inspection Manager Get Inspection ID: ' + id);
         var defer = $q.defer();
-
+        
         if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== id) {
                 database.getInspectionById(id).then(
                 function (promise) {  
@@ -116,18 +116,26 @@ app.factory('inspection_manager', function (database, $q) {
                     private.inspection.sections.push(section);
                     i = increment + 1;
                 } while (i < promise.row.length - 1);
-                   defer.resolve(private.inspection);
+                   defer.resolve({'value':private.inspection});
                 },
                 function (promise) {
                     private.inspection = {}; //failure eh?
-                    defer.reject(private.inspection);
+                    defer.reject({'value':private.inspection});
                     console.log('failure: ' + promise.message)
                 }
             );
         } else {
-            defer.resolve(private.inspection);
+            defer.resolve({'value':private.inspection});
         }
         return defer.promise;
+    };
+    
+    public.getInspectionCache = function() {
+      return private.inspection;  
+    };
+    
+    public.setInspectionCache = function(input) {
+        private.inspection = input;
     };
     
     public.getReports = function() {
@@ -170,7 +178,7 @@ app.factory('inspection_manager', function (database, $q) {
         var sections = [];
         public.getInspection(insId).then(function(data){
             try {
-                sections = data.sections;
+                sections = data.value.sections;
                 defer.resolve({'value':sections});
             } catch(e) {
                 defer.reject(sections);
@@ -186,7 +194,7 @@ app.factory('inspection_manager', function (database, $q) {
         var section = {};
         public.getInspection(insId).then(function(data){
             try {
-                section = data.sections[sectionIndex];
+                section = data.value.sections[sectionIndex];
                 defer.resolve({'value':section});
             } catch(e) {
                 defer.reject(section);
@@ -206,7 +214,7 @@ app.factory('inspection_manager', function (database, $q) {
         var subsections = [];
         public.getInspection(insId).then(function(data){
             try {
-                subsections = data.sections[sectionIndex].subsections;
+                subsections = data.value.sections[sectionIndex].subsections;
                 defer.resolve({'value':subsections});
             } catch(e) {
                 console.log('Exception: ');
@@ -224,7 +232,7 @@ app.factory('inspection_manager', function (database, $q) {
         var subsection = {};
         public.getInspection(insId).then(function(data){
             try {
-                subsection = data.sections[sectionIndex]
+                subsection = data.value.sections[sectionIndex]
                                   .subsections[subsectionIndex];
                 defer.resolve({'value':subsection});
             } catch(e) {
@@ -244,7 +252,7 @@ app.factory('inspection_manager', function (database, $q) {
         var questions = [];
         public.getInspection(insId).then(function(data){
             try {
-                questions = data.sections[sectionIndex]
+                questions = data.value.sections[sectionIndex]
                                 .subsections[subsectionIndex].questions;
                 defer.resolve({'value':questions});
             } catch(e) {
@@ -263,7 +271,7 @@ app.factory('inspection_manager', function (database, $q) {
         var question = {};
         public.getInspection(insId).then(function(data){
             try {
-                question = data.sections[sectionIndex]
+                question = data.value.sections[sectionIndex]
                                 .subsections[subsectionIndex]
                                 .questions[questionIndex];
                 defer.resolve({'value':question});
@@ -281,10 +289,10 @@ app.factory('inspection_manager', function (database, $q) {
     public.saveInspection = function() {
       var deferred = $q.defer();
       database.saveInspection(private.inspection).then(function(data) {
-        console.log(data.message);
+        console.log(data.value.message);
         deferred.resolve();
       }, function(data) {
-        console.log(data.message);
+        console.log(data.value.message);
         deferred.reject();
       });
       return deferred.promise;

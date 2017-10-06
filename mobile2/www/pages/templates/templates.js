@@ -235,7 +235,7 @@ app.controller('template_section', function($scope, inspection_manager, header_m
   $scope.insId = $stateParams.insId;
   $scope.navigate = templateShareService.navigate;
   $scope.remove = templateShareService.remove;
-    
+
   action_manager.addAction('Save', 'save', function () {
   inspection_manager.saveInspection($scope.insId); 
   });
@@ -254,13 +254,14 @@ app.controller('template_section', function($scope, inspection_manager, header_m
       $scope.sections.push({
           'title':''
       });
+      //console.log(inspection_manager.getInspectionCache());
   };
-
+  
   inspection_manager.getSections($scope.insId).then(
-    function(data){
+    function(data) {
         $scope.sections = data.value;
     },
-    function(data){
+    function(data) {
         console.log("Error... no sections exist in the database");
     }
   );

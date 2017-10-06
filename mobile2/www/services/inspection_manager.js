@@ -43,6 +43,7 @@ app.factory('inspection_manager', function (database, $q) {
                 private.inspection.insUserId = promise.row.item(0).insUserId;
                 private.inspection.rowId = promise.row.item(0).rowId;
                 private.inspection.insId = promise.row.item(0).rowId;
+                private.inspection.insSourceType = 'Inspection';
                 private.inspection.sections = [];
                 var i = 0;
                 var increment = 0;
@@ -138,8 +139,8 @@ app.factory('inspection_manager', function (database, $q) {
         private.inspection = input;
     };
     
-    public.getReports = function() {
-        return database.getReports();
+    public.getInspections = function() {
+        return database.getInspections();
     };
     
     public.getThemes = function() {
@@ -289,11 +290,11 @@ app.factory('inspection_manager', function (database, $q) {
     public.saveInspection = function() {
       var deferred = $q.defer();
       database.saveInspection(private.inspection).then(function(data) {
-        console.log(data.value.message);
-        deferred.resolve();
+        console.log(data.message);
+        deferred.resolve({message: 'Success saving inspection: ' + data.message});
       }, function(data) {
-        console.log(data.value.message);
-        deferred.reject();
+        console.log(data.message);
+        deferred.reject({message: 'Failure saving inspection: ' + data.message});
       });
       return deferred.promise;
     };

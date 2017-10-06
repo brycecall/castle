@@ -9,21 +9,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
 
   document.addEventListener('deviceready', function () {
     db = window.sqlitePlugin.openDatabase(private.dbOptions);
-  });
-
-  // General use insert function to be used by controllers
-  /*public.insert = function(query, params) {
-      var deferred = $q.defer();
-      
-      db.executeSql(query, params, function(res) {
-        console.log('Success: ' + res.rowsAffected);
-        deferred.resolve({success: true, message: 'successful insertion of query: ' + query + ' using params: ' + params});
-      }, function(error) {
-        deferred.reject({success: false, message: 'error inserting using query: ' + query + ' using params: ' + params});
-      });
-      return deferred.promise;
-  }*/
-
+  
   if (window['sqlitePlugin'] == undefined) {
     public = database_mock;
   } else {
@@ -48,14 +34,13 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
           'CREATE TABLE IF NOT EXISTS UserAccess (usaTitle, usaOrganizationId, usaEditUsers, usaEditOrgInfo, usaEditTemplate, usaEditRequired, FOREIGN KEY(usaOrganizationId) REFERENCES Organization(rowId))',
           'CREATE TABLE IF NOT EXISTS UserOrganizations (usoUserId INT, usoOrganizationId INT, FOREIGN KEY(usoUserId) REFERENCES User(rowId), FOREIGN KEY(usoOrganizationId) REFERENCES Organization(rowId))',
           'CREATE TABLE IF NOT EXISTS UserUsers (usuUserId INT, usuUserChildId INT, FOREIGN KEY(usuUserId) REFERENCES User(rowId))',
-      ], function () {
-        deferred.resolve({message: 'Batch statement completed successfully'});
+      ], function (res) {
         public.initThemes();
         public.initTemplates();
-        public.initReports();
         public.initSections();
         public.initSubSections();
-        public.initFullInspection();
+        public.initDefaultTemplate();
+        deferred.resolve({message: 'Batch statement for default Template data completed successfully'});
       }, function (error) {
         deferred.reject({message: 'Error processing batch: ' + error.message});
       });
@@ -63,6 +48,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     }
     
     public.dropAllTables = function () {
+      console.log('Dropping All Tables');
       var deferred = $q.defer();
       // Batch script to create all tables in db
       db.sqlBatch([
@@ -76,7 +62,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
           'DROP TABLE IF EXISTS ReportHistory',
           'DROP TABLE IF EXISTS Section',
           'DROP TABLE IF EXISTS SubSection',
-          'DROP TABLE IF EXISTS Template',
           'DROP TABLE IF EXISTS Theme',
           'DROP TABLE IF EXISTS User',
           'DROP TABLE IF EXISTS UserAccess',
@@ -258,12 +243,13 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     }
     
     public.initTemplates = function() {
+      console.log('db initTemplates being called');
+      var timestamp = new Date();
       var deferred = $q.defer();
-      db.executeSql('INSERT INTO Template(temOrganizationId, temTitle, temBlob, userId) VALUES (?, ?, ?, ?)', 
-                    [1, 'Home Template', 'a whole bunch more text', 1], function(res) {
-        deferred.resolve({message: 'Template insertion successful'});  
+      db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insSourceType, insType, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?)', [timestamp, timestamp, 'Template', 'Residential', 1, 'Residential Template'], function(res) {
+        deferred.resolve({rowId: res.insertId, message: 'Template insertion successful'});  
       }, function(error) {
-        deferred.resolve({message: 'Template insertion failed: ' + error.message});
+        deferred.reject({message: 'Template insertion failed: ' + error.message});
       });
       return deferred.promise;
     }
@@ -286,7 +272,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     public.getTemplates = function() {
       var deferred = $q.defer();
         
-      db.executeSql('SELECT * FROM Inspection ins WHERE insSourceType = ?', ['Template'], function(res) {
+      db.executeSql('SELECT rowid AS [rowId], * FROM Inspection ins WHERE insSourceType = ?', ['Template'], function(res) {
           if(res.rows.length > 0) {
             deferred.resolve({row: res.rows, message: 'Successful select from Template table'});
           } else {
@@ -426,8 +412,8 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       return deferred.promise;    
    }
    // Insert Necessary Data for Full Inspection
-   public.initFullInspection = function() {
-     console.log('db initFullInspection');
+   public.initDefaultTemplate = function() {
+     console.log('db initDefaultTemplate');
      var deferred = $q.defer();
      db.sqlBatch([
         ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Person(s) Present', '', 1, false, false, 'checkbox', null, null, false, true, true, 1, 'Template']],
@@ -1042,5 +1028,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
      return deferred.promise;
    }
   }
+  });
   return public;
 });

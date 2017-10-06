@@ -142,7 +142,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     function (promise) {
       console.log(promise.message);
       console.log(promise.row);
-      for (var i = 0; i < promise.row.length; i++) {
+      for (var i = 0; promise.row && i < promise.row.length; i++) {
         $scope.reports.push(promise.row.item(i));
       }
       //Fail
@@ -158,7 +158,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
   $scope.templates = [];
   $scope.toSection = function (insId) {
     $state.go('inspection_section', {
-      'insId': 1
+      'insId': $scope.sTemplate.rowId
     });
   }
 
@@ -185,7 +185,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
     //Success
     function (promise) {
       console.log(promise.message);
-      for (var i = 0; i < promise.row.length; i++) {
+      for (var i = 0; promise.row && i < promise.row.length; i++) {
         $scope.templates.push(promise.row.item(i));
       }
       //Fail

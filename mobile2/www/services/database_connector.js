@@ -7,12 +7,12 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
   var public = {};
   var db = null;
 
+  if (window['sqlitePlugin'] == undefined) {
+    public = database_mock;
+  }
   document.addEventListener('deviceready', function () {
     db = window.sqlitePlugin.openDatabase(private.dbOptions);
   
-  if (window['sqlitePlugin'] == undefined) {
-    public = database_mock;
-  } else {
     public.initTables = function () {
       var deferred = $q.defer();
       public.dropAllTables();
@@ -1027,7 +1027,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
      });
      return deferred.promise;
    }
-  }
   });
   return public;
 });

@@ -318,8 +318,8 @@ app.factory('database_mock', function ($q) {
   };
   
   public.getTemplates = function() {
-    var columns = [{insOrganizationId: 1, insTemplateTitle: 'Home Template', insTemplateResponseBlob: 'a whole bunch more text', insUserId: 1},
-                   {insOrganizationId: 1, insTemplateTitle: 'Commercial Template', insTemplateResponseBlob: 'a whole bunch more text', insUserId: 1}];
+    var columns = [{rowId: 1, insOrganizationId: 1, insTemplateTitle: 'Home Template', insTemplateResponseBlob: 'a whole bunch more text', insUserId: 1},
+                   {rowId: 1, insOrganizationId: 1, insTemplateTitle: 'Commercial Template', insTemplateResponseBlob: 'a whole bunch more text', insUserId: 1}];
     var deferred = $q.defer();
     deferred.resolve({
       row: {

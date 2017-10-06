@@ -55,7 +55,6 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
     });
   };
 
-  $scope.reports = [];
   $scope.sort = "";
   $scope.sort_filters = [
     "Name",
@@ -84,8 +83,8 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
     //  
   });
 
-  var reports = inspection_manager.getReports();
-  reports.then(
+  var templates = inspection_manager.getTemplates();
+  templates.then(
     //Success
     function (promise) {
       console.log(promise.message);
@@ -138,8 +137,7 @@ app.controller('template', function ($scope, $rootScope, $state, header_manager,
       'insId': insId
     });
   };
-    
-  $scope.reports = [];
+
   $scope.sort = "";
   $scope.sort_filters = [
     "Name",
@@ -168,14 +166,14 @@ app.controller('template', function ($scope, $rootScope, $state, header_manager,
     //  
   });
 
-  var reports = inspection_manager.getReports();
-  reports.then(
+  var templates = inspection_manager.getTemplates();
+  templates.then(
     //Success
     function (promise) {
       console.log(promise.message);
       console.log(promise.row);
       for (var i = 0; i < promise.row.length; i++) {
-        $scope.reports.push(promise.row.item(i));
+        $scope.templates.push(promise.row.item(i));
       }
       //Fail
     },

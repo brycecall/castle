@@ -18,7 +18,7 @@
       </md-select>
     </md-input-container>
   </div>
-  <md-card class="template" ng-hide="angular.equals([], reports)" ng-repeat="template in templates">
+  <md-card class="template" ng-hide="angular.equals([], templates)" ng-repeat="template in templates">
     <md-card-content layout="row" layout-align="start center">
       <div layout-fill>
         <div layout="row" layout-align="space-between center">
@@ -29,8 +29,8 @@
           Some type of preview...
         </div>
         <div layout-fill layout="row" layout-align="end center">
-          <md-button class="md-raised" ng-click="edit(template.insId)">Edit</md-button>
-          <md-button class="md-raised" ng-click="copy(template.insId)">Copy</md-button>
+          <md-button class="md-raised" ng-click="edit(template.rowId)">Edit</md-button>
+          <md-button class="md-raised" ng-click="copy(template.rowId)">Copy</md-button>
         </div>
       </div>
     </md-card-content>

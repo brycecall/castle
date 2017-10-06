@@ -18,20 +18,20 @@
       </md-select>
     </md-input-container>
   </div>
-  <md-card class="inspection" ng-hide="angular.equals([], reports)" ng-repeat="report in reports track by $index">
+  <md-card class="inspection" ng-hide="angular.equals([], inspections)" ng-repeat="inspection in inspections track by $index">
     <md-card-content>
       <div layout="row" layout-align="start center">
         <img class="report-thumbnail" src="assets/inspection_background.jpg" hide-xs show-sm />
         <div layout-fill>
           <div class="report-meta">
-            <p class="md-title">{{report.insName}}</p>
-            <p>{{report.insType}}</p>
-            <p>{{report.insLastSubmitted | date:'medium'}}</p>
+            <p class="md-title">{{inspection.insName}}</p>
+            <p>{{inspection.insType}}</p>
+            <p>{{inspection.insLastSubmitted | date:'medium'}}</p>
           </div>
           <div layout-fill layout="row" layout-align="end center">
-            <md-button class="md-raised" ng-click="goToInspection(report.insId);">Edit</md-button>
+            <md-button class="md-raised" ng-click="goToInspection(inspection.insId);">Edit</md-button>
 
-            <md-button class="md-raised" ng-click="goToPreview(report.insId);">Preview</md-button>
+            <md-button class="md-raised" ng-click="goToPreview(inspection.insId);">Preview</md-button>
           </div>
         </div>
       </div>

@@ -107,7 +107,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     });
   };
 
-  $scope.reports = [];
+  $scope.inspections = [];
   $scope.sort = "";
   $scope.sort_filters = [
     "Name",
@@ -136,14 +136,14 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     //  
   });
 
-  var reports = inspection_manager.getReports();
-  reports.then(
+  var inspections = inspection_manager.getInspections();
+  inspections.then(
     //Success
     function (promise) {
       console.log(promise.message);
       console.log(promise.row);
       for (var i = 0; promise.row && i < promise.row.length; i++) {
-        $scope.reports.push(promise.row.item(i));
+        $scope.inspections.push(promise.row.item(i));
       }
       //Fail
     },

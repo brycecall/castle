@@ -209,7 +209,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     return deferred.promise;
   };
 
-    public.getReports = function () {
+    public.getInspections = function () {
       var deferred = $q.defer();
 
       db.executeSql('SELECT rowId as insId, * FROM Inspection WHERE insSourceType = ? ORDER BY insLastSubmitted DESC', ['Inspection'], function (res) {

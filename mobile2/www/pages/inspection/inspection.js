@@ -95,6 +95,9 @@ app.service('shareService', function ($state) {
 app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
   $scope.inspections = [];
 
+  // Switch the inspection_manager mode (this is global)
+  inspection_manager.mode = "inspection";
+
   $scope.goToInspection = function (insId) {
     $state.go('inspection_section', {
       'insId': insId

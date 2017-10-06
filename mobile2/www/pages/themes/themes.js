@@ -13,7 +13,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('themes', function ($scope, $rootScope, $state, theme_manager, header_manager) {
+app.controller('themes', function ($scope, $rootScope, $state, theme_manager, header_manager, inspection_manager) {
   $scope.themes = null;
 
   var theme_promise = theme_manager.update();
@@ -43,9 +43,13 @@ app.controller('themes', function ($scope, $rootScope, $state, theme_manager, he
   ];
 
   $scope.edit = function (theme) {
+    inspection_manager.mode = "theme";
     console.log(theme);
     theme_manager.current = theme;
-    $state.go("theme_edit");
+    $state.go('template_section', {
+      'insId': theme.unique,
+      'type': "theme"
+    });
   };
 
   $scope.preview = function (theme) {

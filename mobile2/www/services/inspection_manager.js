@@ -1,4 +1,4 @@
-app.factory('inspection_manager', function (database, $q, theme_manager) {
+app.factory('inspection_manager', function (database, $q, $mdToast, theme_manager) {
   var private = {};
   var public = {};
 
@@ -357,6 +357,19 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
         defer.reject(public.mode + " is not a valid type.");
     }
     
+    var type = public.mode.charAt(0).toUpperCase() + public.mode.substr(1);
+    var toast = $mdToast.simple().position('bottom');
+    
+    promise.then(
+    function(result) {
+        toast.textContent(type + " Saved");
+        $mdToast.show(toast);
+    }, 
+    function(error) {
+        toast.textContent("Error saving " + type);
+        $mdToast.show(toast);
+    });
+    
     return promise;
   };
   
@@ -375,12 +388,8 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
   };
   
   private.saveToThemeManager = function() {
-    var defer = $q.defer();
-    
     theme_manager.current.template = private.inspection.sections;
-    theme_manager.saveTheme(theme_manager.current);
-    
-    return defer.promise;
+    return theme_manager.saveTheme(theme_manager.current);
   };
 
   return public;

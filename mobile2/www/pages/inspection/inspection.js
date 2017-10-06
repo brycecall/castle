@@ -316,13 +316,35 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
   });
 
   $scope.navigate = shareService.navigate;
-
+  $scope.otherValue = {
+    'singleSelect': '',
+    'value':null
+  };
   $scope.question = {};
   $scope.questionCount = -1;
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
     function (data) {
       $scope.questionCount = data.value.length;
       $scope.question = data.value[$scope.questionIndex];
+        
+      $scope.$watch('otherValue.value', function (newVal, oldVal) {
+        var list = $scope.question.answers;
+        var index = $scope.question.answers.indexOf(oldVal);
+        if (index > -1) {
+          $scope.question.answers.splice(index, 1);
+        }
+        if (newVal) {
+          $scope.question.answers.push(newVal);
+        }
+      });
+
+      $scope.$watch('otherValue.singleSelect', function (newVal, oldVal) {
+        if (newVal) {
+          $scope.question.answer = newVal;
+        }
+
+      });
+        
     },
     function (data) {
       console.log("Error... no question exists in the database");
@@ -367,9 +389,7 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
     $state.go('camera');
   };
 
-  $scope.otherValue = {
-    'singleSelect': ''
-  };
+
 
   (function () {
     if ($scope.question.type == 'photo') {
@@ -383,24 +403,6 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
       camera_manager.photos = [];
     }
   })();
-
-  $scope.$watch('otherValue', function (newVal, oldVal) {
-    var list = $scope.question.answers;
-    var index = $scope.question.answers.indexOf(oldVal);
-    if (index > -1) {
-      $scope.question.answers.splice(index, 1);
-    }
-    if (newVal) {
-      $scope.question.answers.push(newVal);
-    }
-  });
-
-  $scope.$watch('otherValue.singleSelect', function (newVal, oldVal) {
-    if (newVal) {
-      $scope.question.answer = newVal;
-    }
-
-  });
 
   $scope.toggle = function (item, list, ignoreEmpty) {
     var index = list.indexOf(item);

@@ -366,6 +366,7 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
   });
     
   $scope.navigate = templateShareService.navigate;
+  $scope.remove = templateShareService.remove;
   $scope.otherValue = {
     'singleSelect': '',
     'value':null
@@ -498,7 +499,10 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
       'title': 'Major Concerns'
         }
     ];
-
+    
+  $scope.add = function(list, value) {
+      list.push({'key':value});
+  };
 
 });
 

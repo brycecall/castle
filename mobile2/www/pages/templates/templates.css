@@ -105,3 +105,6 @@ md-input-container {
 .editInput:focus {
 
 }
+.description {
+    margin: 4px 0 8px 0;
+}

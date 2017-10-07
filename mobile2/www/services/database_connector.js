@@ -12,7 +12,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
   }
   document.addEventListener('deviceready', function () {
     db = window.sqlitePlugin.openDatabase(private.dbOptions);
-  
+
     public.initTables = function () {
       var deferred = $q.defer();
       public.dropAllTables();
@@ -29,7 +29,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
           'CREATE TABLE IF NOT EXISTS ReportHistory (rehInspectionId INT, rehLastModified, rehSubmittedDate, FOREIGN KEY(rehInspectionId) REFERENCES Inspection(rowId))',
           'CREATE TABLE IF NOT EXISTS Section (secTitle, secInspectionId INT, secSourceType, FOREIGN KEY(secInspectionId) REFERENCES Inspection(rowId))',
           'CREATE TABLE IF NOT EXISTS SubSection (susTitle, susSectionId INT, susInspectionId, susSourceType, FOREIGN KEY(susSectionId) REFERENCES Section(rowId), FOREIGN KEY(susInspectionId) REFERENCES Inspection(rowId))',
-          'CREATE TABLE IF NOT EXISTS Theme (themeTitle, themeBlob, userId INT, FOREIGN KEY(userId) REFERENCES User(rowId))', 
+          'CREATE TABLE IF NOT EXISTS Theme (themeTitle, themeBlob, userId INT, FOREIGN KEY(userId) REFERENCES User(rowId))',
           'CREATE TABLE IF NOT EXISTS User (usrAddress, usrFirstName, usrLastName, usrPhone, usrEmail, usrType, usrUserAccessId, usrOrganizationId, name, pass, email)',
           'CREATE TABLE IF NOT EXISTS UserAccess (usaTitle, usaOrganizationId, usaEditUsers, usaEditOrgInfo, usaEditTemplate, usaEditRequired, FOREIGN KEY(usaOrganizationId) REFERENCES Organization(rowId))',
           'CREATE TABLE IF NOT EXISTS UserOrganizations (usoUserId INT, usoOrganizationId INT, FOREIGN KEY(usoUserId) REFERENCES User(rowId), FOREIGN KEY(usoOrganizationId) REFERENCES Organization(rowId))',
@@ -40,13 +40,17 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
         public.initSections();
         public.initSubSections();
         public.initDefaultTemplate();
-        deferred.resolve({message: 'Batch statement for default Template data completed successfully'});
+        deferred.resolve({
+          message: 'Batch statement for default Template data completed successfully'
+        });
       }, function (error) {
-        deferred.reject({message: 'Error processing batch: ' + error.message});
+        deferred.reject({
+          message: 'Error processing batch: ' + error.message
+        });
       });
       return deferred.promise;
     }
-    
+
     public.dropAllTables = function () {
       console.log('Dropping All Tables');
       var deferred = $q.defer();
@@ -68,30 +72,38 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
           'DROP TABLE IF EXISTS UserOrganizations',
           'DROP TABLE IF EXISTS UserUsers',
       ], function () {
-        deferred.resolve({message: 'Batch drop statement completed successfully'});
+        deferred.resolve({
+          message: 'Batch drop statement completed successfully'
+        });
       }, function (error) {
-        deferred.reject({message :'Error processing batch: ' + error.message});
+        deferred.reject({
+          message: 'Error processing batch: ' + error.message
+        });
       });
       return deferred.promise;
     }
-    
+
     public.createUser = function (name, pass, email) {
       var deferred = $q.defer();
-        
+
       db.transaction(function (tx) {
         tx.executeSql('INSERT INTO User (name, pass, email) VALUES (?,?,?)', [name, pass, email]);
       }, function (error) {
         // TODO: Make sure insertion is unique / report that error to user
-        deferred.reject({message: 'Error Creating User: ' + error.message});
+        deferred.reject({
+          message: 'Error Creating User: ' + error.message
+        });
       }, function () {
         // Successful creation, navigate to home page
-        deferred.resolve({message: 'Successful user creation'});
+        deferred.resolve({
+          message: 'Successful user creation'
+        });
         // TODO: move this part into login controller
         $rootScope.authenticated = true;
         $state.go('home');
       });
     }
-    
+
     public.validCredentials = function (name, pass) {
       var deferred = $q.defer();
 
@@ -117,7 +129,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       });
       return deferred.promise;
     }
-    
+
     // report init
     public.initReports = function () {
       var deferred = $q.defer();
@@ -145,69 +157,72 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       });
       return deferred.promise;
     }
-    
- /* TODO actually use the database */
-  public.getInspection = function(id) {
-    var deferred = $q.defer();
-    deferred.resolve({
-        insLastModified: '9-12-17', 
-        insLastSubmitted: '9-12-17', 
-        insJobId: 10, 
-        insType: 'Residential', 
-        insName: 'Smith Inspection', 
+
+    /* TODO actually use the database */
+    public.getInspection = function (id) {
+      var deferred = $q.defer();
+      deferred.resolve({
+        insLastModified: '9-12-17',
+        insLastSubmitted: '9-12-17',
+        insJobId: 10,
+        insType: 'Residential',
+        insName: 'Smith Inspection',
         insUserId: 1,
-        'rowId':0, 
-        'insId': 0, 
-        'sections':[
-            {
-                'title':'Colors',
-                'subSections':[
-            {
-            'title':'Cool Colors',
-            'questions':[{
-        'title': 'What are your favorite colors?',
-        'description': 'Just pick the ones you actually like.',
-        'type': 'photo',
-        'values': [
+        'rowId': 0,
+        'insId': 0,
+        'sections': [
           {
-            'key': 'orange',
-            'remark': ''
+            'title': 'Colors',
+            'subSections': [
+              {
+                'title': 'Cool Colors',
+                'questions': [{
+                  'title': 'What are your favorite colors?',
+                  'description': 'Just pick the ones you actually like.',
+                  'type': 'photo',
+                  'values': [
+                    {
+                      'key': 'orange',
+                      'remark': ''
                 },
-          {
-            'key': 'red'
+                    {
+                      'key': 'red'
                 },
-          {
-            'key': 'green'
+                    {
+                      'key': 'green'
                 },
-          {
-            'key': 'pink'
+                    {
+                      'key': 'pink'
                 },
-          {
-            'key': 'purple mountain majesty'
+                    {
+                      'key': 'purple mountain majesty'
                 },
-          {
-            'key': 'yellow'
+                    {
+                      'key': 'yellow'
                 }
             ],
-        'answers': [
+                  'answers': [
                 'orange'
             ],
-        'answer': null,
-        'value': null,
-        'validation': {
-          'type': 'number',
-          'min': null,
-          'max': null,
-          'isRequired': true
-        },
-        'notApplicable': false,
-        'severity': null,
-        'showSummaryRemark':true,
-        'showDescription':true,
-        'photos':[]
-      }]}]}]});
-    return deferred.promise;
-  };
+                  'answer': null,
+                  'value': null,
+                  'validation': {
+                    'type': 'number',
+                    'min': null,
+                    'max': null,
+                    'isRequired': true
+                  },
+                  'notApplicable': false,
+                  'severity': null,
+                  'showSummaryRemark': true,
+                  'showDescription': true,
+                  'photos': []
+      }]
+              }]
+          }]
+      });
+      return deferred.promise;
+    };
 
     public.getInspections = function () {
       var deferred = $q.defer();
@@ -231,60 +246,82 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       return deferred.promise;
     }
 
-    public.initThemes = function() {
+    public.initThemes = function () {
       var deferred = $q.defer();
-      db.executeSql('INSERT INTO Theme(themeTitle, themeBlob, userId) VALUES (?, ?, ?)', 
-                    ['Home Theme', 'a whole bunch of text', 1], function(res) {
-        deferred.resolve({message: 'Theme insertion successful'});  
-      }, function(error) {
-        deferred.resolve({message: 'Theme insertion failed: ' + error.message});
+      db.executeSql('INSERT INTO Theme(themeTitle, themeBlob, userId) VALUES (?, ?, ?)', ['Home Theme', 'a whole bunch of text', 1], function (res) {
+        deferred.resolve({
+          message: 'Theme insertion successful'
+        });
+      }, function (error) {
+        deferred.resolve({
+          message: 'Theme insertion failed: ' + error.message
+        });
       });
-      return deferred.promise;
-    }
-    
-    public.initTemplates = function() {
-      console.log('db initTemplates being called');
-      var timestamp = new Date();
-      var deferred = $q.defer();
-      db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insSourceType, insType, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?)', [timestamp, timestamp, 'Template', 'Residential', 1, 'Residential Template'], function(res) {
-        deferred.resolve({rowId: res.insertId, message: 'Template insertion successful'});  
-      }, function(error) {
-        deferred.reject({message: 'Template insertion failed: ' + error.message});
-      });
-      return deferred.promise;
-    }
-    
-    public.getThemes = function() {
-      var deferred = $q.defer();
-        
-      db.executeSql('SELECT * FROM Theme', [], function(res) {
-          if(res.rows.length > 0) {
-            deferred.resolve({row: res.rows, message: 'Successful select from Theme table'});
-          } else {
-            deferred.resolve({message: 'No data in Theme table'});
-          }
-      }, function(error) {
-          deferred.reject({message: 'Error trying to select from Theme table'});
-      }); 
-      return deferred.promise;
-    }
-    
-    public.getTemplates = function() {
-      var deferred = $q.defer();
-        
-      db.executeSql('SELECT rowid AS [rowId], * FROM Inspection ins WHERE insSourceType = ?', ['Template'], function(res) {
-          if(res.rows.length > 0) {
-            deferred.resolve({row: res.rows, message: 'Successful select from Template table'});
-          } else {
-            deferred.resolve({message: 'No data in Template table'});
-          }
-      }, function(error) {
-          deferred.reject({message: 'Error trying to select from Template table'});
-      }); 
       return deferred.promise;
     }
 
-    public.initSections = function() {
+    public.initTemplates = function () {
+      console.log('db initTemplates being called');
+      var timestamp = new Date();
+      var deferred = $q.defer();
+      db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insSourceType, insType, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?)', [timestamp, timestamp, 'Template', 'Residential', 1, 'Residential Template'], function (res) {
+        deferred.resolve({
+          rowId: res.insertId,
+          message: 'Template insertion successful'
+        });
+      }, function (error) {
+        deferred.reject({
+          message: 'Template insertion failed: ' + error.message
+        });
+      });
+      return deferred.promise;
+    }
+
+    public.getThemes = function () {
+      var deferred = $q.defer();
+
+      db.executeSql('SELECT * FROM Theme', [], function (res) {
+        if (res.rows.length > 0) {
+          deferred.resolve({
+            row: res.rows,
+            message: 'Successful select from Theme table'
+          });
+        } else {
+          deferred.resolve({
+            message: 'No data in Theme table'
+          });
+        }
+      }, function (error) {
+        deferred.reject({
+          message: 'Error trying to select from Theme table'
+        });
+      });
+      return deferred.promise;
+    }
+
+    public.getTemplates = function () {
+      var deferred = $q.defer();
+
+      db.executeSql('SELECT rowid AS [rowId], * FROM Inspection ins WHERE insSourceType = ?', ['Template'], function (res) {
+        if (res.rows.length > 0) {
+          deferred.resolve({
+            row: res.rows,
+            message: 'Successful select from Template table'
+          });
+        } else {
+          deferred.resolve({
+            message: 'No data in Template table'
+          });
+        }
+      }, function (error) {
+        deferred.reject({
+          message: 'Error trying to select from Template table'
+        });
+      });
+      return deferred.promise;
+    }
+
+    public.initSections = function () {
       console.log('db initSections being called');
       var deferred = $q.defer();
       db.sqlBatch([
@@ -311,27 +348,34 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
           message: 'failure inserting dummy data section ' + error.message
         });
       });
-      return deferred.promise;        
+      return deferred.promise;
     }
-    
-    public.getSections = function(inspectionId) {
+
+    public.getSections = function (inspectionId) {
       var inspId = parseInt(inspectionId);
       console.log('db getSections Inspection Id: ' + inspId);
-      console.log(typeof(inspId));
+      console.log(typeof (inspId));
       var deferred = $q.defer();
-      db.executeSql('SELECT rowId AS [rowId], secTitle AS [title], secInspectionId FROM Section WHERE secInspectionId = ?', [inspId], function(res) {
-        if(res.rows.length > 0) {
-          deferred.resolve({row: res.rows, message: 'Successful select from Section'});
+      db.executeSql('SELECT rowId AS [rowId], secTitle AS [title], secInspectionId FROM Section WHERE secInspectionId = ?', [inspId], function (res) {
+        if (res.rows.length > 0) {
+          deferred.resolve({
+            row: res.rows,
+            message: 'Successful select from Section'
+          });
         } else {
-          deferred.resolve({message: 'No data in Section table'});
+          deferred.resolve({
+            message: 'No data in Section table'
+          });
         }
-      }, function(error) {
-        deferred.reject({message: 'Error trying to select from Section table'});
+      }, function (error) {
+        deferred.reject({
+          message: 'Error trying to select from Section table'
+        });
       });
       return deferred.promise;
     }
-    
-   public.initSubSections = function() {
+
+    public.initSubSections = function () {
       console.log('db initSubSections');
       var deferred = $q.defer();
       db.sqlBatch([
@@ -379,43 +423,57 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
           message: 'failure inserting dummy data subsection'
         });
       });
-      return deferred.promise;           
-   }
-   
-   public.getSubSections = function(sectionId) {
+      return deferred.promise;
+    }
+
+    public.getSubSections = function (sectionId) {
       console.log('db getSubSections');
       var deferred = $q.defer();
-      db.executeSql('SELECT rowId AS [rowId], susTitle AS [title], susSectionId FROM SubSection WHERE susSectionId = ?', [sectionId], function(res) {
-        if(res.rows.length > 0) {
-          deferred.resolve({row: res.rows, message: 'Successful select from SubSection'});
+      db.executeSql('SELECT rowId AS [rowId], susTitle AS [title], susSectionId FROM SubSection WHERE susSectionId = ?', [sectionId], function (res) {
+        if (res.rows.length > 0) {
+          deferred.resolve({
+            row: res.rows,
+            message: 'Successful select from SubSection'
+          });
         } else {
-          deferred.resolve({message: 'No data in SubSection table'});
+          deferred.resolve({
+            message: 'No data in SubSection table'
+          });
         }
-      }, function(error) {
-        deferred.reject({message: 'Error trying to select from SubSection table'});
+      }, function (error) {
+        deferred.reject({
+          message: 'Error trying to select from SubSection table'
+        });
       });
-      return deferred.promise;       
-   }
-   
-   public.getQuestions = function(subSectionId) {
+      return deferred.promise;
+    }
+
+    public.getQuestions = function (subSectionId) {
       console.log('db getQuestions');
       var deferred = $q.defer();
-      db.executeSql('SELECT rowId AS [rowId], queTitle AS [title], queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription FROM Question WHERE queSubSectionId = ?', [sectionId], function(res) {
-        if(res.rows.length > 0) {
-          deferred.resolve({row: res.rows, message: 'Successful select from Question'});
+      db.executeSql('SELECT rowId AS [rowId], queTitle AS [title], queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription FROM Question WHERE queSubSectionId = ?', [sectionId], function (res) {
+        if (res.rows.length > 0) {
+          deferred.resolve({
+            row: res.rows,
+            message: 'Successful select from Question'
+          });
         } else {
-          deferred.resolve({message: 'No data in Question table'});
+          deferred.resolve({
+            message: 'No data in Question table'
+          });
         }
-      }, function(error) {
-        deferred.reject({message: 'Error trying to select from Question table'});
+      }, function (error) {
+        deferred.reject({
+          message: 'Error trying to select from Question table'
+        });
       });
-      return deferred.promise;    
-   }
-   // Insert Necessary Data for Full Inspection
-   public.initDefaultTemplate = function() {
-     console.log('db initDefaultTemplate');
-     var deferred = $q.defer();
-     db.sqlBatch([
+      return deferred.promise;
+    }
+    // Insert Necessary Data for Full Inspection
+    public.initDefaultTemplate = function () {
+      console.log('db initDefaultTemplate');
+      var deferred = $q.defer();
+      db.sqlBatch([
         ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Person(s) Present', '', 1, false, false, 'checkbox', null, null, false, true, true, 1, 'Template']],
         ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Person(s) Providing Property Access', '', 1, false, false, 'checkbox', null, null, false, true, true, 1, 'Template']],
         ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Year Built', '', 1, false, true, 'number', 1700, 2017, false, true, true, 1, 'Template']],
@@ -850,10 +908,10 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [9, 'High-Rise', 'single', 1, 'Template']],
         // Property Configurations
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [10, 'With Lower Parking Garage', 'multi', 1, 'Template']],
-        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [10, 'With Basement & Garage', 'multi', 1, 'Template']], 
-        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [10, 'With Garage', 'multi', 1, 'Template']], 
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [10, 'With Basement & Garage', 'multi', 1, 'Template']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [10, 'With Garage', 'multi', 1, 'Template']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [10, 'With Garage & Crawlspace', 'multi', 1, 'Template']],
-        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [10, 'With Full Basement', 'multi', 1, 'Template']], 
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [10, 'With Full Basement', 'multi', 1, 'Template']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [10, 'With Daylight Basement', 'multi', 1, 'Template']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [10, 'With Basement & Crawlspace(s)', 'multi', 1, 'Template']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [10, 'With Slab-On-Grade', 'multi', 1, 'Template']],
@@ -916,117 +974,149 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
           message: 'failure inserting full inspection dummy data ' + error.message
         });
       });
-       return deferred.promise;
-   }
-   
-   public.getInspectionById = function(inspectionId) {
-       var inspId = parseInt(inspectionId); // ensure id is an int
-       console.log('db getInspectionById ID: ' + inspId);
-       console.log(typeof(inspId));
-       var deferred = $q.defer();
-       db.executeSql(
-           'SELECT *, insp.rowid AS [rowId], sec.rowid AS [secRowId], subsec.rowid AS [susRowId], ques.rowid AS [queRowId], ans.rowid AS [ansRowId], qua.rowid AS [quaRowId] FROM Inspection insp JOIN Section sec on sec.secInspectionId = insp.rowid JOIN SubSection subsec ON subsec.susSectionId = sec.rowId LEFT JOIN Question ques ON ques.queSubSectionId = subsec.rowid LEFT JOIN Answer ans ON ans.ansQuestionId = ques.rowid LEFT JOIN QuestionAnswers qua on qua.quaQuestionId = ques.rowid WHERE insp.rowid = ? ORDER BY sec.rowid, subsec.rowid, ques.rowid, ans.rowid'
-           , [inspId], function(res) {
-           if(res.rows.length > 0) {
-             deferred.resolve({row: res.rows, message: "Successful select of all Inspection data for Inspection#: " + inspId});
-           } else {
-             deferred.resolve({row: [], message: 'No associated tables had data'});
-           }
-       }, function(error) {
-           deferred.reject({message: 'Error executing full inspection select statement: ' + error.message});
-       });
-       return deferred.promise;
-   }
-   
-   // Copies inspection, section, subsection, question, answer to new rows so they can be altered
-   // without affecting the 'master copy'
-   public.copyTemplateToInspection = function(inspectionId) {
-       
-   }
-   
-   // Overwrite the copied template with the actual data of the save
-   public.saveInspection = function(ins) {
-     var timestamp = new Date();
-     console.log('saveInspection start');
-     console.log(ins);
-     var deferred = $q.defer();
-     // Insert Inspection Table Data
-     db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insThemeId, insOrganizationId, insTemplateTitle) VALUES (?,?,?,?,?,?,?,?,?,?)', [timestamp, timestamp, ins.insJobId, ins.insSourceType, ins.insType, ins.insName, ins.insUserId, ins.insThemeId, ins.insOrganizationId, ins.insTemplateTitle], function(res) {
-         //if this is successful, attempt to insert section data
-         ins.sections.forEach(function(section) {
-           db.executeSql('INSERT INTO Section (secTitle, secInspectionId) VALUES (?,?)', [section.title, res.insertId], function(secRes) {
-               console.log(section.title + ' section succesfully inserted. ID: ' + secRes.insertId);
-               //if this is successful, attempt to insert subsection data
-               section.subsections.forEach(function(subsection) {
-                 db.executeSql('INSERT INTO SubSection (susTitle, susSectionId) VALUES (?,?)', [subsection.title, secRes.insertId], function(susRes) {
-                   console.log(subsection.title + ' subsection successfully inserted. ID: ' + susRes.insertId);
-                   // If this is successful, attempt to insert question data
-                   subsection.questions.forEach(function(question) {
-                     db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) VALUES (?,?,?,?,?,?,?,?,?,?,?)', [question.title, question.description, secRes.insertId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.validation.type, question.validation.min, question.validation.max, question.notApplicable, question.showSummaryRemark, question.showDescription], function(queRes) {
-                       console.log(question.title + ' question successfully inserted. ID: ' + queRes.insertId); 
-                       // If this is successful, attempt to insert answer data
-                       question.values.forEach(function(answer) {
-                         db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType) VALUES (?,?,?)', [queRes.insertId, answer.key, ], function(ansRes) {
-                           console.log(answer.key + ' answer successfully inserted. ID: ' + ansRes.insertId);
-                           // If this is successful, attempt to insert question-answer data
-                           if(answer.key == question.answer || (question.answers && question.answers.indexOf(answer.key) > -1)) {
-                             db.executeSql('INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId) VALUES (?,?)', [queRes.insertId, ansRes.insertId], function(queAnsRes) {
-                               console.log('Successfully inserted saved answer: ' + answer.key + ' for question title: ' + question.title + '.');
-                             }, function(queAnsError) {
-                               deferred.reject({message: 'Error with QuestionAnswer save: ' + queAnsError.message});     
-                             });
-                           }
-                         }, function(ansError) {
-                           deferred.reject({message: 'Error with Answer save: ' + ansError.message});
-                         });
-                       });
-                     }, function(queError) {
-                       deferred.reject({message: 'Error with Question save: ' + queError.message});   
-                     });
-                   });
-                 }, function(susError) {
-                   console.log('failed subsec insert: ' + susError.message);
-                   deferred.reject({message: 'Error with SubSection save: ' + susError.message});
-                 });
-               });
-           }, function(secError) {
-               deferred.reject({message: 'Error with Section save: ' + secError.message});
-           });
-         });
-         deferred.resolve({rowId: res.insertId, message: 'Successful save into inspection table'});
-     }, function(error) {
-         //if failure, log the failure
-         deferred.reject({message: 'Error saving Inspection: ' + error.message}); 
-     });
-     return deferred.promise;
-   }
-   
-   /* SELECT USAGE
-     var select = database.select('SELECT * FROM USER', []);
-     select.then(
-         function(promise) {
-           console.log(promise.message);
-           for(var i=0; i < promise.rows.length; i++) {
-             console.log(promise.rows.item(i));
-           }
-         }, function(promise) {
-           console.log(promise.message);
-         }
-     );
-   */
-   public.select = function(query, params) {
-     var deferred = $q.defer();
-     db.executeSql(query, params, function(res) {
-       if(res.rows.length > 0) {
-           deferred.resolve({rows: res.rows, message: 'Successful select'});
-       } else {
-           deferred.resolve({rows: [], message: 'No items found with current query: ' + query});
-       }
-     }, function(error) {
-        deferred.reject({message: 'Error trying to run select query: ' + query});
-     });
-     return deferred.promise;
-   }
+      return deferred.promise;
+    }
+
+    public.getInspectionById = function (inspectionId) {
+      var inspId = parseInt(inspectionId); // ensure id is an int
+      console.log('db getInspectionById ID: ' + inspId);
+      console.log(typeof (inspId));
+      var deferred = $q.defer();
+      db.executeSql(
+        'SELECT *, insp.rowid AS [rowId], sec.rowid AS [secRowId], subsec.rowid AS [susRowId], ques.rowid AS [queRowId], ans.rowid AS [ansRowId], qua.rowid AS [quaRowId] FROM Inspection insp JOIN Section sec on sec.secInspectionId = insp.rowid JOIN SubSection subsec ON subsec.susSectionId = sec.rowId LEFT JOIN Question ques ON ques.queSubSectionId = subsec.rowid LEFT JOIN Answer ans ON ans.ansQuestionId = ques.rowid LEFT JOIN QuestionAnswers qua on qua.quaQuestionId = ques.rowid WHERE insp.rowid = ? ORDER BY sec.rowid, subsec.rowid, ques.rowid, ans.rowid', [inspId],
+        function (res) {
+          if (res.rows.length > 0) {
+            deferred.resolve({
+              row: res.rows,
+              message: "Successful select of all Inspection data for Inspection#: " + inspId
+            });
+          } else {
+            deferred.resolve({
+              row: [],
+              message: 'No associated tables had data'
+            });
+          }
+        },
+        function (error) {
+          deferred.reject({
+            message: 'Error executing full inspection select statement: ' + error.message
+          });
+        });
+      return deferred.promise;
+    }
+
+    // Copies inspection, section, subsection, question, answer to new rows so they can be altered
+    // without affecting the 'master copy'
+    public.copyTemplateToInspection = function (inspectionId) {
+
+    }
+
+    // Overwrite the copied template with the actual data of the save
+    public.saveInspection = function (ins) {
+      var timestamp = new Date();
+      console.log('saveInspection start');
+      console.log(ins);
+      var deferred = $q.defer();
+      // Insert Inspection Table Data
+      db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insThemeId, insOrganizationId, insTemplateTitle) VALUES (?,?,?,?,?,?,?,?,?,?)', [timestamp, timestamp, ins.insJobId, ins.insSourceType, ins.insType, ins.insName, ins.insUserId, ins.insThemeId, ins.insOrganizationId, ins.insTemplateTitle], function (res) {
+        //if this is successful, attempt to insert section data
+        ins.sections.forEach(function (section) {
+          db.executeSql('INSERT INTO Section (secTitle, secInspectionId) VALUES (?,?)', [section.title, res.insertId], function (secRes) {
+            console.log(section.title + ' section succesfully inserted. ID: ' + secRes.insertId);
+            //if this is successful, attempt to insert subsection data
+            section.subsections.forEach(function (subsection) {
+              db.executeSql('INSERT INTO SubSection (susTitle, susSectionId) VALUES (?,?)', [subsection.title, secRes.insertId], function (susRes) {
+                console.log(subsection.title + ' subsection successfully inserted. ID: ' + susRes.insertId);
+                // If this is successful, attempt to insert question data
+                subsection.questions.forEach(function (question) {
+                  db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) VALUES (?,?,?,?,?,?,?,?,?,?,?)', [question.title, question.description, secRes.insertId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.validation.type, question.validation.min, question.validation.max, question.notApplicable, question.showSummaryRemark, question.showDescription], function (queRes) {
+                    console.log(question.title + ' question successfully inserted. ID: ' + queRes.insertId);
+                    // If this is successful, attempt to insert answer data
+                    question.values.forEach(function (answer) {
+                      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType) VALUES (?,?,?)', [queRes.insertId, answer.key, ], function (ansRes) {
+                        console.log(answer.key + ' answer successfully inserted. ID: ' + ansRes.insertId);
+                        // If this is successful, attempt to insert question-answer data
+                        if (answer.key == question.answer || (question.answers && question.answers.indexOf(answer.key) > -1)) {
+                          db.executeSql('INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId) VALUES (?,?)', [queRes.insertId, ansRes.insertId], function (queAnsRes) {
+                            console.log('Successfully inserted saved answer: ' + answer.key + ' for question title: ' + question.title + '.');
+                          }, function (queAnsError) {
+                            deferred.reject({
+                              message: 'Error with QuestionAnswer save: ' + queAnsError.message
+                            });
+                          });
+                        }
+                      }, function (ansError) {
+                        deferred.reject({
+                          message: 'Error with Answer save: ' + ansError.message
+                        });
+                      });
+                    });
+                  }, function (queError) {
+                    deferred.reject({
+                      message: 'Error with Question save: ' + queError.message
+                    });
+                  });
+                });
+              }, function (susError) {
+                console.log('failed subsec insert: ' + susError.message);
+                deferred.reject({
+                  message: 'Error with SubSection save: ' + susError.message
+                });
+              });
+            });
+          }, function (secError) {
+            deferred.reject({
+              message: 'Error with Section save: ' + secError.message
+            });
+          });
+        });
+        deferred.resolve({
+          rowId: res.insertId,
+          message: 'Successful save into inspection table'
+        });
+      }, function (error) {
+        //if failure, log the failure
+        deferred.reject({
+          message: 'Error saving Inspection: ' + error.message
+        });
+      });
+      return deferred.promise;
+    }
+
+    /* SELECT USAGE
+      var select = database.select('SELECT * FROM USER', []);
+      select.then(
+          function(promise) {
+            console.log(promise.message);
+            for(var i=0; i < promise.rows.length; i++) {
+              console.log(promise.rows.item(i));
+            }
+          }, function(promise) {
+            console.log(promise.message);
+          }
+      );
+    */
+    public.select = function (query, params) {
+      var deferred = $q.defer();
+      db.executeSql(query, params, function (res) {
+        if (res.rows.length > 0) {
+          deferred.resolve({
+            rows: res.rows,
+            message: 'Successful select'
+          });
+        } else {
+          deferred.resolve({
+            rows: [],
+            message: 'No items found with current query: ' + query
+          });
+        }
+      }, function (error) {
+        deferred.reject({
+          message: 'Error trying to run select query: ' + query
+        });
+      });
+      return deferred.promise;
+    }
   });
   return public;
 });

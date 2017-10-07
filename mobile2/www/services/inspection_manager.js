@@ -5,60 +5,10 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
   private.inspection = {};
   public.mode = "inspection";
 
-  // Init themes & templates
-  /*var themeData = database.initThemes();
-  themeData.then(
-      //Success
-      function(promise) {
-        console.log(promise.message);
-      }, 
-      //Fail
-      function(promise) {
-        console.log(promise.message);
-      }
-  );*/
-  /*var templateData = database.initTemplates();
-  templateData.then(
-      //Success
-      function(promise) {
-        console.log(promise.message);
-      }, 
-      //Fail
-      function(promise) {
-        console.log(promise.message);
-      }
-  );*/
-<<<<<<< HEAD
-    public.getInspection = function(id) {
-        console.log('Inspection Manager Get Inspection ID: ' + id);
-        var defer = $q.defer();
-        
-        if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== id) {
-                database.getInspectionById(id).then(
-                function (promise) {  
-                // Build Inspection Fields
-                private.inspection.insLastModified = promise.row.item(0).insLastModified;
-                private.inspection.insLastSubmitted = promise.row.item(0).insLastSubmitted;
-                private.inspection.insJobId = promise.row.item(0).insJobId;
-                private.inspection.insType = promise.row.item(0).insType;
-                private.inspection.insName = promise.row.item(0).insName;
-                private.inspection.insUserId = promise.row.item(0).insUserId;
-                private.inspection.rowId = promise.row.item(0).rowId;
-                private.inspection.insId = promise.row.item(0).rowId;
-                private.inspection.insSourceType = 'Inspection';
-                private.inspection.sections = [];
-                var i = 0;
-                var increment = 0;
-                do {
-                    // Build section
-                    var section = {
-                      title: promise.row.item(i).secTitle,
-                      subsections: []
-=======
   public.getInspection = function (id) {
     var defer = $q.defer();
     var promise = defer.promise;
-    
+
     switch (public.mode) {
       case "inspection":
       case "template":
@@ -72,13 +22,13 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
       default:
         defer.reject(public.mode + " is not a valid type.");
     }
-    
+
     return promise;
   };
 
   private.loadFromDatabase = function (id) {
     var defer = $q.defer();
-    
+
     if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== id) {
       database.getInspectionById(id).then(
         function (promise) {
@@ -91,6 +41,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
           private.inspection.insUserId = promise.row.item(0).insUserId;
           private.inspection.rowId = promise.row.item(0).rowId;
           private.inspection.insId = promise.row.item(0).rowId;
+          private.inspection.insSourceType = 'Inspection';
           private.inspection.sections = [];
           var i = 0;
           var increment = 0;
@@ -136,7 +87,6 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                     var answer = {
                       key: promise.row.item(l).ansValue,
                       remark: ''
->>>>>>> Theme editing is working now. :)
                     }
                     question.values.push(answer);
                     // Check to see if this answer was a selected answer by inspector
@@ -148,44 +98,6 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                         question.answer = answer.key;
                       }
                     }
-<<<<<<< HEAD
-                    private.inspection.sections.push(section);
-                    i = increment + 1;
-                } while (i < promise.row.length - 1);
-                   defer.resolve({'value':private.inspection});
-                },
-                function (promise) {
-                    private.inspection = {}; //failure eh?
-                    defer.reject({'value':private.inspection});
-                    console.log('failure: ' + promise.message)
-                }
-            );
-        } else {
-            defer.resolve({'value':private.inspection});
-        }
-        return defer.promise;
-    };
-    
-    public.getInspectionCache = function() {
-      return private.inspection;  
-    };
-    
-    public.setInspectionCache = function(input) {
-        private.inspection = input;
-    };
-    
-    public.getInspections = function() {
-        return database.getInspections();
-    };
-    
-    public.getThemes = function() {
-        return database.getThemes();
-    };
-    
-    public.getTemplates = function() {
-        return database.getTemplates();
-    };
-=======
                     // Use increment variable to track progress in promise.row data block
                     increment = l;
                   }
@@ -214,47 +126,51 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     } else {
       defer.resolve(private.inspection);
     }
->>>>>>> Theme editing is working now. :)
-    
+
     return defer.promise;
   };
-  
+
   private.loadFromThemeManager = function (id) {
     var defer = $q.defer();
-    
+
     theme_manager.getThemeManifest(id)
-    .then(
-    function(result) {
-      theme_manager.current = result;
-      
-      private.inspection.insLastModified = result.last_modified;
-      private.inspection.insLastSubmitted = result.date_created;
-      private.inspection.insJobId = null;
-      private.inspection.insType = null;
-      private.inspection.insName = result.title;
-      private.inspection.insUserId = null;
-      private.inspection.rowId = null;
-      private.inspection.insId = id;
-      private.inspection.sections = result.template;
-      
-      defer.resolve(private.inspection);
-    },
-    function (error) {
-      private.inspection = {}; //failure eh?
-      defer.reject(private.inspection);
-      console.error(error.message);
-    })
+      .then(
+        function (result) {
+          theme_manager.current = result;
+
+          private.inspection.insLastModified = result.last_modified;
+          private.inspection.insLastSubmitted = result.date_created;
+          private.inspection.insJobId = null;
+          private.inspection.insType = null;
+          private.inspection.insName = result.title;
+          private.inspection.insUserId = null;
+          private.inspection.rowId = null;
+          private.inspection.insId = id;
+          private.inspection.sections = result.template;
+
+          defer.resolve(private.inspection);
+        },
+        function (error) {
+          private.inspection = {}; //failure eh?
+          defer.reject(private.inspection);
+          console.error(error.message);
+        })
 
     return defer.promise;
   };
-  
-  public.getReports = function () {
-    return database.getReports();
+
+  public.getInspectionCache = function () {
+    return private.inspection;
   };
 
-  public.getThemes = function () {
-    return database.getThemes();
+  public.setInspectionCache = function (input) {
+    private.inspection = input;
   };
+
+  public.getInspections = function () {
+    return database.getInspections();
+  };
+
 
   public.getTemplates = function () {
     return database.getTemplates();
@@ -301,36 +217,6 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     return defer.promise;
   };
 
-<<<<<<< HEAD
-    public.getSections = function(insId) {
-        var defer = $q.defer();
-        var sections = [];
-        public.getInspection(insId).then(function(data){
-            try {
-                sections = data.value.sections;
-                defer.resolve({'value':sections});
-            } catch(e) {
-                defer.reject(sections);
-            }
-        }, function() {
-            defer.reject(sections);
-        });
-        return defer.promise;
-    };
-    
-    public.getSection = function(insId, sectionIndex) {
-        var defer = $q.defer();
-        var section = {};
-        public.getInspection(insId).then(function(data){
-            try {
-                section = data.value.sections[sectionIndex];
-                defer.resolve({'value':section});
-            } catch(e) {
-                defer.reject(section);
-            }
-        }, function() {
-            defer.reject(section);
-=======
   public.getSection = function (insId, sectionIndex) {
     var defer = $q.defer();
     var section = {};
@@ -382,7 +268,6 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
           .subsections[subsectionIndex];
         defer.resolve({
           'value': subsection
->>>>>>> Theme editing is working now. :)
         });
       } catch (e) {
         console.log('Exception: ');
@@ -396,41 +281,6 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
   };
 
 
-<<<<<<< HEAD
-    public.getSubsections = function(insId, sectionIndex) {
-        var defer = $q.defer();
-        var subsections = [];
-        public.getInspection(insId).then(function(data){
-            try {
-                subsections = data.value.sections[sectionIndex].subsections;
-                defer.resolve({'value':subsections});
-            } catch(e) {
-                console.log('Exception: ');
-                console.log(e);
-                defer.reject(subsections);
-            }
-        }, function() {
-            defer.reject(subsections);
-        });
-        return defer.promise;
-    };
-    
-    public.getSubSection = function(insId, sectionIndex, subsectionIndex) {
-        var defer = $q.defer();
-        var subsection = {};
-        public.getInspection(insId).then(function(data){
-            try {
-                subsection = data.value.sections[sectionIndex]
-                                  .subsections[subsectionIndex];
-                defer.resolve({'value':subsection});
-            } catch(e) {
-                console.log('Exception: ');
-                console.log(e);
-                defer.reject(subsection);
-            }
-        }, function() {
-            defer.reject(subsection);
-=======
   public.getQuestions = function (insId, sectionIndex, subsectionIndex) {
     var defer = $q.defer();
     var questions = [];
@@ -462,7 +312,6 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
           .questions[questionIndex];
         defer.resolve({
           'value': question
->>>>>>> Theme editing is working now. :)
         });
       } catch (e) {
         console.log('Exception: ');
@@ -478,7 +327,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
   public.saveInspection = function () {
     var defer = $q.defer();
     var promise = defer.promise;
-    
+
     switch (public.mode) {
       case "inspection":
       case "template":
@@ -490,65 +339,13 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
       default:
         defer.reject(public.mode + " is not a valid type.");
     }
-    
+
     return promise;
   };
-  
-  private.saveToDatabase = function() {
+
+  private.saveToDatabase = function () {
     var deferred = $q.defer();
-    
-<<<<<<< HEAD
-    public.getQuestions = function(insId, sectionIndex, subsectionIndex) {
-        var defer = $q.defer();
-        var questions = [];
-        public.getInspection(insId).then(function(data){
-            try {
-                questions = data.value.sections[sectionIndex]
-                                .subsections[subsectionIndex].questions;
-                defer.resolve({'value':questions});
-            } catch(e) {
-                console.log('Exception: ');
-                console.log(e);
-                defer.reject(questions);
-            }
-        }, function() {
-            defer.reject(questions);
-        });
-        return defer.promise;
-    };
-    
-    public.getQuestion = function(insId, sectionIndex, subsectionIndex, questionIndex) {
-        var defer = $q.defer();
-        var question = {};
-        public.getInspection(insId).then(function(data){
-            try {
-                question = data.value.sections[sectionIndex]
-                                .subsections[subsectionIndex]
-                                .questions[questionIndex];
-                defer.resolve({'value':question});
-            } catch(e) {
-                console.log('Exception: ');
-                console.log(e);
-                defer.reject(question);
-            }
-        }, function() {
-            defer.reject(question);
-        });
-        return defer.promise;
-    };
-    
-    public.saveInspection = function() {
-      var deferred = $q.defer();
-      database.saveInspection(private.inspection).then(function(data) {
-        console.log(data.message);
-        deferred.resolve({message: 'Success saving inspection: ' + data.message});
-      }, function(data) {
-        console.log(data.message);
-        deferred.reject({message: 'Failure saving inspection: ' + data.message});
-      });
-      return deferred.promise;
-    };
-=======
+
     database.saveInspection(private.inspection).then(function (data) {
       console.log(data.message);
       deferred.resolve();
@@ -556,19 +353,18 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
       console.log(data.message);
       deferred.reject();
     });
-    
+
     return deferred.promise;
   };
-  
-  private.saveToThemeManager = function() {
+
+  private.saveToThemeManager = function () {
     var defer = $q.defer();
-    
+
     theme_manager.current.template = private.inspection.sections;
     theme_manager.saveTheme(theme_manager.current);
-    
+
     return defer.promise;
   };
->>>>>>> Theme editing is working now. :)
 
   return public;
 });

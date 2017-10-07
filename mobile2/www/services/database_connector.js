@@ -1021,23 +1021,23 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insThemeId, insOrganizationId, insTemplateTitle) VALUES (?,?,?,?,?,?,?,?,?,?)', [timestamp, timestamp, ins.insJobId, ins.insSourceType, ins.insType, ins.insName, ins.insUserId, ins.insThemeId, ins.insOrganizationId, ins.insTemplateTitle], function (res) {
         //if this is successful, attempt to insert section data
         ins.sections.forEach(function (section) {
-          db.executeSql('INSERT INTO Section (secTitle, secInspectionId) VALUES (?,?)', [section.title, res.insertId], function (secRes) {
+          db.executeSql('INSERT INTO Section (secTitle, secInspectionId, secSourceType) VALUES (?,?,?)', [section.title, res.insertId, ins.insSourceType], function (secRes) {
             console.log(section.title + ' section succesfully inserted. ID: ' + secRes.insertId);
             //if this is successful, attempt to insert subsection data
             section.subsections.forEach(function (subsection) {
-              db.executeSql('INSERT INTO SubSection (susTitle, susSectionId) VALUES (?,?)', [subsection.title, secRes.insertId], function (susRes) {
-                console.log(subsection.title + ' subsection successfully inserted. ID: ' + susRes.insertId);
+              db.executeSql('INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) VALUES (?,?,?,?)', [subsection.title, secRes.insertId, res.insertId, ins.insSourceType], function (susRes) {
+                console.log(subsection.title + ' subsection successfully inserted. ID: ' + susRes.insertId + ' saved to Inspection#: ' + res.insertId);
                 // If this is successful, attempt to insert question data
                 subsection.questions.forEach(function (question) {
-                  db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription) VALUES (?,?,?,?,?,?,?,?,?,?,?)', [question.title, question.description, secRes.insertId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.validation.type, question.validation.min, question.validation.max, question.notApplicable, question.showSummaryRemark, question.showDescription], function (queRes) {
-                    console.log(question.title + ' question successfully inserted. ID: ' + queRes.insertId);
+                  db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)', [question.title, question.description, susRes.insertId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.validation.type, question.validation.min, question.validation.max, question.notApplicable, question.showSummaryRemark, question.showDescription, res.insertId, ins.insSourceType], function (queRes) {
+                    console.log(question.title + ' question successfully inserted. ID: ' + queRes.insertId + ' saved to Inspection#: ' + res.insertId + ' and subSectionId: ' + susRes.insertId);
                     // If this is successful, attempt to insert answer data
                     question.values.forEach(function (answer) {
-                      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType) VALUES (?,?,?)', [queRes.insertId, answer.key, ], function (ansRes) {
-                        console.log(answer.key + ' answer successfully inserted. ID: ' + ansRes.insertId);
+                      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) VALUES (?,?,?,?,?)', [queRes.insertId, answer.key, answer.type, res.insertId, ins.insSourceType], function (ansRes) {
+                        console.log(answer.key + ' answer successfully inserted. ID: ' + ansRes.insertId + ' saved to Inspection#: ' + res.insertId);
                         // If this is successful, attempt to insert question-answer data
                         if (answer.key == question.answer || (question.answers && question.answers.indexOf(answer.key) > -1)) {
-                          db.executeSql('INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId) VALUES (?,?)', [queRes.insertId, ansRes.insertId], function (queAnsRes) {
+                          db.executeSql('INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId, quaInspectionId, quaSourceType) VALUES (?,?,?,?)', [queRes.insertId, ansRes.insertId, res.insertId, ins.insSourceType], function (queAnsRes) {
                             console.log('Successfully inserted saved answer: ' + answer.key + ' for question title: ' + question.title + '.');
                           }, function (queAnsError) {
                             deferred.reject({

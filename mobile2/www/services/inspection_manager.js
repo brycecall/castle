@@ -48,14 +48,21 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
           do {
             // Build section
             var section = {
+              id: promise.row.item(i).secRowId,
               title: promise.row.item(i).secTitle,
+              sourceType: promise.row.item(i).secSourceType,
+              inspectionId: promise.row.item(i).secInspectionId,
               subsections: []
             }
             // Build subsections
             for (var j = i; promise.row.item(j) && promise.row.item(i).secRowId == promise.row.item(j).secRowId; j++) {
               // Build subsection
               var subsection = {
+                id: promise.row.item(j).susRowId,
                 title: promise.row.item(j).susTitle,
+                sectionId: promise.row.item(j).susSectionId,
+                inspectionId: promise.row.item(j).susInspectionId,
+                sourceType: promise.row.item(j).susSourceType,
                 questions: []
               }
               // Build questions
@@ -64,8 +71,12 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                 for (var k = j; promise.row.item(k) && promise.row.item(j).susRowId == promise.row.item(k).susRowId; k++) {
                   // Build question object
                   var question = {
+                    id: promise.row.item(k).queRowId,
                     title: promise.row.item(k).queTitle,
                     description: promise.row.item(k).queDescription,
+                    subsectionId: promise.row.item(k).queSubSectionId,
+                    inspectionId: promise.row.item(k).queInspectionId,
+                    sourceType: promise.row.item(k).sourceType,
                     type: promise.row.item(k).queType,
                     values: [],
                     validation: {
@@ -85,7 +96,12 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                   // Build answers
                   for (var l = k; promise.row.item(l) && promise.row.item(k).queRowId == promise.row.item(l).queRowId; l++) {
                     var answer = {
+                      id: promise.row.item(l).ansRowId,
                       key: promise.row.item(l).ansValue,
+                      questionId: promise.row.item(l).ansQuestionId,
+                      sourceType: promise.row.item(l).ansSourceType,
+                      inspectionId: promise.row.item(l).ansInspectionId,
+                      type: promise.row.item(l).ansType,
                       remark: ''
                     }
                     question.values.push(answer);

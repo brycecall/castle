@@ -247,6 +247,7 @@ app.controller('inspection_subsection', function ($scope, inspection_manager, he
   inspection_manager.getSubsections($scope.insId, $scope.sectionIndex).then(
     function (data) {
       $scope.subsections = data.value;
+      console.log($scope.subsections);
     },
     function (data) {
       console.log("Error... no subsections exist in the database");
@@ -254,6 +255,9 @@ app.controller('inspection_subsection', function ($scope, inspection_manager, he
   );
 
   $scope.questionDrill = function (subsectionIndex) {
+    console.log('inspectionId: ' + $scope.insId);
+    console.log('sectionIndex: ' + $scope.sectionIndex);
+    console.log('subsectionIndex: ' + subsectionIndex);
     $state.go('inspection_question', {
       'insId': $scope.insId,
       'sectionIndex': $scope.sectionIndex,

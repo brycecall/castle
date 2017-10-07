@@ -166,7 +166,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
   }
 
   // Get themes & templates
-  var themeGetter = theme_manager.getThemes();
+  var themeGetter = theme_manager.update();
   themeGetter.then(
     //Success
     function (promise) {

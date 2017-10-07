@@ -19,13 +19,13 @@
         "cordova-plugin-file": {
             "PACKAGE_NAME": "com.castle.inspect"
         },
+        "cordova-plugin-ios-camera-permissions": {
+            "PACKAGE_NAME": "com.castle.inspect"
+        },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.castle.inspect"
         },
         "cordova-sqlite-storage": {
-            "PACKAGE_NAME": "com.castle.inspect"
-        },
-        "cordova-plugin-ios-camera-permissions": {
             "PACKAGE_NAME": "com.castle.inspect"
         }
     },

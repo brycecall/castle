@@ -1,7 +1,12 @@
 #view {
     height:100%; 
     width:100%; 
-    overflow: hidden;
+    overflow: auto;
+}
+
+.page {
+  height: auto;
+  padding-bottom: 60px;
 }
 
 .pagePadding {

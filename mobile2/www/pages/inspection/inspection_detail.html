@@ -165,22 +165,35 @@
             </div>
             <md-card>
                 <md-card-content>
-                    <div ng-if="question.type === 'checkBox' && question.severity && question.severity !== 'Non-Issue' && question.showSummaryRemark" >
+                    <div ng-if="question.type === 'checkbox' && question.severity 
+                                && question.severity !== 'Non-Issue' 
+                                && question.showSummaryRemark
+                                && question.answers.length > 0"
+                                >
                         <div class="md-subhead"><b>{{question.severity}}</b></div>
                         <div ng-repeat="answer in question.answers">
-                            {{question.title}} {{answer}}
+                            {{question.title}}: {{answer}}
                         </div>
                     </div>
-                    <div ng-if="question.type !== checkBox && question.severity && question.severity !== 'Non-Issue' && question.showSummaryRemark" >
+                    <div ng-if="question.type !== 'checkbox' 
+                                && question.severity 
+                                && question.severity !== 'Non-Issue'
+                                && question.showSummaryRemark
+                                && question.answer" 
+                         >
                         <div class="md-subhead"><b>{{question.severity}}</b></div>
                         <div >
-                            {{question.title}} {{question.answer}}
+                            {{question.title}}: {{question.answer}}
                         </div>
                     </div>
                     <div ng-show="question.showDescription && question.severity && question.severity !== 'Non-Issue'">
                         {{question.description}}
                     </div>
-                    <div ng-show="!question.severity || question.severity === 'Non-Issue' || (!question.showSummaryRemark && !question.showDescription)" class="md-caption" style="color:rgba(0, 0, 0, 0.54);">
+                    <div ng-show="!question.severity || question.severity === 'Non-Issue' || 
+                                  (!question.showSummaryRemark && (!question.showDescription || !question.description)) || 
+                                  (question.type === 'checkbox' && question.answers.length <= 0)
+                                  ||  (question.type !== 'checkbox' && !question.answer)" 
+                         class="md-caption" style="color:rgba(0, 0, 0, 0.54);">
                     <i>summary remark preview</i>
                     </div>
                 </md-card-content>

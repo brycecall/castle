@@ -140,7 +140,10 @@ app.controller('template', function ($scope, $rootScope, $state, header_manager,
     });
   };
 
+<<<<<<< HEAD
+=======
   $scope.reports = [];
+>>>>>>> Theme editing is working now. :)
   $scope.sort = "";
   $scope.sort_filters = [
     "Name",
@@ -245,6 +248,21 @@ app.controller('template_section', function ($scope, inspection_manager, header_
 
   // All the sections for a specific inspection/report
   $scope.sections = [];
+<<<<<<< HEAD
+    
+    $scope.goToSubsection = function(sectionIndex) {
+        $state.go('template_subsection', {
+            'insId':$scope.insId,
+            'sectionIndex':sectionIndex
+        });
+    };
+    
+  $scope.addSection = function() {
+      $scope.sections.push({
+          'title':''
+      });
+      //console.log(inspection_manager.getInspectionCache());
+=======
 
   $scope.goToSubsection = function (sectionIndex) {
     $state.go('template_subsection', {
@@ -257,15 +275,23 @@ app.controller('template_section', function ($scope, inspection_manager, header_
     $scope.sections.push({
       'title': ''
     });
-      //console.log(inspection_manager.getInspectionCache());
+>>>>>>> Theme editing is working now. :)
   };
   
   inspection_manager.getSections($scope.insId).then(
+<<<<<<< HEAD
     function(data) {
         $scope.sections = data.value;
     },
     function(data) {
         console.log("Error... no sections exist in the database");
+=======
+    function (data) {
+      $scope.sections = data.value;
+    },
+    function (data) {
+      console.log("Error... no sections exist in the database");
+>>>>>>> Theme editing is working now. :)
     }
   );
 
@@ -369,17 +395,19 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
   });
 
   $scope.navigate = templateShareService.navigate;
+<<<<<<< HEAD
   $scope.remove = templateShareService.remove;
   $scope.otherValue = {
     'singleSelect': '',
     'value':null
   };
-  $scope.question = {};
+  $scope.question = {
+  };
   $scope.questionCount = -1;
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
     function (data) {
-      $scope.questionCount = data.value.length;
-      $scope.question = data.value[$scope.questionIndex];
+        $scope.questionCount = data.value.length;
+        $scope.question = data.value[$scope.questionIndex];
         
         $scope.$watch('otherValue.value', function (newVal, oldVal) {
         var list = $scope.question.answers;
@@ -400,6 +428,15 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
         }
       });
         
+=======
+
+  $scope.question = {};
+  $scope.questionCount = -1;
+  inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
+    function (data) {
+      $scope.questionCount = data.value.length;
+      $scope.question = data.value[$scope.questionIndex];
+>>>>>>> Theme editing is working now. :)
     },
     function (data) {
       console.log("Error... no question exists in the database");
@@ -447,10 +484,6 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
     $state.go('camera');
   };
 
-  $scope.otherValue = {
-    'singleSelect': ''
-  };
-
   (function () {
     if ($scope.question.type == 'photo') {
       $scope.question.photos = [];
@@ -464,6 +497,8 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
     }
   })();
 
+<<<<<<< HEAD
+=======
   $scope.$watch('otherValue', function (newVal, oldVal) {
     var list = $scope.question.answers;
     if (list) {
@@ -483,6 +518,7 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
     }
   });
 
+>>>>>>> Theme editing is working now. :)
   $scope.toggle = function (item, list, ignoreEmpty) {
     var index = list.indexOf(item);
     if (index > -1) {

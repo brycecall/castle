@@ -110,7 +110,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     });
   };
 
-  $scope.reports = [];
+  $scope.inspections = [];
   $scope.sort = "";
   $scope.sort_filters = [
     "Name",
@@ -139,14 +139,14 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     //  
   });
 
-  var reports = inspection_manager.getReports();
-  reports.then(
+  var inspections = inspection_manager.getInspections();
+  inspections.then(
     //Success
     function (promise) {
       console.log(promise.message);
       console.log(promise.row);
-      for (var i = 0; i < promise.row.length; i++) {
-        $scope.reports.push(promise.row.item(i));
+      for (var i = 0; promise.row && i < promise.row.length; i++) {
+        $scope.inspections.push(promise.row.item(i));
       }
       //Fail
     },
@@ -161,7 +161,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
   $scope.templates = [];
   $scope.toSection = function (insId) {
     $state.go('inspection_section', {
-      'insId': 1
+      'insId': $scope.sTemplate.rowId
     });
   }
 
@@ -188,7 +188,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
     //Success
     function (promise) {
       console.log(promise.message);
-      for (var i = 0; i < promise.row.length; i++) {
+      for (var i = 0; promise.row && i < promise.row.length; i++) {
         $scope.templates.push(promise.row.item(i));
       }
       //Fail
@@ -319,13 +319,35 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
   });
 
   $scope.navigate = shareService.navigate;
-
+  $scope.otherValue = {
+    'singleSelect': '',
+    'value':null
+  };
   $scope.question = {};
   $scope.questionCount = -1;
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
     function (data) {
       $scope.questionCount = data.value.length;
       $scope.question = data.value[$scope.questionIndex];
+        
+      $scope.$watch('otherValue.value', function (newVal, oldVal) {
+        var list = $scope.question.answers;
+        var index = $scope.question.answers.indexOf(oldVal);
+        if (index > -1) {
+          $scope.question.answers.splice(index, 1);
+        }
+        if (newVal) {
+          $scope.question.answers.push(newVal);
+        }
+      });
+
+      $scope.$watch('otherValue.singleSelect', function (newVal, oldVal) {
+        if (newVal) {
+          $scope.question.answer = newVal;
+        }
+
+      });
+        
     },
     function (data) {
       console.log("Error... no question exists in the database");
@@ -370,9 +392,7 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
     $state.go('camera');
   };
 
-  $scope.otherValue = {
-    'singleSelect': ''
-  };
+
 
   (function () {
     if ($scope.question.type == 'photo') {
@@ -386,24 +406,6 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
       camera_manager.photos = [];
     }
   })();
-
-  $scope.$watch('otherValue', function (newVal, oldVal) {
-    var list = $scope.question.answers;
-    var index = $scope.question.answers.indexOf(oldVal);
-    if (index > -1) {
-      $scope.question.answers.splice(index, 1);
-    }
-    if (newVal) {
-      $scope.question.answers.push(newVal);
-    }
-  });
-
-  $scope.$watch('otherValue.singleSelect', function (newVal, oldVal) {
-    if (newVal) {
-      $scope.question.answer = newVal;
-    }
-
-  });
 
   $scope.toggle = function (item, list, ignoreEmpty) {
     var index = list.indexOf(item);

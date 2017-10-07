@@ -87,8 +87,8 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
     //  
   });
 
-  var reports = inspection_manager.getReports();
-  reports.then(
+  var templates = inspection_manager.getTemplates();
+  templates.then(
     //Success
     function (promise) {
       console.log(promise.message);
@@ -170,14 +170,14 @@ app.controller('template', function ($scope, $rootScope, $state, header_manager,
     //  
   });
 
-  var reports = inspection_manager.getReports();
-  reports.then(
+  var templates = inspection_manager.getTemplates();
+  templates.then(
     //Success
     function (promise) {
       console.log(promise.message);
       console.log(promise.row);
       for (var i = 0; i < promise.row.length; i++) {
-        $scope.reports.push(promise.row.item(i));
+        $scope.templates.push(promise.row.item(i));
       }
       //Fail
     },
@@ -258,14 +258,15 @@ app.controller('template_section', function ($scope, inspection_manager, header_
     $scope.sections.push({
       'title': ''
     });
+      //console.log(inspection_manager.getInspectionCache());
   };
-
+  
   inspection_manager.getSections($scope.insId).then(
-    function (data) {
-      $scope.sections = data.value;
+    function(data) {
+        $scope.sections = data.value;
     },
-    function (data) {
-      console.log("Error... no sections exist in the database");
+    function(data) {
+        console.log("Error... no sections exist in the database");
     }
   );
 
@@ -369,13 +370,37 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
   });
 
   $scope.navigate = templateShareService.navigate;
-
+  $scope.remove = templateShareService.remove;
+  $scope.otherValue = {
+    'singleSelect': '',
+    'value':null
+  };
   $scope.question = {};
   $scope.questionCount = -1;
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
     function (data) {
       $scope.questionCount = data.value.length;
       $scope.question = data.value[$scope.questionIndex];
+        
+        $scope.$watch('otherValue.value', function (newVal, oldVal) {
+        var list = $scope.question.answers;
+        if (list) {
+            var index = $scope.question.answers.indexOf(oldVal);
+            if (index > -1) {
+              $scope.question.answers.splice(index, 1);
+            }
+            if (newVal) {
+              $scope.question.answers.push(newVal);
+            }
+        }
+      });
+
+      $scope.$watch('otherValue.singleSelect', function (newVal, oldVal) {
+        if (newVal) {
+          $scope.question.answer = newVal;
+        }
+      });
+        
     },
     function (data) {
       console.log("Error... no question exists in the database");
@@ -500,7 +525,10 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
       'title': 'Major Concerns'
         }
     ];
-
+    
+  $scope.add = function(list, value) {
+      list.push({'key':value});
+  };
 
 });
 

@@ -140,10 +140,7 @@ app.controller('template', function ($scope, $rootScope, $state, header_manager,
     });
   };
 
-<<<<<<< HEAD
   $scope.reports = [];
-=======
->>>>>>> origin/master
   $scope.sort = "";
   $scope.sort_filters = [
     "Name",
@@ -248,7 +245,6 @@ app.controller('template_section', function ($scope, inspection_manager, header_
 
   // All the sections for a specific inspection/report
   $scope.sections = [];
-<<<<<<< HEAD
 
   $scope.goToSubsection = function (sectionIndex) {
     $state.go('template_subsection', {
@@ -263,22 +259,6 @@ app.controller('template_section', function ($scope, inspection_manager, header_
     });
       //console.log(inspection_manager.getInspectionCache());
   };
-=======
-    
-    $scope.goToSubsection = function(sectionIndex) {
-        $state.go('template_subsection', {
-            'insId':$scope.insId,
-            'sectionIndex':sectionIndex
-        });
-    };
-    
-  $scope.addSection = function() {
-      $scope.sections.push({
-          'title':''
-      });
-      //console.log(inspection_manager.getInspectionCache());
-  };
->>>>>>> origin/master
   
   inspection_manager.getSections($scope.insId).then(
     function(data) {
@@ -387,34 +367,17 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
       'subsectionIndex': $scope.subsectionIndex
     });
   });
-<<<<<<< HEAD
 
-=======
-    
->>>>>>> origin/master
   $scope.navigate = templateShareService.navigate;
   $scope.remove = templateShareService.remove;
   $scope.otherValue = {
     'singleSelect': '',
     'value':null
-<<<<<<< HEAD
-=======
-  };
-  $scope.question = {
->>>>>>> origin/master
   };
   $scope.question = {};
   $scope.questionCount = -1;
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
-    function (data) {
-<<<<<<< HEAD
-      $scope.questionCount = data.value.length;
-      $scope.question = data.value[$scope.questionIndex];
-=======
-        $scope.questionCount = data.value.length;
-        $scope.question = data.value[$scope.questionIndex];
->>>>>>> origin/master
-        
+    function (data) { 
         $scope.$watch('otherValue.value', function (newVal, oldVal) {
         var list = $scope.question.answers;
         if (list) {
@@ -494,7 +457,6 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
     }
   })();
 
-<<<<<<< HEAD
   $scope.$watch('otherValue', function (newVal, oldVal) {
     var list = $scope.question.answers;
     if (list) {
@@ -514,8 +476,6 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
     }
   });
 
-=======
->>>>>>> origin/master
   $scope.toggle = function (item, list, ignoreEmpty) {
     var index = list.indexOf(item);
     if (index > -1) {

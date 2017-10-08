@@ -44,7 +44,7 @@
                     class="inlineInput"
                    >
         </div>
-        <div ng-if="question.type == 'radioButton'">
+        <div ng-if="question.type == 'radio'">
             <md-radio-group ng-model="question.answer"
                             ng-required="question.validation.isRequired"
                             ng-disabled="question.notApplicable">

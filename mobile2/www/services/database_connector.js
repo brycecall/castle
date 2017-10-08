@@ -983,7 +983,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       console.log(typeof (inspId));
       var deferred = $q.defer();
       db.executeSql(
-        'SELECT *, insp.rowid AS [rowId], sec.rowid AS [secRowId], subsec.rowid AS [susRowId], ques.rowid AS [queRowId], ans.rowid AS [ansRowId], qua.rowid AS [quaRowId] FROM Inspection insp JOIN Section sec on sec.secInspectionId = insp.rowid JOIN SubSection subsec ON subsec.susSectionId = sec.rowId LEFT JOIN Question ques ON ques.queSubSectionId = subsec.rowid LEFT JOIN Answer ans ON ans.ansQuestionId = ques.rowid LEFT JOIN QuestionAnswers qua on qua.quaQuestionId = ques.rowid WHERE insp.rowid = ? ORDER BY sec.rowid, subsec.rowid, ques.rowid, ans.rowid', [inspId],
+        'SELECT *, insp.rowid AS [rowId], sec.rowid AS [secRowId], subsec.rowid AS [susRowId], ques.rowid AS [queRowId], ans.rowid AS [ansRowId], qua.rowid AS [quaRowId] FROM Inspection insp JOIN Section sec on sec.secInspectionId = insp.rowid JOIN SubSection subsec ON subsec.susSectionId = sec.rowId JOIN Question ques ON ques.queSubSectionId = subsec.rowid LEFT JOIN Answer ans ON ans.ansQuestionId = ques.rowid LEFT JOIN QuestionAnswers qua on qua.quaQuestionId = ques.rowid AND qua.quaAnswerId = ans.rowid WHERE insp.rowid = ? ORDER BY sec.rowid, subsec.rowid, ques.rowid, ans.rowid', [inspId],
         function (res) {
           if (res.rows.length > 0) {
             deferred.resolve({
@@ -1029,7 +1029,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                 console.log(subsection.title + ' subsection successfully inserted. ID: ' + susRes.insertId + ' saved to Inspection#: ' + res.insertId);
                 // If this is successful, attempt to insert question data
                 subsection.questions.forEach(function (question) {
-                  db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)', [question.title, question.description, susRes.insertId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.validation.type, question.validation.min, question.validation.max, question.notApplicable, question.showSummaryRemark, question.showDescription, res.insertId, ins.insSourceType], function (queRes) {
+                  db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)', [question.title, question.description, susRes.insertId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.type, question.validation.min, question.validation.max, question.notApplicable, question.showSummaryRemark, question.showDescription, res.insertId, ins.insSourceType], function (queRes) {
                     console.log(question.title + ' question successfully inserted. ID: ' + queRes.insertId + ' saved to Inspection#: ' + res.insertId + ' and subSectionId: ' + susRes.insertId);
                     // If this is successful, attempt to insert answer data
                     question.values.forEach(function (answer) {

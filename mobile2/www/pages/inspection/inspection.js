@@ -203,7 +203,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
 app.controller('inspection_section', function ($scope, inspection_manager, header_manager, $state, $stateParams, shareService) {
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
-    $state.go('inspection');
+      $state.go('inspection');
   });
   $scope.insId = $stateParams.insId;
   $scope.navigate = shareService.navigate;
@@ -325,7 +325,7 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
   $scope.navigate = shareService.navigate;
   $scope.otherValue = {
     'singleSelect': '',
-    'value':null
+    'value': null
   };
   $scope.question = {};
   $scope.questionCount = -1;
@@ -333,7 +333,7 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
     function (data) {
       $scope.questionCount = data.value.length;
       $scope.question = data.value[$scope.questionIndex];
-        
+
       $scope.$watch('otherValue.value', function (newVal, oldVal) {
         var list = $scope.question.answers;
         var index = $scope.question.answers.indexOf(oldVal);
@@ -351,7 +351,7 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
         }
 
       });
-        
+
     },
     function (data) {
       console.log("Error... no question exists in the database");

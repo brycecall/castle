@@ -50,7 +50,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
   $scope.templates = [];
 
   // Switch the inspection_manager mode (this is global)
-  inspection_manager.mode = "inspection";
+  inspection_manager.mode = "template";
 
   $scope.edit = function (insId) {
     $state.go('template_section', {
@@ -233,7 +233,18 @@ app.controller('template_new', function ($scope, $state, $rootScope, inspection_
 app.controller('template_section', function ($scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
-    $state.go('templates');
+    console.log(inspection_manager.mode);
+    switch (inspection_manager.mode) {
+      case "theme":
+        $state.go('themes');
+        break;
+      case "template":
+        $state.go('templates');
+        break;
+      case "inspection":
+        $state.go('inspection');
+        break;
+    }
   });
   $scope.insId = $stateParams.insId;
   $scope.navigate = templateShareService.navigate;

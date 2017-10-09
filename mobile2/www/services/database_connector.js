@@ -1083,6 +1083,84 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       return deferred.promise;
     }
 
+    // Overwrite the copied template with the actual data of the save
+    public.updateInspection = function (ins) {
+      var timestamp = new Date();
+      console.log('updateInspection start');
+      console.log(ins);
+      var deferred = $q.defer();
+      // Insert Inspection Table Data
+      db.executeSql('UPDATE Inspection SET insLastModified = ?, insJobId = ?, insSourceType = ?, insType = ?, insName = ?, insUserId = ?, insThemeId = ?, insOrganizationId = ?, insTemplateTitle = ? WHERE rowid = ?', [timestamp, ins.insJobId, ins.insSourceType, ins.insType, ins.insName, ins.insUserId, ins.insThemeId, ins.insOrganizationId, ins.insTemplateTitle, ins.insId], function (res) {
+        //if this is successful, attempt to insert section data
+        ins.sections.forEach(function (section) {
+          db.executeSql('UPDATE Section SET secTitle = ?, secInspectionId = ?, secSourceType = ? WHERE rowid = ? AND secInspectionId = ?', [section.title, section.inspectionId, section.sourceType, section.id, section.inspectionId], function (secRes) {
+            console.log(section.title + ' section succesfully updated.');
+            //if this is successful, attempt to insert subsection data
+            section.subsections.forEach(function (subsection) {
+              db.executeSql('UPDATE SubSection SET susTitle = ?, susSectionId = ?, susInspectionId = ?, susSourceType = ? WHERE rowId = ? AND susInspectionId = ?', [subsection.title, subsection.sectionId, subsection.inspectionId, subsection.sourceType, subsection.id, subsection.inspectionId], function (susRes) {
+                console.log(subsection.title + ' subsection successfully updated.');
+                // If this is successful, attempt to insert question data
+                subsection.questions.forEach(function (question) {
+                  db.executeSql('UPDATE Question SET queTitle=?, queDescription=?, queSubSectionId=?, queAnswered=?, queRequired=?, queType=?, queMin=?, queMax=?, queNotApplicable=?, queShowSummaryRemark=?, queShowDescription=?, queInspectionId=?, queSourceType=? WHERE rowid = ? AND queInspectionId = ?', [question.title, question.description, question.subsectionId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.type, question.validation.min, question.validation.max, question.notApplicable, question.showSummaryRemark, question.showDescription, question.inspectionId, ins.insSourceType, question.id, question.inspectionId], function (queRes) {
+                    // Delete all rows in QuestionAnswers for this question before looping through and inserting again
+                    db.executeSql('DELETE FROM QuestionAnswers WHERE quaQuestionId = ? and quaInspectionId = ?', [question.id, question.inspectionId], function(deleteRes) {
+                      console.log('Successful delete of Question: ' + question.title + ' stored Answers for InspectionId: ' + question.inspectionId);    
+                    }, function(delError) {
+                      console.log('Failure to delete Question: ' + question.title + ' stored Answers for InspectionId: ' + question.inspectionId);
+                      console.log('Error message for delete failure: ' + delError.message);
+                    });
+                    console.log(question.title + ' question successfully updated.');
+                    // If this is successful, attempt to insert answer data
+                    question.values.forEach(function (answer) {
+                      db.executeSql('UPDATE Answer SET ansQuestionId=?, ansValue=?, ansType=?, ansInspectionId=?, ansSourceType=? WHERE rowid=? AND inspectionId=?', [answer.questionId, answer.key, answer.type, answer.inspectionId, answer.sourceType, answer.id, answer.inspectionId], function (ansRes) {
+                        console.log(answer.key + ' answer successfully updated');
+                        // If this is successful, attempt to insert question-answer data
+                        if (answer.key == question.answer || (question.answers && question.answers.indexOf(answer.key) > -1)) {
+                          db.executeSql('INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId, quaInspectionId, quaSourceType) VALUES (?,?,?,?)', [queRes.insertId, ansRes.insertId, res.insertId, ins.insSourceType], function (queAnsRes) {
+                            console.log('Successfully inserted saved answer: ' + answer.key + ' for question title: ' + question.title + '.');
+                          }, function (queAnsError) {
+                            deferred.reject({
+                              message: 'Error with QuestionAnswer update: ' + queAnsError.message
+                            });
+                          });
+                        }
+                      }, function (ansError) {
+                        deferred.reject({
+                          message: 'Error with Answer update: ' + ansError.message
+                        });
+                      });
+                    });
+                  }, function (queError) {
+                    deferred.reject({
+                      message: 'Error with Question update: ' + queError.message
+                    });
+                  });
+                });
+              }, function (susError) {
+                deferred.reject({
+                  message: 'Error with SubSection update: ' + susError.message
+                });
+              });
+            });
+          }, function (secError) {
+            deferred.reject({
+              message: 'Error with Section update: ' + secError.message
+            });
+          });
+        });
+        deferred.resolve({
+          rowId: res.insertId,
+          message: 'Successful update for inspection table'
+        });
+      }, function (error) {
+        //if failure, log the failure
+        deferred.reject({
+          message: 'Error updating Inspection: ' + error.message
+        });
+      });
+      return deferred.promise;
+    }
+
     /* SELECT USAGE
       var select = database.select('SELECT * FROM USER', []);
       select.then(

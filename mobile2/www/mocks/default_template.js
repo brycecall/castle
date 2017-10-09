@@ -24,14 +24,16 @@ var default_template =
                         "sourceType":"Template",
                         "questions":[
                             {
-                                "id":1,"title":"Person(s) Present",
+                                "id":1,
+                                "title":"Person(s) Present",
                                 "description":"",
                                 "subsectionId":1,
                                 "inspectionId":1,
                                 "type":"checkbox",
                                 "values":[
                                     {
-                                        "id":1,"key":"Inspector",
+                                        "id":1,
+                                        "key":"Inspector",
                                         "questionId":1,
                                         "sourceType":"Template",
                                         "inspectionId":1,

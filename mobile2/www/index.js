@@ -20,3 +20,11 @@ app.run(function ($rootScope) {
 app.run(function (theme_manager) {
   document.addEventListener('deviceready', theme_manager.init);
 });
+
+// Detect if the app is running on a Low Res Screen (we need to scale for usability)
+app.run(function ($rootScope) {
+  $rootScope.enlarge = false;
+  if (window.innerWidth < 652 && window.innerWidth > 425) {
+    $rootScope.enlarge = true;
+  }
+})

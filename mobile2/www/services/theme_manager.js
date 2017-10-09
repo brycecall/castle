@@ -89,6 +89,11 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q, $sh
 
     $http.get(resource)
       .then(function (response) {
+          if (response.data.entry_point.indexOf("themes") !== 0) {
+            response.data.entry_point = "themes/" + response.data.unique + "/" + response.data.entry_point;
+            response.data.preview = "themes/" + response.data.unique + "/" + response.data.preview;
+            response.data.thumbnail = "themes/" + response.data.unique + "/" + response.data.thumbnail;
+          }
           defered.resolve(response.data);
         },
         function (error) {

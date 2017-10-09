@@ -12,7 +12,7 @@ app.factory('camera_manager', function (camera_mock, $state) {
     x: 0,
     y: 0,
     width: window.innerWidth,
-    height: (window.innerHeight - 82),
+    height: window.innerHeight,
     camera: CameraPreview.CAMERA_DIRECTION.BACK,
     toBack: true,
     tapPhoto: false,

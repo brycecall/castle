@@ -9,6 +9,10 @@ body {
   width: 100%;
 }
 
+body.enlarge {
+  zoom: 1.25;
+}
+
 .action {
   position: fixed;
   bottom: 0;

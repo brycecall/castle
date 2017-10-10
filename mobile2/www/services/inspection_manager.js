@@ -8,6 +8,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
   public.getInspection = function (id) {
     var defer = $q.defer();
     var promise = defer.promise;
+    id = id.toString();
 
     switch (public.mode) {
       case "inspection":

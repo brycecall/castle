@@ -40,3 +40,7 @@ app.run(function (database) {
     });
   }
 })
+
+app.run(function ($sha) {
+  $sha.setConfig();
+});

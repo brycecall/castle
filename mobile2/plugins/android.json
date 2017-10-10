@@ -1,40 +1,37 @@
 {
-    "prepare_queue": {
-        "installed": [],
-        "uninstalled": []
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-pdf-generator": {
+      "PACKAGE_NAME": "com.castle.inspect"
     },
-    "config_munge": {
-        "files": {}
+    "cordova-plugin-camera-preview": {
+      "PACKAGE_NAME": "com.castle.inspect"
     },
-    "installed_plugins": {
-        "cordova-pdf-generator": {
-            "PACKAGE_NAME": "com.castle.inspect"
-        },
-        "cordova-plugin-camera-preview": {
-            "PACKAGE_NAME": "com.castle.inspect"
-        },
-        "cordova-plugin-email": {
-            "PACKAGE_NAME": "com.castle.inspect"
-        },
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "com.castle.inspect"
-        },
-        "cordova-plugin-ios-camera-permissions": {
-            "PACKAGE_NAME": "com.castle.inspect"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.castle.inspect"
-        },
-        "cordova-sqlite-storage": {
-            "PACKAGE_NAME": "com.castle.inspect"
-        },
-        "cordova-plugin-zeep": {
-            "PACKAGE_NAME": "com.castle.inspect"
-        }
+    "cordova-plugin-email": {
+      "PACKAGE_NAME": "com.castle.inspect"
     },
-    "dependent_plugins": {
-        "cordova-plugin-compat": {
-            "PACKAGE_NAME": "com.castle.inspect"
-        }
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.castle.inspect"
+    },
+    "cordova-plugin-ios-camera-permissions": {
+      "PACKAGE_NAME": "com.castle.inspect"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.castle.inspect"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "com.castle.inspect"
     }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "com.castle.inspect"
+    }
+  }
 }

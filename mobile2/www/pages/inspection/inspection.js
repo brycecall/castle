@@ -92,7 +92,7 @@ app.service('shareService', function ($state) {
 });
 
 // Define the page controller
-app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
+app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, export_manager) {
   $scope.inspections = [];
 
   // Switch the inspection_manager mode (this is global)
@@ -109,6 +109,17 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
       'insId': insId
     });
   };
+
+  $scope.export = function (insId) {
+    var promise = inspection_manager.getInspection(insId);
+    promise.then(
+      function (result) {
+        export_manager.export(result, "inspection");
+      },
+      function (error) {
+        console.error(error);
+      });
+  }
 
   $scope.inspections = [];
   $scope.sort = "";
@@ -135,8 +146,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
 
   $scope.camera_manager = camera_manager;
   action_manager.addAction('New Inspection', 'add', function () {
-    $state.go("inspection_new");
-    //  
+    $state.go("inspection_new"); 
   });
 
   var inspections = inspection_manager.getInspections();
@@ -203,7 +213,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
 app.controller('inspection_section', function ($scope, inspection_manager, header_manager, $state, $stateParams, shareService) {
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
-      $state.go('inspection');
+    $state.go('inspection');
   });
   $scope.insId = $stateParams.insId;
   $scope.navigate = shareService.navigate;

@@ -1,14 +1,10 @@
-app.factory('export_manager', function ($rootScope) {
+app.factory('export_manager', function ($rootScope, $cordovaFileTransfer, $sha) {
   var public = {};
   var private = {};
   
-  // Mock the ZEEP object
-  var Zeep = (Zeep ? Zeep : ZeepMock);
-  var ZeepMock = {};
-  ZeepMock.zip = function () {};
-  ZeepMock.unzip = function () {};
-  
   public.export = function(resource, type) {
+    var filename = $sha.hash((new Date()).toString()) + ".castle";
+    
     switch (type) {
       case "inspection":
         break;
@@ -22,9 +18,10 @@ app.factory('export_manager', function ($rootScope) {
     
     Zeep.zip({
       from: cordova.file.dataDirectory,
-      to: cordova.file.cacheDirectory + "test.zip"
+      to: cordova.file.externalDataDirectory + filename
     }, function(result) {
       console.log(result);
+      window.open(cordova.file.externalDataDirectory + filename);
     }, function(error) {
       console.log(error);
     })

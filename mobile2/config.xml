@@ -40,5 +40,4 @@
         <variable name="PHOTOLIBRARY_ADD_USAGE_DESCRIPTION" value="This app needs write-access to photo library" />
         <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="This app needs read/write-access photo library access" />
     </plugin>
-    <plugin name="cordova-plugin-zeep" spec="0.0.4" />
 </widget>

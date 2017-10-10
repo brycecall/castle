@@ -1,7 +1,3 @@
-app.run(function ($sha) {
-  $sha.setConfig();
-});
-
 app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q, $sha, $cordovaFile) {
   var public = {};
   var private = {};

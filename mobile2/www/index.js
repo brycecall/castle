@@ -5,10 +5,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 });
 
 // Control to set application in DEBUG mode
-app.run(function ($rootScope) {
+app.run(function ($rootScope, database) {
   window.debug = function (state) {
     if (state) {
       localStorage.setItem("debug", "true");
+      database.initTables();
     } else {
       localStorage.removeItem("debug");
     }
@@ -28,4 +29,14 @@ app.run(function ($rootScope) {
   if (window.innerWidth < 652 && window.innerWidth > 425) {
     $rootScope.enlarge = true;
   }*/
+})
+
+app.run(function (database) {
+  var database_initialized = (localStorage.getItem("database_init") == "true" ? true : false);
+  if (!database_initialized) {
+    var promise = database.initTables();
+    promise.then(function (result) {
+      localStorage.setItem("database_init", "true");
+    });
+  }
 })

@@ -29,6 +29,8 @@
             <p>{{inspection.insLastSubmitted | date:'medium'}}</p>
           </div>
           <div layout-fill layout="row" layout-align="end center">
+            <md-button class="md-raised" ng-click="export(inspection.insId);">Export</md-button>
+            
             <md-button class="md-raised" ng-click="goToInspection(inspection.insId);">Edit</md-button>
 
             <md-button class="md-raised" ng-click="goToPreview(inspection.insId);">Preview</md-button>

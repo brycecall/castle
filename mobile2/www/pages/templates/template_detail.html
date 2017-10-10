@@ -35,7 +35,7 @@
             <div ng-repeat="checkBox in question.values track by $index" class="questionIndent">
                 <div>
         <md-button class="md-icon-button" 
-                   aria-label="delete section"
+                   aria-label="delete answer"
                    ng-click="remove($index, question.values)">
             <md-icon md-svg-src="cancel"></md-icon>
         </md-button>
@@ -68,30 +68,39 @@
                 Add Checkbox
             </md-button>
         </div>
-        <div ng-if="question.type == 'radioButton'">
+        <div ng-if="question.type == 'radio'">
             <md-radio-group ng-model="question.answer"
                             ng-required="question.validation.isRequired"
-                            ng-disabled="question.notApplicable">
-                <md-radio-button ng-repeat="radioButton in question.values" 
+                            ng-disabled="question.notApplicable" >
+                <div layout="row" layout-align="start center" ng-repeat="radioButton in question.values" >
+                <md-button class="md-icon-button" 
+                           aria-label="delete answer"
+                           ng-click="remove($index, question.values)">
+                    <md-icon md-svg-src="cancel"></md-icon>
+                </md-button>
+                <md-radio-button style="margin: 0"
                                  class="questionIndent" 
+                                 aria-label="radio option"
                                  ng-value="radioButton.key">{{radioButton.key}}
                 </md-radio-button>
-                <div layout="row" layout="start center">
-                <md-radio-button class="questionIndent" 
-                                 ng-value="otherValue.singleSelect">Other
-                </md-radio-button>
-                 <div style="margin-left: 8px;">
-                    <input  ng-model="otherValue.singleSelect" 
-                            type="text" 
-                            class="inlineInput">
-                 </div>
-                 </div>
+                </div>
             </md-radio-group>
-             <md-button class="md-accent md-raised" aria-label="add radio button" ng-click="add(question.values, '')">
+            <div layout="row" layout-align="start center">
+             <md-button class="md-accent md-raised" 
+                        aria-label="add radio button" 
+                        ng-click="addRadio()"
+                        ng-disabled="newRadioVal.value == null">
                 Add Radio
              </md-button>
+             <div style="margin-left: 8px;">
+                <input ng-model="newRadioVal.value" 
+                       type="text"
+                       aria-label="radio button"
+                       class="inlineInput">
+             </div>
+            </div>
         </div>
-        <div ng-if="question.type == 'selectOption'">
+        <div ng-if="question.type == 'dropdown'">
             <md-select ng-model="question.answer" 
                        placeholder="Choose" 
                        class="md-no-underline"

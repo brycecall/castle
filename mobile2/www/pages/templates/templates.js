@@ -385,10 +385,16 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
     'singleSelect': '',
     'value':null
   };
+    
+
   $scope.question = {};
   $scope.questionCount = -1;
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
     function (data) { 
+        $scope.questionCount = data.value.length;
+        $scope.question = data.value[$scope.questionIndex];
+        
+        console.log($scope.question.type);
         $scope.$watch('otherValue.value', function (newVal, oldVal) {
         var list = $scope.question.answers;
         if (list) {
@@ -414,6 +420,23 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
     }
   );
 
+  $scope.newRadioVal = {'value':null};
+  $scope.addRadio = function() {
+      var exists = false;
+      for (var i = 0; i < $scope.question.values.length; i++) {
+          if ($scope.question.values[i].key == $scope.newRadioVal.value) {
+              exists = true;
+              break;
+          }
+      }
+      
+        if ($scope.newRadioVal && !exists) {
+            $scope.question.values.push({'key':$scope.newRadioVal.value});
+        }
+      $scope.newRadioVal.value = null;
+     
+  };
+    
   var navigateQuestions = function (forward) {
     if ($scope.questionCount !== -1 && $scope.questionCount > 1) {
       var newQuestionIndex = $scope.questionIndex;
@@ -528,6 +551,8 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
       'title': 'Major Concerns'
         }
     ];
+    
+  
     
   $scope.add = function(list, value) {
       list.push({'key':value});

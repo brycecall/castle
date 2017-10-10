@@ -27,6 +27,9 @@
     },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "com.castle.inspect"
+    },
+    "com.jjdltc.cordova.plugin.zip": {
+      "PACKAGE_NAME": "com.castle.inspect"
     }
   },
   "dependent_plugins": {

@@ -15,16 +15,6 @@ app.factory('export_manager', function ($rootScope, $cordovaFileTransfer, $sha) 
       default:
         break;
     }
-    
-    Zeep.zip({
-      from: cordova.file.dataDirectory,
-      to: cordova.file.externalDataDirectory + filename
-    }, function(result) {
-      console.log(result);
-      window.open(cordova.file.externalDataDirectory + filename);
-    }, function(error) {
-      console.log(error);
-    })
   }
   
   private.saveInspection = function() {

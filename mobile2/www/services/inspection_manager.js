@@ -34,6 +34,8 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
       database.getInspectionById(id).then(
         function (promise) {
           // Build Inspection Fields
+          private.inspection.insThemeId = promise.row.item(0).insThemeId;
+          private.inspection.insTemplateId = promise.row.item(0).insTemplateId;
           private.inspection.insLastModified = promise.row.item(0).insLastModified;
           private.inspection.insLastSubmitted = promise.row.item(0).insLastSubmitted;
           private.inspection.insJobId = promise.row.item(0).insJobId;

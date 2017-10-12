@@ -43,15 +43,20 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
               name: private.session_id
             },
             function (result) {
-              console.log(result);
-              if (window['cordova'] !== undefined && result.success) {
-                cordova.plugins.email.open({
-                  attachments: cordova.file.externalDataDirectory + private.session_id + ".zip"
-                })
-              }
-              private.session_id = null;
-              private.session_path = null;
-              // TODO: delete the buffer folders and artifacts
+              $cordovaFile.copyFile(cordova.file.externalDataDirectory, private.session_id + ".zip", cordova.file.externalDataDirectory, private.session_id + ".castle")
+                .then(
+                  function (result) {
+                    console.log(result);
+                    if (window['cordova'] !== undefined && result) {
+                      cordova.plugins.email.open({
+                        attachments: cordova.file.externalDataDirectory + private.session_id + ".castle"
+                      })
+                    }
+                    private.session_id = null;
+                    private.session_path = null;
+                    // TODO: delete the buffer folders and artifacts
+                  }
+                );
             },
             function (error) {
               console.error(error);
@@ -68,26 +73,32 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
 
   private.saveInspection = function (insId) {
     var defered = $q.defer();
+    var templateId = null;
+    var themeId = null;
 
     var inspection_promise = inspection_manager.getInspection(insId);
     inspection_promise.then(
       function (inspection) {
+        templateId = inspection.insTemplateId;
+        themeId = inspection.insThemeId;
+
+        // Make sure the DB is in sync with the exporting inspection
+        // TODO: inspection_manager.updateInspection();
+
         $cordovaFile.writeFile(private.session_path + "/", "inspection.json", JSON.stringify(inspection), true)
           .then(
             function (result) {
-              defered.resolve(result);
-              // TODO: Save the template and the theme
-              /*private.saveTemplate(inspection.templateId)
+              private.saveTemplate(templateId)
                 .then(
                   function (result) {
-                    private.saveTheme(inspection.themeId)
+                    private.saveTheme(themeId)
                       .then(
                         function (result) {
                           defered.resolve(result);
                         }
                       )
                   }
-                )*/
+                )
             },
             function (error) {
               defered.reject(error);
@@ -128,7 +139,7 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
       return;
     }
 
-    return $cordovaFile.copyDir(cordova.file.dataDirectory + "themes/", unique, private.session_path, "theme");
+    return $cordovaFile.copyDir(cordova.file.dataDirectory + "themes/", unique, private.session_path + "/", "theme");
   };
 
   return public;

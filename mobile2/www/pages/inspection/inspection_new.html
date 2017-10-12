@@ -8,7 +8,7 @@
           <md-select ng-model="sTheme" placeholder="Pick a Theme" md-on-close="">
             <md-option ng-repeat="theme in themes
                                          track by $index" ng-value="theme">
-              {{theme}}</md-option>
+              {{theme.title}}</md-option>
           </md-select>
         </md-input-container>
       </md-card>
@@ -22,10 +22,6 @@
           </md-select>
         </md-input-container>
       </md-card>
-      <!-- TODO: Add validation for toSection (make sure a Template is selected) -->
-      <md-button ng-click="toSection()" class="md-raised md-primary" aria-label="Start Report">
-        Start Inspection
-      </md-button>
     </div>
   </md-content>
 </div>

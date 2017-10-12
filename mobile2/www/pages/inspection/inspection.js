@@ -146,7 +146,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
 
   $scope.camera_manager = camera_manager;
   action_manager.addAction('New Inspection', 'add', function () {
-    $state.go("inspection_new"); 
+    $state.go("inspection_new");
   });
 
   var inspections = inspection_manager.getInspections();
@@ -166,12 +166,24 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   );
 });
 
-app.controller('inspection_new', function ($scope, $state, $rootScope, inspection_manager, theme_manager) {
+app.controller('inspection_new', function ($scope, $state, $rootScope, inspection_manager, theme_manager, action_manager) {
   $scope.themes = [];
   $scope.templates = [];
-  $scope.toSection = function (insId) {
-    $state.go('inspection_section', {
-      'insId': $scope.sTemplate.rowId
+  
+  action_manager.addAction('Start', 'check', function() {
+    $scope.startInspection();
+  });
+  
+  $scope.startInspection = function () {
+    var promise = inspection_manager.getInspection($scope.sTemplate.rowId);
+    promise.then(function (inspection) {
+      inspection.insThemeId = $scope.sTheme.unique;
+      inspection.insTemplateId = $scope.sTemplate.rowId;
+      inspection_manager.saveInspection();
+      
+      $state.go('inspection_section', {
+        'insId': $scope.sTemplate.rowId
+      });
     });
   }
 
@@ -183,7 +195,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
       for (var i in promise) {
         var manifest_promise = theme_manager.getThemeManifest(promise[i]);
         manifest_promise.then(function (data) {
-          $scope.themes.push(data.title)
+          $scope.themes.push(data);
         })
       }
       //Fail

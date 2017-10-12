@@ -280,6 +280,20 @@ app.factory('database_mock', function ($q) {
     });
     return deferred.promise;
   };
+
+  public.getInspections = function() {
+    var columns = [{"insId":3,"insLastModified":"Mon Oct 09 2017 21:56:24 GMT-0600 (MDT)","insLastSubmitted":"Mon Oct 09 2017 21:56:24 GMT-0600 (MDT)","insJobId":null,"insSourceType":"Inspection","insType":"Residential","insName":null,"insUserId":1,"insThemeId":null,"insThemeResponseBlob":null,"insTemplateResponseBlob":null,"insOrganizationId":null,"insTemplateTitle":null},{"insId":2,"insLastModified":"Mon Oct 09 2017 21:55:54 GMT-0600 (MDT)","insLastSubmitted":"Mon Oct 09 2017 21:55:54 GMT-0600 (MDT)","insJobId":null,"insSourceType":"Inspection","insType":"Residential","insName":null,"insUserId":1,"insThemeId":null,"insThemeResponseBlob":null,"insTemplateResponseBlob":null,"insOrganizationId":null,"insTemplateTitle":null}];      
+    var deferred = $q.defer();
+    deferred.resolve({
+      row: {
+          length:2,
+          item: function(index){
+              return columns[index];
+          }
+      },message: 'Successful database select'
+    });
+    return deferred.promise;   
+  };
     
   public.getReports = function() {
     console.info("DATABASE: " + arguments);

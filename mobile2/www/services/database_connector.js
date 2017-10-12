@@ -978,7 +978,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [16, null, 'photo', 1, 'Template']],
         
         /* BEGIN TEST ANSWERS TO TEST QUESTIONS */
-        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?,?,?,?,?)', [18, 'Wed Oct 11 2017 22:53:53 GMT-0600 (Mountain Daylight Time)', 'single', 1, 'Template']]
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?,?,?,?,?)', [18, 'Wed Oct 11 2017 22:53:53 GMT-0600 (Mountain Daylight Time)', 'single', 1, 'Template']],
         /* END TEST */
         //['INSERT INTO QuestionAnswers (quaQuestionId INT, quaAnswerId INT) VALUES (?, ?)', []],
         ['INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId) VALUES (?,?)', [1, 1]],

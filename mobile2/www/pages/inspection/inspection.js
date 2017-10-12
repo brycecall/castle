@@ -247,9 +247,9 @@ app.controller('inspection_section', function ($scope, inspection_manager, heade
     }
   );
 
-  $scope.saveReport = function () {
-    inspection_manager.saveInspection();
-  }
+  $scope.updateInspection = function () {
+    inspection_manager.updateInspection();
+  };
 
 });
 
@@ -275,7 +275,11 @@ app.controller('inspection_subsection', function ($scope, inspection_manager, he
       console.log("Error... no subsections exist in the database");
     }
   );
-
+    
+  $scope.updateInspection = function () {
+    inspection_manager.updateInspection();
+  };
+  
   $scope.questionDrill = function (subsectionIndex) {
     console.log('inspectionId: ' + $scope.insId);
     console.log('sectionIndex: ' + $scope.sectionIndex);
@@ -315,6 +319,10 @@ app.controller('inspection_question', function ($scope, inspection_manager, head
     }
   );
 
+  $scope.updateInspection = function () {
+    inspection_manager.updateInspection();
+  };
+    
   $scope.questionDrill = function (questionIndex) {
     $state.go('inspection_detail', {
       'insId': $scope.insId,

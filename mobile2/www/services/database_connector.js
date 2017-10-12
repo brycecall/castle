@@ -479,7 +479,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       var deferred = $q.defer();
       db.sqlBatch([
         ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Person(s) Present', '', 1, 0, 0, 'checkbox', null, null, 0, 1, 1, 1, 'Template']],
-        ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Person(s) Present', '', 1, 0, 0, 'checkbox', null, null, 0, 1, 1, 1, 'Template']],
         ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Person(s) Providing Property Access', '', 1, 0, 0, 'checkbox', null, null, 0, 1, 1, 1, 'Template']],
         ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Year Built', '', 1, 0, 1, 'number', 1700, 2017, 0, 1, 1, 1, 'Template']],
         ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Square Feet of the Property', '', 1, 0, 1, 'number', 0, 50000, 0, 1, 1, 1, 'Template']],
@@ -1121,31 +1120,34 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
         //if this is successful, attempt to update section data
         ins.sections.forEach(function (section) {
           db.executeSql('UPDATE Section SET secTitle = ?, secInspectionId = ?, secSourceType = ? WHERE rowid = ? AND secInspectionId = ?', [section.title, section.inspectionId, section.sourceType, section.id, section.inspectionId], function (secRes) {
-            console.log(section.title + ' section succesfully updated.');
+            //console.log(section.title + ' section succesfully updated.');
             //if this is successful, attempt to update subsection data
             section.subsections.forEach(function (subsection) {
               db.executeSql('UPDATE SubSection SET susTitle = ?, susSectionId = ?, susInspectionId = ?, susSourceType = ? WHERE rowId = ? AND susInspectionId = ?', [subsection.title, subsection.sectionId, subsection.inspectionId, subsection.sourceType, subsection.id, subsection.inspectionId], function (susRes) {
-                console.log(subsection.title + ' subsection successfully updated.');
+                //console.log(subsection.title + ' subsection successfully updated.');
                 // If this is successful, attempt to update question data
                 subsection.questions.forEach(function (question) {
                   db.executeSql('UPDATE Question SET queTitle=?, queDescription=?, queSubSectionId=?, queAnswered=?, queRequired=?, queType=?, queMin=?, queMax=?, queValidationType=?, queNotApplicable=?, queShowSummaryRemark=?, queShowDescription=?, queInspectionId=?, queSourceType=? WHERE rowid = ? AND queInspectionId = ?', [question.title, question.description, question.subsectionId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.type, question.validation.min, question.validation.max, question.validation.type, question.notApplicable, question.showSummaryRemark, question.showDescription, question.inspectionId, ins.insSourceType, question.id, question.inspectionId], function (queRes) {
                     // Delete all rows in QuestionAnswers for this question before looping through and inserting again
                     db.executeSql('DELETE FROM QuestionAnswers WHERE quaQuestionId = ? and quaInspectionId = ?', [question.id, question.inspectionId], function(deleteRes) {
-                      console.log('Successful delete of Question: ' + question.title + ' stored Answers for InspectionId: ' + question.inspectionId);    
+                      //console.log('Successful delete of Question: ' + question.title + ' stored Answers for InspectionId: ' + question.inspectionId);    
                     }, function(delError) {
-                      console.log('Failure to delete Question: ' + question.title + ' stored Answers for InspectionId: ' + question.inspectionId);
-                      console.log('Error message for delete failure: ' + delError.message);
+                      //console.log('Failure to delete Question: ' + question.title + ' stored Answers for InspectionId: ' + question.inspectionId);
+                      //console.log('Error message for delete failure: ' + delError.message);
+                      deferred.reject({message: 'Failure deleting QuestionAnswers ' + delError.message});
                     });
                     // Delete all previous photos
                     db.executeSql('DELETE FROM Photo WHERE phoQuestionId = ? AND phoInspectionId = ?', [question.id, question.inspectionId], function(deleteRes) {
-                      console.log('Successful delete of Photos from Question: ' + question.title);    
+                      //console.log('Successful delete of Photos from Question: ' + question.title);    
                     }, function(delError) {
-                      console.log('Failure to delete Question: ' + question.title);
-                      console.log('Error message for delete failure: ' + delError.message);
+                      //console.log('Failure to delete Question: ' + question.title);
+                      //console.log('Error message for delete failure: ' + delError.message);
+                      deferred.reject({message: 'Failure deleting Photos: ' + delError.message});
                     });
-                    console.log(question.title + ' question successfully updated.');
+                    //console.log(question.title + ' question successfully updated.');
                     // If this is successful, attempt to update answer data
                     question.values.forEach(function (answer) {
+                      console.log('About to update Answer: ')
                       db.executeSql('UPDATE Answer SET ansQuestionId=?, ansValue=?, ansType=?, ansInspectionId=?, ansSourceType=? WHERE rowid=? AND inspectionId=?', [answer.questionId, answer.key, answer.type, answer.inspectionId, answer.sourceType, answer.id, answer.inspectionId], function (ansRes) {
                         console.log(answer.key + ' answer successfully updated');
                         // If this is successful, attempt to insert question-answer data

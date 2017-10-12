@@ -169,18 +169,18 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
 app.controller('inspection_new', function ($scope, $state, $rootScope, inspection_manager, theme_manager, action_manager) {
   $scope.themes = [];
   $scope.templates = [];
-  
-  action_manager.addAction('Start', 'check', function() {
+
+  action_manager.addAction('Start', 'check', function () {
     $scope.startInspection();
   });
-  
+
   $scope.startInspection = function () {
     var promise = inspection_manager.getInspection($scope.sTemplate.rowId);
     promise.then(function (inspection) {
       inspection.insThemeId = $scope.sTheme.unique;
       inspection.insTemplateId = $scope.sTemplate.rowId;
       inspection_manager.saveInspection();
-      
+
       $state.go('inspection_section', {
         'insId': $scope.sTemplate.rowId
       });
@@ -363,6 +363,7 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
     function (data) {
       $scope.questionCount = data.value.length;
       $scope.question = data.value[$scope.questionIndex];
+      attachPhotos();
 
       $scope.$watch('otherValue.value', function (newVal, oldVal) {
         var list = $scope.question.answers;
@@ -379,7 +380,6 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
         if (newVal) {
           $scope.question.answer = newVal;
         }
-
       });
 
     },
@@ -427,19 +427,18 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
   };
 
 
-
-  (function () {
-    if ($scope.question.type == 'photo') {
+  var attachPhotos = function () {
+    if (camera_manager.photos.length > 0) {
       $scope.question.photos = [];
-      for (var photoIndex in camera_manager.photos) {
-        var photo = camera_manager.photos[photoIndex];
-        if (!photo.deleted) {
-          $scope.question.photos.push(photo);
-        }
-      }
-      camera_manager.photos = [];
     }
-  })();
+    for (var photoIndex in camera_manager.photos) {
+      var photo = camera_manager.photos[photoIndex];
+      if (!photo.deleted) {
+        $scope.question.photos.push(photo);
+      }
+    }
+    camera_manager.photos = [];
+  };
 
   $scope.toggle = function (item, list, ignoreEmpty) {
     var index = list.indexOf(item);

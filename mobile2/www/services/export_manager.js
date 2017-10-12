@@ -6,7 +6,7 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
   private.session_path = null;
 
   public.export = function (resource, type) {
-    private.session_id = $sha.hash((new Date()).toString()).substr(0, 12);
+    private.session_id = $sha.hash(resource.toString()).substr(0, 12);
     private.session_path = cordova.file.cacheDirectory + private.session_id;
     var promise = null;
 
@@ -49,14 +49,18 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
                     console.log(result);
                     if (window['cordova'] !== undefined && result) {
                       cordova.plugins.email.open({
-                        attachments: cordova.file.externalDataDirectory + private.session_id + ".castle"
-                      })
+                          attachments: cordova.file.externalDataDirectory + private.session_id + ".castle"
+                        },
+                        function (result) {
+                          $cordovaFile.removeRecursively(cordova.file.cacheDirectory, private.session_id);
+                          $cordovaFile.removeFile(cordova.file.externalDataDirectory, private.session_id + ".zip");
+                          $cordovaFile.removeFile(cordova.file.externalDataDirectory, private.session_id + ".castle");
+
+                          private.session_id = null;
+                          private.session_path = null;
+                        }
+                      );
                     }
-                    private.session_id = null;
-                    private.session_path = null;
-                    $cordovaFile.removeRecursively(cordova.file.cacheDirectory, private.session_id);
-                    $cordovaFile.removeFile(cordova.file.externalDataDirectory, private.session_id + ".zip");
-                    $cordovaFile.removeFile(cordova.file.externalDataDirectory, private.session_id + ".castle");
                   }
                 );
             },

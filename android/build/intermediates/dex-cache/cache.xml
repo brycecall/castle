@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\.android\build-cache\2ba30236f82ca4a0e666c4edbe1a2a5b531e821e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="702d339bc0a81d21354cd7e2cf2b67225fa4a16c">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a55efb56ca137590a626f035f6e1be5fe70ffa5e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\25.2.0\support-annotations-25.2.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a5a82a027706397fff621b22fd6fa796e91d7c5">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.2.0_639bcc1aa4dfd11c464190f03b11a2123113c7e1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\.android\build-cache\4a76001c12fe2e8916ec903b5f7bf825d22c1bb5\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_46e601b4df6f818b46711691df00c39ab3f70dc8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\.android\build-cache\41b7b05c3d8681d324ae30c535277731c4c4e64d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="810f41e5b7fd99f196ebeabe865ba2c54e7e76dc">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_2366f293bd4ac052dbcdeab61791f1ce48e2973f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\.android\build-cache\4d0f030fde7b2ba7206e086811ef60afbad64db0\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cb454b52545859ed2f24a6c01366805b0fa04b22">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b47755d41958102611625a9518773c2ab629c4d8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_22ad2419cf6ddb1b85d38a8f3b669b3bba1749fa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cee2c308bde96cf7b9f5d5f9013201a51d12d3a2">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_f64c7fd861fd79800bd75a028a5195e4a48df94c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\.android\build-cache\8769dd18d756b5b2cf84b1fbb627e139a280668a\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="152de8da301561dcb0946471697a420d8f7a68c5">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_ec33c2e276b3f116f555fefa03a4c3f4e8e92bf2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\.android\build-cache\d6efd15e540139d8bc00f95eb10e80e7b32cdb49\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_569de944d659a19d845759cce246473e912508dc\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\.android\build-cache\761195dd9b3ada53adef2a4d7729fed3f4ba0657\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ea6a989b83d19b1b461281e0475a6cd6514897f8">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_152f6ca5fc1b7d2502e2d7cb0a490c94d7eb4b85\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\.android\build-cache\583ec5b595a5af5aaf41707ade6d705f7afe698c\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_22d670f86a50c605eea7f2eea4aa5ab41edecd6f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\.android\build-cache\051b5f0caf3bbf9d722018617a36c9737e60f6e0\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e51c2f662bb72419632af5192553c37e33890a99">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_f6886a13e45bcac97cfdf30b1f095d7d169b88c9\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\.android\build-cache\ee8278903f7d53954cca0fb2ac2ef3aacb9379d6\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7fb6bdb0a177c1dbed1e33d9aa9a23c358fc4d64\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\.android\build-cache\fdee4e5147acbd2b71a34337f702d7ee609f4fe9\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_eb761a6b29b40b5c937da260a5116a3d9e3cfc57\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\.android\build-cache\2978e00af3422676f8557a6fd7869e7f5325f75b\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="67eb33110dbacb46a48175b08ae0c96761d2c17d">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_d714f4c5fccbc38cc6fd08f58f7934176fd3b6ea\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\.android\build-cache\1a75dc3e07ae60482201082fd5994b87ecca497d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_7420fb16ff8e83df04abb4a59bcbe6853d1ff5f2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Admin\AppData\Local\Android\Sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\Admin\Documents\FBI\android\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_ff6556b74fd4cec8d54e7f3b75e758ae55f2972a\classes.dex" />
+    </item>
+
+</items>

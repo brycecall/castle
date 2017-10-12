@@ -26,6 +26,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
 
     return promise;
   };
+    
 
   private.loadFromDatabase = function (id) {
     var defer = $q.defer();
@@ -361,6 +362,39 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
 
     return promise;
   };
+    
+  public.updateInspection = function () {
+    var defer = $q.defer();
+    var promise = defer.promise;
+
+    switch (public.mode) {
+      case "inspection":
+      case "template":
+        promise = private.updateDatabase();
+        break;
+      case "theme":
+        promise = private.saveToThemeManager();
+        break;
+      default:
+        defer.reject(public.mode + " is not a valid type.");
+    }
+
+    return promise;
+  };
+    
+  private.updateDatabase = function() {
+    var deferred = $q.defer();
+
+    database.updateInspection(private.inspection).then(function (data) {
+      console.log(data.message);
+      deferred.resolve();
+    }, function (data) {
+      console.log(data.message);
+      deferred.reject();
+    });
+
+    return deferred.promise;
+  }
 
   private.saveToDatabase = function () {
     var deferred = $q.defer();
@@ -381,7 +415,6 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
 
     theme_manager.current.template = private.inspection.sections;
     theme_manager.saveTheme(theme_manager.current);
-
     return defer.promise;
   };
 

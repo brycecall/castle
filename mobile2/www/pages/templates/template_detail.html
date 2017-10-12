@@ -24,14 +24,30 @@
             </md-switch>
         </div>
         <div class="md-title">{{question.title}}</div>
-        <div class="md-caption description"><span>Description: </span><input type="text" 
-                           ng-disabled="false" 
-                           ng-model="question.description"
-                           class="editInput"
-                           style="background-color:inherit;"
-                           /></div>
+<!--
+        <div class="md-caption description"><span>Description: </span>
+            <input type="textarea" 
+               ng-disabled="false" 
+               ng-model="question.description"
+               class="editInput"
+               style="background-color:inherit;"
+               />
+        </div>
+-->
+        <md-input-container class="md-block">
+          <label>Description</label>
+          <textarea ng-disabled="false" 
+                       ng-model="question.description"
+                       class="editInput"
+                       style="background-color:inherit;"
+                       md-minlength='question.validation.min' 
+                       md-maxlength='question.validation.max'
+                    rows="1"></textarea>
+        </md-input-container>
+            
+
     <form name="questionForm" style="padding-left: 0px;"  ng-class="question.notApplicable ? 'disabled' : ''">
-        <div ng-if="question.type == 'checkbox'">
+        <div ng-if="question.type == 'checkbox'" id="sortParent">
             <div ng-repeat="checkBox in question.values track by $index" class="questionIndent">
                 <div>
         <md-button class="md-icon-button" 
@@ -68,11 +84,23 @@
                 Add Checkbox
             </md-button>
         </div>
-        <div ng-if="question.type == 'radio'">
+        
+        <div ng-if="question.type == 'radio' || question.type == 'dropdown'" 
+             id="sortParent">
             <md-radio-group ng-model="question.answer"
                             ng-required="question.validation.isRequired"
                             ng-disabled="question.notApplicable" >
-                <div layout="row" layout-align="start center" ng-repeat="radioButton in question.values" >
+                <div 
+                     ui-sortable="sortOptions"   
+                     ng-model="question.values">
+                <div layout="row" 
+                     layout-align="start center" 
+                     ng-repeat="radioButton in question.values" >
+<!--
+                    <div class="handle">
+                        <md-icon md-svg-icon="drag_handle" ></md-icon>
+                    </div>
+-->
                 <md-button class="md-icon-button" 
                            aria-label="delete answer"
                            ng-click="remove($index, question.values)">
@@ -84,6 +112,7 @@
                                  ng-value="radioButton.key">{{radioButton.key}}
                 </md-radio-button>
                 </div>
+               </div>
             </md-radio-group>
             <div layout="row" layout-align="start center">
              <md-button class="md-accent md-raised" 
@@ -100,6 +129,7 @@
              </div>
             </div>
         </div>
+<!--
         <div ng-if="question.type == 'dropdown'">
             <md-select ng-model="question.answer" 
                        placeholder="Choose" 
@@ -110,7 +140,8 @@
                 </md-option>
             </md-select>
         </div>
-        <div ng-if="question.type == 'shortText'">
+-->
+        <div ng-if="question.type == 'text'">
             <md-input-container>
                 <label>Your Answer</label>
                 <input ng-model="question.answer" 
@@ -130,7 +161,7 @@
                 </div>
             </md-input-container>
         </div>
-        <div ng-if="question.type == 'textArea'">
+        <div ng-if="question.type == 'textarea'">
             <md-input-container class="md-block" >
                 <label>Your Answer</label>
                 <textarea ng-model="question.answer" 

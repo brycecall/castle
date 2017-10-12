@@ -32,6 +32,9 @@ md-input-container {
 }
 */
 
+.handle {
+   width:30px;   
+}
 
 
 #view {

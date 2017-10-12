@@ -251,7 +251,7 @@ app.controller('template_section', function ($scope, inspection_manager, header_
   $scope.remove = templateShareService.remove;
 
   action_manager.addAction('Save', 'save', function () {
-    inspection_manager.saveInspection($scope.insId);
+    inspection_manager.updateInspection();
   });
 
   // All the sections for a specific inspection/report
@@ -296,7 +296,7 @@ app.controller('template_subsection', function ($scope, inspection_manager, head
     });
   });
   action_manager.addAction('Save', 'save', function () {
-    inspection_manager.saveInspection($scope.insId);
+    inspection_manager.updateInspection();
   });
   $scope.addSubsection = function () {
     $scope.subsections.push({
@@ -337,7 +337,7 @@ app.controller('template_question', function ($scope, inspection_manager, header
     });
   });
   action_manager.addAction('Save', 'save', function () {
-    inspection_manager.saveInspection($scope.insId);
+    inspection_manager.updateInspection();
   });
   $scope.addQuestion = function () {
     $scope.questions.push({
@@ -386,7 +386,12 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
     'value':null
   };
     
-
+$scope.sortOptions = {
+    'ui-floating': false, 
+    'handle': '.handle', 
+    'containment': '#sortParent'
+};
+    
   $scope.question = {};
   $scope.questionCount = -1;
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
@@ -467,7 +472,7 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
     navigateQuestions(false);
   }, 'md-raised');
   action_manager.addAction('Save', 'save', function () {
-    inspection_manager.saveInspection($scope.insId);
+    inspection_manager.updateInspection();
   });
   action_manager.addAction("Next", "keyboard_arrow_right", function () {
     navigateQuestions(true);

@@ -317,7 +317,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
         }
       }, function (error) {
         deferred.reject({
-          message: 'Error trying to select from Template table'
+          message: 'Error trying to select from Template table ' + error.message
         });
       });
       return deferred.promise;

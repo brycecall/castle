@@ -1,4 +1,4 @@
-var app = angular.module("castle", ['ngCordova', 'ui.router', 'ngMaterial', 'ngMessages', 'ngSha']);
+var app = angular.module("castle", ['ngCordova', 'ui.router', 'ngMaterial', 'ngMessages', 'ngSha', 'ui.sortable']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/error");

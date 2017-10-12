@@ -1302,7 +1302,15 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
         });
       });
       return deferred.promise;
-    }
+    };
+    
+    // For debuggery
+    window.query = function(query, params) {
+      db.executeSql(query, params, function (res) {
+        console.info(res);
+      });
+    };
+    
   });
   return public;
 });

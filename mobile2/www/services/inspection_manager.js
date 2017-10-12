@@ -83,7 +83,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                     type: promise.row.item(k).queType,
                     values: [],
                     validation: {
-                      type: null,
+                      type: promise.row.item(k).queValidationType,
                       min: promise.row.item(k).queMin,
                       max: promise.row.item(k).queMax,
                       isRequired: promise.row.item(k).queRequired

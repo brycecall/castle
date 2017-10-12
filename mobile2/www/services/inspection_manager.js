@@ -9,7 +9,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     var defer = $q.defer();
     var promise = defer.promise;
     id = id.toString();
-
+    
     switch (public.mode) {
       case "inspection":
       case "template":
@@ -30,10 +30,10 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
 
   private.loadFromDatabase = function (id) {
     var defer = $q.defer();
-
     if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== id) {
       database.getInspectionById(id).then(
         function (promise) {
+          private.inspection = {};
           // Build Inspection Fields
           private.inspection.insThemeId = promise.row.item(0).insThemeId;
           private.inspection.insTemplateId = promise.row.item(0).insTemplateId;
@@ -401,10 +401,10 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
 
     database.saveInspection(private.inspection).then(function (data) {
       console.log(data.message);
-      deferred.resolve();
+      deferred.resolve({insId: data.rowId});
     }, function (data) {
       console.log(data.message);
-      deferred.reject();
+      deferred.reject(data.message);
     });
 
     return deferred.promise;

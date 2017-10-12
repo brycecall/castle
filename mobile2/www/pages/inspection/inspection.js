@@ -179,11 +179,20 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
     promise.then(function (inspection) {
       inspection.insThemeId = $scope.sTheme.unique;
       inspection.insTemplateId = $scope.sTemplate.rowId;
-      inspection_manager.saveInspection();
-
-      $state.go('inspection_section', {
-        'insId': $scope.sTemplate.rowId
-      });
+      inspection_manager.saveInspection().then(
+        function(savedIns) {
+          console.log('Successful save. Inserted Inspection Id: ' + savedIns.insId);
+          // Simulate loading
+          setTimeout(function() {
+            $state.go('inspection_section', {
+              'insId': savedIns.insId
+            });}, 2000);          
+        }, function(saveError) {
+          console.log('Error saving inspection: ' + saveError.message);    
+        }
+      );
+    }, function(getErr) {
+      console.log(getErr.message);    
     });
   }
 
@@ -228,6 +237,7 @@ app.controller('inspection_section', function ($scope, inspection_manager, heade
     $state.go('inspection');
   });
   $scope.insId = $stateParams.insId;
+  console.log('Section InspectionId: ' + $scope.insId);
   $scope.navigate = shareService.navigate;
   // All the sections for a specific inspection/report
   $scope.sections = [];
@@ -237,7 +247,7 @@ app.controller('inspection_section', function ($scope, inspection_manager, heade
       'sectionIndex': sectionIndex
     });
   };
-
+  
   inspection_manager.getSections($scope.insId).then(
     function (data) {
       $scope.sections = data.value;

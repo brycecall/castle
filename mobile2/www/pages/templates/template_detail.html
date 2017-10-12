@@ -190,16 +190,22 @@
                  
                  style="background-image: url( {{photo.link}} ); margin: 10px;" 
                  ng-click="showFullScreen($event, photo)">
-                </div>
             </div>
-                        <md-button class="md-accent md-raised"
-                       ng-disabled="question.notApplicable"
-                       ng-click="addPhotos()">  
-                Add Photos
-            </md-button>
+            </div>
+          </div>
+        <div ng-if="question.type !== 'photo'" ng-repeat="photo in question.photos"
+             class="photo md-whiteframe-1dp"
+
+             style="background-image: url( {{photo.link}} ); margin: 10px;" 
+             ng-click="showFullScreen($event, photo)">
         </div>
+         <md-button class="md-accent md-raised"
+                   ng-disabled="question.notApplicable"
+                   ng-click="addPhotos()">  
+            Add Photos
+        </md-button>
+
     </form>
-         
         <div style="margin: 8px 0px 0px 0px;">
             <div class="md-title">Summary Remarks</div>
             <div class="md-caption" style="margin: 4px 0 4px 0;" >Summary Remarks are appended to the Summary Section</div>
@@ -229,6 +235,13 @@
                        >
             Include Description
             </md-switch>
+<!--
+            <md-switch ng-model="question.showPhotos"
+                       ng-disabled="question.notApplicable"
+                       >
+            Include Photo
+            </md-switch>
+-->
             </div>
             <md-card>
                 <md-card-content>

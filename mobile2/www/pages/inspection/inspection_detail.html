@@ -26,7 +26,7 @@
         <div class="md-title">{{question.title}}</div>
         <div class="md-caption description">{{question.description}}</div>
     <form name="questionForm" style="padding-left: 0px;"  ng-class="question.notApplicable ? 'disabled' : ''">
-        <div ng-if="question.type == 'checkbox'">
+        <div ng-if="question.type === 'checkbox'">
             <div ng-repeat="checkBox in question.values track by $index" class="questionIndent">
                 <md-checkbox ng-checked="exists(checkBox.key, question.answers)" 
                              ng-click="toggle(checkBox.key, question.answers)"
@@ -44,7 +44,7 @@
                     class="inlineInput"
                    >
         </div>
-        <div ng-if="question.type == 'radio'">
+        <div ng-if="question.type === 'radio'">
             <md-radio-group ng-model="question.answer"
                             ng-required="question.validation.isRequired"
                             ng-disabled="question.notApplicable">
@@ -64,7 +64,7 @@
                  </div>
             </md-radio-group>
         </div>
-        <div ng-if="question.type == 'selectOption'">
+        <div ng-if="question.type === 'dropdown'">
             <md-select ng-model="question.answer" 
                        placeholder="Choose" 
                        class="md-no-underline"
@@ -74,7 +74,7 @@
                 </md-option>
             </md-select>
         </div>
-        <div ng-if="question.type == 'shortText'">
+        <div ng-if="question.type === 'text'">
             <md-input-container>
                 <label>Your Answer</label>
                 <input ng-model="question.answer" 
@@ -94,7 +94,7 @@
                 </div>
             </md-input-container>
         </div>
-        <div ng-if="question.type == 'textArea'">
+        <div ng-if="question.type === 'textarea'">
             <md-input-container class="md-block" >
                 <label>Your Answer</label>
                 <textarea ng-model="question.answer" 
@@ -112,7 +112,7 @@
                 </div>
             </md-input-container>
         </div>
-        <div ng-if="question.type == 'photo'">
+        <div ng-if="question.type === 'photo'">
             <div ng-show="question.photos.length <= 0">
                 No Photos Yet!
             </div>
@@ -125,12 +125,21 @@
                  ng-click="showFullScreen($event, photo)">
                 </div>
             </div>
-                        <md-button class="md-accent md-raised"
-                       ng-disabled="question.notApplicable"
-                       ng-click="addPhotos()">  
-                Add Photos
-            </md-button>
         </div>
+        
+        <div ng-if="question.type !== 'photo'" ng-repeat="photo in question.photos"
+             class="photo md-whiteframe-1dp"
+
+             style="background-image: url( {{photo.link}} ); margin: 10px;" 
+             ng-click="showFullScreen($event, photo)">
+        </div>
+         <md-button class="md-accent md-raised"
+                   ng-disabled="question.notApplicable"
+                   ng-click="addPhotos()">  
+            Add Photos
+        </md-button>
+        
+        
     </form>
          
         <div style="margin: 8px 0px 0px 0px;">

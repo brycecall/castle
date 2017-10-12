@@ -111,3 +111,7 @@ md-input-container {
 .description {
     margin: 4px 0 8px 0;
 }
+
+.buttonWrapper {
+    padding: 4px 4px 4px 4px;
+}

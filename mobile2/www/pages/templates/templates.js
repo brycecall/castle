@@ -268,7 +268,8 @@ app.controller('template_section', function ($scope, inspection_manager, header_
 
   $scope.addSection = function () {
     $scope.sections.push({
-      'title': ''
+      'title': '',
+      'subsections':[]
     });
       //console.log(inspection_manager.getInspectionCache());
   };
@@ -302,7 +303,8 @@ app.controller('template_subsection', function ($scope, inspection_manager, head
   });
   $scope.addSubsection = function () {
     $scope.subsections.push({
-      'title': ''
+      'title': '',
+     'questions':[]
     });
   };
   inspection_manager.getSubsections($scope.insId, $scope.sectionIndex).then(

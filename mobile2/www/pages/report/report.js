@@ -8,11 +8,12 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, header_manager, theme_manager, action_manager, inspection_manager) {
+app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $q, $cordovaFile, header_manager, theme_manager, action_manager, inspection_manager) {
   var preview_frame = document.querySelector("#preview");
   var render_frame = document.querySelector("#render");
 
   $scope.report = null;
+  $scope.inspection = null;
   $scope.insId = $stateParams.insId;
 
   // TODO: This is currently hard coded
@@ -32,6 +33,7 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, h
           object.manifest = manifest;
           object.meta = manifest.template;
           object.data = inspection;
+          $scope.inspection = inspection;
 
           object.apply = function () {
             // Timeout to force render
@@ -66,6 +68,46 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, h
     });
   });
 
+  var saveReport = function() {
+    var defered = $q.defer();
+    
+    if (!$scope.report) {
+      defered.reject("No report defined.");
+    }
+    
+    var report = $scope.report.replace("data:application/pdf;base64,", '');
+    report = base64Blob(report, "application/pdf");
+    
+    $cordovaFile.writeFile(cordova.file.externalDataDirectory, $scope.inspection.insName + ".pdf", report, true);
+    
+    return defered.promise;
+  };
+  
+  // SEE: https://ourcodeworld.com/articles/read/230/how-to-save-a-pdf-from-a-base64-string-on-the-device-with-cordova
+  var base64Blob = function(b64Data, contentType, sliceSize) {
+        contentType = contentType || '';
+        sliceSize = sliceSize || 512;
+
+        var byteCharacters = atob(b64Data);
+        var byteArrays = [];
+
+        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+            var byteNumbers = new Array(slice.length);
+            for (var i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+
+            var byteArray = new Uint8Array(byteNumbers);
+
+            byteArrays.push(byteArray);
+        }
+
+      var blob = new Blob(byteArrays, {type: contentType});
+      return blob;
+}
+  
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {
     window.history.back();
@@ -74,6 +116,7 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, h
   action_manager.disable();
   action_manager.mode = ACTION_MODES.Action;
   action_manager.addAction("Send", 'send', function () {
+    saveReport();
     if (window['cordova'] !== undefined && $scope.report) {
       cordova.plugins.email.open({
         body: "Here is your report!!!",
@@ -84,6 +127,7 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, h
   }, 'md-accent');
 
   action_manager.addAction("Save", 'save', function () {
+    saveReport();
     window.history.back();
   });
 

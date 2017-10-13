@@ -142,6 +142,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {
     $state.go('home');
+    inspection_manager.clearInspection();
   });
 
   $scope.camera_manager = camera_manager;

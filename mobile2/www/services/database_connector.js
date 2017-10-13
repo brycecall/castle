@@ -1035,23 +1035,23 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insThemeId, insOrganizationId, insTemplateId, insTemplateTitle) VALUES (?,?,?,?,?,?,?,?,?,?,?)', [timestamp, timestamp, ins.insJobId, ins.insSourceType, ins.insType, ins.insName, ins.insUserId, ins.insThemeId, ins.insOrganizationId, ins.insTemplateId, ins.insTemplateTitle], function (res) {
         //if this is successful, attempt to insert section data
         ins.sections.forEach(function (section) {
-          db.executeSql('INSERT INTO Section (secTitle, secInspectionId, secSourceType) VALUES (?,?,?)', [section.title, res.insertId, 'Inspection'], function (secRes) {
+          db.executeSql('INSERT INTO Section (secTitle, secInspectionId, secSourceType) VALUES (?,?,?)', [section.title, res.insertId, section.secSourceType], function (secRes) {
             //console.log(section.title + ' section succesfully inserted. ID: ' + secRes.insertId);
             //if this is successful, attempt to insert subsection data
             section.subsections.forEach(function (subsection) {
-              db.executeSql('INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) VALUES (?,?,?,?)', [subsection.title, secRes.insertId, res.insertId, 'Inspection'], function (susRes) {
+              db.executeSql('INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) VALUES (?,?,?,?)', [subsection.title, secRes.insertId, res.insertId, subsection.susSourceType], function (susRes) {
                 //console.log(subsection.title + ' subsection successfully inserted. ID: ' + susRes.insertId + ' saved to Inspection#: ' + res.insertId);
                 // If this is successful, attempt to insert question data
                 subsection.questions.forEach(function (question) {
-                  db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queValidationType, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [question.title, question.description, susRes.insertId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.type, question.validation.min, question.validation.max, question.validation.type, question.notApplicable, question.showSummaryRemark, question.showDescription, res.insertId, 'Inspection'], function (queRes) {
+                  db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queValidationType, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [question.title, question.description, susRes.insertId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.type, question.validation.min, question.validation.max, question.validation.type, Boolean(question.notApplicable), question.showSummaryRemark, question.showDescription, res.insertId, question.queSourceType], function (queRes) {
                     //console.log(question.title + ' question successfully inserted. ID: ' + queRes.insertId + ' saved to Inspection#: ' + res.insertId + ' and subSectionId: ' + susRes.insertId);
                     // If this is successful, attempt to insert answer data
                     question.values.forEach(function (answer) {
-                      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) VALUES (?,?,?,?,?)', [queRes.insertId, answer.key, answer.type, res.insertId, 'Inspection'], function (ansRes) {
+                      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) VALUES (?,?,?,?,?)', [queRes.insertId, answer.key, answer.type, res.insertId, answer.ansSourceType], function (ansRes) {
                         //console.log(answer.key + ' answer successfully inserted. ID: ' + ansRes.insertId + ' saved to Inspection#: ' + res.insertId);
                         // If this is successful, attempt to insert question-answer data
                         if (answer.key == question.answer || (question.answers && question.answers.indexOf(answer.key) > -1)) {
-                          db.executeSql('INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId, quaInspectionId, quaSourceType) VALUES (?,?,?,?)', [queRes.insertId, ansRes.insertId, res.insertId, 'Inspection'], function (queAnsRes) {
+                          db.executeSql('INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId, quaInspectionId, quaSourceType) VALUES (?,?,?,?)', [queRes.insertId, ansRes.insertId, res.insertId, question.queSourceType], function (queAnsRes) {
                             //console.log('Successfully inserted saved answer: ' + answer.key + ' for question title: ' + question.title + '.');
                           }, function (queAnsError) {
                             deferred.reject({
@@ -1126,7 +1126,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                 //console.log(subsection.title + ' subsection successfully updated.');
                 // If this is successful, attempt to update question data
                 subsection.questions.forEach(function (question) {
-                  db.executeSql('UPDATE Question SET queTitle=?, queDescription=?, queSubSectionId=?, queAnswered=?, queRequired=?, queType=?, queMin=?, queMax=?, queValidationType=?, queNotApplicable=?, queShowSummaryRemark=?, queShowDescription=?, queInspectionId=?, queSourceType=? WHERE rowid = ? AND queInspectionId = ?', [question.title, question.description, question.subsectionId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.type, question.validation.min, question.validation.max, question.validation.type, question.notApplicable, question.showSummaryRemark, question.showDescription, question.inspectionId, ins.insSourceType, question.id, question.inspectionId], function (queRes) {
+                  db.executeSql('UPDATE Question SET queTitle=?, queDescription=?, queSubSectionId=?, queAnswered=?, queRequired=?, queType=?, queMin=?, queMax=?, queValidationType=?, queNotApplicable=?, queShowSummaryRemark=?, queShowDescription=?, queInspectionId=?, queSourceType=? WHERE rowid = ? AND queInspectionId = ?', [question.title, question.description, question.subsectionId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.type, question.validation.min, question.validation.max, question.validation.type, Boolean(question.notApplicable), question.showSummaryRemark, question.showDescription, question.inspectionId, ins.insSourceType, question.id, question.inspectionId], function (queRes) {
                     // Delete all rows in QuestionAnswers for this question before looping through and inserting again
                     db.executeSql('DELETE FROM QuestionAnswers WHERE quaQuestionId = ? and quaInspectionId = ?', [question.id, question.inspectionId], function(deleteRes) {
                       //console.log('Successful delete of Question: ' + question.title + ' stored Answers for InspectionId: ' + question.inspectionId);    
@@ -1217,6 +1217,111 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                       });  
        return ansDefer.promise;
       };
+    }
+    
+    public.updateTemplate = function(template) {
+      console.log(template);
+      // Update Inspection table info
+      var timestamp = new Date();
+      var deferred = $q.defer();
+      db.executeSql('UPDATE Inspection SET insLastModified = ?, insUserId = ?, insOrganizationId = ?, insTemplateTitle = ? WHERE rowid = ?', [timestamp, template.insUserId, template.insOrganizationId, template.insTemplateTitle, template.rowId], function(res) {
+        console.log('Successful update of Inpsection table for Template.');
+      }, function(err) {
+        deferred.reject({message: 'Error updating Inspection table for Template: ' + err.message});
+      });
+    
+      var answerIds = [];
+      var questionIds = [];
+      var subsectionIds = [];
+      var sectionIds = [];
+      template.sections.forEach(function(section) {
+        sectionIds.push(section.id);
+        section.subsections.forEach(function(subsection) {
+          subsectionIds.push(subsection.id);
+          subsection.questions.forEach(function(question) {
+            questionIds.push(question.id);
+            question.values.forEach(function(answer) {
+              answerIds.push(answer.id);
+            });  
+          });
+        });
+      });
+      //console.log(answerIds);
+      //console.log(questionIds);
+      //console.log(subsectionIds);
+      //console.log(sectionIds);
+        
+      // Remove deleted answers
+      db.executeSql('DELETE FROM Answer WHERE rowid NOT IN (?) AND ansInspectionId = ?', [answerIds, template.rowId], function(res) {
+        //console.log('Successful Delete of Answers in updateTemplate');
+      }, function(err) {
+        deferred.reject({message: 'Error deleting Answers in updateTemplate: ' + err.message});
+      });
+      // Remove deleted questions
+      db.executeSql('DELETE FROM Question WHERE rowid NOT IN (?) AND queInspectionId = ?', [questionIds, template.rowId], function(res) {
+        //console.log('Successful Delete of Questions in updateTemplate');
+      }, function(err) {
+        deferred.reject({message: 'Error deleting Questions in updateTemplate: ' + err.message});  
+      });
+      // Remove deleted subsections
+      db.executeSql('DELETE FROM SubSection WHERE rowid NOT IN (?) AND susInspectionId = ?', [subsectionIds, template.rowId], function(res) {
+        //console.log('Successful Delete of SubSections in updateTemplate');
+      }, function(err) {
+        deferred.reject({message: 'Error deleting SubSections in updateTemplate: ' + err.message});  
+      });
+      // Remove deleted sections
+      db.executeSql('DELETE FROM Section WHERE rowid NOT IN (?) AND secInspectionId = ?', [sectionIds, template.rowId], function(res) {
+        //console.log('Successful Delete of Sections in updateTemplate');
+      }, function(err) {
+        deferred.reject({message: 'Error deleting Sections in updateTemplate: ' + err.message});  
+      });
+        
+      // INSERT / REPLACE ON CONFLICT Section loop
+      template.sections.forEach(function(section) {
+        var tempSection = section;
+        //console.log(tempSection);
+        db.executeSql('INSERT OR REPLACE INTO Section (rowid, secTitle, secInspectionId, secSourceType) VALUES (?,?,?,?)', [tempSection.id, tempSection.title, tempSection.inspectionId, tempSection.sourceType], function(res) {
+          //console.log('Success Upsert to Section');
+          // INSERT / REPLACE ON CONFLICT SubSection loop
+          tempSection.subsections.forEach(function(subsection) {
+            var tempSubsection = subsection;
+            //console.log(tempSubsection);
+            db.executeSql('INSERT OR REPLACE INTO SubSection (rowid, susTitle, susSectionId, susInspectionId, susSourceType) VALUES (?,?,?,?,?)', [subsection.id, tempSubsection.title, tempSubsection.sectionId, tempSubsection.inspectionId, tempSubsection.sourceType], function(res) {
+              //console.log('Success Upsert to SubSection');
+              // INSERT / REPLACE ON CONFLICT Question loop
+              tempSubsection.questions.forEach(function(question) {
+                var tempQuestion = question;
+                //console.log(tempQuestion);
+                db.executeSql('INSERT OR REPLACE INTO Question (rowid, queTitle, queDescription, queSubSectionId, queType, queRequired, queMin, queMax, queValidationType, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [tempQuestion.id, tempQuestion.title, tempQuestion.description, tempQuestion.subsectionId, tempQuestion.type, tempQuestion.validation.isRequired, tempQuestion.validation.min, tempQuestion.validation.max, tempQuestion.validation.type, tempQuestion.notApplicable, tempQuestion.showSummaryRemark, tempQuestion.showDescription, tempQuestion.inspectionId, tempQuestion.sourceType], function(res) {
+                  //console.log('Success upsert to Question');
+                  // INSERT / REPLACE ON CONFLICT Answer loop
+                  tempQuestion.values.forEach(function(answer) {
+                    var tempAnswer = answer;
+                    //console.log(tempAnswer);
+                    db.executeSql('INSERT OR REPLACE INTO Answer (rowid, ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) VALUES (?,?,?,?,?,?)', [tempAnswer.id, tempAnswer.questionId, tempAnswer.key, tempAnswer.type, tempAnswer.inspectionId, tempAnswer.sourceType], function (res) {
+                      //console.log('Success upsert to Answer');
+                    }, function(err) {
+                      deferred.reject({message: 'Failure to upsert to Answer: ' + err.message});
+                    });  
+                  });
+                }, function(err) {
+                  console.log('Failure upsert to Question');
+                  deferred.reject({message: 'Failure to upsert to Question: ' + err.message});
+                });
+              });
+            }, function(err) {
+              console.log('Failure upsert to SubSection: ' + err.message);
+              deferred.reject({message: 'Failure upsert to SubSection: ' + err.message});
+            });
+          });
+        }, function(err) {
+          console.log('Failure upsert to Section: ' + err.message);
+          deferred.reject({message: 'Failure upsert to Section: ' + err.message});
+        });
+      });
+      deferred.resolve({message: 'Successful upsert of template'});
+
+      return deferred.promise;
     }
     
     public.getPhotos = function() {

@@ -37,6 +37,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
           // Build Inspection Fields
           private.inspection.insThemeId = promise.row.item(0).insThemeId;
           private.inspection.insTemplateId = promise.row.item(0).insTemplateId;
+          private.inspection.insTemplateTitle = promise.row.item(0).insTemplateTitle;
           private.inspection.insLastModified = promise.row.item(0).insLastModified;
           private.inspection.insLastSubmitted = promise.row.item(0).insLastSubmitted;
           private.inspection.insJobId = promise.row.item(0).insJobId;
@@ -45,7 +46,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
           private.inspection.insUserId = promise.row.item(0).insUserId;
           private.inspection.rowId = promise.row.item(0).rowId;
           private.inspection.insId = promise.row.item(0).rowId;
-          private.inspection.insSourceType = 'Inspection';
+          private.inspection.insSourceType = public.mode == 'inspection' ? 'Inspection' : public.mode == 'template' ? 'Template' : '';
           private.inspection.sections = [];
           var i = 0;
           var increment = 0;
@@ -382,6 +383,43 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     return promise;
   };
     
+  public.updateTemplate = function () {
+    var defer = $q.defer();
+    var promise = defer.promise;
+      
+    switch (public.mode) {
+        case "inspection":
+        case "template":
+          promise = private.updateDBTemplate();
+          break;
+        case "theme":
+          promise = private.saveToThemeManager();
+          break;
+        default:
+          defer.reject(public.mode + " is not a valid type.");
+    }
+      
+    return promise;
+  };
+  
+  public.clearInspection = function () {
+    private.inspection = {};
+  }
+  
+  private.updateDBTemplate = function() {
+    var deferred = $q.defer();
+      
+    database.updateTemplate(private.inspection).then(function (data) {
+      console.log(data.message);
+      deferred.resolve();
+    }, function (data) {
+      console.log(data.message);
+      deferred.reject();
+    });
+
+    return deferred.promise; 
+  }
+  
   private.updateDatabase = function() {
     var deferred = $q.defer();
 

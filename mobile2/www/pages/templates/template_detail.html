@@ -14,7 +14,22 @@
 </div>
     
     <div class="pagePadding">
-
+        <div style="padding: 16px;" class="md-title">
+             Create a Question and/or set its defualt values.
+        </div>
+        <md-card>
+            <md-card-content>
+        <md-select ng-model="question.type" 
+                   placeholder="Choose a Question Type" 
+                   class="md-no-underline"
+                   ng-required="true"
+                   ng-disabled="question.notApplicable"
+                   md-on-close="changeType()"
+                   md-on-open="openType()"
+                   aria-label="select question type">
+            <md-option ng-repeat="qType in questionTypes" ng-value="qType.key">{{qType.key}}
+            </md-option>
+        </md-select>
         <div layout="row">
             <div flex=""></div>
             <md-switch md-invert 
@@ -23,49 +38,47 @@
             Not Applicable
             </md-switch>
         </div>
-        <div class="md-title">{{question.title}}</div>
-<!--
-        <div class="md-caption description"><span>Description: </span>
-            <input type="textarea" 
-               ng-disabled="false" 
-               ng-model="question.description"
-               class="editInput"
-               style="background-color:inherit;"
-               />
-        </div>
--->
+        <md-input-container class="md-block md-title" style="margin-top: 14px;">
+          <label>Title</label>
+          <input ng-model="question.title" />
+        </md-input-container>
+        
         <md-input-container class="md-block" style="margin-top: 14px;">
           <label>Description</label>
           <textarea ng-disabled="question.notApplicable" 
                        ng-model="question.description"
-                       class="editInput"
+                       class="editInput md-caption"
                        style="background-color:inherit;"
                        md-minlength='question.validation.min' 
                        md-maxlength='question.validation.max'
                     rows="1"></textarea>
         </md-input-container>
             
-
-    <form name="questionForm" style="padding-left: 0px;"  ng-class="question.notApplicable ? 'disabled' : ''">
+    <form name="questionForm" style="padding-left: 0px;"  
+          ng-class="question.notApplicable ? 'disabled' : ''">
         <div ng-if="question.type == 'checkbox'" id="sortParent">
             <div ng-repeat="checkBox in question.values track by $index" class="questionIndent">
-                <div>
-        <md-button class="md-icon-button" 
-                   aria-label="delete answer"
-                   ng-click="remove($index, question.values)">
-            <md-icon md-svg-src="cancel"></md-icon>
-        </md-button>
+                <div layout="row" layout-align="start center">
+                <md-button class="md-icon-button" style="margin-bottom: 16px;" 
+                           aria-label="delete answer"
+                           ng-click="remove($index, question.values)"
+                           >
+                    <md-icon md-svg-src="cancel"></md-icon>
+                </md-button>
                 <md-checkbox ng-checked="exists(checkBox.key, question.answers)" 
                              ng-click="toggle(checkBox.key, question.answers)"
                              ng-disabled="question.notApplicable"
                              aria-label="checkbox">
                 </md-checkbox>
+                <md-input-container class="md-block">
                 <input type="text" 
                            ng-disabled="false" 
                            ng-model="checkBox.key"
                            class="editInput"
                            style="background-color:inherit;"
+                           aria-label="{{checkbox.key}}"
                            />
+                </md-input-container>
                 </div>
             </div>
 <!--
@@ -160,6 +173,38 @@
                   <div ng-message="md-maxlength">That's too long!</div>
                 </div>
             </md-input-container>
+            
+            <md-switch ng-model="question.validation.isRequired" aria-label="is required switch">
+                Is Required
+            </md-switch>
+            
+            <md-select ng-model="question.validation.type" 
+                       placeholder="Add Validation" 
+                       class="md-no-underline"
+                       ng-disabled="question.notApplicable"
+                       aria-label="select question type">
+                <md-option ng-repeat="validationType in [{'title':'None','value':''},{'title':'Number','value':'number'},{'title':'Date','value':'date'},{'title':'Text','value':'text'}]" ng-value="validationType.value">{{validationType.title}}
+                </md-option>
+            </md-select>
+            <div ng-show="question.validation.type && question.validation.type != 'date'">
+            <md-input-container>
+            <label>max value</label>
+            <input type="text" 
+                       ng-disabled="false" 
+                       ng-model="question.validation.max"
+                       aria-label="add max value"
+                       />
+            </md-input-container>
+            
+            <md-input-container>
+            <label>min value</label>
+            <input type="text" 
+                       ng-disabled="false" 
+                       ng-model="question.validation.min"
+                       aria-label="add min value"
+                       />
+            </md-input-container>
+            </div>
         </div>
         <div ng-if="question.type == 'textarea'">
             <md-input-container class="md-block" >
@@ -206,6 +251,10 @@
         </md-button>
 
     </form>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <md-card-content>
         <div style="margin: 8px 0px 0px 0px;">
             <div class="md-title">Summary Remarks</div>
             <div class="md-caption" style="margin: 4px 0 4px 0;" >Summary Remarks are appended to the Summary Section</div>
@@ -279,6 +328,8 @@
                 </md-card-content>
             </md-card>
         </div>
+            </md-card-content>
+        </md-card>
      </div>   
 </div>
 

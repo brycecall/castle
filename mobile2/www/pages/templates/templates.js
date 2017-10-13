@@ -343,7 +343,10 @@ app.controller('template_question', function ($scope, inspection_manager, header
   });
   $scope.addQuestion = function () {
     $scope.questions.push({
-      'title': ''
+      'title': '',
+      'answers': [],
+      'answer': null,
+      'notApplicable':false
     });
   };
 
@@ -380,7 +383,40 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
       'subsectionIndex': $scope.subsectionIndex
     });
   });
-
+$scope.questionTypes = [
+        {
+            key:"text"
+        },
+        {
+            key:"photo"
+        },
+        {
+            key:"checkbox"
+        },
+        {
+            key:"radio"
+        },
+        {
+            key:"textarea"
+        }
+    ];
+  $scope.lastValue = null;
+  $scope.openType = function() {
+      if ($scope.question.value) {
+            $scope.lastTypeValue = $scope.question.value;
+      }
+  };
+  $scope.changeType = function() {
+     if (!$scope.question.type || $scope.lastTypeValue !== $scope.question.type ) {
+         $scope.question.values = [];
+         if ($scope.question.type == 'checkbox') {
+             $scope.question.values.push({'key':''});
+         }
+         $scope.question.answers = [];
+         $scope.question.answer = null;
+         $scope.question.notApplicable = false;
+     }
+  };  
   $scope.navigate = templateShareService.navigate;
   $scope.remove = templateShareService.remove;
   $scope.otherValue = {
@@ -400,7 +436,7 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
     function (data) { 
         $scope.questionCount = data.value.length;
         $scope.question = data.value[$scope.questionIndex];
-        console.log($scope.question.type);
+        //console.log($scope.question.type);
     },
     function (data) {
       console.log("Error... no question exists in the database");

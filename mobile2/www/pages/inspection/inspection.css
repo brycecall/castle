@@ -41,6 +41,7 @@ md-input-container {
 .centerPage {
   max-width: 950px;
   margin: 0 auto;
+  padding: 10px;
 }
 
 .insTitle {
@@ -60,4 +61,13 @@ md-input-container {
 .page {
   height: auto;
   padding-bottom: 60px;
+}
+
+#new.page {
+  padding: 20px;
+}
+
+#new.page md-input-container {
+  margin: 10px;
+  width: calc(100% - 20px);
 }

@@ -179,6 +179,8 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
     promise.then(function (inspection) {
       inspection.insThemeId = $scope.sTheme.unique;
       inspection.insTemplateId = $scope.sTemplate.rowId;
+      inspection.insName = $scope.sName;
+      
       inspection_manager.saveInspection().then(
         function(savedIns) {
           console.log('Successful save. Inserted Inspection Id: ' + savedIns.insId);
@@ -231,7 +233,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
 
 });
 
-app.controller('inspection_section', function ($scope, inspection_manager, header_manager, $state, $stateParams, shareService) {
+app.controller('inspection_section', function ($scope, inspection_manager, action_manager, header_manager, $state, $stateParams, shareService) {
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
     $state.go('inspection');
@@ -256,14 +258,14 @@ app.controller('inspection_section', function ($scope, inspection_manager, heade
       console.log("Error... no sections exist in the database");
     }
   );
-
-  $scope.updateInspection = function () {
+  
+  action_manager.addAction("Save", "save", function() {
     inspection_manager.updateInspection();
-  };
+  });
 
 });
 
-app.controller('inspection_subsection', function ($scope, inspection_manager, header_manager, $state, $stateParams, shareService) {
+app.controller('inspection_subsection', function ($scope, inspection_manager, action_manager, header_manager, $state, $stateParams, shareService) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.navigate = shareService.navigate;
@@ -286,9 +288,9 @@ app.controller('inspection_subsection', function ($scope, inspection_manager, he
     }
   );
     
-  $scope.updateInspection = function () {
+  action_manager.addAction("Save", "save", function() {
     inspection_manager.updateInspection();
-  };
+  });
   
   $scope.questionDrill = function (subsectionIndex) {
     console.log('inspectionId: ' + $scope.insId);
@@ -304,7 +306,7 @@ app.controller('inspection_subsection', function ($scope, inspection_manager, he
 });
 
 
-app.controller('inspection_question', function ($scope, inspection_manager, header_manager, $state, $stateParams, shareService) {
+app.controller('inspection_question', function ($scope, inspection_manager, action_manager, header_manager, $state, $stateParams, shareService) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
@@ -329,9 +331,9 @@ app.controller('inspection_question', function ($scope, inspection_manager, head
     }
   );
 
-  $scope.updateInspection = function () {
+  action_manager.addAction("Save", "save", function() {
     inspection_manager.updateInspection();
-  };
+  });
     
   $scope.questionDrill = function (questionIndex) {
     $state.go('inspection_detail', {
@@ -427,6 +429,9 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
   action_manager.addAction("Previous", "keyboard_arrow_left", function () {
     navigateQuestions(false);
   }, 'md-raised');
+  action_manager.addAction("Save", "save", function() {
+    inspection_manager.updateInspection();
+  });
   action_manager.addAction("Next", "keyboard_arrow_right", function () {
     navigateQuestions(true);
   }, 'md-raised');

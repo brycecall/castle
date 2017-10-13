@@ -1,27 +1,40 @@
 <link type="text/css" rel="stylesheet" href="pages/inspection/inspection.css" />
-<div flex="" layout="column" class="page" id="nav">
+<div flex="" layout="column" class="page" id="new">
   <md-content>
-    <div class="centerPage" id="centerPage">
-      <h3 class="md-subhead insTitle">Select Theme</h3>
-      <md-card>
-        <md-input-container style="padding: 0px 16px 8px 16px;">
-          <md-select ng-model="sTheme" placeholder="Pick a Theme" md-on-close="">
-            <md-option ng-repeat="theme in themes
+    <md-card class="centerPage" id="centerPage">
+      <div style="padding: 10px">
+        <h1>Start a New Inspection</h1>
+        
+        <div style="border-bottom: solid 1px #333; margin: 40px 0;"></div>
+        
+        <p>Please enter a name and choose the theme and template that you would like to use for this inspection.</p>
+        <p>The <strong>theme</strong> is what controls what your final report will look like.<br />
+          The <strong>template</strong> is a starting point for you to get up and going with your inspections.<br />
+          This is where all of the questions and deafult values specific to your inspections come from.</p>
+      </div>
+      
+      <div style="border-bottom: solid 1px #333; margin: 40px 10px;"></div>
+      
+      <md-input-container>
+        <label>Name</label>
+        <input type="text" ng-model="sName">
+      </md-input-container>
+
+      <md-input-container>
+        <md-select ng-model="sTheme" placeholder="Select a Theme" md-on-close="">
+          <md-option ng-repeat="theme in themes
                                          track by $index" ng-value="theme">
-              {{theme.title}}</md-option>
-          </md-select>
-        </md-input-container>
-      </md-card>
-      <h3 class="md-subhead insTitle">Select Template</h3>
-      <md-card>
-        <md-input-container style="padding: 0px 16px 8px 16px;">
-          <md-select ng-model="sTemplate" placeholder="Pick a Template" md-on-close="">
-            <md-option ng-repeat="template in templates
+            {{theme.title}}</md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container>
+        <md-select ng-model="sTemplate" placeholder="Select a Template" md-on-close="">
+          <md-option ng-repeat="template in templates
                                          track by $index" ng-value="template">
-              {{template.insTemplateTitle}}</md-option>
-          </md-select>
-        </md-input-container>
-      </md-card>
-    </div>
+            {{template.insTemplateTitle}}</md-option>
+        </md-select>
+      </md-input-container>
+    </md-card>
   </md-content>
 </div>

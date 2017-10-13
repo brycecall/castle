@@ -307,7 +307,7 @@ app.controller('template_subsection', function ($scope, inspection_manager, head
   };
   inspection_manager.getSubsections($scope.insId, $scope.sectionIndex).then(
     function (data) {
-      $scope.subsections = data.value;
+      $scope.subsections = data.value || [];
     },
     function (data) {
       console.log("Error... no subsections exist in the database");

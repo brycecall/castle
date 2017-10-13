@@ -78,6 +78,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {
     $state.go('home');
+    inspection_manager.clearInspection();
   });
 
   $scope.camera_manager = camera_manager;
@@ -161,6 +162,7 @@ app.controller('template', function ($scope, $rootScope, $state, header_manager,
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {
     $state.go('home');
+    inspection_manager.clearInspection();
   });
 
   $scope.camera_manager = camera_manager;
@@ -251,7 +253,7 @@ app.controller('template_section', function ($scope, inspection_manager, header_
   $scope.remove = templateShareService.remove;
 
   action_manager.addAction('Save', 'save', function () {
-    inspection_manager.updateInspection();
+    inspection_manager.updateTemplate();
   });
 
   // All the sections for a specific inspection/report
@@ -296,7 +298,7 @@ app.controller('template_subsection', function ($scope, inspection_manager, head
     });
   });
   action_manager.addAction('Save', 'save', function () {
-    inspection_manager.updateInspection();
+    inspection_manager.updateTemplate();
   });
   $scope.addSubsection = function () {
     $scope.subsections.push({
@@ -337,7 +339,7 @@ app.controller('template_question', function ($scope, inspection_manager, header
     });
   });
   action_manager.addAction('Save', 'save', function () {
-    inspection_manager.updateInspection();
+    inspection_manager.updateTemplate();
   });
   $scope.addQuestion = function () {
     $scope.questions.push({
@@ -452,7 +454,7 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
     navigateQuestions(false);
   }, 'md-raised');
   action_manager.addAction('Save', 'save', function () {
-    inspection_manager.updateInspection();
+    inspection_manager.updateTemplate();
   });
   action_manager.addAction("Next", "keyboard_arrow_right", function () {
     navigateQuestions(true);

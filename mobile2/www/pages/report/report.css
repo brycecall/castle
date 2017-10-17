@@ -29,17 +29,3 @@
   background-repeat: no-repeat;
   font-family: cursive;
 }
-
-.loading * {
-  animation: pulse .6s infinite;
-  animation-direction: alternate;
-}
-
-@keyframes pulse {
-  0% {
-    opacity: .4;
-  }
-  100% {
-    opacity: .8;
-  }
-}

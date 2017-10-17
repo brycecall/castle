@@ -18,16 +18,22 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
   $scope.report = null;
   $scope.inspection = null;
   $scope.insId = $stateParams.insId;
+  $scope.message = null;
 
   // TODO: This is currently hard coded
   var entry_promise = theme_manager.getThemeEntryPoint("a94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde8");
 
   entry_promise.then(function (entry_point) {
+    $scope.message = "Getting the theme ready...";
     var entry_point = entry_point;
+    if ($rootScope.debug) {
+      entry_point = "http://localhost:8080/www/themes/a94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde8/";
+    }
     // TODO: This is currently hard coded
     var manifest_promise = theme_manager.getThemeManifest("a94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde8");
 
     manifest_promise.then(function (manifest) {
+      $scope.message = "Getting your template of choice ready...";
       var inspection_promise = inspection_manager.getInspection($scope.insId);
 
       inspection_promise.then(function (inspection) {
@@ -39,13 +45,23 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
           $scope.inspection = inspection;
 
           object.apply = function () {
+            $scope.message = "Doing some more magic...";
             if ($rootScope.debug) {
               return;
             }
             
             // Timeout to force render
             $timeout(function () {
+              $scope.message = "Saving you a ton of time...";
               var data = render_frame.contentDocument.querySelector('html').outerHTML;
+              
+              $timeout(function() {
+                    $scope.message = "Putting it all together...";
+                  }, 60000);
+                  
+                  $timeout(function() {
+                    $scope.message = "Saving the world... One report at a time...";
+                  }, 250000);
 
               if (window['pdf'] !== undefined) {
                 pdf.htmlToPDF({
@@ -57,14 +73,21 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
                   end_time = new Date();
                   console.log("Generation the report took " + (end_time.getTime() - start_time.getTime()) + "ms");
                   
+                  $scope.message = "Almost ready...";
+                  
                   data = data.replace('\n', '');
                   data = "data:application/pdf;base64," + data;
                   $scope.report = data;
                   action_manager.enable();
-                  preview_frame.contentWindow.PDFViewerApplication.open(data);
+                  $scope.message = "You're good to go!";
+                  $timeout( function() {
+                    preview_frame.contentWindow.PDFViewerApplication.open(data);
+                    end_time = new Date();
+                    console.log("Rendering the preview took " + (end_time.getTime() - start_time.getTime()) + "ms");
+                  }, 100);
                   
                   end_time = new Date();
-                  console.log("Rendering the preview took " + (end_time.getTime() - start_time.getTime()) + "ms");
+                  console.log("Converting the base64 took " + (end_time.getTime() - start_time.getTime()) + "ms");
                   
                 }, function (error) {
                   $scope.report = "null";

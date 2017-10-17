@@ -46,7 +46,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
           private.inspection.insUserId = promise.row.item(0).insUserId;
           private.inspection.rowId = promise.row.item(0).rowId;
           private.inspection.insId = promise.row.item(0).rowId;
-          private.inspection.insSourceType = public.mode == 'inspection' ? 'Inspection' : public.mode == 'template' ? 'Template' : '';
+          private.inspection.insSourceType = promise.row.item(0).insSourceType;
           private.inspection.sections = [];
           var i = 0;
           var increment = 0;
@@ -437,7 +437,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
   private.saveToDatabase = function () {
     var deferred = $q.defer();
 
-    database.saveInspection(private.inspection).then(function (data) {
+    database.saveInspection(private.inspection, public.mode).then(function (data) {
       console.log(data.message);
       deferred.resolve({insId: data.rowId});
     }, function (data) {

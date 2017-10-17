@@ -137,15 +137,15 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       var deferred = $q.defer();
       db.sqlBatch([
       ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?, ?, ?)',
-        ['9-12-17', '9-12-17', 10, 'Template', 'Residential', 'Smith Inspection', 1, 'Residential Template']],
+        ['9-12-17', '9-12-17', 10, 'template', 'Residential', 'Smith Inspection', 1, 'Residential Template']],
       ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?, ?, ?)',
-        ['10-1-17', '9-11-17', 9, 'Inspection', 'Residential', 'Jones Inspection', 1, null]],
+        ['10-1-17', '9-11-17', 9, 'inspection', 'Residential', 'Jones Inspection', 1, null]],
       ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?, ?, ?)',
-        ['6-12-17', '6-12-17', 13, 'Inspection', 'Residential', 'Smith Inspection', 1, null]],
+        ['6-12-17', '6-12-17', 13, 'inspection', 'Residential', 'Smith Inspection', 1, null]],
       ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?, ?, ?)',
-        ['9-1-17', '9-1-17', 21, 'Inspection', 'Residential', 'Smith Inspection', 1, null]],
+        ['9-1-17', '9-1-17', 21, 'inspection', 'Residential', 'Smith Inspection', 1, null]],
       ['INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?, ?, ?)',
-        ['9-12-17', '9-12-17', 1, 'Template', 'Commercial', 'Walmart Inspection', 1, 'Commercial Template']],
+        ['9-12-17', '9-12-17', 1, 'template', 'Commercial', 'Walmart Inspection', 1, 'Commercial Template']],
       ], function (res) {
         deferred.resolve({
           success: true,
@@ -229,7 +229,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     public.getInspections = function () {
       var deferred = $q.defer();
 
-      db.executeSql('SELECT rowId as insId, * FROM Inspection WHERE insSourceType = ? ORDER BY insLastSubmitted DESC', ['Inspection'], function (res) {
+      db.executeSql('SELECT rowId as insId, * FROM Inspection WHERE insSourceType = ? ORDER BY insLastSubmitted DESC', ['inspection'], function (res) {
         if (res.rows.length > 0) {
           deferred.resolve({
             row: res.rows,
@@ -266,7 +266,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       console.log('db initTemplates being called');
       var timestamp = new Date();
       var deferred = $q.defer();
-      db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insSourceType, insType, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?)', [timestamp, timestamp, 'Template', 'Residential', 1, 'Residential Template'], function (res) {
+      db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insSourceType, insType, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?)', [timestamp, timestamp, 'template', 'Residential', 1, 'Residential Template'], function (res) {
         deferred.resolve({
           rowId: res.insertId,
           message: 'Template insertion successful'
@@ -304,7 +304,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     public.getTemplates = function () {
       var deferred = $q.defer();
 
-      db.executeSql('SELECT rowid AS [rowId], * FROM Inspection ins WHERE insSourceType = ?', ['Template'], function (res) {
+      db.executeSql('SELECT rowid AS [rowId], * FROM Inspection ins WHERE insSourceType = ?', ['template'], function (res) {
         if (res.rows.length > 0) {
           deferred.resolve({
             row: res.rows,
@@ -327,19 +327,19 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       console.log('db initSections being called');
       var deferred = $q.defer();
       db.sqlBatch([
-        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Field Notes', 1, 'Template']],
-        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Site', 1, 'Template']],
-        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Exterior', 1, 'Template']],
-        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Roofing', 1, 'Template']],
-        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Structural', 1, 'Template']],
-        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Thermal', 1, 'Template']],
-        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Plumbing', 1, 'Template']],
-        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Heating', 1, 'Template']],
-        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Cooling', 1, 'Template']],
-        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Electrical', 1, 'Template']],
-        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Interior', 1, 'Template']],
-        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Life or Safety', 1, 'Template']],
-        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Test Section', 1, 'Template']],
+        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Field Notes', 1, 'template']],
+        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Site', 1, 'template']],
+        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Exterior', 1, 'template']],
+        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Roofing', 1, 'template']],
+        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Structural', 1, 'template']],
+        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Thermal', 1, 'template']],
+        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Plumbing', 1, 'template']],
+        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Heating', 1, 'template']],
+        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Cooling', 1, 'template']],
+        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Electrical', 1, 'template']],
+        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Interior', 1, 'template']],
+        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Life or Safety', 1, 'template']],
+        ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Test Section', 1, 'template']],
       ], function (res) {
         deferred.resolve({
           success: true,
@@ -382,7 +382,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       console.log('db initSubSections');
       var deferred = $q.defer();
       db.sqlBatch([
-        ['INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) Values (?, ?, ?, ?)', ['Observations', 1, 1, 'Template']],
+        ['INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) Values (?, ?, ?, ?)', ['Observations', 1, 1, 'template']],
         ['INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) Values (?, ?, ?, ?)', ['Evaluation', 2, 1, 'Template']],
         ['INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) Values (?, ?, ?, ?)', ['Attached Steps or Platforms', 2, 1, 'Template']],
         ['INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) Values (?, ?, ?, ?)', ['Siding or Wall Cladding', 3, 1, 'Template']],
@@ -1026,32 +1026,37 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     }
 
     // Overwrite the copied template with the actual data of the save
-    public.saveInspection = function (ins) {
+    public.saveInspection = function (ins, sourceType) {
       var timestamp = new Date();
-      console.log('saveInspection start');
+      console.log('saveInspection start. saving type: ' + sourceType);
       console.log(ins);
       var deferred = $q.defer();
       // Insert Inspection Table Data
-      db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insThemeId, insOrganizationId, insTemplateId, insTemplateTitle) VALUES (?,?,?,?,?,?,?,?,?,?,?)', [timestamp, timestamp, ins.insJobId, ins.insSourceType, ins.insType, ins.insName, ins.insUserId, ins.insThemeId, ins.insOrganizationId, ins.insTemplateId, ins.insTemplateTitle], function (res) {
+      db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insThemeId, insOrganizationId, insTemplateId, insTemplateTitle) VALUES (?,?,?,?,?,?,?,?,?,?,?)', [timestamp, timestamp, ins.insJobId, sourceType, ins.insType, ins.insName, ins.insUserId, ins.insThemeId, ins.insOrganizationId, ins.insTemplateId, ins.insTemplateTitle], function (res) {
         //if this is successful, attempt to insert section data
         ins.sections.forEach(function (section) {
-          db.executeSql('INSERT INTO Section (secTitle, secInspectionId, secSourceType) VALUES (?,?,?)', [section.title, res.insertId, section.secSourceType], function (secRes) {
+          var secSourceType = sourceType;
+          db.executeSql('INSERT INTO Section (secTitle, secInspectionId, secSourceType) VALUES (?,?,?)', [section.title, res.insertId, secSourceType], function (secRes) {
             //console.log(section.title + ' section succesfully inserted. ID: ' + secRes.insertId);
             //if this is successful, attempt to insert subsection data
             section.subsections.forEach(function (subsection) {
-              db.executeSql('INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) VALUES (?,?,?,?)', [subsection.title, secRes.insertId, res.insertId, subsection.susSourceType], function (susRes) {
+              var subsecSourceType = sourceType;
+              db.executeSql('INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) VALUES (?,?,?,?)', [subsection.title, secRes.insertId, res.insertId, subsecSourceType], function (susRes) {
                 //console.log(subsection.title + ' subsection successfully inserted. ID: ' + susRes.insertId + ' saved to Inspection#: ' + res.insertId);
                 // If this is successful, attempt to insert question data
                 subsection.questions.forEach(function (question) {
-                  db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queValidationType, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [question.title, question.description, susRes.insertId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.type, question.validation.min, question.validation.max, question.validation.type, Boolean(question.notApplicable), question.showSummaryRemark, question.showDescription, res.insertId, question.queSourceType], function (queRes) {
+                  var queSourceType = sourceType;
+                  db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queValidationType, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [question.title, question.description, susRes.insertId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.type, question.validation.min, question.validation.max, question.validation.type, Boolean(question.notApplicable), question.showSummaryRemark, question.showDescription, res.insertId, queSourceType], function (queRes) {
                     //console.log(question.title + ' question successfully inserted. ID: ' + queRes.insertId + ' saved to Inspection#: ' + res.insertId + ' and subSectionId: ' + susRes.insertId);
                     // If this is successful, attempt to insert answer data
                     question.values.forEach(function (answer) {
-                      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) VALUES (?,?,?,?,?)', [queRes.insertId, answer.key, answer.type, res.insertId, answer.ansSourceType], function (ansRes) {
+                      var ansSourceType = sourceType;
+                      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) VALUES (?,?,?,?,?)', [queRes.insertId, answer.key, answer.type, res.insertId, ansSourceType], function (ansRes) {
                         //console.log(answer.key + ' answer successfully inserted. ID: ' + ansRes.insertId + ' saved to Inspection#: ' + res.insertId);
                         // If this is successful, attempt to insert question-answer data
                         if (answer.key == question.answer || (question.answers && question.answers.indexOf(answer.key) > -1)) {
-                          db.executeSql('INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId, quaInspectionId, quaSourceType) VALUES (?,?,?,?)', [queRes.insertId, ansRes.insertId, res.insertId, question.queSourceType], function (queAnsRes) {
+                          var queAnsSourceType = sourceType;
+                          db.executeSql('INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId, quaInspectionId, quaSourceType) VALUES (?,?,?,?)', [queRes.insertId, ansRes.insertId, res.insertId, queAnsSourceType], function (queAnsRes) {
                             //console.log('Successfully inserted saved answer: ' + answer.key + ' for question title: ' + question.title + '.');
                           }, function (queAnsError) {
                             deferred.reject({

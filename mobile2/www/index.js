@@ -12,11 +12,6 @@ app.run(function ($rootScope, database) {
       database.initTables();
     } else {
       localStorage.removeItem("debug");
-      database.dropAllTables().then(function (result) {
-        console.log(result.message)
-      }, function (error) {
-        console.error(error.message);
-      });
     }
     $rootScope.debug = state;
   }

@@ -55,12 +55,17 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
                   type: "base64"
                 }, function (data) {
                   end_time = new Date();
+                  console.log("Generation the report took " + (end_time.getTime() - start_time.getTime()) + "ms");
+                  
                   data = data.replace('\n', '');
                   data = "data:application/pdf;base64," + data;
                   $scope.report = data;
-                  preview_frame.contentWindow.PDFViewerApplication.open(data);
                   action_manager.enable();
-                  console.log("Generation took " + (end_time.getTime() - start_time.getTime()) + "ms");
+                  preview_frame.contentWindow.PDFViewerApplication.open(data);
+                  
+                  end_time = new Date();
+                  console.log("Rendering the preview took " + (end_time.getTime() - start_time.getTime()) + "ms");
+                  
                 }, function (error) {
                   $scope.report = "null";
                 });

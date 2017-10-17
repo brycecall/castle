@@ -1003,7 +1003,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       console.log('db getInspectionById ID: ' + inspId);
       var deferred = $q.defer();
       db.executeSql(
-        'SELECT *, insp.rowid AS [rowId], sec.rowid AS [secRowId], subsec.rowid AS [susRowId], ques.rowid AS [queRowId], ans.rowid AS [ansRowId], qua.rowid AS [quaRowId] FROM Inspection insp JOIN Section sec on sec.secInspectionId = insp.rowid JOIN SubSection subsec ON subsec.susSectionId = sec.rowId JOIN Question ques ON ques.queSubSectionId = subsec.rowid LEFT JOIN Answer ans ON ans.ansQuestionId = ques.rowid LEFT JOIN QuestionAnswers qua on qua.quaQuestionId = ques.rowid AND qua.quaAnswerId = ans.rowid WHERE insp.rowid = ? ORDER BY sec.rowid, subsec.rowid, ques.rowid, ans.rowid', [inspId],
+        'SELECT *, insp.rowid AS [rowId], sec.rowid AS [secRowId], subsec.rowid AS [susRowId], ques.rowid AS [queRowId], ans.rowid AS [ansRowId], qua.rowid AS [quaRowId] FROM Inspection insp LEFT JOIN Section sec on sec.secInspectionId = insp.rowid LEFT JOIN SubSection subsec ON subsec.susSectionId = sec.rowId LEFT JOIN Question ques ON ques.queSubSectionId = subsec.rowid LEFT JOIN Answer ans ON ans.ansQuestionId = ques.rowid LEFT JOIN QuestionAnswers qua on qua.quaQuestionId = ques.rowid AND qua.quaAnswerId = ans.rowid WHERE insp.rowid = ? ORDER BY sec.rowid, subsec.rowid, ques.rowid, ans.rowid', [inspId],
         function (res) {
           if (res.rows.length > 0) {
             deferred.resolve({
@@ -1230,7 +1230,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       var timestamp = new Date();
       var deferred = $q.defer();
       db.executeSql('UPDATE Inspection SET insLastModified = ?, insUserId = ?, insOrganizationId = ?, insTemplateTitle = ? WHERE rowid = ?', [timestamp, template.insUserId, template.insOrganizationId, template.insTemplateTitle, template.rowId], function(res) {
-        console.log('Successful update of Inpsection table for Template.');
+        console.log('Successful update of Inspection table for Template.');
       }, function(err) {
         deferred.reject({message: 'Error updating Inspection table for Template: ' + err.message});
       });
@@ -1285,26 +1285,29 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       template.sections.forEach(function(section) {
         var tempSection = section;
         //console.log(tempSection);
-        db.executeSql('INSERT OR REPLACE INTO Section (rowid, secTitle, secInspectionId, secSourceType) VALUES (?,?,?,?)', [tempSection.id, tempSection.title, tempSection.inspectionId, tempSection.sourceType], function(res) {
-          //console.log('Success Upsert to Section');
+        db.executeSql('INSERT OR REPLACE INTO Section (rowid, secTitle, secInspectionId, secSourceType) VALUES (?,?,?,?)', [tempSection.id, tempSection.title, tempSection.inspectionId, tempSection.sourceType], function(secRes) {
+          //console.log('Successful Upsert to Section. InsertId: ' + res.insertId);
           // INSERT / REPLACE ON CONFLICT SubSection loop
           tempSection.subsections.forEach(function(subsection) {
             var tempSubsection = subsection;
+            var sectionId = secRes.insertId;
             //console.log(tempSubsection);
-            db.executeSql('INSERT OR REPLACE INTO SubSection (rowid, susTitle, susSectionId, susInspectionId, susSourceType) VALUES (?,?,?,?,?)', [subsection.id, tempSubsection.title, tempSubsection.sectionId, tempSubsection.inspectionId, tempSubsection.sourceType], function(res) {
-              //console.log('Success Upsert to SubSection');
+            db.executeSql('INSERT OR REPLACE INTO SubSection (rowid, susTitle, susSectionId, susInspectionId, susSourceType) VALUES (?,?,?,?,?)', [subsection.id, tempSubsection.title, sectionId, tempSubsection.inspectionId, tempSubsection.sourceType], function(susRes) {
+              //console.log('Success Upsert to SubSection: ' + res.insertId);
               // INSERT / REPLACE ON CONFLICT Question loop
               tempSubsection.questions.forEach(function(question) {
                 var tempQuestion = question;
+                var subsectionId = susRes.insertId;
                 //console.log(tempQuestion);
-                db.executeSql('INSERT OR REPLACE INTO Question (rowid, queTitle, queDescription, queSubSectionId, queType, queRequired, queMin, queMax, queValidationType, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [tempQuestion.id, tempQuestion.title, tempQuestion.description, tempQuestion.subsectionId, tempQuestion.type, tempQuestion.validation.isRequired, tempQuestion.validation.min, tempQuestion.validation.max, tempQuestion.validation.type, tempQuestion.notApplicable, tempQuestion.showSummaryRemark, tempQuestion.showDescription, tempQuestion.inspectionId, tempQuestion.sourceType], function(res) {
-                  //console.log('Success upsert to Question');
+                db.executeSql('INSERT OR REPLACE INTO Question (rowid, queTitle, queDescription, queSubSectionId, queType, queRequired, queMin, queMax, queValidationType, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [tempQuestion.id, tempQuestion.title, tempQuestion.description, subsectionId, tempQuestion.type, tempQuestion.validation.isRequired, tempQuestion.validation.min, tempQuestion.validation.max, tempQuestion.validation.type, tempQuestion.notApplicable, tempQuestion.showSummaryRemark, tempQuestion.showDescription, tempQuestion.inspectionId, tempQuestion.sourceType], function(queRes) {
+                  //console.log('Success upsert to Question: ' + queRes.insertId);
                   // INSERT / REPLACE ON CONFLICT Answer loop
                   tempQuestion.values.forEach(function(answer) {
                     var tempAnswer = answer;
+                    var questionId = queRes.insertId;
                     //console.log(tempAnswer);
-                    db.executeSql('INSERT OR REPLACE INTO Answer (rowid, ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) VALUES (?,?,?,?,?,?)', [tempAnswer.id, tempAnswer.questionId, tempAnswer.key, tempAnswer.type, tempAnswer.inspectionId, tempAnswer.sourceType], function (res) {
-                      //console.log('Success upsert to Answer');
+                    db.executeSql('INSERT OR REPLACE INTO Answer (rowid, ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) VALUES (?,?,?,?,?,?)', [tempAnswer.id, questionId, tempAnswer.key, tempAnswer.type, tempAnswer.inspectionId, tempAnswer.sourceType], function (ansRes) {
+                      //console.log('Success upsert to Answer: ' + ansRes.insertId);
                     }, function(err) {
                       deferred.reject({message: 'Failure to upsert to Answer: ' + err.message});
                     });  

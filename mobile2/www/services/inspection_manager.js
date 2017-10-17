@@ -135,7 +135,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
             }
             private.inspection.sections.push(section);
             i = increment + 1;
-          } while (i < promise.row.length - 1);
+          } while (i <= promise.row.length - 1);
           defer.resolve(private.inspection);
         },
         function (promise) {

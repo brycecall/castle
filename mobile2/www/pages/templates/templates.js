@@ -267,7 +267,10 @@ app.controller('template_section', function ($scope, inspection_manager, header_
 
   $scope.addSection = function () {
     $scope.sections.push({
+      'id': null,
       'title': '',
+      'inspectionId': parseInt($scope.insId),
+      'sourceType': 'template',
       'subsections':[]
     });
       //console.log(inspection_manager.getInspectionCache());
@@ -302,8 +305,12 @@ app.controller('template_subsection', function ($scope, inspection_manager, head
   });
   $scope.addSubsection = function () {
     $scope.subsections.push({
+      'id': null,
       'title': '',
-     'questions':[]
+      'sectionId': null,
+      'inspectionId': parseInt($scope.insId),
+      'sourceType': 'template',
+      'questions':[]
     });
   };
   inspection_manager.getSubsections($scope.insId, $scope.sectionIndex).then(
@@ -344,10 +351,27 @@ app.controller('template_question', function ($scope, inspection_manager, header
   });
   $scope.addQuestion = function () {
     $scope.questions.push({
+      'id': null,
       'title': '',
+      'description': '',
+      'subsectionId': null,
+      'inspectionId': parseInt($scope.insId),
+      'sourceType': 'template',
+      'type': '',
+      'values': [],
+      'validation': {
+        'type': '',
+        'min': null,
+        'max': null,
+        'isRequired': 0
+      },
       'answers': [],
       'answer': null,
-      'notApplicable':false
+      'severity': null,
+      'notApplicable': 0,
+      'showSummaryRemark': 1,
+      'showDescription': 1,
+      'photos': []
     });
   };
 
@@ -415,7 +439,7 @@ $scope.questionTypes = [
          }
          $scope.question.answers = [];
          $scope.question.answer = null;
-         $scope.question.notApplicable = false;
+         $scope.question.notApplicable = 0;
      }
   };  
   $scope.navigate = templateShareService.navigate;
@@ -560,7 +584,15 @@ $scope.questionTypes = [
   
     
   $scope.add = function(list, value) {
-      list.push({'key':value});
+      list.push({
+          'id': null,
+          'key':value,
+          'questionId': null,
+          'sourceType': 'template',
+          'inspectionId': parseInt($scope.insId),
+          'type': '',
+          'remark': ''          
+      });
   };
 
 });

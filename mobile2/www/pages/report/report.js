@@ -12,6 +12,9 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
   var preview_frame = document.querySelector("#preview");
   var render_frame = document.querySelector("#render");
 
+  var start_time = new Date();
+  var end_time = null;
+  
   $scope.report = null;
   $scope.inspection = null;
   $scope.insId = $stateParams.insId;
@@ -51,11 +54,13 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
                   landscape: "portrait",
                   type: "base64"
                 }, function (data) {
+                  end_time = new Date();
                   data = data.replace('\n', '');
                   data = "data:application/pdf;base64," + data;
                   $scope.report = data;
                   preview_frame.contentWindow.PDFViewerApplication.open(data);
                   action_manager.enable();
+                  console.log("Generation took " + (end_time.getTime() - start_time.getTime()) + "ms");
                 }, function (error) {
                   $scope.report = "null";
                 });

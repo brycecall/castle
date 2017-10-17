@@ -15,8 +15,8 @@
 <body ng-app="castle" ng-class="{'enlarge': enlarge}">
 
   <div layout="column" layout-fill>
-    <md-toolbar md-scroll-shrink="false" ng-controller="header" md-whiteframe="1" ng-show="service.enabled" ng-cloak>
-      <div class="md-toolbar-tools" ng-show="service.mode == 1">
+    <md-toolbar md-scroll-shrink="false" ng-controller="header" md-whiteframe="1" ng-show="service.enabled" ng-cloak md-theme="{{ service.theme }}" md-theme-watch>
+      <div class="md-toolbar-tools" ng-show="service.mode == 1" md-theme="{{ service.theme }}" md-theme-watch>
         <!-- service mode 1 is Default (Home Icon only) -->
         <span flex>
           <h2>{{service.title}}</h2>
@@ -29,7 +29,7 @@
         </md-button>
       </div>
 
-      <div class="md-toolbar-tools" ng-show="service.mode == 2">
+      <div class="md-toolbar-tools" ng-show="service.mode == 2" md-theme="{{ service.theme }}" md-theme-watch>
         <!-- service mode 1 is Action -->
         <md-button class="md-icon-button" aria-label="{{service.action.name}}" ng-click="run(service.action.method)" ng-class="service.action.classname" ng-show="service.action">
           <md-icon md-svg-icon="{{service.action.icon}}"></md-icon>
@@ -45,7 +45,7 @@
         </md-button>
       </div>
 
-      <div class="md-toolbar-tools" ng-show="service.mode == 3">
+      <div class="md-toolbar-tools" ng-show="service.mode == 3" md-theme="{{ service.theme }}" md-theme-watch>
         <!-- service mode 1 is Title -->
         <span flex>
           <h2>{{service.title}}</h2>

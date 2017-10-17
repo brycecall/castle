@@ -6,7 +6,7 @@ app.factory('header_manager', function ($rootScope) {
   public.enabled = true;
   public.mode = HEADER_MODES.Action;
   public.title = "";
-
+  public.theme = "default";
   public.enable = function () {
     public.enabled = true;
     if (public.mode === HEADER_MODES.Action && public.action == null) {
@@ -39,6 +39,7 @@ app.factory('header_manager', function ($rootScope) {
     public.setAction("Back", 'back', private.back);
     public.title = "Castle";
     public.mode = HEADER_MODES.Action;
+    public.theme = "default";
     public.enable();
   }
 
@@ -52,7 +53,7 @@ app.factory('header_manager', function ($rootScope) {
 
 app.controller('header', function ($scope, $rootScope, header_manager) {
   $scope.service = header_manager;
-
+  
   $scope.run = function (method) {
     method();
   }

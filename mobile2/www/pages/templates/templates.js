@@ -231,6 +231,8 @@ app.controller('template_new', function ($scope, $state, $rootScope, inspection_
 });
 
 app.controller('template_section', function ($scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
+  header_manager.title = 'Templates';
+  header_manager.theme = 'templateTheme';
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
     inspection_manager.clearInspection();
@@ -291,6 +293,8 @@ app.controller('template_subsection', function ($scope, inspection_manager, head
   $scope.remove = templateShareService.remove;
   // All the sections for a specific inspection/report
   $scope.subsections = [];
+  header_manager.title = 'Templates';
+  header_manager.theme = 'templateTheme';
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
     $state.go('template_section', {
@@ -331,6 +335,8 @@ app.controller('template_question', function ($scope, inspection_manager, header
   $scope.remove = templateShareService.remove;
   // All the sections for a specific inspection/report
   $scope.questions = [];
+  header_manager.title = 'Templates';
+  header_manager.theme = 'templateTheme';
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
     $state.go('template_subsection', {
@@ -377,6 +383,8 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
   $scope.subsectionIndex = $stateParams.subsectionIndex;
   $scope.questionIndex = $stateParams.questionIndex;
   header_manager.mode = HEADER_MODES.Action;
+  header_manager.title = 'Templates';
+  header_manager.theme = 'templateTheme';
   header_manager.setAction('Back', 'back', function () {
     $state.go('template_question', {
       'insId': $scope.insId,
@@ -384,6 +392,7 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
       'subsectionIndex': $scope.subsectionIndex
     });
   });
+    
 $scope.questionTypes = [
         {
             key:"text"

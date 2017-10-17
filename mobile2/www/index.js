@@ -4,6 +4,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/error");
 });
 
+app.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('default')
+    .primaryPalette('indigo')
+    .accentPalette('pink')
+  $mdThemingProvider.theme('templateTheme')
+    .primaryPalette('blue')
+    .accentPalette('pink');
+});
+
+
 // Control to set application in DEBUG mode
 app.run(function ($rootScope, database) {
   window.debug = function (state) {

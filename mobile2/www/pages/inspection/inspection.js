@@ -246,10 +246,10 @@ app.controller('inspection_new', function ($scope, $state, inspection_manager, t
 
 });
 
-app.controller('inspection_section', function ($scope, inspection_manager, action_manager, header_manager, $state, $transitions$, shareService) {
+app.controller('inspection_section', function ($scope, inspection_manager, action_manager, header_manager, $state, $transition$, shareService) {
   inspection_manager.mode = "inspection";
   inspection_manager.returnLocation = { 'name': $state.current.name, 'params':$transition$.params() };
-  $scope.insId = $transitions$.params().insId;
+  $scope.insId = $transition$.params().insId;
   $scope.edit = function() {
     $state.go('template_section', {
       'insId': $scope.insId
@@ -287,9 +287,9 @@ app.controller('inspection_section', function ($scope, inspection_manager, actio
 
 });
 
-app.controller('inspection_subsection', function ($scope, inspection_manager, action_manager, header_manager, $state, $transitions$, shareService) {
-  $scope.insId = $transitions$.params().insId;
-  $scope.sectionIndex = $transitions$.params().sectionIndex;
+app.controller('inspection_subsection', function ($scope, inspection_manager, action_manager, header_manager, $state, $transition$, shareService) {
+  $scope.insId = $transition$.params().insId;
+  $scope.sectionIndex = $transition$.params().sectionIndex;
   $scope.navigate = shareService.navigate;
   inspection_manager.mode = "inspection";
   inspection_manager.returnLocation = { 'name': $state.current.name, 'params':$transition$.params() };
@@ -335,10 +335,10 @@ app.controller('inspection_subsection', function ($scope, inspection_manager, ac
 });
 
 
-app.controller('inspection_question', function ($scope, inspection_manager, action_manager, header_manager, $state, $transitions$, shareService) {
-  $scope.insId = $transitions$.params().insId;
-  $scope.sectionIndex = $transitions$.params().sectionIndex;
-  $scope.subsectionIndex = $transitions$.params().subsectionIndex;
+app.controller('inspection_question', function ($scope, inspection_manager, action_manager, header_manager, $state, $transition$, shareService) {
+  $scope.insId = $transition$.params().insId;
+  $scope.sectionIndex = $transition$.params().sectionIndex;
+  $scope.subsectionIndex = $transition$.params().subsectionIndex;
   $scope.navigate = shareService.navigate;
   inspection_manager.mode = "inspection";
   inspection_manager.returnLocation = { 'name': $state.current.name, 'params':$transition$.params() };

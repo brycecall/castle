@@ -72,7 +72,7 @@
           </md-button>
         </md-fab-trigger>
 
-        <md-fab-actions>
+        <md-fab-actions ng-cloak>
           <div ng-repeat="action in service.actions">
             <md-button ng-cloak class="md-fab md-mini md-accent" aria-label="{{action.name}}" ng-click="run(action.method)">
               <md-tooltip ng-cloak md-direction="left" md-visible="open">{{action.name}}</md-tooltip>

@@ -1,5 +1,9 @@
 <link type="text/css" rel="stylesheet" href="pages/templates/templates.css" />
 <div class="page">
+<div style="width:100%; height: 50px; background-color: white; color: darkgrey;" layout="row" layout-align="start center">
+        <md-button style="min-width:20px; text-transform: none; font-weight:600;" class="md-caption md-accent" ng-click="navigate(insId)">Sec</md-button>
+    <div flex=""></div>
+</div>
   <div class="centerPage" id="centerPage">
     <div layout="row" layout-align="space-between center">
       <h2 class="md-subhead insTitle" style="margin-bottom:0px;">Sections</h2>
@@ -13,10 +17,11 @@
                          text-transform:none; background-color:#FFF;  height:52px;" class="md-no-style" aria-label="{{section.title}}" layout="row" layout-align="start center" ng-click="">
         <md-button class="md-icon-button" 
                    aria-label="delete section"
-                   ng-click="remove($index, sections)">
+                   ng-click="remove($index, sections)"
+                   ng-disabled="section.insSourceType === 'theme'">
             <md-icon md-svg-src="cancel"></md-icon>
         </md-button>
-          <input type="text" ng-disabled="false" ng-model="section.title" class="editInput" style="background-color:inherit;" />
+          <input type="text" ng-disabled="section.insSourceType === 'theme'" ng-model="section.title" class="editInput" style="background-color:inherit;" />
           <span flex=""></span>
 <!--          <md-icon md-svg-icon="check" class="md-primary" style="min-width:24px;"></md-icon>-->
           <md-button aria-label="toggle pages menu" class="md-icon-button" ng-click="goToSubsection($index)">
@@ -27,7 +32,7 @@
         <md-divider ng-if="!$last"></md-divider>
       </div>
     </md-card>
-    <md-button ng-click="addSection()" class="md-raised" aria-label="Add Section">
+    <md-button ng-disabled="section.insSourceType === 'theme'" ng-click="addSection()" class="md-raised" aria-label="Add Section">
       Add Section
     </md-button>
   </div>

@@ -11,8 +11,9 @@
         <div>/</div>
         <md-button style="min-width:20px; text-transform: none; font-weight: 600;" class="md-caption md-accent">Qn</md-button>
     <div flex=""></div>
+    <md-button ng-show="question.insSourceType != 'theme'" ng-click="edit()" class="md-icon-button" aria-label="edit template" ><md-icon md-svg-src="mode_edit"></md-icon></md-button>
 </div>
-    
+    <md-divider></md-divider>
     <div class="pagePadding">
 
         <div layout="row">
@@ -23,6 +24,8 @@
             Not Applicable
             </md-switch>
         </div>
+        <md-card class="flatCard">
+            <md-card-content>
         <div class="md-title">{{question.title}}</div>
         <div class="md-caption description">{{question.description}}</div>
     <form name="questionForm" style="padding-left: 0px;"  ng-class="question.notApplicable ? 'disabled' : ''">
@@ -141,7 +144,10 @@
         
         
     </form>
-         
+        </md-card-content>
+    </md-card>
+        <md-card class="flatCard">
+            <md-card-content>
         <div style="margin: 8px 0px 0px 0px;">
             <div class="md-title">Summary Remarks</div>
             <div class="md-caption" style="margin: 4px 0 4px 0;" >Summary Remarks are appended to the Summary Section</div>
@@ -208,6 +214,8 @@
                 </md-card-content>
             </md-card>
         </div>
+            </md-card-content>
+        </md-card>
      </div>   
 </div>
 

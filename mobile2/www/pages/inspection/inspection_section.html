@@ -1,9 +1,16 @@
 <link type="text/css" rel="stylesheet" href="pages/inspection/inspection.css" />
+
 <div class="page">
+<div style="width:100%; height: 50px; background-color: white; color: darkgrey;" layout="row" layout-align="start center">
+        <md-button style="min-width:20px; text-transform: none; font-weight:600;" class="md-caption md-accent" ng-click="navigate(insId)">Sec</md-button>
+    <div flex=""></div>
+        <md-button ng-show="question.insSourceType != 'theme'" ng-click="edit()" class="md-icon-button" aria-label="edit template" ><md-icon md-svg-src="mode_edit"></md-icon></md-button>
+</div>
+    <md-divider></md-divider>
+<div layout="row" layout-align="space-between center">
+    <h2 class="md-subhead insTitle" style="margin-bottom:0px;">Sections</h2>
+</div>
   <div class="centerPage" id="centerPage">
-    <div layout="row" layout-align="space-between center">
-      <h2 class="md-subhead insTitle" style="margin-bottom:0px;">Sections</h2>
-    </div>
 
     <md-card id="secParent" layout="column" ui-sortable="{'ui-floating': false, 'handle': '.handle', 
                            'containment': '#secParent'}" ng-model="sections">

@@ -94,7 +94,7 @@ app.service('shareService', function ($state) {
 // Define the page controller
 app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, export_manager) {
   $scope.inspections = [];
-
+  
   // Switch the inspection_manager mode (this is global)
   inspection_manager.mode = "inspection";
 
@@ -169,7 +169,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
 app.controller('inspection_new', function ($scope, $state, $rootScope, inspection_manager, theme_manager, action_manager) {
   $scope.themes = [];
   $scope.templates = [];
-
+  inspection_manager.mode = "inspection";
   action_manager.addAction('Start', 'check', function () {
     $scope.startInspection();
   });
@@ -234,6 +234,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
 });
 
 app.controller('inspection_section', function ($scope, inspection_manager, action_manager, header_manager, $state, $stateParams, shareService) {
+  inspection_manager.mode = "inspection";
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
     inspection_manager.clearInspection();
@@ -270,6 +271,7 @@ app.controller('inspection_subsection', function ($scope, inspection_manager, ac
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.navigate = shareService.navigate;
+  inspection_manager.mode = "inspection";
   // All the sections for a specific inspection/report
   $scope.subsections = [];
   header_manager.mode = HEADER_MODES.Action;
@@ -312,6 +314,7 @@ app.controller('inspection_question', function ($scope, inspection_manager, acti
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
   $scope.navigate = shareService.navigate;
+  inspection_manager.mode = "inspection";
   // All the sections for a specific inspection/report
   $scope.questions = [];
   header_manager.mode = HEADER_MODES.Action;
@@ -351,11 +354,13 @@ app.factory('$', function ($window) {
   return $window.jQuery;
 });
 
-app.controller('inspection_detail', function ($scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $stateParams, shareService) {
+app.controller('inspection_detail', function ($scope, $, $state, header_manager, camera_manager, 
+                                               action_manager, inspection_manager, $stateParams, shareService) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
   $scope.questionIndex = $stateParams.questionIndex;
+  inspection_manager.mode = "inspection";
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
     $state.go('inspection_question', {
@@ -365,6 +370,15 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
     });
   });
 
+  $scope.edit = function() {
+    $state.go('template_detail', {
+      'insId': $scope.insId,
+      'sectionIndex': $scope.sectionIndex,
+      'subsectionIndex': $scope.subsectionIndex,
+        
+    });
+  };  
+    
   $scope.navigate = shareService.navigate;
   $scope.otherValue = {
     'singleSelect': '',
@@ -378,6 +392,19 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
       $scope.question = data.value[$scope.questionIndex];
       attachPhotos();
 
+        
+      $scope.showListBottomSheet = function() {
+        $scope.alert = '';
+        $mdBottomSheet.show({
+          templateUrl: 'bottom-sheet-list-template.html',
+          controller: 'ListBottomSheetCtrl'
+        }).then(function(clickedItem) {
+          $scope.alert = clickedItem['name'] + ' clicked!';
+        }).catch(function(error) {
+          // User clicked outside or hit escape
+        });
+      };
+        
       $scope.$watch('otherValue.value', function (newVal, oldVal) {
         var list = $scope.question.answers;
         var index = $scope.question.answers.indexOf(oldVal);
@@ -429,13 +456,14 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
   action_manager.mode = ACTION_MODES.Action;
   action_manager.addAction("Previous", "keyboard_arrow_left", function () {
     navigateQuestions(false);
-  }, 'md-raised');
+  }, 'md-raised md-mini');
   action_manager.addAction("Save", "save", function() {
-    inspection_manager.updateInspection();
-  });
+    //inspection_manager.updateInspection();
+    //  $scope.showListBottomSheet();
+  }, 'md-raised md-mini');
   action_manager.addAction("Next", "keyboard_arrow_right", function () {
     navigateQuestions(true);
-  }, 'md-raised');
+  }, 'md-raised md-mini');
 
   $scope.addPhotos = function () {
     angular.copy($scope.question.photos, camera_manager.photos);

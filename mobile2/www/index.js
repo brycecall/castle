@@ -12,6 +12,11 @@ app.run(function ($rootScope, database) {
       database.initTables();
     } else {
       localStorage.removeItem("debug");
+      database.dropAllTables().then(function (result) {
+        console.log(result.message)
+      }, function (error) {
+        console.error(error.message);
+      });
     }
     $rootScope.debug = state;
   }
@@ -31,15 +36,25 @@ app.run(function ($rootScope) {
   }*/
 })
 
-app.run(function (database) {
-  var database_initialized = (localStorage.getItem("database_init") == "true" ? true : false);
-  if (!database_initialized) {
-    var promise = database.initTables();
-    promise.then(function (result) {
-      localStorage.setItem("database_init", "true");
-    });
+// Initialize the database if it hasn't been yet
+app.run(function (database, $timeout, $interval) {
+  var database_ready = (localStorage.getItem("database_ready") == "true" ? true : false);
+  if (database_ready) {
+    console.log("Database has already been initialized, skipping...");
+  } else {
+    var handle = $interval(function () {
+      if (window['sqlitePlugin'] != undefined) {
+        database.initTables();
+        localStorage.setItem("database_ready", "true");
+        $interval.cancel(handle);
+      }
+    }, 1000);
+
+    $timeout(function () {
+      $interval.cancel(handle);
+    }, 5000);
   }
-})
+});
 
 app.run(function ($sha) {
   $sha.setConfig();

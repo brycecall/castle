@@ -36,6 +36,10 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
           $scope.inspection = inspection;
 
           object.apply = function () {
+            if ($rootScope.debug) {
+              return;
+            }
+            
             // Timeout to force render
             $timeout(function () {
               var data = render_frame.contentDocument.querySelector('html').outerHTML;

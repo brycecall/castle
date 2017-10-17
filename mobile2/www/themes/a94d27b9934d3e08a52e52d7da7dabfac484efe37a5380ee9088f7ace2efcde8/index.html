@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../../node_modules/angular/angular.min.js"></script>
   <script src="main.js"></script>
   <script src="images.js"></script>
@@ -12,13 +13,16 @@
       position: absolute;
       width: 100%;
       height: 100%;
+      font-family: sans-serif;
+      font-weight: 300;
+      color: #333;
     }
     
     .page {
       page-break-inside: avoid;
-      page-break-after: always;
+      page-break-before: always;
       position: static;
-      height: 99%;
+      min-height: 99%;
       width: 100%;
     }
     
@@ -66,42 +70,46 @@
     
     .subsection {
       margin-left: 25px;
+      margin-right: 50px;
       padding: 10px;
-      border-left: solid 5px #333;
       min-height: 100px;
-      background-color: #333;
+      position: relative;
+      page-break-after: right;
     }
     
     .subsection_title {
       font-size: 18pt;
+      font-weight: normal;
+      width: 100%;
+      border-bottom: solid 1px #333;
+    }
+    
+    @media print {
+      .page_footer {
+        display: block;
+        position: static;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
     }
   </style>
 </head>
 
 <body ng-app="fidelity" ng-controller="main">
   <div class="page">
-    <div class="main-color full-bar">INSPECTION REPORT</div>
-    <div style="text-align: center; font-family: san-serif;">
-      <img ng-src="{{images.placeholder}}" style="margin: 10px; width: 50%;" />
-      <h3>For the property at:</h3>
-      <h1>11151 Blah Point Rd</h1>
-      <h3>Kirkland, WA 98034</h3>
-      <h3><i>Prepared for:</i> The Man</h3>
-      <h3><i>Inspection Date:</i> Saturday, January 4, 2014</h3>
-      <h3><i>Prepared by:</i> Rod Beacham, ACI</h3>
+    <div style="text-align: center;">
+      <img ng-src="{{images.fidelity_logo}}" style="margin: 10px; width: 250px;" /><br />
+      <div style="display: flex; width: 65%; margin: auto; margin-bottom: 20px;">
+        <span>www.206inspect.com</span>
+        <span style="flex: 1">(206) INSPECT</span>
+        <span>rod@206inspect.com</span>
+      </div>
+      <img ng-src="{{images.placeholder}}" style="margin: 10px; width: 65%;" />
+      <h1 style="font-size: 40pt; font-weight: 500">11151 Blah Point Rd</h1>
+      <p style="font-size: 20pt;">Kirkland, WA 98034</p>
+      <p style="font-size: 20pt;">Day, Month, Number, Year</p>
     </div>
-    <div style="margin-top: 25px; text-align: center; font-family: san-serif;">
-      <img ng-src="{{images.fidelity_logo}}" style="margin: 10px; width: 200px;" />
-      <p>Fidelity Bulding Inspections
-        <br /> 16904 Juanita Dr. NE #123
-        <br /> Kenmore, WA 98028
-        <br /> 206-467-7328
-        <br /> 877-278-5940
-        <br /> www.206inspect.com
-        <br /> 206inspect@gmail.com
-      </p>
-    </div>
-    <div class="main-color full-bar" style="position: absolute; bottom: 0;">"a great investment deserves a great inspection"</div>
   </div>
 
 
@@ -179,8 +187,8 @@ Fidelity Building Inspections, LLC</pre>
         <h2 style="float: right" ng-show="section.title">Report #{{castle.data.id}}</h2>
       </div>
       <div>
-        <h4 ng-show="section.title">{{section.title}}</h4>
-        <h4 style="float: right" ng-show="section.title">Report #{{castle.data.id}}</h4>
+        <h4 ng-show="section.title">address</h4>
+        <h4 style="float: right" ng-show="section.title">Day, Month, Number, Year</h4>
       </div>
     </div>
     <div class="subsection" ng-repeat="subsection in section.subsections">
@@ -188,11 +196,39 @@ Fidelity Building Inspections, LLC</pre>
       <div class="questions">
         <div class="question" ng-repeat="question in subsection.questions">
           <p>{{question.title}}</p>
-          <span ng-repeat="value in question.values">{{value.key}}, </span>
+          <div ng-show="question.type == 'checkbox'">
+            <span ng-repeat="value in question.values track by $index" style="display: inline-block; width: 45%">
+              <input type="checkbox" ng-checked="exists(value.key, question.answers)"/>
+              {{value.key}}
+            </span>
+          </div>
+
+          <div ng-show="question.type == 'radio'">
+            <span ng-repeat="value in question.values track by $index" style="display: inline-block; width: 45%">
+              <input type="radio" ng-value="exists(value.key, question.answers)"/>
+              {{value.key}}
+            </span>
+          </div>
+
+          <div ng-show="question.type == 'photo'">
+            PHOTO
+          </div>
+
+          <div ng-show="question.type == 'text'">
+            TEXT <span>{{question.answer}}</span>
+          </div>
+
+          <div ng-show="question.type == 'textarea'">
+            TEXTAREA <span>{{question.answer}}</span>
+          </div>
+
+          <div ng-show="question.photos" style="text-align: center;">
+            <img style="margin: 10px; height: 375px;" ng-src="{{photo.link}}" ng-repeat="photo in question.photos" />
+          </div>
+
         </div>
       </div>
     </div>
-    <div class="page_footer"></div>
   </div>
 </body>
 </html>

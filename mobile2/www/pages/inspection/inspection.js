@@ -51,7 +51,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-/*app.run(function ($transitions, inspection_manager) {
+/*app.run(function ($transitions, $rootScope) {
   $transitions.onExit({}, function (trans) {
       if (trans.$from().name == 'camera') {
         camera_manager.stopCamera();
@@ -67,6 +67,17 @@ app.config(function ($stateProvider) {
       
   });
 });*/
+
+/*app.run(function ($transitions, $rootScope) {
+  $transitions.onStart({}, function (trans) {
+      var fromStateName = trans.$to().name;
+      $rootScope.previousState = {
+             'name':trans.$from().name,
+             'params':trans.params('from')
+      };
+  });
+});*/
+
 
 app.service('shareService', function ($state) {
   var shareService = {};
@@ -166,10 +177,11 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   );
 });
 
-app.controller('inspection_new', function ($scope, $state, $rootScope, inspection_manager, theme_manager, action_manager) {
+app.controller('inspection_new', function ($scope, $state, inspection_manager, theme_manager, action_manager) {
   $scope.themes = [];
   $scope.templates = [];
   inspection_manager.mode = "inspection";
+  inspection_manager.returnLocation = { 'name': $state.state.name, 'params':$state.params };
   action_manager.addAction('Start', 'check', function () {
     $scope.startInspection();
   });
@@ -180,7 +192,8 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
       inspection.insThemeId = $scope.sTheme.unique;
       inspection.insTemplateId = $scope.sTemplate.rowId;
       inspection.insName = $scope.sName;
-      
+      inspection.sections = scope.sTheme.templates.concat(inspection.sections);
+        
       inspection_manager.saveInspection().then(
         function(savedIns) {
           console.log('Successful save. Inserted Inspection Id: ' + savedIns.insId);
@@ -233,14 +246,21 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
 
 });
 
-app.controller('inspection_section', function ($scope, inspection_manager, action_manager, header_manager, $state, $stateParams, shareService) {
+app.controller('inspection_section', function ($scope, inspection_manager, action_manager, header_manager, $state, $transitions$, shareService) {
   inspection_manager.mode = "inspection";
+  inspection_manager.returnLocation = { 'name': $state.current.name, 'params':$transition$.params() };
+  $scope.insId = $transitions$.params().insId;
+  $scope.edit = function() {
+    $state.go('template_section', {
+      'insId': $scope.insId
+    });
+  };  
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
     inspection_manager.clearInspection();
     $state.go('inspection');
   });
-  $scope.insId = $stateParams.insId;
+  
   console.log('Section InspectionId: ' + $scope.insId);
   $scope.navigate = shareService.navigate;
   // All the sections for a specific inspection/report
@@ -267,11 +287,12 @@ app.controller('inspection_section', function ($scope, inspection_manager, actio
 
 });
 
-app.controller('inspection_subsection', function ($scope, inspection_manager, action_manager, header_manager, $state, $stateParams, shareService) {
-  $scope.insId = $stateParams.insId;
-  $scope.sectionIndex = $stateParams.sectionIndex;
+app.controller('inspection_subsection', function ($scope, inspection_manager, action_manager, header_manager, $state, $transitions$, shareService) {
+  $scope.insId = $transitions$.params().insId;
+  $scope.sectionIndex = $transitions$.params().sectionIndex;
   $scope.navigate = shareService.navigate;
   inspection_manager.mode = "inspection";
+  inspection_manager.returnLocation = { 'name': $state.current.name, 'params':$transition$.params() };
   // All the sections for a specific inspection/report
   $scope.subsections = [];
   header_manager.mode = HEADER_MODES.Action;
@@ -280,7 +301,12 @@ app.controller('inspection_subsection', function ($scope, inspection_manager, ac
       'insId': $scope.insId
     });
   });
-
+  $scope.edit = function() {
+    $state.go('template_subsection', {
+      'insId': $scope.insId,
+      'sectionIndex': $scope.sectionIndex
+    });
+  };  
   inspection_manager.getSubsections($scope.insId, $scope.sectionIndex).then(
     function (data) {
       $scope.subsections = data.value;
@@ -309,12 +335,13 @@ app.controller('inspection_subsection', function ($scope, inspection_manager, ac
 });
 
 
-app.controller('inspection_question', function ($scope, inspection_manager, action_manager, header_manager, $state, $stateParams, shareService) {
-  $scope.insId = $stateParams.insId;
-  $scope.sectionIndex = $stateParams.sectionIndex;
-  $scope.subsectionIndex = $stateParams.subsectionIndex;
+app.controller('inspection_question', function ($scope, inspection_manager, action_manager, header_manager, $state, $transitions$, shareService) {
+  $scope.insId = $transitions$.params().insId;
+  $scope.sectionIndex = $transitions$.params().sectionIndex;
+  $scope.subsectionIndex = $transitions$.params().subsectionIndex;
   $scope.navigate = shareService.navigate;
   inspection_manager.mode = "inspection";
+  inspection_manager.returnLocation = { 'name': $state.current.name, 'params':$transition$.params() };
   // All the sections for a specific inspection/report
   $scope.questions = [];
   header_manager.mode = HEADER_MODES.Action;
@@ -325,7 +352,13 @@ app.controller('inspection_question', function ($scope, inspection_manager, acti
       'subsectionIndex': $scope.subsectionIndex
     });
   });
-
+  $scope.edit = function() {
+    $state.go('template_question', {
+      'insId': $scope.insId,
+      'sectionIndex': $scope.sectionIndex,
+      'subsectionIndex': $scope.subsectionIndex
+    });
+  };  
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
     function (data) {
       $scope.questions = data.value;
@@ -355,12 +388,13 @@ app.factory('$', function ($window) {
 });
 
 app.controller('inspection_detail', function ($scope, $, $state, header_manager, camera_manager, 
-                                               action_manager, inspection_manager, $stateParams, shareService) {
-  $scope.insId = $stateParams.insId;
-  $scope.sectionIndex = $stateParams.sectionIndex;
-  $scope.subsectionIndex = $stateParams.subsectionIndex;
-  $scope.questionIndex = $stateParams.questionIndex;
+                                               action_manager, inspection_manager, $transition$, shareService) {
+  $scope.insId = $transition$.params().insId;
+  $scope.sectionIndex = $transition$.params().sectionIndex;
+  $scope.subsectionIndex = $transition$.params().subsectionIndex;
+  $scope.questionIndex = $transition$.params().questionIndex;
   inspection_manager.mode = "inspection";
+  inspection_manager.returnLocation = { 'name': $state.current.name, 'params':$transition$.params() };
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
     $state.go('inspection_question', {
@@ -375,7 +409,7 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
       'insId': $scope.insId,
       'sectionIndex': $scope.sectionIndex,
       'subsectionIndex': $scope.subsectionIndex,
-        
+      'questionIndex':$scope.questionIndex
     });
   };  
     

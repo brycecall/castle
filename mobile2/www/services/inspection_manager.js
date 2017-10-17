@@ -4,6 +4,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
 
   private.inspection = {};
   public.mode = "inspection";
+  public.returnLocation = {'name':'inspection', params:{}}
 
   public.getInspection = function (id) {
     var defer = $q.defer();

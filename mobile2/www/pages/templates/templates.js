@@ -243,7 +243,7 @@ app.controller('template_section', function ($scope, inspection_manager, header_
         $state.go('templates');
         break;
       case "inspection":
-        $state.go('inspection');
+        $state.go(inspection_manager.returnLocation.name, inspection_manager.returnLocation.params);
         break;
     }
   });

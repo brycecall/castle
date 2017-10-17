@@ -2,7 +2,7 @@
 <link type="text/css" rel="stylesheet" href="./pages/inspection/inspection_detail.css" />
 <div class="page">
     
-<div style="width:100%; height: 50px; background-color: white; color: darkgrey; " layout="row" layout-align="start center">
+<div style="width:100%; height: 50px; background-color: white; color: darkgrey;" layout="row" layout-align="start center">
         <md-button style="min-width:20px; text-transform: none" class="md-caption" ng-click="navigate(insId)">Sec</md-button>
         <div>/</div>
         <md-button style="min-width:20px; text-transform: none" class="md-caption" ng-click="navigate(insId, sectionIndex)">Sub</md-button>
@@ -11,9 +11,11 @@
         <div>/</div>
         <md-button style="min-width:20px; text-transform: none; font-weight: 600;" class="md-caption md-accent">Qn</md-button>
     <div flex=""></div>
-    <md-button ng-show="question.insSourceType != 'theme'" ng-click="edit()" class="md-icon-button" aria-label="edit template" ><md-icon md-svg-src="mode_edit"></md-icon></md-button>
+    <md-button ng-show="question.insSourceType != 'theme'" ng-click="edit()" class="md-icon-button" aria-label="edit template" >
+        <md-icon md-svg-src="mode_edit"></md-icon>
+    </md-button>
 </div>
-    <md-divider></md-divider>
+<md-divider></md-divider>
     <div class="pagePadding">
 
         <div layout="row">

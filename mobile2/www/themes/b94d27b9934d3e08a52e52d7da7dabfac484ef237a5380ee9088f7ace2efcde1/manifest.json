@@ -13,25 +13,31 @@
   "template": [
     {
       "title": "Client Information",
+      "insSourceType":'theme',
       "subsections": [
         {
           "title": "Property Information",
+          "insSourceType":'theme',  
           "questions": [
             {
               "title": "Street Address",
-              "type": "text"
+              "type": "text",
+              "insSourceType":'theme'
             },
             {
               "title": "City / Town",
-              "type": "text"
+              "type": "text",
+              "insSourceType":'theme'
             },
             {
               "title": "State",
-              "type": "text"
+              "type": "text",
+              "insSourceType":'theme'
             },
             {
               "title": "Zip Code",
-              "type": "text"
+              "type": "text",
+              "insSourceType":'theme'
             }
           ]
         }

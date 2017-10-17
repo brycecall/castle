@@ -404,6 +404,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
   
   public.clearInspection = function () {
     private.inspection = {};
+    console.log('Inspection Object cleared!');
   }
   
   private.updateDBTemplate = function() {

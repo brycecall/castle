@@ -142,7 +142,6 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {
     $state.go('home');
-    inspection_manager.clearInspection();
   });
 
   $scope.camera_manager = camera_manager;
@@ -189,7 +188,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
           setTimeout(function() {
             $state.go('inspection_section', {
               'insId': savedIns.insId
-            });}, 2000);          
+            });}, 4000);
         }, function(saveError) {
           console.log('Error saving inspection: ' + saveError.message);    
         }
@@ -237,6 +236,7 @@ app.controller('inspection_new', function ($scope, $state, $rootScope, inspectio
 app.controller('inspection_section', function ($scope, inspection_manager, action_manager, header_manager, $state, $stateParams, shareService) {
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
+    inspection_manager.clearInspection();
     $state.go('inspection');
   });
   $scope.insId = $stateParams.insId;

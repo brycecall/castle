@@ -78,7 +78,6 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {
     $state.go('home');
-    inspection_manager.clearInspection();
   });
 
   $scope.camera_manager = camera_manager;
@@ -162,7 +161,6 @@ app.controller('template', function ($scope, $rootScope, $state, header_manager,
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {
     $state.go('home');
-    inspection_manager.clearInspection();
   });
 
   $scope.camera_manager = camera_manager;
@@ -235,6 +233,7 @@ app.controller('template_new', function ($scope, $state, $rootScope, inspection_
 app.controller('template_section', function ($scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
+    inspection_manager.clearInspection();
     console.log(inspection_manager.mode);
     switch (inspection_manager.mode) {
       case "theme":

@@ -10,36 +10,38 @@
   "entry_point": "index.html",
   "preview": "preview.pdf",
   "thumbnail": "thumbnail.png",
-  "template": {
-    "title": "Client Information",
-    "insSourceType": "theme",
-    "subsections": [
-      {
-        "title": "Property Information",
-        "insSourceType": "theme",
-        "questions": [
-          {
-            "title": "Street Address",
-            "type": "text",
-            "insSourceType": "theme"
-          },
-          {
-            "title": "City / Town",
-            "type": "text",
-            "insSourceType": "theme"
-          },
-          {
-            "title": "State",
-            "type": "text",
-            "insSourceType": "theme"
-          },
-          {
-            "title": "Zip Code",
-            "type": "text",
-            "insSourceType": "theme"
-          }
-        ]
-      }
-    ]
-  }
+  "template": [
+    {
+      "title": "Client Information",
+      "insSourceType": "theme",
+      "subsections": [
+        {
+          "title": "Property Information",
+          "insSourceType": "theme",
+          "questions": [
+            {
+              "title": "Street Address",
+              "type": "text",
+              "insSourceType": "theme"
+            },
+            {
+              "title": "City / Town",
+              "type": "text",
+              "insSourceType": "theme"
+            },
+            {
+              "title": "State",
+              "type": "text",
+              "insSourceType": "theme"
+            },
+            {
+              "title": "Zip Code",
+              "type": "text",
+              "insSourceType": "theme"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

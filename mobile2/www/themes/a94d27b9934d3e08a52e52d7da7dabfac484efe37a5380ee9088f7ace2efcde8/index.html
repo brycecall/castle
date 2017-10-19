@@ -46,6 +46,11 @@
       max-width: 100%;
     }
     
+    input {
+      min-width: 35px;
+      min-height: 35px;
+    }
+    
     h1,
     h2,
     h3,
@@ -203,7 +208,7 @@ Fidelity Building Inspections, LLC</pre>
       <div class="subsection_title" ng-show="subsection.title">{{subsection.title}}</div>
       <div class="questions">
         <div class="question" ng-repeat="question in subsection.questions">
-          <p>{{question.title}}</p>
+          <h4>{{question.title}}</h4>
           <div ng-show="question.type == 'checkbox'">
             <span ng-repeat="value in question.values track by $index" style="display: inline-block; width: 45%">
               <input type="checkbox" ng-checked="exists(value.key, question.answers)"/>

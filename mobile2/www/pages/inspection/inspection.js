@@ -495,14 +495,14 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
   action_manager.mode = ACTION_MODES.Action;
   action_manager.addAction("Previous", "keyboard_arrow_left", function () {
     navigateQuestions(false);
-  }, 'md-raised md-mini');
+  }, 'md-raised');
   action_manager.addAction("Save", "save", function() {
-    //inspection_manager.updateInspection();
+    inspection_manager.updateInspection();
     //  $scope.showListBottomSheet();
-  }, 'md-raised md-mini');
+  }, 'md-raised');
   action_manager.addAction("Next", "keyboard_arrow_right", function () {
     navigateQuestions(true);
-  }, 'md-raised md-mini');
+  }, 'md-raised');
 
   $scope.addPhotos = function () {
     angular.copy($scope.question.photos, camera_manager.photos);

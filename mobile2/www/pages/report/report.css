@@ -31,17 +31,12 @@
 }
 
 hr {
-  border: solid 3px #333;
+  border: none;
+  border-top: solid 1px #333;
   animation-name: colors;
   animation-duration: 1s;
   animation-direction: normal;
   animation-iteration-count: infinite;
   height: 0;
-}
-
-@keyframes colors {
-    0%   {border-color: red;}
-    25%  {border-color: yellow;}
-    50%  {border-color: blue;}
-    100% {border-color: green;}
+  opacity: .75;
 }

@@ -192,7 +192,7 @@ app.controller('inspection_new', function ($scope, $state, inspection_manager, t
       inspection.insThemeId = $scope.sTheme.unique;
       inspection.insTemplateId = $scope.sTemplate.rowId;
       inspection.insName = $scope.sName;
-      inspection.sections = $scope.sTheme.templates.concat(inspection.sections);
+      inspection.sections = $scope.sTheme.template.concat(inspection.sections);
         
       inspection_manager.saveInspection().then(
         function(savedIns) {

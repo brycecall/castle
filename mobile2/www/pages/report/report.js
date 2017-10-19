@@ -71,7 +71,7 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
                   type: "base64"
                 }, function (data) {
                   end_time = new Date();
-                  console.log("Generation the report took " + (end_time.getTime() - start_time.getTime()) + "ms");
+                  console.log("Generation the report took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
                   
                   $scope.message = "Almost ready...";
                   
@@ -83,11 +83,11 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
                   $timeout( function() {
                     preview_frame.contentWindow.PDFViewerApplication.open(data);
                     end_time = new Date();
-                    console.log("Rendering the preview took " + (end_time.getTime() - start_time.getTime()) + "ms");
+                    console.log("Rendering the preview took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
                   }, 100);
                   
                   end_time = new Date();
-                  console.log("Converting the base64 took " + (end_time.getTime() - start_time.getTime()) + "ms");
+                  console.log("Converting the base64 took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
                   
                 }, function (error) {
                   $scope.report = "null";

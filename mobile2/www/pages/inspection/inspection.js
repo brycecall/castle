@@ -105,6 +105,7 @@ app.service('shareService', function ($state) {
 // Define the page controller
 app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, export_manager) {
   $scope.inspections = [];
+  $rootScope.loading = true;
   
   // Switch the inspection_manager mode (this is global)
   inspection_manager.mode = "inspection";
@@ -169,6 +170,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
       for (var i = 0; promise.row && i < promise.row.length; i++) {
         $scope.inspections.push(promise.row.item(i));
       }
+      $rootScope.loading = false;
       //Fail
     },
     function (promise) {
@@ -177,7 +179,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   );
 });
 
-app.controller('inspection_new', function ($scope, $state, inspection_manager, theme_manager, action_manager) {
+app.controller('inspection_new', function ($rootScope, $scope, $state, inspection_manager, theme_manager, action_manager) {
   $scope.themes = [];
   $scope.templates = [];
   inspection_manager.mode = "inspection";
@@ -189,6 +191,8 @@ app.controller('inspection_new', function ($scope, $state, inspection_manager, t
   $scope.startInspection = function () {
     var promise = inspection_manager.getInspection($scope.sTemplate.rowId);
     promise.then(function (inspection) {
+      $rootScope.loading = true;
+      
       inspection.insThemeId = $scope.sTheme.unique;
       inspection.insTemplateId = $scope.sTemplate.rowId;
       inspection.insName = $scope.sName;
@@ -199,6 +203,7 @@ app.controller('inspection_new', function ($scope, $state, inspection_manager, t
           console.log('Successful save. Inserted Inspection Id: ' + savedIns.insId);
           // Simulate loading
           setTimeout(function() {
+            $rootScope.loading = false;
             $state.go('inspection_section', {
               'insId': savedIns.insId
             });}, 4000);
@@ -246,7 +251,7 @@ app.controller('inspection_new', function ($scope, $state, inspection_manager, t
 
 });
 
-app.controller('inspection_section', function ($scope, inspection_manager, action_manager, header_manager, $state, $transition$, shareService) {
+app.controller('inspection_section', function ($rootScope, $scope, inspection_manager, action_manager, header_manager, $state, $transition$, shareService) {
   inspection_manager.mode = "inspection";
   inspection_manager.returnLocation = { 'name': $state.current.name, 'params':$transition$.params() };
   $scope.insId = $transition$.params().insId;
@@ -282,12 +287,15 @@ app.controller('inspection_section', function ($scope, inspection_manager, actio
   );
   
   action_manager.addAction("Save", "save", function() {
-    inspection_manager.updateInspection();
+    $rootScope.loading = true;
+    inspection_manager.updateTemplate().then(function() {
+      $rootScope.loading = false;
+    });
   });
 
 });
 
-app.controller('inspection_subsection', function ($scope, inspection_manager, action_manager, header_manager, $state, $transition$, shareService) {
+app.controller('inspection_subsection', function ($rootScope, $scope, inspection_manager, action_manager, header_manager, $state, $transition$, shareService) {
   $scope.insId = $transition$.params().insId;
   $scope.sectionIndex = $transition$.params().sectionIndex;
   $scope.navigate = shareService.navigate;
@@ -318,7 +326,10 @@ app.controller('inspection_subsection', function ($scope, inspection_manager, ac
   );
     
   action_manager.addAction("Save", "save", function() {
-    inspection_manager.updateInspection();
+    $rootScope.loading = true;
+    inspection_manager.updateTemplate().then(function() {
+      $rootScope.loading = false;
+    });
   });
   
   $scope.questionDrill = function (subsectionIndex) {
@@ -335,7 +346,7 @@ app.controller('inspection_subsection', function ($scope, inspection_manager, ac
 });
 
 
-app.controller('inspection_question', function ($scope, inspection_manager, action_manager, header_manager, $state, $transition$, shareService) {
+app.controller('inspection_question', function ($rootScope, $scope, inspection_manager, action_manager, header_manager, $state, $transition$, shareService) {
   $scope.insId = $transition$.params().insId;
   $scope.sectionIndex = $transition$.params().sectionIndex;
   $scope.subsectionIndex = $transition$.params().subsectionIndex;
@@ -387,7 +398,7 @@ app.factory('$', function ($window) {
   return $window.jQuery;
 });
 
-app.controller('inspection_detail', function ($scope, $, $state, header_manager, camera_manager, 
+app.controller('inspection_detail', function ($rootScope, $scope, $, $state, header_manager, camera_manager, 
                                                action_manager, inspection_manager, $transition$, shareService) {
   $scope.insId = $transition$.params().insId;
   $scope.sectionIndex = $transition$.params().sectionIndex;
@@ -497,7 +508,10 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
     navigateQuestions(false);
   }, 'md-raised');
   action_manager.addAction("Save", "save", function() {
-    inspection_manager.updateInspection();
+    $rootScope.loading = true;
+    inspection_manager.updateTemplate().then(function() {
+      $rootScope.loading = false;
+    });
     //  $scope.showListBottomSheet();
   }, 'md-raised');
   action_manager.addAction("Next", "keyboard_arrow_right", function () {

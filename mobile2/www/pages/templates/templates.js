@@ -131,8 +131,9 @@ app.service('templateShareService', function ($state) {
 });
 
 // Define the page controller
-app.controller('template', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
+app.controller('template', function ($rootScope, $scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
   $scope.templates = [];
+  $rootScope.loading = true;
 
   $scope.goToInspection = function (insId) {
     $state.go('template_section', {
@@ -178,6 +179,7 @@ app.controller('template', function ($scope, $rootScope, $state, header_manager,
       for (var i = 0; i < promise.row.length; i++) {
         $scope.templates.push(promise.row.item(i));
       }
+      $rootScope.loading = false;
       //Fail
     },
     function (promise) {
@@ -186,10 +188,11 @@ app.controller('template', function ($scope, $rootScope, $state, header_manager,
   );
 });
 
-app.controller('template_new', function ($scope, $state, $rootScope, inspection_manager, theme_manager) {
+app.controller('template_new', function ($rootScope, $scope, $state, $rootScope, inspection_manager, theme_manager) {
   $scope.themes = [];
   $scope.templates = [];
   $scope.toSection = function (insId) {
+    $rootScope.loading = true;
     $state.go('inspection_section', {
       'insId': 1
     });
@@ -230,7 +233,9 @@ app.controller('template_new', function ($scope, $state, $rootScope, inspection_
 
 });
 
-app.controller('template_section', function ($scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
+app.controller('template_section', function ($rootScope, $scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
+  $rootScope.loading = true;
+  
   header_manager.title = 'Templates';
   header_manager.theme = 'templateTheme';
   header_manager.mode = HEADER_MODES.Action;
@@ -254,7 +259,10 @@ app.controller('template_section', function ($scope, inspection_manager, header_
   $scope.remove = templateShareService.remove;
 
   action_manager.addAction('Save', 'save', function () {
-    inspection_manager.updateTemplate();
+    $rootScope.loading = true;
+    inspection_manager.updateTemplate().then(function() {
+      $rootScope.loading = false;
+    });
   });
 
   // All the sections for a specific inspection/report
@@ -280,6 +288,7 @@ app.controller('template_section', function ($scope, inspection_manager, header_
   
   inspection_manager.getSections($scope.insId).then(
     function(data) {
+      $rootScope.loading = false;
         $scope.sections = data.value;
     },
     function(data) {
@@ -289,7 +298,7 @@ app.controller('template_section', function ($scope, inspection_manager, header_
 
 });
 
-app.controller('template_subsection', function ($scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
+app.controller('template_subsection', function ($rootScope, $scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.navigate = templateShareService.navigate;
@@ -305,7 +314,10 @@ app.controller('template_subsection', function ($scope, inspection_manager, head
     });
   });
   action_manager.addAction('Save', 'save', function () {
-    inspection_manager.updateTemplate();
+    $rootScope.loading = true;
+    inspection_manager.updateTemplate().then(function() {
+      $rootScope.loading = false;
+    });
   });
   $scope.addSubsection = function () {
     $scope.subsections.push({
@@ -334,7 +346,7 @@ app.controller('template_subsection', function ($scope, inspection_manager, head
   };
 });
 
-app.controller('template_question', function ($scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
+app.controller('template_question', function ($rootScope, $scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
@@ -353,7 +365,10 @@ app.controller('template_question', function ($scope, inspection_manager, header
     });
   });
   action_manager.addAction('Save', 'save', function () {
-    inspection_manager.updateTemplate();
+    $rootScope.loading = true;
+    inspection_manager.updateTemplate().then(function() {
+      $rootScope.loading = false;
+    });
   });
   $scope.addQuestion = function () {
     $scope.questions.push({

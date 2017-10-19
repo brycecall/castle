@@ -21,6 +21,23 @@ app.run(function ($transitions, $rootScope, $state) {
   });
 });
 
+// Init the loading value
+app.run(function ($rootScope, $timeout) {
+  $rootScope.loading = true;
+  var handle = null;
+  $rootScope.$watch('loading', function(oldValue, newValue) {
+    if (handle) {
+      $timeout.cancel(handle);
+    }
+    
+    if (newValue) {
+      // Auto-timeout after 30 secs
+      handle = $timeout(function() {
+        $rootScope.loading = false;
+      }, (30 * 1000));
+    }
+  })
+})
 
 // Control to set application in DEBUG mode
 app.run(function ($rootScope, database) {
@@ -50,21 +67,25 @@ app.run(function ($rootScope) {
 })
 
 // Initialize the database if it hasn't been yet
-app.run(function (database, $timeout, $interval) {
+app.run(function (database, $timeout, $interval, $rootScope) {
   var database_ready = (localStorage.getItem("database_ready") == "true" ? true : false);
   if (database_ready) {
     console.log("Database has already been initialized, skipping...");
+    $rootScope.loading = false;
   } else {
     var handle = $interval(function () {
       if (window['sqlitePlugin'] != undefined) {
         database.initTables();
         localStorage.setItem("database_ready", "true");
         $interval.cancel(handle);
+        $rootScope.loading = false;
       }
     }, 5000);
 
     $timeout(function () {
       $interval.cancel(handle);
+      console.warn("Database could not be initialized");
+      $rootScope.loading = false;
     }, 10000);
   }
 });

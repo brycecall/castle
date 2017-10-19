@@ -438,7 +438,7 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
           // User clicked outside or hit escape
         });
       };
-        
+
       $scope.$watch('otherValue.value', function (newVal, oldVal) {
         var list = $scope.question.answers;
         var index = $scope.question.answers.indexOf(oldVal);
@@ -456,6 +456,11 @@ app.controller('inspection_detail', function ($scope, $, $state, header_manager,
         }
       });
 
+      $scope.$watch('question.answer', function (newVal, oldval) {
+        if (newVal && ($scope.question.type == 'text' || $scope.question.type == 'textarea')) {
+          $scope.question.values[0].key = newVal;
+        }
+      });
     },
     function (data) {
       console.log("Error... no question exists in the database");

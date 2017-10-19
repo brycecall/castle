@@ -13,6 +13,14 @@ app.config(function($mdThemingProvider) {
     .accentPalette('pink');
 });
 
+// Save the previous state
+app.run(function ($transitions, $rootScope, $state) {
+  $transitions.onStart({}, function (event) {
+    event.router.globals.current.params = event.router.globals.current.params;
+    $state.previous = event.router.globals.current;
+  });
+});
+
 
 // Control to set application in DEBUG mode
 app.run(function ($rootScope, database) {
@@ -53,11 +61,11 @@ app.run(function (database, $timeout, $interval) {
         localStorage.setItem("database_ready", "true");
         $interval.cancel(handle);
       }
-    }, 1000);
+    }, 5000);
 
     $timeout(function () {
       $interval.cancel(handle);
-    }, 5000);
+    }, 10000);
   }
 });
 

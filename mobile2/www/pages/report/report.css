@@ -29,3 +29,19 @@
   background-repeat: no-repeat;
   font-family: cursive;
 }
+
+hr {
+  border: solid 3px #333;
+  animation-name: colors;
+  animation-duration: 1s;
+  animation-direction: normal;
+  animation-iteration-count: infinite;
+  height: 0;
+}
+
+@keyframes colors {
+    0%   {border-color: red;}
+    25%  {border-color: yellow;}
+    50%  {border-color: blue;}
+    100% {border-color: green;}
+}

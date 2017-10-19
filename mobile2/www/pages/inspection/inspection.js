@@ -181,7 +181,7 @@ app.controller('inspection_new', function ($scope, $state, inspection_manager, t
   $scope.themes = [];
   $scope.templates = [];
   inspection_manager.mode = "inspection";
-  inspection_manager.returnLocation = { 'name': $state.state.name, 'params':$state.params };
+  inspection_manager.returnLocation = { 'name': $state.previous.name, 'params':$state.params };
   action_manager.addAction('Start', 'check', function () {
     $scope.startInspection();
   });

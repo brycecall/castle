@@ -184,7 +184,7 @@ Fidelity Building Inspections, LLC</pre>
     Inspectors are not limited from examining other systems and components or including other inspection services. Likewise, if the inspector is qualified and willing to do so, an inspector may specify the type of repairs to be made. 
     An inspector may exclude those systems or components that a client specifically requests not to be included in the scope of the inspection or those areas that, in the opinion of the inspector, are inaccessible due to obstructions or conditions dangerous to the inspector. When systems or components designated for inspection under this SOP are excluded, the reason the item was excluded will be reported.
     
-<span style="font-size: 9.5pt;">[Statutory Authority: RCW 18.280.050 and 18.280.060(6). 09-08-014, § 308-408C-010-030, filed 3/20/09, effective 4/20/09.]</span>
+<span style="font-size: 9pt;">[Statutory Authority: RCW 18.280.050 and 18.280.060(6). 09-08-014, § 308-408C-010-030, filed 3/20/09, effective 4/20/09.]</span>
     </pre>
   </div>
 
@@ -213,7 +213,7 @@ Fidelity Building Inspections, LLC</pre>
 
           <div ng-show="question.type == 'radio'">
             <span ng-repeat="value in question.values track by $index" style="display: inline-block; width: 45%">
-              <input type="radio" ng-model="exists(value.key, question.answers)"/>
+              <input type="radio" ng-checked="exists(value.key, question.answers)"/>
               {{value.key}}
             </span>
           </div>
@@ -223,11 +223,11 @@ Fidelity Building Inspections, LLC</pre>
           </div>
 
           <div ng-show="question.type == 'text'">
-            TEXT <span>{{question.answer}}</span>
+            <p>{{question.answer}}</p>
           </div>
 
           <div ng-show="question.type == 'textarea'">
-            TEXTAREA <span>{{question.answer}}</span>
+            <p>{{question.answer}}</p>
           </div>
 
           <div ng-show="question.photos" style="text-align: center;">

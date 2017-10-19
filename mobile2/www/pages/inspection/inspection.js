@@ -181,7 +181,7 @@ app.controller('inspection_new', function ($scope, $state, inspection_manager, t
   $scope.themes = [];
   $scope.templates = [];
   inspection_manager.mode = "inspection";
-  inspection_manager.returnLocation = { 'name': $state.previous.name, 'params':$state.params };
+  inspection_manager.returnLocation = { 'name': $state.current.name, 'params':$state.params };
   action_manager.addAction('Start', 'check', function () {
     $scope.startInspection();
   });
@@ -192,7 +192,7 @@ app.controller('inspection_new', function ($scope, $state, inspection_manager, t
       inspection.insThemeId = $scope.sTheme.unique;
       inspection.insTemplateId = $scope.sTemplate.rowId;
       inspection.insName = $scope.sName;
-      inspection.sections = scope.sTheme.templates.concat(inspection.sections);
+      inspection.sections = $scope.sTheme.templates.concat(inspection.sections);
         
       inspection_manager.saveInspection().then(
         function(savedIns) {

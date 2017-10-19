@@ -234,8 +234,6 @@ app.controller('template_new', function ($rootScope, $scope, $state, $rootScope,
 });
 
 app.controller('template_section', function ($rootScope, $scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
-  $rootScope.loading = true;
-  
   header_manager.title = 'Templates';
   header_manager.theme = 'templateTheme';
   header_manager.mode = HEADER_MODES.Action;
@@ -288,7 +286,6 @@ app.controller('template_section', function ($rootScope, $scope, inspection_mana
   
   inspection_manager.getSections($scope.insId).then(
     function(data) {
-      $rootScope.loading = false;
         $scope.sections = data.value;
     },
     function(data) {

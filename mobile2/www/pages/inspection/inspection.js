@@ -252,6 +252,8 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
 });
 
 app.controller('inspection_section', function ($rootScope, $scope, inspection_manager, action_manager, header_manager, $state, $transition$, shareService) {
+  $rootScope.loading = true;
+  
   inspection_manager.mode = "inspection";
   inspection_manager.returnLocation = { 'name': $state.current.name, 'params':$transition$.params() };
   $scope.insId = $transition$.params().insId;
@@ -279,6 +281,7 @@ app.controller('inspection_section', function ($rootScope, $scope, inspection_ma
   
   inspection_manager.getSections($scope.insId).then(
     function (data) {
+      $rootScope.loading = false;
       $scope.sections = data.value;
     },
     function (data) {

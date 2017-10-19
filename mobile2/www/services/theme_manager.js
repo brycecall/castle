@@ -2,7 +2,7 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q, $sh
   var public = {};
   var private = {};
 
-  private.themeRoot = "cdvfile://localhost/files/themes";
+  private.themeRoot = "cdvfile://localhost/files/themes/";
   private.themes = [];
 
   public.current = null;
@@ -25,6 +25,7 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q, $sh
       .then(
         function (result) {
           console.log(result);
+          private.themeRoot = result.nativeURL;
           public.update();
         });
   }
@@ -44,7 +45,7 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q, $sh
     } else {
       // Device Implementation
       var file_system = resolveLocalFileSystemURL;
-      var path = cordova.file.dataDirectory + "themes/";
+      var path = private.themeRoot;
 
       var result = file_system(path, function (fileSystem) {
         var reader = fileSystem.createReader();
@@ -80,15 +81,15 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q, $sh
 
   public.getThemeManifest = function (key) {
     var defered = $q.defer();
-    var resource = private.themeRoot + "/" + key + "/manifest.json";
+    var resource = private.themeRoot + key + "/manifest.json";
     $sce.trustAsUrl(resource);
 
     $http.get(resource)
       .then(function (response) {
           if (response.data.entry_point.indexOf("themes") !== 0) {
-            response.data.entry_point = "themes/" + response.data.unique + "/" + response.data.entry_point;
-            response.data.preview = "themes/" + response.data.unique + "/" + response.data.preview;
-            response.data.thumbnail = "themes/" + response.data.unique + "/" + response.data.thumbnail;
+            response.data.entry_point = private.themeRoot + response.data.unique + "/" + response.data.entry_point;
+            response.data.preview = private.themeRoot + response.data.unique + "/" + response.data.preview;
+            response.data.thumbnail = private.themeRoot + response.data.unique + "/" + response.data.thumbnail;
           }
           defered.resolve(response.data);
         },

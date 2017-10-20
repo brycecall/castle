@@ -19,11 +19,13 @@
     </md-input-container>
   </div>
   <div class="history-container" layout-fill>
-    <div class="report md-whiteframe-1dp" ng-hide="angular.equals([], reports)" ng-repeat="report in reports" style="background-image: url(assets/history_background.jpg)">
-      <div class="buttons" layout="row" layout-align="space-between">
-        <md-button class="md-raised" ng-click="send(reports)">Send</md-button>
-        <md-button class="md-raised" ng-click="preview(reports)">Preview</md-button>
-      </div>
+    <h3 ng-if="message">{{message}}</h3>
+    <div class="report md-whiteframe-1dp" ng-hide="angular.equals([], reports)" ng-repeat="report in reports" layout="row">
+      <h3 flex>
+        {{report.name}}
+      </h3>
+      <md-button class="md-raised" ng-click="send(report.nativeURL)">Send</md-button>
+      <md-button class="md-raised" ng-click="preview(report.nativeURL)">Preview</md-button>
     </div>
   </div>
 </div>

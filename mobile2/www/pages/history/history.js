@@ -5,10 +5,15 @@ app.config(function ($stateProvider) {
       url: "/history",
       templateUrl: "pages/history/history.html",
       controller: "history"
+    })
+  .state('history_preview', {
+      url: "/history/preview",
+      templateUrl: "pages/history/history_preview.html",
+      controller: "history_preview"
     });
 });
 
-app.controller('history', function ($scope, $rootScope, $cordovaFile) {
+app.controller('history', function ($scope, $rootScope, $state, $cordovaFile) {
   $scope.reports = [];
   $scope.message = null;
   $rootScope.loading = true;
@@ -23,23 +28,45 @@ app.controller('history', function ($scope, $rootScope, $cordovaFile) {
     var success = function (entries) {
       for (var i in entries) {
         if (entries[i].name.indexOf(".pdf") > -1) {
-          $scope.reports.push(new ReportFile(entries[i].nativeURL));
+          $scope.reports.push(entries[i]);
         }
       }
+      $rootScope.loading = false;
     };
       
     var error = function (error) {
       $scope.message = "No reports found.";
+      $rootScope.loading = false;
     }
-    
-    $rootScope.loading = false;
   }, function(error) {
     $scope.message = "Could not load history...";
     $rootScope.loading = false;
   });
   
-  var ReportFile = function(filePath) {
-    console.log(filePath);
+  $scope.send = function(reportURL) {
+    if (window['cordova'] !== undefined ) {
+      cordova.plugins.email.open({
+        body: "Here is your Home Inspection Report from Castle",
+        subject: "Home Inspection Report",
+        attachments: reportURL
+      })
+    }
+  };
+  
+  $scope.preview = function(reportURL) {
+    $rootScope.buffer = reportURL;
+    $state.go('history_preview');
   };
   
 });
+
+app.controller('history_preview', function($scope, $rootScope) {
+  var preview_frame = document.querySelector("#preview");
+
+  preview_frame.addEventListener('load', function () {
+    setTimeout(function () {
+      preview_frame.contentWindow.PDFViewerApplication.open($rootScope.buffer);
+      $rootScope.buffer = null;
+    }, 500);
+  })
+})

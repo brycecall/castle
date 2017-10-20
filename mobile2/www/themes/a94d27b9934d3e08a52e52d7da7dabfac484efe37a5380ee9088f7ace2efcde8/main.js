@@ -1,10 +1,12 @@
 var app = angular.module('fidelity', []);
 
 app.controller('main', function ($scope, $timeout, $) {
+  $scope.castle = castle;
+  
+  // Wait for the DOM to render
   $timeout(function () {
-    $scope.castle = castle;
     castle.apply();
-  }, 10);
+  }, 0);
   
   $scope.exists = function (value, array) {
     return $.inArray(value, array) > -1;

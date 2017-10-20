@@ -24,7 +24,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
           'CREATE TABLE IF NOT EXISTS Inspection (insLastModified, insLastSubmitted, insJobId INT, insSourceType, insType, insName, insUserId INT, insThemeId INT, insThemeResponseBlob, insTemplateResponseBlob, insOrganizationId, insTemplateId INT, insTemplateTitle, FOREIGN KEY(insOrganizationId) REFERENCES Organization(rowId), FOREIGN KEY(insUserId) REFERENCES User(rowId), FOREIGN KEY(insJobId) REFERENCES Job(rowId), FOREIGN KEY(insThemeId) REFERENCES Theme(rowId))',
           'CREATE TABLE IF NOT EXISTS Job (jobUserId INT, jobDate, jobAddress, jobZipCode, jobCity, jobState, jobStatus, jobSubmittedDate, FOREIGN KEY(jobUserId) REFERENCES User(rowId))',
           'CREATE TABLE IF NOT EXISTS Organization (orgName, orgAddress, orgLogo, orgCity, orgState, orgZipCode)',
-          'CREATE TABLE IF NOT EXISTS Photo (phoBase64, phoQuestionId INT, phoInspectionId INT, FOREIGN KEY(phoQuestionId) REFERENCES Question(rowId), FOREIGN KEY(phoInspectionId) REFERENCES Inspection(rowId))',
+          'CREATE TABLE IF NOT EXISTS Photo (phoLink, phoTitle, phoQuestionId INT, phoInspectionId INT, phoSourceType, FOREIGN KEY(phoQuestionId) REFERENCES Question(rowId), FOREIGN KEY(phoInspectionId) REFERENCES Inspection(rowId))',
           'CREATE TABLE IF NOT EXISTS Question (queTitle, queDescription, queSubSectionId INT, queAnswered INT,  queType, queRequired INT, queMin, queMax, queValidationType, queNotApplicable INT, queShowSummaryRemark INT, queShowDescription INT, queInspectionId INT, queSourceType, FOREIGN KEY(queInspectionId) REFERENCES Inspection(rowId), FOREIGN KEY(queSubSectionId) REFERENCES SubSection(rowId))',
           'CREATE TABLE IF NOT EXISTS QuestionAnswers (quaQuestionId INT, quaAnswerId INT, quaInspectionId INT, quaSourceType, FOREIGN KEY (quaQuestionId) REFERENCES Question(rowId), FOREIGN KEY(quaAnswerId) REFERENCES Answer(rowId), FOREIGN KEY(quaInspectionId) REFERENCES Inspection(rowId))',
           'CREATE TABLE IF NOT EXISTS ReportHistory (rehInspectionId INT, rehLastModified, rehSubmittedDate, FOREIGN KEY(rehInspectionId) REFERENCES Inspection(rowId))',
@@ -1003,7 +1003,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       console.log('db getInspectionById ID: ' + inspId);
       var deferred = $q.defer();
       db.executeSql(
-        'SELECT *, insp.rowid AS [rowId], sec.rowid AS [secRowId], subsec.rowid AS [susRowId], ques.rowid AS [queRowId], ans.rowid AS [ansRowId], qua.rowid AS [quaRowId] FROM Inspection insp LEFT JOIN Section sec on sec.secInspectionId = insp.rowid LEFT JOIN SubSection subsec ON subsec.susSectionId = sec.rowId LEFT JOIN Question ques ON ques.queSubSectionId = subsec.rowid LEFT JOIN Answer ans ON ans.ansQuestionId = ques.rowid LEFT JOIN QuestionAnswers qua on qua.quaQuestionId = ques.rowid AND qua.quaAnswerId = ans.rowid WHERE insp.rowid = ? ORDER BY sec.rowid, subsec.rowid, ques.rowid, ans.rowid', [inspId],
+        'SELECT *, insp.rowid AS [rowId], sec.rowid AS [secRowId], subsec.rowid AS [susRowId], ques.rowid AS [queRowId], ans.rowid AS [ansRowId], qua.rowid AS [quaRowId], pho.rowid AS [phoRowId] FROM Inspection insp LEFT JOIN Section sec on sec.secInspectionId = insp.rowid LEFT JOIN SubSection subsec ON subsec.susSectionId = sec.rowId LEFT JOIN Question ques ON ques.queSubSectionId = subsec.rowid LEFT JOIN Answer ans ON ans.ansQuestionId = ques.rowid LEFT JOIN Photo pho ON pho.phoQuestionId = ques.rowid AND pho.phoInspectionId = insp.rowid LEFT JOIN QuestionAnswers qua on qua.quaQuestionId = ques.rowid AND qua.quaAnswerId = ans.rowid WHERE insp.rowid = ? ORDER BY sec.rowid, subsec.rowid, ques.rowid, ans.rowid', [inspId],
         function (res) {
           if (res.rows.length > 0) {
             deferred.resolve({
@@ -1032,7 +1032,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       console.log(ins);
       var deferred = $q.defer();
       // Insert Inspection Table Data
-      db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insJobId, insSourceType, insType, insName, insUserId, insThemeId, insOrganizationId, insTemplateId, insTemplateTitle) VALUES (?,?,?,?,?,?,?,?,?,?,?)', [timestamp, timestamp, ins.insJobId, sourceType, ins.insType, ins.insName, ins.insUserId, ins.insThemeId, ins.insOrganizationId, ins.insTemplateId, ins.insTemplateTitle], function (res) {
+      db.executeSql('INSERT INTO Inspection (insLastModified, insJobId, insSourceType, insType, insName, insUserId, insThemeId, insOrganizationId, insTemplateId, insTemplateTitle) VALUES (?,?,?,?,?,?,?,?,?,?)', [timestamp, ins.insJobId, sourceType, ins.insType, ins.insName, ins.insUserId, ins.insThemeId, ins.insOrganizationId, ins.insTemplateId, ins.insTemplateTitle], function (res) {
         //if this is successful, attempt to insert section data
         ins.sections.forEach(function (section) {
           var secSourceType = sourceType;
@@ -1046,18 +1046,20 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                 // If this is successful, attempt to insert question data
                 subsection.questions.forEach(function (question) {
                   var queSourceType = subsecSourceType;
-                  db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queValidationType, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [question.title, question.description, susRes.insertId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.type, question.validation.min, question.validation.max, question.validation.type, question.notApplicable, question.showSummaryRemark, question.showDescription, res.insertId, queSourceType], function (queRes) {
-                    //console.log(question.title + ' question successfully inserted. ID: ' + queRes.insertId + ' saved to Inspection#: ' + res.insertId + ' and subSectionId: ' + susRes.insertId);
+                  var tempQuestion = question;
+                  var inspectionRes = res;
+                  db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queValidationType, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [tempQuestion.title, tempQuestion.description, susRes.insertId, (tempQuestion.answers && tempQuestion.answers.length > 0) || tempQuestion.answer, tempQuestion.validation.isRequired, tempQuestion.type, tempQuestion.validation.min, tempQuestion.validation.max, tempQuestion.validation.type, tempQuestion.notApplicable, tempQuestion.showSummaryRemark, tempQuestion.showDescription, inspectionRes.insertId, queSourceType], function (queRes) {
+                    //console.log(tempQuestion.title + ' tempQuestion successfully inserted. ID: ' + queRes.insertId + ' saved to Inspection#: ' + res.insertId + ' and subSectionId: ' + susRes.insertId);
                     // If this is successful, attempt to insert answer data
-                    question.values.forEach(function (answer) {
+                    tempQuestion.values.forEach(function (answer) {
                       var ansSourceType = queSourceType;
-                      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) VALUES (?,?,?,?,?)', [queRes.insertId, answer.key, answer.type, res.insertId, ansSourceType], function (ansRes) {
+                      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) VALUES (?,?,?,?,?)', [queRes.insertId, answer.key, answer.type, inspectionRes.insertId, ansSourceType], function (ansRes) {
                         //console.log(answer.key + ' answer successfully inserted. ID: ' + ansRes.insertId + ' saved to Inspection#: ' + res.insertId);
                         // If this is successful, attempt to insert question-answer data
-                        if (answer.key == question.answer || (question.answers && question.answers.indexOf(answer.key) > -1)) {
+                        if (answer.key == tempQuestion.answer || (tempQuestion.answers && tempQuestion.answers.indexOf(answer.key) > -1)) {
                           var queAnsSourceType = ansSourceType;
-                          db.executeSql('INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId, quaInspectionId, quaSourceType) VALUES (?,?,?,?)', [queRes.insertId, ansRes.insertId, res.insertId, queAnsSourceType], function (queAnsRes) {
-                            //console.log('Successfully inserted saved answer: ' + answer.key + ' for question title: ' + question.title + '.');
+                          db.executeSql('INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId, quaInspectionId, quaSourceType) VALUES (?,?,?,?)', [queRes.insertId, ansRes.insertId, inspectionRes.insertId, queAnsSourceType], function (queAnsRes) {
+                            //console.log('Successfully inserted saved answer: ' + answer.key + ' for question title: ' + tempQuestion.title + '.');
                           }, function (queAnsError) {
                             deferred.reject({
                               message: 'Error with QuestionAnswer save: ' + queAnsError.message
@@ -1071,16 +1073,18 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                       });
                     });
                     // Also save photo data from Question
-                    /*for (var i = 0; question.photos && i < question.photos.length; i++) {
-                      db.executeSql('INSERT INTO Photo (phoBase64, phoQuestionId, phoInspectionId) VALUES (?,?,?)', [question.photos[i], queRes.insertId, res.insertId], function(phoRes) {
-                        //console.log('Successfully inserted photo: ' + question.photos[i]); 
+                    tempQuestion.photos.forEach(function(photo) {
+                      var phoQueRes = queRes;
+                      var tempPhoto = photo;
+                      db.executeSql('INSERT INTO Photo (phoLink, phoTitle, phoQuestionId, phoInspectionId, phoSourceType) VALUES (?,?,?,?,?)', [tempPhoto.link, tempPhoto.title, phoQueRes.insertId, inspectionRes.insertId, tempPhoto.sourceType], function(phoRes) {
+                        //console.log('Successfully inserted photo: ' + tempQuestion.photos[i]); 
                       }, function(phoError) {
-                        //console.log('Failure inserting photo: ' + question.photos[i]);
+                        //console.log('Failure inserting photo: ' + tempQuestion.photos[i]);
                         deferred.reject({
                           message: 'Error with Photo save: ' + phoError.message
                         });
                       });    
-                    }*/
+                    });
                   }, function (queError) {
                     deferred.reject({
                       message: 'Error with Question save: ' + queError.message
@@ -1131,42 +1135,44 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                 //console.log(subsection.title + ' subsection successfully updated.');
                 // If this is successful, attempt to update question data
                 subsection.questions.forEach(function (question) {
-                  db.executeSql('UPDATE Question SET queTitle=?, queDescription=?, queSubSectionId=?, queAnswered=?, queRequired=?, queType=?, queMin=?, queMax=?, queValidationType=?, queNotApplicable=?, queShowSummaryRemark=?, queShowDescription=?, queInspectionId=?, queSourceType=? WHERE rowid = ? AND queInspectionId = ?', [question.title, question.description, question.subsectionId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.type, question.validation.min, question.validation.max, question.validation.type, question.notApplicable, question.showSummaryRemark, question.showDescription, question.inspectionId, ins.insSourceType, question.id, question.inspectionId], function (queRes) {
-                    // Delete all rows in QuestionAnswers for this question before looping through and inserting again
-                    db.executeSql('DELETE FROM QuestionAnswers WHERE quaQuestionId = ? and quaInspectionId = ?', [question.id, question.inspectionId], function(deleteRes) {
-                      //console.log('Successful delete of Question: ' + question.title + ' stored Answers for InspectionId: ' + question.inspectionId);    
+                  var tempQuestion = question;
+                  db.executeSql('UPDATE Question SET queTitle=?, queDescription=?, queSubSectionId=?, queAnswered=?, queRequired=?, queType=?, queMin=?, queMax=?, queValidationType=?, queNotApplicable=?, queShowSummaryRemark=?, queShowDescription=?, queInspectionId=?, queSourceType=? WHERE rowid = ? AND queInspectionId = ?', [tempQuestion.title, tempQuestion.description, tempQuestion.subsectionId, (tempQuestion.answers && tempQuestion.answers.length > 0) || tempQuestion.answer, tempQuestion.validation.isRequired, tempQuestion.type, tempQuestion.validation.min, tempQuestion.validation.max, tempQuestion.validation.type, tempQuestion.notApplicable, tempQuestion.showSummaryRemark, tempQuestion.showDescription, tempQuestion.inspectionId, ins.insSourceType, tempQuestion.id, tempQuestion.inspectionId], function (queRes) {
+                    // Delete all rows in QuestionAnswers for this tempQuestion before looping through and inserting again
+                    db.executeSql('DELETE FROM QuestionAnswers WHERE quaQuestionId = ? and quaInspectionId = ?', [tempQuestion.id, tempQuestion.inspectionId], function(deleteRes) {
+                      //console.log('Successful delete of Question: ' + tempQuestion.title + ' stored Answers for InspectionId: ' + tempQuestion.inspectionId);
                     }, function(delError) {
-                      //console.log('Failure to delete Question: ' + question.title + ' stored Answers for InspectionId: ' + question.inspectionId);
+                      //console.log('Failure to delete Question: ' + tempQuestion.title + ' stored Answers for InspectionId: ' + tempQuestion.inspectionId);
                       //console.log('Error message for delete failure: ' + delError.message);
                       deferred.reject({message: 'Failure deleting QuestionAnswers ' + delError.message});
                     });
                     // Delete all previous photos
-                    /*db.executeSql('DELETE FROM Photo WHERE phoQuestionId = ? AND phoInspectionId = ?', [question.id, question.inspectionId], function(deleteRes) {
-                      //console.log('Successful delete of Photos from Question: ' + question.title);    
+                    db.executeSql('DELETE FROM Photo WHERE phoQuestionId = ? AND phoInspectionId = ?', [tempQuestion.id, tempQuestion.inspectionId], function(deleteRes) {
+                      //console.log('Successful delete of Photos from Question: ' + tempQuestion.title);    
                     }, function(delError) {
-                      //console.log('Failure to delete Question: ' + question.title);
+                      //console.log('Failure to delete Question: ' + tempQuestion.title);
                       //console.log('Error message for delete failure: ' + delError.message);
                       deferred.reject({message: 'Failure deleting Photos: ' + delError.message});
-                    });*/
-                    //console.log(question.title + ' question successfully updated.');
+                    });
+                    //console.log(tempQuestion.title + ' tempQuestion successfully updated.');
                     // If this is successful, attempt to update answer data
-                    question.values.forEach(function(answer) {
+                    tempQuestion.values.forEach(function(answer) {
                       var insId = ins.insId;
                       var insSourceType = ins.insSourceType;
-                      db.transaction(public.updateAnswers(question, answer, insId, insSourceType), function(error) { 
+                      db.transaction(public.updateAnswers(tempQuestion, answer, insId, insSourceType), function(error) { 
                         deferred.reject({message: 'Error saving Answers: ' + error.message});
                       });
                     });
-                      // Replace deleted photos for the 'update'
-                      /*for (var i = 0; question.photos && i < question.photos.length; i++) {
-                        db.executeSql('INSERT INTO Photo (phoBase64, phoQuestionId, phoInspectionId) VALUES (?,?,?)', [question.photos[i], question.id, question.inspectionId], function(phoRes) {
-                          console.log('Successfully inserted Photo: ' + question.photos[i]);                            
-                        }, function(phoError) {
-                          deferred.reject({
-                            message: 'Error with Photo update: ' + phoError.message 
-                          });
+                    // Replace deleted photos for the 'update'
+                    tempQuestion.photos.forEach(function(photo) {
+                      var tempPhoto = photo;
+                      db.executeSql('INSERT INTO Photo (phoLink, phoTitle, phoQuestionId, phoInspectionId, phoSourceType) VALUES (?,?,?,?,?)', [tempPhoto.link, tempPhoto.title, tempQuestion.id, tempQuestion.inspectionId, tempPhoto.sourceType], function(phoRes) {
+                        //console.log('Successfully inserted Photo: ' + tempQuestion.photos[i]);                            
+                      }, function(phoError) {
+                        deferred.reject({
+                          message: 'Error with Photo update: ' + phoError.message 
                         });
-                      }*/
+                      });
+                    });
                   }, function (queError) {
                     deferred.reject({
                       message: 'Error with Question update: ' + queError.message
@@ -1235,6 +1241,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
         deferred.reject({message: 'Error updating Inspection table for Template: ' + err.message});
       });
     
+      var photoIds = [];
       var answerIds = [];
       var questionIds = [];
       var subsectionIds = [];
@@ -1247,15 +1254,25 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
             questionIds.push(question.id);
             question.values.forEach(function(answer) {
               answerIds.push(answer.id);
-            });  
+            });
+            question.photos.forEach(function(photo) {
+              photoIds.push(photo.id);
+            });
           });
         });
       });
+      //console.log(photoIds);
       //console.log(answerIds);
       //console.log(questionIds);
       //console.log(subsectionIds);
       //console.log(sectionIds);
         
+      // Remove deleted photos
+      db.executeSql('DELETE FROM Photo WHERE rowid NOT IN (?) AND phoInspectionId = ?', [photoIds, template.rowId], function(res) {
+        //console.log('Successful Delete of deleted photos in updateTemplate');
+      }, function(err) {
+        deferred.reject({message: 'Error deleting Photos in updateTemplate: ' + err.message});  
+      });
       // Remove deleted answers
       db.executeSql('DELETE FROM Answer WHERE rowid NOT IN (?) AND ansInspectionId = ?', [answerIds, template.rowId], function(res) {
         //console.log('Successful Delete of Answers in updateTemplate');
@@ -1310,7 +1327,18 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                       //console.log('Success upsert to Answer: ' + ansRes.insertId);
                     }, function(err) {
                       deferred.reject({message: 'Failure to upsert to Answer: ' + err.message});
-                    });  
+                    }); 
+                  });
+                  // Insert photo data to template
+                  tempQuestion.photos.forEach(function(photo) {
+                    var tempPhoto = photo;
+                    db.executeSql('INSERT OR REPLACE INTO Photo (rowid, phoLink, phoTitle, phoQuestionId, phoInspectionId, phoSourceType) VALUES (?,?,?,?,?,?)', [tempPhoto.id, tempQuestion.photos[i].link, tempQuestion.photos[i].title, tempQuestion.id, tempQuestion.inspectionId, tempPhoto.sourceType], function(phoRes) {
+                      //console.log('Successfully inserted Photo: ' + tempQuestion.photos[i]);                            
+                    }, function(phoError) {
+                      deferred.reject({
+                        message: 'Error with Photo update: ' + phoError.message 
+                      });
+                    });
                   });
                 }, function(err) {
                   console.log('Failure upsert to Question');

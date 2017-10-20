@@ -111,6 +111,18 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                       remark: ''
                     }
                     question.values.push(answer);
+                    // If we have a photo, add it
+                    if (promise.row.item(l).phoRowId) {
+                      var photo = {
+                        id: promise.row.item(l).phoRowId,
+                        link: promise.row.item(l).phoLink,
+                        title: promise.row.item(l).phoTitle,
+                        questionId: promise.row.item(l).phoQuestionId,
+                        inspectionId: promise.row.item(l).phoInspectionId,
+                        sourceType: promise.row.item(l).phoSourceType 
+                      }
+                      question.photos.push(photo);
+                    }
                     // Check to see if this answer was a selected answer by inspector
                     if (promise.row.item(l).ansRowId == promise.row.item(l).quaAnswerId && promise.row.item(l).queRowId == promise.row.item(l).quaQuestionId) {
                       // If multi, push onto answers list. Otherwise, store in single answer key.

@@ -23,7 +23,7 @@ app.run(function ($transitions, $rootScope, $state) {
 
 // Init the loading value
 app.run(function ($rootScope, $timeout) {
-  $rootScope.loading = true;
+  $rootScope.loading = false;
   var handle = null;
   $rootScope.$watch('loading', function(oldValue, newValue) {
     if (handle) {
@@ -34,7 +34,7 @@ app.run(function ($rootScope, $timeout) {
       // Auto-timeout after 30 secs
       handle = $timeout(function() {
         $rootScope.loading = false;
-      }, (30 * 1000));
+      }, (15 * 1000));
     }
   })
 })
@@ -71,8 +71,9 @@ app.run(function (database, $timeout, $interval, $rootScope) {
   var database_ready = (localStorage.getItem("database_ready") == "true" ? true : false);
   if (database_ready) {
     console.log("Database has already been initialized, skipping...");
-    $rootScope.loading = false;
   } else {
+    $rootScope.loading = true;
+    
     var handle = $interval(function () {
       if (window['sqlitePlugin'] != undefined) {
         database.initTables();

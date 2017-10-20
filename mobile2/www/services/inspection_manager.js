@@ -415,10 +415,37 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     return promise;
   };
   
+  public.loadNewTemplate = function() {
+      var deferred = $q.defer();
+
+      private.inspection = {
+          "insTemplateTitle":"",
+          "insSourcetype":"template",
+          "sections":[]
+      };
+      public.mode = "template";
+      
+      private.saveToDatabase().then(
+         function (data) {
+            console.log(data.message);
+            private.inspection.insId = data.insId;
+            private.inspection.rowId = data.insId;
+            deferred.resolve(private.inspection);
+      }, function (data) {
+            console.log(data.message);
+            deferred.resolve(private.inspection);
+      });
+      
+      return deferred.promise;
+      
+      
+  };    
+    
+    
   public.clearInspection = function () {
     private.inspection = {};
     console.log('Inspection Object cleared!');
-  }
+  };
   
   private.updateDBTemplate = function() {
     var deferred = $q.defer();
@@ -432,7 +459,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     });
 
     return deferred.promise; 
-  }
+  };
   
   private.updateDatabase = function() {
     var deferred = $q.defer();
@@ -446,7 +473,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     });
 
     return deferred.promise;
-  }
+  };
 
   private.saveToDatabase = function () {
     var deferred = $q.defer();

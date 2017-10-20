@@ -6,6 +6,11 @@ app.config(function ($stateProvider) {
       templateUrl: "pages/templates/templates.html",
       controller: "templates"
     })
+    .state('template_new', {
+      url: "/templates",
+      templateUrl: "pages/templates/template_new.html",
+      controller: "templates"
+    })
     .state('template_section', {
       url: "/template/section/{insId}",
       templateUrl: "pages/templates/template_section.html",
@@ -48,7 +53,7 @@ app.config(function ($stateProvider) {
 
 app.controller('templates', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
   $scope.templates = [];
-
+  $rootScope.loading = true;
   // Switch the inspection_manager mode (this is global)
   inspection_manager.mode = "template";
 
@@ -82,8 +87,27 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
 
   $scope.camera_manager = camera_manager;
   action_manager.addAction('New Template', 'add', function () {
-    $state.go("template_new");
-    //  
+      
+//      inspection_manager.setInspectionCache({
+//          "insTemplateTitle":"",
+//          "instype":"template",
+//          "sections":[]
+//      });
+//      var insId = inspection_manager.saveInspection();
+      var template = {
+          "insTemplateTitle":"",
+          "instype":"template",
+          "sections":[]
+      };
+      inspection_manager.loadNewTemplate().then(function(data){
+          template = data;
+          $scope.templates.push(template);
+      }, function(data){
+          console.log("Failure!");
+      });
+//      template = inspection_manager.loadNewTemplate();
+//      $scope.templates.push(template);
+      
   });
 
   var templates = inspection_manager.getTemplates();
@@ -95,10 +119,12 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
       for (var i = 0; i < promise.row.length; i++) {
         $scope.templates.push(promise.row.item(i));
       }
-      //Fail
+        $rootScope.loading = false;
+        //Fail
     },
     function (promise) {
       console.log(promise.message);
+        $rootScope.loading = false;
     }
   );
 });
@@ -184,6 +210,7 @@ app.controller('template', function ($rootScope, $scope, $rootScope, $state, hea
     },
     function (promise) {
       console.log(promise.message);
+      $rootScope.loading = false;
     }
   );
 });

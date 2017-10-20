@@ -224,7 +224,7 @@
                 </div>
             </md-input-container>
         </div>
-        <div ng-if="question.type == 'photo'">
+        <div ng-if="question.type === 'photo'">
             <div ng-show="question.photos.length <= 0">
                 No Photos Yet!
             </div>
@@ -238,18 +238,23 @@
             </div>
             </div>
           </div>
-        <div ng-if="question.type !== 'photo'" ng-repeat="photo in question.photos"
-             class="photo md-whiteframe-1dp"
-
-             style="background-image: url( {{photo.link}} ); margin: 10px;" 
-             ng-click="showFullScreen($event, photo)">
-        </div>
+        <div ng-if="question.type !== 'photo'" 
+             layout="row" 
+             layout-align="start center" 
+             layout-wrap>
+            <div ng-repeat="photo in question.photos"
+                 class="photo md-whiteframe-1dp" 
+                 style="background-image: url( {{photo.link}} ); margin: 10px;" 
+                 ng-click="showFullScreen($event, photo)">
+            </div>
+        </div>  
          <md-button class="md-accent md-raised"
                    ng-disabled="question.notApplicable"
                    ng-click="addPhotos()">  
             Add Photos
         </md-button>
 
+        
     </form>
             </md-card-content>
         </md-card>

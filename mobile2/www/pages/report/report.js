@@ -118,45 +118,20 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
       defered.reject("No report defined.");
     }
 
-    var report = report_buffer.replace("data:application/pdf;base64,", '');
-    report = base64Blob(report, "application/pdf");
-
-    $cordovaFile.writeFile(cordova.file.externalDataDirectory, inspection_buffer.insName + ".pdf", report, true)
+    var worker = new Worker("pages/report/report_worker.js");
+    worker.onmessage = function(message) {
+      var report = message.data;
+      $cordovaFile.writeFile(cordova.file.externalDataDirectory, inspection_buffer.insName + ".pdf", report, true)
       .then(function (result) {
         defered.resolve(result);
       }, function (error) {
         defered.reject(error);
       });
+    };
+    worker.postMessage(report_buffer);
 
     return defered.promise;
   };
-
-  // SEE: https://ourcodeworld.com/articles/read/230/how-to-save-a-pdf-from-a-base64-string-on-the-device-with-cordova
-  var base64Blob = function (b64Data, contentType, sliceSize) {
-    contentType = contentType || '';
-    sliceSize = sliceSize || 512;
-
-    var byteCharacters = atob(b64Data);
-    var byteArrays = [];
-
-    for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-      var slice = byteCharacters.slice(offset, offset + sliceSize);
-
-      var byteNumbers = new Array(slice.length);
-      for (var i = 0; i < slice.length; i++) {
-        byteNumbers[i] = slice.charCodeAt(i);
-      }
-
-      var byteArray = new Uint8Array(byteNumbers);
-
-      byteArrays.push(byteArray);
-    }
-
-    var blob = new Blob(byteArrays, {
-      type: contentType
-    });
-    return blob;
-  }
 
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {

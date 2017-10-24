@@ -58,6 +58,9 @@
                         <md-divider ng-if="!$last"></md-divider>
         </div>
     </md-card>
+  <div style="padding: 8px 0 8px 16px;" ng-show="templates.length <= 0">
+      <div class="md-title">No questions yet!</div>
+  </div>
     <md-button ng-click="addQuestion()" class="md-raised" aria-label="Add Question">
       Add Question
     </md-button>

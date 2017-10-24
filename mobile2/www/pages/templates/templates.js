@@ -57,6 +57,10 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
   // Switch the inspection_manager mode (this is global)
   inspection_manager.mode = "template";
 
+  $scope.delete = function(index, list) {
+     list.splice(index, 1);
+  };
+    
   $scope.edit = function (insId) {
     $state.go('template_section', {
       'insId': insId
@@ -120,7 +124,6 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
         $scope.templates.push(promise.row.item(i));
       }
         $rootScope.loading = false;
-        //Fail
     },
     function (promise) {
       console.log(promise.message);
@@ -251,10 +254,11 @@ app.controller('template_new', function ($rootScope, $scope, $state, $rootScope,
       for (var i = 0; i < promise.row.length; i++) {
         $scope.templates.push(promise.row.item(i));
       }
-      //Fail
+      $rootScope.loading = false;
     },
     function (promise) {
       console.log(promise.message);
+      $rootScope.loading = false;
     }
   );
 
@@ -287,7 +291,19 @@ app.controller('template_section', function ($rootScope, $scope, inspection_mana
     $rootScope.loading = true;
     inspection_manager.updateTemplate().then(function() {
       $rootScope.loading = false;
+    }, function(){
+        $rootScope.loading = false;
     });
+    switch (inspection_manager.mode) {
+      case "theme":
+        $state.go('themes');
+        break;
+      case "template":
+        break;
+      case "inspection":
+        $state.go(inspection_manager.returnLocation.name, inspection_manager.returnLocation.params);
+        break;
+    }
   });
 
   // All the sections for a specific inspection/report
@@ -311,12 +327,15 @@ app.controller('template_section', function ($rootScope, $scope, inspection_mana
       //console.log(inspection_manager.getInspectionCache());
   };
   
-  inspection_manager.getSections($scope.insId).then(
+  inspection_manager.getInspection($scope.insId).then(
     function(data) {
-        $scope.sections = data.value;
+        $scope.template = data;
+        $scope.sections = $scope.template.sections;
+        $rootScope.loading = false;
     },
     function(data) {
         console.log("Error... no sections exist in the database");
+        $rootScope.loading = false;
     }
   );
 
@@ -341,7 +360,19 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
     $rootScope.loading = true;
     inspection_manager.updateTemplate().then(function() {
       $rootScope.loading = false;
+    }, function(){
+        $rootScope.loading = false;
     });
+    switch (inspection_manager.mode) {
+      case "theme":
+        $state.go('themes');
+        break;
+      case "template":
+        break;
+      case "inspection":
+        $state.go(inspection_manager.returnLocation.name, inspection_manager.returnLocation.params);
+        break;
+    }
   });
   $scope.addSubsection = function () {
     $scope.subsections.push({
@@ -356,9 +387,11 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
   inspection_manager.getSubsections($scope.insId, $scope.sectionIndex).then(
     function (data) {
       $scope.subsections = data.value || [];
+      $rootScope.loading = false;
     },
     function (data) {
       console.log("Error... no subsections exist in the database");
+      $rootScope.loading = false;
     }
   );
   $scope.questionDrill = function (subsectionIndex) {
@@ -393,6 +426,16 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
     inspection_manager.updateTemplate().then(function() {
       $rootScope.loading = false;
     });
+    switch (inspection_manager.mode) {
+      case "theme":
+        $state.go('themes');
+        break;
+      case "template":
+        break;
+      case "inspection":
+        $state.go(inspection_manager.returnLocation.name, inspection_manager.returnLocation.params);
+        break;
+    }
   });
   $scope.addQuestion = function () {
     $scope.questions.push({
@@ -423,9 +466,11 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
     function (data) {
       $scope.questions = data.value;
+      $rootScope.loading = false;
     },
     function (data) {
       console.log("Error... no questions exist in the database");
+      $rootScope.loading = false;
     }
   );
 
@@ -440,7 +485,7 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
 
 });
 
-app.controller('template_detail', function ($scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $stateParams, templateShareService) {
+app.controller('template_detail', function ($scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $stateParams, templateShareService, $rootScope) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
@@ -507,12 +552,15 @@ $scope.questionTypes = [
   $scope.questionCount = -1;
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
     function (data) { 
+        $rootScope.loading = false;
         $scope.questionCount = data.value.length;
         $scope.question = data.value[$scope.questionIndex];
         //console.log($scope.question.type);
+
     },
     function (data) {
       console.log("Error... no question exists in the database");
+      $rootScope.loading = false;
     }
   );
 
@@ -564,7 +612,18 @@ $scope.questionTypes = [
   }, 'md-raised');
   action_manager.addAction('Save', 'save', function () {
     inspection_manager.updateTemplate();
+    switch (inspection_manager.mode) {
+      case "theme":
+        $state.go('themes');
+        break;
+      case "template":
+        break;
+      case "inspection":
+        $state.go(inspection_manager.returnLocation.name, inspection_manager.returnLocation.params);
+        break;
+    }
   }, 'md-raised');
+
   action_manager.addAction("Next", "keyboard_arrow_right", function () {
     navigateQuestions(true);
   }, 'md-raised');

@@ -6,6 +6,10 @@
 </div>
     <md-divider></md-divider>
   <div class="centerPage" id="centerPage">
+    <div layout="row" layout-align="start end">
+        <h2 class="md-subhead insTitle" style="margin-bottom:0px;">Template Title:</h2>
+        <input type="text" style="margin-left: 4px;" class="editInput"  ng-model="template.insTemplateTitle" />
+    </div>
     <div layout="row" layout-align="space-between center">
       <h2 class="md-subhead insTitle" style="margin-bottom:0px;">Sections</h2>
     </div>
@@ -33,6 +37,9 @@
         <md-divider ng-if="!$last"></md-divider>
       </div>
     </md-card>
+  <div style="padding: 8px 0 8px 16px;" ng-show="sections.length <= 0">
+      <div class="md-title">No sections yet!</div>
+  </div>
     <md-button ng-disabled="section.insSourceType === 'theme'" ng-click="addSection()" class="md-raised" aria-label="Add Section">
       Add Section
     </md-button>

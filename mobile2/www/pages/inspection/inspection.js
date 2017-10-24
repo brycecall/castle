@@ -282,13 +282,12 @@ app.controller('inspection_section', function ($rootScope, $scope, inspection_ma
       'sectionIndex': sectionIndex
     });
   };
-  
+    
   inspection_manager.getInspection($scope.insId).then(
     function (data) {
       $rootScope.loading = false;
       $scope.inspection = data.value;
       $scope.sections = $scope.inspection.sections;
-    },
     function (data) {
         $rootScope.loading = false;
       console.log("Error... no sections exist in the database");

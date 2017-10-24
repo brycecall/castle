@@ -1024,7 +1024,38 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
         });
       return deferred.promise;
     }
-
+    
+  
+  function buildUpdateQuery(inputObj, tableName, excludeObj) {
+      var objKeys = Object.keys(inputObj);
+      var result = {
+        query:'',
+        params:[]
+      };
+      if (!excludeObj) {
+          excludeObj = {};
+      }
+      if (objKeys.length > 0) {
+          var queryStatement = 'UPDATE ' + tableName + ' SET ';
+          var queryParams = [];
+          var keysLength = objKeys.length;
+          for (var i = 0; i < keysLength; i++) {
+               var key = objKeys[i];
+               var value = inputObj[key];
+              if (!excludeObj[key] && value && Object.prototype.toString.call( value ) !== '[object Array]') {
+               queryStatement +=  key + " = ?, "
+               queryParams.push(value);
+            }
+          }
+          if (queryStatement.endsWith(', ')) {
+              queryStatement = queryStatement.substr(0, queryStatement.length - 2);
+          }
+          result.query = queryStatement;
+          result.params = queryParams;
+      }
+      return result;
+  }
+      
     // Overwrite the copied template with the actual data of the save
     public.saveInspection = function (ins, sourceType) {
       var timestamp = new Date();
@@ -1124,6 +1155,8 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       console.log(ins);
       var deferred = $q.defer();
       // Update Inspection Table Data
+
+        
       db.executeSql('UPDATE Inspection SET insLastModified = ?, insJobId = ?, insSourceType = ?, insType = ?, insName = ?, insUserId = ?, insThemeId = ?, insOrganizationId = ?, insTemplateId = ?, insTemplateTitle = ? WHERE rowid = ?', [timestamp, ins.insJobId, ins.insSourceType, ins.insType, ins.insName, ins.insUserId, ins.insThemeId, ins.insOrganizationId, ins.insTemplateId, ins.insTemplateTitle, ins.insId], function (res) {
         //if this is successful, attempt to update section data
         ins.sections.forEach(function (section) {

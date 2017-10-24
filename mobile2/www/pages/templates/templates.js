@@ -561,13 +561,13 @@ $scope.questionTypes = [
   action_manager.mode = ACTION_MODES.Action;
   action_manager.addAction("Previous", "keyboard_arrow_left", function () {
     navigateQuestions(false);
-  }, 'md-raised md-mini');
+  }, 'md-raised');
   action_manager.addAction('Save', 'save', function () {
     inspection_manager.updateTemplate();
-  }, 'md-raised md-mini');
+  }, 'md-raised');
   action_manager.addAction("Next", "keyboard_arrow_right", function () {
     navigateQuestions(true);
-  }, 'md-raised md-mini');
+  }, 'md-raised');
 
   $scope.addPhotos = function () {
     angular.copy($scope.question.photos, camera_manager.photos);

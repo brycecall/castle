@@ -52,19 +52,6 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
             return;
           }
 
-          /*var worker = new Worker("pages/report/report_worker.js");
-          var data = render_frame.contentDocument.querySelector('html').outerHTML;
-          var buffer = {};
-          buffer.data = data;
-          buffer.pdf = window.pdf;
-          worker.postMessage(buffer);
-          
-          worker.onmessage = function(message) {
-            var data = message.data;
-          }*/
-
-          // Timeout to force render
-          //$timeout(function () {
           end_time = new Date();
           console.log("Theme application took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
           start_time = new Date();
@@ -114,7 +101,6 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
               report_buffer = null;
             });
           }
-          //}, 0);
         };
 
         // But the castle object on the iframe

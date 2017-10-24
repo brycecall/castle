@@ -126,9 +126,11 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     var promise = inspection_manager.getInspection(insId);
     promise.then(
       function (result) {
-        export_manager.export(result, "inspection");
+          $rootScope.loading = false;
+        export_manager.export(result.value, "inspection");
       },
       function (error) {
+          $rootScope.loading = false;
         console.error(error);
       });
   }
@@ -174,6 +176,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
       //Fail
     },
     function (promise) {
+        $rootScope.loading = false;
       console.log(promise.message);
     }
   );
@@ -190,9 +193,9 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
 
   $scope.startInspection = function () {
     var promise = inspection_manager.getInspection($scope.sTemplate.rowId);
-    promise.then(function (inspection) {
+    promise.then(function (data) {
       $rootScope.loading = true;
-      
+      var inspection = data.value;
       inspection.insThemeId = $scope.sTheme.unique;
       inspection.insTemplateId = $scope.sTemplate.rowId;
       inspection.insName = $scope.sName;
@@ -212,6 +215,7 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
         }
       );
     }, function(getErr) {
+      $rootScope.loading = false;
       console.log(getErr.message);    
     });
   }
@@ -279,12 +283,14 @@ app.controller('inspection_section', function ($rootScope, $scope, inspection_ma
     });
   };
   
-  inspection_manager.getSections($scope.insId).then(
+  inspection_manager.getInspection($scope.insId).then(
     function (data) {
       $rootScope.loading = false;
-      $scope.sections = data.value;
+      $scope.inspection = data.value;
+      $scope.sections = $scope.inspection.sections;
     },
     function (data) {
+        $rootScope.loading = false;
       console.log("Error... no sections exist in the database");
     }
   );
@@ -293,6 +299,8 @@ app.controller('inspection_section', function ($rootScope, $scope, inspection_ma
     $rootScope.loading = true;
     inspection_manager.updateTemplate().then(function() {
       $rootScope.loading = false;
+    }, function(){
+        $rootScope.loading = false;
     });
   });
 
@@ -320,10 +328,12 @@ app.controller('inspection_subsection', function ($rootScope, $scope, inspection
   };  
   inspection_manager.getSubsections($scope.insId, $scope.sectionIndex).then(
     function (data) {
+      $rootScope.loading = false;
       $scope.subsections = data.value;
       console.log($scope.subsections);
     },
     function (data) {
+      $rootScope.loading = false;
       console.log("Error... no subsections exist in the database");
     }
   );
@@ -332,6 +342,8 @@ app.controller('inspection_subsection', function ($rootScope, $scope, inspection
     $rootScope.loading = true;
     inspection_manager.updateTemplate().then(function() {
       $rootScope.loading = false;
+    }, function(){
+        $rootScope.loading = false;
     });
   });
   
@@ -375,9 +387,11 @@ app.controller('inspection_question', function ($rootScope, $scope, inspection_m
   };  
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
     function (data) {
+      $rootScope.loading = false;
       $scope.questions = data.value;
     },
     function (data) {
+      $rootScope.loading = false;
       console.log("Error... no questions exist in the database");
     }
   );
@@ -436,6 +450,7 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
   $scope.questionCount = -1;
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
     function (data) {
+      $rootScope.loading = false;
       $scope.questionCount = data.value.length;
       $scope.question = data.value[$scope.questionIndex];
       attachPhotos();
@@ -477,6 +492,7 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
       });
     },
     function (data) {
+        $rootScope.loading = false;
       console.log("Error... no question exists in the database");
     }
   );

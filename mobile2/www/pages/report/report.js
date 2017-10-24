@@ -25,8 +25,8 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
   $scope.message = "Getting your template of choice ready...";
 
   var inspection_promise = inspection_manager.getInspection($scope.insId);
-  inspection_promise.then(function (inspection) {
-
+  inspection_promise.then(function (data) {
+var inspection = data.value;
     var theme_promise = theme_manager.getThemeManifest(inspection.insThemeId);
     theme_promise.then(function (manifest) {
 

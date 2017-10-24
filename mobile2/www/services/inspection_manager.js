@@ -149,16 +149,16 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
             private.inspection.sections.push(section);
             i = increment + 1;
           } while (i <= promise.row.length - 1);
-          defer.resolve(private.inspection);
+          defer.resolve({ "value":private.inspection });
         },
         function (promise) {
           private.inspection = {}; //failure eh?
-          defer.reject(private.inspection);
+          defer.reject({ "value":private.inspection });
           console.log('failure: ' + promise.message)
         }
       );
     } else {
-      defer.resolve(private.inspection);
+      defer.resolve({ "value":private.inspection });
     }
 
     return defer.promise;
@@ -238,7 +238,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     var sections = [];
     public.getInspection(insId).then(function (data) {
       try {
-        sections = data.sections;
+        sections = data.value.sections;
         defer.resolve({
           'value': sections
         });
@@ -256,7 +256,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     var section = {};
     public.getInspection(insId).then(function (data) {
       try {
-        section = data.sections[sectionIndex];
+        section = data.value.sections[sectionIndex];
         defer.resolve({
           'value': section
         });
@@ -278,7 +278,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     var subsections = [];
     public.getInspection(insId).then(function (data) {
       try {
-        subsections = data.sections[sectionIndex].subsections;
+        subsections = data.value.sections[sectionIndex].subsections;
         defer.resolve({
           'value': subsections
         });
@@ -298,7 +298,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     var subsection = {};
     public.getInspection(insId).then(function (data) {
       try {
-        subsection = data.sections[sectionIndex]
+        subsection = data.value.sections[sectionIndex]
           .subsections[subsectionIndex];
         defer.resolve({
           'value': subsection
@@ -320,7 +320,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     var questions = [];
     public.getInspection(insId).then(function (data) {
       try {
-        questions = data.sections[sectionIndex]
+        questions = data.value.sections[sectionIndex]
           .subsections[subsectionIndex].questions;
         defer.resolve({
           'value': questions
@@ -341,7 +341,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     var question = {};
     public.getInspection(insId).then(function (data) {
       try {
-        question = data.sections[sectionIndex]
+        question = data.value.sections[sectionIndex]
           .subsections[subsectionIndex]
           .questions[questionIndex];
         defer.resolve({

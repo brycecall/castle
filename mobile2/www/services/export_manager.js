@@ -96,7 +96,8 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
 
     var inspection_promise = inspection_manager.getInspection(insId);
     inspection_promise.then(
-      function (inspection) {
+      function (data) {
+          var inspection = data.value;
         templateId = inspection.insTemplateId;
         themeId = inspection.insThemeId;
 
@@ -134,7 +135,8 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
 
     var template_promise = inspection_manager.getInspection(insId);
     template_promise.then(
-      function (template) {
+      function (data) {
+          var template = data.value;
         $cordovaFile.writeFile(private.session_path + "/", "template.json", JSON.stringify(template), true)
           .then(
             function (result) {

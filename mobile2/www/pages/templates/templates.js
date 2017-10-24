@@ -329,7 +329,7 @@ app.controller('template_section', function ($rootScope, $scope, inspection_mana
   
   inspection_manager.getInspection($scope.insId).then(
     function(data) {
-        $scope.template = data;
+        $scope.template = data.value;
         $scope.sections = $scope.template.sections;
         $rootScope.loading = false;
     },

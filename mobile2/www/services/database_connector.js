@@ -1099,25 +1099,26 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                             });
                           });
                         }
-                        // Save photo data from Answer
-                        tempAnswer.photos.forEach(function(photo) {
-                          var phoQueRes = queRes;
-                          var phoAnsRes = ansRes;
-                          var tempPhoto = photo;
-                          db.executeSql('INSERT INTO Photo (phoLink, phoTitle, phoQuestionId, phoAnswerId, phoInspectionId, phoSourceType) VALUES (?,?,?,?,?,?)', [tempPhoto.link, tempPhoto.title, phoQueRes.insertId, phoAnsRes.insertId, inspectionRes.insertId, tempPhoto.sourceType], function(phoRes) {
-                            //console.log('Successfully inserted photo: ' + tempQuestion.photos[i]); 
-                          }, function(phoError) {
-                            //console.log('Failure inserting photo: ' + tempQuestion.photos[i]);
-                            deferred.reject({
-                              message: 'Error with Photo save: ' + phoError.message
-                            });
-                          });    
-                        });
                       }, function (ansError) {
                         deferred.reject({
                           message: 'Error with Answer save: ' + ansError.message
                         });
                       });
+                    });
+                    // Save photo data from Question photos array
+                    tempQuestion.photos.forEach(function(photo) {
+                      var phoQueRes = queRes;
+                      var phoAnsRes = ansRes;
+                      var tempPhoto = photo;
+                      var phoSourceType = queSourceType;
+                      db.executeSql('INSERT INTO Photo (phoLink, phoTitle, phoQuestionId, phoAnswerId, phoInspectionId, phoSourceType) VALUES (?,?,?,?,?,?)', [tempPhoto.link, tempPhoto.title, phoQueRes.insertId, phoAnsRes.insertId, inspectionRes.insertId, phoSourceType], function(phoRes) {
+                        //console.log('Successfully inserted photo: ' + tempQuestion.photos[i]); 
+                      }, function(phoError) {
+                        //console.log('Failure inserting photo: ' + tempQuestion.photos[i]);
+                        deferred.reject({
+                          message: 'Error with Photo save: ' + phoError.message
+                        });
+                      });    
                     });
                   }, function (queError) {
                     deferred.reject({
@@ -1196,6 +1197,19 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                         deferred.reject({message: 'Error saving Answers: ' + error.message});
                       });
                     });
+                    // Replace deleted photos for the 'update'
+                    tempQuestion.photos.forEach(function(photo) {
+                      var tempInsSourceType = insSourceType;
+                      var phoQuestion = question;
+                      var tempPhoto = photo;
+                      db.executeSql('INSERT INTO Photo (phoLink, phoTitle, phoQuestionId, phoAnswerId, phoInspectionId, phoSourceType) VALUES (?,?,?,?,?,?)', [tempPhoto.link, tempPhoto.title, phoQuestion.id, tempPhoto.answerID, phoQuestion.inspectionId, tempInsSourceType], function(phoRes) {
+                        //console.log('Successfully inserted Photo: ' + tempQuestion.photos[i]);                            
+                      }, function(phoError) {
+                        deferred.reject({
+                          message: 'Error with Photo update: ' + phoError.message 
+                        });
+                      });
+                    });
                   }, function (queError) {
                     deferred.reject({
                       message: 'Error with Question update: ' + queError.message
@@ -1244,19 +1258,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                         } else {
                           ansDefer.resolve({message: 'Success saved Answer. This answer is not a QuestionAnswer.'});
                         }
-                        // Replace deleted photos for the 'update'
-                        answer.photos.forEach(function(photo) {
-                          var tempInsSourceType = insSourceType;
-                          var tempQuestion = question;
-                          var tempPhoto = photo;
-                          db.executeSql('INSERT INTO Photo (phoLink, phoTitle, phoQuestionId, phoAnswerId, phoInspectionId, phoSourceType) VALUES (?,?,?,?,?,?)', [tempPhoto.link, tempPhoto.title, tempQuestion.id, tempPhoto.answerId, tempQuestion.inspectionId, tempInsSourceType], function(phoRes) {
-                            //console.log('Successfully inserted Photo: ' + tempQuestion.photos[i]);                            
-                          }, function(phoError) {
-                            deferred.reject({
-                              message: 'Error with Photo update: ' + phoError.message 
-                            });
-                          });
-                        });
                       }, function (ansError) {
                         ansDefer.reject({
                           message: 'Error with Answer update: ' + ansError.message
@@ -1290,10 +1291,10 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
             questionIds.push(question.id);
             question.values.forEach(function(answer) {
               answerIds.push(answer.id);
-              answer.photos.forEach(function(photo) {
-                photoIds.push(photo.id);    
-              });
             });
+            question.photos.forEach(function(photo) {
+              photoIds.push(photo.id);
+            })
           });
         });
       });
@@ -1361,22 +1362,22 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                     //console.log(tempAnswer);
                     db.executeSql('INSERT OR REPLACE INTO Answer (rowid, ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) VALUES (?,?,?,?,?,?)', [tempAnswer.id, questionId, tempAnswer.key, tempAnswer.type, tempAnswer.inspectionId, tempAnswer.sourceType], function (ansRes) {
                       //console.log('Success upsert to Answer: ' + ansRes.insertId);
-                      // Insert photo data to template
-                      tempAnswer.photos.forEach(function(photo) {
-                        var phoTempQuestion = tempQuestion;
-                        var tempPhoto = photo;
-                        db.executeSql('INSERT OR REPLACE INTO Photo (rowid, phoLink, phoTitle, phoQuestionId, phoAnswerId, phoInspectionId, phoSourceType) VALUES(?,?,?,?,?,?,?)', [tempPhoto.id, tempPhoto.link, photo.title, phoTempQuestion.id, photo.answerId, phoTempQuestion.inspectionId, tempPhoto.sourceType], function(phoRes) {
-                          //console.log('Successfully inserted Photo: ' + phoTempQuestion.photos[i]);                            
-                        }, function(phoError) {
-                          deferred.reject({
-                            message: 'Error with Photo update: ' + phoError.message 
-                          });
-                        });
-                      });
                     }, function(err) {
                       deferred.reject({message: 'Failure to upsert to Answer: ' + err.message});
                     }); 
                   });
+                  // Insert photo data to template
+                  tempQuestion.photos.forEach(function(photo) {
+                    var phoTempQuestion = tempQuestion;
+                    var tempPhoto = photo;
+                    db.executeSql('INSERT OR REPLACE INTO Photo (rowid, phoLink, phoTitle, phoQuestionId, phoAnswerId, phoInspectionId, phoSourceType) VALUES(?,?,?,?,?,?,?)', [tempPhoto.id, tempPhoto.link, tempPhoto.title, phoTempQuestion.id, tempPhoto.answerID, phoTempQuestion.inspectionId, tempPhoto.sourceType], function(phoRes) {
+                      //console.log('Successfully inserted Photo: ' + phoTempQuestion.photos[i]);                            
+                    }, function(phoError) {
+                      deferred.reject({
+                        message: 'Error with Photo update: ' + phoError.message 
+                      });
+                    });
+                  });                  
                 }, function(err) {
                   console.log('Failure upsert to Question');
                   deferred.reject({message: 'Failure to upsert to Question: ' + err.message});

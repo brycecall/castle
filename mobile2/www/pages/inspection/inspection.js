@@ -209,7 +209,7 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
             $rootScope.loading = false;
             $state.go('inspection_section', {
               'insId': savedIns.insId
-            });}, 4000);
+            });}, 6000);
         }, function(saveError) {
           console.log('Error saving inspection: ' + saveError.message);    
         }
@@ -288,6 +288,7 @@ app.controller('inspection_section', function ($rootScope, $scope, inspection_ma
       $rootScope.loading = false;
       $scope.inspection = data.value;
       $scope.sections = $scope.inspection.sections;
+    },
     function (data) {
         $rootScope.loading = false;
       console.log("Error... no sections exist in the database");

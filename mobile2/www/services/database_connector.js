@@ -24,7 +24,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
           'CREATE TABLE IF NOT EXISTS Inspection (insLastModified, insLastSubmitted, insJobId INT, insSourceType, insType, insName, insUserId INT, insThemeId INT, insThemeResponseBlob, insTemplateResponseBlob, insOrganizationId, insTemplateId INT, insTemplateTitle, FOREIGN KEY(insOrganizationId) REFERENCES Organization(rowId), FOREIGN KEY(insUserId) REFERENCES User(rowId), FOREIGN KEY(insJobId) REFERENCES Job(rowId), FOREIGN KEY(insThemeId) REFERENCES Theme(rowId))',
           'CREATE TABLE IF NOT EXISTS Job (jobUserId INT, jobDate, jobAddress, jobZipCode, jobCity, jobState, jobStatus, jobSubmittedDate, FOREIGN KEY(jobUserId) REFERENCES User(rowId))',
           'CREATE TABLE IF NOT EXISTS Organization (orgName, orgAddress, orgLogo, orgCity, orgState, orgZipCode)',
-          'CREATE TABLE IF NOT EXISTS Photo (phoLink, phoTitle, phoQuestionId INT, phoInspectionId INT, phoSourceType, FOREIGN KEY(phoQuestionId) REFERENCES Question(rowId), FOREIGN KEY(phoInspectionId) REFERENCES Inspection(rowId))',
+          'CREATE TABLE IF NOT EXISTS Photo (phoLink, phoTitle, phoQuestionId INT, phoAnswerId INT, phoInspectionId INT, phoSourceType, FOREIGN KEY(phoQuestionId) REFERENCES Question(rowId), FOREIGN KEY(phoAnswerId) REFERENCES Answer(rowId), FOREIGN KEY(phoInspectionId) REFERENCES Inspection(rowId))',
           'CREATE TABLE IF NOT EXISTS Question (queTitle, queDescription, queSubSectionId INT, queAnswered INT,  queType, queRequired INT, queMin, queMax, queValidationType, queNotApplicable INT, queShowSummaryRemark INT, queShowDescription INT, queInspectionId INT, queSourceType, FOREIGN KEY(queInspectionId) REFERENCES Inspection(rowId), FOREIGN KEY(queSubSectionId) REFERENCES SubSection(rowId))',
           'CREATE TABLE IF NOT EXISTS QuestionAnswers (quaQuestionId INT, quaAnswerId INT, quaInspectionId INT, quaSourceType, FOREIGN KEY (quaQuestionId) REFERENCES Question(rowId), FOREIGN KEY(quaAnswerId) REFERENCES Answer(rowId), FOREIGN KEY(quaInspectionId) REFERENCES Inspection(rowId))',
           'CREATE TABLE IF NOT EXISTS ReportHistory (rehInspectionId INT, rehLastModified, rehSubmittedDate, FOREIGN KEY(rehInspectionId) REFERENCES Inspection(rowId))',
@@ -979,6 +979,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
         /* BEGIN TEST ANSWERS TO TEST QUESTIONS */
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?,?,?,?,?)', [18, 'Wed Oct 11 2017 22:53:53 GMT-0600 (Mountain Daylight Time)', 'single', 1, 'template']],
         /* END TEST */
+        ['INSERT INTO Photo (phoLink, phoTitle, phoQuestionId, phoAnswerId, phoInspectionId, phoSourceType) Values (?,?,?,?,?,?)', ['data:image/jpeg;base64,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','test photo',341, 107, 2, 'inspection']],
         //['INSERT INTO QuestionAnswers (quaQuestionId INT, quaAnswerId INT) VALUES (?, ?)', []],
         //['INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId) VALUES (?,?)', [1, 1]],
         //['INSERT INTO SubSection (susTitle, susSectionId) Values (?, ?)', []],
@@ -1003,7 +1004,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       console.log('db getInspectionById ID: ' + inspId);
       var deferred = $q.defer();
       db.executeSql(
-        'SELECT *, insp.rowid AS [rowId], sec.rowid AS [secRowId], subsec.rowid AS [susRowId], ques.rowid AS [queRowId], ans.rowid AS [ansRowId], qua.rowid AS [quaRowId], pho.rowid AS [phoRowId] FROM Inspection insp LEFT JOIN Section sec on sec.secInspectionId = insp.rowid LEFT JOIN SubSection subsec ON subsec.susSectionId = sec.rowId LEFT JOIN Question ques ON ques.queSubSectionId = subsec.rowid LEFT JOIN Answer ans ON ans.ansQuestionId = ques.rowid LEFT JOIN Photo pho ON pho.phoQuestionId = ques.rowid AND pho.phoInspectionId = insp.rowid LEFT JOIN QuestionAnswers qua on qua.quaQuestionId = ques.rowid AND qua.quaAnswerId = ans.rowid WHERE insp.rowid = ? ORDER BY sec.rowid, subsec.rowid, ques.rowid, ans.rowid', [inspId],
+        'SELECT *, insp.rowid AS [rowId], sec.rowid AS [secRowId], subsec.rowid AS [susRowId], ques.rowid AS [queRowId], ans.rowid AS [ansRowId], qua.rowid AS [quaRowId], pho.rowid AS [phoRowId] FROM Inspection insp LEFT JOIN Section sec on sec.secInspectionId = insp.rowid LEFT JOIN SubSection subsec ON subsec.susSectionId = sec.rowId LEFT JOIN Question ques ON ques.queSubSectionId = subsec.rowid LEFT JOIN Answer ans ON ans.ansQuestionId = ques.rowid LEFT JOIN Photo pho ON pho.phoAnswerId = ans.rowid LEFT JOIN QuestionAnswers qua on qua.quaQuestionId = ques.rowid AND qua.quaAnswerId = ans.rowid WHERE insp.rowid = ? ORDER BY sec.rowid, subsec.rowid, ques.rowid, ans.rowid, pho.rowid', [inspId],
         function (res) {
           if (res.rows.length > 0) {
             deferred.resolve({
@@ -1084,6 +1085,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                     // If this is successful, attempt to insert answer data
                     tempQuestion.values.forEach(function (answer) {
                       var ansSourceType = queSourceType;
+                      var tempAnswer = answer;
                       db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) VALUES (?,?,?,?,?)', [queRes.insertId, answer.key, answer.type, inspectionRes.insertId, ansSourceType], function (ansRes) {
                         //console.log(answer.key + ' answer successfully inserted. ID: ' + ansRes.insertId + ' saved to Inspection#: ' + res.insertId);
                         // If this is successful, attempt to insert question-answer data
@@ -1097,24 +1099,25 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                             });
                           });
                         }
+                        // Save photo data from Answer
+                        tempAnswer.photos.forEach(function(photo) {
+                          var phoQueRes = queRes;
+                          var phoAnsRes = ansRes;
+                          var tempPhoto = photo;
+                          db.executeSql('INSERT INTO Photo (phoLink, phoTitle, phoQuestionId, phoAnswerId, phoInspectionId, phoSourceType) VALUES (?,?,?,?,?,?)', [tempPhoto.link, tempPhoto.title, phoQueRes.insertId, phoAnsRes.insertId, inspectionRes.insertId, tempPhoto.sourceType], function(phoRes) {
+                            //console.log('Successfully inserted photo: ' + tempQuestion.photos[i]); 
+                          }, function(phoError) {
+                            //console.log('Failure inserting photo: ' + tempQuestion.photos[i]);
+                            deferred.reject({
+                              message: 'Error with Photo save: ' + phoError.message
+                            });
+                          });    
+                        });
                       }, function (ansError) {
                         deferred.reject({
                           message: 'Error with Answer save: ' + ansError.message
                         });
                       });
-                    });
-                    // Also save photo data from Question
-                    tempQuestion.photos.forEach(function(photo) {
-                      var phoQueRes = queRes;
-                      var tempPhoto = photo;
-                      db.executeSql('INSERT INTO Photo (phoLink, phoTitle, phoQuestionId, phoInspectionId, phoSourceType) VALUES (?,?,?,?,?)', [tempPhoto.link, tempPhoto.title, phoQueRes.insertId, inspectionRes.insertId, tempPhoto.sourceType], function(phoRes) {
-                        //console.log('Successfully inserted photo: ' + tempQuestion.photos[i]); 
-                      }, function(phoError) {
-                        //console.log('Failure inserting photo: ' + tempQuestion.photos[i]);
-                        deferred.reject({
-                          message: 'Error with Photo save: ' + phoError.message
-                        });
-                      });    
                     });
                   }, function (queError) {
                     deferred.reject({
@@ -1154,9 +1157,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       console.log('updateInspection start');
       console.log(ins);
       var deferred = $q.defer();
-      // Update Inspection Table Data
-
-        
+      // Update Inspection Table Data        
       db.executeSql('UPDATE Inspection SET insLastModified = ?, insJobId = ?, insSourceType = ?, insType = ?, insName = ?, insUserId = ?, insThemeId = ?, insOrganizationId = ?, insTemplateId = ?, insTemplateTitle = ? WHERE rowid = ?', [timestamp, ins.insJobId, ins.insSourceType, ins.insType, ins.insName, ins.insUserId, ins.insThemeId, ins.insOrganizationId, ins.insTemplateId, ins.insTemplateTitle, ins.insId], function (res) {
         //if this is successful, attempt to update section data
         ins.sections.forEach(function (section) {
@@ -1191,19 +1192,8 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                     tempQuestion.values.forEach(function(answer) {
                       var insId = ins.insId;
                       var insSourceType = ins.insSourceType;
-                      db.transaction(public.updateAnswers(tempQuestion, answer, insId, insSourceType), function(error) { 
+                      db.transaction(public.updateAnswers(tempQuestion, answer, queRes, insId, insSourceType), function(error) { 
                         deferred.reject({message: 'Error saving Answers: ' + error.message});
-                      });
-                    });
-                    // Replace deleted photos for the 'update'
-                    tempQuestion.photos.forEach(function(photo) {
-                      var tempPhoto = photo;
-                      db.executeSql('INSERT INTO Photo (phoLink, phoTitle, phoQuestionId, phoInspectionId, phoSourceType) VALUES (?,?,?,?,?)', [tempPhoto.link, tempPhoto.title, tempQuestion.id, tempQuestion.inspectionId, tempPhoto.sourceType], function(phoRes) {
-                        //console.log('Successfully inserted Photo: ' + tempQuestion.photos[i]);                            
-                      }, function(phoError) {
-                        deferred.reject({
-                          message: 'Error with Photo update: ' + phoError.message 
-                        });
                       });
                     });
                   }, function (queError) {
@@ -1240,7 +1230,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     public.updateAnswers = function(question, answer, queRes, insId, insSourceType) {
       return function(db) {
         var ansDefer = $q.defer();
-        db.executeSql('UPDATE Answer SET ansQuestionId=?, ansValue=?, ansType=?, ansInspectionId=?, ansSourceType=? WHERE rowid=? AND ansInspectionId=?', [answer.questionId, answer.key, answer.type, answer.inspectionId, answer.sourceType, answer.id, answer.inspectionId], function (ansRes) {
+        db.executeSql('UPDATE Answer SET ansQuestionId=?, ansValue=?, ansType=?, ansInspectionId=?, ansSourceType=? WHERE rowid=? AND ansInspectionId=?', [answer.questionId, answer.key, answer.type, answer.inspectionId, insSourceType, answer.id, answer.inspectionId], function (ansRes) {
                         //console.log(answer.key + ' answer successfully updated');
                         // If this is successful, attempt to insert question-answer data
                         if (answer.key == question.answer || (question.answers && question.answers.indexOf(answer.key) > -1)) {
@@ -1254,6 +1244,19 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                         } else {
                           ansDefer.resolve({message: 'Success saved Answer. This answer is not a QuestionAnswer.'});
                         }
+                        // Replace deleted photos for the 'update'
+                        answer.photos.forEach(function(photo) {
+                          var tempInsSourceType = insSourceType;
+                          var tempQuestion = question;
+                          var tempPhoto = photo;
+                          db.executeSql('INSERT INTO Photo (phoLink, phoTitle, phoQuestionId, phoAnswerId, phoInspectionId, phoSourceType) VALUES (?,?,?,?,?,?)', [tempPhoto.link, tempPhoto.title, tempQuestion.id, tempPhoto.answerId, tempQuestion.inspectionId, tempInsSourceType], function(phoRes) {
+                            //console.log('Successfully inserted Photo: ' + tempQuestion.photos[i]);                            
+                          }, function(phoError) {
+                            deferred.reject({
+                              message: 'Error with Photo update: ' + phoError.message 
+                            });
+                          });
+                        });
                       }, function (ansError) {
                         ansDefer.reject({
                           message: 'Error with Answer update: ' + ansError.message
@@ -1287,9 +1290,9 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
             questionIds.push(question.id);
             question.values.forEach(function(answer) {
               answerIds.push(answer.id);
-            });
-            question.photos.forEach(function(photo) {
-              photoIds.push(photo.id);
+              answer.photos.forEach(function(photo) {
+                photoIds.push(photo.id);    
+              });
             });
           });
         });
@@ -1358,20 +1361,21 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
                     //console.log(tempAnswer);
                     db.executeSql('INSERT OR REPLACE INTO Answer (rowid, ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) VALUES (?,?,?,?,?,?)', [tempAnswer.id, questionId, tempAnswer.key, tempAnswer.type, tempAnswer.inspectionId, tempAnswer.sourceType], function (ansRes) {
                       //console.log('Success upsert to Answer: ' + ansRes.insertId);
+                      // Insert photo data to template
+                      tempAnswer.photos.forEach(function(photo) {
+                        var phoTempQuestion = tempQuestion;
+                        var tempPhoto = photo;
+                        db.executeSql('INSERT OR REPLACE INTO Photo (rowid, phoLink, phoTitle, phoQuestionId, phoAnswerId, phoInspectionId, phoSourceType) VALUES(?,?,?,?,?,?,?)', [tempPhoto.id, tempPhoto.link, photo.title, phoTempQuestion.id, photo.answerId, phoTempQuestion.inspectionId, tempPhoto.sourceType], function(phoRes) {
+                          //console.log('Successfully inserted Photo: ' + phoTempQuestion.photos[i]);                            
+                        }, function(phoError) {
+                          deferred.reject({
+                            message: 'Error with Photo update: ' + phoError.message 
+                          });
+                        });
+                      });
                     }, function(err) {
                       deferred.reject({message: 'Failure to upsert to Answer: ' + err.message});
                     }); 
-                  });
-                  // Insert photo data to template
-                  tempQuestion.photos.forEach(function(photo) {
-                    var tempPhoto = photo;
-                    db.executeSql('INSERT OR REPLACE INTO Photo (rowid, phoLink, phoTitle, phoQuestionId, phoInspectionId, phoSourceType) VALUES (?,?,?,?,?,?)', [tempPhoto.id, tempQuestion.photos[i].link, tempQuestion.photos[i].title, tempQuestion.id, tempQuestion.inspectionId, tempPhoto.sourceType], function(phoRes) {
-                      //console.log('Successfully inserted Photo: ' + tempQuestion.photos[i]);                            
-                    }, function(phoError) {
-                      deferred.reject({
-                        message: 'Error with Photo update: ' + phoError.message 
-                      });
-                    });
                   });
                 }, function(err) {
                   console.log('Failure upsert to Question');
@@ -1452,6 +1456,27 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       }, function (error) {
         deferred.reject({
           message: 'Error trying to select for Question from Photo table: ' + error.message
+        });
+      });
+      return deferred.promise;    
+    }
+    
+    public.getPhotosForAnswer = function(answerId) {
+      var deferred = $q.defer();
+      db.executeSql('SELECT * FROM Photo WHERE phoAnswerId = ?', [answerId], function (res) {
+        if (res.rows.length > 0) {
+          deferred.resolve({
+            row: res.rows,
+            message: 'Successful select all question photos from Photo table'
+          });
+        } else {
+          deferred.resolve({
+            message: 'No data in Photo table for Answer: ' + answerId
+          });
+        }
+      }, function (error) {
+        deferred.reject({
+          message: 'Error trying to select for Answer from Photo table: ' + error.message
         });
       });
       return deferred.promise;    

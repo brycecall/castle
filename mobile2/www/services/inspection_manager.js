@@ -108,21 +108,10 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                       sourceType: promise.row.item(l).ansSourceType,
                       inspectionId: promise.row.item(l).ansInspectionId,
                       type: promise.row.item(l).ansType,
-                      remark: ''
+                      remark: '',
+                      photos: []
                     }
                     question.values.push(answer);
-                    // If we have a photo, add it
-                    if (promise.row.item(l).phoRowId) {
-                      var photo = {
-                        id: promise.row.item(l).phoRowId,
-                        link: promise.row.item(l).phoLink,
-                        title: promise.row.item(l).phoTitle,
-                        questionId: promise.row.item(l).phoQuestionId,
-                        inspectionId: promise.row.item(l).phoInspectionId,
-                        sourceType: promise.row.item(l).phoSourceType 
-                      }
-                      question.photos.push(photo);
-                    }
                     // Check to see if this answer was a selected answer by inspector
                     if (promise.row.item(l).ansRowId == promise.row.item(l).quaAnswerId && promise.row.item(l).queRowId == promise.row.item(l).quaQuestionId) {
                       // If multi, push onto answers list. Otherwise, store in single answer key.
@@ -132,8 +121,30 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                         question.answer = answer.key;
                       }
                     }
-                    // Use increment variable to track progress in promise.row data block
-                    increment = l;
+                    if (promise.row.item(l).ansRowId) {
+                      for (var m = l; promise.row.item(m) && promise.row.item(l).ansRowId == promise.row.item(m).ansRowId; m++) {
+                        if (promise.row.item(m).phoRowId) {
+                          var photo = {
+                            id: promise.row.item(m).phoRowId,
+                            link: promise.row.item(m).phoLink,
+                            title: promise.row.item(m).phoTitle,
+                            questionId: promise.row.item(m).phoQuestionId,
+                            answerId: promise.row.item(m).phoAnswerId,
+                            inspectionId: promise.row.item(m).phoInspectionId,
+                            sourceType: promise.row.item(m).phoSourceType
+                          }
+                          answer.photos.push(photo);
+                          question.photos.push(photo);
+                        }
+                        // Use increment variable to track progress in promise.row data block
+                        increment = m;
+                      }
+                    }
+                    if (increment > l) {
+                      l = increment;
+                    } else {
+                      increment = l;
+                    }
                   }
                   k = increment;
                   subsection.questions.push(question);

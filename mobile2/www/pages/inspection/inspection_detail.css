@@ -45,6 +45,8 @@
     border-style: solid;
     border-color: rgba(0, 0, 0, 0.12);
     border-width: 0 0 1px 0;
+    margin: 0 0 16px 4px;
+    background-color: inherit;
 }
 
 .flatCard {

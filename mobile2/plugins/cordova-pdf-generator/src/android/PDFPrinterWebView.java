@@ -19,6 +19,7 @@ import java.io.File;
 import java.lang.System;
 
 import android.print.PDFtoBase64;
+import android.print.PDFtoFile;
 import android.print.PrintAttributes;
 import android.os.Environment;
 
@@ -37,20 +38,22 @@ public class PDFPrinterWebView extends WebViewClient {
     private CallbackContext cordovaCallback;
     private Context ctx;
     private boolean outputBase64;
+    private boolean outputFile;
 
     private String fileName;
 
-    public PDFPrinterWebView(PrintManager _printerManager, Context ctx, Boolean outputBase64){
+    public PDFPrinterWebView(PrintManager _printerManager, Context ctx, Boolean outputBase64, Boolean outputFile) {
         printManager = _printerManager;
         this.ctx = ctx;
         this.outputBase64 = outputBase64;
+        this.outputFile = outputFile;
     }
 
-    public void setCordovaCallback(CallbackContext cordovaCallback){
+    public void setCordovaCallback(CallbackContext cordovaCallback) {
         this.cordovaCallback = cordovaCallback;
     }
 
-    public void setFileName(String fileName){
+    public void setFileName(String fileName) {
         this.fileName = fileName;
     }
 
@@ -58,22 +61,32 @@ public class PDFPrinterWebView extends WebViewClient {
     @Override
     public void onPageFinished(WebView webView, String url) {
         super.onPageFinished(webView, url);
-        if(this.outputBase64){
+        if (this.outputBase64) {
             PrintAttributes attributes = new PrintAttributes.Builder()
-                .setMediaSize(PrintAttributes.MediaSize.ISO_A4)
-                .setResolution(new PrintAttributes.Resolution("pdf", "pdf", 600, 600))
-                .setMinMargins(PrintAttributes.Margins.NO_MARGINS).build();
+                    .setMediaSize(PrintAttributes.MediaSize.ISO_A4)
+                    .setResolution(new PrintAttributes.Resolution("pdf", "pdf", 600, 600))
+                    .setMinMargins(PrintAttributes.Margins.NO_MARGINS).build();
             PDFtoBase64 pdfToBase64 = new PDFtoBase64(attributes, this.ctx, this.cordovaCallback);
-            if(Build.VERSION.SDK_INT >= 21 ){
+            if (Build.VERSION.SDK_INT >= 21) {
                 pdfToBase64.process(webView.createPrintDocumentAdapter(PRINT_JOB_NAME));
             } else {
                 pdfToBase64.process(webView.createPrintDocumentAdapter());
             }
+        } else if (this.outputFile) {
+            PrintAttributes attributes = new PrintAttributes.Builder()
+                    .setMediaSize(PrintAttributes.MediaSize.ISO_A4)
+                    .setResolution(new PrintAttributes.Resolution("pdf", "pdf", 600, 600))
+                    .setMinMargins(PrintAttributes.Margins.NO_MARGINS).build();
+            PDFtoFile pdfToFile = new PDFtoFile(attributes, this.ctx, this.cordovaCallback, fileName);
+            if (Build.VERSION.SDK_INT >= 21) {
+                pdfToFile.process(webView.createPrintDocumentAdapter(PRINT_JOB_NAME));
+            } else {
+                pdfToFile.process(webView.createPrintDocumentAdapter());
+            }
         } else {
             PDFPrinter pdfPrinter = new PDFPrinter(webView, fileName);
             printManager.print(PRINT_JOB_NAME, pdfPrinter, null);
-            this.cordovaCallback.success(PRINT_SUCESS);
+            this.cordovaCallback.success();
         }
     }
-
 }

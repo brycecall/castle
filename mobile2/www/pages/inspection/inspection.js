@@ -288,6 +288,7 @@ app.controller('inspection_section', function ($rootScope, $scope, inspection_ma
       $rootScope.loading = false;
       $scope.inspection = data.value;
       $scope.sections = $scope.inspection.sections;
+    },
     function (data) {
         $rootScope.loading = false;
       console.log("Error... no sections exist in the database");

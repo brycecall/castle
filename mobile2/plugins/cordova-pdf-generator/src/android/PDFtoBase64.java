@@ -17,7 +17,7 @@ import java.io.IOException;
 public class PDFtoBase64 {
 
     private static final String TAG = PDFtoBase64.class.getSimpleName();
-    private static final String FILE_PREFIX = "PDF_GENERATOR";
+    private static final String FILE_PREFIX = "report_";
     private static final String FILE_EXTENSION = "pdf";
     private static final String FILE_EMPTY_ERROR = "Error: Empty PDF File";
     private static final String FILE_NOT_FOUND = "Error: Temp File Not Found";
@@ -46,7 +46,7 @@ public class PDFtoBase64 {
 
             if(encodedBase64.isEmpty()){
                 cordovaCallback.error(FILE_EMPTY_ERROR);
-            }else{
+            } else {
                 cordovaCallback.success(encodedBase64);
             }
         } catch(FileNotFoundException ex) {
@@ -76,8 +76,6 @@ public class PDFtoBase64 {
 
 
         final PrintDocumentAdapter.WriteResultCallback myWriteResultCallback = new PrintDocumentAdapter.WriteResultCallback() {
-
-
 
             @Override
             public void onWriteFinished(PageRange[] pages) {

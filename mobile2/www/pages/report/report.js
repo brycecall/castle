@@ -26,7 +26,7 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
 
   var inspection_promise = inspection_manager.getInspection($scope.insId);
   inspection_promise.then(function (data) {
-var inspection = data.value;
+    var inspection = data.value;
     var theme_promise = theme_manager.getThemeManifest(inspection.insThemeId);
     theme_promise.then(function (manifest) {
 
@@ -63,7 +63,8 @@ var inspection = data.value;
               data: data,
               documentSize: "A4",
               landscape: "portrait",
-              type: "base64"
+              type: "file",
+              fileName: inspection_buffer.insName + ".pdf"
             }, function (data) {
               $scope.message = "Saving you a ton of time...";
 
@@ -71,30 +72,14 @@ var inspection = data.value;
               console.log("Generation the report took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
               start_time = new Date();
 
-              data = data.replace('\n', '');
-              data = "data:application/pdf;base64," + data;
               $scope.report = true;
-              report_buffer = data;
+              preview_frame.contentWindow.PDFViewerApplication.open(cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf");
 
-              saveReport().then(
-                function (result) {
-                  end_time = new Date();
-                  console.log("Saving the report took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
-                  start_time = new Date();
+              end_time = new Date();
+              console.log("Rendering the preview took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
+              start_time = new Date();
 
-                  preview_frame.contentWindow.PDFViewerApplication.open(cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf");
-
-                  end_time = new Date();
-                  console.log("Rendering the preview took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
-                  start_time = new Date();
-
-                  action_manager.enable();
-                },
-                function (error) {
-                  console.error(error);
-                  $scope.report = false;
-                  report_buffer = null;
-                });
+              action_manager.enable();
 
             }, function (error) {
               $scope.report = false;
@@ -119,14 +104,14 @@ var inspection = data.value;
     }
 
     var worker = new Worker("pages/report/report_worker.js");
-    worker.onmessage = function(message) {
+    worker.onmessage = function (message) {
       var report = message.data;
       $cordovaFile.writeFile(cordova.file.externalDataDirectory, inspection_buffer.insName + ".pdf", report, true)
-      .then(function (result) {
-        defered.resolve(result);
-      }, function (error) {
-        defered.reject(error);
-      });
+        .then(function (result) {
+          defered.resolve(result);
+        }, function (error) {
+          defered.reject(error);
+        });
     };
     worker.postMessage(report_buffer);
 

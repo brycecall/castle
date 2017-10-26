@@ -52,6 +52,7 @@ public class PDFGenerator extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("htmlToPDF")) {
+            System.gc();
             this.pdfPrinter(args, callbackContext);
 
             return true;
@@ -79,7 +80,8 @@ public class PDFGenerator extends CordovaPlugin {
                             .getSystemService(Context.PRINT_SERVICE);
 
                     boolean outputBase64 = args.getString(4) != null && args.getString(4).equals("base64");
-                    PDFPrinterWebView printerWebView = new PDFPrinterWebView(printManager, ctx, outputBase64);
+                    boolean outputFile = args.getString(4) != null && args.getString(4).equals("file");
+                    PDFPrinterWebView printerWebView = new PDFPrinterWebView(printManager, ctx, outputBase64, outputFile);
 
                     String fileNameArg = args.getString(5);
                     if (fileNameArg != null) {
@@ -89,11 +91,14 @@ public class PDFGenerator extends CordovaPlugin {
                     printerWebView.setCordovaCallback(cordovaCallback);
                     webview.setWebViewClient(printerWebView);
 
-                    if (args.getString(0) != null && !args.getString(0).equals("null"))
+                    if (args.getString(0) != null && !args.getString(0).equals("null")) {
                         webview.loadUrl(args.getString(0));
+                    }
 
-                    if (args.getString(1) != null && !args.getString(1).equals("null"))
-                        webview.loadDataWithBaseURL(null,args.getString(1), "text/HTML","UTF-8", null);
+                    if (args.getString(1) != null && !args.getString(1).equals("null")) {
+                        String buffer = args.getString(1);
+                        webview.loadDataWithBaseURL(null, buffer, "text/HTML", "UTF-8", null);
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();

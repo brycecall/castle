@@ -134,6 +134,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                             sourceType: promise.row.item(m).phoSourceType
                           }
                           answer.photos.push(photo);
+                          question.photos.push(photo);
                         }
                         // Use increment variable to track progress in promise.row data block
                         increment = m;

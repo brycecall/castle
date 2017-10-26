@@ -628,11 +628,15 @@ $scope.questionTypes = [
     navigateQuestions(true);
   }, 'md-raised');
 
-  $scope.addPhotos = function () {
-    angular.copy($scope.question.photos, camera_manager.photos);
+  $scope.addPhotos = function (index, value) {
+      camera_manager.answerID = index;
+      camera_manager.title = $scope.question.title;
+      if (value !== null && value !== undefined) {
+        camera_manager.title += ": " + value;
+      }
     $state.go('camera');
   };
-
+    
   (function () {
     if ($scope.question.type == 'photo') {
       $scope.question.photos = [];

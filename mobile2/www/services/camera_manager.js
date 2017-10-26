@@ -25,6 +25,8 @@ app.factory('camera_manager', function (camera_mock, $state) {
     
   /* meant to store the state to return to after the Camera usage is done. */
   public.returnState = '';
+  public.title = '';
+  public.answerKey = '';
     
   public.setOptionsSize = function (width, height) {
     private.options.width = width;

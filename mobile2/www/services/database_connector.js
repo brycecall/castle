@@ -1027,7 +1027,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
     }
     
   
-  function buildUpdateQuery(inputObj, tableName, excludeObj) {
+  function buildUpdateQuery(inputObj, tableName, tablePrefix, excludeObj) {
       var objKeys = Object.keys(inputObj);
       var result = {
         query:'',
@@ -1043,8 +1043,8 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
           for (var i = 0; i < keysLength; i++) {
                var key = objKeys[i];
                var value = inputObj[key];
-              if (!excludeObj[key] && value && Object.prototype.toString.call( value ) !== '[object Array]') {
-               queryStatement +=  key + " = ?, "
+              if (!excludeObj[key] && value === undefined && Object.prototype.toString.call( value ) !== '[object Array]') {
+               queryStatement += tablePrefix + key + " = ?, "
                queryParams.push(value);
             }
           }

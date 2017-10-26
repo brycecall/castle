@@ -288,8 +288,7 @@ app.controller('inspection_section', function ($rootScope, $scope, inspection_ma
       $rootScope.loading = false;
       $scope.inspection = data.value;
       $scope.sections = $scope.inspection.sections;
-    },
-    function (data) {
+    },function (data) {
         $rootScope.loading = false;
       console.log("Error... no sections exist in the database");
     }
@@ -537,21 +536,30 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
     navigateQuestions(true);
   }, 'md-raised');
 
-  $scope.addPhotos = function () {
-    angular.copy($scope.question.photos, camera_manager.photos);
+  $scope.addPhotos = function (index, value) {
+      camera_manager.answerID = index;
+      camera_manager.title = $scope.question.title;
+      if (value !== null && value !== undefined) {
+        camera_manager.title += ": " + value;
+      }
     $state.go('camera');
   };
 
 
   var attachPhotos = function () {
-    if (camera_manager.photos.length > 0) {
-      $scope.question.photos = [];
-    }
-    for (var photoIndex in camera_manager.photos) {
-      var photo = camera_manager.photos[photoIndex];
-      if (!photo.deleted) {
-        $scope.question.photos.push(photo);
-      }
+    if (camera_manager.photos.length > 0 ) {
+        if (!$scope.question.photos) {
+            $scope.question.photos = [];
+        }
+        
+        for (var photoIndex in camera_manager.photos) {
+          var photo = camera_manager.photos[photoIndex];
+          if (!photo.deleted) {
+              photo.answerIndex = camera_manager.answerID;
+              photo.title = camera_manager.title;
+             $scope.question.photos.push(photo);
+          }
+        }
     }
     camera_manager.photos = [];
   };

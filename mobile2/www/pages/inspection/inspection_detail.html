@@ -32,13 +32,20 @@
         <div class="md-caption description">{{question.description}}</div>
     <form name="questionForm" style="padding-left: 0px;"  ng-class="question.notApplicable ? 'disabled' : ''">
         <div ng-if="question.type === 'checkbox'">
-            <div ng-repeat="checkBox in question.values track by $index" class="questionIndent">
+            <div  class="questionIndent" ng-repeat="checkBox in question.values track by $index">
+                <div  layout="row">
                 <md-checkbox ng-checked="exists(checkBox.key, question.answers)" 
                              ng-click="toggle(checkBox.key, question.answers)"
                              ng-disabled="question.notApplicable">
                     {{checkBox.key}}
                 </md-checkbox>
+                    <span flex=""></span>
+                    <md-button class="md-icon-button" ng-click="addPhotos(checkBox.id, checkBox.key)" ng-show="exists(checkBox.key, question.answers)" >
+                        <md-icon md-svg-icon="shutter_camera"></md-icon>
+                    </md-button>
+                </div>
             </div>
+            <div layout="row" layout-align="start center">
             <md-checkbox ng-model="newCheckBoxKey" 
                          ng-click="toggle(otherValue.value, question.answers, true)">
                 Other:
@@ -48,15 +55,26 @@
                     type="text" 
                     class="inlineInput"
                    >
+                    <span flex=""></span>
+                    <md-button class="md-icon-button" ng-click="addPhotos(otherValue.id, otherValue.value)" ng-show="exists(otherValue.value, question.answers)" >
+                        <md-icon md-svg-icon="shutter_camera"></md-icon>
+                    </md-button>
+            </div>
         </div>
         <div ng-if="question.type === 'radio'">
             <md-radio-group ng-model="question.answer"
                             ng-required="question.validation.isRequired"
                             ng-disabled="question.notApplicable">
-                <md-radio-button ng-repeat="radioButton in question.values" 
-                                 class="questionIndent" 
-                                 ng-value="radioButton.key">{{radioButton.key}}
-                </md-radio-button>
+                <div layout="row" layout-align="start center" ng-repeat="radioButton in question.values track by $index" >
+                    <md-radio-button 
+                                     class="questionIndent" 
+                                     ng-value="radioButton.key">{{radioButton.key}}
+                    </md-radio-button>
+                    <span flex=""></span>
+                    <md-button class="md-icon-button" ng-click="addPhotos(radioButton.id, radioButton.key)" ng-show="radioButton.key == question.answer" >
+                        <md-icon md-svg-icon="shutter_camera"></md-icon>
+                    </md-button>
+                </div>
                 <div layout="row" layout="start center">
                 <md-radio-button class="questionIndent" 
                                  ng-value="otherValue.singleSelect">Other
@@ -66,6 +84,10 @@
                             type="text" 
                             class="inlineInput">
                  </div>
+                    <span flex=""></span>
+                    <md-button class="md-icon-button" ng-click="addPhotos(otherValue.id, otherValue.singleSelect)" ng-show="otherValue.singleSelect == question.answer" >
+                        <md-icon md-svg-icon="shutter_camera"></md-icon>
+                    </md-button>
                  </div>
             </md-radio-group>
         </div>
@@ -123,11 +145,12 @@
             </div>
 
             <div layout="row" layout-align="start center" layout-wrap>
-            <div ng-repeat="photo in question.photos"
-                 class="photo md-whiteframe-1dp"
-                 
-                 style="background-image: url( {{photo.link}} ); margin: 10px;" 
+                <div ng-repeat="photo in question.photos"
+                 class="md-whiteframe-1dp"
                  ng-click="showFullScreen($event, photo)">
+                    <div>{{photo.title}}</div>
+                    <div class="photo" style="background-image: url( {{photo.link}} ); margin: 10px;" >
+                    </div>
                 </div>
             </div>
         </div>
@@ -135,17 +158,19 @@
              layout="row" 
              layout-align="start center" 
              layout-wrap>
-            <div ng-repeat="photo in question.photos"
-                 class="photo md-whiteframe-1dp" 
-                 style="background-image: url( {{photo.link}} ); margin: 10px;" 
+                <div ng-repeat="photo in question.photos"
+                 class="md-whiteframe-1dp"
                  ng-click="showFullScreen($event, photo)">
-            </div>
+                    <div style="margin: 10px; width: 200px;">{{photo.title}}</div>
+                    <div class="photo" style="background-image: url( {{photo.link}} ); margin: 10px;" >
+                    </div>
+                </div>
         </div>
-         <md-button class="md-accent md-raised"
+<!--         <md-button class="md-accent md-raised"
                    ng-disabled="question.notApplicable"
                    ng-click="addPhotos()">  
             Add Photos
-        </md-button>
+        </md-button>-->
         
         
     </form>

@@ -297,7 +297,7 @@ app.controller('inspection_section', function ($rootScope, $scope, inspection_ma
   
   action_manager.addAction("Save", "save", function() {
     $rootScope.loading = true;
-    inspection_manager.updateTemplate().then(function() {
+    inspection_manager.updateInspection().then(function() {
       $rootScope.loading = false;
     }, function(){
         $rootScope.loading = false;
@@ -340,7 +340,7 @@ app.controller('inspection_subsection', function ($rootScope, $scope, inspection
     
   action_manager.addAction("Save", "save", function() {
     $rootScope.loading = true;
-    inspection_manager.updateTemplate().then(function() {
+    inspection_manager.updateInspection().then(function() {
       $rootScope.loading = false;
     }, function(){
         $rootScope.loading = false;
@@ -528,7 +528,7 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
   }, 'md-raised');
   action_manager.addAction("Save", "save", function() {
     $rootScope.loading = true;
-    inspection_manager.updateTemplate().then(function() {
+    inspection_manager.updateInspection().then(function() {
       $rootScope.loading = false;
     });
     //  $scope.showListBottomSheet();
@@ -556,7 +556,7 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
         for (var photoIndex in camera_manager.photos) {
           var photo = camera_manager.photos[photoIndex];
           if (!photo.deleted) {
-              photo.answerIndex = camera_manager.answerID;
+              photo.answerID = camera_manager.answerID;
               photo.title = camera_manager.title;
              $scope.question.photos.push(photo);
           }

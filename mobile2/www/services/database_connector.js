@@ -1057,6 +1057,77 @@ app.factory('database', function ($rootScope, $state, $q, database_mock) {
       return result;
   }
       
+      
+    private.insertInspectionFromTemplate = function(templateId) {
+      var deferred = $q.defer();
+      db.executeSql("INSERT INTO Inspection \
+             SELECT ? as insLastModified, ? as insSourceType, insType, insName, \
+                    insUserId, insThemeId, insOrganizationId, insTemplateId, insTemplateTitle \
+             FROM   Inspection \
+             WHERE  rowId = ?", [new Date(), "inspection", templateId], 
+      function(data)  {
+          deferred.resolve({
+                  rowId: data.insertId,
+                  message: 'Successful save into inspection table from template'
+          });
+      }, 
+      function(error){
+        deferred.reject({
+          message: 'Error saving Inspection: ' + error.message
+        });
+      });
+      return deferred.promise;
+    };
+      
+    private.insertSectionFromTemplate = function(templateId, inspectionId) {
+      var deferred = $q.defer();
+          db.executeSql("INSERT INTO Section \
+                 SELECT secTitle, ? as secSourceType, ? as secInspectionId,  \
+                 FROM   Section \
+                 WHERE  secInspectionId = ?", ["inspection", inspectionId, templateId], 
+      function(data)  {
+          deferred.resolve({
+                  rowId: data.insertId,
+                  message: 'Successful save into section table from template'
+          });
+      }, 
+      function(error){
+        deferred.reject({
+          message: 'Error saving section: ' + error.message
+        });
+      });
+      return deferred.promise;
+    };
+      
+    private.insertSubsectionFromTemplate = function(templateId, inspectionId, sectionId) {
+      var deferred = $q.defer();
+          db.executeSql("INSERT INTO Subsection \
+                 SELECT susTitle, ? as susSourceType, ? as susInspectionId, ? as susSectionId,  \
+                 FROM   Subsection \
+                 WHERE  susInspectionId = ?", ["inspection", inspectionId, sectionId, templateId], 
+      function(data)  {
+          deferred.resolve({
+                  rowId: data.insertId,
+                  message: 'Successful save into subsection table from template'
+          });
+      }, 
+      function(error){
+        deferred.reject({
+          message: 'Error saving section: ' + error.message
+        });
+      });
+      return deferred.promise;
+    };
+      
+    
+      
+      //TODO: chain the promises to make a full inspection from a template
+/*    public.insertFullInspectionFromTemplate = function(templateId) {
+        var fullInspectionPromise = private.insertInspectionFromTemplate().then(
+            inspection
+        )
+    };*/
+      
     // Overwrite the copied template with the actual data of the save
     public.saveInspection = function (ins, sourceType) {
       var timestamp = new Date();

@@ -1,9 +1,12 @@
-self.onmessage = function (message) {
-  var report_buffer = message.data;
-  var report = report_buffer.replace("data:application/pdf;base64,", '');
-  report = base64Blob(report, "application/pdf");
+//var fs = self.webkitRequestFileSystemSync(TEMPORARY, 1024 * 1024 /*1MB*/ );
 
-  self.postMessage(report);
+self.onmessage = function (message) {
+  var photo = message.data;
+  var image = photo.link.split("base64,")[1];
+  image = base64Blob(image, "image/jpeg");
+  console.log(image);
+
+  self.postMessage(image);
 }
 
 // SEE: https://ourcodeworld.com/articles/read/230/how-to-save-a-pdf-from-a-base64-string-on-the-device-with-cordova

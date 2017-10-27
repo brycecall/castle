@@ -8,12 +8,11 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $state, $q, $cordovaFile, header_manager, theme_manager, action_manager, inspection_manager) {
+app.controller('report', function ($scope, $rootScope, $timeout, $interval, $stateParams, $state, $q, $cordovaFile, header_manager, theme_manager, action_manager, inspection_manager) {
   $rootScope.loading = false;
   var preview_frame = document.querySelector("#preview");
   var render_frame = document.querySelector("#render");
   var inspection_buffer = null;
-  var report_buffer = null;
 
   var start_time = new Date();
   var end_time = null;
@@ -27,95 +26,129 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
   var inspection_promise = inspection_manager.getInspection($scope.insId);
   inspection_promise.then(function (data) {
     var inspection = data.value;
-    var theme_promise = theme_manager.getThemeManifest(inspection.insThemeId);
-    theme_promise.then(function (manifest) {
 
-      var entry_point = manifest.entry_point;
-      if ($rootScope.debug) {
-        entry_point = "http://localhost:8080/" + inspection.insThemeId + "/";
-      }
+    // Cache all of the images on the filesystem to avoid MemOut Issues
+    var cache_promise = storeImageCache(inspection);
+    cache_promise.then(function (inspection) {
 
-      render_frame.addEventListener('load', function (event) {
-        end_time = new Date();
-        console.log("Loading previewer took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
-        start_time = new Date();
+      var theme_promise = theme_manager.getThemeManifest(inspection.insThemeId);
+      theme_promise.then(function (manifest) {
 
-        var object = {};
-        object.manifest = manifest;
-        object.meta = manifest.template;
-        object.data = inspection;
-        inspection_buffer = inspection;
+        var entry_point = manifest.entry_point;
+        if ($rootScope.debug) {
+          entry_point = "http://localhost:8080/" + inspection.insThemeId + "/";
+        }
 
-        object.apply = function () {
-          $scope.message = "Doing some more magic...";
-          if ($rootScope.debug) {
-            return;
-          }
-
+        render_frame.addEventListener('load', function (event) {
           end_time = new Date();
-          console.log("Theme application took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
+          console.log("Loading previewer took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
           start_time = new Date();
 
-          var data = render_frame.contentDocument.querySelector('html').outerHTML;
+          var object = {};
+          object.manifest = manifest;
+          object.meta = manifest.template;
+          object.data = inspection;
+          inspection_buffer = inspection;
 
-          if (window['pdf'] !== undefined) {
-            pdf.htmlToPDF({
-              data: data,
-              documentSize: "A4",
-              landscape: "portrait",
-              type: "file",
-              fileName: inspection_buffer.insName + ".pdf"
-            }, function (data) {
-              $scope.message = "Saving you a ton of time...";
+          object.apply = function () {
+            $scope.message = "Doing some more magic...";
+            if ($rootScope.debug) {
+              return;
+            }
 
-              end_time = new Date();
-              console.log("Generation the report took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
-              start_time = new Date();
+            end_time = new Date();
+            console.log("Theme application took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
+            start_time = new Date();
 
-              $scope.report = true;
-              preview_frame.contentWindow.PDFViewerApplication.open(cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf");
+            var data = render_frame.contentDocument.querySelector('html').outerHTML;
+            $scope.message = "Saving you a ton of time...";
 
-              end_time = new Date();
-              console.log("Rendering the preview took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
-              start_time = new Date();
+            if (window['pdf'] !== undefined) {
+              pdf.htmlToPDF({
+                data: data,
+                documentSize: "A4",
+                landscape: "portrait",
+                type: "file",
+                fileName: inspection_buffer.insName + ".pdf"
+              }, function (data) {
+                end_time = new Date();
+                console.log("Generation the report took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
+                start_time = new Date();
 
-              action_manager.enable();
+                $scope.report = true;
+                preview_frame.contentWindow.PDFViewerApplication.open(cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf");
 
-            }, function (error) {
-              $scope.report = false;
-              report_buffer = null;
-            });
-          }
-        };
+                end_time = new Date();
+                console.log("Rendering the preview took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
+                start_time = new Date();
 
-        // But the castle object on the iframe
-        render_frame.contentWindow.castle = object;
-      }, true);
+                action_manager.enable();
 
-      render_frame.src = entry_point;
+              }, function (error) {
+                $scope.report = false;
+              });
+            }
+          };
+
+          // But the castle object on the iframe
+          render_frame.contentWindow.castle = object;
+        }, true);
+
+        render_frame.src = entry_point;
+      });
     });
   });
 
-  var saveReport = function () {
+  var storeImageCache = function (template) {
     var defered = $q.defer();
 
-    if (!$scope.report) {
-      defered.reject("No report defined.");
+    // Recursive Object Parser
+    var parseObject = function (object) {
+      var keys = Object.keys(object);
+      for (var i = 0; i < keys.length; i++) {
+        if (keys[i] == "photos") {
+          var photos = object[keys[i]];
+          for (var j = 0; j < photos.length; j++) {
+            storeImage(photos[j]);
+          }
+        }
+
+        var buffer = object[keys[i]];
+        var type = (buffer ? (typeof buffer).toLowerCase() : null);
+        if ((type == "object" || type == "array")) {
+          parseObject(object[keys[i]]);
+        }
+      }
+    };
+
+    var worker_counter = 0;
+    var storeImage = function (photo) {
+      var worker = new Worker("pages/report/cache_worker.js");
+      worker.onmessage = function(message) {
+        worker_counter--;
+      }
+      worker.onerror = function (error) {
+        defered.reject(error);
+      }
+      worker_counter++;
+      worker.postMessage(photo);
     }
 
-    var worker = new Worker("pages/report/report_worker.js");
-    worker.onmessage = function (message) {
-      var report = message.data;
-      $cordovaFile.writeFile(cordova.file.externalDataDirectory, inspection_buffer.insName + ".pdf", report, true)
-        .then(function (result) {
-          defered.resolve(result);
-        }, function (error) {
-          defered.reject(error);
-        });
-    };
-    worker.postMessage(report_buffer);
+    parseObject(template);
+    
+    var handle = $interval(
+    function() {
+      if (worker_counter == 0) {
+        $interval.cancel(handle);
+        defered.resolve(template);
+      }
+    }, 300);
 
     return defered.promise;
+  };
+
+  var clearImageCache = function () {
+    // TODO
   };
 
   header_manager.mode = HEADER_MODES.Action;
@@ -126,12 +159,11 @@ app.controller('report', function ($scope, $rootScope, $timeout, $stateParams, $
   action_manager.disable();
   action_manager.mode = ACTION_MODES.Action;
   action_manager.addAction("Send", 'send', function () {
-    saveReport();
     if (window['cordova'] !== undefined && $scope.report) {
       cordova.plugins.email.open({
         body: "Here is your report!!!",
         subject: "Home Inspection Report from Castle",
-        attachments: report_buffer.replace("data:application/pdf;base64,", 'base64:Home Inspection.pdf//')
+        attachments: cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf"
       })
     }
   }, 'md-accent');

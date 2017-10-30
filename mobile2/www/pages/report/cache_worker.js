@@ -1,12 +1,8 @@
-//var fs = self.webkitRequestFileSystemSync(TEMPORARY, 1024 * 1024 /*1MB*/ );
-
 self.onmessage = function (message) {
-  var photo = message.data;
-  var image = photo.link.split("base64,")[1];
-  image = base64Blob(image, "image/jpeg");
-  console.log(image);
-
-  self.postMessage(image);
+  var buffer = message.data;
+  var raw_image = buffer.photo.split("base64,")[1];
+  buffer.photo = base64Blob(raw_image, "image/jpeg");
+  self.postMessage(buffer);
 }
 
 // SEE: https://ourcodeworld.com/articles/read/230/how-to-save-a-pdf-from-a-base64-string-on-the-device-with-cordova

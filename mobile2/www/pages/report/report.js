@@ -8,7 +8,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('report', function ($scope, $rootScope, $timeout, $interval, $stateParams, $state, $q, $cordovaFile, header_manager, theme_manager, action_manager, inspection_manager) {
+app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval, $stateParams, $state, $q, $cordovaFile, header_manager, theme_manager, action_manager, inspection_manager) {
   $rootScope.loading = false;
   var preview_frame = document.querySelector("#preview");
   var render_frame = document.querySelector("#render");
@@ -102,47 +102,76 @@ app.controller('report', function ($scope, $rootScope, $timeout, $interval, $sta
   var storeImageCache = function (template) {
     var defered = $q.defer();
 
-    // Recursive Object Parser
-    var parseObject = function (object) {
-      var keys = Object.keys(object);
-      for (var i = 0; i < keys.length; i++) {
-        if (keys[i] == "photos") {
-          var photos = object[keys[i]];
-          for (var j = 0; j < photos.length; j++) {
-            storeImage(photos[j]);
+    // Create the cache directory
+    $cordovaFile.createDir(cordova.file.cacheDirectory, "images", true)
+      .then(function (entry) {
+
+        // Recursive Object Parser
+        var parseObject = function (object) {
+          var keys = Object.keys(object);
+          for (var i = 0; i < keys.length; i++) {
+            if (keys[i] == "photos") {
+              var photos = object[keys[i]];
+              for (var j = 0; j < photos.length; j++) {
+                storeImage(photos[j], object, j);
+              }
+            }
+
+            var buffer = object[keys[i]];
+            var type = (buffer ? (typeof buffer).toLowerCase() : null);
+            if ((type == "object" || type == "array")) {
+              parseObject(object[keys[i]]);
+            }
           }
+        };
+
+        var worker_counter = 0;
+        var storeImage = function (photo, object, loc) {
+          $scope.message = "Saving Image " + photo.title;
+          
+          if (photo.link.indexOf("file") == 0) {
+            console.log(photo.link + " has already been saved.  Skipping...");
+            return;
+          }
+          
+          var buffer = {};
+          buffer.photo = photo.link.toString(); // Make a deep string copy
+          buffer.filename = $sha.hash(photo.link) + ".jpg";
+          
+          object.photos[loc].link = entry.nativeURL + buffer.filename;
+
+          var worker = new Worker("pages/report/cache_worker.js");
+          worker.onmessage = function (message) {
+            console.log(message.data);
+            $cordovaFile.writeFile(entry.nativeURL, message.data.filename, message.data.photo, true)
+              .then(
+                function (image_entry) {
+                  worker_counter--;
+                },
+                function (error) {
+                  worker_counter = 0;
+                  defered.reject(error);
+                });
+          }
+          worker.onerror = function (error) {
+            worker_counter = 0;
+            defered.reject(error);
+          }
+          worker_counter++;
+          worker.postMessage(buffer);
         }
 
-        var buffer = object[keys[i]];
-        var type = (buffer ? (typeof buffer).toLowerCase() : null);
-        if ((type == "object" || type == "array")) {
-          parseObject(object[keys[i]]);
-        }
-      }
-    };
+        parseObject(template);
 
-    var worker_counter = 0;
-    var storeImage = function (photo) {
-      var worker = new Worker("pages/report/cache_worker.js");
-      worker.onmessage = function(message) {
-        worker_counter--;
-      }
-      worker.onerror = function (error) {
-        defered.reject(error);
-      }
-      worker_counter++;
-      worker.postMessage(photo);
-    }
+        var handle = $interval(
+          function () {
+            if (worker_counter == 0) {
+              $interval.cancel(handle);
+              defered.resolve(template);
+            }
+          }, 300);
 
-    parseObject(template);
-    
-    var handle = $interval(
-    function() {
-      if (worker_counter == 0) {
-        $interval.cancel(handle);
-        defered.resolve(template);
-      }
-    }, 300);
+      });
 
     return defered.promise;
   };

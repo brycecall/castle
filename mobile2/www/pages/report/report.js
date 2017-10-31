@@ -10,7 +10,7 @@ app.config(function ($stateProvider) {
 
 app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval, $stateParams, $state, $q, $cordovaFile, header_manager, theme_manager, action_manager, inspection_manager) {
   $rootScope.loading = false;
-  var preview_frame = document.querySelector("#preview");
+  //var preview_frame = document.querySelector("#preview");
   var render_frame = document.querySelector("#render");
   var inspection_buffer = null;
 
@@ -76,8 +76,9 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
                 start_time = new Date();
 
                 $scope.report = true;
-                preview_frame.contentWindow.PDFViewerApplication.open(cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf");
-
+                //preview_frame.contentWindow.PDFViewerApplication.open(cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf");
+                cordova.plugins.fileOpener2.open(cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf", 'application/pdf');
+                
                 end_time = new Date();
                 console.log("Rendering the preview took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
                 start_time = new Date();
@@ -128,16 +129,16 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
         var worker_counter = 0;
         var storeImage = function (photo, object, loc) {
           $scope.message = "Saving Image " + photo.title;
-          
+
           if (photo.link.indexOf("file") == 0) {
             console.log(photo.link + " has already been saved.  Skipping...");
             return;
           }
-          
+
           var buffer = {};
           buffer.photo = photo.link.toString(); // Make a deep string copy
           buffer.filename = $sha.hash(photo.link) + ".jpg";
-          
+
           object.photos[loc].link = entry.nativeURL + buffer.filename;
 
           var worker = new Worker("pages/report/cache_worker.js");

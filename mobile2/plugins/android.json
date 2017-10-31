@@ -30,6 +30,9 @@
     },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "com.castle.inspect"
+    },
+    "cordova-plugin-file-opener2": {
+      "PACKAGE_NAME": "com.castle.inspect"
     }
   },
   "dependent_plugins": {

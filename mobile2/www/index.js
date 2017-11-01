@@ -40,17 +40,22 @@ app.run(function ($rootScope, $timeout) {
 })
 
 // Control to set application in DEBUG mode
-app.run(function ($rootScope, database) {
+app.run(function ($rootScope, database, theme_manager) {
   window.debug = function (state) {
     if (state) {
       localStorage.setItem("debug", "true");
-      database.initTables();
+      //database.initTables();
     } else {
       localStorage.removeItem("debug");
     }
     $rootScope.debug = state;
   }
   $rootScope.debug = (localStorage.getItem("debug") == "true" ? true : false);
+  
+  window.reset = function() {
+    database.initTables();
+    theme_manager.clearThemes();
+  }
 });
 
 app.run(function (theme_manager) {

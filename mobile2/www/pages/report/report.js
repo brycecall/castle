@@ -75,7 +75,7 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
                 console.log("Generation the report took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
                 start_time = new Date();
 
-                $scope.report = true;
+                //$scope.report = true;
                 //preview_frame.contentWindow.PDFViewerApplication.open(cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf");
                 cordova.plugins.fileOpener2.open(cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf", 'application/pdf');
                 
@@ -83,7 +83,8 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
                 console.log("Rendering the preview took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
                 start_time = new Date();
 
-                action_manager.enable();
+                //action_manager.enable();
+                window.history.back();
 
               }, function (error) {
                 $scope.report = false;

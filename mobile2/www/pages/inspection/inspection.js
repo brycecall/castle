@@ -219,7 +219,7 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
       console.log(getErr.message);    
     });
   }
-
+  
   // Get themes & templates
   var themeGetter = theme_manager.update();
   themeGetter.then(
@@ -556,7 +556,7 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
         for (var photoIndex in camera_manager.photos) {
           var photo = camera_manager.photos[photoIndex];
           if (!photo.deleted) {
-              photo.answerID = camera_manager.answerID;
+              photo.answerId = camera_manager.answerID;
               photo.title = camera_manager.title;
              $scope.question.photos.push(photo);
           }

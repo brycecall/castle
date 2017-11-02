@@ -15,13 +15,13 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
 
     if (sure) {
       $rootScope.loading = true;
+      theme_manager.clearThemes();
       database.initTables()
         .then(function () {
           $timeout(function () {
             $scope.reload();
           }, 8000);
         }, function (error) {
-          theme_manager.clearThemes();
           $rootScope.loading = false;
           alert(error);
         });

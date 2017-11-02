@@ -31,7 +31,7 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q, $sh
   }
 
   public.clearThemes = function () {
-    $cordovaFile.removeDir(cordova.file.dataDirectory, "themes");
+    $cordovaFile.removeRecursively(cordova.file.dataDirectory, "themes");
   }
 
   public.update = function () {
@@ -149,6 +149,11 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q, $sh
     theme.hash = $sha.hash(JSON.stringify(theme));
     theme.last_modified = (new Date()).toISOString();
 
+    // Remove the theme root dir
+    theme.entry_point = theme.entry_point.split(theme.unique + '/')[1];
+    theme.preview = theme.preview.split(theme.unique + '/')[1];
+    theme.thumbnail = theme.thumbnail.split(theme.unique + '/')[1];
+    
     $cordovaFile.writeFile(cordova.file.dataDirectory, "themes/" + theme.unique + "/manifest.json", JSON.stringify(theme), true)
       .then(
         function (result) {

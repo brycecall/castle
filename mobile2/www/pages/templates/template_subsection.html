@@ -35,11 +35,12 @@
                        ng-click="">
                 <md-button class="md-icon-button" 
                            aria-label="delete section"
-                           ng-click="remove($index, subsections)">
+                           ng-click="remove($index, subsections)"
+                           ng-disabled="subsection.insSourceType == 'theme'">
                     <md-icon md-svg-src="cancel"></md-icon>
                 </md-button>
                     <input type="text" 
-                           ng-disabled="false" 
+                           ng-disabled="subsection.insSourceType == 'theme'" 
                            ng-model="subsection.title"
                            class="editInput"
                            style="background-color:inherit;" />
@@ -60,7 +61,7 @@
   <div style="padding: 8px 0 8px 16px;" ng-show="templates.length <= 0">
       <div class="md-title">No subsections yet!</div>
   </div>
-    <md-button ng-click="addSubsection()" class="md-raised" aria-label="Add Section">
+    <md-button ng-disabled="subsections[0].insSourceType == 'theme'" ng-click="addSubsection()" class="md-raised" aria-label="Add Section">
       Add Subsection
     </md-button>
     </div>

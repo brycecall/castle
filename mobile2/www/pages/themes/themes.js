@@ -68,11 +68,10 @@ app.controller('theme_edit', function ($scope, $rootScope, theme_manager) {
 
 app.controller('theme_preview', function ($scope, $rootScope, theme_manager) {
   var preview_frame = document.querySelector("#preview");
-  var preview_url = "../../../" + theme_manager.current.preview;
 
   preview_frame.addEventListener('load', function () {
     setTimeout(function () {
-      preview_frame.contentWindow.PDFViewerApplication.open(preview_url);
+      preview_frame.contentWindow.PDFViewerApplication.open(theme_manager.current.preview);
     }, 500);
   })
 

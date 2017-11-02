@@ -49,6 +49,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
           private.inspection.insId = promise.row.item(0).rowId;
           private.inspection.insSourceType = promise.row.item(0).insSourceType;
           private.inspection.sections = [];
+          
           var i = 0;
           var increment = 0;
           do {
@@ -183,6 +184,10 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
         function (result) {
           theme_manager.current = result;
 
+          private.inspection.insThemeId = id;
+          private.inspection.insTemplateId = null;
+          private.inspection.insTemplateTitle = result.title;
+          private.inspection.insSourceType = "theme";
           private.inspection.insLastModified = result.last_modified;
           private.inspection.insLastSubmitted = result.date_created;
           private.inspection.insJobId = null;
@@ -193,7 +198,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
           private.inspection.insId = id;
           private.inspection.sections = result.template;
 
-          defer.resolve(private.inspection);
+          defer.resolve({ value: private.inspection });
         },
         function (error) {
           private.inspection = {}; //failure eh?
@@ -503,8 +508,10 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
   private.saveToThemeManager = function () {
     var defer = $q.defer();
 
+    theme_manager.current.title = private.inspection.insTemplateTitle;
     theme_manager.current.template = private.inspection.sections;
     theme_manager.saveTheme(theme_manager.current);
+    
     return defer.promise;
   };
 

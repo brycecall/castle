@@ -1,14 +1,14 @@
 <link type="text/css" rel="stylesheet" href="pages/templates/templates.css" />
 <div class="page">
-<div style="width:100%; height: 50px; background-color: white; color: darkgrey;" layout="row" layout-align="start center">
-        <md-button style="min-width:20px; text-transform: none; font-weight:600;" class="md-caption md-accent" ng-click="navigate(insId)">Sec</md-button>
+  <div style="width:100%; height: 50px; background-color: white; color: darkgrey;" layout="row" layout-align="start center">
+    <md-button style="min-width:20px; text-transform: none; font-weight:600;" class="md-caption md-accent" ng-click="navigate(insId)">Sec</md-button>
     <div flex=""></div>
-</div>
-    <md-divider></md-divider>
+  </div>
+  <md-divider></md-divider>
   <div class="centerPage" id="centerPage">
     <div layout="row" layout-align="start end">
-        <h2 class="md-subhead insTitle" style="margin-bottom:0px;">Template Title:</h2>
-        <input type="text" style="margin-left: 4px;" class="editInput"  ng-model="template.insTemplateTitle" />
+      <h2 class="md-subhead insTitle" style="margin-bottom:0px;">Title:</h2>
+      <input type="text" style="margin-left: 4px;" class="editInput" ng-model="template.insTemplateTitle" layout-fill/>
     </div>
     <div layout="row" layout-align="space-between center">
       <h2 class="md-subhead insTitle" style="margin-bottom:0px;">Sections</h2>
@@ -20,27 +20,24 @@
         <div style="padding:0px 0px 0px 0px; margin:0;
                          vertical-align:middle; border-radius:0; 
                          text-transform:none; background-color:#FFF;  height:52px;" class="md-no-style" aria-label="{{section.title}}" layout="row" layout-align="start center" ng-click="">
-        <md-button class="md-icon-button" 
-                   aria-label="delete section"
-                   ng-click="remove($index, sections)"
-                   ng-disabled="section.insSourceType === 'theme'">
+          <md-button class="md-icon-button" aria-label="delete section" ng-click="remove($index, sections)" ng-disabled="template.insSourceType === 'theme'">
             <md-icon md-svg-src="cancel"></md-icon>
-        </md-button>
-          <input type="text" ng-disabled="section.insSourceType === 'theme'" ng-model="section.title" class="editInput" style="background-color:inherit;" />
+          </md-button>
+          <input type="text" ng-disabled="template.insSourceType === 'theme'" ng-model="section.title" class="editInput" style="background-color:inherit;" />
           <span flex=""></span>
-<!--          <md-icon md-svg-icon="check" class="md-primary" style="min-width:24px;"></md-icon>-->
+          <!--          <md-icon md-svg-icon="check" class="md-primary" style="min-width:24px;"></md-icon>-->
           <md-button aria-label="toggle pages menu" class="md-icon-button" ng-click="goToSubsection($index)">
             <md-icon md-svg-icon="keyboard_arrow_right"></md-icon>
           </md-button>
-            
+
         </div>
         <md-divider ng-if="!$last"></md-divider>
       </div>
     </md-card>
-  <div style="padding: 8px 0 8px 16px;" ng-show="sections.length <= 0">
+    <div style="padding: 8px 0 8px 16px;" ng-show="sections.length <= 0">
       <div class="md-title">No sections yet!</div>
-  </div>
-    <md-button ng-disabled="section.insSourceType === 'theme'" ng-click="addSection()" class="md-raised" aria-label="Add Section">
+    </div>
+    <md-button ng-disabled="template.insSourceType == 'theme'" ng-click="addSection()" class="md-raised" aria-label="Add Section">
       Add Section
     </md-button>
   </div>

@@ -37,10 +37,11 @@
                    <md-button
                            class="md-icon-button"
                            aria-label="delete question"
-                           ng-click="remove($index, questions)">
+                           ng-click="remove($index, questions)"
+                           ng-disabled="question.insSourceType == 'theme'">
                     <md-icon md-svg-src="cancel"></md-icon>
                 </md-button>
-                  <input type="text" ng-disabled="false" ng-model="question.title" class="editInput" style="background-color:inherit;" />
+                  <input type="text" ng-disabled="question.insSourceType == 'theme'" ng-model="question.title" class="editInput" style="background-color:inherit;" />
 
                     <span flex=""></span>
 <!--
@@ -61,7 +62,7 @@
   <div style="padding: 8px 0 8px 16px;" ng-show="templates.length <= 0">
       <div class="md-title">No questions yet!</div>
   </div>
-    <md-button ng-click="addQuestion()" class="md-raised" aria-label="Add Question">
+    <md-button ng-disabled="questions[0].insSourceType == 'theme'" ng-click="addQuestion()" class="md-raised" aria-label="Add Question">
       Add Question
     </md-button>
     </div>

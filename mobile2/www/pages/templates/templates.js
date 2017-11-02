@@ -265,7 +265,7 @@ app.controller('template_new', function ($rootScope, $scope, $state, $rootScope,
 });
 
 app.controller('template_section', function ($rootScope, $scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
-  header_manager.title = 'Templates';
+  header_manager.title = "Edit " + inspection_manager.mode.charAt(0).toUpperCase() + inspection_manager.mode.substr(1);
   header_manager.theme = 'templateTheme';
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
@@ -348,7 +348,8 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
   $scope.remove = templateShareService.remove;
   // All the sections for a specific inspection/report
   $scope.subsections = [];
-  header_manager.title = 'Templates';
+  
+  header_manager.title = "Edit " + inspection_manager.mode.charAt(0).toUpperCase() + inspection_manager.mode.substr(1);
   header_manager.theme = 'templateTheme';
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
@@ -411,7 +412,8 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
   $scope.remove = templateShareService.remove;
   // All the sections for a specific inspection/report
   $scope.questions = [];
-  header_manager.title = 'Templates';
+  
+  header_manager.title = "Edit " + inspection_manager.mode.charAt(0).toUpperCase() + inspection_manager.mode.substr(1);
   header_manager.theme = 'templateTheme';
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
@@ -490,8 +492,9 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
   $scope.questionIndex = $stateParams.questionIndex;
+  
   header_manager.mode = HEADER_MODES.Action;
-  header_manager.title = 'Templates';
+  header_manager.title = "Edit " + inspection_manager.mode.charAt(0).toUpperCase() + inspection_manager.mode.substr(1);
   header_manager.theme = 'templateTheme';
   header_manager.setAction('Back', 'back', function () {
     $state.go('template_question', {

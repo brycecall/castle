@@ -6,6 +6,6 @@ bower_components/
 /www/bower_components/webcomponentsjs/build.log
 /plugins/android.json
 /mobile/res/
-android/
+/android/
 .DS_Store
 

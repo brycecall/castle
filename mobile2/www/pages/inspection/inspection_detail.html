@@ -105,14 +105,19 @@
             <md-input-container>
                 <label>Your Answer</label>
                 <input ng-model="question.answer" 
-                       type="{{question.validation ? question.validation.type : 'text'}}" 
-                       md-minlength='question.validation.min' 
-                       md-maxlength='question.validation.max'
+                       type="{{question.validation ? question.validation.type : 'text'}}"
+                       md-min="{{question.validation.type == 'number' ? question.validation.min : null}}"
+                       md-max="{{question.validation.type == 'number' ? question.validation.max : null}}"
+                       md-minlength="{{question.validation.type == 'text' ? question.validation.min : null}}"
+                       md-maxlength="{{question.validation.type == 'text' ? question.validation.max : null}}"
                        md-select-on-focus
                        ng-required="question.validation.isRequired"
                        ng-disabled="question.notApplicable"
                        name="shortText"
                        >
+                <md-button class="md-icon-button text-photo-button" ng-click="addPhotos(question.values[0].id, question.values[0].key)" ng-show=true>
+                    <md-icon md-svg-icon="shutter_camera"></md-icon>
+                </md-button>
                 <div ng-messages="questionForm.shortText.$error" 
                      ng-show="questionForm.shortText.$dirty">
                   <div ng-message="required">This is required!</div>

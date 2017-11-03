@@ -453,6 +453,7 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
       $rootScope.loading = false;
       $scope.questionCount = data.value.length;
       $scope.question = data.value[$scope.questionIndex];
+      console.log($scope.question);
       attachPhotos();
 
         
@@ -538,6 +539,7 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
   }, 'md-raised');
 
   $scope.addPhotos = function (index, value) {
+      console.log('add photos index: ' + index + ' value: ' + value);
       camera_manager.answerID = index;
       camera_manager.title = $scope.question.title;
       if (value !== null && value !== undefined) {

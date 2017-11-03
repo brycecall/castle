@@ -52,3 +52,7 @@
 .flatCard {
     box-shadow: none;
 }
+
+.text-photo-button {
+    position: absolute;
+}

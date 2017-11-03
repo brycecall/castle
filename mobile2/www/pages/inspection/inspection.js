@@ -191,7 +191,20 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
     $scope.startInspection();
   });
 
-  $scope.startInspection = function () {
+
+   $scope.startInspection = function() {
+       inspection_manager.insertInspectionFromTemplate($scope.sTemplate.rowId).then(function(data) {
+          setTimeout(function() {
+            $rootScope.loading = false;
+            $state.go('inspection_section', {
+              'insId': data.inspectionId
+            });}, 6000);
+       }, function(){
+          console.log('Error saving inspection: ' + data.message);    
+       });
+   };    
+    
+ /* $scope.startInspection = function () {
     var promise = inspection_manager.getInspection($scope.sTemplate.rowId);
     promise.then(function (data) {
       $rootScope.loading = true;
@@ -218,8 +231,8 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
       $rootScope.loading = false;
       console.log(getErr.message);    
     });
-  }
-  
+  }*/
+
   // Get themes & templates
   var themeGetter = theme_manager.update();
   themeGetter.then(

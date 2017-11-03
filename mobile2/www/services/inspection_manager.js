@@ -373,6 +373,10 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     });
     return defer.promise;
   };
+    
+  public.insertInspectionFromTemplate = function(templateId) {
+     return database.insertFullInspectionFromTemplate(templateId);
+  }
 
   public.saveInspection = function () {
     var defer = $q.defer();

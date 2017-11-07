@@ -529,7 +529,6 @@
       return deferred.promise;
     }
     
-    
     public.initThemes = function (db) {
       var deferred = $q.defer();
       db.executeSql('INSERT INTO Theme(themeTitle, themeBlob, userId) VALUES (?, ?, ?)', ['Home Theme', 'a whole bunch of text', 1], function (res) {
@@ -543,7 +542,7 @@
       });
       return deferred.promise;
     }
-
+    
     public.initTemplates = function (db) {
       console.log('db initTemplates being called');
       var timestamp = new Date();
@@ -561,7 +560,7 @@
       return deferred.promise;
     }
     
-    public.dropAllTables = function (db) {
+    public.dropAllTables = function (db) {   
       console.log('Dropping All Tables');
       var deferred = $q.defer();
       // Batch script to create all tables in db
@@ -596,42 +595,50 @@
     
     public.initTables = function (db) {
       var deferred = $q.defer();
-      public.dropAllTables();
-      console.log('calling initTables');
-      // Batch script to create all tables in db
-      db.sqlBatch([
-          'CREATE TABLE IF NOT EXISTS Answer (ansQuestionId INT, ansValue, ansType, ansInspectionId INT, ansSourceType, FOREIGN KEY(ansInspectionId) REFERENCES Inspection(rowId), FOREIGN KEY(ansQuestionid) REFERENCES Question(rowId))',
-          'CREATE TABLE IF NOT EXISTS Client (cliFirstName, cliLastName, cliAddress, cliCity, cliState, cliZipCode, cliPhone, cliEmail)',
-          'CREATE TABLE IF NOT EXISTS Inspection (insLastModified, insLastSubmitted, insJobId INT, insSourceType, insType, insName, insUserId INT, insThemeId INT, insThemeResponseBlob, insTemplateResponseBlob, insOrganizationId, insTemplateId INT, insTemplateTitle, FOREIGN KEY(insOrganizationId) REFERENCES Organization(rowId), FOREIGN KEY(insUserId) REFERENCES User(rowId), FOREIGN KEY(insJobId) REFERENCES Job(rowId), FOREIGN KEY(insThemeId) REFERENCES Theme(rowId))',
-          'CREATE TABLE IF NOT EXISTS Job (jobUserId INT, jobDate, jobAddress, jobZipCode, jobCity, jobState, jobStatus, jobSubmittedDate, FOREIGN KEY(jobUserId) REFERENCES User(rowId))',
-          'CREATE TABLE IF NOT EXISTS Organization (orgName, orgAddress, orgLogo, orgCity, orgState, orgZipCode)',
-          'CREATE TABLE IF NOT EXISTS Photo (phoLink, phoTitle, phoQuestionId INT, phoAnswerId INT, phoInspectionId INT, phoSourceType, FOREIGN KEY(phoQuestionId) REFERENCES Question(rowId), FOREIGN KEY(phoAnswerId) REFERENCES Answer(rowId), FOREIGN KEY(phoInspectionId) REFERENCES Inspection(rowId))',
-          'CREATE TABLE IF NOT EXISTS Question (queTitle, queDescription, queSubSectionId INT, queAnswered INT,  queType, queRequired INT, queMin, queMax, queValidationType, queNotApplicable INT, queShowSummaryRemark INT, queShowDescription INT, queInspectionId INT, queSourceType, FOREIGN KEY(queInspectionId) REFERENCES Inspection(rowId), FOREIGN KEY(queSubSectionId) REFERENCES SubSection(rowId))',
-          'CREATE TABLE IF NOT EXISTS QuestionAnswers (quaQuestionId INT, quaAnswerId INT, quaInspectionId INT, quaSourceType, FOREIGN KEY (quaQuestionId) REFERENCES Question(rowId), FOREIGN KEY(quaAnswerId) REFERENCES Answer(rowId), FOREIGN KEY(quaInspectionId) REFERENCES Inspection(rowId))',
-          'CREATE TABLE IF NOT EXISTS ReportHistory (rehInspectionId INT, rehLastModified, rehSubmittedDate, FOREIGN KEY(rehInspectionId) REFERENCES Inspection(rowId))',
-          'CREATE TABLE IF NOT EXISTS Section (secTitle, secInspectionId INT, secSourceType, FOREIGN KEY(secInspectionId) REFERENCES Inspection(rowId))',
-          'CREATE TABLE IF NOT EXISTS SubSection (susTitle, susSectionId INT, susInspectionId INT, susSourceType, FOREIGN KEY(susSectionId) REFERENCES Section(rowId), FOREIGN KEY(susInspectionId) REFERENCES Inspection(rowId))',
-          'CREATE TABLE IF NOT EXISTS Theme (themeTitle, themeBlob, userId INT, FOREIGN KEY(userId) REFERENCES User(rowId))',
-          'CREATE TABLE IF NOT EXISTS User (usrAddress, usrFirstName, usrLastName, usrPhone, usrEmail, usrType, usrUserAccessId, usrOrganizationId, name, pass, email)',
-          'CREATE TABLE IF NOT EXISTS UserAccess (usaTitle, usaOrganizationId, usaEditUsers, usaEditOrgInfo, usaEditTemplate, usaEditRequired, FOREIGN KEY(usaOrganizationId) REFERENCES Organization(rowId))',
-          'CREATE TABLE IF NOT EXISTS UserOrganizations (usoUserId INT, usoOrganizationId INT, FOREIGN KEY(usoUserId) REFERENCES User(rowId), FOREIGN KEY(usoOrganizationId) REFERENCES Organization(rowId))',
-          'CREATE TABLE IF NOT EXISTS UserUsers (usuUserId INT, usuUserChildId INT, FOREIGN KEY(usuUserId) REFERENCES User(rowId))',
-      ], function (res) {
-        public.initThemes(db);
-        public.initTemplates(db);
-        public.initSections(db);
-        public.initSubSections(db);
-        public.initDefaultTemplate(db);
-        deferred.resolve({
-          message: 'Batch statement for default Template data completed successfully'
-        });
-      }, function (error) {
-        deferred.reject({
-          message: 'Error processing batch: ' + error.message
-        });
+      public.dropAllTables(db).then(function(){
+          console.log('calling initTables');
+          // Batch script to create all tables in db
+          db.sqlBatch([
+              'CREATE TABLE IF NOT EXISTS Answer (ansQuestionId INT, ansValue, ansType, ansInspectionId INT, ansSourceType, FOREIGN KEY(ansInspectionId) REFERENCES Inspection(rowId), FOREIGN KEY(ansQuestionid) REFERENCES Question(rowId))',
+              'CREATE TABLE IF NOT EXISTS Client (cliFirstName, cliLastName, cliAddress, cliCity, cliState, cliZipCode, cliPhone, cliEmail)',
+              'CREATE TABLE IF NOT EXISTS Inspection (insLastModified, insLastSubmitted, insJobId INT, insSourceType, insType, insName, insUserId INT, insThemeId INT, insThemeResponseBlob, insTemplateResponseBlob, insOrganizationId, insTemplateId INT, insTemplateTitle, FOREIGN KEY(insOrganizationId) REFERENCES Organization(rowId), FOREIGN KEY(insUserId) REFERENCES User(rowId), FOREIGN KEY(insJobId) REFERENCES Job(rowId), FOREIGN KEY(insThemeId) REFERENCES Theme(rowId))',
+              'CREATE TABLE IF NOT EXISTS Job (jobUserId INT, jobDate, jobAddress, jobZipCode, jobCity, jobState, jobStatus, jobSubmittedDate, FOREIGN KEY(jobUserId) REFERENCES User(rowId))',
+              'CREATE TABLE IF NOT EXISTS Organization (orgName, orgAddress, orgLogo, orgCity, orgState, orgZipCode)',
+              'CREATE TABLE IF NOT EXISTS Photo (phoLink, phoTitle, phoQuestionId INT, phoAnswerId INT, phoInspectionId INT, phoSourceType, FOREIGN KEY(phoQuestionId) REFERENCES Question(rowId), FOREIGN KEY(phoAnswerId) REFERENCES Answer(rowId), FOREIGN KEY(phoInspectionId) REFERENCES Inspection(rowId))',
+              'CREATE TABLE IF NOT EXISTS Question (queTitle, queDescription, queSubSectionId INT, queAnswered INT,  queType, queRequired INT, queMin, queMax, queValidationType, queNotApplicable INT, queShowSummaryRemark INT, queShowDescription INT, queInspectionId INT, queSourceType, FOREIGN KEY(queInspectionId) REFERENCES Inspection(rowId), FOREIGN KEY(queSubSectionId) REFERENCES SubSection(rowId))',
+              'CREATE TABLE IF NOT EXISTS QuestionAnswers (quaQuestionId INT, quaAnswerId INT, quaInspectionId INT, quaSourceType, FOREIGN KEY (quaQuestionId) REFERENCES Question(rowId), FOREIGN KEY(quaAnswerId) REFERENCES Answer(rowId), FOREIGN KEY(quaInspectionId) REFERENCES Inspection(rowId))',
+              'CREATE TABLE IF NOT EXISTS ReportHistory (rehInspectionId INT, rehLastModified, rehSubmittedDate, FOREIGN KEY(rehInspectionId) REFERENCES Inspection(rowId))',
+              'CREATE TABLE IF NOT EXISTS Section (secTitle, secInspectionId INT, secSourceType, FOREIGN KEY(secInspectionId) REFERENCES Inspection(rowId))',
+              'CREATE TABLE IF NOT EXISTS SubSection (susTitle, susSectionId INT, susInspectionId INT, susSourceType, FOREIGN KEY(susSectionId) REFERENCES Section(rowId), FOREIGN KEY(susInspectionId) REFERENCES Inspection(rowId))',
+              'CREATE TABLE IF NOT EXISTS Theme (themeTitle, themeBlob, userId INT, FOREIGN KEY(userId) REFERENCES User(rowId))',
+              'CREATE TABLE IF NOT EXISTS User (usrAddress, usrFirstName, usrLastName, usrPhone, usrEmail, usrType, usrUserAccessId, usrOrganizationId, name, pass, email)',
+              'CREATE TABLE IF NOT EXISTS UserAccess (usaTitle, usaOrganizationId, usaEditUsers, usaEditOrgInfo, usaEditTemplate, usaEditRequired, FOREIGN KEY(usaOrganizationId) REFERENCES Organization(rowId))',
+              'CREATE TABLE IF NOT EXISTS UserOrganizations (usoUserId INT, usoOrganizationId INT, FOREIGN KEY(usoUserId) REFERENCES User(rowId), FOREIGN KEY(usoOrganizationId) REFERENCES Organization(rowId))',
+              'CREATE TABLE IF NOT EXISTS UserUsers (usuUserId INT, usuUserChildId INT, FOREIGN KEY(usuUserId) REFERENCES User(rowId))',
+          ], function (res) {
+            public.initThemes(db);
+            public.initTemplates(db);
+            public.initSections(db);
+            public.initSubSections(db);
+            public.initDefaultTemplate(db);
+            deferred.resolve({
+              message: 'Batch statement for default Template data completed successfully'
+            });
+          }, function (error) {
+            deferred.reject({
+              message: 'Error processing batch: ' + error.message
+            });
+          });
+      }, function() {
+          console.log("Error dropping tables");
+          deferred.reject({
+              message: 'Error dropping tables: ' + error.message
+            });
       });
+   
       return deferred.promise;
     }
+
     
     public.initSubSections = function (db) {
       console.log('db initSubSections');

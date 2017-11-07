@@ -17,40 +17,10 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
     public.initTables = databaseInit.initTables(db);
     public.initSubSections = databaseInit.initSubSections(db);
     public.initSections = databaseInit.initSections(db);
+    public.dropAllTables = databaseInit.dropAllTables(db);
+    public.initTemplates = databaseInit.initTemplates(db);
+    public.initThemes = databaseInit.initThemes(db);
       
-    public.dropAllTables = function () {
-      console.log('Dropping All Tables');
-      var deferred = $q.defer();
-      // Batch script to create all tables in db
-      db.sqlBatch([
-          'DROP TABLE IF EXISTS Answer',
-          'DROP TABLE IF EXISTS Client',
-          'DROP TABLE IF EXISTS Inspection',
-          'DROP TABLE IF EXISTS Job',
-          'DROP TABLE IF EXISTS Organization',
-          'DROP TABLE IF EXISTS Photo',
-          'DROP TABLE IF EXISTS Question',
-          'DROP TABLE IF EXISTS QuestionAnswers',
-          'DROP TABLE IF EXISTS ReportHistory',
-          'DROP TABLE IF EXISTS Section',
-          'DROP TABLE IF EXISTS SubSection',
-          'DROP TABLE IF EXISTS Theme',
-          'DROP TABLE IF EXISTS User',
-          'DROP TABLE IF EXISTS UserAccess',
-          'DROP TABLE IF EXISTS UserOrganizations',
-          'DROP TABLE IF EXISTS UserUsers',
-      ], function () {
-        deferred.resolve({
-          message: 'Batch drop statement completed successfully'
-        });
-      }, function (error) {
-        deferred.reject({
-          message: 'Error processing batch: ' + error.message
-        });
-      });
-      return deferred.promise;
-    }
-
     public.createUser = function (name, pass, email) {
       var deferred = $q.defer();
 
@@ -214,36 +184,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
       return deferred.promise;
     }
 
-    public.initThemes = function () {
-      var deferred = $q.defer();
-      db.executeSql('INSERT INTO Theme(themeTitle, themeBlob, userId) VALUES (?, ?, ?)', ['Home Theme', 'a whole bunch of text', 1], function (res) {
-        deferred.resolve({
-          message: 'Theme insertion successful'
-        });
-      }, function (error) {
-        deferred.resolve({
-          message: 'Theme insertion failed: ' + error.message
-        });
-      });
-      return deferred.promise;
-    }
 
-    public.initTemplates = function () {
-      console.log('db initTemplates being called');
-      var timestamp = new Date();
-      var deferred = $q.defer();
-      db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insSourceType, insType, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?)', [timestamp, timestamp, 'template', 'Residential', 1, 'Residential Template'], function (res) {
-        deferred.resolve({
-          rowId: res.insertId,
-          message: 'Template insertion successful'
-        });
-      }, function (error) {
-        deferred.reject({
-          message: 'Template insertion failed: ' + error.message
-        });
-      });
-      return deferred.promise;
-    }
 
     public.getThemes = function () {
       var deferred = $q.defer();

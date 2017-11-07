@@ -80,6 +80,10 @@
                            aria-label="{{checkbox.key}}"
                            />
                 </md-input-container>
+                <span flex=""></span>
+                <md-button class="md-icon-button" ng-click="addPhotos(checkBox.id, checkBox.key)" ng-show="exists(checkBox.key, question.answers)" >
+                  <md-icon md-svg-icon="shutter_camera"></md-icon>
+                </md-button>    
                 </div>
             </div>
 <!--
@@ -125,6 +129,10 @@
                                  aria-label="radio option"
                                  ng-value="radioButton.key">{{radioButton.key}}
                 </md-radio-button>
+                <span flex=""></span>
+                <md-button class="md-icon-button" ng-click="addPhotos(radioButton.id, radioButton.key)" ng-show="radioButton.key == question.answer" >
+                  <md-icon md-svg-icon="shutter_camera"></md-icon>
+                </md-button>                    
                 </div>
                </div>
             </md-radio-group>
@@ -167,6 +175,9 @@
                        ng-disabled="question.notApplicable"
                        name="shortText"
                        >
+                <md-button class="md-icon-button text-photo-button" ng-click="addPhotos(question.values[0].id, question.values[0].key)" ng-show=true>
+                  <md-icon md-svg-icon="shutter_camera"></md-icon>
+                </md-button>
                 <div ng-messages="questionForm.shortText.$error" 
                      ng-show="questionForm.shortText.$dirty">
                   <div ng-message="required">This is required!</div>
@@ -243,17 +254,19 @@
              layout="row" 
              layout-align="start center" 
              layout-wrap>
-            <div ng-repeat="photo in question.photos"
-                 class="photo md-whiteframe-1dp" 
-                 style="background-image: url( {{photo.link}} ); margin: 10px;" 
+                <div ng-repeat="photo in question.photos"
+                 class="md-whiteframe-1dp"
                  ng-click="showFullScreen($event, photo)">
-            </div>
+                    <div style="margin: 10px; width: 200px;">{{photo.title}}</div>
+                    <div class="photo" style="background-image: url( {{photo.link}} ); margin: 10px;" >
+                    </div>
+                </div>
         </div>  
-         <md-button class="md-accent md-raised"
+         <!--<md-button class="md-accent md-raised"
                    ng-disabled="question.notApplicable"
                    ng-click="addPhotos()">  
             Add Photos
-        </md-button>
+        </md-button>-->
 
         
     </form>

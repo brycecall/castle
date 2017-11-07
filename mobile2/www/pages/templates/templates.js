@@ -558,6 +558,8 @@ $scope.questionTypes = [
         $rootScope.loading = false;
         $scope.questionCount = data.value.length;
         $scope.question = data.value[$scope.questionIndex];
+        console.log($scope.question);
+        attachPhotos();
         //console.log($scope.question.type);
 
     },
@@ -640,6 +642,24 @@ $scope.questionTypes = [
     $state.go('camera');
   };
     
+  var attachPhotos = function () {
+    if (camera_manager.photos.length > 0 ) {
+        if (!$scope.question.photos) {
+            $scope.question.photos = [];
+        }
+        
+        for (var photoIndex in camera_manager.photos) {
+          var photo = camera_manager.photos[photoIndex];
+          if (!photo.deleted) {
+              photo.answerId = camera_manager.answerID;
+              photo.title = camera_manager.title;
+             $scope.question.photos.push(photo);
+          }
+        }
+    }
+    camera_manager.photos = [];
+  };
+
   (function () {
     if ($scope.question.type == 'photo') {
       $scope.question.photos = [];

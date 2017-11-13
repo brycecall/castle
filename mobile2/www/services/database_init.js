@@ -639,7 +639,6 @@
       return deferred.promise;
     }
 
-    
     public.initSubSections = function (db) {
       console.log('db initSubSections');
       var deferred = $q.defer();

@@ -26,10 +26,11 @@
             Not Applicable
             </md-switch>
         </div>
+<!--        <h2 class="md-title" style="margin-left: 8px;">{{question.type}} Question</h2>-->
         <md-card class="flatCard">
             <md-card-content>
-        <div class="md-title">{{question.title}}</div>
-        <div class="md-caption description">{{question.description}}</div>
+        <div class="md-title">{{question.title ? question.title : 'Untitled Question'}}</div>
+        <div class="md-caption description">{{question.description ? question.description : '' }}</div>
     <form name="questionForm" style="padding-left: 0px;"  ng-class="question.notApplicable ? 'disabled' : ''">
         <div ng-if="question.type === 'checkbox'">
             <div  class="questionIndent" ng-repeat="checkBox in question.values track by $index">
@@ -185,7 +186,9 @@
             <md-card-content>
         <div style="margin: 8px 0px 0px 0px;">
             <div class="md-title">Summary Remarks</div>
-            <div class="md-caption" style="margin: 4px 0 4px 0;" >Summary Remarks are appended to the Summary Section</div>
+            <div class="md-caption" style="margin: 4px 0 4px 0;" >
+                Summary Remarks are appended to the Summary Section
+            </div>
             <div layout="row" layout-wrap>
                 <div class="md-caption"></div>
                 <div ng-repeat="fabButton in severityList" 
@@ -201,7 +204,7 @@
                     <div class="label">{{fabButton.title}}</div>
                 </div>
             </div>
-            <div>
+<!--            <div>
             <md-switch ng-model="question.showSummaryRemark"
                        ng-disabled="question.notApplicable"
                        >
@@ -212,7 +215,7 @@
                        >
             Include Description
             </md-switch>
-            </div>
+            </div>-->
             <md-card>
                 <md-card-content>
                     <div ng-if="question.type === 'checkbox' && question.severity 

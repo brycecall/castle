@@ -14,9 +14,9 @@
         
     <div layout="row" layout-align="space-between center">
         <h2 class="md-subhead insTitle" 
-            style="margin-bottom:0px;">Subsections</h2>
+            style="margin-bottom:0px;">Choose a Subsection</h2>
     </div>
-              
+<!--              
     <md-card id="secParent" 
              layout="column"  
              ui-sortable="{'ui-floating': false, 'handle': '.handle', 
@@ -41,7 +41,6 @@
                            class="nonEditInput"
                            style="background-color:inherit;" />
                     <span flex=""></span>
-                   <! TODO: Add boolean to below Checkmark icon (should only show when the subsection is 'done'-->
                     <md-icon md-svg-icon="check" 
                              class="md-primary" style="min-width:24px;"></md-icon>
                     <md-button
@@ -54,6 +53,14 @@
                         <md-divider ng-if="!$last"></md-divider>
         </div>
     </md-card>
+-->
+        
+    <div ng-repeat="subsection in subsections track by $index" layout="column" >
+      <md-button class="outerChip" aria-label="subsection.title" ng-click="questionDrill($index)">
+         <div>{{subsection.title}}</div>
+      </md-button>
+     </div>        
+        
     </div>
   </md-content>
 </div>

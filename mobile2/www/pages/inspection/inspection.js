@@ -316,6 +316,8 @@ app.controller('inspection_section', function ($rootScope, $scope, inspection_ma
         $rootScope.loading = false;
     });
   });
+    
+  $scope.rapidMode = false;
 
 });
 
@@ -428,8 +430,7 @@ app.factory('$', function ($window) {
   return $window.jQuery;
 });
 
-app.controller('inspection_detail', function ($rootScope, $scope, $, $state, header_manager, camera_manager, 
-                                               action_manager, inspection_manager, $transition$, shareService) {
+app.controller('inspection_detail', function ($rootScope, $scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $transition$, shareService) {
   $scope.insId = $transition$.params().insId;
   $scope.sectionIndex = $transition$.params().sectionIndex;
   $scope.subsectionIndex = $transition$.params().subsectionIndex;
@@ -536,10 +537,10 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
     }
   };
 
-  action_manager.mode = ACTION_MODES.Action;
-  action_manager.addAction("Previous", "keyboard_arrow_left", function () {
+  //action_manager.mode = ACTION_MODES.Action;
+/*  action_manager.addAction("Previous", "keyboard_arrow_left", function () {
     navigateQuestions(false);
-  }, 'md-raised');
+  }, 'md-raised');*/
   action_manager.addAction("Save", "save", function() {
     $rootScope.loading = true;
     inspection_manager.updateInspection().then(function() {
@@ -547,9 +548,9 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
     });
     //  $scope.showListBottomSheet();
   }, 'md-raised');
-  action_manager.addAction("Next", "keyboard_arrow_right", function () {
+/*  action_manager.addAction("Next", "keyboard_arrow_right", function () {
     navigateQuestions(true);
-  }, 'md-raised');
+  }, 'md-raised');*/
 
   $scope.addPhotos = function (index, value) {
       console.log('add photos index: ' + index + ' value: ' + value);

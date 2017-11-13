@@ -12,11 +12,11 @@
     <input type="text" style="margin-left: 4px;" class="editInput"  ng-model="inspection.insName" />
 </div>
 <div layout="row" layout-align="space-between center">
-    <h2 class="md-subhead insTitle" style="margin-bottom:0px;">Sections</h2>
+    <h2 class="md-subhead insTitle" style="margin-bottom:0px;">Choose a Section</h2>
 </div>
   <div class="centerPage" id="centerPage">
 
-    <md-card id="secParent" layout="column" ui-sortable="{'ui-floating': false, 'handle': '.handle', 
+ <!--   <md-card id="secParent" layout="column" ui-sortable="{'ui-floating': false, 'handle': '.handle', 
                            'containment': '#secParent'}" ng-model="sections">
       <div ng-repeat="section in sections track by $index" layout="column" layout-align="center stretch" style="text-align-left;" ng-init="clicked = false">
         <div style="padding:0px 0px 0px 16px; margin:0;
@@ -24,7 +24,7 @@
                          text-transform:none; background-color:#FFF;  height:52px;" class="md-no-style" aria-label="{{section.title}}" layout="row" layout-align="start center" ng-click="">
           <input type="text" ng-disabled="true" ng-model="section.title" class="nonEditInput" style="background-color:inherit;" />
           <span flex=""></span>
-          <!-- TODO: Add boolean to below Checkmark icon (should only show when the section is 'done'-->
+           TODO: Add boolean to below Checkmark icon (should only show when the section is 'done'
           <md-icon md-svg-icon="check" class="md-primary" style="min-width:24px;"></md-icon>
           <md-button aria-label="toggle pages menu" class="md-icon-button" ng-click="goToSubsection($index)">
             <md-icon md-svg-icon="keyboard_arrow_right"></md-icon>
@@ -32,6 +32,14 @@
         </div>
         <md-divider ng-if="!$last"></md-divider>
       </div>
-    </md-card>
+    </md-card>-->
+
+
+    <div ng-repeat="section in sections track by $index" layout="column" >
+      <md-button class="outerChip" aria-label="section.title" ng-click="goToSubsection($index)">
+         <div>{{section.title}}</div>
+      </md-button>
+     </div>
+      
   </div>
 </div>

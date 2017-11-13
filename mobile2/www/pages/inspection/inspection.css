@@ -77,3 +77,19 @@ md-input-container {
     border-color:rgba(0, 0, 0, 0.12);
     background-color: inherit;
 }
+
+.outerChip {
+    text-align: left;
+    border-radius: 16px;
+    display: block;
+    height: 36px;
+    line-height: 36px;
+    margin: 8px 8px 0 0;
+    padding: 0 12px;
+    box-sizing: border-box;
+    max-width: 100%;
+    position: relative;
+    background-color: rgb(224, 224, 224);
+    cursor:pointer;
+    text-transform: none;
+}

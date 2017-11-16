@@ -109,12 +109,13 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                       sourceType: promise.row.item(l).ansSourceType,
                       inspectionId: promise.row.item(l).ansInspectionId,
                       type: promise.row.item(l).ansType,
+                      checked: promise.row.item(l).ansChecked,
                       remark: '',
                       photos: []
                     }
                     question.values.push(answer);
                     // Check to see if this answer was a selected answer by inspector
-                    if (promise.row.item(l).ansRowId == promise.row.item(l).quaAnswerId && promise.row.item(l).queRowId == promise.row.item(l).quaQuestionId) {
+                    if (promise.row.item(l).ansChecked) {
                       // If multi, push onto answers list. Otherwise, store in single answer key.
                       if (promise.row.item(l).ansType == 'multi') {
                         question.answers.push(answer.key);

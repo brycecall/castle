@@ -521,19 +521,8 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
                     tempQuestion.values.forEach(function (answer) {
                       var ansSourceType = queSourceType;
                       var tempAnswer = answer;
-                      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) VALUES (?,?,?,?,?)', [queRes.insertId, answer.key, answer.type, inspectionRes.insertId, ansSourceType], function (ansRes) {
+                      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansChecked) VALUES (?,?,?,?,?,?)', [queRes.insertId, tempAnswer.key, tempAnswer.type, inspectionRes.insertId, ansSourceType, tempAnswer.checked], function (ansRes) {
                         //console.log(answer.key + ' answer successfully inserted. ID: ' + ansRes.insertId + ' saved to Inspection#: ' + res.insertId);
-                        // If this is successful, attempt to insert question-answer data
-                        if (answer.key == tempQuestion.answer || (tempQuestion.answers && tempQuestion.answers.indexOf(answer.key) > -1)) {
-                          var queAnsSourceType = ansSourceType;
-                          db.executeSql('INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId, quaInspectionId, quaSourceType) VALUES (?,?,?,?)', [queRes.insertId, ansRes.insertId, inspectionRes.insertId, queAnsSourceType], function (queAnsRes) {
-                            //console.log('Successfully inserted saved answer: ' + answer.key + ' for question title: ' + tempQuestion.title + '.');
-                          }, function (queAnsError) {
-                            deferred.reject({
-                              message: 'Error with QuestionAnswer save: ' + queAnsError.message
-                            });
-                          });
-                        }
                       }, function (ansError) {
                         deferred.reject({
                           message: 'Error with Answer save: ' + ansError.message
@@ -639,14 +628,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
       var questionDefer = $q.defer();
       db.executeSql('UPDATE Question SET queTitle=?, queDescription=?, queSubSectionId=?, queAnswered=?, queRequired=?, queType=?, queMin=?, queMax=?, queValidationType=?, queNotApplicable=?, queShowSummaryRemark=?, queShowDescription=?, queInspectionId=?, queSourceType=? WHERE rowid = ? AND queInspectionId = ?', [question.title, question.description, question.subsectionId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.type, question.validation.min, question.validation.max, question.validation.type, question.notApplicable, question.showSummaryRemark, question.showDescription, question.inspectionId, insSourceType, question.id, question.inspectionId], function (queRes) {
         var tempQuestion = question;
-        // Delete all rows in QuestionAnswers for this tempQuestion before looping through and inserting again
-        db.executeSql('DELETE FROM QuestionAnswers WHERE quaQuestionId = ? and quaInspectionId = ?', [tempQuestion.id, tempQuestion.inspectionId], function(deleteRes) {
-          //console.log('Successful delete of Question: ' + tempQuestion.title + ' stored Answers for InspectionId: ' + tempQuestion.inspectionId);
-        }, function(delError) {
-          //console.log('Failure to delete Question: ' + tempQuestion.title + ' stored Answers for InspectionId: ' + tempQuestion.inspectionId);
-          //console.log('Error message for delete failure: ' + delError.message);
-          questionDefer.reject({message: 'Failure deleting QuestionAnswers ' + delError.message});
-        });
         // Delete all previous photos
         db.executeSql('DELETE FROM Photo WHERE phoQuestionId = ? AND phoInspectionId = ?', [tempQuestion.id, tempQuestion.inspectionId], function(deleteRes) {
           //console.log('Successful delete of Photos from Question: ' + tempQuestion.title);    
@@ -701,19 +682,9 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
     
     public.updateAnswers = function(ansQuestion, answer, queRes, ansInsId, ansInsSourceType) {
       var ansDefer = $q.defer();
-        db.executeSql('UPDATE Answer SET ansQuestionId=?, ansValue=?, ansType=?, ansInspectionId=?, ansSourceType=? WHERE rowid=? AND ansInspectionId=?', [answer.questionId, answer.key, answer.type, answer.inspectionId, ansInsSourceType, answer.id, answer.inspectionId], function (ansRes) {
+        db.executeSql('UPDATE Answer SET ansQuestionId=?, ansValue=?, ansType=?, ansInspectionId=?, ansSourceType=?, ansChecked=? WHERE rowid=? AND ansInspectionId=?', [answer.questionId, answer.key, answer.type, answer.inspectionId, ansInsSourceType, answer.checked, answer.id, answer.inspectionId], function (ansRes) {
           // If this is successful, attempt to insert question-answer data
-          if (answer.key == ansQuestion.answer || (ansQuestion.answers && ansQuestion.answers.indexOf(answer.key) > -1)) {
-            db.executeSql('INSERT INTO QuestionAnswers (quaQuestionId, quaAnswerId, quaInspectionId, quaSourceType) VALUES (?,?,?,?)', [ansQuestion.id, answer.id, ansInsId, ansInsSourceType], function (queAnsRes) {
-              ansDefer.resolve({message: 'Successfully inserted saved answer'});
-            }, function (queAnsError) {
-              ansDefer.reject({
-                message: 'Error with QuestionAnswer update: ' + queAnsError.message
-              });
-            });
-          } else {
-           ansDefer.resolve({message: 'Success saved Answer. This answer is not a QuestionAnswer.'});
-          }
+          ansDefer.resolve({message: 'Successfully saved Answer.'});
         }, function (ansError) {
           ansDefer.reject({
             message: 'Error with Answer update: ' + ansError.message
@@ -749,7 +720,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
             });
             question.photos.forEach(function(photo) {
               photoIds.push(photo.id);
-            })
+            });
           });
         });
       });
@@ -815,7 +786,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
                     var tempAnswer = answer;
                     var questionId = queRes.insertId;
                     //console.log(tempAnswer);
-                    db.executeSql('INSERT OR REPLACE INTO Answer (rowid, ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) VALUES (?,?,?,?,?,?)', [tempAnswer.id, questionId, tempAnswer.key, tempAnswer.type, tempAnswer.inspectionId, tempAnswer.sourceType], function (ansRes) {
+                    db.executeSql('INSERT OR REPLACE INTO Answer (rowid, ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansChecked) VALUES (?,?,?,?,?,?,?)', [tempAnswer.id, questionId, tempAnswer.key, tempAnswer.type, tempAnswer.inspectionId, tempAnswer.sourceType, tempAnswer.checked], function (ansRes) {
                       //console.log('Success upsert to Answer: ' + ansRes.insertId);
                     }, function(err) {
                       deferred.reject({message: 'Failure to upsert to Answer: ' + err.message});

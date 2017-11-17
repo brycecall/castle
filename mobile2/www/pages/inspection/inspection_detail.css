@@ -56,3 +56,19 @@
 .text-photo-button {
     position: absolute;
 }
+
+.headBlock {
+    margin: 8px 0px 0px 0px;
+}
+.headBlock md-switch {
+margin: 0;
+}
+
+.subHeadNav::-webkit-scrollbar { 
+    display: none; 
+} 
+.subHeadNav {
+  width:100%; 
+  height: 50px; 
+  background-color: white;
+}

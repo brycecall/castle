@@ -14,6 +14,7 @@ app.config(function ($mdIconProvider) {
     .icon('cancel', icon_root + '/ic_cancel_24px.svg')
     .icon('add', icon_root + '/ic_add_24px.svg')
     .icon('remove', icon_root + '/ic_remove_24px.svg')
+    .icon('remove_circle', icon_root + '/ic_remove_circle_24px.svg')
     .icon('close', icon_root + '/ic_close_24px.svg')
     .icon('back', icon_root + '/ic_arrow_back_24px.svg')
     .icon('more_vert', icon_root + '/ic_more_vert_24px.svg')

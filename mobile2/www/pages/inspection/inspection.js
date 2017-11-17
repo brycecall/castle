@@ -375,7 +375,6 @@ app.controller('inspection_subsection', function ($rootScope, $scope, inspection
 
 });
 
-
 app.controller('inspection_question', function ($rootScope, $scope, inspection_manager, action_manager, header_manager, $state, $transition$, shareService) {
   $scope.insId = $transition$.params().insId;
   $scope.sectionIndex = $transition$.params().sectionIndex;
@@ -462,15 +461,23 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
   };
   $scope.question = {};
   $scope.questionCount = -1;
-  inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
+  inspection_manager.getInspection($scope.insId)
+                    .then(
     function (data) {
       $rootScope.loading = false;
-      $scope.questionCount = data.value.length;
-      $scope.question = data.value[$scope.questionIndex];
+      $scope.inspection = data.value;
+      $scope.questionCount = $scope.inspection.sections[$scope.sectionIndex]
+                                   .subsections[$scope.subsectionIndex]
+                                   .questions.length;
+      $scope.question = $scope.inspection.sections[$scope.sectionIndex]
+                                   .subsections[$scope.subsectionIndex]
+                                   .questions[$scope.questionIndex];
+      $scope.sectionId = $scope.inspection.sections[$scope.sectionIndex].sectionId;
+      $scope.subsectionId = $scope.inspection.sections[$scope.sectionIndex]
+                                   .subsections[$scope.subsectionIndex].subsectionId;
       console.log($scope.question);
       attachPhotos();
 
-        
       $scope.showListBottomSheet = function() {
         $scope.alert = '';
         $mdBottomSheet.show({

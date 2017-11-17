@@ -42,7 +42,7 @@ app.run(function ($rootScope, $timeout) {
     }
     
     if (newValue) {
-      // Auto-timeout after 30 secs
+      // Auto-timeout after 15 secs
       handle = $timeout(function() {
         $rootScope.loading = false;
       }, (15 * 1000));

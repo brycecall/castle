@@ -3,6 +3,7 @@ app.factory('header_manager', function ($rootScope) {
   var private = {};
 
   public.action = null;
+  public.actions = [];
   public.enabled = true;
   public.mode = HEADER_MODES.Action;
   public.title = "";
@@ -20,6 +21,7 @@ app.factory('header_manager', function ($rootScope) {
     public.enabled = false;
   }
 
+  // NOTE: Action function set the action on the left (actions allow for multiple actions on the right of header)
   public.setAction = function (name, icon, method, classname) {
     if (name && icon && method) {
       public.action = {
@@ -47,11 +49,40 @@ app.factory('header_manager', function ($rootScope) {
     window.history.back();
   }
 
+  public.addAction = function (name, icon, method, classname) {
+    if (name && icon && method) {
+      public.actions.push({
+        name: name,
+        icon: icon,
+        method: method,
+        classname: classname
+      });
+    } else {
+      throw {
+        "InvalidParameters": "Please provide a name, icon, and method in order to add an action to the header."
+      }
+    }
+  }
+
+  public.removeAction = function (name) {
+    for (var index in public.actions) {
+      if (public.actions[index].name === name) {
+        public.actions.splice(index, 1);
+      }
+    }
+  }
+
+  public.clearActions = function () {
+    public.actions = [];
+    public.mode = ACTION_MODES.Default;
+  }
+  
   public.clearAction();
+  public.clearActions();
   return public;
 });
 
-app.controller('header', function ($scope, $rootScope, header_manager) {
+app.controller('header', function ($scope, $rootScope, $mdMenu, header_manager) {
   $scope.service = header_manager;
   
   $scope.run = function (method) {
@@ -63,6 +94,7 @@ app.controller('header', function ($scope, $rootScope, header_manager) {
 app.run(function ($transitions, header_manager) {
   $transitions.onExit({}, function () {
     header_manager.clearAction();
+    header_manager.clearActions();
   });
 });
 

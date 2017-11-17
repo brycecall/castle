@@ -40,7 +40,30 @@
         <md-button class="md-icon-button" aria-label="home" href="#!home">
           <md-icon md-svg-icon="home_white"></md-icon>
         </md-button>
-        <md-button class="md-icon-button" aria-label="support" href="#!support">
+
+        <md-menu md-offset="0 60" ng-show="service.actions.length > 0">
+          <md-button ng-click="$mdMenu.open($event)" class="md-icon-button">
+            <md-icon md-svg-icon="more_vert"></md-icon>
+          </md-button>
+          <md-menu-content style="min-width: 200px;">
+            
+            <md-menu-item ng-repeat="action in service.actions">
+              <md-button aria-label="{{action.name}}" ng-click="run(action.method)">
+                <md-icon md-svg-icon="{{action.icon}}"></md-icon>
+                {{action.name}}
+              </md-button>
+            </md-menu-item>
+            
+            <md-menu-item>
+              <md-button aria-label="support" href="#!support" ng-click="$mdMenu.close($event)">
+                <md-icon md-svg-icon="help_outline"></md-icon>
+                Help
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+
+        <md-button class="md-icon-button" ng-hide="service.actions.length > 0" aria-label="support" href="#!support">
           <md-icon md-svg-icon="help_outline"></md-icon>
         </md-button>
       </div>
@@ -112,7 +135,7 @@
     </div>
 
   </div>
-  
+
   <div ng-cloak class="loading" layout="row" layout-align="center center" ng-show="$root.loading">
     <md-progress-circular md-mode="indeterminate"></md-progress-circular>
   </div>

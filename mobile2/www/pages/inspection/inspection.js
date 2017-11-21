@@ -33,7 +33,7 @@ app.service('shareService', function ($state) {
         'sectionIndex': sectionIndex ? sectionIndex : 0,
         'subsectionIndex': subsectionIndex ? subsectionIndex : 0
       });
-    } 
+    }
   };
   return shareService;
 });
@@ -42,7 +42,7 @@ app.service('shareService', function ($state) {
 app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, export_manager) {
   $scope.inspections = [];
   $rootScope.loading = true;
-  
+
   // Switch the inspection_manager mode (this is global)
   inspection_manager.mode = "inspection";
 
@@ -62,11 +62,11 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     var promise = inspection_manager.getInspection(insId);
     promise.then(
       function (result) {
-          $rootScope.loading = false;
+        $rootScope.loading = false;
         export_manager.export(result.value, "inspection");
       },
       function (error) {
-          $rootScope.loading = false;
+        $rootScope.loading = false;
         console.error(error);
       });
   }
@@ -112,7 +112,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
       //Fail
     },
     function (promise) {
-        $rootScope.loading = false;
+      $rootScope.loading = false;
       console.log(promise.message);
     }
   );
@@ -122,24 +122,27 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
   $scope.themes = [];
   $scope.templates = [];
   inspection_manager.mode = "inspection";
-  inspection_manager.returnLocation = { 'name': $state.current.name, 'params':$state.params };
+  inspection_manager.returnLocation = {
+    'name': $state.current.name,
+    'params': $state.params
+  };
   action_manager.addAction('Start', 'check', function () {
     $scope.startInspection();
   });
 
 
-/*   $scope.startInspection = function() {
-       inspection_manager.insertInspectionFromTemplate($scope.sTemplate.rowId).then(function(data) {
-          setTimeout(function() {
-            $rootScope.loading = false;
-            $state.go('inspection_detail', {
-              'insId': data.inspectionId
-            });}, 6000);
-       }, function(){
-          console.log('Error saving inspection: ' + data.message);    
-       });
-   };    */
-    
+  /*   $scope.startInspection = function() {
+         inspection_manager.insertInspectionFromTemplate($scope.sTemplate.rowId).then(function(data) {
+            setTimeout(function() {
+              $rootScope.loading = false;
+              $state.go('inspection_detail', {
+                'insId': data.inspectionId
+              });}, 6000);
+         }, function(){
+            console.log('Error saving inspection: ' + data.message);    
+         });
+     };    */
+
   $scope.startInspection = function () {
     var promise = inspection_manager.getInspection($scope.sTemplate.rowId);
     promise.then(function (data) {
@@ -149,23 +152,25 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
       inspection.insTemplateId = $scope.sTemplate.rowId;
       inspection.insName = $scope.sName;
       inspection.sections = $scope.sTheme.template.concat(inspection.sections);
-        
+
       inspection_manager.saveInspection().then(
-        function(savedIns) {
+        function (savedIns) {
           console.log('Successful save. Inserted Inspection Id: ' + savedIns.insId);
           // Simulate loading
-          setTimeout(function() {
+          setTimeout(function () {
             $rootScope.loading = false;
             $state.go('inspection_detail', {
               'insId': savedIns.insId
-            });}, 6000);
-        }, function(saveError) {
-          console.log('Error saving inspection: ' + saveError.message);    
+            });
+          }, 6000);
+        },
+        function (saveError) {
+          console.log('Error saving inspection: ' + saveError.message);
         }
       );
-    }, function(getErr) {
+    }, function (getErr) {
       $rootScope.loading = false;
-      console.log(getErr.message);    
+      console.log(getErr.message);
     });
   }
 
@@ -214,25 +219,29 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
   $scope.subsectionIndex = $transition$.params().subsectionIndex;
   $scope.questionIndex = $transition$.params().questionIndex;
   inspection_manager.mode = "inspection";
-  inspection_manager.returnLocation = { 'name': $state.current.name, 'params':$transition$.params() };
+  inspection_manager.returnLocation = {
+    'name': $state.current.name,
+    'params': $transition$.params()
+  };
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'check', function () {
-    $state.go('inspection', {
-      'insId': $scope.insId,
-      'sectionIndex': $scope.sectionIndex,
-      'subsectionIndex': $scope.subsectionIndex
-    });
+    $rootScope.loading = true;
+    //inspection_manager.saveInspection()
+      //.then(function () {
+        $rootScope.loading = false;
+        window.history.back();
+      //});
   });
 
-  $scope.edit = function() {
+  $scope.edit = function () {
     $state.go('template_detail', {
       'insId': $scope.insId,
       'sectionIndex': $scope.sectionIndex,
       'subsectionIndex': $scope.subsectionIndex,
-      'questionIndex':$scope.questionIndex
+      'questionIndex': $scope.questionIndex
     });
-  };  
-    
+  };
+
   $scope.navigate = shareService.navigate;
   $scope.otherValue = {
     'singleSelect': '',
@@ -240,83 +249,82 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
   };
   $scope.question = {};
   $scope.questionCount = -1;
-  $scope.navChange = function(loc) {
-      switch(loc) 
-      {
-        case "section":
-              $scope.subsectionIndex = 0;
-              $scope.questionIndex = 0;
-              break;
-        case "subsection":
-              $scope.questionIndex = 0;
-              break;
-        default: 
-      }
-      $scope.questionCount = $scope.inspection.sections[$scope.sectionIndex]
-                                   .subsections[$scope.subsectionIndex]
-                                   .questions.length;
-      $scope.question = $scope.inspection.sections[$scope.sectionIndex]
-                                   .subsections[$scope.subsectionIndex]
-                                   .questions[$scope.questionIndex];
+  $scope.navChange = function (loc) {
+    switch (loc) {
+      case "section":
+        $scope.subsectionIndex = 0;
+        $scope.questionIndex = 0;
+        break;
+      case "subsection":
+        $scope.questionIndex = 0;
+        break;
+      default:
+    }
+    $scope.questionCount = $scope.inspection.sections[$scope.sectionIndex]
+      .subsections[$scope.subsectionIndex]
+      .questions.length;
+    $scope.question = $scope.inspection.sections[$scope.sectionIndex]
+      .subsections[$scope.subsectionIndex]
+      .questions[$scope.questionIndex];
   };
   inspection_manager.getInspection($scope.insId)
-                    .then(
-    function (data) {
-      $rootScope.loading = false;
-      $scope.inspection = data.value;
-      $scope.questionCount = $scope.inspection.sections[$scope.sectionIndex]
-                                   .subsections[$scope.subsectionIndex]
-                                   .questions.length;
-      $scope.question = $scope.inspection.sections[$scope.sectionIndex]
-                                   .subsections[$scope.subsectionIndex]
-                                   .questions[$scope.questionIndex];
-//      $scope.sectionId = $scope.inspection.sections[$scope.sectionIndex].sectionId;
-//      $scope.subsectionId = $scope.inspection.sections[$scope.sectionIndex]
-//                                   .subsections[$scope.subsectionIndex].subsectionId;
-//      $scope.questions = $scope.inspection.sections[$scope.sectionIndex]
-//                                   .subsections[$scope.subsectionIndex].questions;
-      attachPhotos();
-
-      $scope.showListBottomSheet = function() {
-        $scope.alert = '';
-        $mdBottomSheet.show({
-          templateUrl: 'bottom-sheet-list-template.html',
-          controller: 'ListBottomSheetCtrl'
-        }).then(function(clickedItem) {
-          $scope.alert = clickedItem['name'] + ' clicked!';
-        }).catch(function(error) {
-          // User clicked outside or hit escape
-        });
-      };
-
-      $scope.$watch('otherValue.value', function (newVal, oldVal) {
-        var list = $scope.question.answers;
-        var index = $scope.question.answers.indexOf(oldVal);
-        if (index > -1) {
-          $scope.question.answers.splice(index, 1);
-        }
-        if (newVal) {
-          $scope.question.answers.push(newVal);
-        }
-      });
-
-      $scope.$watch('otherValue.singleSelect', function (newVal, oldVal) {
-        if (newVal) {
-          $scope.question.answer = newVal;
-        }
-      });
-
-      $scope.$watch('question.answer', function (newVal, oldval) {
-        if (newVal && ($scope.question.type == 'text' || $scope.question.type == 'textarea')) {
-          $scope.question.values[0].key = newVal;
-        }
-      });
-    },
-    function (data) {
+    .then(
+      function (data) {
         $rootScope.loading = false;
-      console.log("Error... no question exists in the database");
-    }
-  );
+        $scope.inspection = data.value;
+        $scope.questionCount = $scope.inspection.sections[$scope.sectionIndex]
+          .subsections[$scope.subsectionIndex]
+          .questions.length;
+        $scope.question = $scope.inspection.sections[$scope.sectionIndex]
+          .subsections[$scope.subsectionIndex]
+          .questions[$scope.questionIndex];
+        //      $scope.sectionId = $scope.inspection.sections[$scope.sectionIndex].sectionId;
+        //      $scope.subsectionId = $scope.inspection.sections[$scope.sectionIndex]
+        //                                   .subsections[$scope.subsectionIndex].subsectionId;
+        //      $scope.questions = $scope.inspection.sections[$scope.sectionIndex]
+        //                                   .subsections[$scope.subsectionIndex].questions;
+        attachPhotos();
+
+        $scope.showListBottomSheet = function () {
+          $scope.alert = '';
+          $mdBottomSheet.show({
+            templateUrl: 'bottom-sheet-list-template.html',
+            controller: 'ListBottomSheetCtrl'
+          }).then(function (clickedItem) {
+            $scope.alert = clickedItem['name'] + ' clicked!';
+          }).catch(function (error) {
+            // User clicked outside or hit escape
+          });
+        };
+
+        $scope.$watch('otherValue.value', function (newVal, oldVal) {
+          var list = $scope.question.answers;
+          var index = $scope.question.answers.indexOf(oldVal);
+          if (index > -1) {
+            $scope.question.answers.splice(index, 1);
+          }
+          if (newVal) {
+            $scope.question.answers.push(newVal);
+          }
+        });
+
+        $scope.$watch('otherValue.singleSelect', function (newVal, oldVal) {
+          if (newVal) {
+            $scope.question.answer = newVal;
+          }
+        });
+
+        $scope.$watch('question.answer', function (newVal, oldval) {
+          if (newVal && ($scope.question.type == 'text' || $scope.question.type == 'textarea')) {
+            $scope.question.values[0].key = newVal;
+          }
+        });
+      },
+      function (data) {
+        $rootScope.loading = false;
+        console.log("Error... no question exists in the database");
+      }
+    );
 
   var navigateQuestions = function (forward) {
     if ($scope.questionCount !== -1 && $scope.questionCount > 1) {
@@ -347,7 +355,7 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
   action_manager.addAction("Previous", "keyboard_arrow_left", function () {
     navigateQuestions(false);
   }, 'md-raised');
-  action_manager.addAction("Photo", "shutter_camera", function() {
+  action_manager.addAction("Photo", "shutter_camera", function () {
     //$scope.addPhotos()
     //todo: add photo
   }, 'md-raised bigicon md-accent');
@@ -356,30 +364,30 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
   }, 'md-raised');
 
   $scope.addPhotos = function (index, value) {
-      console.log('add photos index: ' + index + ' value: ' + value);
-      camera_manager.answerID = index;
-      camera_manager.title = $scope.question.title;
-      if (value !== null && value !== undefined) {
-        camera_manager.title += ": " + value;
-      }
+    console.log('add photos index: ' + index + ' value: ' + value);
+    camera_manager.answerID = index;
+    camera_manager.title = $scope.question.title;
+    if (value !== null && value !== undefined) {
+      camera_manager.title += ": " + value;
+    }
     $state.go('camera');
   };
 
 
   var attachPhotos = function () {
-    if (camera_manager.photos.length > 0 ) {
-        if (!$scope.question.photos) {
-            $scope.question.photos = [];
+    if (camera_manager.photos.length > 0) {
+      if (!$scope.question.photos) {
+        $scope.question.photos = [];
+      }
+
+      for (var photoIndex in camera_manager.photos) {
+        var photo = camera_manager.photos[photoIndex];
+        if (!photo.deleted) {
+          photo.answerId = camera_manager.answerID;
+          photo.title = camera_manager.title;
+          $scope.question.photos.push(photo);
         }
-        
-        for (var photoIndex in camera_manager.photos) {
-          var photo = camera_manager.photos[photoIndex];
-          if (!photo.deleted) {
-              photo.answerId = camera_manager.answerID;
-              photo.title = camera_manager.title;
-             $scope.question.photos.push(photo);
-          }
-        }
+      }
     }
     camera_manager.photos = [];
   };

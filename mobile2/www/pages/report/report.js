@@ -95,7 +95,8 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
           };
 
           object.go = function (object) {
-
+            $rootScope.loading = true;
+            
             // The object is an inspection
             if (object.secions) {
               $state.go('inspection_detail', {

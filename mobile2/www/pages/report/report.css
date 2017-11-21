@@ -41,3 +41,10 @@
   height: 0;
   opacity: .75;
 }
+
+#render {
+  border: none;
+  margin: 0 10px;
+  height: 100%;
+  width: calc(100% - 20px);
+}

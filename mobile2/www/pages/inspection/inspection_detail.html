@@ -5,19 +5,40 @@
   <div class="subHeadNav"  
        layout="row" layout-align="start center">
        <md-input-container>
-          <md-select ng-model="sectionId" class="md-no-underline" aria-label="choose section">
-            <md-option ng-repeat="sec in inspection.sections" 
-                       ng-value="sec.sectionId" >
+          <md-select ng-model="sectionIndex" 
+                     class="md-no-underline" 
+                     aria-label="choose section"
+                     md-on-close="navChange('section')"
+                     >
+            <md-option ng-repeat="sec in inspection.sections track by $index" 
+                       ng-value="$index" >
               {{sec.title}}
             </md-option>
           </md-select>
         </md-input-container>
        <md-input-container>
-          <md-select ng-model="subsectionId" class="md-no-underline" aria-label="choose subsection">
+          <md-select ng-model="subsectionIndex" 
+                     class="md-no-underline" 
+                     aria-label="choose subsection"
+                     md-on-close="navChange('subsection')"
+                     >
             <md-option ng-repeat="subsec in inspection.sections[sectionIndex]
-                                   .subsections" 
-                       ng-value="subsec.subsectionId" >
+                                   .subsections track by $index" 
+                       ng-value="$index" >
               {{subsec.title}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+       <md-input-container>
+          <md-select ng-model="questionIndex" 
+                     class="md-no-underline" 
+                     aria-label="choose question"
+                     md-on-close="navChange('question')"
+                     >
+            <md-option ng-repeat="que in inspection.sections[sectionIndex]
+                                   .subsections[subsectionIndex].questions track by $index" 
+                       ng-value="$index" >
+              {{que.title}}
             </md-option>
           </md-select>
         </md-input-container>

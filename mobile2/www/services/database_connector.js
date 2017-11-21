@@ -13,7 +13,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
   document.addEventListener('deviceready', function () {
     db = window.sqlitePlugin.openDatabase(private.dbOptions);
       
-    public.initTables = databaseInit.initTables(db);
+    public.initTables = databaseInit.initTables;
 
     public.createUser = function (name, pass, email) {
       var deferred = $q.defer();

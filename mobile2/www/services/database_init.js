@@ -1,13 +1,19 @@
  app.factory('databaseInit', function ($rootScope, $state, $q, database_mock) {
-    
     var public = {};
-    var private = {};
-     
+    var private = {
+      db: null,
+      dbOptions: {
+        'name': 'castle.db',
+        'location': 'default'
+      }
+    };
+    document.addEventListener('deviceready', function () {
+      private.db = window.sqlitePlugin.openDatabase(private.dbOptions);
     // Insert Necessary Data for Full Inspection
-    public.initDefaultTemplate = function (db) {
+    public.initDefaultTemplate = function () {
       console.log('db initDefaultTemplate');
       var deferred = $q.defer();
-      db.sqlBatch([
+      private.db.sqlBatch([
         ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Person(s) Present', '', 1, 0, 0, 'checkbox', null, null, 0, 1, 1, 1, 'template']],
         ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Person(s) Providing Property Access', '', 1, 0, 0, 'checkbox', null, null, 0, 1, 1, 1, 'template']],
         ['INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) Values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', ['Year Built', '', 1, 0, 1, 'number', 1700, 2017, 0, 1, 1, 1, 'template']],
@@ -529,9 +535,9 @@
       return deferred.promise;
     }
     
-    public.initThemes = function (db) {
+    public.initThemes = function () {
       var deferred = $q.defer();
-      db.executeSql('INSERT INTO Theme(themeTitle, themeBlob, userId) VALUES (?, ?, ?)', ['Home Theme', 'a whole bunch of text', 1], function (res) {
+      private.db.executeSql('INSERT INTO Theme(themeTitle, themeBlob, userId) VALUES (?, ?, ?)', ['Home Theme', 'a whole bunch of text', 1], function (res) {
         deferred.resolve({
           message: 'Theme insertion successful'
         });
@@ -543,11 +549,11 @@
       return deferred.promise;
     }
     
-    public.initTemplates = function (db) {
+    public.initTemplates = function () {
       console.log('db initTemplates being called');
       var timestamp = new Date();
       var deferred = $q.defer();
-      db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insSourceType, insType, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?)', [timestamp, timestamp, 'template', 'Residential', 1, 'Residential Template'], function (res) {
+      private.db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insSourceType, insType, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?)', [timestamp, timestamp, 'template', 'Residential', 1, 'Residential Template'], function (res) {
         deferred.resolve({
           rowId: res.insertId,
           message: 'Template insertion successful'
@@ -560,11 +566,11 @@
       return deferred.promise;
     }
     
-    public.dropAllTables = function (db) {   
+    public.dropAllTables = function () {   
       console.log('Dropping All Tables');
       var deferred = $q.defer();
       // Batch script to create all tables in db
-      db.sqlBatch([
+      private.db.sqlBatch([
           'DROP TABLE IF EXISTS Answer',
           'DROP TABLE IF EXISTS Client',
           'DROP TABLE IF EXISTS Inspection',
@@ -593,12 +599,12 @@
       return deferred.promise;
     }
     
-    public.initTables = function (db) {
+    public.initTables = function () {
       var deferred = $q.defer();
-      public.dropAllTables(db).then(function(){
+      public.dropAllTables().then(function(){
           console.log('calling initTables');
           // Batch script to create all tables in db
-          db.sqlBatch([
+          private.db.sqlBatch([
               'CREATE TABLE IF NOT EXISTS Answer (ansQuestionId INT, ansValue, ansType, ansInspectionId INT, ansSourceType, ansChecked, ansOrder, FOREIGN KEY(ansInspectionId) REFERENCES Inspection(rowId), FOREIGN KEY(ansQuestionid) REFERENCES Question(rowId))',
               'CREATE TABLE IF NOT EXISTS Client (cliFirstName, cliLastName, cliAddress, cliCity, cliState, cliZipCode, cliPhone, cliEmail)',
               'CREATE TABLE IF NOT EXISTS Inspection (insLastModified, insLastSubmitted, insJobId INT, insSourceType, insType, insName, insUserId INT, insThemeId INT, insThemeResponseBlob, insTemplateResponseBlob, insOrganizationId, insTemplateId INT, insTemplateTitle, FOREIGN KEY(insOrganizationId) REFERENCES Organization(rowId), FOREIGN KEY(insUserId) REFERENCES User(rowId), FOREIGN KEY(insJobId) REFERENCES Job(rowId), FOREIGN KEY(insThemeId) REFERENCES Theme(rowId))',
@@ -616,11 +622,11 @@
               'CREATE TABLE IF NOT EXISTS UserOrganizations (usoUserId INT, usoOrganizationId INT, FOREIGN KEY(usoUserId) REFERENCES User(rowId), FOREIGN KEY(usoOrganizationId) REFERENCES Organization(rowId))',
               'CREATE TABLE IF NOT EXISTS UserUsers (usuUserId INT, usuUserChildId INT, FOREIGN KEY(usuUserId) REFERENCES User(rowId))',
           ], function (res) {
-            public.initThemes(db);
-            public.initTemplates(db);
-            public.initSections(db);
-            public.initSubSections(db);
-            public.initDefaultTemplate(db);
+            public.initThemes();
+            public.initTemplates();
+            public.initSections();
+            public.initSubSections();
+            public.initDefaultTemplate();
             deferred.resolve({
               message: 'Batch statement for default Template data completed successfully'
             });
@@ -639,10 +645,10 @@
       return deferred.promise;
     }
 
-    public.initSubSections = function (db) {
+    public.initSubSections = function () {
       console.log('db initSubSections');
       var deferred = $q.defer();
-      db.sqlBatch([
+      private.db.sqlBatch([
         ['INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) Values (?, ?, ?, ?)', ['Observations', 1, 1, 'template']],
         ['INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) Values (?, ?, ?, ?)', ['Evaluation', 2, 1, 'template']],
         ['INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) Values (?, ?, ?, ?)', ['Attached Steps or Platforms', 2, 1, 'template']],
@@ -691,10 +697,10 @@
       return deferred.promise;
     }
     
-    public.initSections = function (db) {
+    public.initSections = function () {
       console.log('db initSections being called');
       var deferred = $q.defer();
-      db.sqlBatch([
+      private.db.sqlBatch([
         ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Field Notes', 1, 'template']],
         ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Site', 1, 'template']],
         ['INSERT INTO Section (secTitle, secInspectionId, secSourceType) Values (?, ?, ?)', ['Exterior', 1, 'template']],
@@ -721,6 +727,6 @@
       });
       return deferred.promise;
     }
-    
+    });
     return public;
  });

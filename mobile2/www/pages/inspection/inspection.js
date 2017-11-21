@@ -258,6 +258,10 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
       $scope.question = $scope.inspection.sections[$scope.sectionIndex]
                                    .subsections[$scope.subsectionIndex]
                                    .questions[$scope.questionIndex];
+      $scope.otherValue = {
+        'singleSelect': '',
+        'value': null
+      };
   };
   inspection_manager.getInspection($scope.insId)
                     .then(
@@ -364,7 +368,6 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
       }
     $state.go('camera');
   };
-
 
   var attachPhotos = function () {
     if (camera_manager.photos.length > 0 ) {

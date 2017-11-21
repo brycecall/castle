@@ -59,7 +59,7 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
             end_time = new Date();
             console.log("Theme application took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
             start_time = new Date();
-            
+
             $scope.report = true;
 
             /*var data = render_frame.contentDocument.querySelector('html').outerHTML;
@@ -93,25 +93,43 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
               });
             }*/
           };
-          
-          object.go = function(object) {
-            
-            var path = "/inspection/detail/" + object.inspectionId;
-            
-            if (object.sectionId) {
-              path += "/" + object.sectionId;
+
+          object.go = function (object) {
+
+            // The object is an inspection
+            if (object.secions) {
+              $state.go('inspection_detail', {
+                'insId': object.insId
+              });
+            } else
+
+              // The object is a section
+              if (object.subsecions) {
+                $state.go('inspection_detail', {
+                  'insId': object.inspectionId,
+                  'sectionIndex': object.id
+                });
+              } else
+
+                // The object is a subsection
+                if (object.questions) {
+                  $state.go('inspection_detail', {
+                    'insId': object.inspectionId,
+                    'sectionIndex': object.sectionId,
+                    'subsectionIndex': object.id
+                  });
+                } else
+
+            // The object is a question
+            {
+              $state.go('inspection_detail', {
+                'insId': object.inspectionId,
+                'sectionIndex': object.sectionId,
+                'subsectionIndex': object.subsectionId,
+                'questionIndex': object.id
+              });
             }
-            
-            if (object.subsectionId) {
-              path += "/" + object.subsectionId;
-            }
-            
-            if (object.id) {
-              path += "/" + object.id;
-            }
-            
-            console.log(path);
-          }
+          };
 
           // But the castle object on the iframe
           render_frame.contentWindow.castle = object;

@@ -202,7 +202,7 @@ Fidelity Building Inspections, LLC</pre>
     <div class="subsection" ng-repeat="subsection in section.subsections">
       <div class="subsection_title" ng-show="subsection.title">{{subsection.title}}</div>
       <div class="questions">
-        <div class="question" ng-repeat="question in subsection.questions" ng-click="castle.go(question.path)">
+        <div class="question" ng-repeat="question in subsection.questions" ng-click="castle.go(question)">
           <h4>{{question.title}}</h4>
           <div ng-show="question.type == 'checkbox'">
             <span ng-repeat="value in question.values track by $index" style="display: inline-block; width: 45%">

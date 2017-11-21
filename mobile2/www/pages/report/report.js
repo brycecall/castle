@@ -59,8 +59,10 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
             end_time = new Date();
             console.log("Theme application took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
             start_time = new Date();
+            
+            $scope.report = true;
 
-            var data = render_frame.contentDocument.querySelector('html').outerHTML;
+            /*var data = render_frame.contentDocument.querySelector('html').outerHTML;
             $scope.message = "Saving you a ton of time...";
 
             if (window['pdf'] !== undefined) {
@@ -89,10 +91,25 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
               }, function (error) {
                 $scope.report = false;
               });
-            }
+            }*/
           };
           
-          object.go = function(path) {
+          object.go = function(object) {
+            
+            var path = "/inspection/detail/" + object.inspectionId;
+            
+            if (object.sectionId) {
+              path += "/" + object.sectionId;
+            }
+            
+            if (object.subsectionId) {
+              path += "/" + object.subsectionId;
+            }
+            
+            if (object.id) {
+              path += "/" + object.id;
+            }
+            
             console.log(path);
           }
 

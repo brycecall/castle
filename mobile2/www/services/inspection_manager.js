@@ -84,6 +84,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                     title: promise.row.item(k).queTitle,
                     description: promise.row.item(k).queDescription,
                     subsectionId: promise.row.item(k).queSubSectionId,
+                    sectionId: promise.row.item(k).secRowId,
                     inspectionId: promise.row.item(k).queInspectionId,
                     sourceType: promise.row.item(k).sourceType,
                     type: promise.row.item(k).queType,

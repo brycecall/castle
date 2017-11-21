@@ -91,6 +91,10 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
               });
             }
           };
+          
+          object.go = function(path) {
+            console.log(path);
+          }
 
           // But the castle object on the iframe
           render_frame.contentWindow.castle = object;

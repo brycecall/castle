@@ -204,7 +204,7 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
   }, 'md-accent');
 
   action_manager.addAction("Edit", 'mode_edit', function () {
-    $state.go('inspection_section', {
+    $state.go('inspection_detail', {
       'insId': inspection_buffer.insId
     });
   });

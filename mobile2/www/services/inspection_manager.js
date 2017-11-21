@@ -59,6 +59,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
               title: promise.row.item(i).secTitle,
               sourceType: promise.row.item(i).secSourceType,
               inspectionId: promise.row.item(i).secInspectionId,
+              order: promise.row.item(i).secOrder,
               subsections: []
             }
             // Build subsections
@@ -70,6 +71,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                 sectionId: promise.row.item(j).susSectionId,
                 inspectionId: promise.row.item(j).susInspectionId,
                 sourceType: promise.row.item(j).susSourceType,
+                order: promise.row.item(j).susOrder,
                 questions: []
               }
               // Build questions
@@ -98,6 +100,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                     severity: null,
                     showSummaryRemark: promise.row.item(k).queShowSummaryRemark,
                     showDescription: promise.row.item(k).queShowDescription,
+                    order: promise.row.item(k).queOrder,
                     photos: []
                   }
                   // Build answers
@@ -111,6 +114,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                       type: promise.row.item(l).ansType,
                       checked: promise.row.item(l).ansChecked,
                       remark: '',
+                      order: promise.row.item(l).ansOrder,
                       photos: []
                     }
                     question.values.push(answer);
@@ -133,7 +137,8 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                             questionId: promise.row.item(m).phoQuestionId,
                             answerId: promise.row.item(m).phoAnswerId,
                             inspectionId: promise.row.item(m).phoInspectionId,
-                            sourceType: promise.row.item(m).phoSourceType
+                            sourceType: promise.row.item(m).phoSourceType,
+                            order: promise.row.item(m).phoOrder
                           }
                           answer.photos.push(photo);
                           question.photos.push(photo);

@@ -510,7 +510,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
                     tempQuestion.values.forEach(function (answer) {
                       var ansSourceType = queSourceType;
                       var tempAnswer = answer;
-                      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansChecked) VALUES (?,?,?,?,?,?)', [queRes.insertId, tempAnswer.key, tempAnswer.type, inspectionRes.insertId, ansSourceType, tempAnswer.checked], function (ansRes) {
+                      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansChecked, ansAutoComment) VALUES (?,?,?,?,?,?,?)', [queRes.insertId, tempAnswer.key, tempAnswer.type, inspectionRes.insertId, ansSourceType, tempAnswer.checked, tempAnswer.autoComment], function (ansRes) {
                         //console.log(answer.key + ' answer successfully inserted. ID: ' + ansRes.insertId + ' saved to Inspection#: ' + res.insertId);
                       }, function (ansError) {
                         deferred.reject({
@@ -671,7 +671,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
     
     public.updateAnswers = function(ansQuestion, answer, queRes, ansInsId, ansInsSourceType) {
       var ansDefer = $q.defer();
-        db.executeSql('UPDATE Answer SET ansQuestionId=?, ansValue=?, ansType=?, ansInspectionId=?, ansSourceType=?, ansChecked=?, ansOrder=? WHERE rowid=? AND ansInspectionId=?', [answer.questionId, answer.key, answer.type, answer.inspectionId, ansInsSourceType, answer.checked, answer.order, answer.id, answer.inspectionId], function (ansRes) {
+        db.executeSql('UPDATE Answer SET ansQuestionId=?, ansValue=?, ansType=?, ansInspectionId=?, ansSourceType=?, ansChecked=?, ansAutoComment=?, ansOrder=? WHERE rowid=? AND ansInspectionId=?', [answer.questionId, answer.key, answer.type, answer.inspectionId, ansInsSourceType, answer.checked, answer.autoComment, answer.order, answer.id, answer.inspectionId], function (ansRes) {
           // If this is successful, attempt to insert question-answer data
           ansDefer.resolve({message: 'Successfully saved Answer.'});
         }, function (ansError) {
@@ -783,7 +783,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
                     var tempAnswer = answer;
                     var questionId = queRes.insertId;
                     //console.log(tempAnswer);
-                    db.executeSql('INSERT OR REPLACE INTO Answer (rowid, ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansChecked, ansOrder) VALUES (?,?,?,?,?,?,?,?)', [tempAnswer.id, questionId, tempAnswer.key, tempAnswer.type, tempAnswer.inspectionId, tempAnswer.sourceType, tempAnswer.checked, ansOrder], function (ansRes) {
+                    db.executeSql('INSERT OR REPLACE INTO Answer (rowid, ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansChecked, ansAutoComment, ansOrder) VALUES (?,?,?,?,?,?,?,?,?)', [tempAnswer.id, questionId, tempAnswer.key, tempAnswer.type, tempAnswer.inspectionId, tempAnswer.sourceType, tempAnswer.checked, tempAnswer.autoComment, ansOrder], function (ansRes) {
                       //console.log('Success upsert to Answer: ' + ansRes.insertId);
                       ansOrder++;
                     }, function(err) {

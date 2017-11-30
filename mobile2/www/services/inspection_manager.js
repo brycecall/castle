@@ -114,7 +114,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                       inspectionId: promise.row.item(l).ansInspectionId,
                       type: promise.row.item(l).ansType,
                       checked: promise.row.item(l).ansChecked,
-                      remark: '',
+                      autoComment: promise.row.item(l).ansAutoComment,
                       order: promise.row.item(l).ansOrder,
                       photos: []
                     }

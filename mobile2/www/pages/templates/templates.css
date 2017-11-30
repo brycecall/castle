@@ -121,3 +121,18 @@ md-input-container {
     font-size: 10px;
     color: rgba(0, 0, 0, 0.54);
 }
+
+.auto-comment-container {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: -19px;
+  margin-bottom: 10px;
+}
+.auto-comment-header {
+  position: relative;
+  top: 8px;
+  background-color: white;
+  text-align: center;
+  margin-left: 40%;
+}

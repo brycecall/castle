@@ -1,0 +1,64 @@
+<link type="text/css" rel="stylesheet" href="pages/inspection/inspection.css" />
+<style>
+    .progressBar {
+        width:100%; 
+        background-color: white; 
+        color: darkgrey;
+        padding: 0px 8px;
+        clear: both;
+    }
+    .progressBar .step {
+      display:block;
+      font-size: 12px;
+      width: 30px;
+      height: 30px;
+      line-height: 28px;
+      border: 2px solid #7d7d7d;
+      text-align: center;
+      margin: 4px auto 4px auto;
+      border-radius: 50%;
+      background-color: white;
+      vertical-align: middle;
+        border-color: #55b776;
+        color: #55b776;
+    }
+    .progressBar span {
+        background-color: #55b776;
+        height: 3px;
+    }
+    .progressBar .active~span{
+        background-color: #DDD; 
+    }
+    .progressBar .active~div {
+        border-color: #DDD;
+        color: #DDD;
+    }
+
+</style>
+<div flex="" layout="column" class="page">
+   <md-content class="centerScroll">
+       
+    <div class="progressBar" layout="row" layout-align="start center">
+          <div class="step ">1</div>
+          <span flex=""></span>
+          <div class="step active">2</div>
+          <span flex=""></span>
+          <div class="step ">3</div>
+          <span flex=""></span>
+          <div class="step">4</div>
+    </div>
+    <md-divider></md-divider>  
+    <div class="centerPage" style="margin-bottom:85px;" id="centerPage">
+    <div layout="row" layout-align="space-between center">
+        <h2 class="md-subhead insTitle" 
+            style="margin-bottom:0px;">{{message}}</h2>
+    </div>
+     <div ng-repeat="item in chipList track by $index" layout="column" >
+      <md-button class="outerChip" aria-label="item.title" ng-click="stepUp($index)">
+         <div>{{item.title}}</div>
+      </md-button>
+     </div>        
+        
+    </div>
+  </md-content>
+</div>

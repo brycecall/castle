@@ -392,8 +392,8 @@
         /*END TEST QUESTIONS*/
           
         // Person(s) Present
-        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [1, 'Inspector', 'multi', 1, 'template']],
-        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [1, 'Buyer', 'multi', 1, 'template']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansAutoComment) Values (?, ?, ?, ?, ?, ?)', [1, 'Inspector', 'multi', 1, 'template', 'Inspector Auto Comment.']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansAutoComment) Values (?, ?, ?, ?, ?, ?)', [1, 'Buyer', 'multi', 1, 'template', 'Buyer Auto Comment.']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [1, 'Resident', 'multi', 1, 'template']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [1, 'Builder of Builders Rep', 'multi', 1, 'template']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [1, 'Owner or Seller', 'multi', 1, 'template']],

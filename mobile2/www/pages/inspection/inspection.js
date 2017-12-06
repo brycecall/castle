@@ -19,7 +19,8 @@ app.config(function ($stateProvider) {
         'insId': null,
         'sectionIndex': '0',
         'subsectionIndex': '0',
-        'questionIndex': '0'
+        'questionIndex': '0',
+        'photoMode':'0'
       }
     })
     .state('inspection_photo', {
@@ -229,6 +230,7 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
   $scope.sectionIndex = $transition$.params().sectionIndex;
   $scope.subsectionIndex = $transition$.params().subsectionIndex;
   $scope.questionIndex = $transition$.params().questionIndex;
+  $scope.photoMode = $transition$.params().photoMode;
   inspection_manager.mode = "inspection";
   inspection_manager.returnLocation = {
     'name': $state.current.name,
@@ -371,16 +373,20 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
   };
 
   action_manager.mode = ACTION_MODES.Action;
+    var hideButton = '';
+     if ($scope.photoMode === '1') {
+         hideButton = 'hide';
+     }
   action_manager.addAction("Previous", "keyboard_arrow_left", function () {
     navigateQuestions(false);
-  }, 'md-raised');
+  }, 'md-raised ' + hideButton); 
   action_manager.addAction("Photo", "shutter_camera", function () {
     //$scope.addPhotos()
     //todo: add photo
   }, 'md-raised bigicon md-accent');
   action_manager.addAction("Next", "keyboard_arrow_right", function () {
     navigateQuestions(true);
-  }, 'md-raised');
+  }, 'md-raised ' + hideButton);
 
   $scope.addPhotos = function (index, value) {
     console.log('add photos index: ' + index + ' value: ' + value);
@@ -391,8 +397,7 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
     }
     $state.go('camera');
   };
-
-
+    
   var attachPhotos = function () {
     if (camera_manager.photos.length > 0) {
       if (!$scope.question.photos) {
@@ -462,6 +467,7 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state, head
   $scope.questionIndex = $transition$.params().questionIndex;
   $scope.step = 0;
   $scope.message = "Choose a Section";
+ 
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'check', function () {
     $rootScope.loading = true;
@@ -477,7 +483,7 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state, head
     'name': $state.current.name,
     'params': $transition$.params()
   };
-  $scope.chipList = [];     
+  $scope.chipList = []; 
   inspection_manager.getInspection($scope.insId)
     .then(
       function (data) {
@@ -510,7 +516,8 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state, head
                     'insId': $scope.insId,
                     'sectionIndex': $scope.sectionIndex,
                     'subsectionIndex': $scope.subsectionIndex,
-                    'questionIndex': $scope.question
+                    'questionIndex': $scope.question,
+                    'photoMode':'1'
                 });
                 break;
             case 4:
@@ -519,6 +526,25 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state, head
         }
     };
 
-    
+  $scope.stepDownTo = function(index) {
+     if (index < $scope.step) {
+        $scope.step = index;
+        switch(index) {
+            case 0:
+                $scope.message = "Choose a Section";
+                $scope.chipList = $scope.inspection.sections;
+                break;
+            case 1:
+                $scope.message = "Choose a Subsection";
+                $scope.chipList = $scope.inspection.sections[$scope.sectionIndex].subsections;
+                break;
+            case 2:
+                $scope.message = "Choose a Question";
+                $scope.chipList = $scope.inspection.sections[$scope.sectionIndex].subsections[$scope.subsectionIndex].questions;
+                break;
+            default:
+        }
+     }
+  }; 
 
 });

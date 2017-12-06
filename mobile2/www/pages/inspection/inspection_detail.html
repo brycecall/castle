@@ -1,8 +1,20 @@
+<link type="text/css" rel="stylesheet" href="./pages/inspection/inspection.css" />
 <link type="text/css" rel="stylesheet" href="./dialogs/camera/camera_preview.css" />
 <link type="text/css" rel="stylesheet" href="./pages/inspection/inspection_detail.css" />
 <div class="page">
-  <md-progress-linear md-mode="determinate" class="md-accent" value="50"></md-progress-linear>  
-  <div class="subHeadNav"  
+
+    <div ng-if="photoMode === '1'" class="progressBar" layout="row" layout-align="start center">
+      <div ng-click="stepDownTo(0)" class="step">1</div>
+      <span flex=""></span>
+      <div ng-click="stepDownTo(1)" class="step">2</div>
+      <span flex=""></span>
+      <div ng-click="stepDownTo(2)" class="step">3</div>
+      <span flex=""></span>
+      <div ng-click="stepDownTo(3)" class="step active">4</div>
+    </div>
+    <div ng-if="photoMode == '0' || photoMode == null">
+    <md-progress-linear  md-mode="determinate" class="md-accent" value="50"></md-progress-linear>
+    <div class="subHeadNav"  
        layout="row" layout-align="start center">
        <md-input-container>
           <md-select ng-model="sectionIndex" 
@@ -43,7 +55,9 @@
           </md-select>
         </md-input-container>
   </div>
-    <md-divider></md-divider>
+            <md-divider></md-divider>
+    </div>
+
     <div class="pagePadding">
         <md-card class="flatCard">
             <md-card-content>            

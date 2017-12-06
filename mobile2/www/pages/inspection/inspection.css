@@ -5,9 +5,11 @@
 }
 
 md-input-container {
+/*
   min-width: 100px;
   min-height: 58px;
   margin: 0;
+*/
 }
 
 .inspection {
@@ -94,4 +96,36 @@ md-input-container {
     text-transform: none;
 }
 
-
+    .progressBar {
+        width:100%; 
+/*        background-color: white; */
+        color: darkgrey;
+        padding: 0px 8px;
+        clear: both;
+    }
+    .progressBar .step {
+      display:block;
+      font-size: 12px;
+      width: 30px;
+      height: 30px;
+      line-height: 28px;
+      border: 2px solid #7d7d7d;
+      text-align: center;
+      margin: 4px auto 4px auto;
+      border-radius: 50%;
+      background-color: white;
+      vertical-align: middle;
+        border-color: #55b776;
+        color: #55b776;
+    }
+    .progressBar span {
+        background-color: #55b776;
+        height: 3px;
+    }
+    .progressBar .active~span{
+        background-color: #DDD; 
+    }
+    .progressBar .active~div {
+        border-color: #DDD;
+        color: #DDD;
+    }

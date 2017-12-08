@@ -296,6 +296,9 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
         'value': null
       };
   };
+    
+  $scope.commentBox = "";
+    
   inspection_manager.getInspection($scope.insId)
     .then(
       function (data) {
@@ -425,19 +428,33 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
   };
 
   $scope.toggle = function (item, list, ignoreEmpty) {
-    var index = list.indexOf(item);
+    var index = ignoreEmpty ? item : list.indexOf(item.key);
+    // Select
     if (index > -1) {
       list.splice(index, 1);
+      // String replace Comment and remove associated autoComment
+      $scope.commentBox = $scope.commentBox.replace(item.autoComment, '');
+    // Unselect
     } else {
       if (ignoreEmpty) {
-        if (item) {
-          list.push(item);
+        if (item.key) {
+          list.push(item.key);
         }
       } else {
-        list.push(item);
+        list.push(item.key);
+        // Push autoComment from selected answer
+        if(item.autoComment !== null && item.autoComment !== undefined && $scope.commentBox.indexOf(item.autoComment) < 0) {
+          $scope.commentBox += item.autoComment;
+        }
       }
     }
   };
+    
+  $scope.toggleRadio = function (answer) {
+    if(answer.autoComment !== null && answer.autoComment !== undefined && $scope.commentBox.indexOf(answer.autoComment) < 0) {
+      $scope.commentBox = answer.autoComment;
+    }
+  }
 
   $scope.exists = function (value, array) {
     return $.inArray(value, array) > -1;

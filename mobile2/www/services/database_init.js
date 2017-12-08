@@ -392,8 +392,8 @@
         /*END TEST QUESTIONS*/
           
         // Person(s) Present
-        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [1, 'Inspector', 'multi', 1, 'template']],
-        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [1, 'Buyer', 'multi', 1, 'template']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansAutoComment) Values (?, ?, ?, ?, ?, ?)', [1, 'Inspector', 'multi', 1, 'template', 'Inspector Auto Comment.']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansAutoComment) Values (?, ?, ?, ?, ?, ?)', [1, 'Buyer', 'multi', 1, 'template', 'Buyer Auto Comment.']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [1, 'Resident', 'multi', 1, 'template']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [1, 'Builder of Builders Rep', 'multi', 1, 'template']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [1, 'Owner or Seller', 'multi', 1, 'template']],
@@ -412,7 +412,7 @@
         // Square Feet of the Property
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [4, null, 'single', 1, 'template']],
         // Type of Property
-        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [5, 'Single Family', 'single', 1, 'template']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansAutoComment) Values (?, ?, ?, ?, ?, ?)', [5, 'Single Family', 'single', 1, 'template', 'Test Radio Button AutoComment.']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [5, 'Single Use', 'single', 1, 'template']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [5, 'Multiple Use', 'single', 1, 'template']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [5, 'Duplex', 'single', 1, 'template']],
@@ -605,7 +605,7 @@
           console.log('calling initTables');
           // Batch script to create all tables in db
           private.db.sqlBatch([
-              'CREATE TABLE IF NOT EXISTS Answer (ansQuestionId INT, ansValue, ansType, ansInspectionId INT, ansSourceType, ansChecked, ansOrder, FOREIGN KEY(ansInspectionId) REFERENCES Inspection(rowId), FOREIGN KEY(ansQuestionid) REFERENCES Question(rowId))',
+              'CREATE TABLE IF NOT EXISTS Answer (ansQuestionId INT, ansValue, ansType, ansInspectionId INT, ansSourceType, ansChecked, ansOrder, ansAutoComment, FOREIGN KEY(ansInspectionId) REFERENCES Inspection(rowId), FOREIGN KEY(ansQuestionid) REFERENCES Question(rowId))',
               'CREATE TABLE IF NOT EXISTS Client (cliFirstName, cliLastName, cliAddress, cliCity, cliState, cliZipCode, cliPhone, cliEmail)',
               'CREATE TABLE IF NOT EXISTS Inspection (insLastModified, insLastSubmitted, insJobId INT, insSourceType, insType, insName, insUserId INT, insThemeId INT, insThemeResponseBlob, insTemplateResponseBlob, insOrganizationId, insTemplateId INT, insTemplateTitle, FOREIGN KEY(insOrganizationId) REFERENCES Organization(rowId), FOREIGN KEY(insUserId) REFERENCES User(rowId), FOREIGN KEY(insJobId) REFERENCES Job(rowId), FOREIGN KEY(insThemeId) REFERENCES Theme(rowId))',
               'CREATE TABLE IF NOT EXISTS Job (jobUserId INT, jobDate, jobAddress, jobZipCode, jobCity, jobState, jobStatus, jobSubmittedDate, FOREIGN KEY(jobUserId) REFERENCES User(rowId))',

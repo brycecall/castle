@@ -95,7 +95,8 @@
                 <div layout="row" layout-align="start center" ng-repeat="radioButton in question.values track by $index" >
                     <md-radio-button 
                                      class="questionIndent" 
-                                     ng-value="radioButton.key">{{radioButton.key}}
+                                     ng-value="radioButton.key"
+                                     ng-click="toggleRadio(radioButton)">{{radioButton.key}}
                     </md-radio-button>
                     <span flex=""></span>
                     <md-button class="md-icon-button" ng-click="addPhotos(radioButton.id, radioButton.key)" ng-show="radioButton.key == question.answer" >
@@ -215,7 +216,11 @@
                                style="color:rgba(0,0,0,0.87);">
                     </md-switch>
                 </div>
-               <md-input-container class="md-block">
+                <md-input-container ng-if="question.type === 'text'" class="md-block">
+                  <label>Add a comment here</label>
+                  <textarea  ng-model="question.values[0].autoComment"></textarea>
+                </md-input-container>
+                <md-input-container ng-if="question.type !== 'text'" class="md-block">
                   <label>Add a comment here</label>
                   <textarea>{{commentBox}}</textarea>
                 </md-input-container>

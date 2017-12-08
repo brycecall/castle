@@ -118,9 +118,8 @@
                 <div 
                      ui-sortable="sortOptions"   
                      ng-model="question.values">
-                <div layout="row" 
-                     layout-align="start center" 
-                     ng-repeat="radioButton in question.values" >
+                <div ng-repeat="radioButton in question.values" >
+                    <div layout="row" layout-align="start center">
 <!--
                     <div class="handle">
                         <md-icon md-svg-icon="drag_handle" ></md-icon>
@@ -139,7 +138,14 @@
                 <span flex=""></span>
                 <md-button class="md-icon-button" ng-click="addPhotos(radioButton.id, radioButton.key)" ng-show="radioButton.key == question.answer" >
                   <md-icon md-svg-icon="shutter_camera"></md-icon>
-                </md-button>                    
+                </md-button>
+                </div>
+                <div class="auto-comment-container">
+                    <span class="auto-comment-header">
+                      Auto Comment
+                    </span>
+                    <textarea ng-model="radioButton.autoComment" style="width:100%; height: 40px"></textarea>
+                </div>
                 </div>
                </div>
             </md-radio-group>
@@ -277,6 +283,20 @@
 
         
     </form>
+            </md-card-content>
+        </md-card>
+                <md-card class="flatCard">
+            <md-card-content>
+            <div class="headBlock">
+                <div layout="row" layout-align="center start">     
+                    <div class="md-title">Comment</div>
+                    <span flex=""></span>
+                </div>
+               <md-input-container class="md-block">
+                  <label>Add a comment here</label>
+                  <textarea ng-model="question.values[0].autoComment"></textarea>
+                </md-input-container>
+              </div>
             </md-card-content>
         </md-card>
         <md-card>

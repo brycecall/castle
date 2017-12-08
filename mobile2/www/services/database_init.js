@@ -412,7 +412,7 @@
         // Square Feet of the Property
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [4, null, 'single', 1, 'template']],
         // Type of Property
-        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [5, 'Single Family', 'single', 1, 'template']],
+        ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansAutoComment) Values (?, ?, ?, ?, ?, ?)', [5, 'Single Family', 'single', 1, 'template', 'Test Radio Button AutoComment.']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [5, 'Single Use', 'single', 1, 'template']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [5, 'Multiple Use', 'single', 1, 'template']],
         ['INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType) Values (?, ?, ?, ?, ?)', [5, 'Duplex', 'single', 1, 'template']],

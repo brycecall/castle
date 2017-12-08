@@ -421,6 +421,12 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
       }
     }
   };
+    
+  $scope.toggleRadio = function (answer) {
+    if(answer.autoComment !== null && answer.autoComment !== undefined && $scope.commentBox.indexOf(answer.autoComment) < 0) {
+      $scope.commentBox = answer.autoComment;
+    }
+  }
 
   $scope.exists = function (value, array) {
     return $.inArray(value, array) > -1;

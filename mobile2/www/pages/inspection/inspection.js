@@ -31,7 +31,8 @@ app.config(function ($stateProvider) {
         'insId': null,
         'sectionIndex': '0',
         'subsectionIndex': '0',
-        'questionIndex': '0'
+        'questionIndex': '0',
+        'startIndex':null
       }
     });
 });
@@ -246,9 +247,16 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
       //});
   });
 
-  header_manager.addAction("Photo Mode", "shutter_camera", function () {
-      $state.go("inspection_photo", {'insId':$scope.insId});
-  }, 'md-raised md-accent');
+    if ($scope.photoMode === '1') {
+      header_manager.addAction("Wizard Mode", "shutter_camera", function () {
+          $state.go("inspection_detail", {'insId':$scope.insId, 'photoMode':null});
+      }, 'md-raised md-accent');
+    } else {
+      header_manager.addAction("Photo Mode", "shutter_camera", function () {
+          $state.go("inspection_photo", {'insId':$scope.insId, 'startIndex':null});
+      }, 'md-raised md-accent');
+    }
+
     
   $scope.edit = function () {
     $state.go('template_detail', {
@@ -440,34 +448,69 @@ app.controller('inspection_detail', function ($rootScope, $scope, $, $state, hea
   };
 
   $scope.severityList = [
-    {
-      'icon': 'cancel',
-      'title': 'Non-Issue'
+        {
+          'icon': 'cancel',
+          'title': 'Non-Issue'
         },
-    {
-      'icon': 'info_outline',
-      'title': 'Informational'
+        {
+          'icon': 'info_outline',
+          'title': 'Informational'
         },
-    {
-      'icon': 'warning',
-      'title': 'Minor Concerns'
+        {
+          'icon': 'warning',
+          'title': 'Minor Concerns'
         },
-    {
-      'icon': 'error',
-      'title': 'Major Concerns'
+        {
+          'icon': 'error',
+          'title': 'Major Concerns'
         }
     ];
+  $scope.stepDownTo = function(index) {
+        switch(index) {
+            case 0:
+                $state.go('inspection_photo', {
+                    'insId': $scope.insId,
+                    'sectionIndex': $scope.sectionIndex,
+                    'subsectionIndex': $scope.subsectionIndex,
+                    'questionIndex': $scope.questionIndex,
+                    'startIndex':index + ''
+                });
+                break;
+            case 1:
+                $state.go('inspection_photo', {
+                    'insId': $scope.insId,
+                    'sectionIndex': $scope.sectionIndex,
+                    'subsectionIndex': $scope.subsectionIndex,
+                    'questionIndex': $scope.questionIndex,
+                    'startIndex':index + ''
+                });
+                break;
+            case 2:
+                $state.go('inspection_photo', {
+                    'insId': $scope.insId,
+                    'sectionIndex': $scope.sectionIndex,
+                    'subsectionIndex': $scope.subsectionIndex,
+                    'questionIndex': $scope.questionIndex,
+                    'startIndex':index + ''
+                });
+                break;
+            default:
+        }
+  }; 
 
 });
 
-app.controller('inspection_photo', function ($rootScope, $scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $transition$, shareService) {
+app.controller('inspection_photo', function ($rootScope, $scope, $, $state, 
+                                              header_manager, camera_manager, 
+                                              action_manager, inspection_manager, 
+                                              $transition$, shareService) {
   $scope.insId = $transition$.params().insId;
   $scope.sectionIndex = $transition$.params().sectionIndex;
   $scope.subsectionIndex = $transition$.params().subsectionIndex;
   $scope.questionIndex = $transition$.params().questionIndex;
+  var startIndex = $transition$.params().startIndex;
   $scope.step = 0;
   $scope.message = "Choose a Section";
- 
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'check', function () {
     $rootScope.loading = true;
@@ -484,20 +527,7 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state, head
     'params': $transition$.params()
   };
   $scope.chipList = []; 
-  inspection_manager.getInspection($scope.insId)
-    .then(
-      function (data) {
-        $rootScope.loading = false;
-        $scope.inspection = data.value;
-        $scope.chipList = $scope.inspection.sections;
-      },
-      function (data) {
-        $rootScope.loading = false;
-        console.log("Error... no question exists in the database");
-      }
-    );
-    
-    $scope.stepUp = function(index) {
+  $scope.stepUp = function(index) {
         $scope.step++;
         switch($scope.step) {
             case 1:
@@ -511,12 +541,12 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state, head
                 $scope.chipList = $scope.inspection.sections[$scope.sectionIndex].subsections[index].questions;
                 break;
             case 3:
-                $scope.question = index;
+                $scope.questionIndex = index;
                 $state.go('inspection_detail', {
                     'insId': $scope.insId,
                     'sectionIndex': $scope.sectionIndex,
                     'subsectionIndex': $scope.subsectionIndex,
-                    'questionIndex': $scope.question,
+                    'questionIndex': $scope.questionIndex,
                     'photoMode':'1'
                 });
                 break;
@@ -546,5 +576,26 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state, head
         }
      }
   }; 
-
+    
+  (function init() {
+  inspection_manager.getInspection($scope.insId)
+    .then(
+      function (data) {
+        $rootScope.loading = false;
+        $scope.inspection = data.value;
+         if (startIndex != null) {
+            startIndex = parseInt(startIndex);
+            $scope.step = startIndex + 1;
+            $scope.stepDownTo(startIndex);
+         } else {
+            $scope.chipList = $scope.inspection.sections;
+         }
+      },
+      function (data) {
+        $rootScope.loading = false;
+        console.log("Error... no question exists in the database");
+      }
+    );
+  })();
+    
 });

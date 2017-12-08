@@ -65,10 +65,15 @@ margin: 0;
 }
 
 .subHeadNav::-webkit-scrollbar { 
-    display: none; 
+/*    display: none; */
 } 
 .subHeadNav {
-  width:100%; 
+  display:inline-block;
   height: 50px; 
   background-color: white;
+  overflow-x: visible;
+}
+
+.subHeadNav md-input-container {
+
 }

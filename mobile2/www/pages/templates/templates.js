@@ -223,7 +223,7 @@ app.controller('template_new', function ($rootScope, $scope, $state, $rootScope,
   $scope.templates = [];
   $scope.toSection = function (insId) {
     $rootScope.loading = true;
-    $state.go('inspection_detail', {
+    $state.go('inspection_wizard', {
       'insId': 1
     });
   }

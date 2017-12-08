@@ -1,9 +1,9 @@
 <link type="text/css" rel="stylesheet" href="./pages/inspection/inspection.css" />
 <link type="text/css" rel="stylesheet" href="./dialogs/camera/camera_preview.css" />
-<link type="text/css" rel="stylesheet" href="./pages/inspection/inspection_detail.css" />
+<link type="text/css" rel="stylesheet" href="./pages/inspection/inspection_wizard.css" />
 <div class="page">
 
-    <div ng-if="photoMode === '1'" class="progressBar" layout="row" layout-align="start center">
+    <div ng-show="photoMode === '1'" class="progressBar" layout="row" layout-align="start center">
       <div ng-click="stepDownTo(0)" class="step">1</div>
       <span flex=""></span>
       <div ng-click="stepDownTo(1)" class="step">2</div>
@@ -12,15 +12,14 @@
       <span flex=""></span>
       <div ng-click="stepDownTo(3)" class="step active">4</div>
     </div>
-    <div ng-if="photoMode == '0' || photoMode == null">
+    <div ng-show="photoMode == '0' || photoMode == null">
     <md-progress-linear  md-mode="determinate" class="md-accent" value="50"></md-progress-linear>
-    <div class="subHeadNav"  
-       >
+    <div class="subHeadNav" layout="row" layout-align="start center" flex="">
        <md-input-container>
-          <md-select ng-model="sectionIndex" 
+          <md-select ng-model="insParams.sectionIndex" 
                      class="md-no-underline" 
                      aria-label="choose section"
-                     md-on-close="navChange('section')"
+                     md-on-close="navChange('section', insParams.sectionIndex)"
                      >
             <md-option ng-repeat="sec in inspection.sections track by $index" 
                        ng-value="$index" >
@@ -29,12 +28,12 @@
           </md-select>
         </md-input-container>
        <md-input-container>
-          <md-select ng-model="subsectionIndex" 
+          <md-select ng-model="insParams.subsectionIndex" 
                      class="md-no-underline" 
                      aria-label="choose subsection"
-                     md-on-close="navChange('subsection')"
+                     md-on-close="navChange('subsection', insParams.subsectionIndex)"
                      >
-            <md-option ng-repeat="subsec in inspection.sections[sectionIndex]
+            <md-option ng-repeat="subsec in inspection.sections[insParams.sectionIndex]
                                    .subsections track by $index" 
                        ng-value="$index" >
               {{subsec.title}}
@@ -42,13 +41,13 @@
           </md-select>
         </md-input-container>
        <md-input-container>
-          <md-select ng-model="questionIndex" 
+          <md-select ng-model="insParams.questionIndex" 
                      class="md-no-underline" 
                      aria-label="choose question"
-                     md-on-close="navChange('question')"
+                     md-on-close="navChange('question', insParams.questionIndex)"
                      >
-            <md-option ng-repeat="que in inspection.sections[sectionIndex]
-                                   .subsections[subsectionIndex].questions track by $index" 
+            <md-option ng-repeat="que in inspection.sections[insParams.sectionIndex]
+                                   .subsections[insParams.subsectionIndex].questions track by $index" 
                        ng-value="$index" >
               {{que.title}}
             </md-option>

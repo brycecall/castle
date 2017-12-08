@@ -99,14 +99,14 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
             
             // The object is an inspection
             if (object.secions) {
-              $state.go('inspection_detail', {
+              $state.go('inspection_wizard', {
                 'insId': object.insId
               });
             } else
 
               // The object is a section
               if (object.subsecions) {
-                $state.go('inspection_detail', {
+                $state.go('inspection_wizard', {
                   'insId': object.inspectionId,
                   'sectionIndex': object.id
                 });
@@ -114,7 +114,7 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
 
                 // The object is a subsection
                 if (object.questions) {
-                  $state.go('inspection_detail', {
+                  $state.go('inspection_wizard', {
                     'insId': object.inspectionId,
                     'sectionIndex': object.sectionId,
                     'subsectionIndex': object.id
@@ -123,7 +123,7 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
 
             // The object is a question
             {
-              $state.go('inspection_detail', {
+              $state.go('inspection_wizard', {
                 'insId': object.inspectionId,
                 'sectionIndex': object.sectionId,
                 'subsectionIndex': object.subsectionId,
@@ -240,7 +240,7 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
   }, 'md-accent');
 
   action_manager.addAction("Edit", 'mode_edit', function () {
-    $state.go('inspection_detail', {
+    $state.go('inspection_wizard', {
       'insId': inspection_buffer.insId
     });
   });

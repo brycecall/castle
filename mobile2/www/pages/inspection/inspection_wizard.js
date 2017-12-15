@@ -10,7 +10,7 @@ app.config(function ($stateProvider) {
         'sectionIndex': '0',
         'subsectionIndex': '0',
         'questionIndex': '0',
-        'photoMode':'0'
+        'photoMode':null
       }
     })
 });
@@ -39,7 +39,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
       //});
   });
 
-    if ($scope.photoMode === '1') {
+    if ($scope.insParams.photoMode === '1') {
       header_manager.addAction("Wizard Mode", "shutter_camera", function () {
           $state.go("inspection_wizard", {'insId':$scope.insParams.insId, 'photoMode':null});
       }, 'md-raised md-accent');
@@ -69,13 +69,17 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
   $scope.navChange = function (loc, index) {
     switch (loc) {
       case "section":
+        if ($scope.insParams.sectionIndex != index){    
+            $scope.insParams.subsectionIndex = 0;
+            $scope.insParams.questionIndex = 0;
+        }
         $scope.insParams.sectionIndex = index;
-        $scope.insParams.subsectionIndex = 0;
-        $scope.insParams.questionIndex = 0;
         break;
       case "subsection":
+        if ($scope.insParams.subsectionIndex != index){
+           $scope.insParams.questionIndex = 0; 
+        }
         $scope.insParams.subsectionIndex = index;
-        $scope.insParams.questionIndex = 0;
         break;
       case "question":
         $scope.insParams.questionIndex = index;
@@ -180,7 +184,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
 
   action_manager.mode = ACTION_MODES.Action;
     var hideButton = '';
-     if ($scope.photoMode === '1') {
+     if ($scope.insParams.photoMode === '1') {
          hideButton = 'hide';
      }
   action_manager.addAction("Previous", "keyboard_arrow_left", function () {

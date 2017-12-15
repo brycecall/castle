@@ -3,7 +3,7 @@
 <link type="text/css" rel="stylesheet" href="./pages/inspection/inspection_wizard.css" />
 <div class="page">
 
-    <div ng-show="photoMode === '1'" class="progressBar" layout="row" layout-align="start center">
+    <div ng-show="insParams.photoMode === '1'" class="progressBar" layout="row" layout-align="start center">
       <div ng-click="stepDownTo(0)" class="step">1</div>
       <span flex=""></span>
       <div ng-click="stepDownTo(1)" class="step">2</div>
@@ -12,7 +12,7 @@
       <span flex=""></span>
       <div ng-click="stepDownTo(3)" class="step active">4</div>
     </div>
-    <div ng-show="photoMode == '0' || photoMode == null">
+    <div ng-show="insParams.photoMode == '0' || insParams.photoMode == null">
     <md-progress-linear  md-mode="determinate" class="md-accent" value="50"></md-progress-linear>
     <div class="subHeadNav" layout="row" layout-align="start center" flex="">
        <md-input-container>

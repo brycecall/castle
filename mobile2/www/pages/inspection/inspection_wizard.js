@@ -285,7 +285,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
                 });
                 break;
             case 1:
-                $state.go('inspection_photo', {
+                $state.go('inspection_photo.meta', {
                     'insId': $scope.insParams.insId,
                     'sectionIndex': $scope.insParams.sectionIndex,
                     'subsectionIndex': $scope.insParams.subsectionIndex,
@@ -294,7 +294,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
                 });
                 break;
             case 2:
-                $state.go('inspection_photo', {
+                $state.go('inspection_photo.meta', {
                     'insId': $scope.insParams.insId,
                     'sectionIndex': $scope.insParams.sectionIndex,
                     'subsectionIndex': $scope.insParams.subsectionIndex,

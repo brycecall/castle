@@ -3,6 +3,18 @@ app.config(function ($stateProvider) {
   $stateProvider
     .state('inspection_photo', {
       url: "/inspection/photo/{insId}/{sectionIndex}/{subsectionIndex}/{questionIndex}",
+      templateUrl: "pages/inspection/inspection_camera.html",
+      controller: "inspection_photo",
+      params: {
+        'insId': null,
+        'sectionIndex': '0',
+        'subsectionIndex': '0',
+        'questionIndex': '0',
+        'startIndex':null
+      }
+    })
+    .state('inspection_photo.meta', {
+      url: "/inspection/photo/{insId}/{sectionIndex}/{subsectionIndex}/{questionIndex}",
       templateUrl: "pages/inspection/inspection_photo.html",
       controller: "inspection_photo",
       params: {
@@ -12,7 +24,8 @@ app.config(function ($stateProvider) {
         'questionIndex': '0',
         'startIndex':null
       }
-    });
+    })
+    ;
 });
 
 app.controller('inspection_photo', function ($rootScope, $scope, $, $state, 
@@ -91,6 +104,23 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
         }
      }
   }; 
+    
+  $scope.camera_manager.cameraCallback = function() {
+      console.log("good");
+      $state.go('inspection_photo.meta', {
+         'insId': $scope.insId
+      });
+  };
+  $scope.flashModeIcon = 'flash_auto'; 
+  $scope.setFlashMode = function(mode, icon) {
+      camera_manager.changeFlashMode(mode);
+      $scope.flashModeIcon = icon;
+  };
+    
+  $scope.changeZoom = function(zoom) {
+      camera_manager.changeZoom(zoom);
+  };
+    
     
   (function init() {
   inspection_manager.getInspection($scope.insId)

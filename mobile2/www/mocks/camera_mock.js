@@ -23,6 +23,14 @@ app.factory('camera_mock', function () {
         }
         console.log("Camera started!");
     };
+    
+    MockCameraPreview.cameraCallback = function() {
+        console.log("camera callback");
+    };
+    MockCameraPreview.takeRapidModePicture = function (insId) {
+          console.log("Picture Taken!");
+          MockCameraPreview.cameraCallback();
+    };
 
     MockCameraPreview.stopCamera = function(onSuccess, onError) {
         console.log("Camera Stopped!");

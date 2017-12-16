@@ -22,6 +22,7 @@ app.factory('camera_manager', function (camera_mock, $state) {
     
   /* Stores a list of photos returned from takePicture */
   public.photos = [];
+  public.rapidModePhoto = {};
     
   /* meant to store the state to return to after the Camera usage is done. */
   public.returnState = '';
@@ -48,6 +49,16 @@ app.factory('camera_manager', function (camera_mock, $state) {
         public.photos.push({'link':photoURL});
     });
     
+  };
+  public.cameraCallback = function(){
+        console.log("camera callback");
+  };
+  public.takeRapidModePicture = function () {
+    CameraPreview.takePicture(function (imgData) {
+    var photoURL = 'data:image/jpeg;base64,' + imgData;
+        public.rapidModePhoto = { 'link':photoURL };
+    });
+    public.cameraCallback();
   };
 
   public.switchCamera = function () {

@@ -1,5 +1,5 @@
 <link type="text/css" rel="stylesheet" href="dialogs/camera/camera.css" />
-<link type="text/css" rel="stylesheet" href="./pages/inspection/inspection_wizard.css" />
+<link type="text/css" rel="stylesheet" href="./pages/inspection/inspection.css" />
 <div class="page">
   <div>
     <div class="progressBar" layout="row" layout-align="start center">
@@ -71,12 +71,14 @@
       <md-button class="md-primary md-icon-button" id="switchCameraButton" ng-click="camera_manager.switchCamera()" aria-label="switch camera">
         <md-icon md-svg-icon="switch_camera" style="color:white;"></md-icon>
       </md-button>
-      <md-button class="md-raised md-fab" id="takePictureButton" ng-click="camera_manager.takePicture()" aria-label="take picture">
+      <md-button class="md-raised md-fab" id="takePictureButton" ng-click="camera_manager.takeRapidModePicture(insId)" 
+      aria-label="take picture">
         <md-icon md-svg-icon="shutter_camera" style="color:black;"></md-icon>
       </md-button>
-      <div class="previewCircle" id="originalPicture" ui-sref="camera_preview" aria-label="preview images">
-
-      </div>
+<!--
+      <md-button class="md-icon-button" style="visibility: hidden"  aria-label="nothin">
+      </md-button>
+-->
     </div>
 
     <!--

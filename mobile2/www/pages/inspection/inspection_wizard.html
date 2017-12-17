@@ -209,8 +209,10 @@
                 <div ng-repeat="photo in question.photos"
                  class="md-whiteframe-1dp"
                  ng-click="showFullScreen($event, photo)">
-                    <div style="margin: 10px; width: 200px;">{{photo.title}}</div>
                     <div class="photo" style="background-image: url( {{photo.link}} ); margin: 10px;" >
+                    <div class="photo" style="width: calc(100%-250px)">
+                        <textarea style="width: 100%">{{photo.title}}</textarea>
+                    </div>
                     </div>
                 </div>
         </div>

@@ -59,6 +59,8 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
   $scope.stepUp = function(index) {
         $scope.step++;
         switch($scope.step) {
+            case 0:
+                break 
             case 1:
                 $scope.sectionIndex = index;
                 $scope.message = "Choose a Subsection";

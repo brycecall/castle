@@ -50,15 +50,18 @@ app.factory('camera_manager', function (camera_mock, $state) {
     });
     
   };
-  public.cameraCallback = function(){
+  public.cameraCallback = {
+    method:function() {
         console.log("camera callback");
-  };
+    }
+  }
   public.takeRapidModePicture = function () {
+      console.log("take rapid mode");
     CameraPreview.takePicture(function (imgData) {
     var photoURL = 'data:image/jpeg;base64,' + imgData;
         public.rapidModePhoto = { 'link':photoURL };
+        public.cameraCallback.method();
     });
-    public.cameraCallback();
   };
 
   public.switchCamera = function () {

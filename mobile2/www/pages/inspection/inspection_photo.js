@@ -13,7 +13,7 @@ app.config(function ($stateProvider) {
         'startIndex':null
       }
     })
-    .state('inspection_photo.meta', {
+    .state('inspection_photo_meta', {
       url: "/inspection/photo/{insId}/{sectionIndex}/{subsectionIndex}/{questionIndex}",
       templateUrl: "pages/inspection/inspection_photo.html",
       controller: "inspection_photo",
@@ -36,6 +36,7 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
   $scope.sectionIndex = $transition$.params().sectionIndex;
   $scope.subsectionIndex = $transition$.params().subsectionIndex;
   $scope.questionIndex = $transition$.params().questionIndex;
+  $scope.camera_manager = camera_manager;    
   var startIndex = $transition$.params().startIndex;
   $scope.step = 0;
   $scope.message = "Choose a Section";
@@ -105,12 +106,16 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
      }
   }; 
     
-  $scope.camera_manager.cameraCallback = function() {
+  $scope.camera_manager.cameraCallback.method = function() {
       console.log("good");
-      $state.go('inspection_photo.meta', {
+      $state.go('inspection_photo_meta', {
          'insId': $scope.insId
       });
   };
+
+    
+    
+    
   $scope.flashModeIcon = 'flash_auto'; 
   $scope.setFlashMode = function(mode, icon) {
       camera_manager.changeFlashMode(mode);

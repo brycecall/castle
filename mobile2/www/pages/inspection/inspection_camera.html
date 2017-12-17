@@ -43,7 +43,8 @@
           </md-menu-content>
         </md-menu>
         <md-menu>
-          <md-button aria-label="Zoom zoom" class="md-icon-button" ng-click="$mdMenu.open($event, zoomSlider)">
+          <md-button aria-label="Zoom zoom" class="md-icon-button" 
+                     ng-click="$mdMenu.open($event, zoomSlider)">
             <md-icon md-menu-origin md-svg-icon="zoom_in" class="lightIcon"></md-icon>
           </md-button>
           <md-menu-content width="6">
@@ -51,7 +52,9 @@
               <md-slider-container class="md-primary">
                 <span class="md-body-1">Zoom: </span>
                 <!--                  <md-icon md-svg-icon="remove"></md-icon>-->
-                <md-slider flex ng-model="zoomSlider" ng-change="changeZoom(zoomSlider)" step="1" min="1" max="30" aria-label="zoom slider">
+                <md-slider flex ng-model="zoomSlider" 
+                           ng-change="changeZoom(zoomSlider)" 
+                           step="1" min="1" max="30" aria-label="zoom slider">
                 </md-slider>
                 <!--                  <md-icon md-svg-icon="add"></md-icon>-->
               </md-slider-container>
@@ -71,7 +74,8 @@
       <md-button class="md-primary md-icon-button" id="switchCameraButton" ng-click="camera_manager.switchCamera()" aria-label="switch camera">
         <md-icon md-svg-icon="switch_camera" style="color:white;"></md-icon>
       </md-button>
-      <md-button class="md-raised md-fab" id="takePictureButton" ng-click="camera_manager.takeRapidModePicture(insId)" 
+      <md-button class="md-raised md-fab" id="takePictureButton" 
+      ng-click="camera_manager.takeRapidModePicture(insId)" 
       aria-label="take picture">
         <md-icon md-svg-icon="shutter_camera" style="color:black;"></md-icon>
       </md-button>

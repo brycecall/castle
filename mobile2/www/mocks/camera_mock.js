@@ -50,6 +50,7 @@ app.factory('camera_mock', function () {
 
     MockCameraPreview.takePicture = function(opts, onSuccess, onError) {
         console.log("You took a picture!");
+        opts();
     };
 
     MockCameraPreview.setColorEffect = function(effect, onSuccess, onError) {

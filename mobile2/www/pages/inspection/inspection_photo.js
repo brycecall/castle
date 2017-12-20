@@ -10,7 +10,7 @@ app.config(function ($stateProvider) {
         'sectionIndex': '0',
         'subsectionIndex': '0',
         'questionIndex': '0',
-        'startIndex':null
+        'startIndex':'0'
       }
     })
     .state('inspection_photo_meta', {
@@ -22,7 +22,7 @@ app.config(function ($stateProvider) {
         'sectionIndex': '0',
         'subsectionIndex': '0',
         'questionIndex': '0',
-        'startIndex':null
+        'startIndex':'1'
       }
     })
     ;
@@ -38,7 +38,7 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
   $scope.questionIndex = $transition$.params().questionIndex;
   $scope.camera_manager = camera_manager;    
   var startIndex = $transition$.params().startIndex;
-  $scope.step = 0;
+  $scope.step = startIndex;
   $scope.message = "Choose a Section";
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'check', function () {
@@ -60,18 +60,19 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
         $scope.step++;
         switch($scope.step) {
             case 0:
-                break 
             case 1:
+                break 
+            case 2:
                 $scope.sectionIndex = index;
                 $scope.message = "Choose a Subsection";
                 $scope.chipList = $scope.inspection.sections[index].subsections;
                 break;
-            case 2:
+            case 3:
                 $scope.subsectionIndex = index;
                 $scope.message = "Choose a Question";
                 $scope.chipList = $scope.inspection.sections[$scope.sectionIndex].subsections[index].questions;
                 break;
-            case 3:
+            case 4:
                 $scope.questionIndex = index;
                 $state.go('inspection_wizard', {
                     'insId': $scope.insId,
@@ -81,25 +82,29 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
                     'photoMode':'1'
                 });
                 break;
-            case 4:
-                break;
             default:
         }
     };
 
   $scope.stepDownTo = function(index) {
+     console.log($scope.step);
      if (index < $scope.step) {
         $scope.step = index;
         switch(index) {
             case 0:
+                $state.go('inspection_photo', {
+                    'insId': $scope.insId
+                });
+                break;
+            case 1:
                 $scope.message = "Choose a Section";
                 $scope.chipList = $scope.inspection.sections;
                 break;
-            case 1:
+            case 3:
                 $scope.message = "Choose a Subsection";
                 $scope.chipList = $scope.inspection.sections[$scope.sectionIndex].subsections;
                 break;
-            case 2:
+            case 4:
                 $scope.message = "Choose a Question";
                 $scope.chipList = $scope.inspection.sections[$scope.sectionIndex].subsections[$scope.subsectionIndex].questions;
                 break;
@@ -130,6 +135,10 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
     
     
   (function init() {
+    if ($scope.step == 0) {
+        camera_manager.startCamera();
+    }
+      
   inspection_manager.getInspection($scope.insId)
     .then(
       function (data) {

@@ -56,7 +56,7 @@ app.factory('camera_manager', function (camera_mock, $state) {
     }
   }
   public.takeRapidModePicture = function () {
-      console.log("take rapid mode");
+    console.log("take rapid mode");
     CameraPreview.takePicture(function (imgData) {
     var photoURL = 'data:image/jpeg;base64,' + imgData;
         public.rapidModePhoto = { 'link':photoURL };

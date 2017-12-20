@@ -3,15 +3,16 @@
    <md-content class="centerScroll">
        
     <div class="progressBar" layout="row" layout-align="start center">
-          <div ng-click="stepDownTo(0)" class="step" ng-class="step < 1 ? 'active' : ''">1</div>
+          <div ng-click="stepDownTo(0)" class="step previewCircle" ng-class="step < 1 ? 'active' : ''" style="background-image: url( {{camera_manager.rapidModePhoto.link}} );">1</div>
           <span flex=""></span>
           <div ng-click="stepDownTo(1)" class="step" ng-class="step === 1 ? 'active' : ''">2</div>
           <span flex=""></span>
           <div ng-click="stepDownTo(2)" class="step" ng-class="step === 2 ? 'active' : ''">3</div>
           <span flex=""></span>
           <div ng-click="stepDownTo(3)" class="step" ng-class="step === 3 ? 'active' : ''">4</div>
+          <span flex=""></span>
+          <div ng-click="stepDownTo(4)" class="step" ng-class="step === 4 ? 'active' : ''">5</div>
     </div>
-<!--    <md-divider></md-divider>  -->
     <div class="centerPage" style="margin-bottom:85px;" id="centerPage">
     <div layout="row" layout-align="space-between center">
         <h2 class="md-subhead insTitle" 

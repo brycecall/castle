@@ -267,23 +267,24 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
   };
 
   $scope.severityList = [
-        {
-          'icon': 'cancel',
-          'title': 'Non-Issue'
-        },
-        {
-          'icon': 'info_outline',
-          'title': 'Informational'
-        },
-        {
-          'icon': 'warning',
-          'title': 'Minor Concerns'
-        },
-        {
-          'icon': 'error',
-          'title': 'Major Concerns'
-        }
-    ];
+    {
+      'icon': 'cancel',
+      'title': 'Non-Issue'
+    },
+    {
+      'icon': 'info_outline',
+      'title': 'Informational'
+    },
+    {
+      'icon': 'warning',
+      'title': 'Minor Concerns'
+    },
+    {
+      'icon': 'error',
+      'title': 'Major Concerns'
+    }
+  ];
+    
   $scope.stepDownTo = function(index) {
         switch(index) {
             case 0:
@@ -296,15 +297,8 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
                 });
                 break;
             case 1:
-                $state.go('inspection_photo_meta', {
-                    'insId': $scope.insParams.insId,
-                    'sectionIndex': $scope.insParams.sectionIndex,
-                    'subsectionIndex': $scope.insParams.subsectionIndex,
-                    'questionIndex': $scope.insParams.questionIndex,
-                    'startIndex':index + ''
-                });
-                break;
             case 2:
+            case 3:
                 $state.go('inspection_photo_meta', {
                     'insId': $scope.insParams.insId,
                     'sectionIndex': $scope.insParams.sectionIndex,

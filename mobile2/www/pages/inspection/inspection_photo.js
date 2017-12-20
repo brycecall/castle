@@ -39,6 +39,14 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
   $scope.camera_manager = camera_manager;    
   var startIndex = $transition$.params().startIndex;
   $scope.step = startIndex;
+  $scope.selectedChip = {
+      'section':{
+          title:'section title'
+      },
+      'subsection': {
+          title:'subsection title'
+      }
+  };
   $scope.message = "Choose a Section";
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'check', function () {
@@ -66,11 +74,13 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
                 $scope.sectionIndex = index;
                 $scope.message = "Choose a Subsection";
                 $scope.chipList = $scope.inspection.sections[index].subsections;
+                $scope.selectedChip.section.title =  $scope.inspection.sections[index].title;
                 break;
             case 3:
                 $scope.subsectionIndex = index;
                 $scope.message = "Choose a Question";
                 $scope.chipList = $scope.inspection.sections[$scope.sectionIndex].subsections[index].questions;
+                $scope.selectedChip.subsection.title =  $scope.inspection.sections[$scope.sectionIndex].subsections[index].title;
                 break;
             case 4:
                 $scope.questionIndex = index;

@@ -9,11 +9,20 @@
           <span flex=""></span>
           <div ng-click="stepDownTo(2)" class="step" ng-class="step === 2 ? 'active' : ''">3</div>
           <span flex=""></span>
-          <div ng-click="stepDownTo(3)" class="step" ng-class="step === 3 ? 'active' : ''">4</div>
-          <span flex=""></span>
-          <div ng-click="stepDownTo(4)" class="step" ng-class="step === 4 ? 'active' : ''">5</div>
+          <div ng-click="stepDownTo(3)" class="step" ng-class="step === 2 ? 'active' : ''">&#10004;</div>
     </div>
     <div class="centerPage" style="margin-bottom:85px;" id="centerPage">
+        
+    <div layout="column" >
+      <md-button ng-show="step >= 2" class="outerChip selectedChip"  aria-label="" ng-click="stepDownTo(1)">
+         <span>{{selectedChip.section.title}}  &#10004; </span>      
+      </md-button>
+<!--        <md-icon md-svg-src="chevron_right"></md-icon>-->
+      <md-button ng-show="step >= 3" class="outerChip selectedChip" aria-label="" ng-click="stepDownTo(2)">
+         <div>{{selectedChip.subsection.title}} &#10004; </div>
+      </md-button>
+    </div>
+        
     <div layout="row" layout-align="space-between center">
         <h2 class="md-subhead insTitle" 
             style="margin-bottom:0px;">{{message}}</h2>
@@ -26,4 +35,5 @@
         
     </div>
   </md-content>
+     <div ng-click="preview()" class="previewThumbnail" ng-class="step < 1 ? 'active' : ''" style="background-image: url( {{camera_manager.rapidModePhoto.link}} );"></div>
 </div>

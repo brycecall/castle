@@ -4,15 +4,13 @@
 <div class="page">
 
     <div ng-show="insParams.photoMode === '1'" class="progressBar" layout="row" layout-align="start center">
-      <div ng-click="stepDownTo(0)" class="step">1</div>
+      <div ng-click="stepDownTo(0)" class="step previewCircle" ng-class="step < 1 ? 'active' : ''" style="background-image: url( {{camera_manager.rapidModePhoto.link}} );">1</div>
       <span flex=""></span>
       <div ng-click="stepDownTo(1)" class="step">2</div>
       <span flex=""></span>
-      <div ng-click="stepDownTo(2)" class="step">3</div>
+      <div ng-click="stepDownTo(4)" class="step">3</div>
       <span flex=""></span>
-      <div ng-click="stepDownTo(3)" class="step">4</div>
-      <span flex=""></span>
-      <div ng-click="stepDownTo(4)" class="step active">5</div>
+      <div ng-click="stepDownTo(5)" class="step active">&#10004;</div>
     </div>
     <div ng-show="insParams.photoMode == '0' || insParams.photoMode == null">
     <md-progress-linear  md-mode="determinate" class="md-accent" value="50"></md-progress-linear>

@@ -112,9 +112,6 @@
                                      ng-click="toggleRadio(radioButton)">{{radioButton.key}}
                     </md-radio-button>
                     <span flex=""></span>
-                    <md-button class="md-icon-button" ng-click="addPhotos(radioButton.id, radioButton.key)" ng-show="radioButton.key == question.answer" >
-                        <md-icon md-svg-icon="shutter_camera"></md-icon>
-                    </md-button>
                 </div>
                 <div layout="row" layout="start center">
                 <md-radio-button class="questionIndent" 
@@ -126,9 +123,6 @@
                             class="inlineInput">
                  </div>
                     <span flex=""></span>
-                    <md-button class="md-icon-button" ng-click="addPhotos(otherValue.id, otherValue.singleSelect)" ng-show="otherValue.singleSelect == question.answer" >
-                        <md-icon md-svg-icon="shutter_camera"></md-icon>
-                    </md-button>
                  </div>
             </md-radio-group>
         </div>

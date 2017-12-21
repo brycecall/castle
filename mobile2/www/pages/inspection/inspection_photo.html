@@ -3,22 +3,22 @@
    <md-content class="centerScroll">
        
     <div class="progressBar" layout="row" layout-align="start center">
-          <div ng-click="stepDownTo(0)" class="step previewCircle" ng-class="step < 1 ? 'active' : ''" style="background-image: url( {{camera_manager.rapidModePhoto.link}} );">1</div>
+          <div ng-click="stepDownTo(0)" class="step previewCircle" ng-class="step < 1 ? 'active' : ''" style="background-image: url( {{camera_manager.rapidModePhoto.link  || ''}} );">1</div>
           <span flex=""></span>
           <div ng-click="stepDownTo(1)" class="step" ng-class="step === 1 ? 'active' : ''">2</div>
           <span flex=""></span>
           <div ng-click="stepDownTo(2)" class="step" ng-class="step === 2 ? 'active' : ''">3</div>
           <span flex=""></span>
-          <div ng-click="stepDownTo(3)" class="step" ng-class="step === 2 ? 'active' : ''">&#10004;</div>
+          <div ng-click="stepDownTo(3)" class="step" ng-class="step === 3 ? 'active' : ''">&#10004;</div>
     </div>
     <div class="centerPage" style="margin-bottom:85px;" id="centerPage">
         
     <div layout="column" >
-      <md-button ng-show="step >= 2" class="outerChip selectedChip"  aria-label="" ng-click="stepDownTo(1)">
+      <md-button ng-show="substep > 0" class="outerChip selectedChip"  aria-label="" ng-click="stepDownSubstep('section')">
          <span>{{selectedChip.section.title}}  &#10004; </span>      
       </md-button>
 <!--        <md-icon md-svg-src="chevron_right"></md-icon>-->
-      <md-button ng-show="step >= 3" class="outerChip selectedChip" aria-label="" ng-click="stepDownTo(2)">
+      <md-button ng-show="substep > 1" class="outerChip selectedChip" aria-label="" ng-click="stepDownSubstep('subsection')">
          <div>{{selectedChip.subsection.title}} &#10004; </div>
       </md-button>
     </div>
@@ -28,12 +28,16 @@
             style="margin-bottom:0px;">{{message}}</h2>
     </div>
      <div ng-repeat="item in chipList track by $index" layout="column" >
-      <md-button class="outerChip" aria-label="item.title" ng-click="stepUp($index)">
+      <md-button class="outerChip" aria-label="{{item.title}}" ng-click="stepUpSubstep($index)">
          <div>{{item.title}}</div>
       </md-button>
      </div>        
         
     </div>
   </md-content>
-     <div ng-click="preview()" class="previewThumbnail" ng-class="step < 1 ? 'active' : ''" style="background-image: url( {{camera_manager.rapidModePhoto.link}} );"></div>
+    <div ng-init="previewThumbnail = false" class="corner" ng-class="previewThumbnail ? 'previewLarge' : ''" 
+         ng-click="previewThumbnail = !previewThumbnail" >
+     <div class="previewThumbnail" 
+           style="background-image: url( {{camera_manager.rapidModePhoto.link || ''}} );"></div>
+    </div>
 </div>

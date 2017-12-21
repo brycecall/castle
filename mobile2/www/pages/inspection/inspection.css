@@ -183,7 +183,18 @@ md-input-container {
     background-repeat: no-repeat;
     background-position: center;
     background-origin: content-box;
-    position: fixed;
-    bottom: 0;
-    right: 0;
+    -webkit-transition: width .5s, height .5s; /* Safari */
+    transition: width .5s, height .5s;
 }
+
+.previewLarge .previewThumbnail {
+    height:350px;
+    width: 350px;
+}
+
+.corner {
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+}
+

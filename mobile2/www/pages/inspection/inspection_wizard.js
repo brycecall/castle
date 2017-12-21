@@ -45,7 +45,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
       }, 'md-raised md-accent');
     } else {
       header_manager.addAction("Photo Mode", "shutter_camera", function () {
-          $state.go("inspection_photo", {'insId':$scope.insParams.insId, 'startIndex':null});
+          $state.go("inspection_photo", {'insId':$scope.insParams.insId});
       }, 'md-raised md-accent');
     }
 
@@ -112,11 +112,6 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
         $scope.question = $scope.inspection.sections[$scope.insParams.sectionIndex]
           .subsections[$scope.insParams.subsectionIndex]
           .questions[$scope.insParams.questionIndex];
-        //      $scope.sectionId = $scope.inspection.sections[$scope.insParams.sectionIndex].sectionId;
-        //      $scope.subsectionId = $scope.inspection.sections[$scope.insParams.sectionIndex]
-        //                                   .subsections[$scope.insParams.subsectionIndex].subsectionId;
-        //      $scope.questions = $scope.inspection.sections[$scope.insParams.sectionIndex]
-        //                                   .subsections[$scope.insParams.subsectionIndex].questions;
         attachPhotos();
 
         $scope.showListBottomSheet = function () {
@@ -292,8 +287,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
                     'insId': $scope.insParams.insId,
                     'sectionIndex': $scope.insParams.sectionIndex,
                     'subsectionIndex': $scope.insParams.subsectionIndex,
-                    'questionIndex': $scope.insParams.questionIndex,
-                    'startIndex':index + ''
+                    'questionIndex': $scope.insParams.questionIndex
                 });
                 break;
             case 1:
@@ -303,8 +297,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
                     'insId': $scope.insParams.insId,
                     'sectionIndex': $scope.insParams.sectionIndex,
                     'subsectionIndex': $scope.insParams.subsectionIndex,
-                    'questionIndex': $scope.insParams.questionIndex,
-                    'startIndex':index + ''
+                    'questionIndex': $scope.insParams.questionIndex
                 });
                 break;
             default:

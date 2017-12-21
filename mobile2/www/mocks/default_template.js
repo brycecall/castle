@@ -1,6 +1,19 @@
 // Current structure of inspection object as of 12/21
-
-var section = {
+var inspection = {
+          // Build Inspection Fields
+          insThemeId: promise.row.item(0).insThemeId,
+          insTemplateId: promise.row.item(0).insTemplateId,
+          insTemplateTitle: promise.row.item(0).insTemplateTitle,
+          insLastModified: promise.row.item(0).insLastModified,
+          insLastSubmitted: promise.row.item(0).insLastSubmitted,
+          insJobId: promise.row.item(0).insJobId,
+          insType: promise.row.item(0).insType,
+          insName: promise.row.item(0).insName,
+          insUserId: promise.row.item(0).insUserId,
+          rowId: promise.row.item(0).rowId,
+          insId: promise.row.item(0).rowId,
+          insSourceType: promise.row.item(0).insSourceType,
+          sections: [{
               id: promise.row.item(i).secRowId,
               title: promise.row.item(i).secTitle,
               sourceType: promise.row.item(i).secSourceType,
@@ -96,6 +109,8 @@ var section = {
                 }
               }
             }
+            ]
+}
 
 
 var default_template = 

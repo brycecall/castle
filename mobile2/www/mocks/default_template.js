@@ -1,3 +1,103 @@
+// Current structure of inspection object as of 12/21
+
+var section = {
+              id: promise.row.item(i).secRowId,
+              title: promise.row.item(i).secTitle,
+              sourceType: promise.row.item(i).secSourceType,
+              inspectionId: promise.row.item(i).secInspectionId,
+              order: promise.row.item(i).secOrder,
+              subsections: []
+            }
+            // Build subsections
+            for (var j = i; promise.row.item(j) && promise.row.item(i).secRowId == promise.row.item(j).secRowId; j++) {
+              // Build subsection
+              var subsection = {
+                id: promise.row.item(j).susRowId,
+                title: promise.row.item(j).susTitle,
+                sectionId: promise.row.item(j).susSectionId,
+                inspectionId: promise.row.item(j).susInspectionId,
+                sourceType: promise.row.item(j).susSourceType,
+                order: promise.row.item(j).susOrder,
+                questions: []
+              }
+              // Build questions
+              // Validation check to make sure there are questions (many subs dont have them currently but this will likely not be the case in the future)
+              if (promise.row.item(j).queRowId) {
+                for (var k = j; promise.row.item(k) && promise.row.item(j).susRowId == promise.row.item(k).susRowId; k++) {
+                  // Build question object
+                  var question = {
+                    id: promise.row.item(k).queRowId,
+                    title: promise.row.item(k).queTitle,
+                    description: promise.row.item(k).queDescription,
+                    subsectionId: promise.row.item(k).queSubSectionId,
+                    sectionId: promise.row.item(k).secRowId,
+                    inspectionId: promise.row.item(k).queInspectionId,
+                    sourceType: promise.row.item(k).sourceType,
+                    type: promise.row.item(k).queType,
+                    values: [],
+                    validation: {
+                      type: promise.row.item(k).queValidationType,
+                      min: promise.row.item(k).queMin,
+                      max: promise.row.item(k).queMax,
+                      isRequired: promise.row.item(k).queRequired
+                    },
+                    answer: null,
+                    answers: [],
+                    notApplicable: promise.row.item(k).queNotApplicable,
+                    severity: null,
+                    showSummaryRemark: promise.row.item(k).queShowSummaryRemark,
+                    showDescription: promise.row.item(k).queShowDescription,
+                    order: promise.row.item(k).queOrder,
+                    photos: []
+                  }
+                  // Build answers
+                  for (var l = k; promise.row.item(l) && promise.row.item(k).queRowId == promise.row.item(l).queRowId; l++) {
+                    var answer = {
+                      id: promise.row.item(l).ansRowId,
+                      key: promise.row.item(l).ansValue,
+                      questionId: promise.row.item(l).ansQuestionId,
+                      sourceType: promise.row.item(l).ansSourceType,
+                      inspectionId: promise.row.item(l).ansInspectionId,
+                      type: promise.row.item(l).ansType,
+                      checked: promise.row.item(l).ansChecked,
+                      autoComment: promise.row.item(l).ansAutoComment,
+                      order: promise.row.item(l).ansOrder,
+                      photos: []
+                    }
+                    question.values.push(answer);
+                    // Check to see if this answer was a selected answer by inspector
+                    if (promise.row.item(l).ansChecked) {
+                      // If multi, push onto answers list. Otherwise, store in single answer key.
+                      if (promise.row.item(l).ansType == 'multi') {
+                        question.answers.push(answer.key);
+                      } else {
+                        question.answer = answer.key;
+                      }
+                    }
+                    if (promise.row.item(l).ansRowId) {
+                      for (var m = l; promise.row.item(m) && promise.row.item(l).ansRowId == promise.row.item(m).ansRowId; m++) {
+                        if (promise.row.item(m).phoRowId) {
+                          var photo = {
+                            id: promise.row.item(m).phoRowId,
+                            link: promise.row.item(m).phoLink,
+                            title: promise.row.item(m).phoTitle,
+                            questionId: promise.row.item(m).phoQuestionId,
+                            answerId: promise.row.item(m).phoAnswerId,
+                            inspectionId: promise.row.item(m).phoInspectionId,
+                            sourceType: promise.row.item(m).phoSourceType,
+                            order: promise.row.item(m).phoOrder
+                          }
+                          answer.photos.push(photo);
+                          question.photos.push(photo);
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+
 var default_template = 
     {
         "insLastModified":"Sun Oct 08 2017 15:22:12 GMT-0600 (MDT)",

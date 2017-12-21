@@ -1,0 +1,140 @@
+<link type="text/css" rel="stylesheet" href="./pages/inspection/inspection.css" />
+<link type="text/css" rel="stylesheet" href="./pages/inspection/inspection_wizard.css" />
+<div class="page">
+    <div ng-show="insParams.photoMode === '1'" class="progressBar" layout="row" layout-align="start center">
+      <div ng-click="stepDownTo(0)" class="step previewCircle" ng-class="step < 1 ? 'active' : ''" style="background-image: url( {{camera_manager.rapidModePhoto.link || ''}}  );">1</div>
+      <span flex=""></span>
+      <div ng-click="stepDownTo(1)" class="step">2</div>
+      <span flex=""></span>
+      <div ng-click="stepDownTo(2)" class="step active">3</div>
+      <span flex=""></span>
+      <div ng-click="stepDownTo(3)" class="step">&#10004;</div>
+    </div>
+    <div class="pagePadding">
+        <md-card class="flatCard">
+            <md-card-content>            
+        <div layout="row" layout-align="center start"  class="headBlock" >     
+            <div class="md-title">{{question.title ? question.title : 'Untitled Question'}}</div>
+        </div>
+        <div class="md-caption description">{{question.description ? question.description : '' }}</div>
+    
+       <form name="questionForm" style="padding-left: 0px;" >
+        <div ng-if="question.type === 'checkbox'">
+            <div  class="questionIndent" ng-repeat="checkBox in question.values track by $index">
+                <div  layout="row">
+                <md-checkbox ng-click="stepUp($index)"
+                           >
+                    {{checkBox.key}}
+                </md-checkbox>
+                </div>
+            </div>
+            <md-checkbox ng-model="newCheckBoxKey" 
+                         ng-click="stepUp('other')">
+                Other:
+            </md-checkbox>
+        </div>
+        <div ng-if="question.type === 'radio'">
+            <md-radio-group ng-model="question.answer">
+                <div ng-repeat="radioButton in question.values track by $index" >
+                <md-radio-button 
+                                 class="questionIndent" 
+                                 ng-value="radioButton.key"
+                                 ng-click="stepUp($index)">{{radioButton.key}}
+                </md-radio-button>
+                </div>
+                <md-radio-button class="questionIndent" 
+                                 ng-value="otherValue.singleSelect"
+                                  ng-click="stepUp('other')">Other
+                </md-radio-button>
+            </md-radio-group>
+        </div>
+        <div ng-if="question.type === 'dropdown'">
+            <md-select ng-model="question.answer" 
+                       placeholder="Choose" 
+                       class="md-no-underline"
+                       md-on-close="stepUp()"
+                       >
+                <md-option ng-repeat="selectOption in question.values" ng-value="selectOption.key">{{selectOption.key}}
+                </md-option>
+            </md-select>
+        </div>
+        <div ng-if="question.type === 'text'">
+            <md-input-container>
+                <label>Your Answer</label>
+                <input ng-model="question.answer" 
+                       type="{{question.validation ? question.validation.type : 'text'}}"
+                       md-min="{{question.validation.type == 'number' ? question.validation.min : null}}"
+                       md-max="{{question.validation.type == 'number' ? question.validation.max : null}}"
+                       md-minlength="{{question.validation.type == 'text' ? question.validation.min : null}}"
+                       md-maxlength="{{question.validation.type == 'text' ? question.validation.max : null}}"
+                       md-select-on-focus
+                       ng-required="question.validation.isRequired"
+                       name="shortText"
+                       >
+                <md-button class="md-icon-button text-photo-button" ng-click="addPhotos(question.values[0].id, question.values[0].key)" ng-show=true>
+                    <md-icon md-svg-icon="shutter_camera"></md-icon>
+                </md-button>
+                <div ng-messages="questionForm.shortText.$error" 
+                     ng-show="questionForm.shortText.$dirty">
+                  <div ng-message="required">This is required!</div>
+                  <div ng-message="md-minlength">That's too short!</div>
+                  <div ng-message="md-maxlength">That's too long!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div ng-if="question.type === 'textarea'">
+            <md-input-container class="md-block" >
+                <label>Your Answer</label>
+                <textarea ng-model="question.answer" 
+                          md-minlength="question.validation.min" 
+                          md-maxlength="question.validation.max" 
+                          md-select-on-focus
+                          ng-required="question.validation.isRequired"
+                          name="testArea"></textarea>
+                <div ng-messages="questionForm.testArea.$error" 
+                     ng-show="questionForm.testArea.$dirty">
+                  <div ng-message="required">This is required!</div>
+                  <div ng-message="md-minlength">That's too short!</div>
+                  <div ng-message="md-maxlength">That's too long!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div ng-if="question.type === 'photo'">
+            <div ng-show="question.photos.length <= 0">
+                No Photos Yet!
+            </div>
+
+            <div layout="row" layout-align="start center" layout-wrap>
+                <div ng-repeat="photo in question.photos"
+                 class="md-whiteframe-1dp"
+                 ng-click="showFullScreen($event, photo)">
+                    <div>{{photo.title}}</div>
+                    <div class="photo" style="background-image: url( {{photo.link}} ); margin: 10px;" >
+                    </div>
+                </div>
+            </div>
+        </div>
+      <div ng-if="question.type !== 'photo'">
+       <md-divider ng-show="question.photos.length > 0"></md-divider>
+        <div  
+             layout="row" 
+             layout-align="start center" 
+             layout-wrap>
+                <div ng-repeat="photo in question.photos"
+                 class="md-whiteframe-1dp"
+                 ng-click="showFullScreen($event, photo)">
+                    <div class="photo" style="background-image: url( {{photo.link}} ); margin: 10px;" >
+                    <div class="photo" style="width: calc(100%-250px)">
+                        <textarea style="width: 100%">{{photo.title}}</textarea>
+                    </div>
+                    </div>
+                </div>
+        </div>
+      </div>    
+   </form>
+        </md-card-content>
+    </md-card>
+     </div>   
+</div>
+
+

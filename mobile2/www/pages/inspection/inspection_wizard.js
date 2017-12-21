@@ -13,6 +13,19 @@ app.config(function ($stateProvider) {
         'photoMode':null
       }
     })
+    .state('inspection_question_step', {
+      url: "/inspection/detail/{insId}/{sectionIndex}/{subsectionIndex}/{questionIndex}",
+      templateUrl: "pages/inspection/inspection_question_step.html",
+      controller: "inspection_wizard",
+      params: {
+        'insId': null,
+        'sectionIndex': '0',
+        'subsectionIndex': '0',
+        'questionIndex': '0',
+        'photoMode':'1'
+      }
+    })
+    ;
 });
 
 app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $transition$, shareService, $timeout) {
@@ -29,11 +42,10 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
     'name': $state.current.name,
     'params': $transition$.params()
   };
+  $scope.currentStateName = $state.current.name;
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'check', function () {
     $rootScope.loading = true;
-    //inspection_manager.saveInspection()
-      //.then(function () {
         $rootScope.loading = false;
         window.history.back();
       //});
@@ -304,4 +316,10 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
         }
   }; 
 
+  $scope.stepUp = function() {
+      
+      
+  };    
+    
+    
 });

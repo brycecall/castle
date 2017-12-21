@@ -70,7 +70,7 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
                 $scope.sectionIndex = index;
                 $scope.message = "Choose a Subsection";
                 $scope.chipList = $scope.inspection.sections[index].subsections;
-                $scope.selectedChip.section.title =  $scope.inspection.sections[index].title;
+                $scope.selectedChip.section.title = $scope.inspection.sections[index].title;
                 $scope.location = 'subsection';
                 $scope.substep = 1;
                 break;
@@ -78,13 +78,13 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
                 $scope.subsectionIndex = index;
                 $scope.message = "Choose a Question";
                 $scope.chipList = $scope.inspection.sections[$scope.sectionIndex].subsections[index].questions;
-                $scope.selectedChip.subsection.title =  $scope.inspection.sections[$scope.sectionIndex].subsections[index].title;
+                $scope.selectedChip.subsection.title = $scope.inspection.sections[$scope.sectionIndex].subsections[index].title;
                 $scope.location = 'question';
                 $scope.substep = 2;
                 break;
             case 'question':
                 $scope.questionIndex = index;
-                $state.go('inspection_wizard', {
+                $state.go('inspection_question_step', {
                     'insId': $scope.insId,
                     'sectionIndex': $scope.sectionIndex,
                     'subsectionIndex': $scope.subsectionIndex,

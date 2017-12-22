@@ -2,7 +2,7 @@
 <link type="text/css" rel="stylesheet" href="./pages/inspection/inspection_wizard.css" />
 <div class="page">
     <div ng-show="insParams.photoMode === '1'" class="progressBar" layout="row" layout-align="start center">
-      <div ng-click="stepDownTo(0)" class="step previewCircle" ng-class="step < 1 ? 'active' : ''" style="background-image: url( {{camera_manager.rapidModePhoto.link || ''}}  );">1</div>
+      <div ng-click="stepDownTo(0)" class="step previewCircle" ng-class="step < 1 ? 'active' : ''" style="background-image: url( {{rapidModePhoto.link || ''}}  );">1</div>
       <span flex=""></span>
       <div ng-click="stepDownTo(1)" class="step">2</div>
       <span flex=""></span>
@@ -22,8 +22,7 @@
         <div ng-if="question.type === 'checkbox'">
             <div  class="questionIndent" ng-repeat="checkBox in question.values track by $index">
                 <div  layout="row">
-                <md-checkbox ng-click="stepUp($index)"
-                           >
+                <md-checkbox ng-checked="checkBox.checked" ng-click="toggle(checkBox); stepUp($index); ">
                     {{checkBox.key}}
                 </md-checkbox>
                 </div>

@@ -10,11 +10,11 @@ app.config(function ($stateProvider) {
         'sectionIndex': '0',
         'subsectionIndex': '0',
         'questionIndex': '0',
-        'photoMode':null
+        'photoMode':'0' //todo make null
       }
     })
     .state('inspection_question_step', {
-      url: "/inspection/detail/{insId}/{sectionIndex}/{subsectionIndex}/{questionIndex}",
+      url: "/inspection/question/{insId}/{sectionIndex}/{subsectionIndex}/{questionIndex}",
       templateUrl: "pages/inspection/inspection_question_step.html",
       controller: "inspection_wizard",
       params: {
@@ -29,27 +29,27 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $transition$, shareService, $timeout) {
-    
-  $scope.insParams = {
+    $scope.rapidModePhoto = camera_manager.rapidModePhoto;
+    $scope.insParams = {
         'insId':$transition$.params().insId,
         'sectionIndex':$transition$.params().sectionIndex,
         'subsectionIndex':$transition$.params().subsectionIndex,
         'questionIndex':$transition$.params().questionIndex,
         'photoMode':$transition$.params().photoMode
-  };
-  inspection_manager.mode = "inspection";
-  inspection_manager.returnLocation = {
+    };
+    inspection_manager.mode = "inspection";
+    inspection_manager.returnLocation = {
     'name': $state.current.name,
     'params': $transition$.params()
-  };
-  $scope.currentStateName = $state.current.name;
-  header_manager.mode = HEADER_MODES.Action;
-  header_manager.setAction('Back', 'check', function () {
+    };
+    $scope.currentStateName = $state.current.name;
+    header_manager.mode = HEADER_MODES.Action;
+    header_manager.setAction('Back', 'check', function () {
     $rootScope.loading = true;
         $rootScope.loading = false;
         window.history.back();
       //});
-  });
+    });
 
     if ($scope.insParams.photoMode === '1') {
       header_manager.addAction("Wizard Mode", "shutter_camera", function () {
@@ -60,7 +60,32 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
           $state.go("inspection_photo", {'insId':$scope.insParams.insId});
       }, 'md-raised md-accent');
     }
+    
+  action_manager.mode = ACTION_MODES.Action;
+    var hideButton = '';
+     if ($scope.insParams.photoMode === '1') {
+         hideButton = 'hide';
+     }
+  action_manager.addAction("Previous", "keyboard_arrow_left", function () {
+    navigateQuestions(false);
+  }, 'md-raised ' + hideButton); 
+  action_manager.addAction("Photo", "shutter_camera", function () {
+    //$scope.addPhotos()
+    //todo: add photo
+  }, 'md-raised bigicon md-accent');
+  action_manager.addAction("Next", "keyboard_arrow_right", function () {
+    navigateQuestions(true);
+  }, 'md-raised ' + hideButton);
 
+  $scope.addPhotos = function (index, value) {
+    console.log('add photos index: ' + index + ' value: ' + value);
+    camera_manager.answerID = index;
+    camera_manager.title = $scope.question.title;
+    if (value !== null && value !== undefined) {
+      camera_manager.title += ": " + value;
+    }
+    $state.go('camera');
+  };
     
   $scope.edit = function () {
     $state.go('template_detail', {
@@ -126,40 +151,31 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
           .questions[$scope.insParams.questionIndex];
         attachPhotos();
 
-        $scope.showListBottomSheet = function () {
-          $scope.alert = '';
-          $mdBottomSheet.show({
-            templateUrl: 'bottom-sheet-list-template.html',
-            controller: 'ListBottomSheetCtrl'
-          }).then(function (clickedItem) {
-            $scope.alert = clickedItem['name'] + ' clicked!';
-          }).catch(function (error) {
-            // User clicked outside or hit escape
-          });
-        };
+//        $scope.$watch('otherValue.value', function (newVal, oldVal) {
+//          var list = $scope.question.answers;
+//          var index = $scope.question.answers.indexOf(oldVal);
+//          if (index > -1) {
+//            $scope.question.answers.splice(index, 1);
+//          }
+//          if (newVal) {
+//            $scope.question.answers.push(newVal);
+//          }
+//        });
+//
+//        $scope.$watch('otherValue.singleSelect', function (newVal, oldVal) {
+//          if (newVal) {
+//            $scope.question.answer = newVal;
+//          }
+//        });
+//
+//        $scope.$watch('question.answer', function (newVal, oldval) {
+//          if (newVal && ($scope.question.type == 'text' || $scope.question.type == 'textarea')) {
+//            $scope.question.values[0].key = newVal;
+//          }
+//        });
+          
 
-        $scope.$watch('otherValue.value', function (newVal, oldVal) {
-          var list = $scope.question.answers;
-          var index = $scope.question.answers.indexOf(oldVal);
-          if (index > -1) {
-            $scope.question.answers.splice(index, 1);
-          }
-          if (newVal) {
-            $scope.question.answers.push(newVal);
-          }
-        });
-
-        $scope.$watch('otherValue.singleSelect', function (newVal, oldVal) {
-          if (newVal) {
-            $scope.question.answer = newVal;
-          }
-        });
-
-        $scope.$watch('question.answer', function (newVal, oldval) {
-          if (newVal && ($scope.question.type == 'text' || $scope.question.type == 'textarea')) {
-            $scope.question.values[0].key = newVal;
-          }
-        });
+          
       },
       function (data) {
         $rootScope.loading = false;
@@ -192,31 +208,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
     }
   };
 
-  action_manager.mode = ACTION_MODES.Action;
-    var hideButton = '';
-     if ($scope.insParams.photoMode === '1') {
-         hideButton = 'hide';
-     }
-  action_manager.addAction("Previous", "keyboard_arrow_left", function () {
-    navigateQuestions(false);
-  }, 'md-raised ' + hideButton); 
-  action_manager.addAction("Photo", "shutter_camera", function () {
-    //$scope.addPhotos()
-    //todo: add photo
-  }, 'md-raised bigicon md-accent');
-  action_manager.addAction("Next", "keyboard_arrow_right", function () {
-    navigateQuestions(true);
-  }, 'md-raised ' + hideButton);
 
-  $scope.addPhotos = function (index, value) {
-    console.log('add photos index: ' + index + ' value: ' + value);
-    camera_manager.answerID = index;
-    camera_manager.title = $scope.question.title;
-    if (value !== null && value !== undefined) {
-      camera_manager.title += ": " + value;
-    }
-    $state.go('camera');
-  };
     
   var attachPhotos = function () {
     if (camera_manager.photos.length > 0) {
@@ -236,31 +228,25 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
     camera_manager.photos = [];
   };
 
-  $scope.toggle = function (item, list, ignoreEmpty) {
-    var index = ignoreEmpty ? item : list.indexOf(item.key);
-    // Select
-    if (index > -1) {
-      list.splice(index, 1);
-      // String replace Comment and remove associated autoComment
-      $scope.commentBox = $scope.commentBox.replace(item.autoComment, '');
-    // Unselect
-    } else {
-      if (ignoreEmpty) {
-        if (item.key) {
-          list.push(item.key);
-        }
-      } else {
-        list.push(item.key);
-        // Push autoComment from selected answer
-        if(item.autoComment !== null && item.autoComment !== undefined && $scope.commentBox.indexOf(item.autoComment) < 0) {
-          $scope.commentBox += item.autoComment;
-        }
-      }
-    }
+  $scope.toggle = function (answer) {
+
+     if (answer.checked == undefined) {
+         answer.checked = true;
+     } else {
+         answer.checked = !answer.checked;
+     }
+//     // String replace Comment and remove associated autoComment
+//     $scope.commentBox = $scope.commentBox.replace(item.autoComment, '');
+//    
+//     // Push autoComment from selected answer
+//     if(item.autoComment !== null && item.autoComment !== undefined && $scope.commentBox.indexOf(item.autoComment) < 0) {
+//       $scope.commentBox += item.autoComment;
+//     }
+      
   };
     
   $scope.toggleRadio = function (answer) {
-    if(answer.autoComment !== null && answer.autoComment !== undefined && $scope.commentBox.indexOf(answer.autoComment) < 0) {
+    if(answer.autoComment !== null && answer.autoComment !== undefined &&    $scope.commentBox.indexOf(answer.autoComment) < 0) {
       $scope.commentBox = answer.autoComment;
     }
   }
@@ -316,10 +302,28 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
         }
   }; 
 
-  $scope.stepUp = function() {
-      
+  $scope.stepUp = function(index) {
+//      if ($scope.question.type == 'text') {
+//          //todo stuff
+//      } else {
+//          if (index == 'other') {
+//              
+//          }
+//          
+//      }
+
+        $state.go('inspection_wizard', {
+            'insId': $scope.insParams.insId,
+            'sectionIndex': $scope.insParams.sectionIndex,
+            'subsectionIndex': $scope.insParams.subsectionIndex,
+            'questionIndex': $scope.insParams.questionIndex,
+            'photoMode':'1'
+        });
       
   };    
+    
+    
+
     
     
 });

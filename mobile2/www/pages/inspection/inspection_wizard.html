@@ -72,10 +72,9 @@
     
        <form name="questionForm" style="padding-left: 0px;"  ng-class="question.notApplicable ? 'disabled' : ''">
         <div ng-if="question.type === 'checkbox'">
-            <div  class="questionIndent" ng-repeat="checkBox in question.values track by $index">
+            <div class="questionIndent" ng-repeat="checkBox in question.values track by $index">
                 <div  layout="row">
-                <md-checkbox ng-checked="exists(checkBox.key, question.answers)" 
-                             ng-click="toggle(checkBox, question.answers)"
+                <md-checkbox ng-checked="checkBox.checked" ng-click="toggle(checkBox);"
                              ng-disabled="question.notApplicable">
                     {{checkBox.key}}
                 </md-checkbox>

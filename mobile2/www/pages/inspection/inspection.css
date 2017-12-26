@@ -42,7 +42,7 @@ md-input-container {
 
 .centerPage {
   max-width: 950px;
-  margin: 0 auto;
+  margin: 4px auto;
   padding: 8px;
 }
 
@@ -65,13 +65,9 @@ md-input-container {
   padding-bottom: 60px;
 }
 
-#new.page {
-  padding: 20px;
-}
-
 #new.page md-input-container {
   margin: 10px;
-  width: calc(100% - 20px);
+/*  width: calc(100% - 20px);*/
 }
 
 .editInput {
@@ -198,3 +194,6 @@ md-input-container {
     right: 0px;
 }
 
+.filter-bar md-input-container {
+height: 58px;
+}

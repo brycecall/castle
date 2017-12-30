@@ -37,6 +37,9 @@
 .buttonWrapper {
     padding: 4px 4px 4px 4px;
 }
+.buttonWrapper>div {
+    margin-right: 8px;
+}
 
 .selectedBtn {
 

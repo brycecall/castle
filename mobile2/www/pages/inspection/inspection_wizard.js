@@ -59,8 +59,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
         }, 'md-raised md-accent');
         if ($scope.currentStateName == 'inspection_wizard') {
             action_manager.addAction("Photo", "shutter_camera", function () {
-                //$scope.addPhotos()
-                //todo: add photo
+                $scope.addPhotos(0, 0);
             }, 'md-raised bigicon md-accent');
             action_manager.addAction("Done", "check", function () {
                 $state.go("inspection_photo", {
@@ -165,7 +164,16 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
                     .subsections[$scope.insParams.subsectionIndex]
                     .questions[$scope.insParams.questionIndex];
                 attachPhotos();
-
+                $scope.rapidModePhoto.isRapid = true;
+                if ($scope.question.photos.length >0) {
+                       var photoIndex = $scope.question.photos.indexOf(rapidModePhoto);
+                          if (photoIndex > -1) {
+                            $scope.question.photos.splice(photoIndex, 1);
+                          }
+                }
+                $scope.question.photos.push($scope.rapidModePhoto);
+                
+                
                 //        $scope.$watch('otherValue.value', function (newVal, oldVal) {
                 //          var list = $scope.question.answers;
                 //          var index = $scope.question.answers.indexOf(oldVal);

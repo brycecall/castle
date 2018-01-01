@@ -28,7 +28,7 @@ app.service('shareService', function ($state) {
 });
 
 // Define the page controller
-app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, export_manager) {
+app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, export_manager, $mdToast) {
   $scope.inspections = [];
   $rootScope.loading = true;
 
@@ -46,6 +46,26 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
       'insId': insId
     });
   };
+    
+
+    $scope.openMenu = function($mdMenu, ev) {
+        $mdMenu.open(ev);
+    };
+    var toast = $mdToast.simple()
+                      .textContent('')
+                      .action('UNDO')
+                      .highlightAction(true)
+                      .highlightClass('md-accent')
+                      .position('bottom');
+    
+    $scope.delete = function(index) {
+        $scope.inspections[index].deleted = true;
+        $mdToast.show(toast).then(function(response) {
+          if ( response == 'ok' ) {
+             $scope.inspections[index].deleted = false;
+          }
+        }, function(){console.log("You delete fast don't ya!");});
+    }
 
   $scope.export = function (insId) {
     var promise = inspection_manager.getInspection(insId);
@@ -107,7 +127,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   );
 });
 
-app.controller('inspection_new', function ($rootScope, $scope, $state, inspection_manager, theme_manager, action_manager) {
+app.controller('inspection_new', function ($rootScope, $scope, $state, inspection_manager, theme_manager, action_manager, header_manager) {
   $scope.themes = [];
   $scope.templates = [];
   inspection_manager.mode = "inspection";
@@ -118,7 +138,11 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
   action_manager.addAction('Start', 'check', function () {
     $scope.startInspection();
   });
-
+    header_manager.title = "New Inspection";
+    header_manager.mode = HEADER_MODES.Action;
+    header_manager.setAction("Back", "back", function () {
+    $state.go('inspection');
+  });
 
   /*   $scope.startInspection = function() {
          inspection_manager.insertInspectionFromTemplate($scope.sTemplate.rowId).then(function(data) {

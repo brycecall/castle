@@ -1,7 +1,8 @@
 <link type="text/css" rel="stylesheet" href="pages/inspection/inspection.css" />
 <div flex="" layout="column" class="page" id="new">
   <md-content>
-    <md-card class="centerPage" id="centerPage">
+   <div class="centerPage" id="centerPage">
+    <md-card>
       <div style="padding: 10px">
         <h1>Start a New Inspection</h1>
         
@@ -14,27 +15,35 @@
       </div>
       
       <div style="border-bottom: solid 1px #333; margin: 40px 10px;"></div>
+      <form name="newInsForm">
       
-      <md-input-container>
+      <md-input-container class="md-block">
         <label>Name</label>
-        <input type="text" ng-model="sName">
+        <input type="text" ng-model="sName" required name="name">
+        <div ng-messages="newInsForm.name.$error">
+            <div ng-message="required">This is required</div>
+        </div>
       </md-input-container>
 
-      <md-input-container>
-        <md-select ng-model="sTheme" placeholder="Select a Theme" md-on-close="">
+      <md-input-container class="md-block">
+       <label>Select a Theme</label>
+        <md-select name="theme_select" ng-model="sTheme"required>
           <md-option ng-repeat="theme in themes
                                          track by $index" ng-value="theme">
             {{theme.title}}</md-option>
         </md-select>
       </md-input-container>
 
-      <md-input-container>
-        <md-select ng-model="sTemplate" placeholder="Select a Template" md-on-close="">
+      <md-input-container class="md-block">
+       <label>Select a Template</label>
+        <md-select name="template_select" required ng-model="sTemplate">
           <md-option ng-repeat="template in templates
                                          track by $index" ng-value="template">
             {{template.insTemplateTitle}}</md-option>
         </md-select>
       </md-input-container>
+      </form>
     </md-card>
+    </div>
   </md-content>
 </div>

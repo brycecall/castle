@@ -2,7 +2,7 @@
 <link type="text/css" rel="stylesheet" href="./pages/inspection/inspection_wizard.css" />
 <div class="page">
     <div ng-show="insParams.photoMode === '1'" class="progressBar" layout="row" layout-align="start center">
-      <div ng-click="stepDownTo(0)" class="step previewCircle" ng-class="step < 1 ? 'active' : ''" style="background-image: url( {{camera_manager.rapidModePhoto.link || ''}}  );">1</div>
+      <div ng-click="stepDownTo(0)" class="step previewCircle" ng-class="step < 1 ? 'active' : ''" style="background-image: url( {{rapidModePhoto.link || ''}}  );">1</div>
       <span flex=""></span>
       <div ng-click="stepDownTo(1)" class="step">2</div>
       <span flex=""></span>
@@ -22,8 +22,7 @@
         <div ng-if="question.type === 'checkbox'">
             <div  class="questionIndent" ng-repeat="checkBox in question.values track by $index">
                 <div  layout="row">
-                <md-checkbox ng-click="stepUp($index)"
-                           >
+                <md-checkbox ng-checked="checkBox.checked" ng-click="toggle(checkBox); stepUp($index); ">
                     {{checkBox.key}}
                 </md-checkbox>
                 </div>
@@ -113,24 +112,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-      <div ng-if="question.type !== 'photo'">
-       <md-divider ng-show="question.photos.length > 0"></md-divider>
-        <div  
-             layout="row" 
-             layout-align="start center" 
-             layout-wrap>
-                <div ng-repeat="photo in question.photos"
-                 class="md-whiteframe-1dp"
-                 ng-click="showFullScreen($event, photo)">
-                    <div class="photo" style="background-image: url( {{photo.link}} ); margin: 10px;" >
-                    <div class="photo" style="width: calc(100%-250px)">
-                        <textarea style="width: 100%">{{photo.title}}</textarea>
-                    </div>
-                    </div>
-                </div>
-        </div>
-      </div>    
+        </div>    
    </form>
         </md-card-content>
     </md-card>

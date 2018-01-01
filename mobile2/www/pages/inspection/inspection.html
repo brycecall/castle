@@ -18,7 +18,8 @@
       </md-select>
     </md-input-container>
   </div>
-  <md-card class="inspection" ng-hide="angular.equals([], inspections)" ng-repeat="inspection in inspections track by $index">
+  <md-card class="inspection" ng-hide="angular.equals([], inspections) || inspection.deleted === true" 
+           ng-repeat="inspection in inspections track by $index" >
     <md-card-content>
       <div layout="row" layout-align="start center">
         <img class="report-thumbnail" src="assets/inspection_background.jpg" hide-xs show-sm />
@@ -26,7 +27,22 @@
           <div class="report-meta">
             <p class="md-title" layout="row" layout-align="space-between">
               <span>{{inspection.insName}}</span>
-              <span>{{inspection.insType}}</span></p>
+              <span>{{inspection.insType}}</span>          
+    <md-menu>
+      <md-button class="md-icon-button" aria-label="extras menu" ng-click="openMenu($mdMenu, $event)">
+      <md-icon md-svg-icon="more_vert"></md-icon>
+      </md-button>
+      <md-menu-content width="4">
+        <md-menu-item>
+          <md-button ng-click="delete($index)">
+            <md-icon md-svg-icon="delete" md-menu-align-target></md-icon>
+            Delete
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+              
+            </p>
             <p>{{inspection.insLastSubmitted | date:'medium'}}</p>
           </div>
           <div layout-fill layout="row" layout-align="end center">

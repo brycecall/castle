@@ -4,7 +4,7 @@
 <div class="page">
 
     <div ng-show="insParams.photoMode === '1'" class="progressBar" layout="row" layout-align="start center">
-      <div ng-click="stepDownTo(0)" class="step previewCircle" ng-class="step < 1 ? 'active' : ''" style="background-image: url( {{camera_manager.rapidModePhoto.link || ''}}  );">1</div>
+      <div ng-click="stepDownTo(0)" class="step previewCircle" ng-class="step < 1 ? 'active' : ''" style="background-image: url( {{rapidModePhoto.link || ''}}  );">1</div>
       <span flex=""></span>
       <div ng-click="stepDownTo(1)" class="step">2</div>
       <span flex=""></span>
@@ -64,7 +64,7 @@
             <div class="md-title">{{question.title ? question.title : 'Untitled Question'}}</div>
             <span flex=""></span>
             <md-switch aria-label="disable"
-                       ng-model="question.notApplicable"
+                       ng-model="question.questionNotApplicable"
                        style="color:rgba(0,0,0,0.87);">
             </md-switch>
         </div>
@@ -72,15 +72,14 @@
     
        <form name="questionForm" style="padding-left: 0px;"  ng-class="question.notApplicable ? 'disabled' : ''">
         <div ng-if="question.type === 'checkbox'">
-            <div  class="questionIndent" ng-repeat="checkBox in question.values track by $index">
+            <div class="questionIndent" ng-repeat="checkBox in question.values track by $index">
                 <div  layout="row">
-                <md-checkbox ng-checked="exists(checkBox.key, question.answers)" 
-                             ng-click="toggle(checkBox, question.answers)"
+                <md-checkbox ng-checked="checkBox.checked" ng-click="toggle(checkBox);"
                              ng-disabled="question.notApplicable">
                     {{checkBox.key}}
                 </md-checkbox>
                     <span flex=""></span>
-                    <md-button class="md-icon-button" ng-click="addPhotos(checkBox.id, checkBox.key)" ng-show="exists(checkBox.key, question.answers)" >
+                    <md-button class="md-icon-button" ng-click="addPhotos(checkBox.id, checkBox.key)" ng-show="checkBox.checked" >
                         <md-icon md-svg-icon="shutter_camera"></md-icon>
                     </md-button>
                 </div>
@@ -99,7 +98,7 @@
                     <md-button class="md-icon-button" ng-click="addPhotos(otherValue.id, otherValue.value)" ng-show="exists(otherValue.value, question.answers)" >
                         <md-icon md-svg-icon="shutter_camera"></md-icon>
                     </md-button>
-            </div>
+            </div>        
         </div>
         <div ng-if="question.type === 'radio'">
             <md-radio-group ng-model="question.answer"
@@ -179,38 +178,23 @@
                 </div>
             </md-input-container>
         </div>
-        <div ng-if="question.type === 'photo'">
-            <div ng-show="question.photos.length <= 0">
+        <div>
+            <div ng-show="question.photos.length <= 0 && question.type === 'photo'">
                 No Photos Yet!
             </div>
 
-            <div layout="row" layout-align="start center" layout-wrap>
-                <div ng-repeat="photo in question.photos"
-                 class="md-whiteframe-1dp"
-                 ng-click="showFullScreen($event, photo)">
-                    <div>{{photo.title}}</div>
-                    <div class="photo" style="background-image: url( {{photo.link}} ); margin: 10px;" >
+              <div ng-repeat="photo in question.photos"
+                 layout="row" 
+                 layout-align="start center" 
+                 >
+                    <div ng-click="showFullScreen($event, photo)" class="photo md-whiteframe-1dp" style="background-image: url( {{photo.link}} ); margin: 10px;" >
                     </div>
+<!--                    <md-input-container class="md-block">-->
+                        <textarea placeholder="image title" aria-label="photo" style="width: 100%; height: 200px; resize:none; border-color:rgba(0,0,0,0.12);" >{{photo.title}}</textarea>
+<!--                    </md-input-container>-->
                 </div>
-            </div>
-        </div>
-      <div ng-if="question.type !== 'photo'">
-       <md-divider ng-show="question.photos.length > 0"></md-divider>
-        <div  
-             layout="row" 
-             layout-align="start center" 
-             layout-wrap>
-                <div ng-repeat="photo in question.photos"
-                 class="md-whiteframe-1dp"
-                 ng-click="showFullScreen($event, photo)">
-                    <div class="photo" style="background-image: url( {{photo.link}} ); margin: 10px;" >
-                    <div class="photo" style="width: calc(100%-250px)">
-                        <textarea style="width: 100%">{{photo.title}}</textarea>
-                    </div>
-                    </div>
-                </div>
-        </div>
-      </div>    
+        </div>  
+        
     </form>
         </md-card-content>
     </md-card>
@@ -221,7 +205,7 @@
                     <div class="md-title">Comment</div>
                     <span flex=""></span>
                     <md-switch aria-label="disable" 
-                               ng-model="question.notApplicable"
+                               ng-model="question.commentNotApplicable"
                                style="color:rgba(0,0,0,0.87);">
                     </md-switch>
                 </div>

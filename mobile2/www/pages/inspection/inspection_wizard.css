@@ -11,6 +11,7 @@
 
 .pagePadding {
     padding: 8px;
+    overflow-x: scroll;
 }
 .questionIndent {
 /*    margin-left: 8px;*/
@@ -35,6 +36,9 @@
 
 .buttonWrapper {
     padding: 4px 4px 4px 4px;
+}
+.buttonWrapper>div {
+    margin-right: 8px;
 }
 
 .selectedBtn {

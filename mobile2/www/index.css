@@ -74,3 +74,23 @@ md-fab-toolbar {
     height: 30px !important;
     width: 30px !important;
 }
+.toast-success > .md-toast-content{
+  background: limegreen !important;
+  font-size: 18pt;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  left: 0;
+  right: 0;
+  margin-bottom: 6px;
+}
+
+.toast-failure > .md-toast-content{
+  color: indianred !important;
+  font-size: 18pt;
+  text-align: center;    
+  width: 50%;
+  margin: auto;
+  left: 0;
+  right: 0;
+}

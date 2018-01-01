@@ -1,4 +1,4 @@
-app.factory('action_manager', function ($rootScope) {
+app.factory('action_manager', function ($rootScope, $mdToast) {
   var public = {};
   var private = {};
 
@@ -47,6 +47,24 @@ app.factory('action_manager', function ($rootScope) {
     public.mode = ACTION_MODES.Default;
   }
 
+  public.showSuccessToast = function() {
+      $mdToast.show(
+          $mdToast.simple()
+          .textContent('Save Success!')
+          .hideDelay(2000)
+          .toastClass('toast-success')
+      );
+  }
+  
+  public.showFailureToast = function() {
+      $mdToast.show(
+          $mdToast.simple()
+          .textContent('Save Failure!')
+          .hideDelay(2000)
+          .toastClass('toast-failure')
+      );
+  }
+  
   return public;
 });
 

@@ -291,8 +291,10 @@ app.controller('template_section', function ($rootScope, $scope, inspection_mana
     $rootScope.loading = true;
     inspection_manager.updateTemplate().then(function() {
       $rootScope.loading = false;
+      action_manager.showSuccessToast();
     }, function(){
         $rootScope.loading = false;
+        action_manager.showFailureToast();
     });
     switch (inspection_manager.mode) {
       case "theme":
@@ -361,8 +363,10 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
     $rootScope.loading = true;
     inspection_manager.updateTemplate().then(function() {
       $rootScope.loading = false;
+      action_manager.showSuccessToast();
     }, function(){
         $rootScope.loading = false;
+        action_manager.showFailureToast();
     });
     switch (inspection_manager.mode) {
       case "theme":
@@ -427,6 +431,10 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
     $rootScope.loading = true;
     inspection_manager.updateTemplate().then(function() {
       $rootScope.loading = false;
+      action_manager.showSuccessToast();
+    }, function() {
+      $rootScope.loading = false;
+      action_manager.showFailureToast();
     });
     switch (inspection_manager.mode) {
       case "theme":
@@ -616,7 +624,13 @@ $scope.questionTypes = [
     navigateQuestions(false);
   }, 'md-raised');
   action_manager.addAction('Save', 'save', function () {
-    inspection_manager.updateTemplate();
+    inspection_manager.updateTemplate().then(function() {
+        $rootScope.loading = false;
+        action_manager.showSucessToast();
+    }, function() {
+        $rootScope.loading = false;
+        action_manager.showFailureToast();
+    });
     switch (inspection_manager.mode) {
       case "theme":
         $state.go('themes');

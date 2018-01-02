@@ -45,6 +45,7 @@ app.factory('action_manager', function ($rootScope, $mdToast) {
   public.clearActions = function () {
     public.actions = [];
     public.mode = ACTION_MODES.Default;
+    public.enable();
   }
 
   public.showSuccessMessageToast = function(message) {

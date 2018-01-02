@@ -80,5 +80,6 @@ app.config(function ($mdIconProvider) {
     .icon('flash_off', icon_root + '/ic_flash_off_24px.svg')
     .icon('flare', icon_root + '/ic_flare_24px.svg')
     .icon('help_outline', icon_root + "/help-circle-outline.svg")
-    .icon('drag_handle', icon_root + "/ic_drag_handle_24px.svg");
+    .icon('drag_handle', icon_root + "/ic_drag_handle_24px.svg")
+    .icon('export', icon_root + "/ic_open_in_new_24px.svg");
 });

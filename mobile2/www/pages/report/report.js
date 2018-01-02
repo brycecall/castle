@@ -2,9 +2,12 @@
 app.config(function ($stateProvider) {
   $stateProvider
     .state('report', {
-      url: "/report/{insId}",
+      url: "/report/{insId}/{quickSend}",
       templateUrl: "pages/report/report.html",
-      controller: "report"
+      controller: "report",
+      params: {
+        'quickSend': 'false'
+      }
     });
 });
 
@@ -62,41 +65,16 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
 
             $scope.report = true;
 
-            /*var data = render_frame.contentDocument.querySelector('html').outerHTML;
-            $scope.message = "Saving you a ton of time...";
-
-            if (window['pdf'] !== undefined) {
-              pdf.htmlToPDF({
-                data: data,
-                documentSize: "A4",
-                landscape: "portrait",
-                type: "file",
-                fileName: inspection_buffer.insName + ".pdf"
-              }, function (data) {
-                end_time = new Date();
-                console.log("Generation the report took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
-                start_time = new Date();
-
-                //$scope.report = true;
-                //preview_frame.contentWindow.PDFViewerApplication.open(cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf");
-                cordova.plugins.fileOpener2.open(cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf", 'application/pdf');
-                
-                end_time = new Date();
-                console.log("Rendering the preview took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
-                start_time = new Date();
-
-                //action_manager.enable();
-                window.history.back();
-
-              }, function (error) {
-                $scope.report = false;
-              });
-            }*/
+            if ($stateParams.quickSend != "false") {
+              sendEmail();
+            }
+            
+            action_manager.enable();
           };
 
           object.go = function (object) {
             $rootScope.loading = true;
-            
+
             // The object is an inspection
             if (object.secions) {
               $state.go('inspection_wizard', {
@@ -222,6 +200,16 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
     // TODO
   };
 
+  var sendEmail = function () {
+    if (window['cordova'] !== undefined && $scope.report) {
+      cordova.plugins.email.open({
+        body: "Home Inspection Report created using Castle",
+        subject: "Home Inspection Report",
+        attachments: cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf"
+      })
+    }
+  };
+
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {
     window.history.back();
@@ -229,15 +217,7 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
 
   action_manager.disable();
   action_manager.mode = ACTION_MODES.Action;
-  action_manager.addAction("Send", 'send', function () {
-    if (window['cordova'] !== undefined && $scope.report) {
-      cordova.plugins.email.open({
-        body: "Here is your report!!!",
-        subject: "Home Inspection Report from Castle",
-        attachments: cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf"
-      })
-    }
-  }, 'md-accent');
+  action_manager.addAction("Send", 'send', sendEmail, 'md-accent');
 
   action_manager.addAction("Edit", 'mode_edit', function () {
     $state.go('inspection_wizard', {

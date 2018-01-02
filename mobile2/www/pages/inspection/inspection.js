@@ -30,16 +30,31 @@ app.service('shareService', function ($state) {
 // Define the page controller
 app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, export_manager, $mdToast) {
   $scope.inspections = [];
+  $scope.camera_manager = camera_manager;
+  $scope.numDeleted = 0;
   $rootScope.loading = true;
+  inspection_manager.mode = "inspection";   // Switch the inspection_manager mode (this is global)
 
-  // Switch the inspection_manager mode (this is global)
-  inspection_manager.mode = "inspection";
+  header_manager.title = "Inspections";
+  header_manager.setAction("Back", "back", function () {
+    $state.go('home');
+  });
+    
+  $scope.newInspection = function(){
+      $state.go("inspection_new");
+  }
 
   $scope.goToInspection = function (insId) {
     $state.go('inspection_wizard', {
       'insId': insId
     });
   };
+    
+  action_manager.addAction('New Inspection', 'add', function () {
+    $scope.newInspection();
+  });
+    
+
 
   $scope.goToPreview = function (insId) {
     $state.go('report', {
@@ -47,25 +62,34 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     });
   };
     
+  $scope.send = function (insId) {
+    $state.go('report', {
+      'insId': insId,
+      'quickSend': true
+    });
+  }
+  
+  $scope.openMenu = function($mdMenu, ev) {
+      $mdMenu.open(ev);
+  };
+  var toast = $mdToast.simple()
+                    .textContent('')
+                    .action('UNDO')
+                    .highlightAction(true)
+                    .highlightClass('md-accent')
+                    .position('bottom')
+                    .toastClass('highIndex');
 
-    $scope.openMenu = function($mdMenu, ev) {
-        $mdMenu.open(ev);
-    };
-    var toast = $mdToast.simple()
-                      .textContent('')
-                      .action('UNDO')
-                      .highlightAction(true)
-                      .highlightClass('md-accent')
-                      .position('bottom');
-    
-    $scope.delete = function(index) {
-        $scope.inspections[index].deleted = true;
-        $mdToast.show(toast).then(function(response) {
-          if ( response == 'ok' ) {
-             $scope.inspections[index].deleted = false;
-          }
-        }, function(){console.log("You delete fast don't ya!");});
-    }
+  $scope.delete = function(index) {
+      $scope.inspections[index].deleted = true;
+      $scope.numDeleted++;
+      $mdToast.show(toast).then(function(response) {
+        if ( response == 'ok' ) {
+           $scope.inspections[index].deleted = false;
+           $scope.numDeleted--;
+        }
+      }, function(){console.log("You delete fast don't ya!");});
+  }
 
   $scope.export = function (insId) {
     var promise = inspection_manager.getInspection(insId);
@@ -80,7 +104,8 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
       });
   }
 
-  $scope.inspections = [];
+
+  
   $scope.sort = "";
   $scope.sort_filters = [
     "Name",
@@ -97,16 +122,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     "Archived"
   ];
 
-  header_manager.title = "Inspections";
-  header_manager.mode = HEADER_MODES.Action;
-  header_manager.setAction("Back", "back", function () {
-    $state.go('home');
-  });
 
-  $scope.camera_manager = camera_manager;
-  action_manager.addAction('New Inspection', 'add', function () {
-    $state.go("inspection_new");
-  });
 
   var inspections = inspection_manager.getInspections();
   inspections.then(
@@ -127,6 +143,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   );
 });
 
+
 app.controller('inspection_new', function ($rootScope, $scope, $state, inspection_manager, theme_manager, action_manager, header_manager) {
   $scope.themes = [];
   $scope.templates = [];
@@ -138,9 +155,9 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
   action_manager.addAction('Start', 'check', function () {
     $scope.startInspection();
   });
-    header_manager.title = "New Inspection";
-    header_manager.mode = HEADER_MODES.Action;
-    header_manager.setAction("Back", "back", function () {
+  header_manager.title = "New Inspection";
+  header_manager.mode = HEADER_MODES.Action;
+  header_manager.setAction("Back", "back", function () {
     $state.go('inspection');
   });
 
@@ -225,4 +242,3 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
 app.factory('$', function ($window) {
   return $window.jQuery;
 });
-

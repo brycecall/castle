@@ -83,7 +83,7 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
   private.cleanup = function () {
     $cordovaFile.removeRecursively(cordova.file.cacheDirectory, private.session_id);
     $cordovaFile.removeFile(cordova.file.externalDataDirectory, private.session_id + ".zip");
-    $cordovaFile.removeFile(cordova.file.externalDataDirectory, private.session_id + ".castle");
+    //$cordovaFile.removeFile(cordova.file.externalDataDirectory, private.session_id + ".castle");
 
     private.session_id = null;
     private.session_path = null;

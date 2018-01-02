@@ -18,39 +18,61 @@
       </md-select>
     </md-input-container>
   </div>
+
+    <div ng-cloak ng-show="inspections.length == 0 || inspections.length <= numDeleted" 
+                style="padding-left: 16px;" >
+        No inspections yet!
+    </div>
+    <div class="buttonHere" ng-cloak ng-show="inspections.length == 0 || inspections.length <= numDeleted" >
+        <md-button ng-cloak class="md-fab md-mini md-primary"  aria-label="new inspection" ng-click="newInspection()">
+          <md-icon ng-cloak md-svg-icon="add"></md-icon>
+        </md-button>
+    </div>
+    
   <md-card class="inspection" ng-hide="angular.equals([], inspections) || inspection.deleted === true" 
            ng-repeat="inspection in inspections track by $index" >
     <md-card-content>
       <div layout="row" layout-align="start center">
-        <img class="report-thumbnail" src="assets/inspection_background.jpg" hide-xs show-sm />
         <div layout-fill>
           <div class="report-meta">
             <p class="md-title" layout="row" layout-align="space-between">
               <span>{{inspection.insName}}</span>
-              <span>{{inspection.insType}}</span>          
-    <md-menu>
-      <md-button class="md-icon-button" aria-label="extras menu" ng-click="openMenu($mdMenu, $event)">
-      <md-icon md-svg-icon="more_vert"></md-icon>
-      </md-button>
-      <md-menu-content width="4">
-        <md-menu-item>
-          <md-button ng-click="delete($index)">
-            <md-icon md-svg-icon="delete" md-menu-align-target></md-icon>
-            Delete
-          </md-button>
-        </md-menu-item>
-      </md-menu-content>
-    </md-menu>
-              
+              <span>{{inspection.insType}}</span>
             </p>
-            <p>{{inspection.insLastSubmitted | date:'medium'}}</p>
+            <p>{{inspection.insLastModified.split('GMT')[0]}}</p>
           </div>
-          <div layout-fill layout="row" layout-align="end center">
-            <md-button class="md-raised" ng-click="export(inspection.insId);">Export</md-button>
+          <div layout-fill layout="row" layout-align="space-between center" style="padding-left: 10px;">
+            <span>
+              <md-button class="md-raised md-warn" ng-click="goToInspection(inspection.insId);">Edit</md-button>
+              <md-button class="md-raised" ng-click="goToPreview(inspection.insId);">Review</md-button>
+              <md-button class="md-raised hide-xs" ng-click="send(inspection.insId);">Send</md-button>
+            </span>
 
-            <md-button class="md-raised" ng-click="goToInspection(inspection.insId);">Edit</md-button>
-
-            <md-button class="md-raised" ng-click="goToPreview(inspection.insId);">Generate</md-button>
+            <md-menu>
+              <md-button class="md-icon-button" aria-label="extras menu" ng-click="openMenu($mdMenu, $event)">
+                <md-icon md-svg-icon="more_vert"></md-icon>
+              </md-button>
+              <md-menu-content width="4">
+                <md-menu-item>
+                  <md-button ng-click="export(inspection.insId);">
+                    <md-icon md-svg-icon="export" md-menu-align-target></md-icon>
+                    Export
+                  </md-button>
+                </md-menu-item>
+                <md-menu-item class="hide show-xs">
+                  <md-button ng-click="send(inspection.insId)">
+                    <md-icon md-svg-icon="send" md-menu-align-target></md-icon>
+                    Send
+                  </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                  <md-button ng-click="delete($index)">
+                    <md-icon md-svg-icon="delete" md-menu-align-target></md-icon>
+                    Delete
+                  </md-button>
+                </md-menu-item>
+              </md-menu-content>
+            </md-menu>
           </div>
         </div>
       </div>

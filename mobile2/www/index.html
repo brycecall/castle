@@ -85,7 +85,7 @@
   <div class="action" ng-controller="action" ng-show="service.enabled">
     <div class="button" ng-cloak ng-show="service.mode == 1" layout="row" layout-align="end">
       <!-- service mode 1 is Default -->
-      <md-button ng-cloak class="md-fab md-primary" aria-label="action" ng-show="(service.actions.length == 1)" ng-click="run(service.actions[0].method)">
+      <md-button ng-cloak class="md-fab md-primary" ng-class="service.actions[0].classname" aria-label="action" ng-show="(service.actions.length == 1)" ng-click="run(service.actions[0].method)">
         <md-icon md-svg-icon="{{service.actions[0].icon}}"></md-icon>
       </md-button>
       <md-fab-speed-dial md-open="open" md-direction="up" class="md-scale" ng-cloak ng-show="(service.actions.length > 1)">
@@ -97,7 +97,7 @@
 
         <md-fab-actions ng-cloak>
           <div ng-repeat="action in service.actions">
-            <md-button ng-cloak class="md-fab md-mini md-accent" aria-label="{{action.name}}" ng-click="run(action.method)">
+            <md-button ng-cloak class="md-fab md-mini md-accent"  aria-label="{{action.name}}" ng-click="run(action.method)">
               <md-tooltip ng-cloak md-direction="left" md-visible="open">{{action.name}}</md-tooltip>
               <md-icon ng-cloak md-svg-icon="{{action.icon}}"></md-icon>
             </md-button>
@@ -119,7 +119,7 @@
       <!-- service mode 3 is Toolbar -->
       <md-fab-toolbar md-direction="left">
         <md-fab-trigger>
-          <md-button ng-cloak class="md-fab md-primary" aria-label="Action Menu">
+          <md-button ng-cloak class="md-fab md-primary" aria-label="Action Menu" ng-class="action.classname">
             <md-icon md-svg-icon="more_vert"></md-icon>
           </md-button>
         </md-fab-trigger>

@@ -195,8 +195,26 @@ md-input-container {
 }
 
 .filter-bar md-input-container {
-height: 58px;
+    height: 58px;
 }
-.pictureHere {
- 
+
+
+.buttonHere .md-button.md-fab {
+    height: 500px !important;
+    width: 500px !important;
+    position: fixed;
+    bottom: -200px;
+    right: -200px;
+    z-index: 110;
+}
+
+.buttonHere md-icon {
+    height: 50px !important;
+    width: 50px !important;
+    
+}
+
+.highIndex {
+    z-index: 500;
+    
 }

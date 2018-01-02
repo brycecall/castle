@@ -18,7 +18,19 @@
       </md-select>
     </md-input-container>
   </div>
-  <md-card class="inspection" ng-hide="angular.equals([], inspections) || inspection.deleted === true" ng-repeat="inspection in inspections track by $index">
+
+    <div ng-cloak ng-show="inspections.length == 0 || inspections.length <= numDeleted" 
+                style="padding-left: 16px;" >
+        No inspections yet!
+    </div>
+    <div class="buttonHere" ng-cloak ng-show="inspections.length == 0 || inspections.length <= numDeleted" >
+        <md-button ng-cloak class="md-fab md-mini md-primary"  aria-label="new inspection" ng-click="newInspection()">
+          <md-icon ng-cloak md-svg-icon="add"></md-icon>
+        </md-button>
+    </div>
+    
+  <md-card class="inspection" ng-hide="angular.equals([], inspections) || inspection.deleted === true" 
+           ng-repeat="inspection in inspections track by $index" >
     <md-card-content>
       <div layout="row" layout-align="start center">
         <div layout-fill>

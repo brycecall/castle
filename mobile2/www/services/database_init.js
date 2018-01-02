@@ -566,9 +566,9 @@
       return deferred.promise;
     }
     
-    public.dropAllTables = function () {   
+    public.dropAllTables = function () {
       console.log('Dropping All Tables');
-      var deferred = $q.defer();
+      var dropDeferred = $q.defer();
       // Batch script to create all tables in db
       private.db.sqlBatch([
           'DROP TABLE IF EXISTS Answer',
@@ -589,20 +589,20 @@
           'DROP TABLE IF EXISTS UserOrganizations',
           'DROP TABLE IF EXISTS UserUsers',
       ], function () {
-        deferred.resolve({
+        dropDeferred.resolve({
           message: 'Batch drop statement completed successfully'
         });
       }, function (error) {
-        deferred.reject({
+        dropDeferred.reject({
           message: 'Error processing batch: ' + error.message
         });
       });
-      return deferred.promise;
+      return dropDeferred.promise;
     }
     
     public.initTables = function (db) {
       private.db = db;
-      var deferred = $q.defer();
+      var deferInitTables = $q.defer();
       public.dropAllTables().then(function(){
           console.log('calling initTables');
           // Batch script to create all tables in db
@@ -626,21 +626,21 @@
           ], function (res) {
             public.initThemes();
             //public.initTemplates();            
-            deferred.resolve({
+            deferInitTables.resolve({
               message: 'Batch statement for default Template data completed successfully'
             });
           }, function (error) {
-            deferred.reject({
+            deferInitTables.reject({
               message: 'Error processing batch: ' + error.message
             });
           });
       }, function(error) {
           console.log("Error dropping tables");
-          deferred.reject({
+          deferInitTables.reject({
               message: 'Error dropping tables: ' + error.message
         });
       });
-      return deferred.promise;
+      return deferInitTables.promise;
     }
 
     public.initSubSections = function () {

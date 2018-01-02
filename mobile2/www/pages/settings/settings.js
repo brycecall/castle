@@ -17,10 +17,10 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
       $rootScope.loading = true;
       theme_manager.clearThemes();
       database.initTables()
-        .then(function () {
+        .then(function (success) {
           $timeout(function () {
             $scope.reload();
-          }, 8000);
+          }, 1000);
         }, function (error) {
           $rootScope.loading = false;
           alert(error);

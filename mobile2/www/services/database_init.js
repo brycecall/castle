@@ -10,7 +10,7 @@
     document.addEventListener('deviceready', function () {
       private.db = window.sqlitePlugin.openDatabase(private.dbOptions);
     // Insert Necessary Data for Full Inspection
-    public.initDefaultTemplate = function () {
+      public.initDefaultTemplate = function () {
       console.log('db initDefaultTemplate');
       var deferred = $q.defer();
       private.db.sqlBatch([
@@ -623,10 +623,11 @@
               'CREATE TABLE IF NOT EXISTS UserUsers (usuUserId INT, usuUserChildId INT, FOREIGN KEY(usuUserId) REFERENCES User(rowId))',
           ], function (res) {
             public.initThemes();
-            public.initTemplates();
-            public.initSections();
-            public.initSubSections();
-            public.initDefaultTemplate();
+            //public.initTemplates();
+            //public.initSections();
+            //p/ublic.initSubSections();
+            //public.initDefaultTemplate();
+            
             deferred.resolve({
               message: 'Batch statement for default Template data completed successfully'
             });

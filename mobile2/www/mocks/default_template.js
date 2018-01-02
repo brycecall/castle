@@ -1,1431 +1,24912 @@
-// Current structure of inspection object as of 12/21
-var inspection = {
-          // Build Inspection Fields
-          insThemeId: promise.row.item(0).insThemeId,
-          insTemplateId: promise.row.item(0).insTemplateId,
-          insTemplateTitle: promise.row.item(0).insTemplateTitle,
-          insLastModified: promise.row.item(0).insLastModified,
-          insLastSubmitted: promise.row.item(0).insLastSubmitted,
-          insJobId: promise.row.item(0).insJobId,
-          insType: promise.row.item(0).insType,
-          insName: promise.row.item(0).insName,
-          insUserId: promise.row.item(0).insUserId,
-          rowId: promise.row.item(0).rowId,
-          insId: promise.row.item(0).rowId,
-          insSourceType: promise.row.item(0).insSourceType,
-          sections: [{
-              id: promise.row.item(i).secRowId,
-              title: promise.row.item(i).secTitle,
-              sourceType: promise.row.item(i).secSourceType,
-              inspectionId: promise.row.item(i).secInspectionId,
-              order: promise.row.item(i).secOrder,
-              subsections: []
-            }
-            // Build subsections
-            for (var j = i; promise.row.item(j) && promise.row.item(i).secRowId == promise.row.item(j).secRowId; j++) {
-              // Build subsection
-              var subsection = {
-                id: promise.row.item(j).susRowId,
-                title: promise.row.item(j).susTitle,
-                sectionId: promise.row.item(j).susSectionId,
-                inspectionId: promise.row.item(j).susInspectionId,
-                sourceType: promise.row.item(j).susSourceType,
-                order: promise.row.item(j).susOrder,
-                questions: []
-              }
-              // Build questions
-              // Validation check to make sure there are questions (many subs dont have them currently but this will likely not be the case in the future)
-              if (promise.row.item(j).queRowId) {
-                for (var k = j; promise.row.item(k) && promise.row.item(j).susRowId == promise.row.item(k).susRowId; k++) {
-                  // Build question object
-                  var question = {
-                    id: promise.row.item(k).queRowId,
-                    title: promise.row.item(k).queTitle,
-                    description: promise.row.item(k).queDescription,
-                    subsectionId: promise.row.item(k).queSubSectionId,
-                    sectionId: promise.row.item(k).secRowId,
-                    inspectionId: promise.row.item(k).queInspectionId,
-                    sourceType: promise.row.item(k).sourceType,
-                    type: promise.row.item(k).queType,
-                    values: [],
-                    validation: {
-                      type: promise.row.item(k).queValidationType,
-                      min: promise.row.item(k).queMin,
-                      max: promise.row.item(k).queMax,
-                      isRequired: promise.row.item(k).queRequired
-                    },
-                    answer: null,
-                    answers: [],
-                    notApplicable: promise.row.item(k).queNotApplicable,
-                    severity: null,
-                    showSummaryRemark: promise.row.item(k).queShowSummaryRemark,
-                    showDescription: promise.row.item(k).queShowDescription,
-                    order: promise.row.item(k).queOrder,
-                    photos: []
-                  }
-                  // Build answers
-                  for (var l = k; promise.row.item(l) && promise.row.item(k).queRowId == promise.row.item(l).queRowId; l++) {
-                    var answer = {
-                      id: promise.row.item(l).ansRowId,
-                      key: promise.row.item(l).ansValue,
-                      questionId: promise.row.item(l).ansQuestionId,
-                      sourceType: promise.row.item(l).ansSourceType,
-                      inspectionId: promise.row.item(l).ansInspectionId,
-                      type: promise.row.item(l).ansType,
-                      checked: promise.row.item(l).ansChecked,
-                      autoComment: promise.row.item(l).ansAutoComment,
-                      order: promise.row.item(l).ansOrder,
-                      photos: []
-                    }
-                    question.values.push(answer);
-                    // Check to see if this answer was a selected answer by inspector
-                    if (promise.row.item(l).ansChecked) {
-                      // If multi, push onto answers list. Otherwise, store in single answer key.
-                      if (promise.row.item(l).ansType == 'multi') {
-                        question.answers.push(answer.key);
-                      } else {
-                        question.answer = answer.key;
-                      }
-                    }
-                    if (promise.row.item(l).ansRowId) {
-                      for (var m = l; promise.row.item(m) && promise.row.item(l).ansRowId == promise.row.item(m).ansRowId; m++) {
-                        if (promise.row.item(m).phoRowId) {
-                          var photo = {
-                            id: promise.row.item(m).phoRowId,
-                            link: promise.row.item(m).phoLink,
-                            title: promise.row.item(m).phoTitle,
-                            questionId: promise.row.item(m).phoQuestionId,
-                            answerId: promise.row.item(m).phoAnswerId,
-                            inspectionId: promise.row.item(m).phoInspectionId,
-                            sourceType: promise.row.item(m).phoSourceType,
-                            order: promise.row.item(m).phoOrder
-                          }
-                          answer.photos.push(photo);
-                          question.photos.push(photo);
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-            ]
+var defaultTemplate = {
+  "insLastModified": "Sun Oct 08 2017 15:22:12 GMT-0600 (MDT)",
+  "insLastSubmitted": "Sun Oct 08 2017 15:22:12 GMT-0600 (MDT)",
+  "insType": "Report Title",
+  "insName": null,
+  "insUserId": 1,
+  "insId": null,
+  "insSourceType": "Template",
+  "sections": [{
+    "id": null,
+    "title": "Field Notes",
+    "sourceType": "Template",
+    "inspectionId": null,
+    "order": 0,
+    "subsections": [{
+      "id": null,
+      "title": "Observations",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 0,
+      "questions": [{
+        "id": null,
+        "title": "Person(s) Present",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Inspector",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Buyer",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Resident",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Builder or Builders Rep",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Owner or Seller",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Agent",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Friends or Other",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Person(s) Providing Property Access",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Inspector",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Buyer",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Resident",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Builder or Builders Rep",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Owner or Seller",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Agent",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Friends or Other",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Year Built",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "number",
+        "order": 2,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": true
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Squarefeet of the Property",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "number",
+        "order": 3,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": true
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Type of Property",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "radio",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Single Family",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Single Use",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Multiple Use",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Duplex",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Triplex",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Multi Family",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Detatched",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": true
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Property Use",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "radio",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Residential",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Apartment",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Retail Store",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Business",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Industrial",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Commercial",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": true
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Number of Stories",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "radio",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Rambler",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "One Level",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Split-Entry",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Split-Level",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "One Story",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Two-Story",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Three-Story",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mid-Rise",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Multi-Level",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": true
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Building Frame",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "radio",
+        "order": 7,
+        "values": [{
+          "id": null,
+          "key": "Wood-Framed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Steel-Framed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Concrete",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "CMU or Block",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Masonry",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Tilt-Up",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood-Frame on Steel Carriage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "ICF",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": true
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Building Type",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "radio",
+        "order": 8,
+        "values": [{
+          "id": null,
+          "key": "Home",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Twin Home",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Town Home",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mobile Home",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Log Home",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Manufactured Home",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Prefabbed Structure",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Condominium",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Building",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Garage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Low-Rise",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mid-Rise",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "High-Rise",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": true
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Property Configurations",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 9,
+        "values": [{
+          "id": null,
+          "key": "With Lower Parking Garage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "With Basement & Garage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "With Garage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "With Garage & Crawlspace",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "With Full Basement",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "With Daylight Basement",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "With Basement & Crawlspace(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "With Crawlspace",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "With Slab-On-Grade",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Over Adjoining Unit(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Over Adjoining Basement Unit",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": true
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Property Orientation",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "select",
+        "order": 10,
+        "values": [{
+          "id": null,
+          "key": "North",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "East",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "West",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "South",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "North-East",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "North-West",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "South-East",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "South-West",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Vehicle Parking",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 11,
+        "values": [{
+          "id": null,
+          "key": "At Curbside",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "In a Rear Alley",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "In the Driveway",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "In an Attached Garage(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "In a Detached Garage(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "In an Attached Carport",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "In a Detached Carport",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "In a Covered Parking Space",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "In an Open Parking Space",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "In a Secured Parking Garage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "In an Open Parking Garage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "In an Open, Striped Parking Lot",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Utilities",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 12,
+        "values": [{
+          "id": null,
+          "key": "Electricity",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Water",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gas",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Oil",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Propane",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "What Utilities were OFF",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 13,
+        "values": [{
+          "id": null,
+          "key": "Electricity",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Water",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gas",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Oil",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Propane",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Property Occupancy",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "select",
+        "order": 14,
+        "values": [{
+          "id": null,
+          "key": "Occupied",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mostly Occupied",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mostly Vacant",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vacant",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": true
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Observation Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 15,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }]
+  }, {
+    "id": null,
+    "title": "Site",
+    "sourceType": "Template",
+    "inspectionId": null,
+    "order": 1,
+    "subsections": [{
+      "id": null,
+      "title": "Evaluation",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 0,
+      "questions": [{
+        "id": null,
+        "title": "Conditions",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 0,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Limitations",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 1,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Driveway",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "radio",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Concrete",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Asphalt",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Pavers",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stone",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Brick",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Dirt",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gravel",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Driveway Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Pitched towards home",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Typical cracks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Large cracks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Root heaving",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Uneven",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Trip or Falling Hazard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Patio",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "radio",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Concrete",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Paver or stone or brick",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood or Composite",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Covered",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Patio Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Typical cracks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Large cracks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gaps",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Holes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mildew",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Settled",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Uneven Surface",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Trip or Falling Hazard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Walkways and Steps",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Uneven",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Large cracks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Root heaving",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Moss build-up",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing spacers",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Settled",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Trip hazard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing handrails",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing safety glass",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Retaining Wall",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 7,
+        "values": [{
+          "id": null,
+          "key": "None",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Treated Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Railroad Ties",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Concrete",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Concrete Blocks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "CMU or Blocks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gabions",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rockery",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Masonry",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cemented Stone",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Retaining Wall Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 8,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaning",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaking or Drainage Concern",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Trip or Falling Hazard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Safety Fencing Location",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 9,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Water Feature",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Drop-off or Retaining Wall",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Steep Slope",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Safety Fencing Type",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 10,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Concrete",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Privacy",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Chainlink",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Masonry",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rail",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wire",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Plastic or Vinyl",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Safety Fencing Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 11,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Maginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Trip or Falling Hazard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaning",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify Adequate Height",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazardous",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Landscaping",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 12,
+        "values": [{
+          "id": null,
+          "key": "Not Inspected",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor Earth-to-Wood Separation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Yard Steps",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Drainage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Negative Surrounding Grade",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Overgrown Foliage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Safety Concern",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 13,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Evaluation Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 14,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Attached Steps or Platforms",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 1,
+      "questions": [{
+        "id": null,
+        "title": "Porch or Stoop",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Concrete",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Pavers",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stone",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Brick",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood or Composite",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Covered",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Porch or Stoop Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify Attachment",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose or Missing Railings",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Trip Hazard(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Typical Cracks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Large Cracks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gaps or Holes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Weathered Finish",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Settled",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Earth Contact",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mildew",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fungal Rot or Probed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Yard Steps",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Uneven",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Large Cracks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Root Heaving",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Moss Build-Up",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Spacers",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Settled",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Trip Hazard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Handrails",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Safety Glass",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Deck or Balcony",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Raised",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Roof-top",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Covered",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood or Composite",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "PVC",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Deck or Balcony Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose or Missing Railings",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Weathered Finish",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Settled",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Earth Contact",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mildew",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fungal Rot or Probed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify Attachment",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Moisture Conditions",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 5,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Attached Steps or Platforms Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 6,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }]
+  }, {
+    "id": null,
+    "title": "Exterior",
+    "sourceType": "Template",
+    "inspectionId": null,
+    "order": 2,
+    "subsections": [{
+      "id": null,
+      "title": "Siding or Wall Cladding",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 0,
+      "questions": [{
+        "id": null,
+        "title": "Conditions",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 0,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Limitations",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 1,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Type(s) of Wall Cladding",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Brick",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stone",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stucco",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Metal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vinyl",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cement Board",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fiberboard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hardi-Board or Plank",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Panels or Sheets",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Shingles",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "T-111",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Lapped",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "T&G",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vertical Channel",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "EIFS",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Pre 1996 EIFS",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recalled LP",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 17,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Friable PACM",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 18,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Wall Cladding Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gaps or Holes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Buckled",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Tight Butt Joints",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Joint Flashing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Broken or Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inadequate Coverage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Peeling Paint",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Weathered",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Pest Issues",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cracked or Bulging",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mildew",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Deteriorated",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fungal Rot or Probed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 17,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Flashing at Fenestrations",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Defective",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gaps or Holes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Exposed Structure",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Re-Evaluate or Repair",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Trim or Soffit or Fascia",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fiberboard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Masonry",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "EIFS",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Metal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vinyl",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Enclosed Soffit",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Open Eaves",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Screened Ventilation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unflashed BRT or Out-Lookers",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Trim or Soffit or Fascia Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gaps or Holes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Pieces",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Exposed Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose or Missing Flashing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor Protection or Coverage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stains",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Peeling Paint",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Weathered or Worn",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Deterioration",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fungal Rot",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Broken or Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Pest Issues",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Foliage Contact",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Potential Hidden Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 17,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Re-Evaluation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 18,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Siding or Wall Cladding Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 7,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Wall Fenestrations",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 1,
+      "questions": [{
+        "id": null,
+        "title": "Window Frame or Trim",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Aluminum or Metal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Clad",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vinyl",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fiberglass",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Window Frame or Trim Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gaps",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Pieces",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Exposed Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Flashing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Weathered or Worn Finish",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Peeling Paint or Inadequate Coverage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Caulking",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Broken Glass",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Failed Thermal Seal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Deteriorated",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fungal Rot",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Exterior Doors",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Metal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fiberglass",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Exterior Doors Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Inadequate Threshold",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Inadequate Weather-Strip",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Inadequate Hardware",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Repairs Needed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Caulking",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Weathered",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stretched",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cracked",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gaps",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend sealing all perforations through the exterior wall surface",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Wall Fenestrations Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 5,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Attached Garage or Carport",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 2,
+      "questions": [{
+        "id": null,
+        "title": "Conditions",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 0,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Limitations",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 1,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Vehicle Parking",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Curbside",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Space",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Public Garage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Carport",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Garage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Attached",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Detached",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Floor",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Concrete Slab",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sealed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Asphalt",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Pavers or Cobblestone",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gravel",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Dirt",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Floor Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sloping",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Typical Cracks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Large Cracks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Trip Hazards",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Efflorescence",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Excessive Storage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Firewall Location",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Above Living Space",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Below Living Space",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Adjoining Walls",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Firewall Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Penetrations",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Pet Door",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Firedoor Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 7,
+        "values": [{
+          "id": null,
+          "key": "Door",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Threshod",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hinges",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Seal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Repairs Needed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Exterior Service Door",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 8,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Blocked or Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Metal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fiberglass",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Exterior Service Door Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 9,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Needs Adjustment",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Car Door",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 10,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Overhead",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sliding",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Roll-Up Panels",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Tilt-Up Slab",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Lites",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hardboard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Metal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fiberglass",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Solid",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hollow",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Insulated",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Car Door Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 11,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gaps",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Security Concerns",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Blocked or Inaccessible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Locked Shut",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stained",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "De-Laminated",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Automatic Door Opener",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 12,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Blocked",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No Access",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No Remote",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Safety Reverse",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 13,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Disconnected or Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Door Stops",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Intermittent Function",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 14,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Needs Adjustment",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Attached Garage or Carport Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 15,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }]
+  }, {
+    "id": null,
+    "title": "Roofing",
+    "sourceType": "Template",
+    "inspectionId": null,
+    "order": 3,
+    "subsections": [{
+      "id": null,
+      "title": "Roof Covering(s)",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 0,
+      "questions": [{
+        "id": null,
+        "title": "Conditions",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 0,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Limitations",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 1,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Roof Covering(s)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Inspected or Walked on (Traversed) Roof",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inspected or NOT Traversed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "NOT Inspected",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vulnerable to Traversing Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unsafe Traversing Condition(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Viewed Roof From",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Ground w or Binoculars",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ladder",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Eaves",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Interior",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Other Building",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Style(s)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Gable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hip",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mansard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Shed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Flat",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Dutch Hip",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Combination",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Pitch",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Steep",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Medium",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Low",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Age of Roof Covering",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "number",
+        "order": 6,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Number of Layers of Roof Covering",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "number",
+        "order": 7,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Roof Covering",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 8,
+        "values": [{
+          "id": null,
+          "key": "Asphalt or Comp",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rolled",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "3-Tab",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Multiple Thickness",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Presidential",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Corrugated Fiber Glass",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Modified Bitumen",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Torch-Down or Hot Tar",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Metal or Standing Seam",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Metal Shingle",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood Shingle",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cedar Shake",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Clay Tile",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Concrete Tile",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Slate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "PVC Membrane",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Roof Covering Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 9,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Granule Loss",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Broken or Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing (Tabs)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cupping or Curling",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Aligned Gaps",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cracked",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Lifting",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Moss",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fungal Rot",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rusted",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Exposed Fasteners",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Professional Re-Evaluation or Remediation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Valley(s)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 10,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Metal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Woven Asphalt",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cut Asphalt",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Tile",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Concrete",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Valley(s) Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 11,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Maginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Defective",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Broken or Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rusted",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Holes or Gaps",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Installation Defects",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vulnerable Areas",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Roof Covering(s) Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 12,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Fenestrations",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 1,
+      "questions": [{
+        "id": null,
+        "title": "Perforations (through-roof)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No Access",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Walls or Dormers",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Chimney Chase(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Class 'B' Vent(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Dryer Vent",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fan Vent(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Plumbing DWV Pipes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Antennae or Satellite Dish",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cable or Wiring",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Electical Mast",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Perforations Condition(s)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Defective",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Broken or Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rusted",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Raised Holes or Gaps",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Installation Defects",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vulnerable Areas",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Skylights or Skywalls",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No Access",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Skylights or Skywalls Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Defective",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Broken or Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rusted",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Holes or Gaps",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Installation Defects",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Security Concern",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vulnerable Areas",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Flashing(s)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Installation Defects",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rusted",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Potential Future Concern",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Flashing(s) Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Defective",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Broken or Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Raised",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Holes or Gaps",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vulnerable Areas",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Repair or Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Fenestrations Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 6,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Gutters & Down-Spouts",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 2,
+      "questions": [{
+        "id": null,
+        "title": "Type",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Eave-Mounted",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Internal with Scuppers",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Metal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Plastic or Vinyl",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Gutters & Down-Spouts Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose or Sagging",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fallen or Pulled Away",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Reversed Slope or Ponding",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Clogged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Debris",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Granule Wash",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Spillover Stains",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Deteriorated Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cracked or Split",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Holes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaking Joints",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rust",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Moss",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Down-Spout Discharge",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "No Down-Spouts",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Above Grade",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Below Grade",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Down-Spout Discharge Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose or Disconnected",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Clogged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Open Gaps Around Downspout-to-Drain Connections",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor Extensions or Splash Blocks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Gutters or Down Spouts Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 4,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }]
+  }, {
+    "id": null,
+    "title": "Structural",
+    "sourceType": "Template",
+    "inspectionId": null,
+    "order": 4,
+    "subsections": [{
+      "id": null,
+      "title": "Roof Framing (Visible In Attic)",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 0,
+      "questions": [{
+        "id": null,
+        "title": "Conditions",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 0,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Limitations",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 1,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Roof System",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vaulted or No Attic",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Partial Attic",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No Access",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sealed Access",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Trusses",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stick-Framed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rafters & Joists",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Beams & Purlins",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hips",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Valleys",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Diaphragm Sheathing",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Plywood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "OSB",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "H-Clipped",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Plank",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "1x Skip Sheathing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Diaphragm Sheathing Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sagging or Over-Spanned",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Broken or Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Structural Defect (Design Related)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Missing or Inadequate",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Bracing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Collar Ties",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Knee Walls",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stains",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Deterioration",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazardous or Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Professional Re-Evaluation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Roof Framing Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 6,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Floor Framing",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 1,
+      "questions": [{
+        "id": null,
+        "title": "Notice",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 0,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Sub-Floor System",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "4X Beams & Plank Diaphragm",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "2X Joists & Diaphragm",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Flat Truss",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Beams (Girders)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Steel",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Concrete",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Laminated or Engineered",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Dimensional Lumber",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Joists & Sheathing",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "No Joists",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Lumber",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sleepers",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "I-Beams",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood or TJI",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Metal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Diaphragm",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Foam-Crete",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Diagonal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Plank",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "T&G or Shiplap",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Plywood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "OSB",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Posts(Columns)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Covered or Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Steel",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Concrete",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "CMU (block)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Posts(Columns) Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 7,
+        "values": [{
+          "id": null,
+          "key": "Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sagging or Over-Spanned",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Broken",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Structural Defects (Design Related)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Inadequate Bracing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stains",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Deterioration",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazardous or Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Professional Evaluation or Remediation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Stairs",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 8,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Open",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Enclosed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Stairs Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 9,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Handrail",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Inadequate",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 10,
+        "values": [{
+          "id": null,
+          "key": "Rails",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Headroom",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Support",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Uneven Risers",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Over-Height Step(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Firewall",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazardous or Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Professional Evaluation or Remediation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Basement or Crawl Floor",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 11,
+        "values": [{
+          "id": null,
+          "key": "Concrete",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Dirt or Gravel",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Covered or Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Basement or Crawl Floor Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 12,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Typical Settling Cracks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Large Cracks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stains",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Efflorescence",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Storage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazardous or Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Floor Framing Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 13,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Foundation",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 2,
+      "questions": [{
+        "id": null,
+        "title": "Type of Foundation",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Perimeter Walls",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Post or Beam",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Columns",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poured Concrete",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "CMU(Block)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Masonry",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unmortared Stone or Brick",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Logs",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Treated Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Strip Footings",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Condition of Foundation",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Imbedded Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rock Pockets",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No Tie-Downs",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stains",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Deterioration",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Efflorescence",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "EWC",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fungal Rot or Probed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Limited By",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Storage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Perimeter Cover",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Obstacles",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inaccessible Area",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Pests",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Tight or Limited Mobility",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazards or Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Re-Evaluation or Remediation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "WDI or WDO (Wood-Destroying)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "None",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Exit Holes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Frass",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Galleries",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mildew or Bio-Growth",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mold Sampled or Tested",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fungal Rot or Probed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Cracks",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Typical Settling",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vertical",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Step",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Horizontal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "V-Cracking",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Displaced",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inactive",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Active",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Larger than one fourth inch",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Drainage",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Evidence of Flooding",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Efflorescence",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Humidity",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Old Stains",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Silt Deposits",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Soil on Vapor Barrier",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fresh Stains",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Standing Water",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Sump Pump",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Tested",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Operable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Foundation Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 7,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }]
+  }, {
+    "id": null,
+    "title": "Thermal",
+    "sourceType": "Template",
+    "inspectionId": null,
+    "order": 5,
+    "subsections": [{
+      "id": null,
+      "title": "Attic",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 0,
+      "questions": [{
+        "id": null,
+        "title": "Conditions",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 0,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Limitations",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 1,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Access",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "No Attic",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No Access",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Door",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Pull Down Stair",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Scuttle-Hole(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Location",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Hall",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bedroom",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Closet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Laundry Room",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Garage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Exterior",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Viewed",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Near Access",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "From Ladder",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "At Roof Apex",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Limited Accessibility",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inspected (Traversed) Attic",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Entered but NOT Traversed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "NOT Entered or NOT Inspected",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vulnerable to Traversing Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unsafe Traversing Condition(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Attic Insulation Location",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "None",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rafters",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ceiling Joists",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Attic Insulation Quantity (in)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Not Installed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Determined",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inadequate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Varied",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "<2 inches R 5",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "<3 inches R-9+",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "3 inches R-11",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "4 inches R-13",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "5 inches R-15",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "6 inches R-19",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "2 hard foam R20",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "8-10 inches R-28+",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "10-12 inches R-32+",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "12-14 inches R-36+",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "14-16 inches R-38+",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "16-18 inches R- 40+",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "18-20 inches R- 42+",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "20-22 inches R- 44+",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 17,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "22-24 inches R- 46+",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 18,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Attic Insulation Type",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 7,
+        "values": [{
+          "id": null,
+          "key": "Fiber Glass",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cellulose",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vermiculite",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mineral or Rock Wool",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Batts",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood Shavings",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Attic Insulation Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 8,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Areas",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Uneven Placement",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Attic Ventilation",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 9,
+        "values": [{
+          "id": null,
+          "key": "Eaves",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Top",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ridge",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Powered Vent(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Attic Fan(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Condition of Ventilation",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 10,
+        "values": [{
+          "id": null,
+          "key": "None",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor or Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Odors",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Excessive Heat",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ventilation Appears Inadequate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Effectiveness NOT Evaluated",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Humidity",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 11,
+        "values": [{
+          "id": null,
+          "key": "None",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Condensation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Roof Leaks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Old Stains or Inactive",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fresh Stains or Active",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mildew or Mold",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stained Diaphragm",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wet Insulation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Infestation",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 12,
+        "values": [{
+          "id": null,
+          "key": "None",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Prior or Inactive",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Live or Active",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Nesting Materials",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Scat",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Insect",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bee or Wasp",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bird",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rodent",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Racoon",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Potential Points of Pest Entry",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazardous or Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Professional Evaluation or Remediation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Ventiliation Notice",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 13,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Attic Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 14,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Crawl Spaces or Unfinished Basements",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 1,
+      "questions": [{
+        "id": null,
+        "title": "Access",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Door or Panel",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Scuttle-Hole",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No Access",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No Crawl-Space",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Location",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Hall",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bedroom",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Closet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Laundry Room",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Garage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Exterior",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inspected Basement or Crawl",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "NOT Entered or NOT Inspected",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Limited Accessibility",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Viewed",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Near Access",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "From Exterior",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "At Center Only",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vulnerable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Sub-Floor Insulation Location",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "None Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Floor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rim Joists",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Sub-Floor Insulation Type",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Fiberglass Batts",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Blown-in Cellulose",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Foam Board",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Sub-Floor Insulation Retention",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "None Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wired",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stapled",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Twine",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Lathe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Sub-Floor Insulation Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Areas",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fallen Down",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Installed Upside-Down",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ineffective Installation or Gaps",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Crawl-Space Ventilation",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 7,
+        "values": [{
+          "id": null,
+          "key": "None",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Foundation Vents",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Powered Vent(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fan(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Condition of Crawl-Space Ventilation",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 8,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Effectiveness NOT Evaluated",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Vapor Barrier",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 9,
+        "values": [{
+          "id": null,
+          "key": "None",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gaps or Displaced Areas",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Exposed Earth",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Moisture",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 10,
+        "values": [{
+          "id": null,
+          "key": "None",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Condensation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Efflorescence",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Old Stains",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fresh",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Standing Water",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Drainage",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 11,
+        "values": [{
+          "id": null,
+          "key": "To Out-Fall",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Interior Plane",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "None Apparent",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sump Pump",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Functional",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Infestation",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 12,
+        "values": [{
+          "id": null,
+          "key": "None",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Prior or Inactive",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Live or Active",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Nesting Materials",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Scat",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Insect",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bee or Wasp",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bird",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rodent",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Racoon",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Potential Point Pest Entry",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazardous or Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Professional Evaluation or Remediation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Crawl Space or Basement Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 13,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Interior Ventilation or Exhaust Fans",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 2,
+      "questions": [{
+        "id": null,
+        "title": "Whole House Ventiliation",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Whole House Fan(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Make-Up Air Vent(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Furnace Blower(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ceiling-Mounted Fan(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Whole House Ventiliation Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor or Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Open Blade",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Caged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Remote Control",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Moisture Reduction Fans",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Bathroom Exhaust Fan(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Kitchen Fan(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Laundry Fan(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Weak or Noisy",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Condition Moisture Reduction Fans",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor or Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vented Improperly (Inside Building Envelope)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recirculating-Only Type",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Clogged Grease Filter",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Restricted (Collapsed or Blocked)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Venting Into Attic Space",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Aimed at Gable, Eave, or Roof Vents",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fallen Loose",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Moisture Notice",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 4,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Interior Ventilation or Exhaust Fan Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 5,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }]
+  }, {
+    "id": null,
+    "title": "Plumbing",
+    "sourceType": "Template",
+    "inspectionId": null,
+    "order": 6,
+    "subsections": [{
+      "id": null,
+      "title": "Plumbing System",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 0,
+      "questions": [{
+        "id": null,
+        "title": "Conditions",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 0,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Limitations",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 1,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Water Supply Source",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Unknown or Verify",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Public Water",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Shared Well",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Private Well",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Main Water Shut Off Valve Location",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Closet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Well House",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Found",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Garage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Near Waterheater",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Yard Box",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Basement",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Crawl Space",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Exterior Wall",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Interior Wall",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Interior Utility Closet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inside Cabinet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Laundry Closet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bedroom",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mechanical Room",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Water Pressure",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Unknown",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "OFF",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inadequate (<45psi)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Adequate (45-85psi)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Excessive (>85psi)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Water Temperature",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Varies Per Unit",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "See WH Schedule",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "WH OFF or Verify Function",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "WH on Vacation Mode",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "See Interior Section",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inadequate (65-85 degrees)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Normal (85-115 degrees)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hot (115-120 degrees)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Scalding Hazard (>120 degrees)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Waste System",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Public Sewer",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Shared Septic",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Private Septic & Drainfield",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Private Septic & Mound",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Private Septic & Leech Line",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unknown or Verify",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Main Entry Piping",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 7,
+        "values": [{
+          "id": null,
+          "key": "Copper",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Galvanized",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Plastic or CPVC",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Polybutylene",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "PEX",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Main Entry Piping Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 8,
+        "values": [{
+          "id": null,
+          "key": "Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaking",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unprotected or Freezing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Discolered Water",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Odor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Pressure (psi)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "number",
+        "order": 9,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Pressure",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 10,
+        "values": [{
+          "id": null,
+          "key": "Low",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "High",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Normal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Shut-Off",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Winterized",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Water Lines",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 11,
+        "values": [{
+          "id": null,
+          "key": "Copper",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Galvanized",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Plastic or CPVC",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Polybutylene",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "PEX",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Condition of Water Lines",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 12,
+        "values": [{
+          "id": null,
+          "key": "Not Fully Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cross Connections",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Lead (other than solder joints)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 13,
+        "values": [{
+          "id": null,
+          "key": "Service Entry",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unknown",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unlikely",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Disimilar Metal Connection (Potential Electrolysis)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 14,
+        "values": [{
+          "id": null,
+          "key": "Yes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "DMV Piping",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 15,
+        "values": [{
+          "id": null,
+          "key": "Copper",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cast Iron",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Galvanized",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Plastic or ABS or PVC",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Condition of DMV Piping",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 16,
+        "values": [{
+          "id": null,
+          "key": "Not Fully Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Maginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unsupported",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Plumbing System Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 17,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Faucets or Fixtures",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 1,
+      "questions": [{
+        "id": null,
+        "title": "Faucets",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Functional",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Intermittent Function",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Incomplete",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Broken or Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Leaking",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Hose Bibb",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wall Stop",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Faucet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sprayer",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Faucets or Fixtures Location",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Kitchen",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Master Bath",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Main Bath",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Half Bath",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Laundry",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bar",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Accessories",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Vegetable Sink",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Insta-Hot",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Water Filter",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ice Maker",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Disposer",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Noisy",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Defective",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Dishwasher",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Airgap",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Dishwasher Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Functional",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Intermittent Function",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Defects or Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Sinks or Fixtures",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 7,
+        "values": [{
+          "id": null,
+          "key": "Functional",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Surface Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cabinet Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cross Connection",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Improve Caulking at Sink, Back-Splash, Tub Deck, Shower Surround, Floor, Wood or MDF Molding",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Grout Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 8,
+        "values": [{
+          "id": null,
+          "key": "Unsealed (Recommend Sealing)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cracked, Loose, or Missing Grout",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Drainage",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 9,
+        "values": [{
+          "id": null,
+          "key": "Functional",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Stopper",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Inoperable Overflow",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Clog or Slow Drain",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stained Drainpipe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Drips or Leaks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Defects or Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Sinks or Fixtures Location",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 10,
+        "values": [{
+          "id": null,
+          "key": "Kitchen",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Master Bath",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Main Bath",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Half Bath",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Laundry",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bar",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Toilet",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 11,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Runs Continuously",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose Bowl",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Tub or Shower Surround(s)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 12,
+        "values": [{
+          "id": null,
+          "key": "Ceramic",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "FG",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Masonite or Laminate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Slab",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Jacuzzi",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Condition of Tub or Shower Surround(s)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 13,
+        "values": [{
+          "id": null,
+          "key": "Functional",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stains",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cross Connection",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Defective",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose Tile",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cracked or Broken",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaky Shower Head",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaky Faucet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaky Sprayer",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Faucet or Fixtures Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 14,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Water Heater",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 2,
+      "questions": [{
+        "id": null,
+        "title": "Energy Source",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Gas or Propane",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Electric",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Oil",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Solar",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Geo Thermal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Brand Name",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Unknown",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "A O Smith",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "American",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "American Standard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Amtrol",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Aqua Star or Bosch",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bosch",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bradford White",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Briggs",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Craftmaster",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Eccotemp",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "GE",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hoyt",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Kenmore",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "KD Navien",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Lochinvar",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Maytag",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mitsubishi",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 17,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Munchkin",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 18,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Navien",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 19,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Navion",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 20,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Noritz",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 21,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Polaris",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 22,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Reliance",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 23,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rheem",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 24,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ruud",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 25,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Richmond",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 26,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rinnai",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 27,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sears Roebuck",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 28,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "State",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 29,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "State Select",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 30,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Takagi",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 31,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "True Value",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 32,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "US Craftmaster",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 33,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Whirlpool",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 34,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Approximate Age (Years Old)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "number",
+        "order": 2,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Capacity (in Gallons)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "select",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Tank-less / Unlimited",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "On Demand",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Point of Use",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "2.5",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "6",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "12",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "30",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "40",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "41",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "42",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "45",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "47",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "48",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "50",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "52",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "55",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 17,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "60",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 18,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "62",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 19,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "65",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 20,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "66",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 21,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "70",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 22,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "75",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 23,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "80",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 24,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "91",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 25,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "100",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 26,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "boiler (119)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 27,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Model Number",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "text",
+        "order": 4,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Serial Number",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "text",
+        "order": 5,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Water Temperature",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "number",
+        "order": 6,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 7,
+        "values": [{
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Data Plate Inaccessible or Illegible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Loose Seismic Restraints",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "TPRV Connection",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 8,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Reduced Extension",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor Extension Termination",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Exhaust",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 9,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Metal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Flex Ducting",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "PVC",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Condensate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rust",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Corrosion",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify Proper Pitch",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Disconnected",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Into Masonry Chase",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Liner",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Back-Drafting",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Professional Re-Evaluation or Remediation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Water Heater Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 10,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }]
+  }, {
+    "id": null,
+    "title": "Heating",
+    "sourceType": "Template",
+    "inspectionId": null,
+    "order": 7,
+    "subsections": [{
+      "id": null,
+      "title": "Heating System",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 0,
+      "questions": [{
+        "id": null,
+        "title": "Conditions",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 0,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Limitations",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 1,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Energy Source(s)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Gas",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "LP",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Electric",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Oil",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Solar",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wind",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Geo Thermal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "System Type",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Central Forced Air",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "In-Wall Space Heaters",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Baseboard Wall",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Radiant",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Boiler",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Water",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Steam",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Radiator",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Heat Pump",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Air",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Water",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ground",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Stove",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Solid Fuel(Pellet)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gas Log",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify Clearance to Combustibles",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Solar",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 7,
+        "values": [{
+          "id": null,
+          "key": "Passive",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Heat Sink",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Photo-Voltaic",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Panels",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Convection",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Heating System Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 8,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Central Furnace or Heat Pump",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 1,
+      "questions": [{
+        "id": null,
+        "title": "Brand Name",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "select",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Not Installed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "American",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "American Standard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Arcoaire",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Armstrong",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Amtrol",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Beckett",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bradford White",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bryant",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Burnham",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cadet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Carrier",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Coleman",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Coleman Evcon",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Comfortmaker",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 17,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Concord",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 18,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Daikin Industries",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 19,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Evcon",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 20,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "First Co.",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 21,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Flo-Aire",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 22,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Frigidaire",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 23,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "GE",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 24,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Goodman",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 25,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Greenheck",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 26,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Heil",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 27,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "ICP",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 28,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Intertherm",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 29,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "KD Navien",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 30,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Kelvinator (Nordyne)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 31,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Kenmore",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 32,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "King",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 33,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Lennox",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 34,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "MagicAire",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 35,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Markel",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 36,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marley",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 37,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mayflower",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 38,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Maytag",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 39,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mitsubishi",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 40,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Munchkin",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 41,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Navien",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 42,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Nordyne",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 43,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Payne",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 44,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Quatro",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 45,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Radco",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 46,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Resco",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 47,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rheem",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 48,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rinnai",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 49,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ruud",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 50,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sears",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 51,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Seisco",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 52,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Steel Weld",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 53,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sundial / Square D",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 54,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Tempstar",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 55,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "TPI Corporation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 56,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Thermo Pride",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 57,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Trane",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 58,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Turbonics",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 59,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vaillant",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 60,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Weil-McLain",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 61,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wesco",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 62,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Westinghouse",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 63,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "York",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 64,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Capacity",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "select",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Zone-Controlled",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "240 Volt",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": ".50 - 1.01 GPH",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "80 Gallon",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "119 Gallon",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "1 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "1.5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "2 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "2.5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "3 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "3.5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "4 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "4.5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "5.5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "6 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 17,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "18 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 18,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "40 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 19,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "<50 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 20,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "50 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 21,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "55 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 22,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "56 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 23,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "60 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 24,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "65 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 25,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "66 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 26,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "70 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 27,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "75 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 28,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "80 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 29,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "85 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 30,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "88 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 31,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "90 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 32,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "92 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 33,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "95 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 34,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "96 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 35,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "100 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 36,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": ">100 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 37,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "100 - 125 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 38,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "125 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 39,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "140 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 40,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "125 - 150 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 41,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "> 150 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 42,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Year of Manufacture",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "number",
+        "order": 2,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Model Number",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "text",
+        "order": 3,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Serial Number",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "text",
+        "order": 4,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Posted Service History",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory (Annual Safety)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Old",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Last Serviced Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Posted Service History Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Dusty Cabinet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rust",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Corrosion",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Flame Distortion",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Central Furnace or Heat Pump Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 7,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Ducting",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 2,
+      "questions": [{
+        "id": null,
+        "title": "Ducts",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Plenum & Cold Air Returns",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Metal Duct",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Insulated Flex Duct",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Reduced Vent",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Metal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "PVC",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify Proper Pitch",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rusted",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Deteriorated",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Disconnected",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Filter",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Electrostatic",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Paper",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Filter Fabric",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor or Dirty",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Disconnect or Typical Safety Controls",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Functional",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify Location or Function",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Professional HVAC Re-Evaluation, Safety Inspection, and/or Remediation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Ducting Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 4,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Fireplaces or Stoves",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 3,
+      "questions": [{
+        "id": null,
+        "title": "Conditions",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 0,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Limitations",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 1,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Fireplace or Stove Type",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Masonry Firebox",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Metal FP Insert",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Direct Vent Gas FP",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wood or Pellet Stove",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Masonry Flue Liner",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Metal Flue Liner",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unlined Chase",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Venting Into Chimney Chase",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Mantle or Hearth",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Loose",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Settling Cracks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Burned",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify Clearance to Combustibles",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Firebox",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "No Access",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Liner",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cracked Refractory Brick",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Loose Mortar",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Damper",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No Access",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable or DTO",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rusted",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged or Broken",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Creosote Build-Up",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Deterioration",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Cleaning or Re-Evaluation or Repairs",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Chimney",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Framed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Masonry",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Metal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Class 'B'",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "DV Wall Hood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cracked Wash",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose Mortar",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No Liner",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No Spark Arrestor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rust",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Creosote",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Cricket",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inadequate or Missing Flashing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Burn Guard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 17,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 18,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Professional Re-Evaluation or Remediation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 19,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Fireplaces or Stoves Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 7,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }]
+  }, {
+    "id": null,
+    "title": "Cooling",
+    "sourceType": "Template",
+    "inspectionId": null,
+    "order": 8,
+    "subsections": [{
+      "id": null,
+      "title": "Cooling Systems",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 0,
+      "questions": [{
+        "id": null,
+        "title": "Conditions",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 0,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Limitations",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 1,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Temperature Differential",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "number",
+        "order": 2,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Air Conditioner Type",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Central Air",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Heat Pump",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fan Cooled",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Water",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gas Chiller",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Swamp Cooler",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Energy Source",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Natural Gas",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Propane",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Electric",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Cooling Systems Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 5,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Evaporative Coil or Heat Pump (Inside)",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 1,
+      "questions": [{
+        "id": null,
+        "title": "Brand Name",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "select",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Not Installed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "American",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "American Standard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Arcoaire",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Armstrong",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Amtrol",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Beckett",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bradford White",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bryant",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Burnham",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cadet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Carrier",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Coleman",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Coleman Evcon",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Comfortmaker",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 17,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Concord",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 18,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Daikin Industries",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 19,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Evcon",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 20,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "First Co.",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 21,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Flo-Aire",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 22,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Frigidaire",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 23,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "GE",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 24,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Goodman",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 25,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Greenheck",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 26,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Heil",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 27,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "ICP",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 28,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Intertherm",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 29,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "KD Navien",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 30,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Kelvinator (Nordyne)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 31,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Kenmore",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 32,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "King",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 33,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Lennox",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 34,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "MagicAire",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 35,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Markel",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 36,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marley",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 37,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mayflower",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 38,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Maytag",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 39,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mitsubishi",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 40,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Munchkin",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 41,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Navien",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 42,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Nordyne",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 43,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Payne",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 44,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Quatro",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 45,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Radco",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 46,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Resco",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 47,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rheem",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 48,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rinnai",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 49,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ruud",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 50,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sears",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 51,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Seisco",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 52,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Steel Weld",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 53,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sundial / Square D",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 54,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Tempstar",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 55,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "TPI Corporation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 56,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Thermo Pride",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 57,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Trane",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 58,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Turbonics",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 59,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vaillant",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 60,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Weil-McLain",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 61,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wesco",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 62,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Westinghouse",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 63,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "York",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 64,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Capacity",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "select",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Zone-Controlled",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "240 Volt",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": ".50 - 1.01 GPH",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "80 Gallon",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "119 Gallon",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "1 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "1.5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "2 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "2.5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "3 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "3.5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "4 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "4.5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "5.5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "6 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 17,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "18 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 18,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "40 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 19,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "<50 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 20,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "50 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 21,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "55 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 22,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "56 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 23,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "60 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 24,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "65 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 25,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "66 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 26,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "70 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 27,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "75 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 28,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "80 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 29,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "85 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 30,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "88 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 31,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "90 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 32,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "92 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 33,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "95 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 34,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "96 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 35,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "100 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 36,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": ">100 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 37,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "100 - 125 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 38,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "125 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 39,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "140 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 40,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "125 - 150 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 41,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "> 150 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 42,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Year of Manufacture",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "number",
+        "order": 2,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Model Number",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "text",
+        "order": 3,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Serial Number",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "text",
+        "order": 4,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Evaporative Coil or Heat Pump Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 5,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Compressor or Condenser (Outside)",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 2,
+      "questions": [{
+        "id": null,
+        "title": "Brand Name",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "select",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Not Installed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "American",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "American Standard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Arcoaire",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Armstrong",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Amtrol",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Beckett",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bradford White",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bryant",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Burnham",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cadet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Carrier",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Coleman",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Coleman Evcon",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Comfortmaker",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 17,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Concord",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 18,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Daikin Industries",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 19,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Evcon",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 20,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "First Co.",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 21,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Flo-Aire",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 22,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Frigidaire",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 23,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "GE",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 24,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Goodman",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 25,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Greenheck",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 26,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Heil",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 27,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "ICP",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 28,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Intertherm",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 29,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "KD Navien",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 30,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Kelvinator (Nordyne)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 31,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Kenmore",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 32,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "King",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 33,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Lennox",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 34,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "MagicAire",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 35,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Markel",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 36,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marley",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 37,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mayflower",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 38,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Maytag",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 39,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mitsubishi",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 40,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Munchkin",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 41,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Navien",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 42,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Nordyne",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 43,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Payne",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 44,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Quatro",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 45,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Radco",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 46,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Resco",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 47,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rheem",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 48,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rinnai",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 49,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ruud",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 50,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sears",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 51,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Seisco",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 52,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Steel Weld",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 53,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sundial / Square D",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 54,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Tempstar",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 55,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "TPI Corporation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 56,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Thermo Pride",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 57,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Trane",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 58,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Turbonics",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 59,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vaillant",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 60,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Weil-McLain",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 61,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wesco",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 62,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Westinghouse",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 63,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "York",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 64,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Capacity",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "select",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Zone-Controlled",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "240 Volt",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": ".50 - 1.01 GPH",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "80 Gallon",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "119 Gallon",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "1 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "1.5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "2 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "2.5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "3 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "3.5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "4 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "4.5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "5.5 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "6 Ton",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 17,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "18 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 18,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "40 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 19,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "<50 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 20,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "50 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 21,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "55 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 22,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "56 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 23,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "60 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 24,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "65 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 25,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "66 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 26,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "70 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 27,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "75 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 28,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "80 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 29,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "85 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 30,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "88 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 31,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "90 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 32,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "92 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 33,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "95 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 34,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "96 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 35,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "100 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 36,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": ">100 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 37,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "100 - 125 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 38,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "125 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 39,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "140 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 40,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "125 - 150 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 41,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "> 150 K BTU / hr",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 42,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Year of Manufacture",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "number",
+        "order": 2,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Model Number",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "text",
+        "order": 3,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Serial Number",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "text",
+        "order": 4,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Compressor or Condenser Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Uneven Base",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inadequate Base Height",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Obstructed Flow",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Refrigerant Lines",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Leaking",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Worn",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Insulation Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Compressor or Condensor Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 7,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }]
+  }, {
+    "id": null,
+    "title": "Electrical",
+    "sourceType": "Template",
+    "inspectionId": null,
+    "order": 9,
+    "subsections": [{
+      "id": null,
+      "title": "Electrical System",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 0,
+      "questions": [{
+        "id": null,
+        "title": "Conditions",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 0,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Limitations",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 1,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Main Service Entry",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Underground",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Yard Post",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Visible or Accessible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "In Conduit",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Overhead",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Pole Unstable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "3 Cables",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "4 Cables",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Copper",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Aluminum",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Condition of Main Service Entry",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inadequate Clearances",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Ground Connection",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Meter Location",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Exterior Wall",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Yard Post",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mechanical Closet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Visible or Locked",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Meter Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inadequate Access",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Grounding",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 7,
+        "values": [{
+          "id": null,
+          "key": "Not Visible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ground Rods",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ufer",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bonded to Water or Gas Piping",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Ground Wiring",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 8,
+        "values": [{
+          "id": null,
+          "key": "Copper",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Aluminum",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Visible or Accessible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Condition of Main Electrical Disconnect",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 9,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose Clamp or Lug",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Improper Bond",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Too Far From Entry",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Main Electrical Disconnect Location",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 10,
+        "values": [{
+          "id": null,
+          "key": "With Meter",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inside Main Panel",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Near Panel",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fuse",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Breaker",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Switch",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Split-Bus",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Overloaded (>6 Hand Motions)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Main Panel",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 11,
+        "values": [{
+          "id": null,
+          "key": "Not Visible or Accessible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Blocked",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Evaluated",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Reason for Non Evaluation",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 12,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "3-Phase",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Outside Scope of Inspection",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No Access",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Storage Blocked Access",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Shelving Blocked Access",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cover Not Removable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unsafe to Open",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unsafe Panel Type",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No Power",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Breakers or Fuses",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 13,
+        "values": [{
+          "id": null,
+          "key": "Breakers",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fuses",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Service Size (AMPS)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 14,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "400",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "200",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "(2) 200",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "150",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "125",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "100",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "(2) 100",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "60",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "50",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Various Amperages",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Service Size (VOLTS)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 15,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "120 / 240",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "3-phase (208 - 230)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Breaker(s)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 16,
+        "values": [{
+          "id": null,
+          "key": "GFCI Breakers",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "AFCI Breakers",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Location",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 17,
+        "values": [{
+          "id": null,
+          "key": "Garage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Basement",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "With Meter",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Exterior Wall",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Yard Post",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Interior Wall",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mechanical Room",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Laundry Room",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Utility Area",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Crawl Space",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Branch Wiring",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 18,
+        "values": [{
+          "id": null,
+          "key": "Copper",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Almuninum",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Tin Clad Copper",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Copper Clad Aluminum",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Non-Metallic Sheathed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "BX Cable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Condiut",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cloth-Wrapped",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Knob & Tube",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Condition of Branch Wiring",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 19,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inadequate Access Clearances",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Dangling Wires",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Excessive Sheathing in Panel",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Double-Tapping",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Undersized Wiring",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rust",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Buried In Insulation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Burned Breakers",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Dangerous Panel Type",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Improper Splicing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazardous or Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Professional Evaluation or Repairs",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Electrical System Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 20,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Fixtures, Switches, or Detectors",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 1,
+      "questions": [{
+        "id": null,
+        "title": "Fixtures",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Missing or Removed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Bulbs",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Covers",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gaps",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Fixtures Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inadequate Clearances",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazard",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Switches or Receptacles",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Typical Grounded",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Some Grounded",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Typical Un-Grounded",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Condition of Switches or Receptacles",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Weak or Loose",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Removed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Cover Plates",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Dangling or Unmounted",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "External Splicing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gaps Into Boxes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Burned",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Open Ground",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Open Neutral",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Reverse Polarity",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ungrounded 3-Prong",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazardous or Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Repair or Evaluation by Professional Electrician",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 17,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Carbon Monoxide Detectors",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Installed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Recommended",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "NOT Tested",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Smoke Detectors",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Installed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Chirping or Low Batteries",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Caution Label",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 6,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Fixtures, Switches, or Detectors Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 7,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }]
+  }, {
+    "id": null,
+    "title": "Interior",
+    "sourceType": "Template",
+    "inspectionId": null,
+    "order": 10,
+    "subsections": [{
+      "id": null,
+      "title": "Living Room",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 0,
+      "questions": [{
+        "id": null,
+        "title": "Conditions",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 0,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Limitations",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 1,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Entry Door(s)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Solid Wood",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Metal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fiberglass",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Panel",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hollow Core",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Entry Door(s) Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Sagging or Settled",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rubbing or Binding",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hardware Issues",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Doorbell Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Weatherstrip",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Missing or Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor Seal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ineffective Threshold",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Window(s)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inaccessible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Difficult To Operate (Needs Adjustment or Lubrication)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Hardware",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inadequate Security",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Failed Thermal Seals",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Broken Panes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stained",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Weathered Sills",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mold or Mildew",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Deterioration",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Ceiling Fan",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Heat Source",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 7,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Inadequate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Lights, Switches, or Receptacles (Refer To Electrical Section)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 8,
+        "values": [{
+          "id": null,
+          "key": "Appeared Functional",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose or Worn",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Cover Plates",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ungrounded 3-Prong",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable GFCI",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing GFCI Protection",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Reversed Polarity",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "OG or RP Within 6 Feet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Burned",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Exposed Wires",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazardous or Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Refer To Electrical Section",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Professional Evaluation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Comments",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "text",
+        "order": 9,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Living Room Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 10,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Kitchen",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 1,
+      "questions": [{
+        "id": null,
+        "title": "Appliances",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "Sink Disposer",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fridge",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Dishwasher",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Oven",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Range",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Microwave",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Warmer",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Trash Compactor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cooler",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Water Filter",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Instant Hot",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Cabinets",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Worn Finish",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose Drawers or Hinges",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Countertops",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Granite",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Laminate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Tile",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Slab",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Countertops Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Worn",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Backsplash & Self Edge",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal or Worn",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Caulking",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Worn or Cracked or Gaps",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Improve at Sink, Back-Splash, Counters, or Fixtures",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Grout",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cracked or Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Water Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Sealing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Exhaust Fan",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 7,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Heat Source",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 8,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Inadequate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Lights or Switches or Receptacles (Refer To Electrical Section)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 9,
+        "values": [{
+          "id": null,
+          "key": "Appeared Functional",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose or Worn",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Cover Plates",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ungrounded 3-Prong",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable GFCI",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing GFCI Protection",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Reversed Polarity",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "OG or RP Within 6 Feet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Burned",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Exposed Wires",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazardous or Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Professional Evaluation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Kitchen Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 10,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Laundry",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 2,
+      "questions": [{
+        "id": null,
+        "title": "Appliances",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "None",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Washer",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Dryer",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "WH",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Furnace",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Conditioner",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Dryer",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Electric",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Gas",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable or OFF",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cap Needed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazard(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Re-Evaluation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Exhausted",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Wall",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ceiling",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Floor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Exhaust Appears",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Clogged or Loose or Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Exhaust Fan",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Weak or Noisy",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Laundry Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 5,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "Bathroom(s)",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 3,
+      "questions": [{
+        "id": null,
+        "title": "Walls or Ceilings",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "GWB",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Lath & Plaster",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Acoustic Tile",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Paneling",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Open Beam",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Condition of Walls or Ceilings",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stains or Mildew",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cracks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Repairs",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "PACM",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Floors",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Covered",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sloping",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Squeaks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damaged",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fungal Rot",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Caulking",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Worn or Cracked or Gaps",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Improve At Sink, Back-Splash, Tub or Shower Surround or or Floor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Heat",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Yes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Exhaust Fan",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Yes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "No",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Lights or Switches or Receptacles (Refer To Electrical Section)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Appeared Functional",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose or Worn",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Cover Plates",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ungrounded 3-Prong",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable GFCI",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing GFCI Protection",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Reversed Polarity",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "OG or RP Within 6 Feet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Burned",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Exposed Wires",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazardous or Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Professional Evaluation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Bathroom Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 7,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }, {
+      "id": null,
+      "title": "General",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 4,
+      "questions": [{
+        "id": null,
+        "title": "Walls or Ceilings",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 0,
+        "values": [{
+          "id": null,
+          "key": "GWB",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Lath & Plaster",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Acoustic Tile",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Paneling",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Open Beam",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Walls or Ceilings Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 1,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stains",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Moisture or Mildew",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Water Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Settling",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Truss Uplift",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Nail Pops",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Holes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cracks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inadequate Repairs or Texture",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sooting",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "PACM",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazardous or Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Professional Evaluation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Floor Coverings",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Hard Surfaces (Tile or Stone)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hardwood or Laminate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Vinyl",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Carpet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Floor Coverings Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Excessive Wear",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Squeaks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stains",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Sloping",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Uneven Surfaces",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Holes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Wrinkled Carpet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Trip Hazard(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Repair(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Interior Doors",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "Passage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Pocket",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Double",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bi-Fold",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bi-Pass",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Accordion",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Interior Doors Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inaccessible",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Removed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Hardware",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Settled or Rubbing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Improperly Hung or Sagging",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Holes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stains",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cracked or Split Jambs",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inadequate Repairs",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Servicing or Adjusting",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Window Type(s)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Sliders",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Fixed",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Single Hung",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Double Hung",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Awning",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Window(s) Condition",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 7,
+        "values": [{
+          "id": null,
+          "key": "Satisfactory",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Marginal",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Poor",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Difficult To Operate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Improve Security",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Hardware",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Broken Panes",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Failed Thermal Seals",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify Bedroom Egress",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Stained",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Weathered Sills",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Mold or Mildew",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Damage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Deterioration",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Safety Concern",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 8,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Lights or Switches or Receptacles (Refer To Electrical Section) or DUPLICATE?!?!",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 9,
+        "values": [{
+          "id": null,
+          "key": "Appeared Functional",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Loose or Worn",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Cover Plates",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ungrounded 3-Prong",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Inoperable GFCI",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing GFCI Protection",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Reversed Polarity",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "OG or RP Within 6 Feet",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Burned",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Exposed Wires",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Hazardous or Unsafe",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Recommend Professional Evaluation",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "General Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 10,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }]
+  }, {
+    "id": null,
+    "title": "Life or Safety",
+    "sourceType": "Template",
+    "inspectionId": null,
+    "order": 11,
+    "subsections": [{
+      "id": null,
+      "title": "Potential Safety Concerns",
+      "sectionId": null,
+      "inspectionId": null,
+      "sourceType": "Template",
+      "order": 0,
+      "questions": [{
+        "id": null,
+        "title": "Conditions",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 0,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Limitations",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "presettext",
+        "order": 1,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Tripping or Falling Hazard(s)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 2,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Unsafe or Uneven Walking Surfaces",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Re-Evaluate",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Interior",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Exterior",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Steep Slope or Drop-Off",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Retaining Wall",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Driveway or Walkway(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Landing",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Balcony",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Patio",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Deck",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 11,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Steps or Stairs",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 12,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing Guard or Handrail(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 13,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Low Guard or Handrail(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 14,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Root Heaving",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 15,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Erosion",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 16,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cracks or Gaps or Missing Dividers",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 17,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Fire Hazards",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 3,
+        "values": [{
+          "id": null,
+          "key": "Not Applicable",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "None",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Inadequate Firewall",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Missing or Inadequate Fire-Door",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Excessive Storage",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Excessive Heat",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Cellulose Debris",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Roof Tear-Off Debris",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Entrapment or Locks",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 8,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Improve Bedroom Egress",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 9,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Verify Adequate CO & Fire Alarms",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 10,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Pest Related",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 4,
+        "values": [{
+          "id": null,
+          "key": "None",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Ponding or Breeding Water",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Potential Points of Pest Entry",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rat Droppings Toxins",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bee or Wasp Nests",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Racoon",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Poison Baits",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 5,
+        "values": [{
+          "id": null,
+          "key": "Insect",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Rodent",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Building Materials (Refer To Specific Sections)",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "checkbox",
+        "order": 6,
+        "values": [{
+          "id": null,
+          "key": "Missing Window Safety Glass",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 0,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Electrical Shock Hazard(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 1,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Bio-Growth or Mold or Mildew",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 2,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "PACM",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 3,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Friable ACM",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 4,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Lead",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 5,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Airborne or VOCs",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 6,
+          "remark": ""
+        }, {
+          "id": null,
+          "key": "Potential Hidden Hazard(s)",
+          "questionId": null,
+          "sourceType": "Template",
+          "inspectionId": null,
+          "order": 7,
+          "remark": ""
+        }],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Comments",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "text",
+        "order": 7,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null,
+          "isRequired": false
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }, {
+        "id": null,
+        "title": "Potential Safety Concern Images",
+        "description": "",
+        "subsectionId": null,
+        "inspectionId": null,
+        "sectionId": null,
+        "type": "image",
+        "order": 8,
+        "values": [],
+        "validation": {
+          "type": null,
+          "min": null,
+          "max": null
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": false,
+        "severity": null,
+        "showSummaryRemark": true,
+        "showDescription": true,
+        "photos": []
+      }]
+    }]
+  }]
 }
-
-
-var default_template = 
-    {
-        "insLastModified":"Sun Oct 08 2017 15:22:12 GMT-0600 (MDT)",
-        "insLastSubmitted":"Sun Oct 08 2017 15:22:12 GMT-0600 (MDT)",
-        "insJobId":null,
-        "insType":"Residential",
-        "insName":null,
-        "insUserId":1,
-        "rowId":1,
-        "insId":1,
-        "insSourceType":"Inspection",
-        "sections":[
-            {
-                "id":1,
-                "title":"Field Notes",
-                "sourceType":"Template",
-                "inspectionId":1,
-                "subsections":[
-                    {
-                        "id":1,
-                        "title":"Observations",
-                        "sectionId":1,
-                        "inspectionId":1,
-                        "sourceType":"Template",
-                        "questions":[
-                            {
-                                "id":1,
-                                "title":"Person(s) Present",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"checkbox",
-                                "values":[
-                                    {
-                                        "id":1,
-                                        "key":"Inspector",
-                                        "questionId":1,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":2,
-                                        "key":"Buyer",
-                                        "questionId":1,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":3,
-                                        "key":"Resident",
-                                        "questionId":1,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":4,
-                                        "key":"Builder of Builders Rep",
-                                        "questionId":1,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":5,
-                                        "key":"Owner or Seller",
-                                        "questionId":1,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":6,
-                                        "key":"Agent",
-                                        "questionId":1,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":7,
-                                        "key":"Friends or Other",
-                                        "questionId":1,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":null,
-                                    "max":null,
-                                    "isRequired":"false"
-                                },
-                                "answer":null,
-                                "answers":["Inspector"],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            },
-                            {
-                                "id":2,
-                                "title":"Person(s) Providing Property Access",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"checkbox",
-                                "values":[
-                                    {
-                                        "id":8,
-                                        "key":"Inspector",
-                                        "questionId":2,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":9,
-                                        "key":"Buyer",
-                                        "questionId":2,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":10,
-                                        "key":"Resident",
-                                        "questionId":2,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":11,
-                                        "key":"Builder of Builders Rep",
-                                        "questionId":2,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":12,
-                                        "key":"Owner or Seller",
-                                        "questionId":2,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":13,
-                                        "key":"Agent",
-                                        "questionId":2,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":14,
-                                        "key":"Friends or Other",
-                                        "questionId":2,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":null,
-                                    "max":null,
-                                    "isRequired":"false"
-                                },
-                                "answer":null,
-                                "answers":[],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            },
-                            {
-                                "id":3,
-                                "title":"Year Built",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"number",
-                                "values":[
-                                    {
-                                        "id":15,
-                                        "key":null,
-                                        "questionId":3,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":1700,
-                                    "max":2017,
-                                    "isRequired":"true"
-                                },
-                                "answer":null,
-                                "answers":[],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            },
-                            {
-                                "id":4,
-                                "title":"Square Feet of the Property",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"number",
-                                "values":[
-                                    {
-                                        "id":16,
-                                        "key":null,
-                                        "questionId":4,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":0,
-                                    "max":50000,
-                                    "isRequired":"true"
-                                },
-                                "answer":null,
-                                "answers":[],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            },
-                            {
-                                "id":5,
-                                "title":"Type of Property",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"radio",
-                                "values":[
-                                    {
-                                        "id":17,
-                                        "key":"Single Family",
-                                        "questionId":5,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":18,
-                                        "key":"Single Use",
-                                        "questionId":5,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":19,
-                                        "key":"Multiple Use",
-                                        "questionId":5,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":20,
-                                        "key":"Duplex",
-                                        "questionId":5,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":21,
-                                        "key":"Triplex",
-                                        "questionId":5,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":22,
-                                        "key":"Multi Family",
-                                        "questionId":5,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":23,
-                                        "key":"Detached",
-                                        "questionId":5,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":null,
-                                    "max":null,
-                                    "isRequired":"true"
-                                },
-                                "answer":null,
-                                "answers":[],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            },
-                            {
-                                "id":6,
-                                "title":"Property Use",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"radio",
-                                "values":[
-                                    {
-                                        "id":24,
-                                        "key":"Residential",
-                                        "questionId":6,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":25,
-                                        "key":"Apartment",
-                                        "questionId":6,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":26,
-                                        "key":"Retail Store",
-                                        "questionId":6,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":27,
-                                        "key":"Business",
-                                        "questionId":6,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":28,
-                                        "key":"Industrial",
-                                        "questionId":6,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":29,
-                                        "key":"Commercial",
-                                        "questionId":6,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":null,
-                                    "max":null,
-                                    "isRequired":"true"
-                                },
-                                "answer":null,
-                                "answers":[],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            },
-                            {
-                                "id":7,
-                                "title":"Number of Stories",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"radio",
-                                "values":[
-                                    {
-                                        "id":30,
-                                        "key":"Rambler",
-                                        "questionId":7,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":31,
-                                        "key":"One Level",
-                                        "questionId":7,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":32,
-                                        "key":"Split-Entry",
-                                        "questionId":7,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":33,
-                                        "key":"Split-Level",
-                                        "questionId":7,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":34,
-                                        "key":"One Story",
-                                        "questionId":7,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":35,
-                                        "key":"Two Story",
-                                        "questionId":7,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":36,
-                                        "key":"Three Story",
-                                        "questionId":7,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":37,
-                                        "key":"Mid-Rise",
-                                        "questionId":7,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":38,
-                                        "key":"Multi-Level",
-                                        "questionId":7,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":null,
-                                    "max":null,
-                                    "isRequired":"true"
-                                },
-                                "answer":null,
-                                "answers":[],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            },
-                            {
-                                "id":8,
-                                "title":"Building Frame",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"radio",
-                                "values":[
-                                    {
-                                        "id":39,
-                                        "key":"Wood-Framed",
-                                        "questionId":8,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":40,
-                                        "key":"Steel-Framed",
-                                        "questionId":8,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":41,
-                                        "key":"Concrete",
-                                        "questionId":8,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":42,
-                                        "key":"CMU or Block",
-                                        "questionId":8,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":43,
-                                        "key":"Masonry",
-                                        "questionId":8,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":44,
-                                        "key":"Tilt-Up",
-                                        "questionId":8,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":45,
-                                        "key":"Wood-Frame on Steel Carriage",
-                                        "questionId":8,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":46,
-                                        "key":"ICF",
-                                        "questionId":8,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":null,
-                                    "max":null,
-                                    "isRequired":"true"
-                                },
-                                "answer":null,
-                                "answers":[],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            },
-                            {
-                                "id":9,
-                                "title":"Building Type",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"radio",
-                                "values":[
-                                    {
-                                        "id":47,
-                                        "key":"Home",
-                                        "questionId":9,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":48,
-                                        "key":"Twin Home",
-                                        "questionId":9,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":49,
-                                        "key":"Town Home",
-                                        "questionId":9,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":50,
-                                        "key":"Mobile Home",
-                                        "questionId":9,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":51,
-                                        "key":"Log Home",
-                                        "questionId":9,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":52,
-                                        "key":"Manucfactured Home",
-                                        "questionId":9,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":53,
-                                        "key":"Prefabbed Structure",
-                                        "questionId":9,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":54,
-                                        "key":"Condominium",
-                                        "questionId":9,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":55,
-                                        "key":"Building",
-                                        "questionId":9,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":56,
-                                        "key":"Garage",
-                                        "questionId":9,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":57,
-                                        "key":"Low-Rise",
-                                        "questionId":9,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":58,
-                                        "key":"Mid-Rise",
-                                        "questionId":9,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":59,
-                                        "key":"High-Rise",
-                                        "questionId":9,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":null,
-                                    "max":null,
-                                    "isRequired":"true"
-                                },
-                                "answer":null,
-                                "answers":[],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            },
-                            {
-                                "id":10,
-                                "title":"Property Configurations",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"checkbox",
-                                "values":[
-                                    {
-                                        "id":60,
-                                        "key":"With Lower Parking Garage",
-                                        "questionId":10,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":61,
-                                        "key":"With Basement & Garage",
-                                        "questionId":10,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":62,
-                                        "key":"With Garage",
-                                        "questionId":10,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":63,
-                                        "key":"With Garage & Crawlspace",
-                                        "questionId":10,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":64,
-                                        "key":"With Full Basement",
-                                        "questionId":10,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":65,
-                                        "key":"With Daylight Basement",
-                                        "questionId":10,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":66,
-                                        "key":"With Basement & Crawlspace(s)",
-                                        "questionId":10,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":67,
-                                        "key":"With Slab-On-Grade",
-                                        "questionId":10,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":68,
-                                        "key":"Over Adjoining Unit(s)",
-                                        "questionId":10,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":69,
-                                        "key":"Over Adjoining Basement Unit",
-                                        "questionId":10,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":null,
-                                    "max":null,
-                                    "isRequired":"true"
-                                },
-                                "answer":null,
-                                "answers":[],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            },
-                            {
-                                "id":11,
-                                "title":"Property Orientation",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"dropdown",
-                                "values":[
-                                    {
-                                        "id":70,
-                                        "key":"North",
-                                        "questionId":11,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":71,
-                                        "key":"East",
-                                        "questionId":11,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":72,
-                                        "key":"West",
-                                        "questionId":11,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":73,
-                                        "key":"South",
-                                        "questionId":11,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":74,
-                                        "key":"North-East",
-                                        "questionId":11,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":75,
-                                        "key":"North-West",
-                                        "questionId":11,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":76,
-                                        "key":"South-East",
-                                        "questionId":11,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":77,
-                                        "key":"South-West",
-                                        "questionId":11,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":null,
-                                    "max":null,
-                                    "isRequired":"false"
-                                },
-                                "answer":null,
-                                "answers":[],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            },
-                            {
-                                "id":12,
-                                "title":"Vehicle Parking",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"checkbox",
-                                "values":[
-                                    {
-                                        "id":78,
-                                        "key":"At Curbside",
-                                        "questionId":12,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":79,
-                                        "key":"In a Rear Alley",
-                                        "questionId":12,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":80,
-                                        "key":"In the Driveway",
-                                        "questionId":12,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":81,
-                                        "key":"In an Attached Garage(s)",
-                                        "questionId":12,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":82,
-                                        "key":"In a Detached Garage(s)",
-                                        "questionId":12,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":83,
-                                        "key":"In an Attached Carport",
-                                        "questionId":12,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":84,
-                                        "key":"In a Detached Carport",
-                                        "questionId":12,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":85,
-                                        "key":"In a Covered Parking Space",
-                                        "questionId":12,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":86,
-                                        "key":"In an Open Parking Space",
-                                        "questionId":12,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":87,
-                                        "key":"In a Secured Parking Garage",
-                                        "questionId":12,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":88,
-                                        "key":"In an Open Parking Garage",
-                                        "questionId":12,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":89,
-                                        "key":"In an Open, Striped Parking Lot",
-                                        "questionId":12,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":null,
-                                    "max":null,
-                                    "isRequired":"false"
-                                },
-                                "answer":null,
-                                "answers":[],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            },
-                            {
-                                "id":13,
-                                "title":"Utilities",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"checkbox",
-                                "values":[
-                                    {
-                                        "id":90,
-                                        "key":"Electricity",
-                                        "questionId":13,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":91,
-                                        "key":"Water",
-                                        "questionId":13,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":92,
-                                        "key":"Gas",
-                                        "questionId":13,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":93,
-                                        "key":"Oil",
-                                        "questionId":13,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":94,
-                                        "key":"Propane",
-                                        "questionId":13,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":null,
-                                    "max":null,
-                                    "isRequired":"false"
-                                },
-                                "answer":null,
-                                "answers":[],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            },
-                            {
-                                "id":14,
-                                "title":"What Utilities were OFF",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"checkbox",
-                                "values":[
-                                    {
-                                        "id":95,
-                                        "key":"Electricity",
-                                        "questionId":14,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":96,
-                                        "key":"Water",
-                                        "questionId":14,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":97,
-                                        "key":"Gas",
-                                        "questionId":14,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":98,
-                                        "key":"Oil",
-                                        "questionId":14,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":99,
-                                        "key":"Propane",
-                                        "questionId":14,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"multi",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":null,
-                                    "max":null,
-                                    "isRequired":"false"
-                                },
-                                "answer":null,
-                                "answers":[],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            },
-                            {
-                                "id":15,
-                                "title":"Property Occupancy",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"dropdown",
-                                "values":[
-                                    {
-                                        "id":100,
-                                        "key":"Occupied",
-                                        "questionId":15,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":101,
-                                        "key":"Mostly Occupied",
-                                        "questionId":15,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":102,
-                                        "key":"Mostly Vacant",
-                                        "questionId":15,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    },
-                                    {
-                                        "id":103,
-                                        "key":"Vacant",
-                                        "questionId":15,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"single",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":null,
-                                    "max":null,
-                                    "isRequired":"true"
-                                },
-                                "answer":null,
-                                "answers":[],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            },
-                            {
-                                "id":16,
-                                "title":"Observation Images",
-                                "description":"",
-                                "subsectionId":1,
-                                "inspectionId":1,
-                                "type":"photo",
-                                "values":[
-                                    {
-                                        "id":104,
-                                        "key":null,
-                                        "questionId":16,
-                                        "sourceType":"Template",
-                                        "inspectionId":1,
-                                        "type":"photo",
-                                        "remark":""
-                                    }],
-                                "validation":{
-                                    "type":null,
-                                    "min":null,
-                                    "max":null,
-                                    "isRequired":"false"
-                                },
-                                "answer":null,
-                                "answers":[],
-                                "notApplicable":"false",
-                                "severity":null,
-                                "showSummaryRemark":"true",
-                                "showDescription":"true",
-                                "photos":[]
-                            }]
-                    }]
-            },
-            {"id":2,"title":"Site","sourceType":"Template","inspectionId":1,"subsections":[{"id":2,"title":"Evaluation","sectionId":2,"inspectionId":1,"sourceType":"Template","questions":[{"id":17,"title":"Conditions","description":"","subsectionId":2,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":18,"title":"Limitations","description":"","subsectionId":2,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":19,"title":"Driveway","description":"","subsectionId":2,"inspectionId":1,"type":"radio","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":20,"title":"Driveway Condition","description":"","subsectionId":2,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":21,"title":"Patio","description":"","subsectionId":2,"inspectionId":1,"type":"radio","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":22,"title":"Patio Condition","description":"","subsectionId":2,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":23,"title":"Walkways and Steps","description":"","subsectionId":2,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":24,"title":"Retaining Wall","description":"","subsectionId":2,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":25,"title":"Retaining Wall Condition","description":"","subsectionId":2,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":26,"title":"Safety Fencing Location","description":"","subsectionId":2,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":27,"title":"Safety Fencing Type","description":"","subsectionId":2,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":28,"title":"Safety Fencing Condition","description":"","subsectionId":2,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":29,"title":"Landscaping","description":"","subsectionId":2,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":30,"title":"Safety Concern","description":"","subsectionId":2,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":31,"title":"Evaluation Images","description":"","subsectionId":2,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":3,"title":"Attached Steps or Platforms","sectionId":2,"inspectionId":1,"sourceType":"Template","questions":[{"id":32,"title":"Porch or Stoop","description":"","subsectionId":3,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":33,"title":"Porch or Stoop Condition","description":"","subsectionId":3,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":34,"title":"Yard Steps","description":"","subsectionId":3,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":35,"title":"Deck or Balcony","description":"","subsectionId":3,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":36,"title":"Deck or Balcony Condition","description":"","subsectionId":3,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":37,"title":"Moisture Conditions","description":"","subsectionId":3,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":38,"title":"Attached Steps or Platforms Images","description":"","subsectionId":3,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]}]},{"id":3,"title":"Exterior","sourceType":"Template","inspectionId":1,"subsections":[{"id":4,"title":"Siding or Wall Cladding","sectionId":3,"inspectionId":1,"sourceType":"Template","questions":[{"id":39,"title":"Conditions","description":"","subsectionId":4,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":40,"title":"Limitations","description":"","subsectionId":4,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":41,"title":"Types of Wall Cladding","description":"","subsectionId":4,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":42,"title":"Wall Cladding Condition","description":"","subsectionId":4,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":43,"title":"Flashing at Fenestrations","description":"","subsectionId":4,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":44,"title":"Trim or Soffit or Fascia","description":"","subsectionId":4,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":45,"title":"Trim or Soffit or Fascia Condition","description":"","subsectionId":4,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":46,"title":"Siding or Wall Cladding Images","description":"","subsectionId":4,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":5,"title":"Wall Fenestrations","sectionId":3,"inspectionId":1,"sourceType":"Template","questions":[{"id":47,"title":"Window Frame or Trim","description":"","subsectionId":5,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":48,"title":"Window Frame or Trim Condition","description":"","subsectionId":5,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":49,"title":"Exterior Doors","description":"","subsectionId":5,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":50,"title":"Exterior Doors Condition","description":"","subsectionId":5,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":51,"title":"Caulking","description":"","subsectionId":5,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":52,"title":"Wall Fenestrations Images","description":"","subsectionId":5,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":6,"title":"Attached Garage or Carport","sectionId":3,"inspectionId":1,"sourceType":"Template","questions":[{"id":53,"title":"Conditions","description":"","subsectionId":6,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":54,"title":"Limitations","description":"","subsectionId":6,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":55,"title":"Vehicle Parking","description":"","subsectionId":6,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":56,"title":"Floor","description":"","subsectionId":6,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":57,"title":"Floor Condition","description":"","subsectionId":6,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":58,"title":"Firewall Location","description":"","subsectionId":6,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":59,"title":"Firewall Condition","description":"","subsectionId":6,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":60,"title":"Firedoor Location","description":"","subsectionId":6,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":61,"title":"Exterior Service Door","description":"","subsectionId":6,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":62,"title":"Exterior Service Door Condition","description":"","subsectionId":6,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":63,"title":"Car Door","description":"","subsectionId":6,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":64,"title":"Car Door Condition","description":"","subsectionId":6,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":65,"title":"Automatic Door Opener","description":"","subsectionId":6,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":66,"title":"Safety Reverse","description":"","subsectionId":6,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":67,"title":"Condition","description":"","subsectionId":6,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":68,"title":"Attached Garage or Carport Images","description":"","subsectionId":6,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]}]},{"id":4,"title":"Roofing","sourceType":"Template","inspectionId":1,"subsections":[{"id":7,"title":"Roof Covering(s)","sectionId":4,"inspectionId":1,"sourceType":"Template","questions":[{"id":69,"title":"Conditions","description":"","subsectionId":7,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":70,"title":"Limitations","description":"","subsectionId":7,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":71,"title":"Roof Covering(s)","description":"","subsectionId":7,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":72,"title":"Viewed Roof From","description":"","subsectionId":7,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":73,"title":"Style(s)","description":"","subsectionId":7,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":74,"title":"Pitch","description":"","subsectionId":7,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":75,"title":"Age of Roof Covering","description":"","subsectionId":7,"inspectionId":1,"type":"number","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":76,"title":"Number of Layers of Roof Covering","description":"","subsectionId":7,"inspectionId":1,"type":"number","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":77,"title":"Roof Covering","description":"","subsectionId":7,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":78,"title":"Roof Covering Condition","description":"","subsectionId":7,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":79,"title":"Valley(s)","description":"","subsectionId":7,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":80,"title":"Valley(s) Condition","description":"","subsectionId":7,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":81,"title":"Roof Covering(s) Images","description":"","subsectionId":7,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":8,"title":"Fenestrations","sectionId":4,"inspectionId":1,"sourceType":"Template","questions":[{"id":82,"title":"Perforations (through-roof)","description":"","subsectionId":8,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":83,"title":"Perforations Condition(s)","description":"","subsectionId":8,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":84,"title":"Skylights or Skywalls","description":"","subsectionId":8,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":85,"title":"Skylights or Skywalls Condition","description":"","subsectionId":8,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":86,"title":"Flashing(s)","description":"","subsectionId":8,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":87,"title":"Flashing(s) Condition","description":"","subsectionId":8,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":88,"title":"Fenestrations Images","description":"","subsectionId":8,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":9,"title":"Gutters & Down-Spouts","sectionId":4,"inspectionId":1,"sourceType":"Template","questions":[{"id":89,"title":"Type","description":"","subsectionId":9,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":90,"title":"Gutters & Down-Spouts Condition","description":"","subsectionId":9,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":91,"title":"Down-Spout Discharge","description":"","subsectionId":9,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":92,"title":"Down-Spout Discharge Condition","description":"","subsectionId":9,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":93,"title":"Gutters or Down Spouts Images","description":"","subsectionId":9,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]}]},{"id":5,"title":"Structural","sourceType":"Template","inspectionId":1,"subsections":[{"id":10,"title":"Roof Framing (Visible in Attic)","sectionId":5,"inspectionId":1,"sourceType":"Template","questions":[{"id":94,"title":"Conditions","description":"","subsectionId":10,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":95,"title":"Limitations","description":"","subsectionId":10,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":96,"title":"Roof System","description":"","subsectionId":10,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":97,"title":"Diaphragm Sheathing","description":"","subsectionId":10,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":98,"title":"Diaphragm Sheathing Condition","description":"","subsectionId":10,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":99,"title":"Missing or Inadequate","description":"","subsectionId":10,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":100,"title":"Roof Framing Images","description":"","subsectionId":10,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":11,"title":"Floor Framing","sectionId":5,"inspectionId":1,"sourceType":"Template","questions":[{"id":101,"title":"Notice","description":"","subsectionId":11,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":102,"title":"Sub-Floor System","description":"","subsectionId":11,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":103,"title":"Beams (Girders)","description":"","subsectionId":11,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":104,"title":"Joists & Sheathing","description":"","subsectionId":11,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":105,"title":"I-Beams","description":"","subsectionId":11,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":106,"title":"Diaphragm","description":"","subsectionId":11,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":107,"title":"Posts(Columns)","description":"","subsectionId":11,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":108,"title":"Posts(Columns) Condition","description":"","subsectionId":11,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":109,"title":"Stairs","description":"","subsectionId":11,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":110,"title":"Stairs Condition","description":"","subsectionId":11,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":111,"title":"Inadequate","description":"","subsectionId":11,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":112,"title":"Basement or Crawl Floor","description":"","subsectionId":11,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":113,"title":"Basement or Crawl Floor Condition","description":"","subsectionId":11,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":114,"title":"Floor Framing Images","description":"","subsectionId":11,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":12,"title":"Foundation","sectionId":5,"inspectionId":1,"sourceType":"Template","questions":[{"id":115,"title":"Type of Foundation","description":"","subsectionId":12,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":116,"title":"Condition of Foundation","description":"","subsectionId":12,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":117,"title":"Limited By","description":"","subsectionId":12,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":118,"title":"WDI or WDO (Wood-Destroying)","description":"","subsectionId":12,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":119,"title":"Cracks","description":"","subsectionId":12,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":120,"title":"Drainage","description":"","subsectionId":12,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":121,"title":"Sump Pump","description":"","subsectionId":12,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":122,"title":"Foundation Images","description":"","subsectionId":12,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]}]},{"id":6,"title":"Thermal","sourceType":"Template","inspectionId":1,"subsections":[{"id":13,"title":"Attic","sectionId":6,"inspectionId":1,"sourceType":"Template","questions":[{"id":123,"title":"Conditions","description":"","subsectionId":13,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":124,"title":"Limitations","description":"","subsectionId":13,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":125,"title":"Access","description":"","subsectionId":13,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":126,"title":"Location","description":"","subsectionId":13,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":127,"title":"Viewed","description":"","subsectionId":13,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":128,"title":"Attic Insulation Location","description":"","subsectionId":13,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":129,"title":"Attic Insulation Quantity (in)","description":"","subsectionId":13,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":130,"title":"Attic Insulation Type","description":"","subsectionId":13,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":131,"title":"Attic Insulation Condition","description":"","subsectionId":13,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":132,"title":"Attic Ventilation","description":"","subsectionId":13,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":133,"title":"Condition of Ventilation","description":"","subsectionId":13,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":134,"title":"Humidity","description":"","subsectionId":13,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":135,"title":"Infestation","description":"","subsectionId":13,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":136,"title":"Ventilation Notice","description":"","subsectionId":13,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":137,"title":"Attic Images","description":"","subsectionId":13,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":14,"title":"Crawl Spaces or Unfinished Basements","sectionId":6,"inspectionId":1,"sourceType":"Template","questions":[{"id":138,"title":"Access","description":"","subsectionId":14,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":139,"title":"Location","description":"","subsectionId":14,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":140,"title":"Viewed","description":"","subsectionId":14,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":141,"title":"Sub-Floor Insulation Location","description":"","subsectionId":14,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":142,"title":"Sub-Floor Insulation Type","description":"","subsectionId":14,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":143,"title":"Sub-Floor Insulation Retention","description":"","subsectionId":14,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":144,"title":"Sub-Floor Insulation Condition","description":"","subsectionId":14,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":145,"title":"Crawl-Space Ventilation","description":"","subsectionId":14,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":146,"title":"Condition of Crawl-Space Ventilation","description":"","subsectionId":14,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":147,"title":"Vapor Barrier","description":"","subsectionId":14,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":148,"title":"Moisture","description":"","subsectionId":14,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":149,"title":"Drainage","description":"","subsectionId":14,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":150,"title":"Infestation","description":"","subsectionId":14,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":151,"title":"Crawl Space or Basement Images","description":"","subsectionId":14,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":15,"title":"Interior Ventilation or Exhaust Fans","sectionId":6,"inspectionId":1,"sourceType":"Template","questions":[{"id":152,"title":"Whole House Ventilation","description":"","subsectionId":15,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":153,"title":"Whole House Ventilation Condition","description":"","subsectionId":15,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":154,"title":"Moisture Reduction Fans","description":"","subsectionId":15,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":155,"title":"Condition of Moisture Reduction Fans","description":"","subsectionId":15,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":156,"title":"Moisture Notice","description":"","subsectionId":15,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":157,"title":"Interior Ventilation or Exhaust Fan Images","description":"","subsectionId":15,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]}]},{"id":7,"title":"Plumbing","sourceType":"Template","inspectionId":1,"subsections":[{"id":16,"title":"Plumbing System","sectionId":7,"inspectionId":1,"sourceType":"Template","questions":[{"id":158,"title":"Conditions","description":"","subsectionId":16,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":159,"title":"Limitations","description":"","subsectionId":16,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":160,"title":"Water Supply Source","description":"","subsectionId":16,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":161,"title":"Main Water Shut Off Valve Location","description":"","subsectionId":16,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":162,"title":"Water Pressure","description":"","subsectionId":16,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":163,"title":"Water Temperature","description":"","subsectionId":16,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":164,"title":"Waste System","description":"","subsectionId":16,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":165,"title":"Main Entry Piping","description":"","subsectionId":16,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":166,"title":"Main Entry Piping Condition","description":"","subsectionId":16,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":167,"title":"Pressure (psi)","description":"","subsectionId":16,"inspectionId":1,"type":"number","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":168,"title":"Pressure","description":"","subsectionId":16,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":169,"title":"Water Lines","description":"","subsectionId":16,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":170,"title":"Condition of Water Lines","description":"","subsectionId":16,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":171,"title":"Lead (other than solder joints)","description":"","subsectionId":16,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":172,"title":"Disimlar Metal Connection (Potential Electrolysis)","description":"","subsectionId":16,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":173,"title":"DMV Piping","description":"","subsectionId":16,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":174,"title":"Condition of DMV Piping","description":"","subsectionId":16,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":175,"title":"Plumbing System Images","description":"","subsectionId":16,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":17,"title":"Faucets or Fixtures","sectionId":7,"inspectionId":1,"sourceType":"Template","questions":[{"id":176,"title":"Faucets","description":"","subsectionId":17,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":177,"title":"Leaking","description":"","subsectionId":17,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":178,"title":"Faucets or Fixtures Location","description":"","subsectionId":17,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":179,"title":"Accessories","description":"","subsectionId":17,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":180,"title":"Disposer","description":"","subsectionId":17,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":181,"title":"Dishwasher","description":"","subsectionId":17,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":182,"title":"Dishwasher Condition","description":"","subsectionId":17,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":183,"title":"Sinks or Fixtures","description":"","subsectionId":17,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":184,"title":"Grout Condition","description":"","subsectionId":17,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":185,"title":"Drainage","description":"","subsectionId":17,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":186,"title":"Sinks or Fixtures Location","description":"","subsectionId":17,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":187,"title":"Toilet","description":"","subsectionId":17,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":188,"title":"Tub or Shower Surround(s)","description":"","subsectionId":17,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":189,"title":"Condition of Tub or Shower Surround(s)","description":"","subsectionId":17,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":190,"title":"Faucet or Fixtures Images","description":"","subsectionId":17,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":18,"title":"Water Heater","sectionId":7,"inspectionId":1,"sourceType":"Template","questions":[{"id":191,"title":"Energy Source","description":"","subsectionId":18,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":192,"title":"Brand Name","description":"","subsectionId":18,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":193,"title":"Approximate Age (Years Old)","description":"","subsectionId":18,"inspectionId":1,"type":"number","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":194,"title":"Capacity (in Gallons)","description":"","subsectionId":18,"inspectionId":1,"type":"dropbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":195,"title":"Model Number","description":"","subsectionId":18,"inspectionId":1,"type":"text","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":196,"title":"Serial Number","description":"","subsectionId":18,"inspectionId":1,"type":"text","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":197,"title":"Water Temperature","description":"","subsectionId":18,"inspectionId":1,"type":"number","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":198,"title":"Condition","description":"","subsectionId":18,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":199,"title":"TPRV Connection","description":"","subsectionId":18,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":200,"title":"Exhaust","description":"","subsectionId":18,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":201,"title":"Water Heater Images","description":"","subsectionId":18,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]}]},{"id":8,"title":"Heating","sourceType":"Template","inspectionId":1,"subsections":[{"id":19,"title":"Heating System","sectionId":8,"inspectionId":1,"sourceType":"Template","questions":[{"id":202,"title":"Conditions","description":"","subsectionId":19,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":203,"title":"Limitations","description":"","subsectionId":19,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":204,"title":"Energy Source(s)","description":"","subsectionId":19,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":205,"title":"System Type","description":"","subsectionId":19,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":206,"title":"Boiler","description":"","subsectionId":19,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":207,"title":"Heat Pump","description":"","subsectionId":19,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":208,"title":"Stove","description":"","subsectionId":19,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":209,"title":"Solar","description":"","subsectionId":19,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":210,"title":"Heating System Images","description":"","subsectionId":19,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":20,"title":"Central Furnace or Heat Pump","sectionId":8,"inspectionId":1,"sourceType":"Template","questions":[{"id":211,"title":"Brand Name","description":"","subsectionId":20,"inspectionId":1,"type":"dropdown","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":212,"title":"Capacity","description":"","subsectionId":20,"inspectionId":1,"type":"dropdown","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":213,"title":"Year of Manufacture","description":"","subsectionId":20,"inspectionId":1,"type":"number","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":214,"title":"Model Number","description":"","subsectionId":20,"inspectionId":1,"type":"text","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":215,"title":"Serial Number","description":"","subsectionId":20,"inspectionId":1,"type":"text","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":216,"title":"Posted Service History","description":"","subsectionId":20,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":217,"title":"Posted Service History Condition","description":"","subsectionId":20,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":218,"title":"Central Furnace or Heat Pump Images","description":"","subsectionId":20,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":21,"title":"Ducting","sectionId":8,"inspectionId":1,"sourceType":"Template","questions":[{"id":219,"title":"Ducts","description":"","subsectionId":21,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":220,"title":"Reduced Vent","description":"","subsectionId":21,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":221,"title":"Filter","description":"","subsectionId":21,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":222,"title":"Disconnect or Typical Safety Controls","description":"","subsectionId":21,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":223,"title":"Ducting Images","description":"","subsectionId":21,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":22,"title":"Fireplaces or Stoves","sectionId":8,"inspectionId":1,"sourceType":"Template","questions":[{"id":224,"title":"Conditions","description":"","subsectionId":22,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":225,"title":"Limitations","description":"","subsectionId":22,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":226,"title":"Fireplace or Stove Type","description":"","subsectionId":22,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":227,"title":"Mantle or Hearth","description":"","subsectionId":22,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":228,"title":"Firebox","description":"","subsectionId":22,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":229,"title":"Damper","description":"","subsectionId":22,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":230,"title":"Chimney","description":"","subsectionId":22,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":231,"title":"Fireplace or Stoves Images","description":"","subsectionId":22,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]}]},{"id":9,"title":"Cooling","sourceType":"Template","inspectionId":1,"subsections":[{"id":23,"title":"Cooling Systems","sectionId":9,"inspectionId":1,"sourceType":"Template","questions":[{"id":232,"title":"Conditions","description":"","subsectionId":23,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":233,"title":"Limitations","description":"","subsectionId":23,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":234,"title":"Temperature Differential","description":"","subsectionId":23,"inspectionId":1,"type":"number","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":235,"title":"Air Conditioner Type","description":"","subsectionId":23,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":236,"title":"Energy Source","description":"","subsectionId":23,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":237,"title":"Cooling Systems Images","description":"","subsectionId":23,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":24,"title":"Evaporative Coil or Heat Pump (Inside)","sectionId":9,"inspectionId":1,"sourceType":"Template","questions":[{"id":238,"title":"Brand Name","description":"","subsectionId":24,"inspectionId":1,"type":"dropdown","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":239,"title":"Capacity","description":"","subsectionId":24,"inspectionId":1,"type":"dropdown","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":240,"title":"Year of Manufacture","description":"","subsectionId":24,"inspectionId":1,"type":"number","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":241,"title":"Model Number","description":"","subsectionId":24,"inspectionId":1,"type":"text","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":242,"title":"Serial Number","description":"","subsectionId":24,"inspectionId":1,"type":"text","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":243,"title":"Evaporative Coil or Heat Pump Images","description":"","subsectionId":24,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":25,"title":"Compressor or Condenser (Outside)","sectionId":9,"inspectionId":1,"sourceType":"Template","questions":[{"id":244,"title":"Brand Name","description":"","subsectionId":25,"inspectionId":1,"type":"dropdown","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":245,"title":"Capacity","description":"","subsectionId":25,"inspectionId":1,"type":"dropdown","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":246,"title":"Year of Manufacture","description":"","subsectionId":25,"inspectionId":1,"type":"number","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":247,"title":"Model Number","description":"","subsectionId":25,"inspectionId":1,"type":"text","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":248,"title":"Serial Number","description":"","subsectionId":25,"inspectionId":1,"type":"text","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":249,"title":"Compressor or Condenser Condition","description":"","subsectionId":25,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":250,"title":"Refrigerant Lines","description":"","subsectionId":25,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":251,"title":"Compressor or Condensor Images","description":"","subsectionId":25,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]}]},{"id":10,"title":"Electrical","sourceType":"Template","inspectionId":1,"subsections":[{"id":26,"title":"Electrical System","sectionId":10,"inspectionId":1,"sourceType":"Template","questions":[{"id":252,"title":"Conditions","description":"","subsectionId":26,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":253,"title":"Limitations","description":"","subsectionId":26,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":254,"title":"Main Service Entry","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":255,"title":"Condition of Main Service Entry","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":256,"title":"Ground Connection","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":257,"title":"Meter Location","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":258,"title":"Meter Condition","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":259,"title":"Grounding","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":260,"title":"Ground Wiring","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":261,"title":"Condition of Main Electrical Disconnect","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":262,"title":"Main Electrical Disconnect Location","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":263,"title":"Main Panel","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":264,"title":"Reason for Non Evaluation","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":265,"title":"Breakers or Fuses","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":266,"title":"Service Size (AMPS)","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":267,"title":"Service Size (VOLTS)","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":268,"title":"Breaker(s)","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":269,"title":"Location","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":270,"title":"Branch Wiring","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":271,"title":"Condition of Branch Wiring","description":"","subsectionId":26,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":272,"title":"Electrical System Images","description":"","subsectionId":26,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":27,"title":"Fixtures, Switches, or Detectors","sectionId":10,"inspectionId":1,"sourceType":"Template","questions":[{"id":273,"title":"Fixtures","description":"","subsectionId":27,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":274,"title":"Fixtures Condition","description":"","subsectionId":27,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":275,"title":"Switches or Receptacles","description":"","subsectionId":27,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":276,"title":"Condition of Switches or Receptacles","description":"","subsectionId":27,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":277,"title":"Carbon Monoxide Detectors","description":"","subsectionId":27,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":278,"title":"Smoke Detectors","description":"","subsectionId":27,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":279,"title":"Caution Label","description":"","subsectionId":27,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":280,"title":"Fixtures, Switches, or Detectors Images","description":"","subsectionId":27,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]}]},{"id":11,"title":"Interior","sourceType":"Template","inspectionId":1,"subsections":[{"id":28,"title":"Living Room","sectionId":11,"inspectionId":1,"sourceType":"Template","questions":[{"id":281,"title":"Conditions","description":"","subsectionId":28,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":282,"title":"Limitations","description":"","subsectionId":28,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":283,"title":"Entry Door(s)","description":"","subsectionId":28,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":284,"title":"Entry Door(s) Condition","description":"","subsectionId":28,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":285,"title":"Weatherstrip","description":"","subsectionId":28,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":286,"title":"Window(s)","description":"","subsectionId":28,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":287,"title":"Ceiling Fan","description":"","subsectionId":28,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":288,"title":"Heat Source","description":"","subsectionId":28,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":289,"title":"Light, Switches, or Receptacles (Refer To Electrical Section)","description":"","subsectionId":28,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":290,"title":"Comments","description":"","subsectionId":28,"inspectionId":1,"type":"text","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":291,"title":"Living Room Images","description":"","subsectionId":28,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":29,"title":"Kitchen","sectionId":11,"inspectionId":1,"sourceType":"Template","questions":[{"id":292,"title":"Appliances","description":"","subsectionId":29,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":293,"title":"Cabinets","description":"","subsectionId":29,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":294,"title":"Countertops","description":"","subsectionId":29,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":295,"title":"Countertops Condition","description":"","subsectionId":29,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":296,"title":"Backsplash & Self Edge","description":"","subsectionId":29,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":297,"title":"Caulking","description":"","subsectionId":29,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":298,"title":"Grout","description":"","subsectionId":29,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":299,"title":"Exhaust Fan","description":"","subsectionId":29,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":300,"title":"Heat Source","description":"","subsectionId":29,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":301,"title":"Lights or Switches or Receptacles (Refer To Electrical Section)","description":"","subsectionId":29,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":302,"title":"Kitchen Images","description":"","subsectionId":29,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":30,"title":"Laundry","sectionId":11,"inspectionId":1,"sourceType":"Template","questions":[{"id":303,"title":"Appliances","description":"","subsectionId":30,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":304,"title":"Dryer","description":"","subsectionId":30,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":305,"title":"Exhausted","description":"","subsectionId":30,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":306,"title":"Exhaust Appears","description":"","subsectionId":30,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":307,"title":"Exhaust Fan","description":"","subsectionId":30,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":308,"title":"Laundry Images","description":"","subsectionId":30,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":31,"title":"Bathroom(s)","sectionId":11,"inspectionId":1,"sourceType":"Template","questions":[{"id":309,"title":"Walls or Ceilings","description":"","subsectionId":31,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":310,"title":"Condition of Walls or Ceilings","description":"","subsectionId":31,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":311,"title":"Floors","description":"","subsectionId":31,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":312,"title":"Caulking","description":"","subsectionId":31,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":313,"title":"Heat","description":"","subsectionId":31,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":314,"title":"Exhaust Fan","description":"","subsectionId":31,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":315,"title":"Lights or Switches or Receptacles (Refer To Electrical Section)","description":"","subsectionId":31,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":316,"title":"Bathroom Images","description":"","subsectionId":31,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]},{"id":32,"title":"General","sectionId":11,"inspectionId":1,"sourceType":"Template","questions":[{"id":317,"title":"Walls or Ceilings","description":"","subsectionId":32,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":318,"title":"Walls or Ceilings Condition","description":"","subsectionId":32,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":319,"title":"Floor Coverings","description":"","subsectionId":32,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":320,"title":"Floor Coverings Condition","description":"","subsectionId":32,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":321,"title":"Interior Doors","description":"","subsectionId":32,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":322,"title":"Interior Doors Condition","description":"","subsectionId":32,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":323,"title":"Window Type(s)","description":"","subsectionId":32,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":324,"title":"Window(s) Condition","description":"","subsectionId":32,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":325,"title":"Safety Concern","description":"","subsectionId":32,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":326,"title":"Lights or Switches or Receptacles (Refer To Electrical Section) or DUPLICATE?!?!","description":"","subsectionId":32,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":327,"title":"General Images","description":"","subsectionId":32,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]}]},{"id":12,"title":"Life or Safety","sourceType":"Template","inspectionId":1,"subsections":[{"id":33,"title":"Concerns","sectionId":12,"inspectionId":1,"sourceType":"Template","questions":[{"id":328,"title":"Conditions","description":"","subsectionId":33,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":329,"title":"Limitations","description":"","subsectionId":33,"inspectionId":1,"type":"textarea","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":330,"title":"Tripping or Falling Hazard(s)","description":"","subsectionId":33,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":331,"title":"Fire Hazards","description":"","subsectionId":33,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":332,"title":"Pest Related","description":"","subsectionId":33,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":333,"title":"Poison Baits","description":"","subsectionId":33,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":334,"title":"Building Materials (Refer To Specific Sections)","description":"","subsectionId":33,"inspectionId":1,"type":"checkbox","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":335,"title":"Comments","description":"","subsectionId":33,"inspectionId":1,"type":"text","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]},{"id":336,"title":"Potential Safety Concern Images","description":"","subsectionId":33,"inspectionId":1,"type":"photo","values":[{"id":null,"key":null,"questionId":null,"sourceType":null,"inspectionId":null,"type":null,"remark":""}],"validation":{"type":null,"min":null,"max":null,"isRequired":"false"},"answer":null,"answers":[],"notApplicable":"false","severity":null,"showSummaryRemark":"true","showDescription":"true","photos":[]}]}]}]}

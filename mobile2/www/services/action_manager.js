@@ -47,19 +47,19 @@ app.factory('action_manager', function ($rootScope, $mdToast) {
     public.mode = ACTION_MODES.Default;
   }
 
-  public.showSuccessToast = function() {
+  public.showSuccessMessageToast = function(message) {
       $mdToast.show(
           $mdToast.simple()
-          .textContent('Save Success!')
+          .textContent(message)
           .hideDelay(2000)
           .toastClass('toast-success')
       );
   }
   
-  public.showFailureToast = function() {
+  public.showFailureMesssageToast = function(message) {
       $mdToast.show(
           $mdToast.simple()
-          .textContent('Save Failure!')
+          .textContent(message)
           .hideDelay(2000)
           .toastClass('toast-failure')
       );

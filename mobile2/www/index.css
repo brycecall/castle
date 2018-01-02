@@ -75,7 +75,7 @@ md-fab-toolbar {
     width: 30px !important;
 }
 .toast-success > .md-toast-content{
-  background: limegreen !important;
+  color: limegreen !important;
   font-size: 18pt;
   text-align: center;
   width: 50%;
@@ -88,7 +88,7 @@ md-fab-toolbar {
 .toast-failure > .md-toast-content{
   color: indianred !important;
   font-size: 18pt;
-  text-align: center;    
+  text-align: center;
   width: 50%;
   margin: auto;
   left: 0;

@@ -14,14 +14,24 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
     db = window.sqlitePlugin.openDatabase(private.dbOptions);
       
     public.initTables = function() {
-      databaseInit.initTables().then(
+      var deferred = $q.defer();
+      databaseInit.initTables(db).then(
       function(success) {
-        console.log('Success initTable');
-        public.saveInspection(defaultTemplate, "template");
+        public.saveInspection(defaultTemplate, "template").then(function(saveSuccess) {
+          // Successful save of default template
+          deferred.resolve({
+            message: 'Successful save of default template'
+          });
+        }, function(saveError){
+          deferred.reject({
+            message: 'Failed to save default template'
+          });  
+        });
       }, function(error) {
-        console.log('Error:');
+        console.log('Init Tables Error:');
         console.log(error);
       });
+      return deferred.promise;
     };
       
     public.createUser = function (name, pass, email) {
@@ -494,6 +504,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
     public.saveInspection = function (ins, sourceType) {
       var timestamp = new Date();
       console.log('saveInspection start. saving type: ' + sourceType);
+      console.log('insName: ' + ins.insName);
       console.log(ins);
       var deferred = $q.defer();
       // Insert Inspection Table Data

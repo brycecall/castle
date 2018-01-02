@@ -8,7 +8,7 @@
       }
     };
     document.addEventListener('deviceready', function () {
-      private.db = window.sqlitePlugin.openDatabase(private.dbOptions);
+      //private.db = window.sqlitePlugin.openDatabase(private.dbOptions);
     // Insert Necessary Data for Full Inspection
       public.initDefaultTemplate = function () {
       console.log('db initDefaultTemplate');
@@ -553,7 +553,7 @@
       console.log('db initTemplates being called');
       var timestamp = new Date();
       var deferred = $q.defer();
-      private.db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insSourceType, insType, insUserId, insTemplateTitle) Values (?, ?, ?, ?, ?, ?)', [timestamp, timestamp, 'template', 'Residential', 1, 'Residential Template'], function (res) {
+      private.db.executeSql('INSERT INTO Inspection (insLastModified, insLastSubmitted, insSourceType, insType, insTemplateTitle) Values (?, ?, ?, ?, ?)', [timestamp, timestamp, 'template', 'Residential', defaultTemplate.insName], function (res) {
         deferred.resolve({
           rowId: res.insertId,
           message: 'Template insertion successful'
@@ -582,6 +582,7 @@
           'DROP TABLE IF EXISTS ReportHistory',
           'DROP TABLE IF EXISTS Section',
           'DROP TABLE IF EXISTS SubSection',
+          'DROP TABLE IF EXISTS Template',
           'DROP TABLE IF EXISTS Theme',
           'DROP TABLE IF EXISTS User',
           'DROP TABLE IF EXISTS UserAccess',
@@ -599,7 +600,8 @@
       return deferred.promise;
     }
     
-    public.initTables = function () {
+    public.initTables = function (db) {
+      private.db = db;
       var deferred = $q.defer();
       public.dropAllTables().then(function(){
           console.log('calling initTables');
@@ -623,11 +625,7 @@
               'CREATE TABLE IF NOT EXISTS UserUsers (usuUserId INT, usuUserChildId INT, FOREIGN KEY(usuUserId) REFERENCES User(rowId))',
           ], function (res) {
             public.initThemes();
-            //public.initTemplates();
-            //public.initSections();
-            //p/ublic.initSubSections();
-            //public.initDefaultTemplate();
-            
+            //public.initTemplates();            
             deferred.resolve({
               message: 'Batch statement for default Template data completed successfully'
             });
@@ -636,13 +634,12 @@
               message: 'Error processing batch: ' + error.message
             });
           });
-      }, function() {
+      }, function(error) {
           console.log("Error dropping tables");
           deferred.reject({
               message: 'Error dropping tables: ' + error.message
-            });
+        });
       });
-   
       return deferred.promise;
     }
 

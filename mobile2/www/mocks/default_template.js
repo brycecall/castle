@@ -1,15 +1,15 @@
 var defaultTemplate = {
   "insLastModified": "Sun Oct 08 2017 15:22:12 GMT-0600 (MDT)",
   "insLastSubmitted": "Sun Oct 08 2017 15:22:12 GMT-0600 (MDT)",
-  "insType": "Report Title",
-  "insName": null,
+  "insType": "Residential",
+  "insName": "Default Template",
   "insUserId": 1,
   "insId": null,
-  "insSourceType": "Template",
+  "insSourceType": "template",
   "sections": [{
     "id": null,
     "title": "Field Notes",
-    "sourceType": "Template",
+    "sourceType": "template",
     "inspectionId": null,
     "order": 0,
     "subsections": [{
@@ -17,7 +17,7 @@ var defaultTemplate = {
       "title": "Observations",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 0,
       "questions": [{
         "id": null,
@@ -32,7 +32,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inspector",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -40,7 +40,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Buyer",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -48,7 +48,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Resident",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -56,7 +56,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Builder or Builders Rep",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -64,7 +64,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Owner or Seller",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -72,7 +72,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Agent",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -80,7 +80,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Friends or Other",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -111,7 +111,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inspector",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -119,7 +119,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Buyer",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -127,7 +127,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Resident",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -135,7 +135,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Builder or Builders Rep",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -143,7 +143,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Owner or Seller",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -151,7 +151,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Agent",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -159,7 +159,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Friends or Other",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -236,7 +236,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Single Family",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -244,7 +244,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Single Use",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -252,7 +252,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Multiple Use",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -260,7 +260,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Duplex",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -268,7 +268,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Triplex",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -276,7 +276,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Multi Family",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -284,7 +284,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Detatched",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -315,7 +315,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Residential",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -323,7 +323,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Apartment",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -331,7 +331,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Retail Store",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -339,7 +339,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Business",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -347,7 +347,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Industrial",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -355,7 +355,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Commercial",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -386,7 +386,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rambler",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -394,7 +394,7 @@ var defaultTemplate = {
           "id": null,
           "key": "One Level",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -402,7 +402,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Split-Entry",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -410,7 +410,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Split-Level",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -418,7 +418,7 @@ var defaultTemplate = {
           "id": null,
           "key": "One Story",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -426,7 +426,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Two-Story",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -434,7 +434,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Three-Story",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -442,7 +442,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mid-Rise",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -450,7 +450,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Multi-Level",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -481,7 +481,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood-Framed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -489,7 +489,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Steel-Framed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -497,7 +497,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concrete",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -505,7 +505,7 @@ var defaultTemplate = {
           "id": null,
           "key": "CMU or Block",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -513,7 +513,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Masonry",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -521,7 +521,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Tilt-Up",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -529,7 +529,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood-Frame on Steel Carriage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -537,7 +537,7 @@ var defaultTemplate = {
           "id": null,
           "key": "ICF",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -568,7 +568,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Home",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -576,7 +576,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Twin Home",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -584,7 +584,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Town Home",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -592,7 +592,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mobile Home",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -600,7 +600,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Log Home",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -608,7 +608,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Manufactured Home",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -616,7 +616,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Prefabbed Structure",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -624,7 +624,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Condominium",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -632,7 +632,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Building",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -640,7 +640,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Garage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -648,7 +648,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Low-Rise",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -656,7 +656,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mid-Rise",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -664,7 +664,7 @@ var defaultTemplate = {
           "id": null,
           "key": "High-Rise",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -695,7 +695,7 @@ var defaultTemplate = {
           "id": null,
           "key": "With Lower Parking Garage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -703,7 +703,7 @@ var defaultTemplate = {
           "id": null,
           "key": "With Basement & Garage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -711,7 +711,7 @@ var defaultTemplate = {
           "id": null,
           "key": "With Garage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -719,7 +719,7 @@ var defaultTemplate = {
           "id": null,
           "key": "With Garage & Crawlspace",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -727,7 +727,7 @@ var defaultTemplate = {
           "id": null,
           "key": "With Full Basement",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -735,7 +735,7 @@ var defaultTemplate = {
           "id": null,
           "key": "With Daylight Basement",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -743,7 +743,7 @@ var defaultTemplate = {
           "id": null,
           "key": "With Basement & Crawlspace(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -751,7 +751,7 @@ var defaultTemplate = {
           "id": null,
           "key": "With Crawlspace",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -759,7 +759,7 @@ var defaultTemplate = {
           "id": null,
           "key": "With Slab-On-Grade",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -767,7 +767,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Over Adjoining Unit(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -775,7 +775,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Over Adjoining Basement Unit",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -806,7 +806,7 @@ var defaultTemplate = {
           "id": null,
           "key": "North",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -814,7 +814,7 @@ var defaultTemplate = {
           "id": null,
           "key": "East",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -822,7 +822,7 @@ var defaultTemplate = {
           "id": null,
           "key": "West",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -830,7 +830,7 @@ var defaultTemplate = {
           "id": null,
           "key": "South",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -838,7 +838,7 @@ var defaultTemplate = {
           "id": null,
           "key": "North-East",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -846,7 +846,7 @@ var defaultTemplate = {
           "id": null,
           "key": "North-West",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -854,7 +854,7 @@ var defaultTemplate = {
           "id": null,
           "key": "South-East",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -862,7 +862,7 @@ var defaultTemplate = {
           "id": null,
           "key": "South-West",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -893,7 +893,7 @@ var defaultTemplate = {
           "id": null,
           "key": "At Curbside",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -901,7 +901,7 @@ var defaultTemplate = {
           "id": null,
           "key": "In a Rear Alley",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -909,7 +909,7 @@ var defaultTemplate = {
           "id": null,
           "key": "In the Driveway",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -917,7 +917,7 @@ var defaultTemplate = {
           "id": null,
           "key": "In an Attached Garage(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -925,7 +925,7 @@ var defaultTemplate = {
           "id": null,
           "key": "In a Detached Garage(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -933,7 +933,7 @@ var defaultTemplate = {
           "id": null,
           "key": "In an Attached Carport",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -941,7 +941,7 @@ var defaultTemplate = {
           "id": null,
           "key": "In a Detached Carport",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -949,7 +949,7 @@ var defaultTemplate = {
           "id": null,
           "key": "In a Covered Parking Space",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -957,7 +957,7 @@ var defaultTemplate = {
           "id": null,
           "key": "In an Open Parking Space",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -965,7 +965,7 @@ var defaultTemplate = {
           "id": null,
           "key": "In a Secured Parking Garage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -973,7 +973,7 @@ var defaultTemplate = {
           "id": null,
           "key": "In an Open Parking Garage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -981,7 +981,7 @@ var defaultTemplate = {
           "id": null,
           "key": "In an Open, Striped Parking Lot",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -1012,7 +1012,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Electricity",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -1020,7 +1020,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Water",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -1028,7 +1028,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gas",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -1036,7 +1036,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Oil",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -1044,7 +1044,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Propane",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -1075,7 +1075,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Electricity",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -1083,7 +1083,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Water",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -1091,7 +1091,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gas",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -1099,7 +1099,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Oil",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -1107,7 +1107,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Propane",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -1138,7 +1138,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Occupied",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -1146,7 +1146,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mostly Occupied",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -1154,7 +1154,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mostly Vacant",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -1162,7 +1162,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vacant",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -1207,7 +1207,7 @@ var defaultTemplate = {
   }, {
     "id": null,
     "title": "Site",
-    "sourceType": "Template",
+    "sourceType": "template",
     "inspectionId": null,
     "order": 1,
     "subsections": [{
@@ -1215,7 +1215,7 @@ var defaultTemplate = {
       "title": "Evaluation",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 0,
       "questions": [{
         "id": null,
@@ -1276,7 +1276,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -1284,7 +1284,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concrete",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -1292,7 +1292,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Asphalt",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -1300,7 +1300,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Pavers",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -1308,7 +1308,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stone",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -1316,7 +1316,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Brick",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -1324,7 +1324,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Dirt",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -1332,7 +1332,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gravel",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -1362,7 +1362,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -1370,7 +1370,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -1378,7 +1378,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -1386,7 +1386,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Pitched towards home",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -1394,7 +1394,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Typical cracks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -1402,7 +1402,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Large cracks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -1410,7 +1410,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Root heaving",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -1418,7 +1418,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Uneven",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -1426,7 +1426,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Trip or Falling Hazard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -1456,7 +1456,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -1464,7 +1464,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concrete",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -1472,7 +1472,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Paver or stone or brick",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -1480,7 +1480,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood or Composite",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -1488,7 +1488,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Covered",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -1519,7 +1519,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -1527,7 +1527,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -1535,7 +1535,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -1543,7 +1543,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Typical cracks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -1551,7 +1551,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Large cracks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -1559,7 +1559,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gaps",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -1567,7 +1567,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Holes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -1575,7 +1575,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mildew",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -1583,7 +1583,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -1591,7 +1591,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Settled",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -1599,7 +1599,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Uneven Surface",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -1607,7 +1607,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Trip or Falling Hazard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -1638,7 +1638,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -1646,7 +1646,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -1654,7 +1654,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Uneven",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -1662,7 +1662,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Large cracks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -1670,7 +1670,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Root heaving",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -1678,7 +1678,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Moss build-up",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -1686,7 +1686,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing spacers",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -1694,7 +1694,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Settled",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -1702,7 +1702,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Trip hazard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -1710,7 +1710,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing handrails",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -1718,7 +1718,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing safety glass",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -1749,7 +1749,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -1757,7 +1757,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -1765,7 +1765,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Treated Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -1773,7 +1773,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Railroad Ties",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -1781,7 +1781,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concrete",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -1789,7 +1789,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concrete Blocks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -1797,7 +1797,7 @@ var defaultTemplate = {
           "id": null,
           "key": "CMU or Blocks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -1805,7 +1805,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gabions",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -1813,7 +1813,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rockery",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -1821,7 +1821,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Masonry",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -1829,7 +1829,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cemented Stone",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -1860,7 +1860,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -1868,7 +1868,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -1876,7 +1876,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -1884,7 +1884,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -1892,7 +1892,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaning",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -1900,7 +1900,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaking or Drainage Concern",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -1908,7 +1908,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Trip or Falling Hazard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -1939,7 +1939,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -1947,7 +1947,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Water Feature",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -1955,7 +1955,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Drop-off or Retaining Wall",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -1963,7 +1963,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Steep Slope",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -1994,7 +1994,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -2002,7 +2002,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concrete",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -2010,7 +2010,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -2018,7 +2018,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Privacy",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -2026,7 +2026,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Chainlink",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -2034,7 +2034,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Masonry",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -2042,7 +2042,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rail",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -2050,7 +2050,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wire",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -2058,7 +2058,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Plastic or Vinyl",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -2089,7 +2089,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -2097,7 +2097,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Maginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -2105,7 +2105,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -2113,7 +2113,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -2121,7 +2121,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Trip or Falling Hazard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -2129,7 +2129,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaning",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -2137,7 +2137,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -2145,7 +2145,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify Adequate Height",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -2153,7 +2153,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazardous",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -2161,7 +2161,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -2192,7 +2192,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Inspected",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -2200,7 +2200,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor Earth-to-Wood Separation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -2208,7 +2208,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Yard Steps",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -2216,7 +2216,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Drainage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -2224,7 +2224,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Negative Surrounding Grade",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -2232,7 +2232,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Overgrown Foliage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -2240,7 +2240,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -2309,7 +2309,7 @@ var defaultTemplate = {
       "title": "Attached Steps or Platforms",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 1,
       "questions": [{
         "id": null,
@@ -2324,7 +2324,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -2332,7 +2332,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concrete",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -2340,7 +2340,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Pavers",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -2348,7 +2348,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stone",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -2356,7 +2356,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Brick",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -2364,7 +2364,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood or Composite",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -2372,7 +2372,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Covered",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -2403,7 +2403,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -2411,7 +2411,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -2419,7 +2419,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -2427,7 +2427,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify Attachment",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -2435,7 +2435,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose or Missing Railings",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -2443,7 +2443,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Trip Hazard(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -2451,7 +2451,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Typical Cracks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -2459,7 +2459,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Large Cracks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -2467,7 +2467,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gaps or Holes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -2475,7 +2475,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Weathered Finish",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -2483,7 +2483,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -2491,7 +2491,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Settled",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -2499,7 +2499,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Earth Contact",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -2507,7 +2507,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mildew",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -2515,7 +2515,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fungal Rot or Probed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -2523,7 +2523,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -2554,7 +2554,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -2562,7 +2562,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Uneven",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -2570,7 +2570,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Large Cracks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -2578,7 +2578,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Root Heaving",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -2586,7 +2586,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Moss Build-Up",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -2594,7 +2594,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Spacers",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -2602,7 +2602,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Settled",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -2610,7 +2610,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Trip Hazard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -2618,7 +2618,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Handrails",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -2626,7 +2626,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Safety Glass",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -2657,7 +2657,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -2665,7 +2665,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Raised",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -2673,7 +2673,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Roof-top",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -2681,7 +2681,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Covered",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -2689,7 +2689,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood or Composite",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -2697,7 +2697,7 @@ var defaultTemplate = {
           "id": null,
           "key": "PVC",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -2728,7 +2728,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -2736,7 +2736,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -2744,7 +2744,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -2752,7 +2752,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose or Missing Railings",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -2760,7 +2760,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Weathered Finish",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -2768,7 +2768,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -2776,7 +2776,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Settled",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -2784,7 +2784,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Earth Contact",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -2792,7 +2792,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mildew",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -2800,7 +2800,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fungal Rot or Probed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -2808,7 +2808,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify Attachment",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -2816,7 +2816,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -2884,7 +2884,7 @@ var defaultTemplate = {
   }, {
     "id": null,
     "title": "Exterior",
-    "sourceType": "Template",
+    "sourceType": "template",
     "inspectionId": null,
     "order": 2,
     "subsections": [{
@@ -2892,7 +2892,7 @@ var defaultTemplate = {
       "title": "Siding or Wall Cladding",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 0,
       "questions": [{
         "id": null,
@@ -2953,7 +2953,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Brick",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -2961,7 +2961,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stone",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -2969,7 +2969,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stucco",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -2977,7 +2977,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -2985,7 +2985,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vinyl",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -2993,7 +2993,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cement Board",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -3001,7 +3001,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -3009,7 +3009,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fiberboard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -3017,7 +3017,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hardi-Board or Plank",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -3025,7 +3025,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Panels or Sheets",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -3033,7 +3033,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Shingles",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -3041,7 +3041,7 @@ var defaultTemplate = {
           "id": null,
           "key": "T-111",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -3049,7 +3049,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Lapped",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -3057,7 +3057,7 @@ var defaultTemplate = {
           "id": null,
           "key": "T&G",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -3065,7 +3065,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vertical Channel",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -3073,7 +3073,7 @@ var defaultTemplate = {
           "id": null,
           "key": "EIFS",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -3081,7 +3081,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Pre 1996 EIFS",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -3089,7 +3089,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recalled LP",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 17,
           "remark": ""
@@ -3097,7 +3097,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Friable PACM",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 18,
           "remark": ""
@@ -3128,7 +3128,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -3136,7 +3136,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -3144,7 +3144,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -3152,7 +3152,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -3160,7 +3160,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gaps or Holes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -3168,7 +3168,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Buckled",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -3176,7 +3176,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Tight Butt Joints",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -3184,7 +3184,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Joint Flashing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -3192,7 +3192,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Broken or Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -3200,7 +3200,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inadequate Coverage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -3208,7 +3208,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Peeling Paint",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -3216,7 +3216,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Weathered",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -3224,7 +3224,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Pest Issues",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -3232,7 +3232,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cracked or Bulging",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -3240,7 +3240,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mildew",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -3248,7 +3248,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Deteriorated",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -3256,7 +3256,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fungal Rot or Probed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -3264,7 +3264,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 17,
           "remark": ""
@@ -3295,7 +3295,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -3303,7 +3303,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -3311,7 +3311,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -3319,7 +3319,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -3327,7 +3327,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -3335,7 +3335,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Defective",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -3343,7 +3343,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -3351,7 +3351,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gaps or Holes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -3359,7 +3359,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exposed Structure",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -3367,7 +3367,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Re-Evaluate or Repair",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -3398,7 +3398,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -3406,7 +3406,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fiberboard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -3414,7 +3414,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Masonry",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -3422,7 +3422,7 @@ var defaultTemplate = {
           "id": null,
           "key": "EIFS",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -3430,7 +3430,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -3438,7 +3438,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vinyl",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -3446,7 +3446,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Enclosed Soffit",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -3454,7 +3454,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Open Eaves",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -3462,7 +3462,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Screened Ventilation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -3470,7 +3470,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unflashed BRT or Out-Lookers",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -3501,7 +3501,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -3509,7 +3509,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -3517,7 +3517,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -3525,7 +3525,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -3533,7 +3533,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gaps or Holes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -3541,7 +3541,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Pieces",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -3549,7 +3549,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exposed Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -3557,7 +3557,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose or Missing Flashing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -3565,7 +3565,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor Protection or Coverage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -3573,7 +3573,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stains",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -3581,7 +3581,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Peeling Paint",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -3589,7 +3589,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Weathered or Worn",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -3597,7 +3597,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Deterioration",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -3605,7 +3605,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fungal Rot",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -3613,7 +3613,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Broken or Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -3621,7 +3621,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Pest Issues",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -3629,7 +3629,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Foliage Contact",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -3637,7 +3637,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Potential Hidden Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 17,
           "remark": ""
@@ -3645,7 +3645,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Re-Evaluation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 18,
           "remark": ""
@@ -3691,7 +3691,7 @@ var defaultTemplate = {
       "title": "Wall Fenestrations",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 1,
       "questions": [{
         "id": null,
@@ -3706,7 +3706,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -3714,7 +3714,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Aluminum or Metal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -3722,7 +3722,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Clad",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -3730,7 +3730,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vinyl",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -3738,7 +3738,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fiberglass",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -3769,7 +3769,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -3777,7 +3777,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -3785,7 +3785,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -3793,7 +3793,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gaps",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -3801,7 +3801,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Pieces",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -3809,7 +3809,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exposed Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -3817,7 +3817,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Flashing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -3825,7 +3825,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Weathered or Worn Finish",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -3833,7 +3833,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Peeling Paint or Inadequate Coverage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -3841,7 +3841,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Caulking",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -3849,7 +3849,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Broken Glass",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -3857,7 +3857,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Failed Thermal Seal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -3865,7 +3865,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -3873,7 +3873,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Deteriorated",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -3881,7 +3881,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fungal Rot",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -3912,7 +3912,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -3920,7 +3920,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -3928,7 +3928,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fiberglass",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -3959,7 +3959,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -3967,7 +3967,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -3975,7 +3975,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -3983,7 +3983,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Inadequate Threshold",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -3991,7 +3991,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Inadequate Weather-Strip",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -3999,7 +3999,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Inadequate Hardware",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -4007,7 +4007,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Repairs Needed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -4038,7 +4038,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -4046,7 +4046,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Weathered",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -4054,7 +4054,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stretched",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -4062,7 +4062,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cracked",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -4070,7 +4070,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gaps",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -4078,7 +4078,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -4086,7 +4086,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend sealing all perforations through the exterior wall surface",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -4132,7 +4132,7 @@ var defaultTemplate = {
       "title": "Attached Garage or Carport",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 2,
       "questions": [{
         "id": null,
@@ -4193,7 +4193,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -4201,7 +4201,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Curbside",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -4209,7 +4209,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Space",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -4217,7 +4217,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Public Garage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -4225,7 +4225,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Carport",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -4233,7 +4233,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Garage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -4241,7 +4241,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Attached",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -4249,7 +4249,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Detached",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -4280,7 +4280,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -4288,7 +4288,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concrete Slab",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -4296,7 +4296,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sealed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -4304,7 +4304,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Asphalt",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -4312,7 +4312,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Pavers or Cobblestone",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -4320,7 +4320,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gravel",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -4328,7 +4328,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Dirt",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -4359,7 +4359,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -4367,7 +4367,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -4375,7 +4375,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -4383,7 +4383,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sloping",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -4391,7 +4391,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Typical Cracks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -4399,7 +4399,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Large Cracks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -4407,7 +4407,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Trip Hazards",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -4415,7 +4415,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Efflorescence",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -4423,7 +4423,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -4431,7 +4431,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Excessive Storage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -4439,7 +4439,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -4470,7 +4470,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -4478,7 +4478,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Above Living Space",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -4486,7 +4486,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Below Living Space",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -4494,7 +4494,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Adjoining Walls",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -4525,7 +4525,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Penetrations",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -4533,7 +4533,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Pet Door",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -4541,7 +4541,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -4549,7 +4549,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -4557,7 +4557,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -4588,7 +4588,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Door",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -4596,7 +4596,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Threshod",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -4604,7 +4604,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hinges",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -4612,7 +4612,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Seal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -4620,7 +4620,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Repairs Needed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -4651,7 +4651,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -4659,7 +4659,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Blocked or Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -4667,7 +4667,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -4675,7 +4675,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -4683,7 +4683,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fiberglass",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -4714,7 +4714,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -4722,7 +4722,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -4730,7 +4730,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -4738,7 +4738,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -4746,7 +4746,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Needs Adjustment",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -4754,7 +4754,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -4785,7 +4785,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -4793,7 +4793,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Overhead",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -4801,7 +4801,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sliding",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -4809,7 +4809,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Roll-Up Panels",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -4817,7 +4817,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Tilt-Up Slab",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -4825,7 +4825,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Lites",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -4833,7 +4833,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -4841,7 +4841,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hardboard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -4849,7 +4849,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -4857,7 +4857,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fiberglass",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -4865,7 +4865,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Solid",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -4873,7 +4873,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hollow",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -4881,7 +4881,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Insulated",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -4912,7 +4912,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -4920,7 +4920,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -4928,7 +4928,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -4936,7 +4936,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -4944,7 +4944,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gaps",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -4952,7 +4952,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Security Concerns",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -4960,7 +4960,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Blocked or Inaccessible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -4968,7 +4968,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Locked Shut",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -4976,7 +4976,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stained",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -4984,7 +4984,7 @@ var defaultTemplate = {
           "id": null,
           "key": "De-Laminated",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -4992,7 +4992,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -5023,7 +5023,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -5031,7 +5031,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -5039,7 +5039,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Blocked",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -5047,7 +5047,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Access",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -5055,7 +5055,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Remote",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -5086,7 +5086,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -5094,7 +5094,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Disconnected or Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -5102,7 +5102,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Door Stops",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -5110,7 +5110,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Intermittent Function",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -5141,7 +5141,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -5149,7 +5149,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -5157,7 +5157,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -5165,7 +5165,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -5173,7 +5173,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Needs Adjustment",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -5181,7 +5181,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -5226,7 +5226,7 @@ var defaultTemplate = {
   }, {
     "id": null,
     "title": "Roofing",
-    "sourceType": "Template",
+    "sourceType": "template",
     "inspectionId": null,
     "order": 3,
     "subsections": [{
@@ -5234,7 +5234,7 @@ var defaultTemplate = {
       "title": "Roof Covering(s)",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 0,
       "questions": [{
         "id": null,
@@ -5295,7 +5295,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inspected or Walked on (Traversed) Roof",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -5303,7 +5303,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inspected or NOT Traversed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -5311,7 +5311,7 @@ var defaultTemplate = {
           "id": null,
           "key": "NOT Inspected",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -5319,7 +5319,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vulnerable to Traversing Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -5327,7 +5327,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unsafe Traversing Condition(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -5335,7 +5335,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -5366,7 +5366,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ground w or Binoculars",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -5374,7 +5374,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ladder",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -5382,7 +5382,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Eaves",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -5390,7 +5390,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Interior",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -5398,7 +5398,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Other Building",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -5429,7 +5429,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -5437,7 +5437,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hip",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -5445,7 +5445,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mansard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -5453,7 +5453,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Shed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -5461,7 +5461,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Flat",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -5469,7 +5469,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Dutch Hip",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -5477,7 +5477,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Combination",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -5508,7 +5508,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Steep",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -5516,7 +5516,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Medium",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -5524,7 +5524,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Low",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -5601,7 +5601,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Asphalt or Comp",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -5609,7 +5609,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rolled",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -5617,7 +5617,7 @@ var defaultTemplate = {
           "id": null,
           "key": "3-Tab",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -5625,7 +5625,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Multiple Thickness",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -5633,7 +5633,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Presidential",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -5641,7 +5641,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Corrugated Fiber Glass",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -5649,7 +5649,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Modified Bitumen",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -5657,7 +5657,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Torch-Down or Hot Tar",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -5665,7 +5665,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal or Standing Seam",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -5673,7 +5673,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal Shingle",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -5681,7 +5681,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood Shingle",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -5689,7 +5689,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cedar Shake",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -5697,7 +5697,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Clay Tile",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -5705,7 +5705,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concrete Tile",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -5713,7 +5713,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Slate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -5721,7 +5721,7 @@ var defaultTemplate = {
           "id": null,
           "key": "PVC Membrane",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -5752,7 +5752,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -5760,7 +5760,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -5768,7 +5768,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -5776,7 +5776,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Granule Loss",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -5784,7 +5784,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Broken or Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -5792,7 +5792,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing (Tabs)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -5800,7 +5800,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cupping or Curling",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -5808,7 +5808,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Aligned Gaps",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -5816,7 +5816,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cracked",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -5824,7 +5824,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Lifting",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -5832,7 +5832,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Moss",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -5840,7 +5840,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fungal Rot",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -5848,7 +5848,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rusted",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -5856,7 +5856,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exposed Fasteners",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -5864,7 +5864,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Professional Re-Evaluation or Remediation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -5895,7 +5895,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -5903,7 +5903,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -5911,7 +5911,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Woven Asphalt",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -5919,7 +5919,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cut Asphalt",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -5927,7 +5927,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Tile",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -5935,7 +5935,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concrete",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -5966,7 +5966,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -5974,7 +5974,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Maginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -5982,7 +5982,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -5990,7 +5990,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Defective",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -5998,7 +5998,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Broken or Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -6006,7 +6006,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rusted",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -6014,7 +6014,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Holes or Gaps",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -6022,7 +6022,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -6030,7 +6030,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Installation Defects",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -6038,7 +6038,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vulnerable Areas",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -6084,7 +6084,7 @@ var defaultTemplate = {
       "title": "Fenestrations",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 1,
       "questions": [{
         "id": null,
@@ -6099,7 +6099,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -6107,7 +6107,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Access",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -6115,7 +6115,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -6123,7 +6123,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Walls or Dormers",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -6131,7 +6131,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Chimney Chase(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -6139,7 +6139,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Class 'B' Vent(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -6147,7 +6147,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Dryer Vent",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -6155,7 +6155,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fan Vent(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -6163,7 +6163,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Plumbing DWV Pipes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -6171,7 +6171,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Antennae or Satellite Dish",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -6179,7 +6179,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cable or Wiring",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -6187,7 +6187,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Electical Mast",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -6218,7 +6218,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -6226,7 +6226,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -6234,7 +6234,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -6242,7 +6242,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Defective",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -6250,7 +6250,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Broken or Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -6258,7 +6258,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rusted",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -6266,7 +6266,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Raised Holes or Gaps",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -6274,7 +6274,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -6282,7 +6282,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Installation Defects",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -6290,7 +6290,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vulnerable Areas",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -6321,7 +6321,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -6329,7 +6329,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Access",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -6337,7 +6337,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -6368,7 +6368,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -6376,7 +6376,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -6384,7 +6384,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -6392,7 +6392,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Defective",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -6400,7 +6400,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Broken or Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -6408,7 +6408,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rusted",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -6416,7 +6416,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Holes or Gaps",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -6424,7 +6424,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -6432,7 +6432,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Installation Defects",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -6440,7 +6440,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Security Concern",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -6448,7 +6448,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vulnerable Areas",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -6479,7 +6479,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -6487,7 +6487,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -6495,7 +6495,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Installation Defects",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -6503,7 +6503,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rusted",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -6511,7 +6511,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Potential Future Concern",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -6542,7 +6542,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -6550,7 +6550,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -6558,7 +6558,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -6566,7 +6566,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Defective",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -6574,7 +6574,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Broken or Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -6582,7 +6582,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Raised",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -6590,7 +6590,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Holes or Gaps",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -6598,7 +6598,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -6606,7 +6606,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vulnerable Areas",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -6614,7 +6614,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Repair or Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -6660,7 +6660,7 @@ var defaultTemplate = {
       "title": "Gutters & Down-Spouts",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 2,
       "questions": [{
         "id": null,
@@ -6675,7 +6675,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Eave-Mounted",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -6683,7 +6683,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Internal with Scuppers",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -6691,7 +6691,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -6699,7 +6699,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Plastic or Vinyl",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -6707,7 +6707,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -6738,7 +6738,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -6746,7 +6746,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -6754,7 +6754,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -6762,7 +6762,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -6770,7 +6770,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose or Sagging",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -6778,7 +6778,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fallen or Pulled Away",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -6786,7 +6786,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Reversed Slope or Ponding",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -6794,7 +6794,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Clogged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -6802,7 +6802,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Debris",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -6810,7 +6810,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Granule Wash",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -6818,7 +6818,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Spillover Stains",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -6826,7 +6826,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Deteriorated Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -6834,7 +6834,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cracked or Split",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -6842,7 +6842,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Holes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -6850,7 +6850,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaking Joints",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -6858,7 +6858,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rust",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -6866,7 +6866,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Moss",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -6897,7 +6897,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Down-Spouts",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -6905,7 +6905,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Above Grade",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -6913,7 +6913,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Below Grade",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -6921,7 +6921,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -6952,7 +6952,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -6960,7 +6960,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -6968,7 +6968,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -6976,7 +6976,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -6984,7 +6984,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose or Disconnected",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -6992,7 +6992,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Clogged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -7000,7 +7000,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Open Gaps Around Downspout-to-Drain Connections",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -7008,7 +7008,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor Extensions or Splash Blocks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -7053,7 +7053,7 @@ var defaultTemplate = {
   }, {
     "id": null,
     "title": "Structural",
-    "sourceType": "Template",
+    "sourceType": "template",
     "inspectionId": null,
     "order": 4,
     "subsections": [{
@@ -7061,7 +7061,7 @@ var defaultTemplate = {
       "title": "Roof Framing (Visible In Attic)",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 0,
       "questions": [{
         "id": null,
@@ -7122,7 +7122,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -7130,7 +7130,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vaulted or No Attic",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -7138,7 +7138,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Partial Attic",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -7146,7 +7146,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Access",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -7154,7 +7154,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sealed Access",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -7162,7 +7162,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Trusses",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -7170,7 +7170,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stick-Framed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -7178,7 +7178,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rafters & Joists",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -7186,7 +7186,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Beams & Purlins",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -7194,7 +7194,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hips",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -7202,7 +7202,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Valleys",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -7233,7 +7233,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Plywood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -7241,7 +7241,7 @@ var defaultTemplate = {
           "id": null,
           "key": "OSB",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -7249,7 +7249,7 @@ var defaultTemplate = {
           "id": null,
           "key": "H-Clipped",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -7257,7 +7257,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Plank",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -7265,7 +7265,7 @@ var defaultTemplate = {
           "id": null,
           "key": "1x Skip Sheathing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -7296,7 +7296,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -7304,7 +7304,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -7312,7 +7312,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -7320,7 +7320,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sagging or Over-Spanned",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -7328,7 +7328,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Broken or Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -7336,7 +7336,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Structural Defect (Design Related)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -7367,7 +7367,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bracing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -7375,7 +7375,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Collar Ties",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -7383,7 +7383,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Knee Walls",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -7391,7 +7391,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stains",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -7399,7 +7399,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Deterioration",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -7407,7 +7407,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazardous or Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -7415,7 +7415,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Professional Re-Evaluation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -7461,7 +7461,7 @@ var defaultTemplate = {
       "title": "Floor Framing",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 1,
       "questions": [{
         "id": null,
@@ -7499,7 +7499,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -7507,7 +7507,7 @@ var defaultTemplate = {
           "id": null,
           "key": "4X Beams & Plank Diaphragm",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -7515,7 +7515,7 @@ var defaultTemplate = {
           "id": null,
           "key": "2X Joists & Diaphragm",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -7523,7 +7523,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Flat Truss",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -7554,7 +7554,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Steel",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -7562,7 +7562,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concrete",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -7570,7 +7570,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Laminated or Engineered",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -7578,7 +7578,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Dimensional Lumber",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -7609,7 +7609,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Joists",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -7617,7 +7617,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Lumber",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -7625,7 +7625,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sleepers",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -7656,7 +7656,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -7664,7 +7664,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood or TJI",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -7672,7 +7672,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -7703,7 +7703,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Foam-Crete",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -7711,7 +7711,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Diagonal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -7719,7 +7719,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Plank",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -7727,7 +7727,7 @@ var defaultTemplate = {
           "id": null,
           "key": "T&G or Shiplap",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -7735,7 +7735,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Plywood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -7743,7 +7743,7 @@ var defaultTemplate = {
           "id": null,
           "key": "OSB",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -7774,7 +7774,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Covered or Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -7782,7 +7782,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -7790,7 +7790,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Steel",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -7798,7 +7798,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concrete",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -7806,7 +7806,7 @@ var defaultTemplate = {
           "id": null,
           "key": "CMU (block)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -7837,7 +7837,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -7845,7 +7845,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -7853,7 +7853,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -7861,7 +7861,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -7869,7 +7869,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sagging or Over-Spanned",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -7877,7 +7877,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Broken",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -7885,7 +7885,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -7893,7 +7893,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Structural Defects (Design Related)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -7901,7 +7901,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Inadequate Bracing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -7909,7 +7909,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stains",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -7917,7 +7917,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Deterioration",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -7925,7 +7925,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazardous or Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -7933,7 +7933,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Professional Evaluation or Remediation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -7964,7 +7964,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -7972,7 +7972,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Open",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -7980,7 +7980,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Enclosed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -8011,7 +8011,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -8019,7 +8019,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -8027,7 +8027,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -8035,7 +8035,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Handrail",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -8066,7 +8066,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rails",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -8074,7 +8074,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Headroom",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -8082,7 +8082,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Support",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -8090,7 +8090,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Uneven Risers",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -8098,7 +8098,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Over-Height Step(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -8106,7 +8106,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Firewall",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -8114,7 +8114,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazardous or Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -8122,7 +8122,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Professional Evaluation or Remediation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -8153,7 +8153,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concrete",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -8161,7 +8161,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Dirt or Gravel",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -8169,7 +8169,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -8177,7 +8177,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Covered or Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -8208,7 +8208,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -8216,7 +8216,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -8224,7 +8224,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -8232,7 +8232,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Typical Settling Cracks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -8240,7 +8240,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Large Cracks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -8248,7 +8248,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stains",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -8256,7 +8256,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Efflorescence",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -8264,7 +8264,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Storage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -8272,7 +8272,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -8280,7 +8280,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazardous or Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -8288,7 +8288,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -8334,7 +8334,7 @@ var defaultTemplate = {
       "title": "Foundation",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 2,
       "questions": [{
         "id": null,
@@ -8349,7 +8349,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Perimeter Walls",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -8357,7 +8357,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Post or Beam",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -8365,7 +8365,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Columns",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -8373,7 +8373,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poured Concrete",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -8381,7 +8381,7 @@ var defaultTemplate = {
           "id": null,
           "key": "CMU(Block)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -8389,7 +8389,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Masonry",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -8397,7 +8397,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unmortared Stone or Brick",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -8405,7 +8405,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Logs",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -8413,7 +8413,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Treated Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -8421,7 +8421,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Strip Footings",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -8452,7 +8452,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -8460,7 +8460,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -8468,7 +8468,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -8476,7 +8476,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Imbedded Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -8484,7 +8484,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rock Pockets",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -8492,7 +8492,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Tie-Downs",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -8500,7 +8500,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stains",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -8508,7 +8508,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -8516,7 +8516,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Deterioration",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -8524,7 +8524,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Efflorescence",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -8532,7 +8532,7 @@ var defaultTemplate = {
           "id": null,
           "key": "EWC",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -8540,7 +8540,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fungal Rot or Probed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -8571,7 +8571,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Storage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -8579,7 +8579,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Perimeter Cover",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -8587,7 +8587,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Obstacles",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -8595,7 +8595,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inaccessible Area",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -8603,7 +8603,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Pests",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -8611,7 +8611,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Tight or Limited Mobility",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -8619,7 +8619,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazards or Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -8627,7 +8627,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Re-Evaluation or Remediation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -8658,7 +8658,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -8666,7 +8666,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exit Holes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -8674,7 +8674,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Frass",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -8682,7 +8682,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Galleries",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -8690,7 +8690,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -8698,7 +8698,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mildew or Bio-Growth",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -8706,7 +8706,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mold Sampled or Tested",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -8714,7 +8714,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fungal Rot or Probed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -8722,7 +8722,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -8753,7 +8753,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Typical Settling",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -8761,7 +8761,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vertical",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -8769,7 +8769,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Step",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -8777,7 +8777,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Horizontal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -8785,7 +8785,7 @@ var defaultTemplate = {
           "id": null,
           "key": "V-Cracking",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -8793,7 +8793,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Displaced",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -8801,7 +8801,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inactive",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -8809,7 +8809,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Active",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -8817,7 +8817,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Larger than one fourth inch",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -8825,7 +8825,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -8856,7 +8856,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Evidence of Flooding",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -8864,7 +8864,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -8872,7 +8872,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Efflorescence",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -8880,7 +8880,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Humidity",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -8888,7 +8888,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Old Stains",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -8896,7 +8896,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Silt Deposits",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -8904,7 +8904,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Soil on Vapor Barrier",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -8912,7 +8912,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fresh Stains",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -8920,7 +8920,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Standing Water",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -8951,7 +8951,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -8959,7 +8959,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -8967,7 +8967,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Tested",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -8975,7 +8975,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Operable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -8983,7 +8983,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -8991,7 +8991,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -9035,7 +9035,7 @@ var defaultTemplate = {
   }, {
     "id": null,
     "title": "Thermal",
-    "sourceType": "Template",
+    "sourceType": "template",
     "inspectionId": null,
     "order": 5,
     "subsections": [{
@@ -9043,7 +9043,7 @@ var defaultTemplate = {
       "title": "Attic",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 0,
       "questions": [{
         "id": null,
@@ -9104,7 +9104,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Attic",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -9112,7 +9112,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Access",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -9120,7 +9120,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Door",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -9128,7 +9128,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Pull Down Stair",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -9136,7 +9136,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Scuttle-Hole(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -9167,7 +9167,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hall",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -9175,7 +9175,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bedroom",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -9183,7 +9183,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Closet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -9191,7 +9191,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Laundry Room",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -9199,7 +9199,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Garage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -9207,7 +9207,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exterior",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -9238,7 +9238,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Near Access",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -9246,7 +9246,7 @@ var defaultTemplate = {
           "id": null,
           "key": "From Ladder",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -9254,7 +9254,7 @@ var defaultTemplate = {
           "id": null,
           "key": "At Roof Apex",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -9262,7 +9262,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Limited Accessibility",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -9270,7 +9270,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inspected (Traversed) Attic",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -9278,7 +9278,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Entered but NOT Traversed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -9286,7 +9286,7 @@ var defaultTemplate = {
           "id": null,
           "key": "NOT Entered or NOT Inspected",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -9294,7 +9294,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vulnerable to Traversing Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -9302,7 +9302,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unsafe Traversing Condition(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -9310,7 +9310,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -9341,7 +9341,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -9349,7 +9349,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rafters",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -9357,7 +9357,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ceiling Joists",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -9388,7 +9388,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Installed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -9396,7 +9396,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Determined",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -9404,7 +9404,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inadequate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -9412,7 +9412,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Varied",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -9420,7 +9420,7 @@ var defaultTemplate = {
           "id": null,
           "key": "<2 inches R 5",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -9428,7 +9428,7 @@ var defaultTemplate = {
           "id": null,
           "key": "<3 inches R-9+",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -9436,7 +9436,7 @@ var defaultTemplate = {
           "id": null,
           "key": "3 inches R-11",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -9444,7 +9444,7 @@ var defaultTemplate = {
           "id": null,
           "key": "4 inches R-13",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -9452,7 +9452,7 @@ var defaultTemplate = {
           "id": null,
           "key": "5 inches R-15",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -9460,7 +9460,7 @@ var defaultTemplate = {
           "id": null,
           "key": "6 inches R-19",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -9468,7 +9468,7 @@ var defaultTemplate = {
           "id": null,
           "key": "2 hard foam R20",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -9476,7 +9476,7 @@ var defaultTemplate = {
           "id": null,
           "key": "8-10 inches R-28+",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -9484,7 +9484,7 @@ var defaultTemplate = {
           "id": null,
           "key": "10-12 inches R-32+",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -9492,7 +9492,7 @@ var defaultTemplate = {
           "id": null,
           "key": "12-14 inches R-36+",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -9500,7 +9500,7 @@ var defaultTemplate = {
           "id": null,
           "key": "14-16 inches R-38+",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -9508,7 +9508,7 @@ var defaultTemplate = {
           "id": null,
           "key": "16-18 inches R- 40+",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -9516,7 +9516,7 @@ var defaultTemplate = {
           "id": null,
           "key": "18-20 inches R- 42+",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -9524,7 +9524,7 @@ var defaultTemplate = {
           "id": null,
           "key": "20-22 inches R- 44+",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 17,
           "remark": ""
@@ -9532,7 +9532,7 @@ var defaultTemplate = {
           "id": null,
           "key": "22-24 inches R- 46+",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 18,
           "remark": ""
@@ -9563,7 +9563,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fiber Glass",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -9571,7 +9571,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cellulose",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -9579,7 +9579,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vermiculite",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -9587,7 +9587,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mineral or Rock Wool",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -9595,7 +9595,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Batts",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -9603,7 +9603,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -9611,7 +9611,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood Shavings",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -9642,7 +9642,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -9650,7 +9650,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -9658,7 +9658,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -9666,7 +9666,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Areas",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -9674,7 +9674,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Uneven Placement",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -9682,7 +9682,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -9713,7 +9713,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Eaves",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -9721,7 +9721,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -9729,7 +9729,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Top",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -9737,7 +9737,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ridge",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -9745,7 +9745,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Powered Vent(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -9753,7 +9753,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Attic Fan(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -9784,7 +9784,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -9792,7 +9792,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -9800,7 +9800,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -9808,7 +9808,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor or Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -9816,7 +9816,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Odors",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -9824,7 +9824,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Excessive Heat",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -9832,7 +9832,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ventilation Appears Inadequate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -9840,7 +9840,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Effectiveness NOT Evaluated",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -9848,7 +9848,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -9879,7 +9879,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -9887,7 +9887,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Condensation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -9895,7 +9895,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Roof Leaks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -9903,7 +9903,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Old Stains or Inactive",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -9911,7 +9911,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fresh Stains or Active",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -9919,7 +9919,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mildew or Mold",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -9927,7 +9927,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stained Diaphragm",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -9935,7 +9935,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wet Insulation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -9943,7 +9943,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -9951,7 +9951,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -9982,7 +9982,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -9990,7 +9990,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Prior or Inactive",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -9998,7 +9998,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Live or Active",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -10006,7 +10006,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Nesting Materials",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -10014,7 +10014,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Scat",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -10022,7 +10022,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Insect",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -10030,7 +10030,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bee or Wasp",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -10038,7 +10038,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bird",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -10046,7 +10046,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rodent",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -10054,7 +10054,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Racoon",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -10062,7 +10062,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Potential Points of Pest Entry",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -10070,7 +10070,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazardous or Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -10078,7 +10078,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Professional Evaluation or Remediation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -10147,7 +10147,7 @@ var defaultTemplate = {
       "title": "Crawl Spaces or Unfinished Basements",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 1,
       "questions": [{
         "id": null,
@@ -10162,7 +10162,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Door or Panel",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -10170,7 +10170,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Scuttle-Hole",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -10178,7 +10178,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Access",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -10186,7 +10186,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Crawl-Space",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -10194,7 +10194,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -10225,7 +10225,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hall",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -10233,7 +10233,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bedroom",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -10241,7 +10241,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Closet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -10249,7 +10249,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Laundry Room",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -10257,7 +10257,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Garage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -10265,7 +10265,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exterior",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -10273,7 +10273,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inspected Basement or Crawl",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -10281,7 +10281,7 @@ var defaultTemplate = {
           "id": null,
           "key": "NOT Entered or NOT Inspected",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -10289,7 +10289,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Limited Accessibility",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -10320,7 +10320,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Near Access",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -10328,7 +10328,7 @@ var defaultTemplate = {
           "id": null,
           "key": "From Exterior",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -10336,7 +10336,7 @@ var defaultTemplate = {
           "id": null,
           "key": "At Center Only",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -10344,7 +10344,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vulnerable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -10352,7 +10352,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -10383,7 +10383,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -10391,7 +10391,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Floor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -10399,7 +10399,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rim Joists",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -10430,7 +10430,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fiberglass Batts",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -10438,7 +10438,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Blown-in Cellulose",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -10446,7 +10446,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Foam Board",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -10477,7 +10477,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -10485,7 +10485,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wired",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -10493,7 +10493,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stapled",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -10501,7 +10501,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Twine",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -10509,7 +10509,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Lathe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -10540,7 +10540,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -10548,7 +10548,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -10556,7 +10556,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -10564,7 +10564,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Areas",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -10572,7 +10572,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fallen Down",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -10580,7 +10580,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -10588,7 +10588,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Installed Upside-Down",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -10596,7 +10596,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ineffective Installation or Gaps",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -10627,7 +10627,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -10635,7 +10635,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Foundation Vents",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -10643,7 +10643,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Powered Vent(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -10651,7 +10651,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fan(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -10682,7 +10682,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -10690,7 +10690,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -10698,7 +10698,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -10706,7 +10706,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Effectiveness NOT Evaluated",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -10714,7 +10714,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -10745,7 +10745,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -10753,7 +10753,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -10761,7 +10761,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -10769,7 +10769,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gaps or Displaced Areas",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -10777,7 +10777,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exposed Earth",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -10808,7 +10808,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -10816,7 +10816,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Condensation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -10824,7 +10824,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Efflorescence",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -10832,7 +10832,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Old Stains",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -10840,7 +10840,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fresh",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -10848,7 +10848,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Standing Water",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -10879,7 +10879,7 @@ var defaultTemplate = {
           "id": null,
           "key": "To Out-Fall",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -10887,7 +10887,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Interior Plane",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -10895,7 +10895,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None Apparent",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -10903,7 +10903,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sump Pump",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -10911,7 +10911,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Functional",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -10942,7 +10942,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -10950,7 +10950,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Prior or Inactive",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -10958,7 +10958,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Live or Active",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -10966,7 +10966,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Nesting Materials",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -10974,7 +10974,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Scat",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -10982,7 +10982,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Insect",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -10990,7 +10990,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bee or Wasp",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -10998,7 +10998,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bird",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -11006,7 +11006,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rodent",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -11014,7 +11014,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Racoon",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -11022,7 +11022,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Potential Point Pest Entry",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -11030,7 +11030,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazardous or Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -11038,7 +11038,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Professional Evaluation or Remediation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -11084,7 +11084,7 @@ var defaultTemplate = {
       "title": "Interior Ventilation or Exhaust Fans",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 2,
       "questions": [{
         "id": null,
@@ -11099,7 +11099,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Whole House Fan(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -11107,7 +11107,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Make-Up Air Vent(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -11115,7 +11115,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Furnace Blower(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -11123,7 +11123,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ceiling-Mounted Fan(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -11154,7 +11154,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -11162,7 +11162,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -11170,7 +11170,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor or Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -11178,7 +11178,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Open Blade",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -11186,7 +11186,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Caged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -11194,7 +11194,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Remote Control",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -11225,7 +11225,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bathroom Exhaust Fan(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -11233,7 +11233,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Kitchen Fan(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -11241,7 +11241,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Laundry Fan(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -11249,7 +11249,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -11257,7 +11257,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Weak or Noisy",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -11265,7 +11265,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -11296,7 +11296,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -11304,7 +11304,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -11312,7 +11312,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor or Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -11320,7 +11320,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vented Improperly (Inside Building Envelope)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -11328,7 +11328,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -11336,7 +11336,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recirculating-Only Type",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -11344,7 +11344,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Clogged Grease Filter",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -11352,7 +11352,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Restricted (Collapsed or Blocked)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -11360,7 +11360,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Venting Into Attic Space",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -11368,7 +11368,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Aimed at Gable, Eave, or Roof Vents",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -11376,7 +11376,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fallen Loose",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -11384,7 +11384,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -11452,7 +11452,7 @@ var defaultTemplate = {
   }, {
     "id": null,
     "title": "Plumbing",
-    "sourceType": "Template",
+    "sourceType": "template",
     "inspectionId": null,
     "order": 6,
     "subsections": [{
@@ -11460,7 +11460,7 @@ var defaultTemplate = {
       "title": "Plumbing System",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 0,
       "questions": [{
         "id": null,
@@ -11521,7 +11521,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unknown or Verify",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -11529,7 +11529,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Public Water",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -11537,7 +11537,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Shared Well",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -11545,7 +11545,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Private Well",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -11576,7 +11576,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -11584,7 +11584,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Closet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -11592,7 +11592,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Well House",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -11600,7 +11600,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -11608,7 +11608,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Found",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -11616,7 +11616,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Garage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -11624,7 +11624,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Near Waterheater",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -11632,7 +11632,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Yard Box",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -11640,7 +11640,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Basement",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -11648,7 +11648,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Crawl Space",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -11656,7 +11656,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exterior Wall",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -11664,7 +11664,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Interior Wall",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -11672,7 +11672,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Interior Utility Closet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -11680,7 +11680,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inside Cabinet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -11688,7 +11688,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Laundry Closet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -11696,7 +11696,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bedroom",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -11704,7 +11704,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mechanical Room",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -11735,7 +11735,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unknown",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -11743,7 +11743,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -11751,7 +11751,7 @@ var defaultTemplate = {
           "id": null,
           "key": "OFF",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -11759,7 +11759,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inadequate (<45psi)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -11767,7 +11767,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Adequate (45-85psi)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -11775,7 +11775,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Excessive (>85psi)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -11806,7 +11806,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Varies Per Unit",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -11814,7 +11814,7 @@ var defaultTemplate = {
           "id": null,
           "key": "See WH Schedule",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -11822,7 +11822,7 @@ var defaultTemplate = {
           "id": null,
           "key": "WH OFF or Verify Function",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -11830,7 +11830,7 @@ var defaultTemplate = {
           "id": null,
           "key": "WH on Vacation Mode",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -11838,7 +11838,7 @@ var defaultTemplate = {
           "id": null,
           "key": "See Interior Section",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -11846,7 +11846,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inadequate (65-85 degrees)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -11854,7 +11854,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Normal (85-115 degrees)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -11862,7 +11862,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hot (115-120 degrees)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -11870,7 +11870,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Scalding Hazard (>120 degrees)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -11901,7 +11901,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Public Sewer",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -11909,7 +11909,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Shared Septic",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -11917,7 +11917,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Private Septic & Drainfield",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -11925,7 +11925,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Private Septic & Mound",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -11933,7 +11933,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Private Septic & Leech Line",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -11941,7 +11941,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unknown or Verify",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -11972,7 +11972,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Copper",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -11980,7 +11980,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Galvanized",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -11988,7 +11988,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Plastic or CPVC",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -11996,7 +11996,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Polybutylene",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -12004,7 +12004,7 @@ var defaultTemplate = {
           "id": null,
           "key": "PEX",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -12035,7 +12035,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12043,7 +12043,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaking",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -12051,7 +12051,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unprotected or Freezing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -12059,7 +12059,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Discolered Water",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -12067,7 +12067,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Odor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -12121,7 +12121,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Low",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12129,7 +12129,7 @@ var defaultTemplate = {
           "id": null,
           "key": "High",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -12137,7 +12137,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Normal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -12145,7 +12145,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -12153,7 +12153,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Shut-Off",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -12161,7 +12161,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Winterized",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -12192,7 +12192,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Copper",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12200,7 +12200,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Galvanized",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -12208,7 +12208,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Plastic or CPVC",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -12216,7 +12216,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Polybutylene",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -12224,7 +12224,7 @@ var defaultTemplate = {
           "id": null,
           "key": "PEX",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -12255,7 +12255,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Fully Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12263,7 +12263,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -12271,7 +12271,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -12279,7 +12279,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -12287,7 +12287,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cross Connections",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -12295,7 +12295,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -12326,7 +12326,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Service Entry",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12334,7 +12334,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unknown",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -12342,7 +12342,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unlikely",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -12373,7 +12373,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Yes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12381,7 +12381,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -12389,7 +12389,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -12420,7 +12420,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Copper",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12428,7 +12428,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cast Iron",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -12436,7 +12436,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Galvanized",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -12444,7 +12444,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Plastic or ABS or PVC",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -12475,7 +12475,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Fully Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12483,7 +12483,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -12491,7 +12491,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Maginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -12499,7 +12499,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -12507,7 +12507,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -12515,7 +12515,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unsupported",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -12561,7 +12561,7 @@ var defaultTemplate = {
       "title": "Faucets or Fixtures",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 1,
       "questions": [{
         "id": null,
@@ -12576,7 +12576,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Functional",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12584,7 +12584,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Intermittent Function",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -12592,7 +12592,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -12600,7 +12600,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Incomplete",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -12608,7 +12608,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -12616,7 +12616,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Broken or Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -12647,7 +12647,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hose Bibb",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12655,7 +12655,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wall Stop",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -12663,7 +12663,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Faucet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -12671,7 +12671,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sprayer",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -12702,7 +12702,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Kitchen",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12710,7 +12710,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Master Bath",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -12718,7 +12718,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Main Bath",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -12726,7 +12726,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Half Bath",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -12734,7 +12734,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Laundry",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -12742,7 +12742,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bar",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -12773,7 +12773,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vegetable Sink",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12781,7 +12781,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Insta-Hot",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -12789,7 +12789,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Water Filter",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -12797,7 +12797,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ice Maker",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -12828,7 +12828,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Noisy",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12836,7 +12836,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Defective",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -12867,7 +12867,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Airgap",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12898,7 +12898,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Functional",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12906,7 +12906,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -12914,7 +12914,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Intermittent Function",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -12922,7 +12922,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Defects or Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -12953,7 +12953,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Functional",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -12961,7 +12961,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Surface Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -12969,7 +12969,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cabinet Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -12977,7 +12977,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cross Connection",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -12985,7 +12985,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Improve Caulking at Sink, Back-Splash, Tub Deck, Shower Surround, Floor, Wood or MDF Molding",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -13016,7 +13016,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unsealed (Recommend Sealing)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -13024,7 +13024,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cracked, Loose, or Missing Grout",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -13055,7 +13055,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Functional",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -13063,7 +13063,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Stopper",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -13071,7 +13071,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Inoperable Overflow",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -13079,7 +13079,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Clog or Slow Drain",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -13087,7 +13087,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stained Drainpipe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -13095,7 +13095,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Drips or Leaks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -13103,7 +13103,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Defects or Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -13111,7 +13111,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -13119,7 +13119,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -13150,7 +13150,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Kitchen",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -13158,7 +13158,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Master Bath",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -13166,7 +13166,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Main Bath",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -13174,7 +13174,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Half Bath",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -13182,7 +13182,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Laundry",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -13190,7 +13190,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bar",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -13221,7 +13221,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -13229,7 +13229,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -13237,7 +13237,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Runs Continuously",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -13245,7 +13245,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -13253,7 +13253,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose Bowl",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -13261,7 +13261,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -13292,7 +13292,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ceramic",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -13300,7 +13300,7 @@ var defaultTemplate = {
           "id": null,
           "key": "FG",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -13308,7 +13308,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Masonite or Laminate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -13316,7 +13316,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Slab",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -13324,7 +13324,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Jacuzzi",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -13355,7 +13355,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Functional",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -13363,7 +13363,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -13371,7 +13371,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stains",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -13379,7 +13379,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cross Connection",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -13387,7 +13387,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Defective",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -13395,7 +13395,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose Tile",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -13403,7 +13403,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cracked or Broken",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -13411,7 +13411,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaky Shower Head",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -13419,7 +13419,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaky Faucet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -13427,7 +13427,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaky Sprayer",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -13473,7 +13473,7 @@ var defaultTemplate = {
       "title": "Water Heater",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 2,
       "questions": [{
         "id": null,
@@ -13488,7 +13488,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gas or Propane",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -13496,7 +13496,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Electric",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -13504,7 +13504,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Oil",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -13512,7 +13512,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Solar",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -13520,7 +13520,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Geo Thermal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -13551,7 +13551,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unknown",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -13559,7 +13559,7 @@ var defaultTemplate = {
           "id": null,
           "key": "A O Smith",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -13567,7 +13567,7 @@ var defaultTemplate = {
           "id": null,
           "key": "American",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -13575,7 +13575,7 @@ var defaultTemplate = {
           "id": null,
           "key": "American Standard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -13583,7 +13583,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Amtrol",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -13591,7 +13591,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Aqua Star or Bosch",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -13599,7 +13599,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bosch",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -13607,7 +13607,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bradford White",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -13615,7 +13615,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Briggs",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -13623,7 +13623,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Craftmaster",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -13631,7 +13631,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Eccotemp",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -13639,7 +13639,7 @@ var defaultTemplate = {
           "id": null,
           "key": "GE",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -13647,7 +13647,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hoyt",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -13655,7 +13655,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Kenmore",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -13663,7 +13663,7 @@ var defaultTemplate = {
           "id": null,
           "key": "KD Navien",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -13671,7 +13671,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Lochinvar",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -13679,7 +13679,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Maytag",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -13687,7 +13687,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mitsubishi",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 17,
           "remark": ""
@@ -13695,7 +13695,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Munchkin",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 18,
           "remark": ""
@@ -13703,7 +13703,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Navien",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 19,
           "remark": ""
@@ -13711,7 +13711,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Navion",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 20,
           "remark": ""
@@ -13719,7 +13719,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Noritz",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 21,
           "remark": ""
@@ -13727,7 +13727,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Polaris",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 22,
           "remark": ""
@@ -13735,7 +13735,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Reliance",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 23,
           "remark": ""
@@ -13743,7 +13743,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rheem",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 24,
           "remark": ""
@@ -13751,7 +13751,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ruud",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 25,
           "remark": ""
@@ -13759,7 +13759,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Richmond",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 26,
           "remark": ""
@@ -13767,7 +13767,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rinnai",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 27,
           "remark": ""
@@ -13775,7 +13775,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sears Roebuck",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 28,
           "remark": ""
@@ -13783,7 +13783,7 @@ var defaultTemplate = {
           "id": null,
           "key": "State",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 29,
           "remark": ""
@@ -13791,7 +13791,7 @@ var defaultTemplate = {
           "id": null,
           "key": "State Select",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 30,
           "remark": ""
@@ -13799,7 +13799,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Takagi",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 31,
           "remark": ""
@@ -13807,7 +13807,7 @@ var defaultTemplate = {
           "id": null,
           "key": "True Value",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 32,
           "remark": ""
@@ -13815,7 +13815,7 @@ var defaultTemplate = {
           "id": null,
           "key": "US Craftmaster",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 33,
           "remark": ""
@@ -13823,7 +13823,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Whirlpool",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 34,
           "remark": ""
@@ -13877,7 +13877,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -13885,7 +13885,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -13893,7 +13893,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Tank-less / Unlimited",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -13901,7 +13901,7 @@ var defaultTemplate = {
           "id": null,
           "key": "On Demand",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -13909,7 +13909,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Point of Use",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -13917,7 +13917,7 @@ var defaultTemplate = {
           "id": null,
           "key": "2.5",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -13925,7 +13925,7 @@ var defaultTemplate = {
           "id": null,
           "key": "6",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -13933,7 +13933,7 @@ var defaultTemplate = {
           "id": null,
           "key": "12",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -13941,7 +13941,7 @@ var defaultTemplate = {
           "id": null,
           "key": "30",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -13949,7 +13949,7 @@ var defaultTemplate = {
           "id": null,
           "key": "40",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -13957,7 +13957,7 @@ var defaultTemplate = {
           "id": null,
           "key": "41",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -13965,7 +13965,7 @@ var defaultTemplate = {
           "id": null,
           "key": "42",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -13973,7 +13973,7 @@ var defaultTemplate = {
           "id": null,
           "key": "45",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -13981,7 +13981,7 @@ var defaultTemplate = {
           "id": null,
           "key": "47",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -13989,7 +13989,7 @@ var defaultTemplate = {
           "id": null,
           "key": "48",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -13997,7 +13997,7 @@ var defaultTemplate = {
           "id": null,
           "key": "50",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -14005,7 +14005,7 @@ var defaultTemplate = {
           "id": null,
           "key": "52",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -14013,7 +14013,7 @@ var defaultTemplate = {
           "id": null,
           "key": "55",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 17,
           "remark": ""
@@ -14021,7 +14021,7 @@ var defaultTemplate = {
           "id": null,
           "key": "60",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 18,
           "remark": ""
@@ -14029,7 +14029,7 @@ var defaultTemplate = {
           "id": null,
           "key": "62",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 19,
           "remark": ""
@@ -14037,7 +14037,7 @@ var defaultTemplate = {
           "id": null,
           "key": "65",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 20,
           "remark": ""
@@ -14045,7 +14045,7 @@ var defaultTemplate = {
           "id": null,
           "key": "66",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 21,
           "remark": ""
@@ -14053,7 +14053,7 @@ var defaultTemplate = {
           "id": null,
           "key": "70",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 22,
           "remark": ""
@@ -14061,7 +14061,7 @@ var defaultTemplate = {
           "id": null,
           "key": "75",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 23,
           "remark": ""
@@ -14069,7 +14069,7 @@ var defaultTemplate = {
           "id": null,
           "key": "80",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 24,
           "remark": ""
@@ -14077,7 +14077,7 @@ var defaultTemplate = {
           "id": null,
           "key": "91",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 25,
           "remark": ""
@@ -14085,7 +14085,7 @@ var defaultTemplate = {
           "id": null,
           "key": "100",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 26,
           "remark": ""
@@ -14093,7 +14093,7 @@ var defaultTemplate = {
           "id": null,
           "key": "boiler (119)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 27,
           "remark": ""
@@ -14193,7 +14193,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -14201,7 +14201,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Data Plate Inaccessible or Illegible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -14209,7 +14209,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Loose Seismic Restraints",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -14240,7 +14240,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -14248,7 +14248,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -14256,7 +14256,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Reduced Extension",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -14264,7 +14264,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor Extension Termination",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -14295,7 +14295,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -14303,7 +14303,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -14311,7 +14311,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Flex Ducting",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -14319,7 +14319,7 @@ var defaultTemplate = {
           "id": null,
           "key": "PVC",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -14327,7 +14327,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Condensate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -14335,7 +14335,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rust",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -14343,7 +14343,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Corrosion",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -14351,7 +14351,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify Proper Pitch",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -14359,7 +14359,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Disconnected",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -14367,7 +14367,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Into Masonry Chase",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -14375,7 +14375,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Liner",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -14383,7 +14383,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Back-Drafting",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -14391,7 +14391,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -14399,7 +14399,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Professional Re-Evaluation or Remediation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -14444,7 +14444,7 @@ var defaultTemplate = {
   }, {
     "id": null,
     "title": "Heating",
-    "sourceType": "Template",
+    "sourceType": "template",
     "inspectionId": null,
     "order": 7,
     "subsections": [{
@@ -14452,7 +14452,7 @@ var defaultTemplate = {
       "title": "Heating System",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 0,
       "questions": [{
         "id": null,
@@ -14513,7 +14513,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gas",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -14521,7 +14521,7 @@ var defaultTemplate = {
           "id": null,
           "key": "LP",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -14529,7 +14529,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Electric",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -14537,7 +14537,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Oil",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -14545,7 +14545,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Solar",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -14553,7 +14553,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wind",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -14561,7 +14561,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Geo Thermal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -14592,7 +14592,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Central Forced Air",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -14600,7 +14600,7 @@ var defaultTemplate = {
           "id": null,
           "key": "In-Wall Space Heaters",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -14608,7 +14608,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Baseboard Wall",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -14616,7 +14616,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Radiant",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -14647,7 +14647,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Water",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -14655,7 +14655,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Steam",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -14663,7 +14663,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Radiator",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -14694,7 +14694,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Air",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -14702,7 +14702,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Water",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -14710,7 +14710,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ground",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -14741,7 +14741,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -14749,7 +14749,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Solid Fuel(Pellet)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -14757,7 +14757,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gas Log",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -14765,7 +14765,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify Clearance to Combustibles",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -14796,7 +14796,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Passive",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -14804,7 +14804,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Heat Sink",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -14812,7 +14812,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Photo-Voltaic",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -14820,7 +14820,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Panels",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -14828,7 +14828,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Convection",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -14874,7 +14874,7 @@ var defaultTemplate = {
       "title": "Central Furnace or Heat Pump",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 1,
       "questions": [{
         "id": null,
@@ -14889,7 +14889,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -14897,7 +14897,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Not Installed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -14905,7 +14905,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -14913,7 +14913,7 @@ var defaultTemplate = {
           "id": null,
           "key": "American",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -14921,7 +14921,7 @@ var defaultTemplate = {
           "id": null,
           "key": "American Standard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -14929,7 +14929,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Arcoaire",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -14937,7 +14937,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Armstrong",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -14945,7 +14945,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Amtrol",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -14953,7 +14953,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -14961,7 +14961,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Beckett",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -14969,7 +14969,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bradford White",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -14977,7 +14977,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bryant",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -14985,7 +14985,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Burnham",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -14993,7 +14993,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cadet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -15001,7 +15001,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Carrier",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -15009,7 +15009,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Coleman",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -15017,7 +15017,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Coleman Evcon",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -15025,7 +15025,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Comfortmaker",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 17,
           "remark": ""
@@ -15033,7 +15033,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concord",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 18,
           "remark": ""
@@ -15041,7 +15041,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Daikin Industries",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 19,
           "remark": ""
@@ -15049,7 +15049,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Evcon",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 20,
           "remark": ""
@@ -15057,7 +15057,7 @@ var defaultTemplate = {
           "id": null,
           "key": "First Co.",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 21,
           "remark": ""
@@ -15065,7 +15065,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Flo-Aire",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 22,
           "remark": ""
@@ -15073,7 +15073,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Frigidaire",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 23,
           "remark": ""
@@ -15081,7 +15081,7 @@ var defaultTemplate = {
           "id": null,
           "key": "GE",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 24,
           "remark": ""
@@ -15089,7 +15089,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Goodman",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 25,
           "remark": ""
@@ -15097,7 +15097,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Greenheck",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 26,
           "remark": ""
@@ -15105,7 +15105,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Heil",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 27,
           "remark": ""
@@ -15113,7 +15113,7 @@ var defaultTemplate = {
           "id": null,
           "key": "ICP",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 28,
           "remark": ""
@@ -15121,7 +15121,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Intertherm",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 29,
           "remark": ""
@@ -15129,7 +15129,7 @@ var defaultTemplate = {
           "id": null,
           "key": "KD Navien",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 30,
           "remark": ""
@@ -15137,7 +15137,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Kelvinator (Nordyne)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 31,
           "remark": ""
@@ -15145,7 +15145,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Kenmore",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 32,
           "remark": ""
@@ -15153,7 +15153,7 @@ var defaultTemplate = {
           "id": null,
           "key": "King",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 33,
           "remark": ""
@@ -15161,7 +15161,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Lennox",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 34,
           "remark": ""
@@ -15169,7 +15169,7 @@ var defaultTemplate = {
           "id": null,
           "key": "MagicAire",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 35,
           "remark": ""
@@ -15177,7 +15177,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Markel",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 36,
           "remark": ""
@@ -15185,7 +15185,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marley",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 37,
           "remark": ""
@@ -15193,7 +15193,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mayflower",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 38,
           "remark": ""
@@ -15201,7 +15201,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Maytag",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 39,
           "remark": ""
@@ -15209,7 +15209,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mitsubishi",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 40,
           "remark": ""
@@ -15217,7 +15217,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Munchkin",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 41,
           "remark": ""
@@ -15225,7 +15225,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Navien",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 42,
           "remark": ""
@@ -15233,7 +15233,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Nordyne",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 43,
           "remark": ""
@@ -15241,7 +15241,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Payne",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 44,
           "remark": ""
@@ -15249,7 +15249,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Quatro",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 45,
           "remark": ""
@@ -15257,7 +15257,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Radco",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 46,
           "remark": ""
@@ -15265,7 +15265,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Resco",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 47,
           "remark": ""
@@ -15273,7 +15273,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rheem",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 48,
           "remark": ""
@@ -15281,7 +15281,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rinnai",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 49,
           "remark": ""
@@ -15289,7 +15289,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ruud",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 50,
           "remark": ""
@@ -15297,7 +15297,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sears",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 51,
           "remark": ""
@@ -15305,7 +15305,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Seisco",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 52,
           "remark": ""
@@ -15313,7 +15313,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Steel Weld",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 53,
           "remark": ""
@@ -15321,7 +15321,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sundial / Square D",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 54,
           "remark": ""
@@ -15329,7 +15329,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Tempstar",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 55,
           "remark": ""
@@ -15337,7 +15337,7 @@ var defaultTemplate = {
           "id": null,
           "key": "TPI Corporation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 56,
           "remark": ""
@@ -15345,7 +15345,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Thermo Pride",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 57,
           "remark": ""
@@ -15353,7 +15353,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Trane",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 58,
           "remark": ""
@@ -15361,7 +15361,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Turbonics",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 59,
           "remark": ""
@@ -15369,7 +15369,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vaillant",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 60,
           "remark": ""
@@ -15377,7 +15377,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Weil-McLain",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 61,
           "remark": ""
@@ -15385,7 +15385,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wesco",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 62,
           "remark": ""
@@ -15393,7 +15393,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Westinghouse",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 63,
           "remark": ""
@@ -15401,7 +15401,7 @@ var defaultTemplate = {
           "id": null,
           "key": "York",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 64,
           "remark": ""
@@ -15432,7 +15432,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -15440,7 +15440,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -15448,7 +15448,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Zone-Controlled",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -15456,7 +15456,7 @@ var defaultTemplate = {
           "id": null,
           "key": "240 Volt",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -15464,7 +15464,7 @@ var defaultTemplate = {
           "id": null,
           "key": ".50 - 1.01 GPH",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -15472,7 +15472,7 @@ var defaultTemplate = {
           "id": null,
           "key": "80 Gallon",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -15480,7 +15480,7 @@ var defaultTemplate = {
           "id": null,
           "key": "119 Gallon",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -15488,7 +15488,7 @@ var defaultTemplate = {
           "id": null,
           "key": "1 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -15496,7 +15496,7 @@ var defaultTemplate = {
           "id": null,
           "key": "1.5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -15504,7 +15504,7 @@ var defaultTemplate = {
           "id": null,
           "key": "2 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -15512,7 +15512,7 @@ var defaultTemplate = {
           "id": null,
           "key": "2.5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -15520,7 +15520,7 @@ var defaultTemplate = {
           "id": null,
           "key": "3 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -15528,7 +15528,7 @@ var defaultTemplate = {
           "id": null,
           "key": "3.5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -15536,7 +15536,7 @@ var defaultTemplate = {
           "id": null,
           "key": "4 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -15544,7 +15544,7 @@ var defaultTemplate = {
           "id": null,
           "key": "4.5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -15552,7 +15552,7 @@ var defaultTemplate = {
           "id": null,
           "key": "5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -15560,7 +15560,7 @@ var defaultTemplate = {
           "id": null,
           "key": "5.5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -15568,7 +15568,7 @@ var defaultTemplate = {
           "id": null,
           "key": "6 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 17,
           "remark": ""
@@ -15576,7 +15576,7 @@ var defaultTemplate = {
           "id": null,
           "key": "18 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 18,
           "remark": ""
@@ -15584,7 +15584,7 @@ var defaultTemplate = {
           "id": null,
           "key": "40 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 19,
           "remark": ""
@@ -15592,7 +15592,7 @@ var defaultTemplate = {
           "id": null,
           "key": "<50 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 20,
           "remark": ""
@@ -15600,7 +15600,7 @@ var defaultTemplate = {
           "id": null,
           "key": "50 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 21,
           "remark": ""
@@ -15608,7 +15608,7 @@ var defaultTemplate = {
           "id": null,
           "key": "55 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 22,
           "remark": ""
@@ -15616,7 +15616,7 @@ var defaultTemplate = {
           "id": null,
           "key": "56 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 23,
           "remark": ""
@@ -15624,7 +15624,7 @@ var defaultTemplate = {
           "id": null,
           "key": "60 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 24,
           "remark": ""
@@ -15632,7 +15632,7 @@ var defaultTemplate = {
           "id": null,
           "key": "65 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 25,
           "remark": ""
@@ -15640,7 +15640,7 @@ var defaultTemplate = {
           "id": null,
           "key": "66 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 26,
           "remark": ""
@@ -15648,7 +15648,7 @@ var defaultTemplate = {
           "id": null,
           "key": "70 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 27,
           "remark": ""
@@ -15656,7 +15656,7 @@ var defaultTemplate = {
           "id": null,
           "key": "75 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 28,
           "remark": ""
@@ -15664,7 +15664,7 @@ var defaultTemplate = {
           "id": null,
           "key": "80 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 29,
           "remark": ""
@@ -15672,7 +15672,7 @@ var defaultTemplate = {
           "id": null,
           "key": "85 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 30,
           "remark": ""
@@ -15680,7 +15680,7 @@ var defaultTemplate = {
           "id": null,
           "key": "88 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 31,
           "remark": ""
@@ -15688,7 +15688,7 @@ var defaultTemplate = {
           "id": null,
           "key": "90 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 32,
           "remark": ""
@@ -15696,7 +15696,7 @@ var defaultTemplate = {
           "id": null,
           "key": "92 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 33,
           "remark": ""
@@ -15704,7 +15704,7 @@ var defaultTemplate = {
           "id": null,
           "key": "95 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 34,
           "remark": ""
@@ -15712,7 +15712,7 @@ var defaultTemplate = {
           "id": null,
           "key": "96 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 35,
           "remark": ""
@@ -15720,7 +15720,7 @@ var defaultTemplate = {
           "id": null,
           "key": "100 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 36,
           "remark": ""
@@ -15728,7 +15728,7 @@ var defaultTemplate = {
           "id": null,
           "key": ">100 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 37,
           "remark": ""
@@ -15736,7 +15736,7 @@ var defaultTemplate = {
           "id": null,
           "key": "100 - 125 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 38,
           "remark": ""
@@ -15744,7 +15744,7 @@ var defaultTemplate = {
           "id": null,
           "key": "125 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 39,
           "remark": ""
@@ -15752,7 +15752,7 @@ var defaultTemplate = {
           "id": null,
           "key": "140 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 40,
           "remark": ""
@@ -15760,7 +15760,7 @@ var defaultTemplate = {
           "id": null,
           "key": "125 - 150 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 41,
           "remark": ""
@@ -15768,7 +15768,7 @@ var defaultTemplate = {
           "id": null,
           "key": "> 150 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 42,
           "remark": ""
@@ -15868,7 +15868,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory (Annual Safety)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -15876,7 +15876,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Old",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -15884,7 +15884,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Last Serviced Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -15915,7 +15915,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -15923,7 +15923,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -15931,7 +15931,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Dusty Cabinet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -15939,7 +15939,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rust",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -15947,7 +15947,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Corrosion",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -15955,7 +15955,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Flame Distortion",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -16001,7 +16001,7 @@ var defaultTemplate = {
       "title": "Ducting",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 2,
       "questions": [{
         "id": null,
@@ -16016,7 +16016,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Plenum & Cold Air Returns",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -16024,7 +16024,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal Duct",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -16032,7 +16032,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Insulated Flex Duct",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -16063,7 +16063,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -16071,7 +16071,7 @@ var defaultTemplate = {
           "id": null,
           "key": "PVC",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -16079,7 +16079,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify Proper Pitch",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -16087,7 +16087,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rusted",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -16095,7 +16095,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Deteriorated",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -16103,7 +16103,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Disconnected",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -16111,7 +16111,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -16142,7 +16142,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -16150,7 +16150,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Electrostatic",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -16158,7 +16158,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Paper",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -16166,7 +16166,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Filter Fabric",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -16174,7 +16174,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -16182,7 +16182,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -16190,7 +16190,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor or Dirty",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -16221,7 +16221,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Functional",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -16229,7 +16229,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify Location or Function",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -16237,7 +16237,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -16245,7 +16245,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Professional HVAC Re-Evaluation, Safety Inspection, and/or Remediation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -16291,7 +16291,7 @@ var defaultTemplate = {
       "title": "Fireplaces or Stoves",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 3,
       "questions": [{
         "id": null,
@@ -16352,7 +16352,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Masonry Firebox",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -16360,7 +16360,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal FP Insert",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -16368,7 +16368,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Direct Vent Gas FP",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -16376,7 +16376,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wood or Pellet Stove",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -16384,7 +16384,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Masonry Flue Liner",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -16392,7 +16392,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal Flue Liner",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -16400,7 +16400,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unlined Chase",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -16408,7 +16408,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Venting Into Chimney Chase",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -16439,7 +16439,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -16447,7 +16447,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Settling Cracks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -16455,7 +16455,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Burned",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -16463,7 +16463,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify Clearance to Combustibles",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -16494,7 +16494,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Access",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -16502,7 +16502,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Liner",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -16510,7 +16510,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cracked Refractory Brick",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -16518,7 +16518,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Loose Mortar",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -16549,7 +16549,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -16557,7 +16557,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Access",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -16565,7 +16565,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable or DTO",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -16573,7 +16573,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rusted",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -16581,7 +16581,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged or Broken",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -16589,7 +16589,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Creosote Build-Up",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -16597,7 +16597,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Deterioration",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -16605,7 +16605,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Cleaning or Re-Evaluation or Repairs",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -16636,7 +16636,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -16644,7 +16644,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Framed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -16652,7 +16652,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Masonry",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -16660,7 +16660,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -16668,7 +16668,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Class 'B'",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -16676,7 +16676,7 @@ var defaultTemplate = {
           "id": null,
           "key": "DV Wall Hood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -16684,7 +16684,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cracked Wash",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -16692,7 +16692,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose Mortar",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -16700,7 +16700,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Liner",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -16708,7 +16708,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Spark Arrestor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -16716,7 +16716,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rust",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -16724,7 +16724,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Creosote",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -16732,7 +16732,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Cricket",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -16740,7 +16740,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inadequate or Missing Flashing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -16748,7 +16748,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -16756,7 +16756,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Burn Guard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -16764,7 +16764,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -16772,7 +16772,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 17,
           "remark": ""
@@ -16780,7 +16780,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 18,
           "remark": ""
@@ -16788,7 +16788,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Professional Re-Evaluation or Remediation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 19,
           "remark": ""
@@ -16833,7 +16833,7 @@ var defaultTemplate = {
   }, {
     "id": null,
     "title": "Cooling",
-    "sourceType": "Template",
+    "sourceType": "template",
     "inspectionId": null,
     "order": 8,
     "subsections": [{
@@ -16841,7 +16841,7 @@ var defaultTemplate = {
       "title": "Cooling Systems",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 0,
       "questions": [{
         "id": null,
@@ -16925,7 +16925,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -16933,7 +16933,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -16941,7 +16941,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Central Air",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -16949,7 +16949,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Heat Pump",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -16957,7 +16957,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fan Cooled",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -16965,7 +16965,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Water",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -16973,7 +16973,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gas Chiller",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -16981,7 +16981,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Swamp Cooler",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -17012,7 +17012,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Natural Gas",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -17020,7 +17020,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Propane",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -17028,7 +17028,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Electric",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -17074,7 +17074,7 @@ var defaultTemplate = {
       "title": "Evaporative Coil or Heat Pump (Inside)",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 1,
       "questions": [{
         "id": null,
@@ -17089,7 +17089,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -17097,7 +17097,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Not Installed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -17105,7 +17105,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -17113,7 +17113,7 @@ var defaultTemplate = {
           "id": null,
           "key": "American",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -17121,7 +17121,7 @@ var defaultTemplate = {
           "id": null,
           "key": "American Standard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -17129,7 +17129,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Arcoaire",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -17137,7 +17137,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Armstrong",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -17145,7 +17145,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Amtrol",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -17153,7 +17153,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -17161,7 +17161,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Beckett",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -17169,7 +17169,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bradford White",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -17177,7 +17177,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bryant",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -17185,7 +17185,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Burnham",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -17193,7 +17193,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cadet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -17201,7 +17201,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Carrier",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -17209,7 +17209,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Coleman",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -17217,7 +17217,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Coleman Evcon",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -17225,7 +17225,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Comfortmaker",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 17,
           "remark": ""
@@ -17233,7 +17233,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concord",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 18,
           "remark": ""
@@ -17241,7 +17241,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Daikin Industries",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 19,
           "remark": ""
@@ -17249,7 +17249,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Evcon",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 20,
           "remark": ""
@@ -17257,7 +17257,7 @@ var defaultTemplate = {
           "id": null,
           "key": "First Co.",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 21,
           "remark": ""
@@ -17265,7 +17265,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Flo-Aire",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 22,
           "remark": ""
@@ -17273,7 +17273,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Frigidaire",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 23,
           "remark": ""
@@ -17281,7 +17281,7 @@ var defaultTemplate = {
           "id": null,
           "key": "GE",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 24,
           "remark": ""
@@ -17289,7 +17289,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Goodman",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 25,
           "remark": ""
@@ -17297,7 +17297,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Greenheck",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 26,
           "remark": ""
@@ -17305,7 +17305,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Heil",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 27,
           "remark": ""
@@ -17313,7 +17313,7 @@ var defaultTemplate = {
           "id": null,
           "key": "ICP",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 28,
           "remark": ""
@@ -17321,7 +17321,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Intertherm",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 29,
           "remark": ""
@@ -17329,7 +17329,7 @@ var defaultTemplate = {
           "id": null,
           "key": "KD Navien",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 30,
           "remark": ""
@@ -17337,7 +17337,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Kelvinator (Nordyne)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 31,
           "remark": ""
@@ -17345,7 +17345,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Kenmore",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 32,
           "remark": ""
@@ -17353,7 +17353,7 @@ var defaultTemplate = {
           "id": null,
           "key": "King",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 33,
           "remark": ""
@@ -17361,7 +17361,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Lennox",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 34,
           "remark": ""
@@ -17369,7 +17369,7 @@ var defaultTemplate = {
           "id": null,
           "key": "MagicAire",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 35,
           "remark": ""
@@ -17377,7 +17377,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Markel",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 36,
           "remark": ""
@@ -17385,7 +17385,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marley",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 37,
           "remark": ""
@@ -17393,7 +17393,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mayflower",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 38,
           "remark": ""
@@ -17401,7 +17401,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Maytag",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 39,
           "remark": ""
@@ -17409,7 +17409,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mitsubishi",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 40,
           "remark": ""
@@ -17417,7 +17417,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Munchkin",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 41,
           "remark": ""
@@ -17425,7 +17425,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Navien",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 42,
           "remark": ""
@@ -17433,7 +17433,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Nordyne",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 43,
           "remark": ""
@@ -17441,7 +17441,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Payne",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 44,
           "remark": ""
@@ -17449,7 +17449,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Quatro",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 45,
           "remark": ""
@@ -17457,7 +17457,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Radco",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 46,
           "remark": ""
@@ -17465,7 +17465,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Resco",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 47,
           "remark": ""
@@ -17473,7 +17473,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rheem",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 48,
           "remark": ""
@@ -17481,7 +17481,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rinnai",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 49,
           "remark": ""
@@ -17489,7 +17489,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ruud",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 50,
           "remark": ""
@@ -17497,7 +17497,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sears",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 51,
           "remark": ""
@@ -17505,7 +17505,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Seisco",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 52,
           "remark": ""
@@ -17513,7 +17513,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Steel Weld",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 53,
           "remark": ""
@@ -17521,7 +17521,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sundial / Square D",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 54,
           "remark": ""
@@ -17529,7 +17529,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Tempstar",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 55,
           "remark": ""
@@ -17537,7 +17537,7 @@ var defaultTemplate = {
           "id": null,
           "key": "TPI Corporation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 56,
           "remark": ""
@@ -17545,7 +17545,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Thermo Pride",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 57,
           "remark": ""
@@ -17553,7 +17553,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Trane",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 58,
           "remark": ""
@@ -17561,7 +17561,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Turbonics",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 59,
           "remark": ""
@@ -17569,7 +17569,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vaillant",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 60,
           "remark": ""
@@ -17577,7 +17577,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Weil-McLain",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 61,
           "remark": ""
@@ -17585,7 +17585,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wesco",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 62,
           "remark": ""
@@ -17593,7 +17593,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Westinghouse",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 63,
           "remark": ""
@@ -17601,7 +17601,7 @@ var defaultTemplate = {
           "id": null,
           "key": "York",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 64,
           "remark": ""
@@ -17632,7 +17632,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -17640,7 +17640,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -17648,7 +17648,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Zone-Controlled",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -17656,7 +17656,7 @@ var defaultTemplate = {
           "id": null,
           "key": "240 Volt",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -17664,7 +17664,7 @@ var defaultTemplate = {
           "id": null,
           "key": ".50 - 1.01 GPH",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -17672,7 +17672,7 @@ var defaultTemplate = {
           "id": null,
           "key": "80 Gallon",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -17680,7 +17680,7 @@ var defaultTemplate = {
           "id": null,
           "key": "119 Gallon",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -17688,7 +17688,7 @@ var defaultTemplate = {
           "id": null,
           "key": "1 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -17696,7 +17696,7 @@ var defaultTemplate = {
           "id": null,
           "key": "1.5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -17704,7 +17704,7 @@ var defaultTemplate = {
           "id": null,
           "key": "2 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -17712,7 +17712,7 @@ var defaultTemplate = {
           "id": null,
           "key": "2.5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -17720,7 +17720,7 @@ var defaultTemplate = {
           "id": null,
           "key": "3 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -17728,7 +17728,7 @@ var defaultTemplate = {
           "id": null,
           "key": "3.5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -17736,7 +17736,7 @@ var defaultTemplate = {
           "id": null,
           "key": "4 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -17744,7 +17744,7 @@ var defaultTemplate = {
           "id": null,
           "key": "4.5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -17752,7 +17752,7 @@ var defaultTemplate = {
           "id": null,
           "key": "5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -17760,7 +17760,7 @@ var defaultTemplate = {
           "id": null,
           "key": "5.5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -17768,7 +17768,7 @@ var defaultTemplate = {
           "id": null,
           "key": "6 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 17,
           "remark": ""
@@ -17776,7 +17776,7 @@ var defaultTemplate = {
           "id": null,
           "key": "18 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 18,
           "remark": ""
@@ -17784,7 +17784,7 @@ var defaultTemplate = {
           "id": null,
           "key": "40 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 19,
           "remark": ""
@@ -17792,7 +17792,7 @@ var defaultTemplate = {
           "id": null,
           "key": "<50 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 20,
           "remark": ""
@@ -17800,7 +17800,7 @@ var defaultTemplate = {
           "id": null,
           "key": "50 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 21,
           "remark": ""
@@ -17808,7 +17808,7 @@ var defaultTemplate = {
           "id": null,
           "key": "55 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 22,
           "remark": ""
@@ -17816,7 +17816,7 @@ var defaultTemplate = {
           "id": null,
           "key": "56 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 23,
           "remark": ""
@@ -17824,7 +17824,7 @@ var defaultTemplate = {
           "id": null,
           "key": "60 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 24,
           "remark": ""
@@ -17832,7 +17832,7 @@ var defaultTemplate = {
           "id": null,
           "key": "65 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 25,
           "remark": ""
@@ -17840,7 +17840,7 @@ var defaultTemplate = {
           "id": null,
           "key": "66 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 26,
           "remark": ""
@@ -17848,7 +17848,7 @@ var defaultTemplate = {
           "id": null,
           "key": "70 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 27,
           "remark": ""
@@ -17856,7 +17856,7 @@ var defaultTemplate = {
           "id": null,
           "key": "75 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 28,
           "remark": ""
@@ -17864,7 +17864,7 @@ var defaultTemplate = {
           "id": null,
           "key": "80 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 29,
           "remark": ""
@@ -17872,7 +17872,7 @@ var defaultTemplate = {
           "id": null,
           "key": "85 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 30,
           "remark": ""
@@ -17880,7 +17880,7 @@ var defaultTemplate = {
           "id": null,
           "key": "88 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 31,
           "remark": ""
@@ -17888,7 +17888,7 @@ var defaultTemplate = {
           "id": null,
           "key": "90 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 32,
           "remark": ""
@@ -17896,7 +17896,7 @@ var defaultTemplate = {
           "id": null,
           "key": "92 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 33,
           "remark": ""
@@ -17904,7 +17904,7 @@ var defaultTemplate = {
           "id": null,
           "key": "95 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 34,
           "remark": ""
@@ -17912,7 +17912,7 @@ var defaultTemplate = {
           "id": null,
           "key": "96 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 35,
           "remark": ""
@@ -17920,7 +17920,7 @@ var defaultTemplate = {
           "id": null,
           "key": "100 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 36,
           "remark": ""
@@ -17928,7 +17928,7 @@ var defaultTemplate = {
           "id": null,
           "key": ">100 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 37,
           "remark": ""
@@ -17936,7 +17936,7 @@ var defaultTemplate = {
           "id": null,
           "key": "100 - 125 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 38,
           "remark": ""
@@ -17944,7 +17944,7 @@ var defaultTemplate = {
           "id": null,
           "key": "125 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 39,
           "remark": ""
@@ -17952,7 +17952,7 @@ var defaultTemplate = {
           "id": null,
           "key": "140 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 40,
           "remark": ""
@@ -17960,7 +17960,7 @@ var defaultTemplate = {
           "id": null,
           "key": "125 - 150 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 41,
           "remark": ""
@@ -17968,7 +17968,7 @@ var defaultTemplate = {
           "id": null,
           "key": "> 150 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 42,
           "remark": ""
@@ -18082,7 +18082,7 @@ var defaultTemplate = {
       "title": "Compressor or Condenser (Outside)",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 2,
       "questions": [{
         "id": null,
@@ -18097,7 +18097,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -18105,7 +18105,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Not Installed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -18113,7 +18113,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -18121,7 +18121,7 @@ var defaultTemplate = {
           "id": null,
           "key": "American",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -18129,7 +18129,7 @@ var defaultTemplate = {
           "id": null,
           "key": "American Standard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -18137,7 +18137,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Arcoaire",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -18145,7 +18145,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Armstrong",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -18153,7 +18153,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Amtrol",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -18161,7 +18161,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -18169,7 +18169,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Beckett",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -18177,7 +18177,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bradford White",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -18185,7 +18185,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bryant",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -18193,7 +18193,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Burnham",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -18201,7 +18201,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cadet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -18209,7 +18209,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Carrier",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -18217,7 +18217,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Coleman",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -18225,7 +18225,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Coleman Evcon",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -18233,7 +18233,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Comfortmaker",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 17,
           "remark": ""
@@ -18241,7 +18241,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Concord",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 18,
           "remark": ""
@@ -18249,7 +18249,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Daikin Industries",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 19,
           "remark": ""
@@ -18257,7 +18257,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Evcon",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 20,
           "remark": ""
@@ -18265,7 +18265,7 @@ var defaultTemplate = {
           "id": null,
           "key": "First Co.",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 21,
           "remark": ""
@@ -18273,7 +18273,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Flo-Aire",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 22,
           "remark": ""
@@ -18281,7 +18281,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Frigidaire",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 23,
           "remark": ""
@@ -18289,7 +18289,7 @@ var defaultTemplate = {
           "id": null,
           "key": "GE",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 24,
           "remark": ""
@@ -18297,7 +18297,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Goodman",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 25,
           "remark": ""
@@ -18305,7 +18305,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Greenheck",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 26,
           "remark": ""
@@ -18313,7 +18313,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Heil",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 27,
           "remark": ""
@@ -18321,7 +18321,7 @@ var defaultTemplate = {
           "id": null,
           "key": "ICP",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 28,
           "remark": ""
@@ -18329,7 +18329,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Intertherm",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 29,
           "remark": ""
@@ -18337,7 +18337,7 @@ var defaultTemplate = {
           "id": null,
           "key": "KD Navien",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 30,
           "remark": ""
@@ -18345,7 +18345,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Kelvinator (Nordyne)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 31,
           "remark": ""
@@ -18353,7 +18353,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Kenmore",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 32,
           "remark": ""
@@ -18361,7 +18361,7 @@ var defaultTemplate = {
           "id": null,
           "key": "King",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 33,
           "remark": ""
@@ -18369,7 +18369,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Lennox",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 34,
           "remark": ""
@@ -18377,7 +18377,7 @@ var defaultTemplate = {
           "id": null,
           "key": "MagicAire",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 35,
           "remark": ""
@@ -18385,7 +18385,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Markel",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 36,
           "remark": ""
@@ -18393,7 +18393,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marley",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 37,
           "remark": ""
@@ -18401,7 +18401,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mayflower",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 38,
           "remark": ""
@@ -18409,7 +18409,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Maytag",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 39,
           "remark": ""
@@ -18417,7 +18417,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mitsubishi",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 40,
           "remark": ""
@@ -18425,7 +18425,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Munchkin",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 41,
           "remark": ""
@@ -18433,7 +18433,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Navien",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 42,
           "remark": ""
@@ -18441,7 +18441,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Nordyne",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 43,
           "remark": ""
@@ -18449,7 +18449,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Payne",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 44,
           "remark": ""
@@ -18457,7 +18457,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Quatro",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 45,
           "remark": ""
@@ -18465,7 +18465,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Radco",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 46,
           "remark": ""
@@ -18473,7 +18473,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Resco",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 47,
           "remark": ""
@@ -18481,7 +18481,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rheem",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 48,
           "remark": ""
@@ -18489,7 +18489,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rinnai",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 49,
           "remark": ""
@@ -18497,7 +18497,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ruud",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 50,
           "remark": ""
@@ -18505,7 +18505,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sears",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 51,
           "remark": ""
@@ -18513,7 +18513,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Seisco",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 52,
           "remark": ""
@@ -18521,7 +18521,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Steel Weld",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 53,
           "remark": ""
@@ -18529,7 +18529,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sundial / Square D",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 54,
           "remark": ""
@@ -18537,7 +18537,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Tempstar",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 55,
           "remark": ""
@@ -18545,7 +18545,7 @@ var defaultTemplate = {
           "id": null,
           "key": "TPI Corporation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 56,
           "remark": ""
@@ -18553,7 +18553,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Thermo Pride",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 57,
           "remark": ""
@@ -18561,7 +18561,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Trane",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 58,
           "remark": ""
@@ -18569,7 +18569,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Turbonics",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 59,
           "remark": ""
@@ -18577,7 +18577,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vaillant",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 60,
           "remark": ""
@@ -18585,7 +18585,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Weil-McLain",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 61,
           "remark": ""
@@ -18593,7 +18593,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wesco",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 62,
           "remark": ""
@@ -18601,7 +18601,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Westinghouse",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 63,
           "remark": ""
@@ -18609,7 +18609,7 @@ var defaultTemplate = {
           "id": null,
           "key": "York",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 64,
           "remark": ""
@@ -18640,7 +18640,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -18648,7 +18648,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -18656,7 +18656,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Zone-Controlled",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -18664,7 +18664,7 @@ var defaultTemplate = {
           "id": null,
           "key": "240 Volt",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -18672,7 +18672,7 @@ var defaultTemplate = {
           "id": null,
           "key": ".50 - 1.01 GPH",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -18680,7 +18680,7 @@ var defaultTemplate = {
           "id": null,
           "key": "80 Gallon",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -18688,7 +18688,7 @@ var defaultTemplate = {
           "id": null,
           "key": "119 Gallon",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -18696,7 +18696,7 @@ var defaultTemplate = {
           "id": null,
           "key": "1 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -18704,7 +18704,7 @@ var defaultTemplate = {
           "id": null,
           "key": "1.5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -18712,7 +18712,7 @@ var defaultTemplate = {
           "id": null,
           "key": "2 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -18720,7 +18720,7 @@ var defaultTemplate = {
           "id": null,
           "key": "2.5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -18728,7 +18728,7 @@ var defaultTemplate = {
           "id": null,
           "key": "3 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -18736,7 +18736,7 @@ var defaultTemplate = {
           "id": null,
           "key": "3.5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -18744,7 +18744,7 @@ var defaultTemplate = {
           "id": null,
           "key": "4 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -18752,7 +18752,7 @@ var defaultTemplate = {
           "id": null,
           "key": "4.5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -18760,7 +18760,7 @@ var defaultTemplate = {
           "id": null,
           "key": "5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -18768,7 +18768,7 @@ var defaultTemplate = {
           "id": null,
           "key": "5.5 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -18776,7 +18776,7 @@ var defaultTemplate = {
           "id": null,
           "key": "6 Ton",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 17,
           "remark": ""
@@ -18784,7 +18784,7 @@ var defaultTemplate = {
           "id": null,
           "key": "18 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 18,
           "remark": ""
@@ -18792,7 +18792,7 @@ var defaultTemplate = {
           "id": null,
           "key": "40 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 19,
           "remark": ""
@@ -18800,7 +18800,7 @@ var defaultTemplate = {
           "id": null,
           "key": "<50 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 20,
           "remark": ""
@@ -18808,7 +18808,7 @@ var defaultTemplate = {
           "id": null,
           "key": "50 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 21,
           "remark": ""
@@ -18816,7 +18816,7 @@ var defaultTemplate = {
           "id": null,
           "key": "55 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 22,
           "remark": ""
@@ -18824,7 +18824,7 @@ var defaultTemplate = {
           "id": null,
           "key": "56 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 23,
           "remark": ""
@@ -18832,7 +18832,7 @@ var defaultTemplate = {
           "id": null,
           "key": "60 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 24,
           "remark": ""
@@ -18840,7 +18840,7 @@ var defaultTemplate = {
           "id": null,
           "key": "65 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 25,
           "remark": ""
@@ -18848,7 +18848,7 @@ var defaultTemplate = {
           "id": null,
           "key": "66 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 26,
           "remark": ""
@@ -18856,7 +18856,7 @@ var defaultTemplate = {
           "id": null,
           "key": "70 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 27,
           "remark": ""
@@ -18864,7 +18864,7 @@ var defaultTemplate = {
           "id": null,
           "key": "75 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 28,
           "remark": ""
@@ -18872,7 +18872,7 @@ var defaultTemplate = {
           "id": null,
           "key": "80 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 29,
           "remark": ""
@@ -18880,7 +18880,7 @@ var defaultTemplate = {
           "id": null,
           "key": "85 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 30,
           "remark": ""
@@ -18888,7 +18888,7 @@ var defaultTemplate = {
           "id": null,
           "key": "88 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 31,
           "remark": ""
@@ -18896,7 +18896,7 @@ var defaultTemplate = {
           "id": null,
           "key": "90 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 32,
           "remark": ""
@@ -18904,7 +18904,7 @@ var defaultTemplate = {
           "id": null,
           "key": "92 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 33,
           "remark": ""
@@ -18912,7 +18912,7 @@ var defaultTemplate = {
           "id": null,
           "key": "95 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 34,
           "remark": ""
@@ -18920,7 +18920,7 @@ var defaultTemplate = {
           "id": null,
           "key": "96 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 35,
           "remark": ""
@@ -18928,7 +18928,7 @@ var defaultTemplate = {
           "id": null,
           "key": "100 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 36,
           "remark": ""
@@ -18936,7 +18936,7 @@ var defaultTemplate = {
           "id": null,
           "key": ">100 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 37,
           "remark": ""
@@ -18944,7 +18944,7 @@ var defaultTemplate = {
           "id": null,
           "key": "100 - 125 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 38,
           "remark": ""
@@ -18952,7 +18952,7 @@ var defaultTemplate = {
           "id": null,
           "key": "125 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 39,
           "remark": ""
@@ -18960,7 +18960,7 @@ var defaultTemplate = {
           "id": null,
           "key": "140 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 40,
           "remark": ""
@@ -18968,7 +18968,7 @@ var defaultTemplate = {
           "id": null,
           "key": "125 - 150 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 41,
           "remark": ""
@@ -18976,7 +18976,7 @@ var defaultTemplate = {
           "id": null,
           "key": "> 150 K BTU / hr",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 42,
           "remark": ""
@@ -19076,7 +19076,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -19084,7 +19084,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -19092,7 +19092,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -19100,7 +19100,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Uneven Base",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -19108,7 +19108,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inadequate Base Height",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -19116,7 +19116,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Obstructed Flow",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -19147,7 +19147,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -19155,7 +19155,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Leaking",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -19163,7 +19163,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -19171,7 +19171,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Worn",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -19179,7 +19179,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Insulation Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -19224,7 +19224,7 @@ var defaultTemplate = {
   }, {
     "id": null,
     "title": "Electrical",
-    "sourceType": "Template",
+    "sourceType": "template",
     "inspectionId": null,
     "order": 9,
     "subsections": [{
@@ -19232,7 +19232,7 @@ var defaultTemplate = {
       "title": "Electrical System",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 0,
       "questions": [{
         "id": null,
@@ -19293,7 +19293,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Underground",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -19301,7 +19301,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Yard Post",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -19309,7 +19309,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible or Accessible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -19317,7 +19317,7 @@ var defaultTemplate = {
           "id": null,
           "key": "In Conduit",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -19325,7 +19325,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Overhead",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -19333,7 +19333,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Pole Unstable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -19341,7 +19341,7 @@ var defaultTemplate = {
           "id": null,
           "key": "3 Cables",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -19349,7 +19349,7 @@ var defaultTemplate = {
           "id": null,
           "key": "4 Cables",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -19357,7 +19357,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Copper",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -19365,7 +19365,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Aluminum",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -19396,7 +19396,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -19404,7 +19404,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -19412,7 +19412,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -19420,7 +19420,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inadequate Clearances",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -19428,7 +19428,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -19436,7 +19436,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -19467,7 +19467,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -19498,7 +19498,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exterior Wall",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -19506,7 +19506,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Yard Post",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -19514,7 +19514,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mechanical Closet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -19522,7 +19522,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible or Locked",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -19553,7 +19553,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -19561,7 +19561,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -19569,7 +19569,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -19577,7 +19577,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inadequate Access",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -19585,7 +19585,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -19593,7 +19593,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -19624,7 +19624,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -19632,7 +19632,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ground Rods",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -19640,7 +19640,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ufer",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -19648,7 +19648,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bonded to Water or Gas Piping",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -19679,7 +19679,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Copper",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -19687,7 +19687,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Aluminum",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -19695,7 +19695,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -19703,7 +19703,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible or Accessible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -19734,7 +19734,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -19742,7 +19742,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose Clamp or Lug",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -19750,7 +19750,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -19758,7 +19758,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Improper Bond",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -19766,7 +19766,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Too Far From Entry",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -19797,7 +19797,7 @@ var defaultTemplate = {
           "id": null,
           "key": "With Meter",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -19805,7 +19805,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inside Main Panel",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -19813,7 +19813,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Near Panel",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -19821,7 +19821,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fuse",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -19829,7 +19829,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Breaker",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -19837,7 +19837,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Switch",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -19845,7 +19845,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Split-Bus",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -19853,7 +19853,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Overloaded (>6 Hand Motions)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -19884,7 +19884,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Visible or Accessible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -19892,7 +19892,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Blocked",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -19900,7 +19900,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Evaluated",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -19931,7 +19931,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -19939,7 +19939,7 @@ var defaultTemplate = {
           "id": null,
           "key": "3-Phase",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -19947,7 +19947,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Outside Scope of Inspection",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -19955,7 +19955,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Access",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -19963,7 +19963,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Storage Blocked Access",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -19971,7 +19971,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Shelving Blocked Access",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -19979,7 +19979,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cover Not Removable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -19987,7 +19987,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unsafe to Open",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -19995,7 +19995,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unsafe Panel Type",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -20003,7 +20003,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No Power",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -20034,7 +20034,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Breakers",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -20042,7 +20042,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fuses",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -20073,7 +20073,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -20081,7 +20081,7 @@ var defaultTemplate = {
           "id": null,
           "key": "400",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -20089,7 +20089,7 @@ var defaultTemplate = {
           "id": null,
           "key": "200",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -20097,7 +20097,7 @@ var defaultTemplate = {
           "id": null,
           "key": "(2) 200",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -20105,7 +20105,7 @@ var defaultTemplate = {
           "id": null,
           "key": "150",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -20113,7 +20113,7 @@ var defaultTemplate = {
           "id": null,
           "key": "125",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -20121,7 +20121,7 @@ var defaultTemplate = {
           "id": null,
           "key": "100",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -20129,7 +20129,7 @@ var defaultTemplate = {
           "id": null,
           "key": "(2) 100",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -20137,7 +20137,7 @@ var defaultTemplate = {
           "id": null,
           "key": "60",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -20145,7 +20145,7 @@ var defaultTemplate = {
           "id": null,
           "key": "50",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -20153,7 +20153,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Various Amperages",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -20184,7 +20184,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -20192,7 +20192,7 @@ var defaultTemplate = {
           "id": null,
           "key": "120 / 240",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -20200,7 +20200,7 @@ var defaultTemplate = {
           "id": null,
           "key": "3-phase (208 - 230)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -20231,7 +20231,7 @@ var defaultTemplate = {
           "id": null,
           "key": "GFCI Breakers",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -20239,7 +20239,7 @@ var defaultTemplate = {
           "id": null,
           "key": "AFCI Breakers",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -20247,7 +20247,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -20278,7 +20278,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Garage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -20286,7 +20286,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Basement",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -20294,7 +20294,7 @@ var defaultTemplate = {
           "id": null,
           "key": "With Meter",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -20302,7 +20302,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exterior Wall",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -20310,7 +20310,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Yard Post",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -20318,7 +20318,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Interior Wall",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -20326,7 +20326,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mechanical Room",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -20334,7 +20334,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Laundry Room",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -20342,7 +20342,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Utility Area",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -20350,7 +20350,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Crawl Space",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -20381,7 +20381,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Copper",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -20389,7 +20389,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Almuninum",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -20397,7 +20397,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Tin Clad Copper",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -20405,7 +20405,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Copper Clad Aluminum",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -20413,7 +20413,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Non-Metallic Sheathed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -20421,7 +20421,7 @@ var defaultTemplate = {
           "id": null,
           "key": "BX Cable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -20429,7 +20429,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Condiut",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -20437,7 +20437,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cloth-Wrapped",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -20445,7 +20445,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Knob & Tube",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -20476,7 +20476,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -20484,7 +20484,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -20492,7 +20492,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -20500,7 +20500,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -20508,7 +20508,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inadequate Access Clearances",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -20516,7 +20516,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Dangling Wires",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -20524,7 +20524,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Excessive Sheathing in Panel",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -20532,7 +20532,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Double-Tapping",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -20540,7 +20540,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Undersized Wiring",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -20548,7 +20548,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -20556,7 +20556,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rust",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -20564,7 +20564,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Buried In Insulation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -20572,7 +20572,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Burned Breakers",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -20580,7 +20580,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Dangerous Panel Type",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -20588,7 +20588,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Improper Splicing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -20596,7 +20596,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazardous or Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -20604,7 +20604,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Professional Evaluation or Repairs",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -20650,7 +20650,7 @@ var defaultTemplate = {
       "title": "Fixtures, Switches, or Detectors",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 1,
       "questions": [{
         "id": null,
@@ -20665,7 +20665,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Removed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -20673,7 +20673,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -20681,7 +20681,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Bulbs",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -20689,7 +20689,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Covers",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -20697,7 +20697,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gaps",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -20728,7 +20728,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -20736,7 +20736,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -20744,7 +20744,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -20752,7 +20752,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inadequate Clearances",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -20760,7 +20760,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -20768,7 +20768,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazard",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -20799,7 +20799,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Typical Grounded",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -20807,7 +20807,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Some Grounded",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -20815,7 +20815,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Typical Un-Grounded",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -20846,7 +20846,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -20854,7 +20854,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -20862,7 +20862,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -20870,7 +20870,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -20878,7 +20878,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Weak or Loose",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -20886,7 +20886,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Removed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -20894,7 +20894,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Cover Plates",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -20902,7 +20902,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Dangling or Unmounted",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -20910,7 +20910,7 @@ var defaultTemplate = {
           "id": null,
           "key": "External Splicing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -20918,7 +20918,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gaps Into Boxes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -20926,7 +20926,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Burned",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -20934,7 +20934,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Open Ground",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -20942,7 +20942,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Open Neutral",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -20950,7 +20950,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Reverse Polarity",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -20958,7 +20958,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ungrounded 3-Prong",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -20966,7 +20966,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -20974,7 +20974,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazardous or Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -20982,7 +20982,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Repair or Evaluation by Professional Electrician",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 17,
           "remark": ""
@@ -21013,7 +21013,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Installed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -21021,7 +21021,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Recommended",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -21029,7 +21029,7 @@ var defaultTemplate = {
           "id": null,
           "key": "NOT Tested",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -21060,7 +21060,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Installed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -21068,7 +21068,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -21076,7 +21076,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Chirping or Low Batteries",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -21084,7 +21084,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -21152,7 +21152,7 @@ var defaultTemplate = {
   }, {
     "id": null,
     "title": "Interior",
-    "sourceType": "Template",
+    "sourceType": "template",
     "inspectionId": null,
     "order": 10,
     "subsections": [{
@@ -21160,7 +21160,7 @@ var defaultTemplate = {
       "title": "Living Room",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 0,
       "questions": [{
         "id": null,
@@ -21221,7 +21221,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -21229,7 +21229,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Solid Wood",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -21237,7 +21237,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Metal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -21245,7 +21245,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fiberglass",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -21253,7 +21253,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Panel",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -21261,7 +21261,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hollow Core",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -21292,7 +21292,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sagging or Settled",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -21300,7 +21300,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rubbing or Binding",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -21308,7 +21308,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -21316,7 +21316,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hardware Issues",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -21324,7 +21324,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Doorbell Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -21355,7 +21355,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -21363,7 +21363,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor Seal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -21371,7 +21371,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ineffective Threshold",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -21402,7 +21402,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -21410,7 +21410,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inaccessible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -21418,7 +21418,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Difficult To Operate (Needs Adjustment or Lubrication)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -21426,7 +21426,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Hardware",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -21434,7 +21434,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inadequate Security",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -21442,7 +21442,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Failed Thermal Seals",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -21450,7 +21450,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Broken Panes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -21458,7 +21458,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stained",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -21466,7 +21466,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Weathered Sills",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -21474,7 +21474,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mold or Mildew",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -21482,7 +21482,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -21490,7 +21490,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Deterioration",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -21521,7 +21521,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -21529,7 +21529,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -21537,7 +21537,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -21568,7 +21568,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -21576,7 +21576,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Inadequate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -21607,7 +21607,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Appeared Functional",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -21615,7 +21615,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose or Worn",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -21623,7 +21623,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -21631,7 +21631,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -21639,7 +21639,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Cover Plates",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -21647,7 +21647,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ungrounded 3-Prong",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -21655,7 +21655,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable GFCI",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -21663,7 +21663,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing GFCI Protection",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -21671,7 +21671,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Reversed Polarity",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -21679,7 +21679,7 @@ var defaultTemplate = {
           "id": null,
           "key": "OG or RP Within 6 Feet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -21687,7 +21687,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Burned",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -21695,7 +21695,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exposed Wires",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -21703,7 +21703,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazardous or Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -21711,7 +21711,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Refer To Electrical Section",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -21719,7 +21719,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Professional Evaluation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -21787,7 +21787,7 @@ var defaultTemplate = {
       "title": "Kitchen",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 1,
       "questions": [{
         "id": null,
@@ -21802,7 +21802,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sink Disposer",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -21810,7 +21810,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fridge",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -21818,7 +21818,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Dishwasher",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -21826,7 +21826,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Oven",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -21834,7 +21834,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Range",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -21842,7 +21842,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Microwave",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -21850,7 +21850,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Warmer",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -21858,7 +21858,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Trash Compactor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -21866,7 +21866,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cooler",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -21874,7 +21874,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Water Filter",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -21882,7 +21882,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Instant Hot",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -21913,7 +21913,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -21921,7 +21921,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -21929,7 +21929,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -21937,7 +21937,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -21945,7 +21945,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Worn Finish",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -21953,7 +21953,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose Drawers or Hinges",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -21984,7 +21984,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Granite",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -21992,7 +21992,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Laminate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -22000,7 +22000,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Tile",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -22008,7 +22008,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Slab",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -22039,7 +22039,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -22047,7 +22047,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -22055,7 +22055,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -22063,7 +22063,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Worn",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -22071,7 +22071,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -22102,7 +22102,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -22110,7 +22110,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal or Worn",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -22118,7 +22118,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -22149,7 +22149,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -22157,7 +22157,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Worn or Cracked or Gaps",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -22165,7 +22165,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Improve at Sink, Back-Splash, Counters, or Fixtures",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -22196,7 +22196,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -22204,7 +22204,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cracked or Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -22212,7 +22212,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -22220,7 +22220,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Water Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -22228,7 +22228,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Sealing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -22259,7 +22259,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -22267,7 +22267,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -22275,7 +22275,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -22306,7 +22306,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -22314,7 +22314,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Inadequate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -22345,7 +22345,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Appeared Functional",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -22353,7 +22353,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose or Worn",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -22361,7 +22361,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -22369,7 +22369,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -22377,7 +22377,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Cover Plates",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -22385,7 +22385,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ungrounded 3-Prong",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -22393,7 +22393,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable GFCI",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -22401,7 +22401,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing GFCI Protection",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -22409,7 +22409,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Reversed Polarity",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -22417,7 +22417,7 @@ var defaultTemplate = {
           "id": null,
           "key": "OG or RP Within 6 Feet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -22425,7 +22425,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Burned",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -22433,7 +22433,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exposed Wires",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -22441,7 +22441,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazardous or Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -22449,7 +22449,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Professional Evaluation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -22495,7 +22495,7 @@ var defaultTemplate = {
       "title": "Laundry",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 2,
       "questions": [{
         "id": null,
@@ -22510,7 +22510,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -22518,7 +22518,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -22526,7 +22526,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Washer",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -22534,7 +22534,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Dryer",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -22542,7 +22542,7 @@ var defaultTemplate = {
           "id": null,
           "key": "WH",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -22550,7 +22550,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Furnace",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -22558,7 +22558,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Conditioner",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -22589,7 +22589,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Electric",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -22597,7 +22597,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Gas",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -22605,7 +22605,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable or OFF",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -22613,7 +22613,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cap Needed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -22621,7 +22621,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazard(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -22629,7 +22629,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Re-Evaluation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -22660,7 +22660,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wall",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -22668,7 +22668,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ceiling",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -22676,7 +22676,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Floor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -22707,7 +22707,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -22715,7 +22715,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Clogged or Loose or Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -22746,7 +22746,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -22754,7 +22754,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -22762,7 +22762,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -22770,7 +22770,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Weak or Noisy",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -22778,7 +22778,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -22786,7 +22786,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -22832,7 +22832,7 @@ var defaultTemplate = {
       "title": "Bathroom(s)",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 3,
       "questions": [{
         "id": null,
@@ -22847,7 +22847,7 @@ var defaultTemplate = {
           "id": null,
           "key": "GWB",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -22855,7 +22855,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Lath & Plaster",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -22863,7 +22863,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Acoustic Tile",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -22871,7 +22871,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Paneling",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -22879,7 +22879,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Open Beam",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -22910,7 +22910,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -22918,7 +22918,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -22926,7 +22926,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -22934,7 +22934,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stains or Mildew",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -22942,7 +22942,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cracks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -22950,7 +22950,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Repairs",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -22958,7 +22958,7 @@ var defaultTemplate = {
           "id": null,
           "key": "PACM",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -22989,7 +22989,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Covered",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -22997,7 +22997,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sloping",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -23005,7 +23005,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Squeaks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -23013,7 +23013,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damaged",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -23021,7 +23021,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fungal Rot",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -23052,7 +23052,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Worn or Cracked or Gaps",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -23060,7 +23060,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Improve At Sink, Back-Splash, Tub or Shower Surround or or Floor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -23091,7 +23091,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Yes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -23099,7 +23099,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -23107,7 +23107,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -23138,7 +23138,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Yes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -23146,7 +23146,7 @@ var defaultTemplate = {
           "id": null,
           "key": "No",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -23154,7 +23154,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -23185,7 +23185,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Appeared Functional",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -23193,7 +23193,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose or Worn",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -23201,7 +23201,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -23209,7 +23209,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -23217,7 +23217,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Cover Plates",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -23225,7 +23225,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ungrounded 3-Prong",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -23233,7 +23233,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable GFCI",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -23241,7 +23241,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing GFCI Protection",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -23249,7 +23249,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Reversed Polarity",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -23257,7 +23257,7 @@ var defaultTemplate = {
           "id": null,
           "key": "OG or RP Within 6 Feet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -23265,7 +23265,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Burned",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -23273,7 +23273,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exposed Wires",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -23281,7 +23281,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazardous or Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -23289,7 +23289,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Professional Evaluation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -23335,7 +23335,7 @@ var defaultTemplate = {
       "title": "General",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 4,
       "questions": [{
         "id": null,
@@ -23350,7 +23350,7 @@ var defaultTemplate = {
           "id": null,
           "key": "GWB",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -23358,7 +23358,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Lath & Plaster",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -23366,7 +23366,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Acoustic Tile",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -23374,7 +23374,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Paneling",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -23382,7 +23382,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Open Beam",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -23413,7 +23413,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -23421,7 +23421,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -23429,7 +23429,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -23437,7 +23437,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stains",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -23445,7 +23445,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Moisture or Mildew",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -23453,7 +23453,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Water Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -23461,7 +23461,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Settling",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -23469,7 +23469,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Truss Uplift",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -23477,7 +23477,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Nail Pops",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -23485,7 +23485,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Holes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -23493,7 +23493,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cracks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -23501,7 +23501,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inadequate Repairs or Texture",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -23509,7 +23509,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sooting",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -23517,7 +23517,7 @@ var defaultTemplate = {
           "id": null,
           "key": "PACM",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -23525,7 +23525,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazardous or Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -23533,7 +23533,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Professional Evaluation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -23564,7 +23564,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hard Surfaces (Tile or Stone)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -23572,7 +23572,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hardwood or Laminate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -23580,7 +23580,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Vinyl",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -23588,7 +23588,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Carpet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -23619,7 +23619,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -23627,7 +23627,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -23635,7 +23635,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -23643,7 +23643,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Excessive Wear",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -23651,7 +23651,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Squeaks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -23659,7 +23659,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stains",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -23667,7 +23667,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -23675,7 +23675,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sloping",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -23683,7 +23683,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Uneven Surfaces",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -23691,7 +23691,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Holes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -23699,7 +23699,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Wrinkled Carpet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -23707,7 +23707,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Trip Hazard(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -23715,7 +23715,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Repair(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -23746,7 +23746,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Passage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -23754,7 +23754,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Pocket",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -23762,7 +23762,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Double",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -23770,7 +23770,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bi-Fold",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -23778,7 +23778,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bi-Pass",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -23786,7 +23786,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Accordion",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -23817,7 +23817,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -23825,7 +23825,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -23833,7 +23833,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -23841,7 +23841,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inaccessible",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -23849,7 +23849,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -23857,7 +23857,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Removed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -23865,7 +23865,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Hardware",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -23873,7 +23873,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Settled or Rubbing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -23881,7 +23881,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Improperly Hung or Sagging",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -23889,7 +23889,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Holes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -23897,7 +23897,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stains",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -23905,7 +23905,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cracked or Split Jambs",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -23913,7 +23913,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -23921,7 +23921,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inadequate Repairs",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -23929,7 +23929,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Servicing or Adjusting",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -23960,7 +23960,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Sliders",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -23968,7 +23968,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Fixed",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -23976,7 +23976,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Single Hung",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -23984,7 +23984,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Double Hung",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -23992,7 +23992,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Awning",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -24023,7 +24023,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Satisfactory",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -24031,7 +24031,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Marginal",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -24039,7 +24039,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Poor",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -24047,7 +24047,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Difficult To Operate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -24055,7 +24055,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Improve Security",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -24063,7 +24063,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Hardware",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -24071,7 +24071,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Broken Panes",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -24079,7 +24079,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Failed Thermal Seals",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -24087,7 +24087,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify Bedroom Egress",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -24095,7 +24095,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Stained",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -24103,7 +24103,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Weathered Sills",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -24111,7 +24111,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Mold or Mildew",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -24119,7 +24119,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Damage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -24127,7 +24127,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Deterioration",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -24181,7 +24181,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Appeared Functional",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -24189,7 +24189,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Loose or Worn",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -24197,7 +24197,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -24205,7 +24205,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -24213,7 +24213,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Cover Plates",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -24221,7 +24221,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ungrounded 3-Prong",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -24229,7 +24229,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Inoperable GFCI",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -24237,7 +24237,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing GFCI Protection",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -24245,7 +24245,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Reversed Polarity",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -24253,7 +24253,7 @@ var defaultTemplate = {
           "id": null,
           "key": "OG or RP Within 6 Feet",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -24261,7 +24261,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Burned",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -24269,7 +24269,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exposed Wires",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -24277,7 +24277,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Hazardous or Unsafe",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -24285,7 +24285,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Recommend Professional Evaluation",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -24330,7 +24330,7 @@ var defaultTemplate = {
   }, {
     "id": null,
     "title": "Life or Safety",
-    "sourceType": "Template",
+    "sourceType": "template",
     "inspectionId": null,
     "order": 11,
     "subsections": [{
@@ -24338,7 +24338,7 @@ var defaultTemplate = {
       "title": "Potential Safety Concerns",
       "sectionId": null,
       "inspectionId": null,
-      "sourceType": "Template",
+      "sourceType": "template",
       "order": 0,
       "questions": [{
         "id": null,
@@ -24399,7 +24399,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -24407,7 +24407,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Unsafe or Uneven Walking Surfaces",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -24415,7 +24415,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Re-Evaluate",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -24423,7 +24423,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Interior",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -24431,7 +24431,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Exterior",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -24439,7 +24439,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Steep Slope or Drop-Off",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -24447,7 +24447,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Retaining Wall",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -24455,7 +24455,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Driveway or Walkway(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -24463,7 +24463,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Landing",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -24471,7 +24471,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Balcony",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -24479,7 +24479,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Patio",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -24487,7 +24487,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Deck",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 11,
           "remark": ""
@@ -24495,7 +24495,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Steps or Stairs",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 12,
           "remark": ""
@@ -24503,7 +24503,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Guard or Handrail(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 13,
           "remark": ""
@@ -24511,7 +24511,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Low Guard or Handrail(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 14,
           "remark": ""
@@ -24519,7 +24519,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Root Heaving",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 15,
           "remark": ""
@@ -24527,7 +24527,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Erosion",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 16,
           "remark": ""
@@ -24535,7 +24535,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cracks or Gaps or Missing Dividers",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 17,
           "remark": ""
@@ -24566,7 +24566,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Not Applicable",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -24574,7 +24574,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -24582,7 +24582,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Inadequate Firewall",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -24590,7 +24590,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing or Inadequate Fire-Door",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -24598,7 +24598,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Excessive Storage",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -24606,7 +24606,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Excessive Heat",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -24614,7 +24614,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Cellulose Debris",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -24622,7 +24622,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Roof Tear-Off Debris",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""
@@ -24630,7 +24630,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Entrapment or Locks",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 8,
           "remark": ""
@@ -24638,7 +24638,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Improve Bedroom Egress",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 9,
           "remark": ""
@@ -24646,7 +24646,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Verify Adequate CO & Fire Alarms",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 10,
           "remark": ""
@@ -24677,7 +24677,7 @@ var defaultTemplate = {
           "id": null,
           "key": "None",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -24685,7 +24685,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Ponding or Breeding Water",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -24693,7 +24693,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Potential Points of Pest Entry",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -24701,7 +24701,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rat Droppings Toxins",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -24709,7 +24709,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bee or Wasp Nests",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -24717,7 +24717,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Racoon",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -24748,7 +24748,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Insect",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -24756,7 +24756,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Rodent",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -24787,7 +24787,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Missing Window Safety Glass",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 0,
           "remark": ""
@@ -24795,7 +24795,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Electrical Shock Hazard(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 1,
           "remark": ""
@@ -24803,7 +24803,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Bio-Growth or Mold or Mildew",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 2,
           "remark": ""
@@ -24811,7 +24811,7 @@ var defaultTemplate = {
           "id": null,
           "key": "PACM",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 3,
           "remark": ""
@@ -24819,7 +24819,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Friable ACM",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 4,
           "remark": ""
@@ -24827,7 +24827,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Lead",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 5,
           "remark": ""
@@ -24835,7 +24835,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Airborne or VOCs",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 6,
           "remark": ""
@@ -24843,7 +24843,7 @@ var defaultTemplate = {
           "id": null,
           "key": "Potential Hidden Hazard(s)",
           "questionId": null,
-          "sourceType": "Template",
+          "sourceType": "template",
           "inspectionId": null,
           "order": 7,
           "remark": ""

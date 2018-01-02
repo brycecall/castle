@@ -45,7 +45,7 @@
             <span>
               <md-button class="md-raised md-warn" ng-click="goToInspection(inspection.insId);">Edit</md-button>
               <md-button class="md-raised" ng-click="goToPreview(inspection.insId);">Review</md-button>
-              <md-button class="md-raised" ng-click="send(inspection.insId);">Send</md-button>
+              <md-button class="md-raised hide-xs" ng-click="send(inspection.insId);">Send</md-button>
             </span>
 
             <md-menu>
@@ -57,6 +57,12 @@
                   <md-button ng-click="export(inspection.insId);">
                     <md-icon md-svg-icon="export" md-menu-align-target></md-icon>
                     Export
+                  </md-button>
+                </md-menu-item>
+                <md-menu-item class="hide show-xs">
+                  <md-button ng-click="send(inspection.insId)">
+                    <md-icon md-svg-icon="send" md-menu-align-target></md-icon>
+                    Send
                   </md-button>
                 </md-menu-item>
                 <md-menu-item>

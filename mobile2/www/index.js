@@ -4,7 +4,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
   $urlRouterProvider.otherwise("/error");
 });
 
-app.config(function($mdThemingProvider) {
+app.config(function ($mdThemingProvider) {
   $mdThemingProvider.theme('default')
     .primaryPalette('indigo')
     .accentPalette('pink')
@@ -22,12 +22,12 @@ app.run(function ($transitions, $rootScope, $state) {
 });
 
 // Set loading screen in between page transitions
-app.run(function($transitions, $rootScope) {
-  $transitions.onStart({}, function(event) {
+app.run(function ($transitions, $rootScope) {
+  $transitions.onStart({}, function (event) {
     $rootScope.loading = true;
   })
-  
-  $transitions.onSuccess({}, function(event) {
+
+  $transitions.onSuccess({}, function (event) {
     $rootScope.loading = false;
   });
 });
@@ -36,14 +36,14 @@ app.run(function($transitions, $rootScope) {
 app.run(function ($rootScope, $timeout, header_manager) {
   $rootScope.loading = false;
   var handle = null;
-  $rootScope.$watch('loading', function(oldValue, newValue) {
+  $rootScope.$watch('loading', function (oldValue, newValue) {
     if (handle) {
       $timeout.cancel(handle);
     }
-    
+
     if (newValue) {
       // Auto-timeout after 15 secs
-      handle = $timeout(function() {
+      handle = $timeout(function () {
         $rootScope.loading = false;
       }, (15 * 1000));
     }
@@ -62,8 +62,8 @@ app.run(function ($rootScope, database, theme_manager) {
     $rootScope.debug = state;
   }
   $rootScope.debug = (localStorage.getItem("debug") == "true" ? true : false);
-  
-  window.reset = function() {
+
+  window.reset = function () {
     database.initTables();
     theme_manager.clearThemes();
   }
@@ -89,7 +89,7 @@ app.run(function (database, $timeout, $interval, $rootScope) {
     console.log("Database has already been initialized, skipping...");
   } else {
     $rootScope.loading = true;
-    
+
     var handle = $interval(function () {
       if (window['sqlitePlugin'] != undefined) {
         database.initTables();

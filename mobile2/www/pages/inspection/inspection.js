@@ -33,15 +33,15 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   $scope.camera_manager = camera_manager;
   $scope.numDeleted = 0;
   $rootScope.loading = true;
-  inspection_manager.mode = "inspection";   // Switch the inspection_manager mode (this is global)
+  inspection_manager.mode = "inspection"; // Switch the inspection_manager mode (this is global)
 
   header_manager.title = "Inspections";
   /*header_manager.setAction("Back", "back", function () {
     $state.go('home');
   });*/
-    
-  $scope.newInspection = function(){
-      $state.go("inspection_new");
+
+  $scope.newInspection = function () {
+    $state.go("inspection_new");
   }
 
   $scope.goToInspection = function (insId) {
@@ -49,11 +49,11 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
       'insId': insId
     });
   };
-    
+
   action_manager.addAction('New Inspection', 'add', function () {
     $scope.newInspection();
   });
-    
+
 
 
   $scope.goToPreview = function (insId) {
@@ -61,34 +61,38 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
       'insId': insId
     });
   };
-    
+
   $scope.send = function (insId) {
     $state.go('report', {
       'insId': insId,
       'quickSend': true
     });
   }
-  
-  $scope.openMenu = function($mdMenu, ev) {
-      $mdMenu.open(ev);
-  };
-  var toast = $mdToast.simple()
-                    .textContent('')
-                    .action('UNDO')
-                    .highlightAction(true)
-                    .highlightClass('md-accent')
-                    .position('bottom')
-                    .toastClass('highIndex');
 
-  $scope.delete = function(index) {
-      $scope.inspections[index].deleted = true;
-      $scope.numDeleted++;
-      $mdToast.show(toast).then(function(response) {
-        if ( response == 'ok' ) {
-           $scope.inspections[index].deleted = false;
-           $scope.numDeleted--;
-        }
-      }, function(){console.log("You delete fast don't ya!");});
+  $scope.openMenu = function ($mdMenu, ev) {
+    $mdMenu.open(ev);
+  };
+
+
+  $scope.delete = function (index) {
+    var toast = $mdToast.simple()
+      .textContent('')
+      .action('UNDO')
+      .highlightAction(true)
+      .highlightClass('md-accent')
+      .position('bottom')
+      .toastClass('highIndex');
+
+    $scope.inspections[index].deleted = true;
+    $scope.numDeleted++;
+    $mdToast.show(toast).then(function (response) {
+      if (response == 'ok') {
+        $scope.inspections[index].deleted = false;
+        $scope.numDeleted--;
+      }
+    }, function () {
+      console.log("You delete fast don't ya!");
+    });
   }
 
   $scope.export = function (insId) {
@@ -102,10 +106,31 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
         $rootScope.loading = false;
         console.error(error);
       });
-  }
+  };
 
+  $scope.rename = function (insId) {
+    $rootScope.loading = true;
+    var promise = inspection_manager.getInspection(insId);
+    promise.then(
+      function (result) {
+        $rootScope.loading = false;
+        var newName = window.prompt("Please enter a new name.", result.value.insName);
+        if (newName) {
+          result.value.insName = newName;
+        }
 
-  
+        var toast = $mdToast.simple()
+          .textContent('Renaming Inspection - Name will update shortly')
+          .position('bottom')
+          .toastClass('highIndex');
+        $mdToast.show(toast);
+        inspection_manager.updateInspection();
+      },
+      function (error) {
+        $rootScope.loading = false;
+      });
+  };
+
   $scope.sort = "";
   $scope.sort_filters = [
     "Name",

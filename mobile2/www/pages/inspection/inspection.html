@@ -1,5 +1,5 @@
 <link type="text/css" rel="stylesheet" href="pages/inspection/inspection.css" />
-<div class="page">
+<div class="page" ng-cloak>
   <div class="filter-bar" layout="row" layout-align="space-around center">
     <md-input-container>
       <label>Search</label>
@@ -51,6 +51,12 @@
                 <md-icon md-svg-icon="more_vert"></md-icon>
               </md-button>
               <md-menu-content width="4">
+                <md-menu-item>
+                  <md-button ng-click="rename(inspection.insId)">
+                    <md-icon md-svg-icon="mode_edit" md-menu-align-target></md-icon>
+                    Rename
+                  </md-button>
+                </md-menu-item>
                 <md-menu-item>
                   <md-button ng-click="export(inspection.insId);">
                     <md-icon md-svg-icon="export" md-menu-align-target></md-icon>

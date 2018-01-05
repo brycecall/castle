@@ -16,12 +16,11 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
     public.initTables = function() {
       var deferInit = $q.defer();
       databaseInit.initTables(db).then(function(success) {
-        debugger;
         public.saveInspection(defaultTemplate, 'template').then(function(saveSuccess) {
           console.log('Success initTables');
           // Successful save of default template
           deferInit.resolve({
-            inspectionId: saveSuccess.rowId,
+            inspectionId: saveSuccess.inspectionId,
             message: 'Successful save of default template'
           });
         }, function(saveError){
@@ -506,17 +505,20 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
     // Overwrite the copied template with the actual data of the save
     public.saveInspection = function (ins, sourceType) {
       var timestamp = new Date();
-      console.log('insName: ' + ins.insName);
-      console.log(ins);
       var deferSaveInspection = $q.defer();
-      deferSaveInspection.resolve();
-      deferSaveInspection = deferSaveInspection.promise;
+      var promises = [];
       // Insert Inspection Table Data
       db.executeSql('INSERT INTO Inspection (insLastModified, insJobId, insSourceType, insType, insName, insUserId, insThemeId, insOrganizationId, insTemplateId, insTemplateTitle) VALUES (?,?,?,?,?,?,?,?,?,?)', [timestamp, ins.insJobId, sourceType, ins.insType, ins.insName, ins.insUserId, ins.insThemeId, ins.insOrganizationId, ins.insTemplateId, ins.insTemplateTitle], function (res) {
         //if this is successful, attempt to insert section data
         angular.forEach(ins.sections, function (section) {
-          deferSaveInspection = deferSaveInspection.then(function() {
-            return public.saveSection(sourceType, section, res.insertId);
+          promises.push(public.saveSection(sourceType, section, res.insertId));
+        });
+        // Wait for all sections to resolve before resolving Inspection
+        $q.all(promises).then(function() {
+          console.log('All sections saved');
+          deferSaveInspection.resolve({
+            message: 'Successful inspection save',
+            inspectionId: res.insertId
           });
         });
       }, function (error) {
@@ -524,20 +526,23 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
           message: 'Error saving Inspection: ' + error.message
         });
       });
+
       return deferSaveInspection.promise;
     }
     
     public.saveSection = function(sourceType, section, resInsertId ) {
       var deferSaveSection = $q.defer();
-      deferSaveSection.resolve();
-      deferSaveSection = deferSaveSection.promise;
+      var sectionPromises = [];
         
-      var secSourceType = sourceType;
-      db.executeSql('INSERT INTO Section (secTitle, secInspectionId, secSourceType) VALUES (?,?,?)', [section.title, resInsertId, secSourceType], function (secRes) {
+      db.executeSql('INSERT INTO Section (secTitle, secInspectionId, secSourceType) VALUES (?,?,?)', [section.title, resInsertId, sourceType], function (secRes) {
         //if this is successful, attempt to insert subsection data
         angular.forEach(section.subsections, function (subsection) {
-          deferSaveSection = deferSaveSection.then(function() {
-            return public.saveSubsection(secSourceType, subsection, secRes.insertId, resInsertId);
+          sectionPromises.push(public.saveSubsection(sourceType, subsection, secRes.insertId, resInsertId));
+        });
+        $q.all(sectionPromises).then(function() {
+          deferSaveSection.resolve({
+            message: 'Successful section save',
+            sectionId: secRes.insertId
           });
         });
       }, function (secError) {
@@ -575,26 +580,22 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
         
       return deferSaveSection.promise;
     };*/
-    
+
     public.saveSubsection = function(secSourceType, subsection, secResInsertId, resInsertId) {
       var deferSaveSubsection = $q.defer();
-      deferSaveSubsection.resolve();
-      deferSaveSubsection = deferSaveSubsection.promise;
-      var subsecSourceType = secSourceType;
-      var tempSubsection = subsection;
-      var tempSecResInsertId = secResInsertId;
-      var tempResInsertId = resInsertId;
-      db.executeSql('INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) VALUES (?,?,?,?)', [tempSubsection.title, tempSecResInsertId, tempResInsertId, subsecSourceType], function (susRes) {
+      var subsectionPromises = [];
+      db.executeSql('INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) VALUES (?,?,?,?)', [subsection.title, secResInsertId, resInsertId, secSourceType], function (susRes) {
         // If this is successful, attempt to insert question data
-        angular.forEach(tempSubsection.questions, function (question) {
-          deferSaveSubsection = deferSaveSubsection.then(function() {
-            return public.saveQuestion(question, subsecSourceType, tempResInsertId, susRes.insertId);
+        angular.forEach(subsection.questions, function (question) {
+          subsectionPromises.push(public.saveQuestion(question, secSourceType, resInsertId, susRes.insertId));
+        });
+        // Wait for all questions to be resolved before resolving subsection
+        $q.all(subsectionPromises).then(function() {
+          deferSaveSubsection.resolve({
+            message: 'Successful section save',
+            subsectionId: susRes.insertId
           });
         });
-        // Made it to the end, resolve.
-        //deferSaveSubsection.resolve({
-        //  message: 'Successful subsection save title: ' + tempSubsection.title
-        //});
       }, function (susError) {
         deferSaveSubsection.reject({
           message: 'Error with SubSection save: ' + susError.message
@@ -602,50 +603,19 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
       });
       return deferSaveSubsection.promise;
     };
-    /*public.saveSubsection = function(secSourceType, subsection, secResInsertId, resInsertId) {
-      console.log('saveSubsection');
-      var deferSaveSubsection = $q.defer();
-      var subsecSourceType = secSourceType;
-      var tempSubsection = subsection;
-      var tempSecResInsertId = secResInsertId;
-      var tempResInsertId = resInsertId;
-      db.executeSql('INSERT INTO SubSection (susTitle, susSectionId, susInspectionId, susSourceType) VALUES (?,?,?,?)', [tempSubsection.title, tempSecResInsertId, tempResInsertId, subsecSourceType], function (susRes) {
-        // If this is successful, attempt to insert question data
-        tempSubsection.questions.forEach(function (question) {
-          public.saveQuestion(question, subsecSourceType, res.insertId, susRes.insertId).then(function(success){
-            console.log(success.message);
-          }, function(error){
-            deferSaveSubsection.reject({
-              message: error.message
-            });
-          });
-        });
-        // Made it to the end, resolve.
-        deferSaveSubsection.resolve({
-          message: 'Successful subsection save title: ' + tempSubsection.title
-        });
-      }, function (susError) {
-        deferSaveSubsection.reject({
-          message: 'Error with SubSection save: ' + susError.message
-        });
-      });
-        
-      return deferSaveSubsection.promise;
-    };*/
-    
+
     public.saveQuestion = function (question, subsecSourceType, resInsertId, susResInsertId) {
       var deferSaveQuestion = $q.defer();
-      deferSaveQuestion.resolve();
-      deferSaveQuestion = deferSaveQuestion.promise;
-      var queSourceType = subsecSourceType;
-      var tempQuestion = question;
-      var inspectionResId = resInsertId;
-      db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queValidationType, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [tempQuestion.title, tempQuestion.description, susResInsertId, (tempQuestion.answers && tempQuestion.answers.length > 0) || tempQuestion.answer, tempQuestion.validation.isRequired, tempQuestion.type, tempQuestion.validation.min, tempQuestion.validation.max, tempQuestion.validation.type, tempQuestion.notApplicable, tempQuestion.showSummaryRemark, tempQuestion.showDescription, resInsertId, queSourceType], function (queRes) {
+      var questionPromises = [];
+      db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queValidationType, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [question.title, question.description, susResInsertId, (question.answers && question.answers.length > 0) || question.answer, question.validation.isRequired, question.type, question.validation.min, question.validation.max, question.validation.type, question.notApplicable, question.showSummaryRemark, question.showDescription, resInsertId, subsecSourceType], function (queRes) {
         // If this is successful, attempt to insert answer data
-        angular.forEach(tempQuestion.values, function(answer) {
-          // Attempt to save answers, catch promise result
-          deferSaveQuestion = deferSaveQuestion.then(function() {
-            return public.saveAnswer(answer, queSourceType, queRes.insertId, inspectionResId);
+        angular.forEach(question.values, function(answer) {
+          questionPromises.push(public.saveAnswer(answer, subsecSourceType, queRes.insertId, resInsertId));
+        });
+        $q.all(questionPromises).then(function() {
+          deferSaveQuestion.resolve({
+            message: 'Successful section save',
+            questionId: queRes.insertId
           });
         });
         // Save photo data from Question photos array
@@ -670,88 +640,21 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
       });
       return deferSaveQuestion.promise;
     };
-      
-    /*public.saveQuestion = function (question, subsecSourceType, resInsertId, susResInsertId) {
-      console.log('saveQuestion');
-      var deferSaveQuestion = $q.defer();
-      var queSourceType = subsecSourceType;
-      var tempQuestion = question;
-      var inspectionResId = resInsertId;
-      db.executeSql('INSERT INTO Question (queTitle, queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queValidationType, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [tempQuestion.title, tempQuestion.description, susResInsertId, (tempQuestion.answers && tempQuestion.answers.length > 0) || tempQuestion.answer, tempQuestion.validation.isRequired, tempQuestion.type, tempQuestion.validation.min, tempQuestion.validation.max, tempQuestion.validation.type, tempQuestion.notApplicable, tempQuestion.showSummaryRemark, tempQuestion.showDescription, resInsertId, queSourceType], function (queRes) {
-        // If this is successful, attempt to insert answer data
-        console.log(tempQuestion);
-        tempQuestion.values.forEach(function(answer) {
-          // Attempt to save answers, catch promise result
-          public.saveAnswer(answer, queSourceType, queRes.insertId, inspectionResId).then(function(success){
-            console.log(success.message);
-          }, function(error){
-            deferSaveQuestion.reject({
-              message: error.message
-            });
-          });
-        });
-        // Save photo data from Question photos array
-        /*tempQuestion.photos.forEach(function(photo) {
-          var phoQueRes = queRes;
-          var phoAnsRes = ansRes;
-          var tempPhoto = photo;
-          var phoSourceType = queSourceType;
-          db.executeSql('INSERT INTO Photo (phoLink, phoTitle, phoQuestionId, phoAnswerId, phoInspectionId, phoSourceType) VALUES (?,?,?,?,?,?)', [tempPhoto.link, tempPhoto.title, phoQueRes.insertId, phoAnsRes.insertId, inspectionRes.insertId, phoSourceType], function(phoRes) {
-            //console.log('Successfully inserted photo: ' + tempQuestion.photos[i]); 
-          }, function(phoError) {
-            console.log('Failure inserting photo: ' + tempQuestion.photos[i]);
-            deferSaveQuestion.reject({
-              message: 'Error with Photo save: ' + phoError.message
-            });
-          });    
-        });
-        // Made it to the end, resolve
-        deferSaveQuestion.resolve({
-          message: 'Success saving question: ' + queTitle    
-        });
-      }, function (queError) {
-        deferSaveQuestion.reject({
-          message: 'Error with Question save: ' + queError.message
-        });
-      });
-      return deferSaveQuestion.promise;    
-    };*/
     
     public.saveAnswer = function (answer, queSourceType, queResId, inspectionResId) {
       var deferSaveAnswer = $q.defer();
-      var ansSourceType = queSourceType;
-      var tempAnswer = answer;
-      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansChecked, ansAutoComment) VALUES (?,?,?,?,?,?,?)', [queResId, tempAnswer.key, tempAnswer.type, inspectionResId, ansSourceType, tempAnswer.checked, tempAnswer.autoComment], function (ansRes) {
+      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansChecked, ansAutoComment) VALUES (?,?,?,?,?,?,?)', [queResId, answer.key, answer.type, inspectionResId, queSourceType, answer.checked, answer.autoComment], function (ansRes) {
         deferSaveAnswer.resolve({
-          message: 'Successful answer save: ' + tempAnswer.key
+          answerId: ansRes.insertId,
+          message: 'Successful answer save: ' + answer.key
         });
       }, function (ansError) {
-        console.log('AnsError');
         deferSaveAnswer.reject({
-          message: 'Failed to save answer: ' + tempAnswer.key    
+          message: 'Failed to save answer: ' + answer.key    
         });
       });
       return deferSaveAnswer.promise;
     }
-      
-    /*public.saveAnswer = function (answer, queSourceType, queResId, inspectionResId) {
-      console.log('saveAnswer');
-      var deferSaveAnswer = $q.defer();
-      var ansSourceType = queSourceType;
-      var tempAnswer = answer;
-      db.executeSql('INSERT INTO Answer (ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansChecked, ansAutoComment) VALUES (?,?,?,?,?,?,?)', [queResId, tempAnswer.key, tempAnswer.type, inspectionResId, ansSourceType, tempAnswer.checked, tempAnswer.autoComment], function (ansRes) {
-        console.log(answer.key + ' answer successfully inserted. ID: ' + ansRes.insertId + ' saved to Inspection#: ' + res.insertId);
-        deferSaveAnswer.resolve({
-          message: 'Successful answer save: ' + tempAnswer.key
-        });
-      }, function (ansError) {
-        console.log('AnsError');
-        deferSaveAnswer.reject({
-          message: 'Failed to save answer: ' + tempAnswer.key    
-        });
-      });
-      return deferSaveAnswer.promise;
-    }*/
     
     // Overwrite the copied template with the actual data of the save
     public.updateInspection = function (ins) {

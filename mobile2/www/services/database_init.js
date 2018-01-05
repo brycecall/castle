@@ -625,11 +625,12 @@
               'CREATE TABLE IF NOT EXISTS UserUsers (usuUserId INT, usuUserChildId INT, FOREIGN KEY(usuUserId) REFERENCES User(rowId))',
           ], function (res) {
             public.initThemes();
-            //public.initTemplates();            
+            //public.initTemplates();
             deferInitTables.resolve({
               message: 'Batch statement for default Template data completed successfully'
             });
           }, function (error) {
+            console.log('Error processing batch');
             deferInitTables.reject({
               message: 'Error processing batch: ' + error.message
             });

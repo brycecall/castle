@@ -1,4 +1,4 @@
-app.factory('header_manager', function ($rootScope) {
+app.factory('header_manager', function ($rootScope, $timeout) {
   var public = {};
   var private = {};
 
@@ -6,14 +6,13 @@ app.factory('header_manager', function ($rootScope) {
   public.actions = [];
   public.enabled = true;
   public.mode = HEADER_MODES.Action;
-  public.title = "";
+  public.title = "Castle [ALPHA2]";
   public.theme = "default";
+  
   public.enable = function () {
     public.enabled = true;
     if (public.mode === HEADER_MODES.Action && public.action == null) {
-      throw {
-        "NoActions": "There are no actions to perform. The action button will display when actions are added."
-      }
+      console.error("There are no actions to perform. The action button will display when actions are added.");
     }
   }
 
@@ -39,9 +38,7 @@ app.factory('header_manager', function ($rootScope) {
 
   public.clearAction = function () {
     public.setAction("Back", 'back', private.back);
-    public.title = "Castle";
     public.mode = HEADER_MODES.Action;
-    public.theme = "default";
     public.enable();
   }
 
@@ -74,9 +71,9 @@ app.factory('header_manager', function ($rootScope) {
 
   public.clearActions = function () {
     public.actions = [];
-    public.mode = ACTION_MODES.Default;
+    public.mode = HEADER_MODES.Action;
   }
-  
+
   public.clearAction();
   public.clearActions();
   return public;
@@ -84,7 +81,7 @@ app.factory('header_manager', function ($rootScope) {
 
 app.controller('header', function ($scope, $rootScope, $mdMenu, header_manager) {
   $scope.service = header_manager;
-  
+
   $scope.run = function (method) {
     method();
   }
@@ -100,6 +97,7 @@ app.run(function ($transitions, header_manager) {
 
 // Override the back button to sync with the action header
 app.run(function (header_manager) {
+  // Override the back button functionality
   document.addEventListener("backbutton", function (event) {
     if (header_manager.action && header_manager.mode == HEADER_MODES.Action) {
       header_manager.action.method();

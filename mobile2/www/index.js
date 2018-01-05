@@ -21,7 +21,7 @@ app.run(function ($transitions, $rootScope, $state) {
   });
 });
 
-// Set loading screen inbetween page transitions
+// Set loading screen in between page transitions
 app.run(function($transitions, $rootScope) {
   $transitions.onStart({}, function(event) {
     $rootScope.loading = true;
@@ -33,7 +33,7 @@ app.run(function($transitions, $rootScope) {
 });
 
 // Init the loading value
-app.run(function ($rootScope, $timeout) {
+app.run(function ($rootScope, $timeout, header_manager) {
   $rootScope.loading = false;
   var handle = null;
   $rootScope.$watch('loading', function(oldValue, newValue) {

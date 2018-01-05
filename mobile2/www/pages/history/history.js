@@ -15,7 +15,7 @@ app.config(function ($stateProvider) {
 
 app.controller('history', function ($scope, $rootScope, $state, $cordovaFile) {
   $scope.reports = [];
-  $scope.message = null;
+  $scope.message = 'Gathering your reports...';
   $rootScope.loading = true;
   
   var file_promise = $cordovaFile.checkDir(cordova.file.externalDataDirectory, ".");
@@ -26,6 +26,12 @@ app.controller('history', function ($scope, $rootScope, $state, $cordovaFile) {
       }, error);
     
     var success = function (entries) {
+      if (entries.length == 0) {
+        $scope.message = "No Reports Found";
+      } else {
+        $scope.message = "";
+      }
+      
       for (var i in entries) {
         if (entries[i].name.indexOf(".pdf") > -1) {
           $scope.reports.push(entries[i]);
@@ -35,11 +41,11 @@ app.controller('history', function ($scope, $rootScope, $state, $cordovaFile) {
     };
       
     var error = function (error) {
-      $scope.message = "No reports found.";
+      $scope.message = "No Reports Found";
       $rootScope.loading = false;
     }
   }, function(error) {
-    $scope.message = "Could not load history...";
+    $scope.message = "ERROR: Could not access filesystem to load history.";
     $rootScope.loading = false;
   });
   

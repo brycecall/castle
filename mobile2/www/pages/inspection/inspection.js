@@ -36,9 +36,9 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   inspection_manager.mode = "inspection";   // Switch the inspection_manager mode (this is global)
 
   header_manager.title = "Inspections";
-  header_manager.setAction("Back", "back", function () {
+  /*header_manager.setAction("Back", "back", function () {
     $state.go('home');
-  });
+  });*/
     
   $scope.newInspection = function(){
       $state.go("inspection_new");

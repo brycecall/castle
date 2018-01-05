@@ -16,7 +16,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
     public.initTables = function() {
       var deferInit = $q.defer();
       databaseInit.initTables(db).then(function(success) {
-        debugger;
         public.saveInspection(defaultTemplate, 'template').then(function(saveSuccess) {
           console.log('Success initTables');
           // Successful save of default template

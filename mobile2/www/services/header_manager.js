@@ -6,7 +6,7 @@ app.factory('header_manager', function ($rootScope, $timeout) {
   public.actions = [];
   public.enabled = true;
   public.mode = HEADER_MODES.Action;
-  public.title = "Castle [ALPHA2]";
+  public.title = "";
   public.theme = "default";
   
   public.enable = function () {
@@ -92,6 +92,7 @@ app.run(function ($transitions, header_manager) {
   $transitions.onExit({}, function () {
     header_manager.clearAction();
     header_manager.clearActions();
+    header_manager.title = "Castle [ALPHA2]";
   });
 });
 

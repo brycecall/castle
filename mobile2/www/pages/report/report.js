@@ -68,7 +68,7 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
             if ($stateParams.quickSend != "false") {
               sendEmail();
             }
-            
+
             action_manager.enable();
           };
 
@@ -76,14 +76,14 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
             $rootScope.loading = true;
 
             // The object is an inspection
-            if (object.secions) {
+            if (object.sections) {
               $state.go('inspection_wizard', {
                 'insId': object.insId
               });
             } else
 
               // The object is a section
-              if (object.subsecions) {
+              if (object.subsections) {
                 $state.go('inspection_wizard', {
                   'insId': object.inspectionId,
                   'sectionIndex': object.id
@@ -110,7 +110,7 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
             }
           };
 
-          // But the castle object on the iframe
+          // Put the castle object on the iframe
           render_frame.contentWindow.castle = object;
         }, true);
 
@@ -149,7 +149,7 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
         var storeImage = function (photo, object, loc) {
           $scope.message = "Saving Image " + photo.title;
 
-          if (photo.link.indexOf("file") == 0) {
+          if (photo && photo.link && photo.link.indexOf("file") == 0) {
             console.log(photo.link + " has already been saved.  Skipping...");
             return;
           }
@@ -210,6 +210,37 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
     }
   };
 
+  var createPDF = function (callback) {
+    $rootScope.loading = true;
+    var data = render_frame.contentDocument.querySelector('html').outerHTML;
+    
+    if (window['pdf'] !== undefined) {
+      pdf.htmlToPDF({
+        data: data,
+        documentSize: "A4",
+        landscape: "portrait",
+        type: "file",
+        fileName: inspection_buffer.insName + ".pdf"
+      }, function (data) {
+        end_time = new Date();
+        console.log("Generation the report took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
+        start_time = new Date();
+        
+        if (callback) {
+          callback();
+        }
+        $rootScope.loading = false;
+      }, function (error) {
+        $scope.report = false;
+        $rootScope.loading = false;
+      });
+    }
+  };
+  
+  var openPDF = function() {
+    cordova.plugins.fileOpener2.open(cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf", 'application/pdf');
+  };
+  
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {
     window.history.back();
@@ -217,8 +248,14 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
 
   action_manager.disable();
   action_manager.mode = ACTION_MODES.Action;
-  action_manager.addAction("Send", 'send', sendEmail, 'md-accent');
+  action_manager.addAction("Send", 'send', function() {
+    createPDF(sendEmail);
+  }, 'md-accent');
 
+  action_manager.addAction("Preview", 'search', function () {
+    createPDF(openPDF);
+  }, 'md-warn');
+  
   action_manager.addAction("Edit", 'mode_edit', function () {
     $state.go('inspection_wizard', {
       'insId': inspection_buffer.insId

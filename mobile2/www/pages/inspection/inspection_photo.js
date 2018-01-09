@@ -45,6 +45,8 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
       }
   };
   $scope.message = "Choose a Section";
+  
+  header_manager.title = "Inspection Editor";
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'check', function () {
     $rootScope.loading = true;

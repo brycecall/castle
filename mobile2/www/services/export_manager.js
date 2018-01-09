@@ -6,6 +6,7 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
   private.session_path = null;
 
   public.export = function (resource, type) {
+    var defered = $q.defer();
     private.session_id = $sha.hash(resource.toString()).substr(0, 12);
     private.session_path = cordova.file.cacheDirectory + private.session_id;
     var promise = null;
@@ -54,6 +55,7 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
                             function (result) {
                               console.log(result);
                               private.cleanup();
+                              defered.resolve(result);
                             }
                           );
                         }
@@ -63,17 +65,22 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
                 function (error) {
                   conosle.error(error);
                   private.cleanup();
+                  defered.reject(error);
                 });
             },
             function (error) {
               console.error(error);
               private.cleanup();
+              defered.reject(error);
             });
         },
         function (error) {
           console.error(error);
           private.cleanup();
+          defered.reject(error);
         });
+    
+    return defered.promise;
   }
 
   public.import = function (file) {

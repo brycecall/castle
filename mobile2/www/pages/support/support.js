@@ -8,6 +8,6 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('support', function ($scope, $rootScope) {
-
+app.controller('support', function ($scope, $rootScope, header_manager) {
+  header_manager.title = "Support";
 });

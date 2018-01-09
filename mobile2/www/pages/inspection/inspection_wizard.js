@@ -42,6 +42,8 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
         'params': $transition$.params()
     };
     $scope.currentStateName = $state.current.name;
+  
+    header_manager.title = "Inspection Editor";
     header_manager.mode = HEADER_MODES.Action;
     header_manager.setAction('Back', 'check', function () {
         $rootScope.loading = false;

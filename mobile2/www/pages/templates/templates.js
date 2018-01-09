@@ -242,7 +242,9 @@ app.controller('template', function ($rootScope, $scope, $rootScope, $state, hea
   );
 });
 
-app.controller('template_new', function ($rootScope, $scope, $state, $rootScope, inspection_manager, theme_manager) {
+app.controller('template_new', function ($rootScope, $scope, $state, $rootScope, inspection_manager, theme_manager, header_manager) {
+  header_manager.title = "New Template";
+  
   $scope.themes = [];
   $scope.templates = [];
   $scope.toSection = function (insId) {
@@ -375,7 +377,7 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
   // All the sections for a specific inspection/report
   $scope.subsections = [];
   
-  header_manager.title = "Edit " + inspection_manager.mode.charAt(0).toUpperCase() + inspection_manager.mode.substr(1);
+  header_manager.title = "Edit Section";
   header_manager.theme = 'templateTheme';
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
@@ -383,6 +385,7 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
       'insId': $scope.insId
     });
   });
+  
   action_manager.addAction('Save', 'save', function () {
     $rootScope.loading = true;
     inspection_manager.updateTemplate().then(function() {
@@ -403,6 +406,7 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
         break;
     }
   });
+  
   $scope.addSubsection = function () {
     $scope.subsections.push({
       'id': null,
@@ -413,6 +417,7 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
       'questions':[]
     });
   };
+  
   inspection_manager.getSubsections($scope.insId, $scope.sectionIndex).then(
     function (data) {
       $scope.subsections = data.value || [];
@@ -423,6 +428,13 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
       $rootScope.loading = false;
     }
   );
+  
+  inspection_manager.getSection($scope.insId, $scope.sectionIndex).then(
+    function (data) {
+      header_manager.title = "Edit " + data.value.title + " Section";
+    }
+  );
+  
   $scope.questionDrill = function (subsectionIndex) {
     $state.go('template_question', {
       'insId': $scope.insId,
@@ -441,7 +453,7 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
   // All the sections for a specific inspection/report
   $scope.questions = [];
   
-  header_manager.title = "Edit " + inspection_manager.mode.charAt(0).toUpperCase() + inspection_manager.mode.substr(1);
+  header_manager.title = "Edit Subsection";
   header_manager.theme = 'templateTheme';
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
@@ -497,6 +509,12 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
     });
   };
 
+  inspection_manager.getSubSection($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
+    function (data) {
+      header_manager.title = "Edit " + data.value.title + " Subsection";
+    }
+  );
+  
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
     function (data) {
       $scope.questions = data.value;
@@ -526,7 +544,7 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
   $scope.questionIndex = $stateParams.questionIndex;
   
   header_manager.mode = HEADER_MODES.Action;
-  header_manager.title = "Edit " + inspection_manager.mode.charAt(0).toUpperCase() + inspection_manager.mode.substr(1);
+  header_manager.title = "Edit Question";
   header_manager.theme = 'templateTheme';
   header_manager.setAction('Back', 'back', function () {
     $state.go('template_question', {

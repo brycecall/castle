@@ -46,7 +46,8 @@ app.config(function ($stateProvider) {
         'insId': null,
         'sectionIndex': null,
         'subsectionIndex': null,
-        'questionIndex': null
+        'questionIndex': null,
+        'mode':'template'
       }
     });
 });
@@ -54,6 +55,7 @@ app.config(function ($stateProvider) {
 app.controller('templates', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
   $scope.templates = [];
   $rootScope.loading = true;
+
   // Switch the inspection_manager mode (this is global)
   inspection_manager.mode = "template";
 
@@ -542,17 +544,32 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
   $scope.questionIndex = $stateParams.questionIndex;
+  $scope.mode = $stateParams.mode;
   
   header_manager.mode = HEADER_MODES.Action;
-  header_manager.title = "Edit Question";
+    if ($scope.mode == "inspection") {
+        header_manager.title = "Edit Question";
+    } else {
+       header_manager.title = "Edit " + inspection_manager.mode.charAt(0).toUpperCase() + inspection_manager.mode.substr(1);
+    }
+
   header_manager.theme = 'templateTheme';
-  header_manager.setAction('Back', 'back', function () {
-    $state.go('template_question', {
-      'insId': $scope.insId,
-      'sectionIndex': $scope.sectionIndex,
-      'subsectionIndex': $scope.subsectionIndex
-    });
-  });
+
+    if ($scope.mode == 'inspection')
+    {
+          header_manager.setAction('Back', 'back', function () {
+          }, 'hide');
+    } else {
+          header_manager.setAction('Back', 'back', function () {
+            $state.go('template_question', {
+              'insId': $scope.insId,
+              'sectionIndex': $scope.sectionIndex,
+              'subsectionIndex': $scope.subsectionIndex
+            });
+          });
+
+    }
+
     
 $scope.questionTypes = [
         {
@@ -662,32 +679,63 @@ $scope.questionTypes = [
   };
 
   action_manager.mode = ACTION_MODES.Action;
-  action_manager.addAction("Previous", "keyboard_arrow_left", function () {
-    navigateQuestions(false);
-  }, 'md-raised');
-  action_manager.addAction('Save', 'save', function () {
-    inspection_manager.updateTemplate().then(function() {
-        $rootScope.loading = false;
-        action_manager.showSuccessMessageToast('Save Success');
-    }, function() {
-        $rootScope.loading = false;
-        action_manager.showFailureMessageToast('Save Failure');
-    });
-    switch (inspection_manager.mode) {
-      case "theme":
-        $state.go('themes');
-        break;
-      case "template":
-        break;
-      case "inspection":
-        $state.go(inspection_manager.returnLocation.name, inspection_manager.returnLocation.params);
-        break;
-    }
-  }, 'md-raised');
+    
+  if ($scope.mode == "inspection") {
+      
+      action_manager.addAction("Cancel", "close", function () {
+          $state.go('inspection_wizard', {
+            'insId': $scope.insId,
+            'sectionIndex': $scope.sectionIndex,
+            'subsectionIndex': $scope.subsectionIndex,
+            'questionIndex': $scope.questionIndex
+          });
+      }, "md-accent");
 
-  action_manager.addAction("Next", "keyboard_arrow_right", function () {
-    navigateQuestions(true);
-  }, 'md-raised');
+      action_manager.addAction('Save', 'check', function () {
+          
+        inspection_manager.updateInspection().then(function() {
+            $rootScope.loading = false;
+            action_manager.showSuccessMessageToast('Save Success');
+            $state.go('inspection_wizard', {
+              'insId': $scope.insId,
+              'sectionIndex': $scope.sectionIndex,
+              'subsectionIndex': $scope.subsectionIndex,
+              'questionIndex': $scope.questionIndex
+            });
+        }, function() {
+            $rootScope.loading = false;
+            action_manager.showFailureMessageToast('Save Failure');
+        });
+      }, 'md-raised');
+      
+  }  else {
+      action_manager.addAction("Previous", "keyboard_arrow_left", function () {
+        navigateQuestions(false);
+      }, 'md-raised');
+      action_manager.addAction('Save', 'save', function () {
+        inspection_manager.updateTemplate().then(function() {
+            $rootScope.loading = false;
+            action_manager.showSuccessMessageToast('Save Success');
+        }, function() {
+            $rootScope.loading = false;
+            action_manager.showFailureMessageToast('Save Failure');
+        });
+        switch (inspection_manager.mode) {
+          case "theme":
+            $state.go('themes');
+            break;
+          case "template":
+            break;
+          case "inspection":
+            $state.go(inspection_manager.returnLocation.name, inspection_manager.returnLocation.params);
+            break;
+        }
+      }, 'md-raised');
+      action_manager.addAction("Next", "keyboard_arrow_right", function () {
+        navigateQuestions(true);
+      }, 'md-raised');
+    
+  }
 
   $scope.addPhotos = function (index, value) {
       camera_manager.answerID = index;

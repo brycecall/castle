@@ -52,6 +52,16 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
     });
 
     action_manager.mode = ACTION_MODES.Action;
+    header_manager.addAction("Edit Question", "mode_edit", function () {
+        $state.go("template_detail", {
+            'insId': $scope.insParams.insId,
+            'sectionIndex': $scope.insParams.sectionIndex,
+            'subsectionIndex': $scope.insParams.subsectionIndex,
+            'questionIndex': $scope.insParams.questionIndex,
+            'mode':'inspection'
+        });
+    }, 'md-raised md-accent');
+    
     if ($scope.insParams.photoMode === '1') {
         header_manager.addAction("Wizard Mode", "shutter_camera", function () {
             $state.go("inspection_wizard", {

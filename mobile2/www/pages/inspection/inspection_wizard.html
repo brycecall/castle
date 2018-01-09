@@ -63,10 +63,12 @@
         <div layout="row" layout-align="center start"  class="headBlock" >     
             <div class="md-title">{{question.title ? question.title : 'Untitled Question'}}</div>
             <span flex=""></span>
+<!--
             <md-switch aria-label="disable"
                        ng-model="question.questionNotApplicable"
                        style="color:rgba(0,0,0,0.87);">
             </md-switch>
+-->
         </div>
         <div class="md-caption description">{{question.description ? question.description : '' }}</div>
     
@@ -204,10 +206,12 @@
                 <div layout="row" layout-align="center start">     
                     <div class="md-title">Comment</div>
                     <span flex=""></span>
+<!--
                     <md-switch aria-label="disable" 
                                ng-model="question.commentNotApplicable"
                                style="color:rgba(0,0,0,0.87);">
                     </md-switch>
+-->
                 </div>
                 <md-input-container ng-if="question.type === 'text'" class="md-block">
                   <label>Add a comment here</label>

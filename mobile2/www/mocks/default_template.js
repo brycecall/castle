@@ -2,7 +2,7 @@ var defaultTemplate = {
   "insLastModified": "Sun Oct 08 2017 15:22:12 GMT-0600 (MDT)",
   "insLastSubmitted": "Sun Oct 08 2017 15:22:12 GMT-0600 (MDT)",
   "insType": "Residential",
-  "insName": "Default Template",
+  "insTemplateTitle": "Default Template",
   "insUserId": 1,
   "insId": null,
   "insSourceType": "template",

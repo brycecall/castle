@@ -464,10 +464,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
       });
       
       return deferred.promise;
-      
-      
   };    
-    
     
   public.clearInspection = function () {
     private.inspection = {};

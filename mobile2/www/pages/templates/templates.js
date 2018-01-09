@@ -66,6 +66,30 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
       'insId': insId
     });
   };
+    
+  $scope.copy = function (insId) {
+    // Spinny spins
+    $rootScope.loading = true;
+    // First, get the inspection object
+    inspection_manager.getInspection(insId).then(function(){
+      // The local inspection object should be loaded with 
+      // the selected template. Save it to copy to new rows.
+      console.log('copy getInspection .then');
+      inspection_manager.saveInspection().then(function(){
+        console.log('copy saveInspection .then');
+        // Call getTemplates again
+        // TODO: change to get single inspection row from
+        // inspection table and push the row into scope.templates[]
+        inspection_manager.getTemplates().then(function(promise){
+          $scope.templates = [];
+          for (var i = 0; i < promise.row.length; i++) {
+            $scope.templates.push(promise.row.item(i));
+          };
+          $rootScope.loading = false;
+        });
+      });
+    });
+  };
 
   $scope.sort = "";
   $scope.sort_filters = [

@@ -124,7 +124,13 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
           .position('bottom')
           .toastClass('highIndex');
         $mdToast.show(toast);
-        inspection_manager.updateInspection();
+        inspection_manager.updateInspection().then(
+        function() {
+          $timeout(function() {
+            toast.textContent('Rename Complete');
+            $mdToast.show(toast);
+          }, 0);
+        });
       },
       function (error) {
         $rootScope.loading = false;

@@ -707,7 +707,13 @@ $scope.questionTypes = [
   };
 
   $scope.setSeverity = function (value) {
-    $scope.question.severity = value;
+    // If button is selected a second time,
+    // remove selected effect
+    if(value == $scope.question.severity) {
+      $scope.question.severity = "";
+    } else {
+      $scope.question.severity = value;
+    }
   };
 
   $scope.severityList = [

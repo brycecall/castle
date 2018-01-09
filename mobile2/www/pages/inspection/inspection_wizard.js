@@ -279,7 +279,13 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
     };
 
     $scope.setSeverity = function (value) {
+      // If button is selected a second time,
+      // remove selected effect
+      if(value == $scope.question.severity) {
+        $scope.question.severity = "";
+      } else {
         $scope.question.severity = value;
+      }
     };
 
     $scope.severityList = [

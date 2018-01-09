@@ -299,81 +299,39 @@
               </div>
             </md-card-content>
         </md-card>
-        <md-card>
+        <md-card class="flatCard">
             <md-card-content>
-        <div style="margin: 8px 0px 0px 0px;">
+        <div class="headBlock">
             <div class="md-title">Summary Remarks</div>
-            <div class="md-caption" style="margin: 4px 0 4px 0;" >Summary Remarks are appended to the Summary Section</div>
-            <div layout="row" layout-wrap>
-                <div class="md-caption"></div>
+            <div class="md-caption" style="margin: 4px 0 4px 0;" >
+                Summary Remarks are appended to the Summary Section
+            </div>
+        </div>
+            <div layout="row" layout-wrap class="buttonWrapper">
+                <div  layout="column" layout-align="center center">
+                    <md-button class="md-fab md-mini" 
+                               ng-class="question.severity == 'Not Applicable' ? 'md-accent selectedBtn' : 'md-raised'"
+                               aria-label="Not Applicable"
+                               ng-click="setSeverity('Not Applicable')"yy>
+                        <md-icon md-svg-icon="remove_circle"></md-icon>
+                    </md-button>
+                    <div class="label">Not Applicable</div>
+                </div>
                 <div ng-repeat="fabButton in severityList" 
-                     class="buttonWrapper"
+                     
                      layout="column" layout-align="center center">
                     <md-button class="md-fab md-mini" 
                                ng-class="question.severity == fabButton.title ? 'md-accent selectedBtn' : 'md-raised'"
                                aria-label="fabButton.title"
                                ng-click="setSeverity(fabButton.title)"
-                               ng-disabled="question.notApplicable">
+                               ng-disabled="true">
                         <md-icon md-svg-icon="{{fabButton.icon}}"></md-icon>
                     </md-button>
                     <div class="label">{{fabButton.title}}</div>
                 </div>
             </div>
-            <div>
-            <md-switch ng-model="question.showSummaryRemark"
-                       ng-disabled="question.notApplicable"
-                       >
-            Include Response
-            </md-switch>
-            <md-switch ng-model="question.showDescription"
-                       ng-disabled="question.notApplicable"
-                       >
-            Include Description
-            </md-switch>
-<!--
-            <md-switch ng-model="question.showPhotos"
-                       ng-disabled="question.notApplicable"
-                       >
-            Include Photo
-            </md-switch>
--->
-            </div>
-            <md-card>
-                <md-card-content>
-                    <div ng-if="question.type === 'checkbox' && question.severity 
-                                && question.severity !== 'Non-Issue' 
-                                && question.showSummaryRemark
-                                && question.answers.length > 0"
-                                >
-                        <div class="md-subhead"><b>{{question.severity}}</b></div>
-                        <div ng-repeat="answer in question.answers">
-                            {{question.title}}: {{answer}}
-                        </div>
-                    </div>
-                    <div ng-if="question.type !== 'checkbox' 
-                                && question.severity 
-                                && question.severity !== 'Non-Issue'
-                                && question.showSummaryRemark
-                                && question.answer" 
-                         >
-                        <div class="md-subhead"><b>{{question.severity}}</b></div>
-                        <div >
-                            {{question.title}}: {{question.answer}}
-                        </div>
-                    </div>
-                    <div ng-show="question.showDescription && question.severity && question.severity !== 'Non-Issue'">
-                        {{question.description}}
-                    </div>
-                    <div ng-show="!question.severity || question.severity === 'Non-Issue' || 
-                                  (!question.showSummaryRemark && (!question.showDescription || !question.description)) || 
-                                  (question.type === 'checkbox' && question.answers.length <= 0)
-                                  ||  (question.type !== 'checkbox' && !question.answer)" 
-                         class="md-caption" style="color:rgba(0, 0, 0, 0.54);">
-                    <i>summary remark preview</i>
-                    </div>
-                </md-card-content>
-            </md-card>
-        </div>
+            <div ng-show="question.severity == 'Not Applicable'">"Not applicable" questions won't be included in the final report.</div>
+
             </md-card-content>
         </md-card>
      </div>   

@@ -25,9 +25,17 @@ app.run(function ($transitions, camera_manager) {
 
       var fromStateName = trans.$from().name;
       if ( fromStateName != 'camera' && fromStateName != 'camera_preview' ) {
-         camera_manager.returnState = {
-             'name':trans.$from().name,
-             'params':trans.params('from')
+        if(fromStateName == 'inspection_wizard') {
+          // Use state.self to pull in params
+          camera_manager.returnState = {
+            'name': fromStateName,
+            'params': trans.$from().self.params
+          }
+        } else {
+          camera_manager.returnState = {
+            'name':trans.$from().name,
+            'params':trans.params('from')
+          }
         }
       }
       
@@ -90,6 +98,7 @@ app.controller('camera_preview', function ($scope, $mdToast, $mdDialog, header_m
         header_manager.setAction('Accept', 'check', function() {
             if (camera_manager.returnState) {
                 $state.go(camera_manager.returnState.name, camera_manager.returnState.params);
+                camera_manager.returnState = {};
             } else {
                 $state.go('home');
             }

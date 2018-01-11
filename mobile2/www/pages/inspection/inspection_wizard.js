@@ -95,10 +95,8 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
         console.log('add photos index: ' + index + ' value: ' + value);
         camera_manager.answerID = index;
         camera_manager.title = $scope.question.title;
-        if (value !== null && value !== undefined) {
-            camera_manager.title += ": " + value;
-        }
-        $state.go('camera');
+        $state.current.params = $scope.insParams;
+        $state.go('camera', $state.current.params);
     };
 
     $scope.edit = function () {
@@ -166,7 +164,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
                 attachPhotos();
                 $scope.rapidModePhoto.isRapid = true;
                 if ($scope.question.photos.length >0) {
-                       var photoIndex = $scope.question.photos.indexOf(rapidModePhoto);
+                       var photoIndex = $scope.question.photos.indexOf($scope.rapidModePhoto);
                           if (photoIndex > -1) {
                             $scope.question.photos.splice(photoIndex, 1);
                           }
@@ -350,9 +348,4 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
         });
 
     };
-
-
-
-
-
 });

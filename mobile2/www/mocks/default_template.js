@@ -89,14 +89,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -168,14 +168,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -191,14 +191,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": true
+          "isRequired": 1
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -214,14 +214,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": true
+          "isRequired": 1
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -293,14 +293,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": true
+          "isRequired": 1
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -364,14 +364,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": true
+          "isRequired": 1
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -459,14 +459,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": true
+          "isRequired": 1
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -546,14 +546,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": true
+          "isRequired": 1
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -673,14 +673,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": true
+          "isRequired": 1
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -784,14 +784,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": true
+          "isRequired": 1
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -871,14 +871,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -990,14 +990,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -1053,14 +1053,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -1116,14 +1116,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -1171,14 +1171,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": true
+          "isRequired": 1
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -1197,10 +1197,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }]
@@ -1231,14 +1231,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -1254,14 +1254,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -1344,10 +1344,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -1438,10 +1438,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -1497,14 +1497,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -1616,14 +1616,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -1727,14 +1727,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -1838,14 +1838,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -1917,14 +1917,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -1972,14 +1972,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -2067,14 +2067,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -2170,14 +2170,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -2249,14 +2249,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -2272,14 +2272,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -2298,10 +2298,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -2381,14 +2381,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -2532,14 +2532,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -2635,14 +2635,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -2706,14 +2706,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -2825,14 +2825,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -2848,14 +2848,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -2874,10 +2874,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }]
@@ -2908,14 +2908,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -2931,14 +2931,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -3106,14 +3106,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -3273,14 +3273,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -3376,14 +3376,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -3479,14 +3479,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -3654,14 +3654,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -3680,10 +3680,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -3747,14 +3747,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -3890,14 +3890,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -3937,14 +3937,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -4016,14 +4016,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -4095,14 +4095,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -4121,10 +4121,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -4148,14 +4148,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -4171,14 +4171,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -4258,14 +4258,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -4337,14 +4337,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -4448,14 +4448,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -4503,14 +4503,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -4566,14 +4566,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -4629,14 +4629,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -4692,14 +4692,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -4763,14 +4763,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -4890,14 +4890,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -5001,14 +5001,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -5064,14 +5064,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -5119,14 +5119,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -5190,14 +5190,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -5216,10 +5216,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }]
@@ -5250,14 +5250,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -5273,14 +5273,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -5344,14 +5344,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -5407,14 +5407,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -5486,14 +5486,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -5533,14 +5533,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -5556,14 +5556,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -5579,14 +5579,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -5730,14 +5730,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -5873,14 +5873,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -5944,14 +5944,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -6047,14 +6047,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -6073,10 +6073,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -6196,14 +6196,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -6299,14 +6299,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -6346,14 +6346,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -6457,14 +6457,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -6520,14 +6520,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -6623,14 +6623,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -6649,10 +6649,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -6716,14 +6716,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -6875,14 +6875,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -6930,14 +6930,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7017,14 +7017,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7043,10 +7043,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }]
@@ -7077,14 +7077,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7100,14 +7100,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7211,14 +7211,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7274,14 +7274,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7345,14 +7345,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7424,14 +7424,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7450,10 +7450,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -7477,14 +7477,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7532,14 +7532,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7587,14 +7587,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7634,14 +7634,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7681,14 +7681,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7752,14 +7752,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7815,14 +7815,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7942,14 +7942,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -7989,14 +7989,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -8044,14 +8044,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -8131,14 +8131,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -8186,14 +8186,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -8297,14 +8297,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -8323,10 +8323,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -8430,14 +8430,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -8549,14 +8549,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -8636,14 +8636,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -8731,14 +8731,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -8834,14 +8834,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -8929,14 +8929,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -9003,10 +9003,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -9025,10 +9025,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }]
@@ -9059,14 +9059,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -9082,14 +9082,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -9145,14 +9145,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -9216,14 +9216,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -9319,14 +9319,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -9366,14 +9366,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -9541,14 +9541,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -9620,14 +9620,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -9691,14 +9691,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -9762,14 +9762,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -9857,14 +9857,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -9960,14 +9960,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -10087,14 +10087,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -10110,14 +10110,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -10136,10 +10136,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -10203,14 +10203,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -10298,14 +10298,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -10361,14 +10361,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -10408,14 +10408,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -10455,14 +10455,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -10518,14 +10518,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -10605,14 +10605,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -10660,14 +10660,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -10723,14 +10723,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -10786,14 +10786,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -10857,14 +10857,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -10920,14 +10920,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -11047,14 +11047,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -11073,10 +11073,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -11132,14 +11132,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -11203,14 +11203,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -11274,14 +11274,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -11393,14 +11393,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -11416,14 +11416,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -11442,10 +11442,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }]
@@ -11476,14 +11476,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -11499,14 +11499,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -11554,14 +11554,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -11713,14 +11713,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -11784,14 +11784,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -11879,14 +11879,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -11950,14 +11950,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12013,14 +12013,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12076,14 +12076,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12099,14 +12099,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12170,14 +12170,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12233,14 +12233,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12304,14 +12304,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12351,14 +12351,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12398,14 +12398,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12453,14 +12453,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12524,14 +12524,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12550,10 +12550,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -12625,14 +12625,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12680,14 +12680,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12751,14 +12751,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12806,14 +12806,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12845,14 +12845,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12876,14 +12876,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12931,14 +12931,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -12994,14 +12994,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -13033,14 +13033,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -13128,14 +13128,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -13199,14 +13199,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -13270,14 +13270,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -13333,14 +13333,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -13436,14 +13436,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -13462,10 +13462,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -13529,14 +13529,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -13805,7 +13805,7 @@ var defaultTemplate = {
           "remark": ""
         }, {
           "id": null,
-          "key": "True Value",
+          "key": "1 Value",
           "questionId": null,
           "sourceType": "template",
           "inspectionId": null,
@@ -13832,14 +13832,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -13855,14 +13855,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14102,14 +14102,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14125,14 +14125,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14148,14 +14148,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14171,14 +14171,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14218,14 +14218,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14273,14 +14273,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14408,14 +14408,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14434,10 +14434,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }]
@@ -14468,14 +14468,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14491,14 +14491,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14570,14 +14570,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14625,14 +14625,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14672,14 +14672,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14719,14 +14719,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14774,14 +14774,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14837,14 +14837,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -14863,10 +14863,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -15410,14 +15410,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -15777,14 +15777,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -15800,14 +15800,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -15823,14 +15823,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -15846,14 +15846,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -15893,14 +15893,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -15964,14 +15964,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -15990,10 +15990,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -16041,14 +16041,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -16120,14 +16120,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -16199,14 +16199,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -16254,14 +16254,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -16280,10 +16280,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -16307,14 +16307,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -16330,14 +16330,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -16417,14 +16417,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -16472,14 +16472,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -16527,14 +16527,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -16614,14 +16614,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -16797,14 +16797,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -16823,10 +16823,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }]
@@ -16857,14 +16857,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -16880,14 +16880,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -16903,14 +16903,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -16990,14 +16990,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -17037,14 +17037,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -17063,10 +17063,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -17610,14 +17610,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -17977,14 +17977,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -18000,14 +18000,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -18023,14 +18023,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -18049,10 +18049,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -18071,10 +18071,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -18618,14 +18618,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -18985,14 +18985,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19008,14 +19008,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19031,14 +19031,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19054,14 +19054,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19125,14 +19125,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19188,14 +19188,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19214,10 +19214,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }]
@@ -19248,14 +19248,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19271,14 +19271,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19374,14 +19374,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19445,14 +19445,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19476,14 +19476,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19531,14 +19531,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19602,14 +19602,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19657,14 +19657,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19712,14 +19712,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19775,14 +19775,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19862,14 +19862,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -19909,14 +19909,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -20012,14 +20012,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -20051,14 +20051,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -20162,14 +20162,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -20209,14 +20209,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -20256,14 +20256,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -20359,14 +20359,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -20454,14 +20454,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -20613,14 +20613,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -20639,10 +20639,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -20706,14 +20706,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -20777,14 +20777,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -20824,14 +20824,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -20991,14 +20991,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -21038,14 +21038,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -21093,14 +21093,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -21116,14 +21116,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -21142,10 +21142,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }]
@@ -21176,14 +21176,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -21199,14 +21199,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -21270,14 +21270,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -21333,14 +21333,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -21380,14 +21380,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -21499,14 +21499,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -21546,14 +21546,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -21585,14 +21585,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -21728,14 +21728,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -21754,10 +21754,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -21776,10 +21776,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -21891,14 +21891,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -21962,14 +21962,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -22017,14 +22017,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -22080,14 +22080,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -22127,14 +22127,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -22174,14 +22174,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -22237,14 +22237,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -22284,14 +22284,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -22323,14 +22323,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -22458,14 +22458,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -22484,10 +22484,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -22567,14 +22567,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -22638,14 +22638,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -22685,14 +22685,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -22724,14 +22724,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -22795,14 +22795,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -22821,10 +22821,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -22888,14 +22888,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -22967,14 +22967,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -23030,14 +23030,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -23069,14 +23069,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -23116,14 +23116,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -23163,14 +23163,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -23298,14 +23298,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -23324,10 +23324,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }, {
@@ -23391,14 +23391,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -23542,14 +23542,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -23597,14 +23597,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -23724,14 +23724,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -23795,14 +23795,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -23938,14 +23938,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -24001,14 +24001,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -24136,14 +24136,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -24159,14 +24159,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -24294,14 +24294,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -24320,10 +24320,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }]
@@ -24354,14 +24354,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -24377,14 +24377,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -24544,14 +24544,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -24655,14 +24655,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -24726,14 +24726,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -24765,14 +24765,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -24852,14 +24852,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -24875,14 +24875,14 @@ var defaultTemplate = {
           "type": null,
           "min": null,
           "max": null,
-          "isRequired": false
+          "isRequired": 0
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }, {
         "id": null,
@@ -24901,10 +24901,10 @@ var defaultTemplate = {
         },
         "answer": null,
         "answers": [],
-        "notApplicable": false,
+        "notApplicable": 0,
         "severity": null,
-        "showSummaryRemark": true,
-        "showDescription": true,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
         "photos": []
       }]
     }]

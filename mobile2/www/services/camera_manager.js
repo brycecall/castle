@@ -25,7 +25,7 @@ app.factory('camera_manager', function (camera_mock, $state) {
   public.rapidModePhoto = {};
     
   /* meant to store the state to return to after the Camera usage is done. */
-  public.returnState = '';
+  public.returnState = {};
   public.title = '';
   public.answerKey = '';
     

@@ -216,12 +216,12 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
 
       inspection_manager.saveInspection().then(
         function (savedIns) {
-          console.log('Successful save. Inserted Inspection Id: ' + savedIns.insId);
+          console.log('Successful save. Inserted Inspection Id: ' + savedIns.inspectionId);
           // Simulate loading
           setTimeout(function () {
             $rootScope.loading = false;
             $state.go('inspection_wizard', {
-              'insId': savedIns.insId
+              'insId': savedIns.inspectionId
             });
           }, 6000);
         },

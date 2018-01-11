@@ -92,7 +92,7 @@ app.run(function ($transitions, header_manager) {
   $transitions.onExit({}, function () {
     header_manager.clearAction();
     header_manager.clearActions();
-    header_manager.title = "Castle [ALPHA2]";
+    header_manager.title = "Castle";
   });
 });
 

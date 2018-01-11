@@ -96,11 +96,18 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   }
 
   $scope.export = function (insId) {
+    $rootScope.loading = true;
     var promise = inspection_manager.getInspection(insId);
     promise.then(
       function (result) {
-        $rootScope.loading = false;
-        export_manager.export(result.value, "inspection");
+        export_manager.export(result.value, "inspection").then(
+          function (result) {
+            $rootScope.loading = false;
+          },
+          function (error) {
+            $rootScope.loading = false;
+            console.error(error);
+          })
       },
       function (error) {
         $rootScope.loading = false;
@@ -125,12 +132,12 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
           .toastClass('highIndex');
         $mdToast.show(toast);
         inspection_manager.updateInspection().then(
-        function() {
-          $timeout(function() {
-            toast.textContent('Rename Complete');
-            $mdToast.show(toast);
-          }, 0);
-        });
+          function () {
+            $timeout(function () {
+              toast.textContent('Rename Complete');
+              $mdToast.show(toast);
+            }, 0);
+          });
       },
       function (error) {
         $rootScope.loading = false;

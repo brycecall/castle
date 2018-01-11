@@ -8,8 +8,9 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, database, theme_manager) {
-
+app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, database, theme_manager, header_manager) {
+  header_manager.title = "Settings";
+  
   $scope.wipeDatabase = function () {
     var sure = confirm("WARNING!!!\n\nThis will clear all inspection data in the app.\n\nAre you sure you want to do this?");
 

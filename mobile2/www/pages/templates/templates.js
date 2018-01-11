@@ -46,7 +46,8 @@ app.config(function ($stateProvider) {
         'insId': null,
         'sectionIndex': null,
         'subsectionIndex': null,
-        'questionIndex': null
+        'questionIndex': null,
+        'mode':'template'
       }
     });
 });
@@ -54,6 +55,7 @@ app.config(function ($stateProvider) {
 app.controller('templates', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
   $scope.templates = [];
   $rootScope.loading = true;
+
   // Switch the inspection_manager mode (this is global)
   inspection_manager.mode = "template";
 
@@ -242,7 +244,9 @@ app.controller('template', function ($rootScope, $scope, $rootScope, $state, hea
   );
 });
 
-app.controller('template_new', function ($rootScope, $scope, $state, $rootScope, inspection_manager, theme_manager) {
+app.controller('template_new', function ($rootScope, $scope, $state, $rootScope, inspection_manager, theme_manager, header_manager) {
+  header_manager.title = "New Template";
+  
   $scope.themes = [];
   $scope.templates = [];
   $scope.toSection = function (insId) {
@@ -375,7 +379,7 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
   // All the sections for a specific inspection/report
   $scope.subsections = [];
   
-  header_manager.title = "Edit " + inspection_manager.mode.charAt(0).toUpperCase() + inspection_manager.mode.substr(1);
+  header_manager.title = "Edit Section";
   header_manager.theme = 'templateTheme';
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
@@ -383,6 +387,7 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
       'insId': $scope.insId
     });
   });
+  
   action_manager.addAction('Save', 'save', function () {
     $rootScope.loading = true;
     inspection_manager.updateTemplate().then(function() {
@@ -403,6 +408,7 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
         break;
     }
   });
+  
   $scope.addSubsection = function () {
     $scope.subsections.push({
       'id': null,
@@ -413,6 +419,7 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
       'questions':[]
     });
   };
+  
   inspection_manager.getSubsections($scope.insId, $scope.sectionIndex).then(
     function (data) {
       $scope.subsections = data.value || [];
@@ -423,6 +430,13 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
       $rootScope.loading = false;
     }
   );
+  
+  inspection_manager.getSection($scope.insId, $scope.sectionIndex).then(
+    function (data) {
+      header_manager.title = "Edit " + data.value.title + " Section";
+    }
+  );
+  
   $scope.questionDrill = function (subsectionIndex) {
     $state.go('template_question', {
       'insId': $scope.insId,
@@ -441,7 +455,7 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
   // All the sections for a specific inspection/report
   $scope.questions = [];
   
-  header_manager.title = "Edit " + inspection_manager.mode.charAt(0).toUpperCase() + inspection_manager.mode.substr(1);
+  header_manager.title = "Edit Subsection";
   header_manager.theme = 'templateTheme';
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
@@ -497,6 +511,12 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
     });
   };
 
+  inspection_manager.getSubSection($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
+    function (data) {
+      header_manager.title = "Edit " + data.value.title + " Subsection";
+    }
+  );
+  
   inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
     function (data) {
       $scope.questions = data.value;
@@ -524,17 +544,32 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
   $scope.questionIndex = $stateParams.questionIndex;
+  $scope.mode = $stateParams.mode;
   
   header_manager.mode = HEADER_MODES.Action;
-  header_manager.title = "Edit " + inspection_manager.mode.charAt(0).toUpperCase() + inspection_manager.mode.substr(1);
+    if ($scope.mode == "inspection") {
+        header_manager.title = "Edit Question";
+    } else {
+       header_manager.title = "Edit " + inspection_manager.mode.charAt(0).toUpperCase() + inspection_manager.mode.substr(1);
+    }
+
   header_manager.theme = 'templateTheme';
-  header_manager.setAction('Back', 'back', function () {
-    $state.go('template_question', {
-      'insId': $scope.insId,
-      'sectionIndex': $scope.sectionIndex,
-      'subsectionIndex': $scope.subsectionIndex
-    });
-  });
+
+    if ($scope.mode == 'inspection')
+    {
+          header_manager.setAction('Back', 'back', function () {
+          }, 'hide');
+    } else {
+          header_manager.setAction('Back', 'back', function () {
+            $state.go('template_question', {
+              'insId': $scope.insId,
+              'sectionIndex': $scope.sectionIndex,
+              'subsectionIndex': $scope.subsectionIndex
+            });
+          });
+
+    }
+
     
 $scope.questionTypes = [
         {
@@ -644,32 +679,63 @@ $scope.questionTypes = [
   };
 
   action_manager.mode = ACTION_MODES.Action;
-  action_manager.addAction("Previous", "keyboard_arrow_left", function () {
-    navigateQuestions(false);
-  }, 'md-raised');
-  action_manager.addAction('Save', 'save', function () {
-    inspection_manager.updateTemplate().then(function() {
-        $rootScope.loading = false;
-        action_manager.showSuccessMessageToast('Save Success');
-    }, function() {
-        $rootScope.loading = false;
-        action_manager.showFailureMessageToast('Save Failure');
-    });
-    switch (inspection_manager.mode) {
-      case "theme":
-        $state.go('themes');
-        break;
-      case "template":
-        break;
-      case "inspection":
-        $state.go(inspection_manager.returnLocation.name, inspection_manager.returnLocation.params);
-        break;
-    }
-  }, 'md-raised');
+    
+  if ($scope.mode == "inspection") {
+      
+      action_manager.addAction("Cancel", "close", function () {
+          $state.go('inspection_wizard', {
+            'insId': $scope.insId,
+            'sectionIndex': $scope.sectionIndex,
+            'subsectionIndex': $scope.subsectionIndex,
+            'questionIndex': $scope.questionIndex
+          });
+      }, "md-accent");
 
-  action_manager.addAction("Next", "keyboard_arrow_right", function () {
-    navigateQuestions(true);
-  }, 'md-raised');
+      action_manager.addAction('Save', 'check', function () {
+          
+        inspection_manager.updateInspection().then(function() {
+            $rootScope.loading = false;
+            action_manager.showSuccessMessageToast('Save Success');
+            $state.go('inspection_wizard', {
+              'insId': $scope.insId,
+              'sectionIndex': $scope.sectionIndex,
+              'subsectionIndex': $scope.subsectionIndex,
+              'questionIndex': $scope.questionIndex
+            });
+        }, function() {
+            $rootScope.loading = false;
+            action_manager.showFailureMessageToast('Save Failure');
+        });
+      }, 'md-raised');
+      
+  }  else {
+      action_manager.addAction("Previous", "keyboard_arrow_left", function () {
+        navigateQuestions(false);
+      }, 'md-raised');
+      action_manager.addAction('Save', 'save', function () {
+        inspection_manager.updateTemplate().then(function() {
+            $rootScope.loading = false;
+            action_manager.showSuccessMessageToast('Save Success');
+        }, function() {
+            $rootScope.loading = false;
+            action_manager.showFailureMessageToast('Save Failure');
+        });
+        switch (inspection_manager.mode) {
+          case "theme":
+            $state.go('themes');
+            break;
+          case "template":
+            break;
+          case "inspection":
+            $state.go(inspection_manager.returnLocation.name, inspection_manager.returnLocation.params);
+            break;
+        }
+      }, 'md-raised');
+      action_manager.addAction("Next", "keyboard_arrow_right", function () {
+        navigateQuestions(true);
+      }, 'md-raised');
+    
+  }
 
   $scope.addPhotos = function (index, value) {
       camera_manager.answerID = index;

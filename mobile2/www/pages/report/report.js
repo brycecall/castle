@@ -241,6 +241,7 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
     cordova.plugins.fileOpener2.open(cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf", 'application/pdf');
   };
   
+  header_manager.title = "Report Preview";
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {
     window.history.back();

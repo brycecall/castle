@@ -93,3 +93,13 @@ md-fab-toolbar {
   left: 0;
   right: 0;
 }
+
+.pre_release_tag {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2888;
+  text-align: center;
+  pointer-events: none;
+}

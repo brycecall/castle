@@ -13,7 +13,9 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('history', function ($scope, $rootScope, $state, $cordovaFile) {
+app.controller('history', function ($scope, $rootScope, $state, $cordovaFile, header_manager) {
+  header_manager.title = "Report History";
+  
   $scope.reports = [];
   $scope.message = 'Gathering your reports...';
   $rootScope.loading = true;

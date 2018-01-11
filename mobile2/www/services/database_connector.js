@@ -341,8 +341,25 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
         });
       return deferred.promise;
     }
-    
   
+  public.deleteInspectionById = function (inspectionId) {
+    var inspId = parseInt(inspectionId);
+    console.log('db deleteInspectionById: ' + inspId);
+      
+    // Delete all related rows in db
+    // Inspection
+    db.sqlBatch([['DROP * FROM Inspection WHERE rowid = ?', [inspId]],
+                ['DROP * FROM Section WHERE secInspectionId = ?', [inspId]],
+                ['DROP * FROM SubSection WHERE susInspectionId = ?', [inspId]],
+                ['DROP * FROM Question WHERE queInspectionId = ?', [inspId]],
+                ['DROP * FROM Answer WHERE ansInspectionId = ?', [inspId]],
+    ], function (res) {
+      console.log('Successful deletion of all related Inspection data');
+    }, function (error) {
+      console.log('Failure to delete all related Inspection data');
+    });
+  }
+
   function buildUpdateQuery(inputObj, tableName, tablePrefix, excludeObj) {
       var objKeys = Object.keys(inputObj);
       var result = {

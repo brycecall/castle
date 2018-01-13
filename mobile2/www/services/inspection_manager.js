@@ -392,7 +392,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     switch (public.mode) {
       case "inspection":
       case "template":
-        promise = private.saveToDatabase()
+        promise = private.saveToDatabase();
         break;
       case "theme":
         promise = private.saveToThemeManager();
@@ -404,6 +404,25 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     return promise;
   };
     
+  public.deleteInspection = function (inspectionId) {
+    var defer = $q.defer();
+    var promise = defer.promise;
+
+    switch (public.mode) {
+      case "inspection":
+      case "template":
+        promise = private.deleteFromDatabase(inspectionId);
+        break;
+      case "theme":
+        //TODO, theme delete?
+        break;
+      default:
+        defer.reject(public.mode + " is not a valid type.");
+    }
+
+    return promise;
+  };
+
   public.updateInspection = function () {
     var defer = $q.defer();
     var promise = defer.promise;
@@ -512,6 +531,18 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
 
     return deferred.promise;
   };
+
+  private.deleteFromDatabase = function (inspectionId) {
+    var deferred = $q.defer();
+
+    database.deleteInspectionById(inspectionId).then(function(data) {
+      deferred.resolve({message: 'Successful inspection deletion'});
+    }, function(data) {
+      deferred.reject(data.message);
+    });
+
+    return deferred.promise;
+  }
 
   private.saveToThemeManager = function () {
     var defer = $q.defer();

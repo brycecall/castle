@@ -54,8 +54,6 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     $scope.newInspection();
   });
 
-
-
   $scope.goToPreview = function (insId) {
     $state.go('report', {
       'insId': insId
@@ -72,7 +70,6 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   $scope.openMenu = function ($mdMenu, ev) {
     $mdMenu.open(ev);
   };
-
 
   $scope.delete = function (index) {
     var toast = $mdToast.simple()
@@ -161,8 +158,6 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     "Sent",
     "Archived"
   ];
-
-
 
   var inspections = inspection_manager.getInspections();
   inspections.then(

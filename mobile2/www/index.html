@@ -21,7 +21,7 @@
   </div>
   
   <div layout="column" layout-fill>
-    <md-toolbar md-scroll-shrink="false" ng-controller="header" md-whiteframe="1" ng-show="service.enabled" ng-cloak md-theme="{{ service.theme }}" md-theme-watch>
+    <md-toolbar md-scroll-shrink="false" ng-class="service.classname"  ng-controller="header" md-whiteframe="1" ng-show="service.enabled" ng-cloak md-theme="{{ service.theme }}" md-theme-watch>
       <div class="md-toolbar-tools" ng-show="service.mode == 1" md-theme="{{ service.theme }}" md-theme-watch>
         <!-- service mode 1 is Default (Home Icon only) -->
         <span flex>
@@ -83,6 +83,19 @@
           <md-icon md-svg-icon="help_outline"></md-icon>
         </md-button>
       </div>
+        
+      <div class="" ng-show="service.mode == 4" md-theme="{{ service.theme }}" md-theme-watch layout="row" layout-align="center center" >
+        <!-- service mode 3 is Title -->
+        <div flex></div>
+        <div class="castleBanner"></div>
+        <div flex></div>
+        <md-button class="md-icon-button" aria-label="support" href="#!support">
+          <md-icon md-svg-icon="help_outline"></md-icon>
+        </md-button>
+
+      </div>
+        
+        
     </md-toolbar>
     <md-content id="view" ui-view></md-content>
 

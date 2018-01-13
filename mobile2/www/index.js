@@ -5,13 +5,90 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 });
 
 app.config(function ($mdThemingProvider) {
+  $mdThemingProvider.definePalette('castlePallete', {
+  '50': 'e1e6e9',
+  '100': 'b5c1c8',
+  '200': '8397a4',
+  '300': '516d80',
+  '400': '2c4e64',
+  '500': '072f49',
+  '600': '062a42',
+  '700': '052339',
+  '800': '041d31',
+  '900': '021221',
+  'A100': '5d9eff',
+  'A200': '2a7fff',
+  'A400': '0063f6',
+  'A700': '0058dd',
+  'contrastDefaultColor': 'light',
+  'contrastDarkColors': [
+    '50',
+    '100',
+    '200',
+    'A100'
+  ],
+  'contrastLightColors': [
+    '300',
+    '400',
+    '500',
+    '600',
+    '700',
+    '800',
+    '900',
+    'A200',
+    'A400',
+    'A700'
+  ]
+});
+    
+  $mdThemingProvider.definePalette('castlePalleteAccent', {
+  '50': 'f5f6e6',
+  '100': 'e7e9bf',
+  '200': 'd7da95',
+  '300': 'c7cb6b',
+  '400': 'bbbf4b',
+  '500': 'afb42b',
+  '600': 'a8ad26',
+  '700': '9fa420',
+  '800': '969c1a',
+  '900': '868c10',
+  'A100': 'e7e9bf',
+  'A200': 'afb42b',
+  'A400': 'a8ad26',
+  'A700': '9fa420',
+  'contrastDefaultColor': 'light',
+  'contrastDarkColors': [
+    '50',
+    '100',
+    '200',
+    '300',
+    '400',
+    '500',
+    '600',
+    '700',
+    '800',
+    'A100',
+    'A200',
+    'A400',
+    'A700'
+  ],
+  'contrastLightColors': [
+    '900'
+  ]
+});
+    
   $mdThemingProvider.theme('default')
-    .primaryPalette('indigo')
-    .accentPalette('pink')
+    .primaryPalette('castlePallete')
+    .accentPalette('castlePalleteAccent');
+
+    
   $mdThemingProvider.theme('templateTheme')
     .primaryPalette('blue')
     .accentPalette('pink');
 });
+
+
+
 
 // Save the previous state
 app.run(function ($transitions, $rootScope, $state) {

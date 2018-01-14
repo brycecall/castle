@@ -341,7 +341,6 @@ app.controller('template_new', function ($rootScope, $scope, $state, $rootScope,
 
 app.controller('template_section', function ($rootScope, $scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
   header_manager.title = "Edit " + inspection_manager.mode.charAt(0).toUpperCase() + inspection_manager.mode.substr(1);
-  header_manager.theme = 'templateTheme';
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
     inspection_manager.clearInspection();
@@ -449,7 +448,6 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
   $scope.subsections = [];
   
   header_manager.title = "Edit Section";
-  header_manager.theme = 'templateTheme';
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
     $state.go('template_section', {
@@ -536,7 +534,6 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
   $scope.questions = [];
   
   header_manager.title = "Edit Subsection";
-  header_manager.theme = 'templateTheme';
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
     $state.go('template_subsection', {
@@ -632,8 +629,6 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
     } else {
        header_manager.title = "Edit " + inspection_manager.mode.charAt(0).toUpperCase() + inspection_manager.mode.substr(1);
     }
-
-  header_manager.theme = 'templateTheme';
 
     if ($scope.mode == 'inspection')
     {

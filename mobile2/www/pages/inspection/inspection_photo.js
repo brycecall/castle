@@ -84,13 +84,26 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
                 break;
             case 'question':
                 $scope.questionIndex = index;
-                $state.go('inspection_question_step', {
-                    'insId': $scope.insId,
-                    'sectionIndex': $scope.sectionIndex,
-                    'subsectionIndex': $scope.subsectionIndex,
-                    'questionIndex': $scope.questionIndex,
-                    'photoMode':'1'
-                });
+                if ($scope.inspection.sections[$scope.sectionIndex]
+                          .subsections[$scope.subsectionIndex].questions[index].type === 'checkbox')
+                {
+                    $state.go('inspection_question_step', {
+                        'insId': $scope.insId,
+                        'sectionIndex': $scope.sectionIndex,
+                        'subsectionIndex': $scope.subsectionIndex,
+                        'questionIndex': $scope.questionIndex,
+                        'photoMode':'1'
+                    });
+                } else {
+                    $state.go('inspection_wizard', {
+                        'insId': $scope.insId,
+                        'sectionIndex': $scope.sectionIndex,
+                        'subsectionIndex': $scope.subsectionIndex,
+                        'questionIndex': $scope.questionIndex,
+                        'photoMode':'1'
+                    });
+                }
+
                 break;
             default:
         }

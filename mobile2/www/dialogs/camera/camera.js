@@ -17,7 +17,7 @@ app.config(function ($stateProvider) {
     ;
 });
 
-app.run(function ($transitions, camera_manager) {
+app.run(function ($transitions, camera_manager, inspection_manager, $rootScope) {
   $transitions.onExit({}, function (trans) {
       if (trans.$from().name == 'camera') {
         camera_manager.stopCamera();
@@ -39,6 +39,16 @@ app.run(function ($transitions, camera_manager) {
         }
       }
       
+      // If we're coming from inspection wizard, and not going to camera,
+      // save the inspection
+      if (fromStateName == 'inspection_wizard' && trans.$to().name !== 'camera' && trans.$to().name !== 'inspection_wizard') {
+        inspection_manager.updateInspection().then(function(success) {
+          console.log('Successful save after navigating away from inspection_wizard');
+        }, function(error) {
+          console.log('Save failed!');
+          console.log(error.message);
+        });
+      }
   });
 });
 

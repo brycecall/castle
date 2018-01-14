@@ -222,24 +222,68 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
     var navigateQuestions = function (forward) {
         if ($scope.questionCount !== -1 && $scope.questionCount > 1) {
             var newQuestionIndex = $scope.insParams.questionIndex;
+            var newSubsectionIndex = $scope.insParams.subsectionIndex;
+            var newSectionIndex = $scope.insParams.sectionIndex;
             if (forward) {
                 if ($scope.insParams.questionIndex >= $scope.questionCount - 1) {
                     newQuestionIndex = 0;
+                    // Check subsection indexing. Iterate to new section if in last subsection
+                    if (newSubsectionIndex >= $scope.inspection.sections[$scope.insParams.sectionIndex].subsections.length - 1) {
+                      newSubsectionIndex = 0;
+                      if (newSectionIndex >= $scope.inspection.sections.length -1) {
+                        newSectionIndex = 0;
+                      } else {
+                        newSectionIndex++;
+                      }
+                    } else {
+                      newSubsectionIndex++;
+                    }
                 } else {
                     newQuestionIndex++;
                 }
             } else {
                 if ($scope.insParams.questionIndex <= 0) {
-                    newQuestionIndex = $scope.questionCount - 1;
+                  // Navigate to last question of previous subsection
+                  //newQuestionIndex = $scope.questionCount - 1;
+                  // If first subsection, we need to decrement sectionIndex
+                  if (newSubsectionIndex == 0) {
+                    // If first section, we need to go to the last section, subsection, question
+                    if (newSectionIndex == 0) {
+                      newSectionIndex = $scope.inspection.sections.length - 1;
+                      newSubsectionIndex = $scope.inspection.sections[newSectionIndex].subsections.length - 1;
+                      newQuestionIndex = $scope.inspection.sections[newSectionIndex].subsections[newSubsectionIndex].questions.length - 1;
+                    } else {
+                      // If first subsection, we need to go to previous section, last subsection, last question
+                      newSectionIndex--;
+                      newSubsectionIndex = $scope.inspection.sections[newSectionIndex].subsections.length - 1;
+                      newQuestionIndex = $scope.inspection.sections[newSectionIndex].subsections[newSubsectionIndex].questions.length - 1;
+                    }
+                  } else {
+                    // Otherwise, decrement the subsectionIndex and go to last question
+                    newSubsectionIndex--;
+                    newQuestionIndex = $scope.inspection.sections[newSectionIndex].subsections[newSubsectionIndex].questions.length - 1;
+                  }
                 } else {
-                    newQuestionIndex--;
+                  // Otherwise, just decrement the questionIndex
+                  newQuestionIndex--;
                 }
             }
-            $state.go('inspection_wizard', {
-                'insId': $scope.insParams.insId,
-                'sectionIndex': $scope.insParams.sectionIndex,
-                'subsectionIndex': $scope.insParams.subsectionIndex,
-                'questionIndex': newQuestionIndex
+            // Update insParams
+            $scope.insParams.sectionIndex = newSectionIndex;
+            $scope.insParams.subsectionIndex = newSubsectionIndex;
+            $scope.insParams.questionIndex = newQuestionIndex;
+            $scope.questionCount = $scope.inspection.sections[newSectionIndex].subsections[newSubsectionIndex].questions.length;
+            $scope.question = $scope.inspection.sections[newSectionIndex].subsections[newSubsectionIndex].questions[newQuestionIndex];
+            // Save individual question when navigating
+            var update = inspection_manager.updateQuestion($scope.insParams);
+            update.then(function(success) {
+              // Successful save, store timestamp for easy access to 'last saved'
+              console.log('success update question');
+              $rootScope.lastSaved = new Date();
+            }, function(error) {
+              //Display toast if there is a failure saving question
+              console.log('fail update question');
+              action_manager.showFailureMessageToast('Failure to save question');
             });
         }
     };

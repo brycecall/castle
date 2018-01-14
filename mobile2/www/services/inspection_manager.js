@@ -97,11 +97,14 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                     },
                     answer: null,
                     answers: [],
+                    isAnswered: promise.row.item(k).queAnswered,
                     notApplicable: promise.row.item(k).queNotApplicable,
                     severity: null,
                     showSummaryRemark: promise.row.item(k).queShowSummaryRemark,
                     showDescription: promise.row.item(k).queShowDescription,
                     order: promise.row.item(k).queOrder,
+                    comments: promise.row.item(k).queComments,
+                    privateNotes: promise.row.item(k).quePrivateNotes,
                     photos: []
                   }
                   // Build answers
@@ -380,7 +383,23 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     });
     return defer.promise;
   };
-    
+
+  public.updateQuestion = function (insParams) {
+    var deferPubUpdQuestion = $q.defer();
+    var questionToUpdate = private.inspection.sections[insParams.sectionIndex].subsections[insParams.subsectionIndex].questions[insParams.questionIndex];
+    private.updateQuestion(questionToUpdate, private.inspection.insId, public.mode).then(function(success) {
+      deferPubUpdQuestion.resolve({
+        message: 'success in public.updateQuestion'
+      });
+    }, function(error) {
+      deferPubUpdQuestion.reject({
+        message: 'Fail - public.updateQuestion: ' + error.message 
+      });
+    });
+
+    return deferPubUpdQuestion.promise;
+  };
+  
   public.insertInspectionFromTemplate = function(templateId) {
      return database.insertFullInspectionFromTemplate(templateId);
   }
@@ -516,6 +535,22 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     });
 
     return deferred.promise;
+  };
+    
+  private.updateQuestion = function(question, insId, sourceType) {
+    var deferUpdateQuestion = $q.defer();
+      
+    database.updateInspectionQuestion(question, insId, sourceType).then(function(success) {
+      deferUpdateQuestion.resolve({
+        message: 'Successful question update'
+      });
+    }, function(error) {
+      deferUpdateQuestion.reject({
+        message: 'Failure to update question: ' + error.message
+      });
+    });
+      
+    return deferUpdateQuestion.promise;
   };
 
   private.saveToDatabase = function () {

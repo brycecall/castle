@@ -18,7 +18,7 @@
       </md-select>
     </md-input-container>
   </div>
-  <md-card class="template" ng-hide="angular.equals([], templates)" ng-repeat="template in templates track by $index">
+  <md-card class="template" ng-hide="angular.equals([], templates) || template.deleted === true" ng-repeat="template in templates track by $index">
     <md-card-content layout="row" layout-align="start center">
       <div layout-fill>
         <div>
@@ -36,7 +36,7 @@
       </div>
     </md-card-content>
   </md-card>
-  <div style="padding: 8px 0 8px 16px;" ng-show="templates.length <= 0">
+  <div style="padding: 8px 0 8px 16px;" ng-show="templates.length <= 0 || templates.length <= numDeleted">
       <div class="md-title">No templates yet!</div>
       <div class="md-caption">Add a new template from the plus button below.</div> 
   </div>

@@ -58,7 +58,7 @@
     <form name="questionForm" style="padding-left: 0px;"  
           ng-class="question.notApplicable ? 'disabled' : ''">
         <div ng-if="question.type == 'checkbox'" id="sortParent">
-            <div ng-repeat="checkBox in question.values track by $index" class="questionIndent">
+            <div ng-repeat="checkBox in question.values track by $index" class="questionIndent" ng-hide="checkBox.deleted === true">
                 <div layout="row" layout-align="start center">
                 <md-button class="md-icon-button" style="margin-bottom: 16px;" 
                            aria-label="delete answer"

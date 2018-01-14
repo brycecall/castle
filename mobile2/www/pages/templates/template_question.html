@@ -25,7 +25,8 @@
              layout="column" 
              layout-align="center stretch" 
              style="text-align-left;"
-             ng-init="clicked = false" >             
+             ng-init="clicked = false"
+             ng-hide="subsection.deleted === true">             
                <div  style="padding:0px 0px 0px px; margin:0;
                          vertical-align:middle; border-radius:0; 
                          text-transform:none; background-color:#FFF;  height:52px;" 
@@ -59,7 +60,7 @@
                         <md-divider ng-if="!$last"></md-divider>
         </div>
     </md-card>
-  <div style="padding: 8px 0 8px 16px;" ng-show="templates.length <= 0">
+  <div style="padding: 8px 0 8px 16px;" ng-show="questions.length <= 0 || questions.length <= numDeleted">
       <div class="md-title">No questions yet!</div>
   </div>
     <md-button ng-disabled="questions[0].insSourceType == 'theme'" ng-click="addQuestion()" class="md-raised" aria-label="Add Question">

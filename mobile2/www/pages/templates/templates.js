@@ -52,15 +52,35 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('templates', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
+app.controller('templates', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, $mdToast) {
   $scope.templates = [];
+  $scope.numDeleted = 0;
   $rootScope.loading = true;
 
   // Switch the inspection_manager mode (this is global)
   inspection_manager.mode = "template";
 
   $scope.delete = function(index, list) {
-     list.splice(index, 1);
+    var toast = $mdToast.simple()
+      .textContent('')
+      .action('UNDO')
+      .highlightAction(true)
+      .highlightClass('md-accent')
+      .position('bottom')
+      .toastClass('highIndex');
+    
+    $scope.templates[index].deleted = true;
+    $scope.numDeleted++;
+    $mdToast.show(toast).then(function (response) {
+      if (response == 'ok') {
+        $scope.templates[index].deleted = false;
+        $scope.numDeleted--;
+      } else {
+        inspection_manager.deleteInspection(list[index].rowId);
+      }
+    }, function () {
+      console.log("You delete fast don't ya!");
+    });
   };
     
   $scope.edit = function (insId) {
@@ -84,7 +104,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
         // inspection table and push the row into scope.templates[]
         inspection_manager.getTemplates().then(function(promise){
           $scope.templates = [];
-          for (var i = 0; i < promise.row.length; i++) {
+          for (var i = 0; promise.row && i < promise.row.length; i++) {
             $scope.templates.push(promise.row.item(i));
           };
           $rootScope.loading = false;
@@ -146,7 +166,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
     function (promise) {
       console.log(promise.message);
       console.log(promise.row);
-      for (var i = 0; i < promise.row.length; i++) {
+      for (var i = 0; promise.row && i < promise.row.length; i++) {
         $scope.templates.push(promise.row.item(i));
       }
         $rootScope.loading = false;
@@ -158,7 +178,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
   );
 });
 
-app.service('templateShareService', function ($state) {
+app.service('templateShareService', function ($state, $mdToast, $q) {
   var shareService = {};
   shareService.navigate = function (insId, sectionIndex, subsectionIndex) {
     if (insId && sectionIndex && subsectionIndex) {
@@ -180,7 +200,34 @@ app.service('templateShareService', function ($state) {
   };
 
   shareService.remove = function (index, list) {
-    list.splice(index, 1);
+    var deferRemove = $q.defer();
+    var toast = $mdToast.simple()
+      .textContent('')
+      .action('UNDO')
+      .highlightAction(true)
+      .highlightClass('md-accent')
+      .position('bottom')
+      .toastClass('highIndex');
+    
+    list[index].deleted = true;
+    $mdToast.show(toast).then(function (response) {
+      if (response == 'ok') {
+        list[index].deleted = false;
+        deferRemove.resolve({
+          value: -1
+        });
+      } else {
+        deferRemove.resolve({
+          value: 1
+        });
+      }
+    }, function () {
+      console.log("You delete fast don't ya!");
+        deferRemove.resolve({
+          value: 1
+        });
+    });
+    return deferRemove.promise;
   };
   return shareService;
 });
@@ -231,7 +278,7 @@ app.controller('template', function ($rootScope, $scope, $rootScope, $state, hea
     function (promise) {
       console.log(promise.message);
       console.log(promise.row);
-      for (var i = 0; i < promise.row.length; i++) {
+      for (var i = 0; promise.row && i < promise.row.length; i++) {
         $scope.templates.push(promise.row.item(i));
       }
       $rootScope.loading = false;
@@ -279,7 +326,7 @@ app.controller('template_new', function ($rootScope, $scope, $state, $rootScope,
     //Success
     function (promise) {
       console.log(promise.message);
-      for (var i = 0; i < promise.row.length; i++) {
+      for (var i = 0; promise.row && i < promise.row.length; i++) {
         $scope.templates.push(promise.row.item(i));
       }
       $rootScope.loading = false;
@@ -311,9 +358,20 @@ app.controller('template_section', function ($rootScope, $scope, inspection_mana
         break;
     }
   });
+  $scope.numDeleted = 0;
   $scope.insId = $stateParams.insId;
   $scope.navigate = templateShareService.navigate;
-  $scope.remove = templateShareService.remove;
+  $scope.remove = function(index, list) {
+    var adjustNum = templateShareService.remove(index, list);
+    adjustNum.then(function(success) {
+      $scope.numDeleted += success.value;
+      if(success.value == 1) {
+        $scope.sections.splice(index, 1);  
+      }
+    }, function(error) {
+      $scope.numDeleted += error.value;
+    });
+  };
 
   action_manager.addAction('Save', 'save', function () {
     $rootScope.loading = true;
@@ -375,7 +433,18 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.navigate = templateShareService.navigate;
-  $scope.remove = templateShareService.remove;
+  $scope.numDeleted = 0;
+  $scope.remove = function(index, list) {
+    var adjustNum = templateShareService.remove(index, list);
+    adjustNum.then(function(success) {
+      $scope.numDeleted += success.value;
+      if(success.value == 1) {
+        $scope.subsections.splice(index, 1);  
+      }
+    }, function(error) {
+      $scope.numDeleted += error.value;    
+    });
+  };
   // All the sections for a specific inspection/report
   $scope.subsections = [];
   
@@ -451,7 +520,18 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
   $scope.navigate = templateShareService.navigate;
-  $scope.remove = templateShareService.remove;
+  $scope.numDeleted = 0;
+  $scope.remove = function(index, list) {
+    var adjustNum = templateShareService.remove(index, list);
+    adjustNum.then(function(success) {
+      $scope.numDeleted += success.value;
+      if(success.value == 1) {
+        $scope.questions.splice(index, 1);  
+      }
+    }, function(error) {
+      $scope.numDeleted += error.value;    
+    });
+  };
   // All the sections for a specific inspection/report
   $scope.questions = [];
   
@@ -606,7 +686,18 @@ $scope.questionTypes = [
      }
   };  
   $scope.navigate = templateShareService.navigate;
-  $scope.remove = templateShareService.remove;
+  $scope.numDeleted = 0;
+  $scope.remove = function(index, list) {
+    var adjustNum = templateShareService.remove(index, list);
+    adjustNum.then(function(success) {
+      $scope.numDeleted += success.value;
+      if(success.value == 1) {
+        $scope.question.values.splice(index, 1);  
+      }
+    }, function(error) {
+      $scope.numDeleted += error.value;    
+    });
+  };
   $scope.otherValue = {
     'singleSelect': '',
     'value':null

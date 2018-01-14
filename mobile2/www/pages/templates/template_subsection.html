@@ -24,7 +24,8 @@
              layout="column" 
              layout-align="center stretch" 
              style="text-align-left;"
-             ng-init="clicked = false" >       
+             ng-init="clicked = false"
+             ng-hide="section.deleted === true">       
                <div  style="padding:0px 0px 0px 0px; margin:0;
                          vertical-align:middle; border-radius:0; 
                          text-transform:none; background-color:#FFF;  height:52px;" 
@@ -58,7 +59,7 @@
                         <md-divider ng-if="!$last"></md-divider>
         </div>
     </md-card>
-  <div style="padding: 8px 0 8px 16px;" ng-show="templates.length <= 0">
+  <div style="padding: 8px 0 8px 16px;" ng-show="subsections.length <= 0 || subsections.length <= numDeleted">
       <div class="md-title">No subsections yet!</div>
   </div>
     <md-button ng-disabled="subsections[0].insSourceType == 'theme'" ng-click="addSubsection()" class="md-raised" aria-label="Add Section">

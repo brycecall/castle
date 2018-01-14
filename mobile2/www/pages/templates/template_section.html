@@ -16,7 +16,7 @@
 
     <md-card id="secParent" layout="column" ui-sortable="{'ui-floating': false, 'handle': '.handle', 
                            'containment': '#secParent'}" ng-model="sections">
-      <div ng-repeat="section in sections track by $index" layout="column" layout-align="center stretch" style="text-align-left;" ng-init="clicked = false">
+      <div ng-repeat="section in sections track by $index" layout="column" layout-align="center stretch" style="text-align-left;" ng-init="clicked = false" ng-hide="section.deleted === true">
         <div style="padding:0px 0px 0px 0px; margin:0;
                          vertical-align:middle; border-radius:0; 
                          text-transform:none; background-color:#FFF;  height:52px;" class="md-no-style" aria-label="{{section.title}}" layout="row" layout-align="start center" ng-click="">
@@ -34,7 +34,7 @@
         <md-divider ng-if="!$last"></md-divider>
       </div>
     </md-card>
-    <div style="padding: 8px 0 8px 16px;" ng-show="sections.length <= 0">
+    <div style="padding: 8px 0 8px 16px;" ng-show="sections.length <= 0 || sections.length <= numDeleted">
       <div class="md-title">No sections yet!</div>
     </div>
     <md-button ng-disabled="template.insSourceType == 'theme'" ng-click="addSection()" class="md-raised" aria-label="Add Section">

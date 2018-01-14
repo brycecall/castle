@@ -181,25 +181,24 @@
             </md-input-container>
         </div>
 
-        <div class="headBlock" style="position: relative;">
-              <label class="textAreaLabel">Comments</label>
-              <textarea class="blockArea" ng-model="question.values[0].autoComment"></textarea>
+        <div class="blockSpacing" style="position: relative;">
+          <label class="textAreaLabel">Comments</label>
+          <textarea class="blockArea" ng-model="question.comments"></textarea>
         </div>
            
         <div>
-            <div ng-show="question.photos.length <= 0 && question.type === 'photo'">
+            <div class="blockSpacing" ng-show="question.photos.length <= 0 && question.type === 'photo'">
                 No Photos Yet!
             </div>
 
               <div ng-repeat="photo in question.photos"
                  layout="row" 
                  layout-align="start center" 
+                 class="blockSpacing"
                  >
-                    <div ng-click="showFullScreen($event, photo)" class="photo md-whiteframe-1dp" style="background-image: url( {{photo.link}} ); margin: 10px;" >
+                    <div ng-click="showFullScreen($event, photo)" class="photo trileftBorder"  style="background-image: url( {{photo.link}} );" >
                     </div>
-<!--                    <md-input-container class="md-block">-->
-                        <textarea placeholder="image title" aria-label="photo" style="width: 100%; height: 200px; resize:none; border-color:rgba(0,0,0,0.12);" >{{photo.title}}</textarea>
-<!--                    </md-input-container>-->
+                    <textarea flex placeholder="Photo Description" aria-label="photo description" class="noresizeArea" md-colors="::{background: 'default-primary-50'}">{{photo.title}}</textarea>
                 </div>
         </div>  
         
@@ -248,7 +247,7 @@
                 <div class="md-title">Private Notes</div>
                <md-input-container class="md-block">
                   <label>Add a comment here</label>
-                  <textarea ng-model="asd" ></textarea>
+                  <textarea ng-model="question.privateNotes" ></textarea>
                 </md-input-container>
               </div>
             </md-card-content>

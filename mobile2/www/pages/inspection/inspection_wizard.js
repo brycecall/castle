@@ -27,7 +27,7 @@ app.config(function ($stateProvider) {
         });
 });
 
-app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $transition$, shareService, $timeout) {
+app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $transition$, shareService, $timeout, $mdDialog) {
     $scope.rapidModePhoto = camera_manager.rapidModePhoto;
     $scope.insParams = {
         'insId': $transition$.params().insId,
@@ -69,10 +69,11 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
                 'photoMode': null
             });
         }, 'md-raised md-accent');
+        
         if ($scope.currentStateName == 'inspection_wizard') {
             action_manager.addAction("Photo", "shutter_camera", function () {
                 $scope.addPhotos(0, 0);
-            }, 'md-raised bigicon md-accent');
+            }, 'md-raised md-accent');
             action_manager.addAction("Done", "check", function () {
                 $state.go("inspection_photo", {
                     'insId': $scope.insParams.insId
@@ -80,17 +81,19 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
             }, 'md-raised ');
         }
     } else {
+        //HEADER
         header_manager.addAction("Photo Mode", "shutter_camera", function () {
             $state.go("inspection_photo", {
                 'insId': $scope.insParams.insId
             });
         }, 'md-raised md-accent');
+        
+        //FOOTER ACTIONS
         action_manager.addAction("Previous", "keyboard_arrow_left", function () {
             navigateQuestions(false);
         }, 'md-raised ');
         action_manager.addAction("Photo", "shutter_camera", function () {
-            //$scope.addPhotos()
-            //todo: add photo
+            $scope.addPhotos(0, 0);
         }, 'md-raised bigicon md-accent');
         action_manager.addAction("Next", "keyboard_arrow_right", function () {
             navigateQuestions(true);
@@ -342,15 +345,6 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
     };
 
     $scope.stepUp = function (index) {
-        //      if ($scope.question.type == 'text') {
-        //          //todo stuff
-        //      } else {
-        //          if (index == 'other') {
-        //              
-        //          }
-        //          
-        //      }
-
         $state.go('inspection_wizard', {
             'insId': $scope.insParams.insId,
             'sectionIndex': $scope.insParams.sectionIndex,
@@ -358,6 +352,26 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
             'questionIndex': $scope.insParams.questionIndex,
             'photoMode': '1'
         });
-
     };
+    
+    function PreviewDialogController($scope, $mdDialog, locals) {
+        $scope.photo = locals.photo;
+        $scope.cancel = function() {
+          $mdDialog.cancel();
+        };
+
+    }
+    
+    $scope.showFullScreen = function(ev, photo) {
+      $mdDialog.show({
+        controller: PreviewDialogController,
+        templateUrl: './dialogs/camera/preview_fullscreen.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        fullscreen: true,
+        locals: {'photo':photo}
+      });
+    };
+    
 });

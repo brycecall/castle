@@ -6,7 +6,7 @@ app.config(function ($stateProvider, $urlRouterProvider) {
 
 app.config(function ($mdThemingProvider) {
   $mdThemingProvider.definePalette('castlePallete', {
-  '50': 'e1e6e9',
+  '50': 'rgba(225, 230, 233, .1)',
   '100': 'b5c1c8',
   '200': '8397a4',
   '300': '516d80',

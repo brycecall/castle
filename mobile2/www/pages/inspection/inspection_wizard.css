@@ -66,6 +66,10 @@
 margin: 0;
 }
 
+.blockSpacing {
+    margin: 10px 0px 20px 0px;
+}
+
 .subHeadNav::-webkit-scrollbar { 
     display: none; 
 } 
@@ -91,7 +95,7 @@ margin: 0;
     position: absolute;
     top: -10px;
     background-color: white;
-    margin-left: 20px;
+    margin-left:10px;
 }
 
 .blockArea {
@@ -99,4 +103,23 @@ margin: 0;
     height: 50px;
     resize: vertical;
     border-color: rgba(0,0,0,0.12);
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.noresizeArea {
+    display:block;
+    height: 200px; 
+    resize:none; 
+    border-color:rgba(0,0,0,0.12); 
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.trileftBorder {
+    border-style: solid;
+    border-color:rgba(0,0,0,0.12); 
+    border-width: 1px 0px 1px 1px;
 }

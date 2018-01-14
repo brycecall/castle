@@ -8,7 +8,8 @@ app.factory('header_manager', function ($rootScope, $timeout) {
   public.mode = HEADER_MODES.Action;
   public.title = "";
   public.theme = "default";
-  
+  public.classname = "";
+      
   public.enable = function () {
     public.enabled = true;
     if (public.mode === HEADER_MODES.Action && public.action == null) {
@@ -93,6 +94,7 @@ app.run(function ($transitions, header_manager) {
     header_manager.clearAction();
     header_manager.clearActions();
     header_manager.title = "Castle";
+    header_manager.classname = "";
   });
 });
 
@@ -111,5 +113,6 @@ app.run(function (header_manager) {
 var HEADER_MODES = {
   Home: 1,
   Action: 2,
-  Title: 3
+  Title: 3,
+  Banner: 4
 };

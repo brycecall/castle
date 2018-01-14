@@ -10,7 +10,7 @@ app.config(function ($stateProvider) {
 
 // Define the page controller
 app.controller('home', function ($scope, $rootScope, header_manager) {
-  header_manager.mode = HEADER_MODES.Title;
-
+  header_manager.mode = HEADER_MODES.Banner;
+  header_manager.classname = "md-tall";
   console.log('Welcome Home');
 })

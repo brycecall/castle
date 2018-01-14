@@ -47,3 +47,15 @@
   height: 60px;
   width: 60px;
 }
+
+.castleBanner {
+    display: block;
+    height: 100px;
+    width: 265px;
+    margin: 18px;
+    background-image: url(../../img/CastleLogo_white_800.png);
+/*    background-origin:content-box;*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}

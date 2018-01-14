@@ -13,9 +13,9 @@
       <div ng-click="stepDownTo(3)" class="step active">&#10004;</div>
     </div>
     <div ng-show="insParams.photoMode == '0' || insParams.photoMode == null">
-    <md-progress-linear  md-mode="determinate" class="md-accent" value="50"></md-progress-linear>
-    <div class="subHeadNav" layout="row" layout-align="start center" flex="">
-       <md-input-container>
+    <md-progress-linear  md-mode="determinate" class="md-accent" value="0"></md-progress-linear>
+    <div class="subHeadNav" layout="row" layout-align="space-between center" flex="">
+       <md-input-container flex>
           <md-select ng-model="insParams.sectionIndex" 
                      class="md-no-underline" 
                      aria-label="choose section"
@@ -27,7 +27,7 @@
             </md-option>
           </md-select>
         </md-input-container>
-       <md-input-container>
+       <md-input-container flex>
           <md-select ng-model="insParams.subsectionIndex" 
                      class="md-no-underline" 
                      aria-label="choose subsection"
@@ -40,7 +40,7 @@
             </md-option>
           </md-select>
         </md-input-container>
-       <md-input-container>
+       <md-input-container flex>
           <md-select ng-model="insParams.questionIndex" 
                      class="md-no-underline" 
                      aria-label="choose question"
@@ -180,6 +180,12 @@
                 </div>
             </md-input-container>
         </div>
+
+        <div class="headBlock" style="position: relative;">
+              <label class="textAreaLabel">Comments</label>
+              <textarea class="blockArea" ng-model="question.values[0].autoComment"></textarea>
+        </div>
+           
         <div>
             <div ng-show="question.photos.length <= 0 && question.type === 'photo'">
                 No Photos Yet!
@@ -200,30 +206,6 @@
     </form>
         </md-card-content>
     </md-card>
-        <md-card class="flatCard">
-            <md-card-content>
-            <div class="headBlock">
-                <div layout="row" layout-align="center start">     
-                    <div class="md-title">Comment</div>
-                    <span flex=""></span>
-<!--
-                    <md-switch aria-label="disable" 
-                               ng-model="question.commentNotApplicable"
-                               style="color:rgba(0,0,0,0.87);">
-                    </md-switch>
--->
-                </div>
-                <md-input-container ng-if="question.type === 'text'" class="md-block">
-                  <label>Add a comment here</label>
-                  <textarea  ng-model="question.values[0].autoComment"></textarea>
-                </md-input-container>
-                <md-input-container ng-if="question.type !== 'text'" class="md-block">
-                  <label>Add a comment here</label>
-                  <textarea>{{commentBox}}</textarea>
-                </md-input-container>
-              </div>
-            </md-card-content>
-        </md-card>
         <md-card class="flatCard">
             <md-card-content>
         <div class="headBlock">
@@ -264,11 +246,6 @@
             <md-card-content>
             <div style="margin: 8px 0px 0px 0px;">
                 <div class="md-title">Private Notes</div>
-<!--
-                <div class="md-caption" style="margin: 4px 0 4px 0;" >
-                </div>
--->
-
                <md-input-container class="md-block">
                   <label>Add a comment here</label>
                   <textarea ng-model="asd" ></textarea>

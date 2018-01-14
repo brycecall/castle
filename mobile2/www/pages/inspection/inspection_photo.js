@@ -48,11 +48,9 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
   
   header_manager.title = "Inspection Editor";
   header_manager.mode = HEADER_MODES.Action;
-  header_manager.setAction('Back', 'check', function () {
-    $rootScope.loading = true;
-        $rootScope.loading = false;
-        window.history.back();
-  });
+  header_manager.setAction('Done', 'check', function () {
+      $rootScope.loading = false;
+  }, 'hide');
   header_manager.addAction("Wizard Mode", "shutter_camera", function () {
       $state.go("inspection_wizard", {'insId':$scope.insId});
   }, 'md-raised md-accent');

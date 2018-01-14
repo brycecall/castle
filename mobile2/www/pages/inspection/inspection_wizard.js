@@ -42,27 +42,15 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
         'params': $transition$.params()
     };
     $scope.currentStateName = $state.current.name;
-  
     header_manager.title = "Inspection Editor";
     header_manager.mode = HEADER_MODES.Action;
-    header_manager.setAction('Back', 'check', function () {
-        $rootScope.loading = false;
-        window.history.back();
-        //});
-    });
-
     action_manager.mode = ACTION_MODES.Action;
-    header_manager.addAction("Edit Question", "mode_edit", function () {
-        $state.go("template_detail", {
-            'insId': $scope.insParams.insId,
-            'sectionIndex': $scope.insParams.sectionIndex,
-            'subsectionIndex': $scope.insParams.subsectionIndex,
-            'questionIndex': $scope.insParams.questionIndex,
-            'mode':'inspection'
-        });
-    }, 'md-raised md-accent');
     
-    if ($scope.insParams.photoMode === '1') {
+    if ($scope.insParams.photoMode === '1') { //Photo Mode
+        //Header
+        header_manager.setAction('Done', 'check', function () {
+            $rootScope.loading = false;
+        }, 'hide');
         header_manager.addAction("Wizard Mode", "shutter_camera", function () {
             $state.go("inspection_wizard", {
                 'insId': $scope.insParams.insId,
@@ -70,6 +58,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
             });
         }, 'md-raised md-accent');
         
+        // Footer Actions
         if ($scope.currentStateName == 'inspection_wizard') {
             action_manager.addAction("Photo", "shutter_camera", function () {
                 $scope.addPhotos(0, 0);
@@ -80,15 +69,19 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
                 });
             }, 'md-raised ');
         }
-    } else {
-        //HEADER
+    } else { //Wizard Mode
+        //Header
+        header_manager.setAction('Done', 'check', function () {
+            $rootScope.loading = false;
+            $state.go('inspection');
+        });
         header_manager.addAction("Photo Mode", "shutter_camera", function () {
             $state.go("inspection_photo", {
                 'insId': $scope.insParams.insId
             });
         }, 'md-raised md-accent');
         
-        //FOOTER ACTIONS
+        //Footer Actions
         action_manager.addAction("Previous", "keyboard_arrow_left", function () {
             navigateQuestions(false);
         }, 'md-raised ');
@@ -100,10 +93,15 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
         }, 'md-raised ');
     }
 
-    //    var hideButton = '';
-    //     if ($scope.insParams.photoMode === '1') {
-    //         hideButton = 'hide';
-    //     }
+    header_manager.addAction("Edit Question", "mode_edit", function () {
+        $state.go("template_detail", {
+            'insId': $scope.insParams.insId,
+            'sectionIndex': $scope.insParams.sectionIndex,
+            'subsectionIndex': $scope.insParams.subsectionIndex,
+            'questionIndex': $scope.insParams.questionIndex,
+            'mode':'inspection'
+        });
+    }, 'md-raised md-accent');
 
 
     $scope.addPhotos = function (index, value) {
@@ -177,14 +175,18 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
                     .subsections[$scope.insParams.subsectionIndex]
                     .questions[$scope.insParams.questionIndex];
                 attachPhotos();
-                $scope.rapidModePhoto.isRapid = true;
-                if ($scope.question.photos.length >0) {
-                       var photoIndex = $scope.question.photos.indexOf($scope.rapidModePhoto);
-                          if (photoIndex > -1) {
-                            $scope.question.photos.splice(photoIndex, 1);
-                          }
+  
+                if ($scope.currentStateName == 'inspection_question_step') {
+                    camera_manager.rapidModePhoto.title = $scope.question.title;
                 }
-                $scope.question.photos.push($scope.rapidModePhoto);
+                
+                if ($scope.currentStateName == 'inspection_wizard' &&
+                    !angular.equals({}, $scope.rapidModePhoto) ) {
+                    
+                    //Add the rapid photo mode photo
+                    $scope.question.photos.push($scope.rapidModePhoto);
+                    camera_manager.rapidModePhoto = {};
+                }
                 
                 
                 //        $scope.$watch('otherValue.value', function (newVal, oldVal) {
@@ -365,6 +367,18 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
   ];
 
     $scope.stepDownTo = function (index) {
+        
+        //Put the photo back in the camera_manager
+        camera_manager.rapidModePhoto = $scope.rapidModePhoto;
+
+        //Remove the photo from the inspection
+        if ($scope.question.photos.length > 0) {
+                   var photoIndex = $scope.question.photos.indexOf($scope.rapidModePhoto);
+                      if (photoIndex > -1) {
+                        $scope.question.photos.splice(photoIndex, 1);
+                      }
+        }
+        
         switch (index) {
             case 0:
                 $state.go('inspection_photo', {

@@ -63,12 +63,6 @@
         <div layout="row" layout-align="center start"  class="headBlock" >     
             <div class="md-title">{{question.title ? question.title : 'Untitled Question'}}</div>
             <span flex=""></span>
-<!--
-            <md-switch aria-label="disable"
-                       ng-model="question.questionNotApplicable"
-                       style="color:rgba(0,0,0,0.87);">
-            </md-switch>
--->
         </div>
         <div class="md-caption description">{{question.description ? question.description : '' }}</div>
     
@@ -128,17 +122,18 @@
             </md-radio-group>
         </div>
         <div ng-if="question.type === 'dropdown'">
+           <md-input-container class="md-block">
             <md-select ng-model="question.answer" 
-                       placeholder="Choose" 
-                       class="md-no-underline"
+                       placeholder="Choose one" 
                        ng-required="question.validation.isRequired"
                        ng-disabled="question.notApplicable">
                 <md-option ng-repeat="selectOption in question.values" ng-value="selectOption.key">{{selectOption.key}}
                 </md-option>
             </md-select>
+           </md-input-container>
         </div>
         <div ng-if="question.type === 'text'">
-            <md-input-container>
+            <md-input-container class="md-block">
                 <label>Your Answer</label>
                 <input ng-model="question.answer" 
                        type="{{question.validation ? question.validation.type : 'text'}}"
@@ -151,9 +146,6 @@
                        ng-disabled="question.notApplicable"
                        name="shortText"
                        >
-                <md-button class="md-icon-button text-photo-button" ng-click="addPhotos(question.values[0].id, question.values[0].key)" ng-show=true>
-                    <md-icon md-svg-icon="shutter_camera"></md-icon>
-                </md-button>
                 <div ng-messages="questionForm.shortText.$error" 
                      ng-show="questionForm.shortText.$dirty">
                   <div ng-message="required">This is required!</div>

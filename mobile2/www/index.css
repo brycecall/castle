@@ -63,8 +63,8 @@ md-fab-toolbar {
   z-index: 2049;
   opacity: .75;
 }
-.md-button.md-fab.hide {
-    display: none;
+.md-button.hide {
+    display: none !important;
 }
 .md-button.md-fab.bigicon {
     height: 70px !important;

@@ -107,7 +107,7 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
                 break;
             default:
         }
-    };
+  };
   $scope.stepDownSubstep = function(location) {
         $scope.location = location;
         switch(location) {

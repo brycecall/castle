@@ -175,14 +175,18 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
                     .subsections[$scope.insParams.subsectionIndex]
                     .questions[$scope.insParams.questionIndex];
                 attachPhotos();
-                $scope.rapidModePhoto.isRapid = true;
-                if ($scope.question.photos.length >0) {
-                       var photoIndex = $scope.question.photos.indexOf($scope.rapidModePhoto);
-                          if (photoIndex > -1) {
-                            $scope.question.photos.splice(photoIndex, 1);
-                          }
+  
+                if ($scope.currentStateName == 'inspection_question_step') {
+                    camera_manager.rapidModePhoto.title = $scope.question.title;
                 }
-                $scope.question.photos.push($scope.rapidModePhoto);
+                
+                if ($scope.currentStateName == 'inspection_wizard' &&
+                    !angular.equals({}, $scope.rapidModePhoto) ) {
+                    
+                    //Add the rapid photo mode photo
+                    $scope.question.photos.push($scope.rapidModePhoto);
+                    camera_manager.rapidModePhoto = {};
+                }
                 
                 
                 //        $scope.$watch('otherValue.value', function (newVal, oldVal) {
@@ -319,6 +323,18 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
   ];
 
     $scope.stepDownTo = function (index) {
+        
+        //Put the photo back in the camera_manager
+        camera_manager.rapidModePhoto = $scope.rapidModePhoto;
+
+        //Remove the photo from the inspection
+        if ($scope.question.photos.length > 0) {
+                   var photoIndex = $scope.question.photos.indexOf($scope.rapidModePhoto);
+                      if (photoIndex > -1) {
+                        $scope.question.photos.splice(photoIndex, 1);
+                      }
+        }
+        
         switch (index) {
             case 0:
                 $state.go('inspection_photo', {

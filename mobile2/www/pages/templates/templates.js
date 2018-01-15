@@ -411,7 +411,10 @@ app.controller('template_section', function ($rootScope, $scope, inspection_mana
       'sourceType': 'template',
       'subsections':[]
     });
-      //console.log(inspection_manager.getInspectionCache());
+
+    setTimeout(function() {
+      $('.ng-empty').focus();
+    });
   };
   
   inspection_manager.getInspection($scope.insId).then(
@@ -484,6 +487,9 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
       'inspectionId': parseInt($scope.insId),
       'sourceType': 'template',
       'questions':[]
+    });
+    setTimeout(function() {
+      $('.ng-empty').focus();
     });
   };
   
@@ -585,6 +591,9 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
       'showSummaryRemark': 1,
       'showDescription': 1,
       'photos': []
+    });
+    setTimeout(function() {
+      $('.ng-empty').focus();
     });
   };
 

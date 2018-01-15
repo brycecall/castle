@@ -19204,7 +19204,6 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        ,
         "order": 7,
         "values": [],
         "validation": {

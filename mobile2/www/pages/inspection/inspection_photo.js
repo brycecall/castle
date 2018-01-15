@@ -84,8 +84,12 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
                 break;
             case 'question':
                 $scope.questionIndex = index;
-                if ($scope.inspection.sections[$scope.sectionIndex]
-                          .subsections[$scope.subsectionIndex].questions[index].type === 'checkbox')
+                var question = $scope.inspection.sections[$scope.sectionIndex]
+                          .subsections[$scope.subsectionIndex].questions[index];
+                
+                camera_manager.rapidModePhoto.title = question.title;
+
+                if (question.type === 'checkbox' || question.type == 'radio')
                 {
                     $state.go('inspection_question_step', {
                         'insId': $scope.insId,

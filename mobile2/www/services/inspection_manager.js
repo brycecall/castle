@@ -15,7 +15,19 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
       case "inspection":
       case "template":
         console.log('Inspection Manager - Get Inspection ID: ' + id);
-        promise = private.loadFromDatabase(id);
+        if (window['sqlitePlugin'] === undefined) {
+            var mockdefer = $q.defer();
+            if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== id) {
+                private.inspection = defaultTemplate;
+                mockdefer.resolve({ "value":defaultTemplate })
+                promise = mockdefer.promise;
+            } else {
+                mockdefer.resolve({ "value":private.inspection })
+                promise = mockdefer.promise;
+            }
+        } else {
+            promise = private.loadFromDatabase(id);
+        }
         break;
       case "theme":
         console.log('Inspection Manager - Get Theme ID: ' + id);

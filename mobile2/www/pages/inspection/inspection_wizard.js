@@ -317,19 +317,19 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
         } else {
             answer.checked = !answer.checked;
         }
-        //     // String replace Comment and remove associated autoComment
-        //     $scope.commentBox = $scope.commentBox.replace(item.autoComment, '');
-        //    
-        //     // Push autoComment from selected answer
-        //     if(item.autoComment !== null && item.autoComment !== undefined && $scope.commentBox.indexOf(item.autoComment) < 0) {
-        //       $scope.commentBox += item.autoComment;
-        //     }
+         // String replace Comment and remove associated autoComment
+         $scope.question.comments = $scope.question.comments.replace(answer.autoComment, '');
+
+         // Push autoComment from selected answer
+         if(answer.autoComment !== null && answer.autoComment !== undefined && $scope.question.comments.indexOf(answer.autoComment) < 0) {
+           $scope.question.comments += answer.autoComment;
+         }
 
     };
 
     $scope.toggleRadio = function (answer) {
-        if (answer.autoComment !== null && answer.autoComment !== undefined && $scope.commentBox.indexOf(answer.autoComment) < 0) {
-            $scope.commentBox = answer.autoComment;
+        if (answer.autoComment !== null && answer.autoComment !== undefined && $scope.question.comments.indexOf(answer.autoComment) < 0) {
+            $scope.question.comments = answer.autoComment;
         }
     }
 

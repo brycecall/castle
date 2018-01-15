@@ -35,7 +35,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": "Test Inspector AutoComment"
         }, {
           "id": null,
           "key": "Buyer",
@@ -43,7 +43,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": "Test Buyer AutoComment"
         }, {
           "id": null,
           "key": "Resident",
@@ -51,7 +51,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": "Test Resident AutoComment"
         }, {
           "id": null,
           "key": "Builder or Builders Rep",
@@ -59,7 +59,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": "Test Builder AutoComment"
         }, {
           "id": null,
           "key": "Owner or Seller",
@@ -67,7 +67,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": "Test Owner or Seller AutoComment"
         }, {
           "id": null,
           "key": "Agent",
@@ -75,7 +75,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": "Test Agent AutoComment"
         }, {
           "id": null,
           "key": "Friends or Other",
@@ -83,7 +83,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": "Test Friends or Other AutoComment"
         }],
         "validation": {
           "type": null,
@@ -114,7 +114,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": "Test Inspector AutoComment"
         }, {
           "id": null,
           "key": "Buyer",
@@ -122,7 +122,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": "Test Buyer AutoComment"
         }, {
           "id": null,
           "key": "Resident",
@@ -130,7 +130,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": "Test Resident AutoComment"
         }, {
           "id": null,
           "key": "Builder or Builders Rep",
@@ -138,7 +138,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": "Test Builder or Builders Rep AutoComment"
         }, {
           "id": null,
           "key": "Owner or Seller",
@@ -146,7 +146,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": "Test Owner or Seller AutoComment"
         }, {
           "id": null,
           "key": "Agent",
@@ -154,7 +154,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": "Test Agent AutoComment"
         }, {
           "id": null,
           "key": "Friends or Other",
@@ -162,7 +162,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": "Test Friends or Other AutoComment"
         }],
         "validation": {
           "type": null,
@@ -184,11 +184,11 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "number",
+        "type": "text",
         "order": 2,
         "values": [],
         "validation": {
-          "type": null,
+          "type": "number",
           "min": null,
           "max": null,
           "isRequired": 1
@@ -207,11 +207,11 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "number",
+        "type": "text",
         "order": 3,
         "values": [],
         "validation": {
-          "type": null,
+          "type": "number",
           "min": null,
           "max": null,
           "isRequired": 1
@@ -239,7 +239,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Single Use",
@@ -247,7 +247,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Multiple Use",
@@ -255,7 +255,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Duplex",
@@ -263,7 +263,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Triplex",
@@ -271,7 +271,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Multi Family",
@@ -279,7 +279,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Detatched",
@@ -287,7 +287,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -318,7 +318,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Apartment",
@@ -326,7 +326,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Retail Store",
@@ -334,7 +334,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Business",
@@ -342,7 +342,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Industrial",
@@ -350,7 +350,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Commercial",
@@ -358,7 +358,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -389,7 +389,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "One Level",
@@ -397,7 +397,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Split-Entry",
@@ -405,7 +405,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Split-Level",
@@ -413,7 +413,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "One Story",
@@ -421,7 +421,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Two-Story",
@@ -429,7 +429,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Three-Story",
@@ -437,7 +437,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mid-Rise",
@@ -445,7 +445,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Multi-Level",
@@ -453,7 +453,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -484,7 +484,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Steel-Framed",
@@ -492,7 +492,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Concrete",
@@ -500,7 +500,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "CMU or Block",
@@ -508,7 +508,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Masonry",
@@ -516,7 +516,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Tilt-Up",
@@ -524,7 +524,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood-Frame on Steel Carriage",
@@ -532,7 +532,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "ICF",
@@ -540,7 +540,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -571,7 +571,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Twin Home",
@@ -579,7 +579,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Town Home",
@@ -587,7 +587,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mobile Home",
@@ -595,7 +595,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Log Home",
@@ -603,7 +603,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Manufactured Home",
@@ -611,7 +611,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Prefabbed Structure",
@@ -619,7 +619,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Condominium",
@@ -627,7 +627,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Building",
@@ -635,7 +635,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Garage",
@@ -643,7 +643,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Low-Rise",
@@ -651,7 +651,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mid-Rise",
@@ -659,7 +659,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "High-Rise",
@@ -667,7 +667,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -698,7 +698,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "With Basement & Garage",
@@ -706,7 +706,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "With Garage",
@@ -714,7 +714,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "With Garage & Crawlspace",
@@ -722,7 +722,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "With Full Basement",
@@ -730,7 +730,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "With Daylight Basement",
@@ -738,7 +738,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "With Basement & Crawlspace(s)",
@@ -746,7 +746,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "With Crawlspace",
@@ -754,7 +754,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "With Slab-On-Grade",
@@ -762,7 +762,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Over Adjoining Unit(s)",
@@ -770,7 +770,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Over Adjoining Basement Unit",
@@ -778,7 +778,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -809,7 +809,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "East",
@@ -817,7 +817,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "West",
@@ -825,7 +825,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "South",
@@ -833,7 +833,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "North-East",
@@ -841,7 +841,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "North-West",
@@ -849,7 +849,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "South-East",
@@ -857,7 +857,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "South-West",
@@ -865,7 +865,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -896,7 +896,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "In a Rear Alley",
@@ -904,7 +904,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "In the Driveway",
@@ -912,7 +912,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "In an Attached Garage(s)",
@@ -920,7 +920,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "In a Detached Garage(s)",
@@ -928,7 +928,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "In an Attached Carport",
@@ -936,7 +936,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "In a Detached Carport",
@@ -944,7 +944,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "In a Covered Parking Space",
@@ -952,7 +952,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "In an Open Parking Space",
@@ -960,7 +960,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "In a Secured Parking Garage",
@@ -968,7 +968,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "In an Open Parking Garage",
@@ -976,7 +976,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "In an Open, Striped Parking Lot",
@@ -984,7 +984,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -1015,7 +1015,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Water",
@@ -1023,7 +1023,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gas",
@@ -1031,7 +1031,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Oil",
@@ -1039,7 +1039,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Propane",
@@ -1047,7 +1047,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -1078,7 +1078,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Water",
@@ -1086,7 +1086,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gas",
@@ -1094,7 +1094,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Oil",
@@ -1102,7 +1102,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Propane",
@@ -1110,7 +1110,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -1141,7 +1141,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mostly Occupied",
@@ -1149,7 +1149,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mostly Vacant",
@@ -1157,7 +1157,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vacant",
@@ -1165,7 +1165,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -1187,7 +1187,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 15,
         "values": [],
         "validation": {
@@ -1224,7 +1224,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 0,
         "values": [],
         "validation": {
@@ -1247,7 +1247,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 1,
         "values": [],
         "validation": {
@@ -1279,7 +1279,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Concrete",
@@ -1287,7 +1287,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Asphalt",
@@ -1295,7 +1295,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Pavers",
@@ -1303,7 +1303,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stone",
@@ -1311,7 +1311,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Brick",
@@ -1319,7 +1319,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Dirt",
@@ -1327,7 +1327,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gravel",
@@ -1335,7 +1335,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -1365,7 +1365,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -1373,7 +1373,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -1381,7 +1381,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Pitched towards home",
@@ -1389,7 +1389,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Typical cracks",
@@ -1397,7 +1397,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Large cracks",
@@ -1405,7 +1405,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Root heaving",
@@ -1413,7 +1413,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Uneven",
@@ -1421,7 +1421,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Trip or Falling Hazard",
@@ -1429,7 +1429,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -1459,7 +1459,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Concrete",
@@ -1467,7 +1467,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Paver or stone or brick",
@@ -1475,7 +1475,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood or Composite",
@@ -1483,7 +1483,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Covered",
@@ -1491,7 +1491,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -1522,7 +1522,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -1530,7 +1530,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -1538,7 +1538,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Typical cracks",
@@ -1546,7 +1546,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Large cracks",
@@ -1554,7 +1554,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gaps",
@@ -1562,7 +1562,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Holes",
@@ -1570,7 +1570,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mildew",
@@ -1578,7 +1578,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damage",
@@ -1586,7 +1586,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Settled",
@@ -1594,7 +1594,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Uneven Surface",
@@ -1602,7 +1602,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Trip or Falling Hazard",
@@ -1610,7 +1610,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -1641,7 +1641,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Satisfactory",
@@ -1649,7 +1649,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Uneven",
@@ -1657,7 +1657,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Large cracks",
@@ -1665,7 +1665,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Root heaving",
@@ -1673,7 +1673,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Moss build-up",
@@ -1681,7 +1681,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing spacers",
@@ -1689,7 +1689,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Settled",
@@ -1697,7 +1697,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Trip hazard",
@@ -1705,7 +1705,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing handrails",
@@ -1713,7 +1713,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing safety glass",
@@ -1721,7 +1721,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -1752,7 +1752,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify",
@@ -1760,7 +1760,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Treated Wood",
@@ -1768,7 +1768,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Railroad Ties",
@@ -1776,7 +1776,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Concrete",
@@ -1784,7 +1784,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Concrete Blocks",
@@ -1792,7 +1792,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "CMU or Blocks",
@@ -1800,7 +1800,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gabions",
@@ -1808,7 +1808,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rockery",
@@ -1816,7 +1816,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Masonry",
@@ -1824,7 +1824,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cemented Stone",
@@ -1832,7 +1832,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -1863,7 +1863,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -1871,7 +1871,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -1879,7 +1879,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -1887,7 +1887,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaning",
@@ -1895,7 +1895,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaking or Drainage Concern",
@@ -1903,7 +1903,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Trip or Falling Hazard",
@@ -1911,7 +1911,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -1942,7 +1942,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Water Feature",
@@ -1950,7 +1950,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Drop-off or Retaining Wall",
@@ -1958,7 +1958,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Steep Slope",
@@ -1966,7 +1966,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -1997,7 +1997,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Concrete",
@@ -2005,7 +2005,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood",
@@ -2013,7 +2013,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Privacy",
@@ -2021,7 +2021,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Chainlink",
@@ -2029,7 +2029,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Masonry",
@@ -2037,7 +2037,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rail",
@@ -2045,7 +2045,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wire",
@@ -2053,7 +2053,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Plastic or Vinyl",
@@ -2061,7 +2061,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -2092,7 +2092,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Maginal",
@@ -2100,7 +2100,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -2108,7 +2108,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -2116,7 +2116,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Trip or Falling Hazard",
@@ -2124,7 +2124,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaning",
@@ -2132,7 +2132,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -2140,7 +2140,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify Adequate Height",
@@ -2148,7 +2148,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazardous",
@@ -2156,7 +2156,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -2164,7 +2164,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -2195,7 +2195,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor Earth-to-Wood Separation",
@@ -2203,7 +2203,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Yard Steps",
@@ -2211,7 +2211,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Drainage",
@@ -2219,7 +2219,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Negative Surrounding Grade",
@@ -2227,7 +2227,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Overgrown Foliage",
@@ -2235,7 +2235,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -2243,7 +2243,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -2265,7 +2265,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 13,
         "values": [],
         "validation": {
@@ -2288,7 +2288,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 14,
         "values": [],
         "validation": {
@@ -2327,7 +2327,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Concrete",
@@ -2335,7 +2335,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Pavers",
@@ -2343,7 +2343,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stone",
@@ -2351,7 +2351,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Brick",
@@ -2359,7 +2359,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood or Composite",
@@ -2367,7 +2367,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Covered",
@@ -2375,7 +2375,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -2406,7 +2406,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -2414,7 +2414,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -2422,7 +2422,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify Attachment",
@@ -2430,7 +2430,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose or Missing Railings",
@@ -2438,7 +2438,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Trip Hazard(s)",
@@ -2446,7 +2446,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Typical Cracks",
@@ -2454,7 +2454,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Large Cracks",
@@ -2462,7 +2462,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gaps or Holes",
@@ -2470,7 +2470,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Weathered Finish",
@@ -2478,7 +2478,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -2486,7 +2486,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Settled",
@@ -2494,7 +2494,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Earth Contact",
@@ -2502,7 +2502,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mildew",
@@ -2510,7 +2510,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fungal Rot or Probed",
@@ -2518,7 +2518,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -2526,7 +2526,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -2557,7 +2557,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Uneven",
@@ -2565,7 +2565,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Large Cracks",
@@ -2573,7 +2573,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Root Heaving",
@@ -2581,7 +2581,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Moss Build-Up",
@@ -2589,7 +2589,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Spacers",
@@ -2597,7 +2597,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Settled",
@@ -2605,7 +2605,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Trip Hazard",
@@ -2613,7 +2613,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Handrails",
@@ -2621,7 +2621,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Safety Glass",
@@ -2629,7 +2629,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -2660,7 +2660,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Raised",
@@ -2668,7 +2668,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Roof-top",
@@ -2676,7 +2676,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Covered",
@@ -2684,7 +2684,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood or Composite",
@@ -2692,7 +2692,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "PVC",
@@ -2700,7 +2700,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -2731,7 +2731,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -2739,7 +2739,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -2747,7 +2747,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose or Missing Railings",
@@ -2755,7 +2755,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Weathered Finish",
@@ -2763,7 +2763,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -2771,7 +2771,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Settled",
@@ -2779,7 +2779,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Earth Contact",
@@ -2787,7 +2787,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mildew",
@@ -2795,7 +2795,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fungal Rot or Probed",
@@ -2803,7 +2803,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify Attachment",
@@ -2811,7 +2811,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -2819,7 +2819,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -2841,7 +2841,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 5,
         "values": [],
         "validation": {
@@ -2864,7 +2864,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 6,
         "values": [],
         "validation": {
@@ -2901,7 +2901,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 0,
         "values": [],
         "validation": {
@@ -2924,7 +2924,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 1,
         "values": [],
         "validation": {
@@ -2956,7 +2956,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stone",
@@ -2964,7 +2964,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stucco",
@@ -2972,7 +2972,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Metal",
@@ -2980,7 +2980,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vinyl",
@@ -2988,7 +2988,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cement Board",
@@ -2996,7 +2996,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood",
@@ -3004,7 +3004,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fiberboard",
@@ -3012,7 +3012,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hardi-Board or Plank",
@@ -3020,7 +3020,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Panels or Sheets",
@@ -3028,7 +3028,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Shingles",
@@ -3036,7 +3036,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "T-111",
@@ -3044,7 +3044,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Lapped",
@@ -3052,7 +3052,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "T&G",
@@ -3060,7 +3060,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vertical Channel",
@@ -3068,7 +3068,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "EIFS",
@@ -3076,7 +3076,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Pre 1996 EIFS",
@@ -3084,7 +3084,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recalled LP",
@@ -3092,7 +3092,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 17,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Friable PACM",
@@ -3100,7 +3100,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 18,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -3131,7 +3131,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -3139,7 +3139,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -3147,7 +3147,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose",
@@ -3155,7 +3155,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gaps or Holes",
@@ -3163,7 +3163,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Buckled",
@@ -3171,7 +3171,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Tight Butt Joints",
@@ -3179,7 +3179,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Joint Flashing",
@@ -3187,7 +3187,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Broken or Damaged",
@@ -3195,7 +3195,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inadequate Coverage",
@@ -3203,7 +3203,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Peeling Paint",
@@ -3211,7 +3211,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Weathered",
@@ -3219,7 +3219,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Pest Issues",
@@ -3227,7 +3227,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cracked or Bulging",
@@ -3235,7 +3235,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mildew",
@@ -3243,7 +3243,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Deteriorated",
@@ -3251,7 +3251,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fungal Rot or Probed",
@@ -3259,7 +3259,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -3267,7 +3267,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 17,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -3298,7 +3298,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -3306,7 +3306,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Satisfactory",
@@ -3314,7 +3314,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -3322,7 +3322,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -3330,7 +3330,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Defective",
@@ -3338,7 +3338,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose",
@@ -3346,7 +3346,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gaps or Holes",
@@ -3354,7 +3354,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Exposed Structure",
@@ -3362,7 +3362,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Re-Evaluate or Repair",
@@ -3370,7 +3370,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -3401,7 +3401,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fiberboard",
@@ -3409,7 +3409,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Masonry",
@@ -3417,7 +3417,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "EIFS",
@@ -3425,7 +3425,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Metal",
@@ -3433,7 +3433,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vinyl",
@@ -3441,7 +3441,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Enclosed Soffit",
@@ -3449,7 +3449,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Open Eaves",
@@ -3457,7 +3457,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Screened Ventilation",
@@ -3465,7 +3465,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unflashed BRT or Out-Lookers",
@@ -3473,7 +3473,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -3504,7 +3504,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -3512,7 +3512,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -3520,7 +3520,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose",
@@ -3528,7 +3528,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gaps or Holes",
@@ -3536,7 +3536,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Pieces",
@@ -3544,7 +3544,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Exposed Wood",
@@ -3552,7 +3552,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose or Missing Flashing",
@@ -3560,7 +3560,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor Protection or Coverage",
@@ -3568,7 +3568,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stains",
@@ -3576,7 +3576,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Peeling Paint",
@@ -3584,7 +3584,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Weathered or Worn",
@@ -3592,7 +3592,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Deterioration",
@@ -3600,7 +3600,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fungal Rot",
@@ -3608,7 +3608,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Broken or Damaged",
@@ -3616,7 +3616,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Pest Issues",
@@ -3624,7 +3624,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Foliage Contact",
@@ -3632,7 +3632,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Potential Hidden Damage",
@@ -3640,7 +3640,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 17,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Re-Evaluation",
@@ -3648,7 +3648,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 18,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -3670,7 +3670,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 7,
         "values": [],
         "validation": {
@@ -3709,7 +3709,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Aluminum or Metal",
@@ -3717,7 +3717,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Clad",
@@ -3725,7 +3725,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vinyl",
@@ -3733,7 +3733,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fiberglass",
@@ -3741,7 +3741,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -3772,7 +3772,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -3780,7 +3780,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -3788,7 +3788,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gaps",
@@ -3796,7 +3796,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Pieces",
@@ -3804,7 +3804,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Exposed Wood",
@@ -3812,7 +3812,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Flashing",
@@ -3820,7 +3820,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Weathered or Worn Finish",
@@ -3828,7 +3828,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Peeling Paint or Inadequate Coverage",
@@ -3836,7 +3836,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Caulking",
@@ -3844,7 +3844,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Broken Glass",
@@ -3852,7 +3852,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Failed Thermal Seal",
@@ -3860,7 +3860,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -3868,7 +3868,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Deteriorated",
@@ -3876,7 +3876,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fungal Rot",
@@ -3884,7 +3884,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -3915,7 +3915,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood",
@@ -3923,7 +3923,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fiberglass",
@@ -3931,7 +3931,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -3962,7 +3962,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -3970,7 +3970,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -3978,7 +3978,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Inadequate Threshold",
@@ -3986,7 +3986,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Inadequate Weather-Strip",
@@ -3994,7 +3994,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Inadequate Hardware",
@@ -4002,7 +4002,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Repairs Needed",
@@ -4010,7 +4010,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -4041,7 +4041,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Weathered",
@@ -4049,7 +4049,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stretched",
@@ -4057,7 +4057,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cracked",
@@ -4065,7 +4065,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gaps",
@@ -4073,7 +4073,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -4081,7 +4081,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend sealing all perforations through the exterior wall surface",
@@ -4089,7 +4089,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -4111,7 +4111,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 5,
         "values": [],
         "validation": {
@@ -4141,7 +4141,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 0,
         "values": [],
         "validation": {
@@ -4164,7 +4164,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 1,
         "values": [],
         "validation": {
@@ -4196,7 +4196,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Curbside",
@@ -4204,7 +4204,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Space",
@@ -4212,7 +4212,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Public Garage",
@@ -4220,7 +4220,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Carport",
@@ -4228,7 +4228,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Garage",
@@ -4236,7 +4236,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Attached",
@@ -4244,7 +4244,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Detached",
@@ -4252,7 +4252,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -4283,7 +4283,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Concrete Slab",
@@ -4291,7 +4291,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sealed",
@@ -4299,7 +4299,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Asphalt",
@@ -4307,7 +4307,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Pavers or Cobblestone",
@@ -4315,7 +4315,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gravel",
@@ -4323,7 +4323,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Dirt",
@@ -4331,7 +4331,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -4362,7 +4362,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -4370,7 +4370,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -4378,7 +4378,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sloping",
@@ -4386,7 +4386,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Typical Cracks",
@@ -4394,7 +4394,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Large Cracks",
@@ -4402,7 +4402,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Trip Hazards",
@@ -4410,7 +4410,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Efflorescence",
@@ -4418,7 +4418,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Visible",
@@ -4426,7 +4426,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Excessive Storage",
@@ -4434,7 +4434,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -4442,7 +4442,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -4473,7 +4473,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Above Living Space",
@@ -4481,7 +4481,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Below Living Space",
@@ -4489,7 +4489,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Adjoining Walls",
@@ -4497,7 +4497,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -4528,7 +4528,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Pet Door",
@@ -4536,7 +4536,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Satisfactory",
@@ -4544,7 +4544,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -4552,7 +4552,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -4560,7 +4560,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -4591,7 +4591,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Threshod",
@@ -4599,7 +4599,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hinges",
@@ -4607,7 +4607,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Seal",
@@ -4615,7 +4615,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Repairs Needed",
@@ -4623,7 +4623,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -4654,7 +4654,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Blocked or Inoperable",
@@ -4662,7 +4662,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood",
@@ -4670,7 +4670,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Metal",
@@ -4678,7 +4678,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fiberglass",
@@ -4686,7 +4686,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -4717,7 +4717,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -4725,7 +4725,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -4733,7 +4733,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -4741,7 +4741,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Needs Adjustment",
@@ -4749,7 +4749,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -4757,7 +4757,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -4788,7 +4788,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Overhead",
@@ -4796,7 +4796,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sliding",
@@ -4804,7 +4804,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Roll-Up Panels",
@@ -4812,7 +4812,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Tilt-Up Slab",
@@ -4820,7 +4820,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Lites",
@@ -4828,7 +4828,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood",
@@ -4836,7 +4836,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hardboard",
@@ -4844,7 +4844,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Metal",
@@ -4852,7 +4852,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fiberglass",
@@ -4860,7 +4860,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Solid",
@@ -4868,7 +4868,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hollow",
@@ -4876,7 +4876,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Insulated",
@@ -4884,7 +4884,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -4915,7 +4915,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -4923,7 +4923,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -4931,7 +4931,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -4939,7 +4939,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gaps",
@@ -4947,7 +4947,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Security Concerns",
@@ -4955,7 +4955,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Blocked or Inaccessible",
@@ -4963,7 +4963,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Locked Shut",
@@ -4971,7 +4971,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stained",
@@ -4979,7 +4979,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "De-Laminated",
@@ -4987,7 +4987,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -4995,7 +4995,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -5026,7 +5026,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -5034,7 +5034,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Blocked",
@@ -5042,7 +5042,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No Access",
@@ -5050,7 +5050,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No Remote",
@@ -5058,7 +5058,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -5089,7 +5089,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Disconnected or Inoperable",
@@ -5097,7 +5097,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Door Stops",
@@ -5105,7 +5105,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Intermittent Function",
@@ -5113,7 +5113,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -5144,7 +5144,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -5152,7 +5152,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -5160,7 +5160,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -5168,7 +5168,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Needs Adjustment",
@@ -5176,7 +5176,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -5184,7 +5184,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -5206,7 +5206,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 15,
         "values": [],
         "validation": {
@@ -5243,7 +5243,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 0,
         "values": [],
         "validation": {
@@ -5266,7 +5266,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 1,
         "values": [],
         "validation": {
@@ -5298,7 +5298,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inspected or NOT Traversed",
@@ -5306,7 +5306,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "NOT Inspected",
@@ -5314,7 +5314,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vulnerable to Traversing Damage",
@@ -5322,7 +5322,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unsafe Traversing Condition(s)",
@@ -5330,7 +5330,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Visible",
@@ -5338,7 +5338,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -5369,7 +5369,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ladder",
@@ -5377,7 +5377,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Eaves",
@@ -5385,7 +5385,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Interior",
@@ -5393,7 +5393,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Other Building",
@@ -5401,7 +5401,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -5432,7 +5432,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hip",
@@ -5440,7 +5440,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mansard",
@@ -5448,7 +5448,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Shed",
@@ -5456,7 +5456,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Flat",
@@ -5464,7 +5464,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Dutch Hip",
@@ -5472,7 +5472,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Combination",
@@ -5480,7 +5480,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -5511,7 +5511,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Medium",
@@ -5519,7 +5519,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Low",
@@ -5527,7 +5527,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -5549,11 +5549,11 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "number",
+        "type": "text",
         "order": 6,
         "values": [],
         "validation": {
-          "type": null,
+          "type": "number",
           "min": null,
           "max": null,
           "isRequired": 0
@@ -5572,11 +5572,11 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "number",
+        "type": "text",
         "order": 7,
         "values": [],
         "validation": {
-          "type": null,
+          "type": "number",
           "min": null,
           "max": null,
           "isRequired": 0
@@ -5604,7 +5604,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rolled",
@@ -5612,7 +5612,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "3-Tab",
@@ -5620,7 +5620,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Multiple Thickness",
@@ -5628,7 +5628,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Presidential",
@@ -5636,7 +5636,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Corrugated Fiber Glass",
@@ -5644,7 +5644,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Modified Bitumen",
@@ -5652,7 +5652,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Torch-Down or Hot Tar",
@@ -5660,7 +5660,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Metal or Standing Seam",
@@ -5668,7 +5668,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Metal Shingle",
@@ -5676,7 +5676,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood Shingle",
@@ -5684,7 +5684,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cedar Shake",
@@ -5692,7 +5692,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Clay Tile",
@@ -5700,7 +5700,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Concrete Tile",
@@ -5708,7 +5708,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Slate",
@@ -5716,7 +5716,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "PVC Membrane",
@@ -5724,7 +5724,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -5755,7 +5755,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -5763,7 +5763,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -5771,7 +5771,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Granule Loss",
@@ -5779,7 +5779,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Broken or Damaged",
@@ -5787,7 +5787,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing (Tabs)",
@@ -5795,7 +5795,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cupping or Curling",
@@ -5803,7 +5803,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Aligned Gaps",
@@ -5811,7 +5811,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cracked",
@@ -5819,7 +5819,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Lifting",
@@ -5827,7 +5827,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Moss",
@@ -5835,7 +5835,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fungal Rot",
@@ -5843,7 +5843,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rusted",
@@ -5851,7 +5851,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Exposed Fasteners",
@@ -5859,7 +5859,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Professional Re-Evaluation or Remediation",
@@ -5867,7 +5867,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -5898,7 +5898,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Metal",
@@ -5906,7 +5906,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Woven Asphalt",
@@ -5914,7 +5914,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cut Asphalt",
@@ -5922,7 +5922,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Tile",
@@ -5930,7 +5930,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Concrete",
@@ -5938,7 +5938,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -5969,7 +5969,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Maginal",
@@ -5977,7 +5977,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -5985,7 +5985,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Defective",
@@ -5993,7 +5993,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Broken or Damaged",
@@ -6001,7 +6001,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rusted",
@@ -6009,7 +6009,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Holes or Gaps",
@@ -6017,7 +6017,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaks",
@@ -6025,7 +6025,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Installation Defects",
@@ -6033,7 +6033,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vulnerable Areas",
@@ -6041,7 +6041,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -6063,7 +6063,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 12,
         "values": [],
         "validation": {
@@ -6102,7 +6102,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No Access",
@@ -6110,7 +6110,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Visible",
@@ -6118,7 +6118,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Walls or Dormers",
@@ -6126,7 +6126,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Chimney Chase(s)",
@@ -6134,7 +6134,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Class 'B' Vent(s)",
@@ -6142,7 +6142,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Dryer Vent",
@@ -6150,7 +6150,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fan Vent(s)",
@@ -6158,7 +6158,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Plumbing DWV Pipes",
@@ -6166,7 +6166,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Antennae or Satellite Dish",
@@ -6174,7 +6174,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cable or Wiring",
@@ -6182,7 +6182,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Electical Mast",
@@ -6190,7 +6190,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -6221,7 +6221,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -6229,7 +6229,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -6237,7 +6237,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Defective",
@@ -6245,7 +6245,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Broken or Damaged",
@@ -6253,7 +6253,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rusted",
@@ -6261,7 +6261,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Raised Holes or Gaps",
@@ -6269,7 +6269,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaks",
@@ -6277,7 +6277,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Installation Defects",
@@ -6285,7 +6285,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vulnerable Areas",
@@ -6293,7 +6293,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -6324,7 +6324,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No Access",
@@ -6332,7 +6332,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Visible",
@@ -6340,7 +6340,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -6371,7 +6371,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -6379,7 +6379,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -6387,7 +6387,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Defective",
@@ -6395,7 +6395,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Broken or Damaged",
@@ -6403,7 +6403,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rusted",
@@ -6411,7 +6411,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Holes or Gaps",
@@ -6419,7 +6419,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaks",
@@ -6427,7 +6427,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Installation Defects",
@@ -6435,7 +6435,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Security Concern",
@@ -6443,7 +6443,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vulnerable Areas",
@@ -6451,7 +6451,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -6482,7 +6482,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -6490,7 +6490,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Installation Defects",
@@ -6498,7 +6498,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rusted",
@@ -6506,7 +6506,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Potential Future Concern",
@@ -6514,7 +6514,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -6545,7 +6545,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -6553,7 +6553,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -6561,7 +6561,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Defective",
@@ -6569,7 +6569,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Broken or Damaged",
@@ -6577,7 +6577,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Raised",
@@ -6585,7 +6585,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Holes or Gaps",
@@ -6593,7 +6593,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaks",
@@ -6601,7 +6601,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vulnerable Areas",
@@ -6609,7 +6609,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Repair or Re-Evaluate",
@@ -6617,7 +6617,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -6639,7 +6639,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 6,
         "values": [],
         "validation": {
@@ -6678,7 +6678,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Internal with Scuppers",
@@ -6686,7 +6686,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Metal",
@@ -6694,7 +6694,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Plastic or Vinyl",
@@ -6702,7 +6702,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood",
@@ -6710,7 +6710,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -6741,7 +6741,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Satisfactory",
@@ -6749,7 +6749,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -6757,7 +6757,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -6765,7 +6765,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose or Sagging",
@@ -6773,7 +6773,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fallen or Pulled Away",
@@ -6781,7 +6781,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Reversed Slope or Ponding",
@@ -6789,7 +6789,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Clogged",
@@ -6797,7 +6797,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Debris",
@@ -6805,7 +6805,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Granule Wash",
@@ -6813,7 +6813,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Spillover Stains",
@@ -6821,7 +6821,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Deteriorated Wood",
@@ -6829,7 +6829,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cracked or Split",
@@ -6837,7 +6837,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Holes",
@@ -6845,7 +6845,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaking Joints",
@@ -6853,7 +6853,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rust",
@@ -6861,7 +6861,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Moss",
@@ -6869,7 +6869,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -6900,7 +6900,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Above Grade",
@@ -6908,7 +6908,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Below Grade",
@@ -6916,7 +6916,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Visible",
@@ -6924,7 +6924,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -6955,7 +6955,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -6963,7 +6963,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -6971,7 +6971,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -6979,7 +6979,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose or Disconnected",
@@ -6987,7 +6987,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Clogged",
@@ -6995,7 +6995,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Open Gaps Around Downspout-to-Drain Connections",
@@ -7003,7 +7003,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor Extensions or Splash Blocks",
@@ -7011,7 +7011,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -7033,7 +7033,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 4,
         "values": [],
         "validation": {
@@ -7070,7 +7070,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 0,
         "values": [],
         "validation": {
@@ -7093,7 +7093,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 1,
         "values": [],
         "validation": {
@@ -7125,7 +7125,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vaulted or No Attic",
@@ -7133,7 +7133,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Partial Attic",
@@ -7141,7 +7141,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No Access",
@@ -7149,7 +7149,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sealed Access",
@@ -7157,7 +7157,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Trusses",
@@ -7165,7 +7165,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stick-Framed",
@@ -7173,7 +7173,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rafters & Joists",
@@ -7181,7 +7181,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Beams & Purlins",
@@ -7189,7 +7189,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hips",
@@ -7197,7 +7197,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Valleys",
@@ -7205,7 +7205,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -7236,7 +7236,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "OSB",
@@ -7244,7 +7244,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "H-Clipped",
@@ -7252,7 +7252,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Plank",
@@ -7260,7 +7260,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "1x Skip Sheathing",
@@ -7268,7 +7268,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -7299,7 +7299,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -7307,7 +7307,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -7315,7 +7315,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sagging or Over-Spanned",
@@ -7323,7 +7323,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Broken or Damaged",
@@ -7331,7 +7331,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Structural Defect (Design Related)",
@@ -7339,7 +7339,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -7370,7 +7370,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Collar Ties",
@@ -7378,7 +7378,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Knee Walls",
@@ -7386,7 +7386,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stains",
@@ -7394,7 +7394,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Deterioration",
@@ -7402,7 +7402,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazardous or Unsafe",
@@ -7410,7 +7410,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Professional Re-Evaluation",
@@ -7418,7 +7418,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -7440,7 +7440,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 6,
         "values": [],
         "validation": {
@@ -7470,7 +7470,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 0,
         "values": [],
         "validation": {
@@ -7502,7 +7502,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "4X Beams & Plank Diaphragm",
@@ -7510,7 +7510,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "2X Joists & Diaphragm",
@@ -7518,7 +7518,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Flat Truss",
@@ -7526,7 +7526,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -7557,7 +7557,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Concrete",
@@ -7565,7 +7565,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Laminated or Engineered",
@@ -7573,7 +7573,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Dimensional Lumber",
@@ -7581,7 +7581,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -7612,7 +7612,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Lumber",
@@ -7620,7 +7620,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sleepers",
@@ -7628,7 +7628,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -7659,7 +7659,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood or TJI",
@@ -7667,7 +7667,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Metal",
@@ -7675,7 +7675,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -7706,7 +7706,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Diagonal",
@@ -7714,7 +7714,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Plank",
@@ -7722,7 +7722,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "T&G or Shiplap",
@@ -7730,7 +7730,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Plywood",
@@ -7738,7 +7738,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "OSB",
@@ -7746,7 +7746,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -7777,7 +7777,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood",
@@ -7785,7 +7785,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Steel",
@@ -7793,7 +7793,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Concrete",
@@ -7801,7 +7801,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "CMU (block)",
@@ -7809,7 +7809,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -7840,7 +7840,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Satisfactory",
@@ -7848,7 +7848,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -7856,7 +7856,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -7864,7 +7864,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sagging or Over-Spanned",
@@ -7872,7 +7872,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Broken",
@@ -7880,7 +7880,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -7888,7 +7888,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Structural Defects (Design Related)",
@@ -7896,7 +7896,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Inadequate Bracing",
@@ -7904,7 +7904,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stains",
@@ -7912,7 +7912,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Deterioration",
@@ -7920,7 +7920,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazardous or Unsafe",
@@ -7928,7 +7928,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Professional Evaluation or Remediation",
@@ -7936,7 +7936,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -7967,7 +7967,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Open",
@@ -7975,7 +7975,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Enclosed",
@@ -7983,7 +7983,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -8014,7 +8014,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -8022,7 +8022,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -8030,7 +8030,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Handrail",
@@ -8038,7 +8038,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -8069,7 +8069,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Headroom",
@@ -8077,7 +8077,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Support",
@@ -8085,7 +8085,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Uneven Risers",
@@ -8093,7 +8093,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Over-Height Step(s)",
@@ -8101,7 +8101,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Firewall",
@@ -8109,7 +8109,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazardous or Unsafe",
@@ -8117,7 +8117,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Professional Evaluation or Remediation",
@@ -8125,7 +8125,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -8156,7 +8156,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Dirt or Gravel",
@@ -8164,7 +8164,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood",
@@ -8172,7 +8172,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Covered or Not Visible",
@@ -8180,7 +8180,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -8211,7 +8211,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -8219,7 +8219,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -8227,7 +8227,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Typical Settling Cracks",
@@ -8235,7 +8235,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Large Cracks",
@@ -8243,7 +8243,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stains",
@@ -8251,7 +8251,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Efflorescence",
@@ -8259,7 +8259,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Storage",
@@ -8267,7 +8267,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damage",
@@ -8275,7 +8275,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazardous or Unsafe",
@@ -8283,7 +8283,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -8291,7 +8291,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -8313,7 +8313,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 13,
         "values": [],
         "validation": {
@@ -8352,7 +8352,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Post or Beam",
@@ -8360,7 +8360,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Columns",
@@ -8368,7 +8368,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poured Concrete",
@@ -8376,7 +8376,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "CMU(Block)",
@@ -8384,7 +8384,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Masonry",
@@ -8392,7 +8392,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unmortared Stone or Brick",
@@ -8400,7 +8400,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Logs",
@@ -8408,7 +8408,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Treated Wood",
@@ -8416,7 +8416,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Strip Footings",
@@ -8424,7 +8424,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -8455,7 +8455,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -8463,7 +8463,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -8471,7 +8471,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Imbedded Wood",
@@ -8479,7 +8479,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rock Pockets",
@@ -8487,7 +8487,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No Tie-Downs",
@@ -8495,7 +8495,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stains",
@@ -8503,7 +8503,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damage",
@@ -8511,7 +8511,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Deterioration",
@@ -8519,7 +8519,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Efflorescence",
@@ -8527,7 +8527,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "EWC",
@@ -8535,7 +8535,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fungal Rot or Probed",
@@ -8543,7 +8543,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -8574,7 +8574,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Perimeter Cover",
@@ -8582,7 +8582,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Obstacles",
@@ -8590,7 +8590,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inaccessible Area",
@@ -8598,7 +8598,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Pests",
@@ -8606,7 +8606,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Tight or Limited Mobility",
@@ -8614,7 +8614,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazards or Unsafe",
@@ -8622,7 +8622,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Re-Evaluation or Remediation",
@@ -8630,7 +8630,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -8661,7 +8661,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Exit Holes",
@@ -8669,7 +8669,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Frass",
@@ -8677,7 +8677,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Galleries",
@@ -8685,7 +8685,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damage",
@@ -8693,7 +8693,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mildew or Bio-Growth",
@@ -8701,7 +8701,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mold Sampled or Tested",
@@ -8709,7 +8709,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fungal Rot or Probed",
@@ -8717,7 +8717,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -8725,7 +8725,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -8756,7 +8756,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vertical",
@@ -8764,7 +8764,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Step",
@@ -8772,7 +8772,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Horizontal",
@@ -8780,7 +8780,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "V-Cracking",
@@ -8788,7 +8788,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Displaced",
@@ -8796,7 +8796,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inactive",
@@ -8804,7 +8804,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Active",
@@ -8812,7 +8812,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Larger than one fourth inch",
@@ -8820,7 +8820,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -8828,7 +8828,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -8859,7 +8859,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Visible",
@@ -8867,7 +8867,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Efflorescence",
@@ -8875,7 +8875,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Humidity",
@@ -8883,7 +8883,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Old Stains",
@@ -8891,7 +8891,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Silt Deposits",
@@ -8899,7 +8899,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Soil on Vapor Barrier",
@@ -8907,7 +8907,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fresh Stains",
@@ -8915,7 +8915,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Standing Water",
@@ -8923,7 +8923,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -8954,7 +8954,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -8962,7 +8962,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Tested",
@@ -8970,7 +8970,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Operable",
@@ -8978,7 +8978,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -8986,7 +8986,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -8994,7 +8994,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -9015,7 +9015,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 7,
         "values": [],
         "validation": {
@@ -9052,7 +9052,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 0,
         "values": [],
         "validation": {
@@ -9075,7 +9075,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 1,
         "values": [],
         "validation": {
@@ -9107,7 +9107,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No Access",
@@ -9115,7 +9115,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Door",
@@ -9123,7 +9123,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Pull Down Stair",
@@ -9131,7 +9131,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Scuttle-Hole(s)",
@@ -9139,7 +9139,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -9170,7 +9170,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bedroom",
@@ -9178,7 +9178,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Closet",
@@ -9186,7 +9186,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Laundry Room",
@@ -9194,7 +9194,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Garage",
@@ -9202,7 +9202,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Exterior",
@@ -9210,7 +9210,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -9241,7 +9241,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "From Ladder",
@@ -9249,7 +9249,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "At Roof Apex",
@@ -9257,7 +9257,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Limited Accessibility",
@@ -9265,7 +9265,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inspected (Traversed) Attic",
@@ -9273,7 +9273,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Entered but NOT Traversed",
@@ -9281,7 +9281,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "NOT Entered or NOT Inspected",
@@ -9289,7 +9289,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vulnerable to Traversing Damage",
@@ -9297,7 +9297,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unsafe Traversing Condition(s)",
@@ -9305,7 +9305,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Visible",
@@ -9313,7 +9313,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -9344,7 +9344,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rafters",
@@ -9352,7 +9352,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ceiling Joists",
@@ -9360,7 +9360,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -9391,7 +9391,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Determined",
@@ -9399,7 +9399,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inadequate",
@@ -9407,7 +9407,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Varied",
@@ -9415,7 +9415,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "<2 inches R 5",
@@ -9423,7 +9423,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "<3 inches R-9+",
@@ -9431,7 +9431,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "3 inches R-11",
@@ -9439,7 +9439,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "4 inches R-13",
@@ -9447,7 +9447,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "5 inches R-15",
@@ -9455,7 +9455,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "6 inches R-19",
@@ -9463,7 +9463,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "2 hard foam R20",
@@ -9471,7 +9471,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "8-10 inches R-28+",
@@ -9479,7 +9479,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "10-12 inches R-32+",
@@ -9487,7 +9487,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "12-14 inches R-36+",
@@ -9495,7 +9495,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "14-16 inches R-38+",
@@ -9503,7 +9503,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "16-18 inches R- 40+",
@@ -9511,7 +9511,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "18-20 inches R- 42+",
@@ -9519,7 +9519,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "20-22 inches R- 44+",
@@ -9527,7 +9527,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 17,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "22-24 inches R- 46+",
@@ -9535,7 +9535,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 18,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -9566,7 +9566,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cellulose",
@@ -9574,7 +9574,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vermiculite",
@@ -9582,7 +9582,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mineral or Rock Wool",
@@ -9590,7 +9590,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Batts",
@@ -9598,7 +9598,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose",
@@ -9606,7 +9606,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood Shavings",
@@ -9614,7 +9614,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -9645,7 +9645,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -9653,7 +9653,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -9661,7 +9661,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Areas",
@@ -9669,7 +9669,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Uneven Placement",
@@ -9677,7 +9677,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -9685,7 +9685,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -9716,7 +9716,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gable",
@@ -9724,7 +9724,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Top",
@@ -9732,7 +9732,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ridge",
@@ -9740,7 +9740,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Powered Vent(s)",
@@ -9748,7 +9748,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Attic Fan(s)",
@@ -9756,7 +9756,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -9787,7 +9787,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Satisfactory",
@@ -9795,7 +9795,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -9803,7 +9803,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor or Missing",
@@ -9811,7 +9811,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Odors",
@@ -9819,7 +9819,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Excessive Heat",
@@ -9827,7 +9827,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ventilation Appears Inadequate",
@@ -9835,7 +9835,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Effectiveness NOT Evaluated",
@@ -9843,7 +9843,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -9851,7 +9851,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -9882,7 +9882,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Condensation",
@@ -9890,7 +9890,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Roof Leaks",
@@ -9898,7 +9898,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Old Stains or Inactive",
@@ -9906,7 +9906,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fresh Stains or Active",
@@ -9914,7 +9914,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mildew or Mold",
@@ -9922,7 +9922,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stained Diaphragm",
@@ -9930,7 +9930,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wet Insulation",
@@ -9938,7 +9938,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damage",
@@ -9946,7 +9946,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -9954,7 +9954,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -9985,7 +9985,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Prior or Inactive",
@@ -9993,7 +9993,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Live or Active",
@@ -10001,7 +10001,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Nesting Materials",
@@ -10009,7 +10009,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Scat",
@@ -10017,7 +10017,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Insect",
@@ -10025,7 +10025,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bee or Wasp",
@@ -10033,7 +10033,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bird",
@@ -10041,7 +10041,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rodent",
@@ -10049,7 +10049,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Racoon",
@@ -10057,7 +10057,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Potential Points of Pest Entry",
@@ -10065,7 +10065,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazardous or Unsafe",
@@ -10073,7 +10073,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Professional Evaluation or Remediation",
@@ -10081,7 +10081,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -10103,7 +10103,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 13,
         "values": [],
         "validation": {
@@ -10126,7 +10126,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 14,
         "values": [],
         "validation": {
@@ -10165,7 +10165,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Scuttle-Hole",
@@ -10173,7 +10173,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No Access",
@@ -10181,7 +10181,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No Crawl-Space",
@@ -10189,7 +10189,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Visible",
@@ -10197,7 +10197,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -10228,7 +10228,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bedroom",
@@ -10236,7 +10236,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Closet",
@@ -10244,7 +10244,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Laundry Room",
@@ -10252,7 +10252,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Garage",
@@ -10260,7 +10260,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Exterior",
@@ -10268,7 +10268,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inspected Basement or Crawl",
@@ -10276,7 +10276,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "NOT Entered or NOT Inspected",
@@ -10284,7 +10284,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Limited Accessibility",
@@ -10292,7 +10292,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -10323,7 +10323,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "From Exterior",
@@ -10331,7 +10331,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "At Center Only",
@@ -10339,7 +10339,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vulnerable",
@@ -10347,7 +10347,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unsafe",
@@ -10355,7 +10355,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -10386,7 +10386,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Floor",
@@ -10394,7 +10394,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rim Joists",
@@ -10402,7 +10402,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -10433,7 +10433,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Blown-in Cellulose",
@@ -10441,7 +10441,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Foam Board",
@@ -10449,7 +10449,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -10480,7 +10480,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wired",
@@ -10488,7 +10488,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stapled",
@@ -10496,7 +10496,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Twine",
@@ -10504,7 +10504,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Lathe",
@@ -10512,7 +10512,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -10543,7 +10543,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -10551,7 +10551,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -10559,7 +10559,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Areas",
@@ -10567,7 +10567,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fallen Down",
@@ -10575,7 +10575,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -10583,7 +10583,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Installed Upside-Down",
@@ -10591,7 +10591,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ineffective Installation or Gaps",
@@ -10599,7 +10599,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -10630,7 +10630,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Foundation Vents",
@@ -10638,7 +10638,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Powered Vent(s)",
@@ -10646,7 +10646,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fan(s)",
@@ -10654,7 +10654,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -10685,7 +10685,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -10693,7 +10693,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -10701,7 +10701,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Effectiveness NOT Evaluated",
@@ -10709,7 +10709,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -10717,7 +10717,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -10748,7 +10748,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Satisfactory",
@@ -10756,7 +10756,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -10764,7 +10764,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gaps or Displaced Areas",
@@ -10772,7 +10772,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Exposed Earth",
@@ -10780,7 +10780,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -10811,7 +10811,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Condensation",
@@ -10819,7 +10819,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Efflorescence",
@@ -10827,7 +10827,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Old Stains",
@@ -10835,7 +10835,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fresh",
@@ -10843,7 +10843,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Standing Water",
@@ -10851,7 +10851,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -10882,7 +10882,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Interior Plane",
@@ -10890,7 +10890,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "None Apparent",
@@ -10898,7 +10898,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sump Pump",
@@ -10906,7 +10906,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Functional",
@@ -10914,7 +10914,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -10945,7 +10945,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Prior or Inactive",
@@ -10953,7 +10953,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Live or Active",
@@ -10961,7 +10961,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Nesting Materials",
@@ -10969,7 +10969,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Scat",
@@ -10977,7 +10977,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Insect",
@@ -10985,7 +10985,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bee or Wasp",
@@ -10993,7 +10993,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bird",
@@ -11001,7 +11001,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rodent",
@@ -11009,7 +11009,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Racoon",
@@ -11017,7 +11017,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Potential Point Pest Entry",
@@ -11025,7 +11025,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazardous or Unsafe",
@@ -11033,7 +11033,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Professional Evaluation or Remediation",
@@ -11041,7 +11041,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -11063,7 +11063,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 13,
         "values": [],
         "validation": {
@@ -11102,7 +11102,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Make-Up Air Vent(s)",
@@ -11110,7 +11110,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Furnace Blower(s)",
@@ -11118,7 +11118,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ceiling-Mounted Fan(s)",
@@ -11126,7 +11126,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -11157,7 +11157,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -11165,7 +11165,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor or Missing",
@@ -11173,7 +11173,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Open Blade",
@@ -11181,7 +11181,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Caged",
@@ -11189,7 +11189,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Remote Control",
@@ -11197,7 +11197,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -11228,7 +11228,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Kitchen Fan(s)",
@@ -11236,7 +11236,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Laundry Fan(s)",
@@ -11244,7 +11244,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -11252,7 +11252,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Weak or Noisy",
@@ -11260,7 +11260,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unsafe",
@@ -11268,7 +11268,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -11299,7 +11299,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -11307,7 +11307,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor or Missing",
@@ -11315,7 +11315,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vented Improperly (Inside Building Envelope)",
@@ -11323,7 +11323,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Visible",
@@ -11331,7 +11331,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recirculating-Only Type",
@@ -11339,7 +11339,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Clogged Grease Filter",
@@ -11347,7 +11347,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Restricted (Collapsed or Blocked)",
@@ -11355,7 +11355,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Venting Into Attic Space",
@@ -11363,7 +11363,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Aimed at Gable, Eave, or Roof Vents",
@@ -11371,7 +11371,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fallen Loose",
@@ -11379,7 +11379,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -11387,7 +11387,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -11409,7 +11409,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 4,
         "values": [],
         "validation": {
@@ -11432,7 +11432,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 5,
         "values": [],
         "validation": {
@@ -11469,7 +11469,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 0,
         "values": [],
         "validation": {
@@ -11492,7 +11492,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 1,
         "values": [],
         "validation": {
@@ -11524,7 +11524,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Public Water",
@@ -11532,7 +11532,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Shared Well",
@@ -11540,7 +11540,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Private Well",
@@ -11548,7 +11548,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -11579,7 +11579,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Closet",
@@ -11587,7 +11587,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Well House",
@@ -11595,7 +11595,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify",
@@ -11603,7 +11603,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Found",
@@ -11611,7 +11611,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Garage",
@@ -11619,7 +11619,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Near Waterheater",
@@ -11627,7 +11627,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Yard Box",
@@ -11635,7 +11635,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Basement",
@@ -11643,7 +11643,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Crawl Space",
@@ -11651,7 +11651,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Exterior Wall",
@@ -11659,7 +11659,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Interior Wall",
@@ -11667,7 +11667,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Interior Utility Closet",
@@ -11675,7 +11675,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inside Cabinet",
@@ -11683,7 +11683,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Laundry Closet",
@@ -11691,7 +11691,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bedroom",
@@ -11699,7 +11699,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mechanical Room",
@@ -11707,7 +11707,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -11738,7 +11738,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify",
@@ -11746,7 +11746,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "OFF",
@@ -11754,7 +11754,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inadequate (<45psi)",
@@ -11762,7 +11762,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Adequate (45-85psi)",
@@ -11770,7 +11770,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Excessive (>85psi)",
@@ -11778,7 +11778,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -11809,7 +11809,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "See WH Schedule",
@@ -11817,7 +11817,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "WH OFF or Verify Function",
@@ -11825,7 +11825,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "WH on Vacation Mode",
@@ -11833,7 +11833,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "See Interior Section",
@@ -11841,7 +11841,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inadequate (65-85 degrees)",
@@ -11849,7 +11849,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Normal (85-115 degrees)",
@@ -11857,7 +11857,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hot (115-120 degrees)",
@@ -11865,7 +11865,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Scalding Hazard (>120 degrees)",
@@ -11873,7 +11873,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -11904,7 +11904,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Shared Septic",
@@ -11912,7 +11912,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Private Septic & Drainfield",
@@ -11920,7 +11920,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Private Septic & Mound",
@@ -11928,7 +11928,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Private Septic & Leech Line",
@@ -11936,7 +11936,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unknown or Verify",
@@ -11944,7 +11944,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -11975,7 +11975,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Galvanized",
@@ -11983,7 +11983,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Plastic or CPVC",
@@ -11991,7 +11991,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Polybutylene",
@@ -11999,7 +11999,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "PEX",
@@ -12007,7 +12007,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12038,7 +12038,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaking",
@@ -12046,7 +12046,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unprotected or Freezing",
@@ -12054,7 +12054,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Discolered Water",
@@ -12062,7 +12062,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Odor",
@@ -12070,7 +12070,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12092,11 +12092,11 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "number",
+        "type": "text",
         "order": 9,
         "values": [],
         "validation": {
-          "type": null,
+          "type": "number",
           "min": null,
           "max": null,
           "isRequired": 0
@@ -12124,7 +12124,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "High",
@@ -12132,7 +12132,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Normal",
@@ -12140,7 +12140,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -12148,7 +12148,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Shut-Off",
@@ -12156,7 +12156,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Winterized",
@@ -12164,7 +12164,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12195,7 +12195,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Galvanized",
@@ -12203,7 +12203,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Plastic or CPVC",
@@ -12211,7 +12211,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Polybutylene",
@@ -12219,7 +12219,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "PEX",
@@ -12227,7 +12227,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12258,7 +12258,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Satisfactory",
@@ -12266,7 +12266,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -12274,7 +12274,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -12282,7 +12282,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cross Connections",
@@ -12290,7 +12290,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaks",
@@ -12298,7 +12298,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12329,7 +12329,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unknown",
@@ -12337,7 +12337,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unlikely",
@@ -12345,7 +12345,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12376,7 +12376,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No",
@@ -12384,7 +12384,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Visible",
@@ -12392,7 +12392,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12423,7 +12423,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cast Iron",
@@ -12431,7 +12431,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Galvanized",
@@ -12439,7 +12439,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Plastic or ABS or PVC",
@@ -12447,7 +12447,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12478,7 +12478,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Satisfactory",
@@ -12486,7 +12486,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Maginal",
@@ -12494,7 +12494,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -12502,7 +12502,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaks",
@@ -12510,7 +12510,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unsupported",
@@ -12518,7 +12518,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12540,7 +12540,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 17,
         "values": [],
         "validation": {
@@ -12579,7 +12579,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Intermittent Function",
@@ -12587,7 +12587,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -12595,7 +12595,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Incomplete",
@@ -12603,7 +12603,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose",
@@ -12611,7 +12611,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Broken or Damaged",
@@ -12619,7 +12619,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12650,7 +12650,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wall Stop",
@@ -12658,7 +12658,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Faucet",
@@ -12666,7 +12666,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sprayer",
@@ -12674,7 +12674,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12705,7 +12705,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Master Bath",
@@ -12713,7 +12713,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Main Bath",
@@ -12721,7 +12721,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Half Bath",
@@ -12729,7 +12729,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Laundry",
@@ -12737,7 +12737,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bar",
@@ -12745,7 +12745,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12776,7 +12776,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Insta-Hot",
@@ -12784,7 +12784,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Water Filter",
@@ -12792,7 +12792,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ice Maker",
@@ -12800,7 +12800,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12831,7 +12831,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Defective",
@@ -12839,7 +12839,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12870,7 +12870,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12901,7 +12901,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -12909,7 +12909,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Intermittent Function",
@@ -12917,7 +12917,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Defects or Damage",
@@ -12925,7 +12925,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -12956,7 +12956,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Surface Damage",
@@ -12964,7 +12964,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cabinet Damage",
@@ -12972,7 +12972,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cross Connection",
@@ -12980,7 +12980,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Improve Caulking at Sink, Back-Splash, Tub Deck, Shower Surround, Floor, Wood or MDF Molding",
@@ -12988,7 +12988,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -13019,7 +13019,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cracked, Loose, or Missing Grout",
@@ -13027,7 +13027,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -13058,7 +13058,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Stopper",
@@ -13066,7 +13066,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Inoperable Overflow",
@@ -13074,7 +13074,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Clog or Slow Drain",
@@ -13082,7 +13082,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stained Drainpipe",
@@ -13090,7 +13090,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Drips or Leaks",
@@ -13098,7 +13098,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Defects or Damage",
@@ -13106,7 +13106,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unsafe",
@@ -13114,7 +13114,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -13122,7 +13122,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -13153,7 +13153,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Master Bath",
@@ -13161,7 +13161,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Main Bath",
@@ -13169,7 +13169,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Half Bath",
@@ -13177,7 +13177,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Laundry",
@@ -13185,7 +13185,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bar",
@@ -13193,7 +13193,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -13224,7 +13224,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -13232,7 +13232,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Runs Continuously",
@@ -13240,7 +13240,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaks",
@@ -13248,7 +13248,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose Bowl",
@@ -13256,7 +13256,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damage",
@@ -13264,7 +13264,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -13295,7 +13295,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "FG",
@@ -13303,7 +13303,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Masonite or Laminate",
@@ -13311,7 +13311,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Slab",
@@ -13319,7 +13319,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Jacuzzi",
@@ -13327,7 +13327,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -13358,7 +13358,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -13366,7 +13366,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stains",
@@ -13374,7 +13374,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cross Connection",
@@ -13382,7 +13382,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Defective",
@@ -13390,7 +13390,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose Tile",
@@ -13398,7 +13398,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cracked or Broken",
@@ -13406,7 +13406,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaky Shower Head",
@@ -13414,7 +13414,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaky Faucet",
@@ -13422,7 +13422,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaky Sprayer",
@@ -13430,7 +13430,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -13452,7 +13452,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 14,
         "values": [],
         "validation": {
@@ -13491,7 +13491,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Electric",
@@ -13499,7 +13499,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Oil",
@@ -13507,7 +13507,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Solar",
@@ -13515,7 +13515,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Geo Thermal",
@@ -13523,7 +13523,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -13554,7 +13554,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "A O Smith",
@@ -13562,7 +13562,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "American",
@@ -13570,7 +13570,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "American Standard",
@@ -13578,7 +13578,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Amtrol",
@@ -13586,7 +13586,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Aqua Star or Bosch",
@@ -13594,7 +13594,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bosch",
@@ -13602,7 +13602,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bradford White",
@@ -13610,7 +13610,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Briggs",
@@ -13618,7 +13618,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Craftmaster",
@@ -13626,7 +13626,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Eccotemp",
@@ -13634,7 +13634,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "GE",
@@ -13642,7 +13642,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hoyt",
@@ -13650,7 +13650,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Kenmore",
@@ -13658,7 +13658,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "KD Navien",
@@ -13666,7 +13666,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Lochinvar",
@@ -13674,7 +13674,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Maytag",
@@ -13682,7 +13682,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mitsubishi",
@@ -13690,7 +13690,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 17,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Munchkin",
@@ -13698,7 +13698,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 18,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Navien",
@@ -13706,7 +13706,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 19,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Navion",
@@ -13714,7 +13714,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 20,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Noritz",
@@ -13722,7 +13722,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 21,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Polaris",
@@ -13730,7 +13730,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 22,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Reliance",
@@ -13738,7 +13738,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 23,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rheem",
@@ -13746,7 +13746,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 24,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ruud",
@@ -13754,7 +13754,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 25,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Richmond",
@@ -13762,7 +13762,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 26,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rinnai",
@@ -13770,7 +13770,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 27,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sears Roebuck",
@@ -13778,7 +13778,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 28,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "State",
@@ -13786,7 +13786,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 29,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "State Select",
@@ -13794,7 +13794,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 30,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Takagi",
@@ -13802,7 +13802,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 31,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "1 Value",
@@ -13810,7 +13810,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 32,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "US Craftmaster",
@@ -13818,7 +13818,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 33,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Whirlpool",
@@ -13826,7 +13826,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 34,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -13848,11 +13848,11 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "number",
+        "type": "text",
         "order": 2,
         "values": [],
         "validation": {
-          "type": null,
+          "type": "number",
           "min": null,
           "max": null,
           "isRequired": 0
@@ -13880,7 +13880,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify",
@@ -13888,7 +13888,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Tank-less / Unlimited",
@@ -13896,7 +13896,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "On Demand",
@@ -13904,7 +13904,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Point of Use",
@@ -13912,7 +13912,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "2.5",
@@ -13920,7 +13920,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "6",
@@ -13928,7 +13928,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "12",
@@ -13936,7 +13936,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "30",
@@ -13944,7 +13944,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "40",
@@ -13952,7 +13952,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "41",
@@ -13960,7 +13960,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "42",
@@ -13968,7 +13968,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "45",
@@ -13976,7 +13976,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "47",
@@ -13984,7 +13984,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "48",
@@ -13992,7 +13992,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "50",
@@ -14000,7 +14000,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "52",
@@ -14008,7 +14008,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "55",
@@ -14016,7 +14016,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 17,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "60",
@@ -14024,7 +14024,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 18,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "62",
@@ -14032,7 +14032,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 19,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "65",
@@ -14040,7 +14040,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 20,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "66",
@@ -14048,7 +14048,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 21,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "70",
@@ -14056,7 +14056,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 22,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "75",
@@ -14064,7 +14064,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 23,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "80",
@@ -14072,7 +14072,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 24,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "91",
@@ -14080,7 +14080,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 25,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "100",
@@ -14088,7 +14088,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 26,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "boiler (119)",
@@ -14096,7 +14096,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 27,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -14164,11 +14164,11 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "number",
+        "type": "text",
         "order": 6,
         "values": [],
         "validation": {
-          "type": null,
+          "type": "number",
           "min": null,
           "max": null,
           "isRequired": 0
@@ -14196,7 +14196,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Data Plate Inaccessible or Illegible",
@@ -14204,7 +14204,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Loose Seismic Restraints",
@@ -14212,7 +14212,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -14243,7 +14243,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -14251,7 +14251,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Reduced Extension",
@@ -14259,7 +14259,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor Extension Termination",
@@ -14267,7 +14267,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -14298,7 +14298,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Metal",
@@ -14306,7 +14306,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Flex Ducting",
@@ -14314,7 +14314,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "PVC",
@@ -14322,7 +14322,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Condensate",
@@ -14330,7 +14330,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rust",
@@ -14338,7 +14338,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Corrosion",
@@ -14346,7 +14346,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify Proper Pitch",
@@ -14354,7 +14354,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Disconnected",
@@ -14362,7 +14362,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Into Masonry Chase",
@@ -14370,7 +14370,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Liner",
@@ -14378,7 +14378,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Back-Drafting",
@@ -14386,7 +14386,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unsafe",
@@ -14394,7 +14394,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Professional Re-Evaluation or Remediation",
@@ -14402,7 +14402,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -14424,7 +14424,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 10,
         "values": [],
         "validation": {
@@ -14461,7 +14461,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 0,
         "values": [],
         "validation": {
@@ -14484,7 +14484,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 1,
         "values": [],
         "validation": {
@@ -14516,7 +14516,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "LP",
@@ -14524,7 +14524,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Electric",
@@ -14532,7 +14532,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Oil",
@@ -14540,7 +14540,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Solar",
@@ -14548,7 +14548,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wind",
@@ -14556,7 +14556,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Geo Thermal",
@@ -14564,7 +14564,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -14595,7 +14595,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "In-Wall Space Heaters",
@@ -14603,7 +14603,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Baseboard Wall",
@@ -14611,7 +14611,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Radiant",
@@ -14619,7 +14619,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -14650,7 +14650,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Steam",
@@ -14658,7 +14658,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Radiator",
@@ -14666,7 +14666,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -14697,7 +14697,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Water",
@@ -14705,7 +14705,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ground",
@@ -14713,7 +14713,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -14744,7 +14744,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Solid Fuel(Pellet)",
@@ -14752,7 +14752,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gas Log",
@@ -14760,7 +14760,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify Clearance to Combustibles",
@@ -14768,7 +14768,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -14799,7 +14799,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Heat Sink",
@@ -14807,7 +14807,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Photo-Voltaic",
@@ -14815,7 +14815,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Panels",
@@ -14823,7 +14823,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Convection",
@@ -14831,7 +14831,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -14853,7 +14853,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 8,
         "values": [],
         "validation": {
@@ -14892,7 +14892,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Not Installed",
@@ -14900,7 +14900,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify",
@@ -14908,7 +14908,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "American",
@@ -14916,7 +14916,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "American Standard",
@@ -14924,7 +14924,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Arcoaire",
@@ -14932,7 +14932,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Armstrong",
@@ -14940,7 +14940,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Amtrol",
@@ -14948,7 +14948,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bard",
@@ -14956,7 +14956,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Beckett",
@@ -14964,7 +14964,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bradford White",
@@ -14972,7 +14972,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bryant",
@@ -14980,7 +14980,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Burnham",
@@ -14988,7 +14988,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cadet",
@@ -14996,7 +14996,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Carrier",
@@ -15004,7 +15004,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Coleman",
@@ -15012,7 +15012,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Coleman Evcon",
@@ -15020,7 +15020,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Comfortmaker",
@@ -15028,7 +15028,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 17,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Concord",
@@ -15036,7 +15036,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 18,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Daikin Industries",
@@ -15044,7 +15044,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 19,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Evcon",
@@ -15052,7 +15052,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 20,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "First Co.",
@@ -15060,7 +15060,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 21,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Flo-Aire",
@@ -15068,7 +15068,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 22,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Frigidaire",
@@ -15076,7 +15076,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 23,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "GE",
@@ -15084,7 +15084,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 24,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Goodman",
@@ -15092,7 +15092,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 25,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Greenheck",
@@ -15100,7 +15100,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 26,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Heil",
@@ -15108,7 +15108,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 27,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "ICP",
@@ -15116,7 +15116,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 28,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Intertherm",
@@ -15124,7 +15124,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 29,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "KD Navien",
@@ -15132,7 +15132,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 30,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Kelvinator (Nordyne)",
@@ -15140,7 +15140,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 31,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Kenmore",
@@ -15148,7 +15148,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 32,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "King",
@@ -15156,7 +15156,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 33,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Lennox",
@@ -15164,7 +15164,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 34,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "MagicAire",
@@ -15172,7 +15172,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 35,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Markel",
@@ -15180,7 +15180,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 36,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marley",
@@ -15188,7 +15188,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 37,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mayflower",
@@ -15196,7 +15196,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 38,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Maytag",
@@ -15204,7 +15204,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 39,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mitsubishi",
@@ -15212,7 +15212,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 40,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Munchkin",
@@ -15220,7 +15220,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 41,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Navien",
@@ -15228,7 +15228,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 42,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Nordyne",
@@ -15236,7 +15236,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 43,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Payne",
@@ -15244,7 +15244,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 44,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Quatro",
@@ -15252,7 +15252,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 45,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Radco",
@@ -15260,7 +15260,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 46,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Resco",
@@ -15268,7 +15268,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 47,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rheem",
@@ -15276,7 +15276,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 48,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rinnai",
@@ -15284,7 +15284,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 49,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ruud",
@@ -15292,7 +15292,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 50,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sears",
@@ -15300,7 +15300,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 51,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Seisco",
@@ -15308,7 +15308,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 52,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Steel Weld",
@@ -15316,7 +15316,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 53,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sundial / Square D",
@@ -15324,7 +15324,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 54,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Tempstar",
@@ -15332,7 +15332,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 55,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "TPI Corporation",
@@ -15340,7 +15340,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 56,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Thermo Pride",
@@ -15348,7 +15348,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 57,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Trane",
@@ -15356,7 +15356,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 58,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Turbonics",
@@ -15364,7 +15364,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 59,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vaillant",
@@ -15372,7 +15372,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 60,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Weil-McLain",
@@ -15380,7 +15380,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 61,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wesco",
@@ -15388,7 +15388,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 62,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Westinghouse",
@@ -15396,7 +15396,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 63,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "York",
@@ -15404,7 +15404,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 64,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -15435,7 +15435,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify",
@@ -15443,7 +15443,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Zone-Controlled",
@@ -15451,7 +15451,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "240 Volt",
@@ -15459,7 +15459,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": ".50 - 1.01 GPH",
@@ -15467,7 +15467,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "80 Gallon",
@@ -15475,7 +15475,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "119 Gallon",
@@ -15483,7 +15483,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "1 Ton",
@@ -15491,7 +15491,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "1.5 Ton",
@@ -15499,7 +15499,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "2 Ton",
@@ -15507,7 +15507,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "2.5 Ton",
@@ -15515,7 +15515,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "3 Ton",
@@ -15523,7 +15523,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "3.5 Ton",
@@ -15531,7 +15531,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "4 Ton",
@@ -15539,7 +15539,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "4.5 Ton",
@@ -15547,7 +15547,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "5 Ton",
@@ -15555,7 +15555,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "5.5 Ton",
@@ -15563,7 +15563,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "6 Ton",
@@ -15571,7 +15571,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 17,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "18 K BTU / hr",
@@ -15579,7 +15579,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 18,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "40 K BTU / hr",
@@ -15587,7 +15587,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 19,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "<50 K BTU / hr",
@@ -15595,7 +15595,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 20,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "50 K BTU / hr",
@@ -15603,7 +15603,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 21,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "55 K BTU / hr",
@@ -15611,7 +15611,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 22,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "56 K BTU / hr",
@@ -15619,7 +15619,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 23,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "60 K BTU / hr",
@@ -15627,7 +15627,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 24,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "65 K BTU / hr",
@@ -15635,7 +15635,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 25,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "66 K BTU / hr",
@@ -15643,7 +15643,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 26,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "70 K BTU / hr",
@@ -15651,7 +15651,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 27,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "75 K BTU / hr",
@@ -15659,7 +15659,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 28,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "80 K BTU / hr",
@@ -15667,7 +15667,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 29,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "85 K BTU / hr",
@@ -15675,7 +15675,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 30,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "88 K BTU / hr",
@@ -15683,7 +15683,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 31,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "90 K BTU / hr",
@@ -15691,7 +15691,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 32,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "92 K BTU / hr",
@@ -15699,7 +15699,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 33,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "95 K BTU / hr",
@@ -15707,7 +15707,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 34,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "96 K BTU / hr",
@@ -15715,7 +15715,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 35,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "100 K BTU / hr",
@@ -15723,7 +15723,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 36,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": ">100 K BTU / hr",
@@ -15731,7 +15731,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 37,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "100 - 125 K BTU / hr",
@@ -15739,7 +15739,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 38,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "125 K BTU / hr",
@@ -15747,7 +15747,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 39,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "140 K BTU / hr",
@@ -15755,7 +15755,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 40,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "125 - 150 K BTU / hr",
@@ -15763,7 +15763,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 41,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "> 150 K BTU / hr",
@@ -15771,7 +15771,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 42,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -15793,11 +15793,11 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "number",
+        "type": "text",
         "order": 2,
         "values": [],
         "validation": {
-          "type": null,
+          "type": "number",
           "min": null,
           "max": null,
           "isRequired": 0
@@ -15871,7 +15871,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Old",
@@ -15879,7 +15879,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Last Serviced Not Visible",
@@ -15887,7 +15887,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -15918,7 +15918,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -15926,7 +15926,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Dusty Cabinet",
@@ -15934,7 +15934,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rust",
@@ -15942,7 +15942,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Corrosion",
@@ -15950,7 +15950,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Flame Distortion",
@@ -15958,7 +15958,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -15980,7 +15980,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 7,
         "values": [],
         "validation": {
@@ -16019,7 +16019,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Metal Duct",
@@ -16027,7 +16027,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Insulated Flex Duct",
@@ -16035,7 +16035,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -16066,7 +16066,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "PVC",
@@ -16074,7 +16074,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify Proper Pitch",
@@ -16082,7 +16082,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rusted",
@@ -16090,7 +16090,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Deteriorated",
@@ -16098,7 +16098,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Disconnected",
@@ -16106,7 +16106,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Applicable",
@@ -16114,7 +16114,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -16145,7 +16145,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Electrostatic",
@@ -16153,7 +16153,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Paper",
@@ -16161,7 +16161,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Filter Fabric",
@@ -16169,7 +16169,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Satisfactory",
@@ -16177,7 +16177,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -16185,7 +16185,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor or Dirty",
@@ -16193,7 +16193,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -16224,7 +16224,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify Location or Function",
@@ -16232,7 +16232,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazard",
@@ -16240,7 +16240,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Professional HVAC Re-Evaluation, Safety Inspection, and/or Remediation",
@@ -16248,7 +16248,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -16270,7 +16270,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 4,
         "values": [],
         "validation": {
@@ -16300,7 +16300,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 0,
         "values": [],
         "validation": {
@@ -16323,7 +16323,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 1,
         "values": [],
         "validation": {
@@ -16355,7 +16355,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Metal FP Insert",
@@ -16363,7 +16363,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Direct Vent Gas FP",
@@ -16371,7 +16371,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wood or Pellet Stove",
@@ -16379,7 +16379,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Masonry Flue Liner",
@@ -16387,7 +16387,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Metal Flue Liner",
@@ -16395,7 +16395,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unlined Chase",
@@ -16403,7 +16403,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Venting Into Chimney Chase",
@@ -16411,7 +16411,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -16442,7 +16442,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Settling Cracks",
@@ -16450,7 +16450,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Burned",
@@ -16458,7 +16458,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify Clearance to Combustibles",
@@ -16466,7 +16466,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -16497,7 +16497,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Liner",
@@ -16505,7 +16505,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cracked Refractory Brick",
@@ -16513,7 +16513,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Loose Mortar",
@@ -16521,7 +16521,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -16552,7 +16552,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No Access",
@@ -16560,7 +16560,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable or DTO",
@@ -16568,7 +16568,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rusted",
@@ -16576,7 +16576,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged or Broken",
@@ -16584,7 +16584,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Creosote Build-Up",
@@ -16592,7 +16592,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Deterioration",
@@ -16600,7 +16600,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Cleaning or Re-Evaluation or Repairs",
@@ -16608,7 +16608,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -16639,7 +16639,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Framed",
@@ -16647,7 +16647,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Masonry",
@@ -16655,7 +16655,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Metal",
@@ -16663,7 +16663,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Class 'B'",
@@ -16671,7 +16671,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "DV Wall Hood",
@@ -16679,7 +16679,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cracked Wash",
@@ -16687,7 +16687,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose Mortar",
@@ -16695,7 +16695,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No Liner",
@@ -16703,7 +16703,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No Spark Arrestor",
@@ -16711,7 +16711,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rust",
@@ -16719,7 +16719,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Creosote",
@@ -16727,7 +16727,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Cricket",
@@ -16735,7 +16735,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inadequate or Missing Flashing",
@@ -16743,7 +16743,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -16751,7 +16751,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Burn Guard",
@@ -16759,7 +16759,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Satisfactory",
@@ -16767,7 +16767,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -16775,7 +16775,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 17,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -16783,7 +16783,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 18,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Professional Re-Evaluation or Remediation",
@@ -16791,7 +16791,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 19,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -16813,7 +16813,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 7,
         "values": [],
         "validation": {
@@ -16850,7 +16850,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 0,
         "values": [],
         "validation": {
@@ -16873,7 +16873,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 1,
         "values": [],
         "validation": {
@@ -16896,11 +16896,11 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "number",
+        "type": "text",
         "order": 2,
         "values": [],
         "validation": {
-          "type": null,
+          "type": "number",
           "min": null,
           "max": null,
           "isRequired": 0
@@ -16928,7 +16928,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -16936,7 +16936,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Central Air",
@@ -16944,7 +16944,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Heat Pump",
@@ -16952,7 +16952,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fan Cooled",
@@ -16960,7 +16960,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Water",
@@ -16968,7 +16968,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gas Chiller",
@@ -16976,7 +16976,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Swamp Cooler",
@@ -16984,7 +16984,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -17015,7 +17015,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Propane",
@@ -17023,7 +17023,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Electric",
@@ -17031,7 +17031,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -17053,7 +17053,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 5,
         "values": [],
         "validation": {
@@ -17092,7 +17092,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Not Installed",
@@ -17100,7 +17100,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify",
@@ -17108,7 +17108,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "American",
@@ -17116,7 +17116,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "American Standard",
@@ -17124,7 +17124,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Arcoaire",
@@ -17132,7 +17132,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Armstrong",
@@ -17140,7 +17140,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Amtrol",
@@ -17148,7 +17148,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bard",
@@ -17156,7 +17156,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Beckett",
@@ -17164,7 +17164,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bradford White",
@@ -17172,7 +17172,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bryant",
@@ -17180,7 +17180,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Burnham",
@@ -17188,7 +17188,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cadet",
@@ -17196,7 +17196,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Carrier",
@@ -17204,7 +17204,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Coleman",
@@ -17212,7 +17212,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Coleman Evcon",
@@ -17220,7 +17220,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Comfortmaker",
@@ -17228,7 +17228,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 17,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Concord",
@@ -17236,7 +17236,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 18,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Daikin Industries",
@@ -17244,7 +17244,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 19,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Evcon",
@@ -17252,7 +17252,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 20,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "First Co.",
@@ -17260,7 +17260,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 21,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Flo-Aire",
@@ -17268,7 +17268,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 22,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Frigidaire",
@@ -17276,7 +17276,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 23,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "GE",
@@ -17284,7 +17284,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 24,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Goodman",
@@ -17292,7 +17292,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 25,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Greenheck",
@@ -17300,7 +17300,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 26,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Heil",
@@ -17308,7 +17308,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 27,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "ICP",
@@ -17316,7 +17316,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 28,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Intertherm",
@@ -17324,7 +17324,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 29,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "KD Navien",
@@ -17332,7 +17332,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 30,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Kelvinator (Nordyne)",
@@ -17340,7 +17340,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 31,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Kenmore",
@@ -17348,7 +17348,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 32,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "King",
@@ -17356,7 +17356,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 33,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Lennox",
@@ -17364,7 +17364,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 34,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "MagicAire",
@@ -17372,7 +17372,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 35,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Markel",
@@ -17380,7 +17380,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 36,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marley",
@@ -17388,7 +17388,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 37,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mayflower",
@@ -17396,7 +17396,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 38,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Maytag",
@@ -17404,7 +17404,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 39,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mitsubishi",
@@ -17412,7 +17412,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 40,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Munchkin",
@@ -17420,7 +17420,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 41,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Navien",
@@ -17428,7 +17428,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 42,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Nordyne",
@@ -17436,7 +17436,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 43,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Payne",
@@ -17444,7 +17444,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 44,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Quatro",
@@ -17452,7 +17452,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 45,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Radco",
@@ -17460,7 +17460,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 46,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Resco",
@@ -17468,7 +17468,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 47,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rheem",
@@ -17476,7 +17476,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 48,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rinnai",
@@ -17484,7 +17484,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 49,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ruud",
@@ -17492,7 +17492,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 50,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sears",
@@ -17500,7 +17500,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 51,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Seisco",
@@ -17508,7 +17508,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 52,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Steel Weld",
@@ -17516,7 +17516,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 53,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sundial / Square D",
@@ -17524,7 +17524,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 54,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Tempstar",
@@ -17532,7 +17532,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 55,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "TPI Corporation",
@@ -17540,7 +17540,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 56,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Thermo Pride",
@@ -17548,7 +17548,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 57,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Trane",
@@ -17556,7 +17556,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 58,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Turbonics",
@@ -17564,7 +17564,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 59,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vaillant",
@@ -17572,7 +17572,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 60,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Weil-McLain",
@@ -17580,7 +17580,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 61,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wesco",
@@ -17588,7 +17588,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 62,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Westinghouse",
@@ -17596,7 +17596,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 63,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "York",
@@ -17604,7 +17604,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 64,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -17635,7 +17635,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify",
@@ -17643,7 +17643,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Zone-Controlled",
@@ -17651,7 +17651,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "240 Volt",
@@ -17659,7 +17659,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": ".50 - 1.01 GPH",
@@ -17667,7 +17667,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "80 Gallon",
@@ -17675,7 +17675,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "119 Gallon",
@@ -17683,7 +17683,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "1 Ton",
@@ -17691,7 +17691,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "1.5 Ton",
@@ -17699,7 +17699,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "2 Ton",
@@ -17707,7 +17707,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "2.5 Ton",
@@ -17715,7 +17715,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "3 Ton",
@@ -17723,7 +17723,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "3.5 Ton",
@@ -17731,7 +17731,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "4 Ton",
@@ -17739,7 +17739,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "4.5 Ton",
@@ -17747,7 +17747,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "5 Ton",
@@ -17755,7 +17755,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "5.5 Ton",
@@ -17763,7 +17763,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "6 Ton",
@@ -17771,7 +17771,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 17,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "18 K BTU / hr",
@@ -17779,7 +17779,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 18,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "40 K BTU / hr",
@@ -17787,7 +17787,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 19,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "<50 K BTU / hr",
@@ -17795,7 +17795,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 20,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "50 K BTU / hr",
@@ -17803,7 +17803,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 21,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "55 K BTU / hr",
@@ -17811,7 +17811,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 22,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "56 K BTU / hr",
@@ -17819,7 +17819,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 23,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "60 K BTU / hr",
@@ -17827,7 +17827,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 24,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "65 K BTU / hr",
@@ -17835,7 +17835,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 25,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "66 K BTU / hr",
@@ -17843,7 +17843,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 26,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "70 K BTU / hr",
@@ -17851,7 +17851,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 27,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "75 K BTU / hr",
@@ -17859,7 +17859,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 28,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "80 K BTU / hr",
@@ -17867,7 +17867,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 29,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "85 K BTU / hr",
@@ -17875,7 +17875,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 30,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "88 K BTU / hr",
@@ -17883,7 +17883,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 31,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "90 K BTU / hr",
@@ -17891,7 +17891,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 32,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "92 K BTU / hr",
@@ -17899,7 +17899,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 33,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "95 K BTU / hr",
@@ -17907,7 +17907,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 34,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "96 K BTU / hr",
@@ -17915,7 +17915,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 35,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "100 K BTU / hr",
@@ -17923,7 +17923,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 36,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": ">100 K BTU / hr",
@@ -17931,7 +17931,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 37,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "100 - 125 K BTU / hr",
@@ -17939,7 +17939,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 38,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "125 K BTU / hr",
@@ -17947,7 +17947,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 39,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "140 K BTU / hr",
@@ -17955,7 +17955,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 40,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "125 - 150 K BTU / hr",
@@ -17963,7 +17963,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 41,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "> 150 K BTU / hr",
@@ -17971,7 +17971,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 42,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -17993,11 +17993,11 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "number",
+        "type": "text",
         "order": 2,
         "values": [],
         "validation": {
-          "type": null,
+          "type": "number",
           "min": null,
           "max": null,
           "isRequired": 0
@@ -18061,7 +18061,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 5,
         "values": [],
         "validation": {
@@ -18100,7 +18100,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Not Installed",
@@ -18108,7 +18108,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify",
@@ -18116,7 +18116,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "American",
@@ -18124,7 +18124,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "American Standard",
@@ -18132,7 +18132,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Arcoaire",
@@ -18140,7 +18140,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Armstrong",
@@ -18148,7 +18148,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Amtrol",
@@ -18156,7 +18156,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bard",
@@ -18164,7 +18164,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Beckett",
@@ -18172,7 +18172,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bradford White",
@@ -18180,7 +18180,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bryant",
@@ -18188,7 +18188,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Burnham",
@@ -18196,7 +18196,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cadet",
@@ -18204,7 +18204,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Carrier",
@@ -18212,7 +18212,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Coleman",
@@ -18220,7 +18220,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Coleman Evcon",
@@ -18228,7 +18228,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Comfortmaker",
@@ -18236,7 +18236,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 17,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Concord",
@@ -18244,7 +18244,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 18,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Daikin Industries",
@@ -18252,7 +18252,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 19,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Evcon",
@@ -18260,7 +18260,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 20,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "First Co.",
@@ -18268,7 +18268,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 21,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Flo-Aire",
@@ -18276,7 +18276,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 22,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Frigidaire",
@@ -18284,7 +18284,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 23,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "GE",
@@ -18292,7 +18292,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 24,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Goodman",
@@ -18300,7 +18300,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 25,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Greenheck",
@@ -18308,7 +18308,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 26,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Heil",
@@ -18316,7 +18316,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 27,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "ICP",
@@ -18324,7 +18324,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 28,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Intertherm",
@@ -18332,7 +18332,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 29,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "KD Navien",
@@ -18340,7 +18340,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 30,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Kelvinator (Nordyne)",
@@ -18348,7 +18348,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 31,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Kenmore",
@@ -18356,7 +18356,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 32,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "King",
@@ -18364,7 +18364,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 33,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Lennox",
@@ -18372,7 +18372,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 34,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "MagicAire",
@@ -18380,7 +18380,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 35,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Markel",
@@ -18388,7 +18388,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 36,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marley",
@@ -18396,7 +18396,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 37,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mayflower",
@@ -18404,7 +18404,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 38,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Maytag",
@@ -18412,7 +18412,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 39,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mitsubishi",
@@ -18420,7 +18420,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 40,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Munchkin",
@@ -18428,7 +18428,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 41,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Navien",
@@ -18436,7 +18436,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 42,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Nordyne",
@@ -18444,7 +18444,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 43,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Payne",
@@ -18452,7 +18452,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 44,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Quatro",
@@ -18460,7 +18460,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 45,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Radco",
@@ -18468,7 +18468,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 46,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Resco",
@@ -18476,7 +18476,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 47,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rheem",
@@ -18484,7 +18484,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 48,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rinnai",
@@ -18492,7 +18492,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 49,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ruud",
@@ -18500,7 +18500,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 50,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sears",
@@ -18508,7 +18508,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 51,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Seisco",
@@ -18516,7 +18516,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 52,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Steel Weld",
@@ -18524,7 +18524,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 53,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sundial / Square D",
@@ -18532,7 +18532,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 54,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Tempstar",
@@ -18540,7 +18540,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 55,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "TPI Corporation",
@@ -18548,7 +18548,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 56,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Thermo Pride",
@@ -18556,7 +18556,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 57,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Trane",
@@ -18564,7 +18564,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 58,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Turbonics",
@@ -18572,7 +18572,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 59,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vaillant",
@@ -18580,7 +18580,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 60,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Weil-McLain",
@@ -18588,7 +18588,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 61,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wesco",
@@ -18596,7 +18596,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 62,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Westinghouse",
@@ -18604,7 +18604,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 63,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "York",
@@ -18612,7 +18612,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 64,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -18643,7 +18643,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify",
@@ -18651,7 +18651,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Zone-Controlled",
@@ -18659,7 +18659,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "240 Volt",
@@ -18667,7 +18667,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": ".50 - 1.01 GPH",
@@ -18675,7 +18675,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "80 Gallon",
@@ -18683,7 +18683,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "119 Gallon",
@@ -18691,7 +18691,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "1 Ton",
@@ -18699,7 +18699,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "1.5 Ton",
@@ -18707,7 +18707,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "2 Ton",
@@ -18715,7 +18715,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "2.5 Ton",
@@ -18723,7 +18723,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "3 Ton",
@@ -18731,7 +18731,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "3.5 Ton",
@@ -18739,7 +18739,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "4 Ton",
@@ -18747,7 +18747,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "4.5 Ton",
@@ -18755,7 +18755,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "5 Ton",
@@ -18763,7 +18763,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "5.5 Ton",
@@ -18771,7 +18771,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "6 Ton",
@@ -18779,7 +18779,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 17,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "18 K BTU / hr",
@@ -18787,7 +18787,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 18,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "40 K BTU / hr",
@@ -18795,7 +18795,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 19,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "<50 K BTU / hr",
@@ -18803,7 +18803,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 20,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "50 K BTU / hr",
@@ -18811,7 +18811,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 21,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "55 K BTU / hr",
@@ -18819,7 +18819,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 22,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "56 K BTU / hr",
@@ -18827,7 +18827,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 23,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "60 K BTU / hr",
@@ -18835,7 +18835,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 24,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "65 K BTU / hr",
@@ -18843,7 +18843,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 25,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "66 K BTU / hr",
@@ -18851,7 +18851,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 26,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "70 K BTU / hr",
@@ -18859,7 +18859,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 27,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "75 K BTU / hr",
@@ -18867,7 +18867,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 28,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "80 K BTU / hr",
@@ -18875,7 +18875,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 29,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "85 K BTU / hr",
@@ -18883,7 +18883,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 30,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "88 K BTU / hr",
@@ -18891,7 +18891,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 31,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "90 K BTU / hr",
@@ -18899,7 +18899,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 32,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "92 K BTU / hr",
@@ -18907,7 +18907,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 33,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "95 K BTU / hr",
@@ -18915,7 +18915,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 34,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "96 K BTU / hr",
@@ -18923,7 +18923,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 35,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "100 K BTU / hr",
@@ -18931,7 +18931,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 36,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": ">100 K BTU / hr",
@@ -18939,7 +18939,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 37,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "100 - 125 K BTU / hr",
@@ -18947,7 +18947,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 38,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "125 K BTU / hr",
@@ -18955,7 +18955,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 39,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "140 K BTU / hr",
@@ -18963,7 +18963,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 40,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "125 - 150 K BTU / hr",
@@ -18971,7 +18971,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 41,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "> 150 K BTU / hr",
@@ -18979,7 +18979,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 42,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -19001,11 +19001,11 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "number",
+        "type": "text",
         "order": 2,
         "values": [],
         "validation": {
-          "type": null,
+          "type": "number",
           "min": null,
           "max": null,
           "isRequired": 0
@@ -19079,7 +19079,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -19087,7 +19087,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -19095,7 +19095,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Uneven Base",
@@ -19103,7 +19103,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inadequate Base Height",
@@ -19111,7 +19111,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Obstructed Flow",
@@ -19119,7 +19119,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -19150,7 +19150,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Leaking",
@@ -19158,7 +19158,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -19166,7 +19166,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Worn",
@@ -19174,7 +19174,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Insulation Missing",
@@ -19182,7 +19182,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -19204,7 +19204,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        ,
         "order": 7,
         "values": [],
         "validation": {
@@ -19241,7 +19241,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 0,
         "values": [],
         "validation": {
@@ -19264,7 +19264,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 1,
         "values": [],
         "validation": {
@@ -19296,7 +19296,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Yard Post",
@@ -19304,7 +19304,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Visible or Accessible",
@@ -19312,7 +19312,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "In Conduit",
@@ -19320,7 +19320,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Overhead",
@@ -19328,7 +19328,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Pole Unstable",
@@ -19336,7 +19336,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "3 Cables",
@@ -19344,7 +19344,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "4 Cables",
@@ -19352,7 +19352,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Copper",
@@ -19360,7 +19360,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Aluminum",
@@ -19368,7 +19368,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -19399,7 +19399,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -19407,7 +19407,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -19415,7 +19415,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inadequate Clearances",
@@ -19423,7 +19423,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damage",
@@ -19431,7 +19431,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazard",
@@ -19439,7 +19439,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -19470,7 +19470,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -19501,7 +19501,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Yard Post",
@@ -19509,7 +19509,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mechanical Closet",
@@ -19517,7 +19517,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Visible or Locked",
@@ -19525,7 +19525,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -19556,7 +19556,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -19564,7 +19564,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -19572,7 +19572,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inadequate Access",
@@ -19580,7 +19580,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damage",
@@ -19588,7 +19588,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazard",
@@ -19596,7 +19596,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -19627,7 +19627,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ground Rods",
@@ -19635,7 +19635,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ufer",
@@ -19643,7 +19643,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bonded to Water or Gas Piping",
@@ -19651,7 +19651,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -19682,7 +19682,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Aluminum",
@@ -19690,7 +19690,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -19698,7 +19698,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Visible or Accessible",
@@ -19706,7 +19706,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -19737,7 +19737,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose Clamp or Lug",
@@ -19745,7 +19745,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -19753,7 +19753,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Improper Bond",
@@ -19761,7 +19761,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Too Far From Entry",
@@ -19769,7 +19769,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -19800,7 +19800,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inside Main Panel",
@@ -19808,7 +19808,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Near Panel",
@@ -19816,7 +19816,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fuse",
@@ -19824,7 +19824,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Breaker",
@@ -19832,7 +19832,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Switch",
@@ -19840,7 +19840,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Split-Bus",
@@ -19848,7 +19848,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Overloaded (>6 Hand Motions)",
@@ -19856,7 +19856,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -19887,7 +19887,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Blocked",
@@ -19895,7 +19895,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Evaluated",
@@ -19903,7 +19903,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -19934,7 +19934,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "3-Phase",
@@ -19942,7 +19942,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Outside Scope of Inspection",
@@ -19950,7 +19950,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No Access",
@@ -19958,7 +19958,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Storage Blocked Access",
@@ -19966,7 +19966,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Shelving Blocked Access",
@@ -19974,7 +19974,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cover Not Removable",
@@ -19982,7 +19982,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unsafe to Open",
@@ -19990,7 +19990,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unsafe Panel Type",
@@ -19998,7 +19998,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No Power",
@@ -20006,7 +20006,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -20037,7 +20037,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fuses",
@@ -20045,7 +20045,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -20076,7 +20076,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "400",
@@ -20084,7 +20084,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "200",
@@ -20092,7 +20092,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "(2) 200",
@@ -20100,7 +20100,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "150",
@@ -20108,7 +20108,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "125",
@@ -20116,7 +20116,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "100",
@@ -20124,7 +20124,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "(2) 100",
@@ -20132,7 +20132,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "60",
@@ -20140,7 +20140,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "50",
@@ -20148,7 +20148,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Various Amperages",
@@ -20156,7 +20156,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -20187,7 +20187,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "120 / 240",
@@ -20195,7 +20195,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "3-phase (208 - 230)",
@@ -20203,7 +20203,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -20234,7 +20234,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "AFCI Breakers",
@@ -20242,7 +20242,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Not Applicable",
@@ -20250,7 +20250,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -20281,7 +20281,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Basement",
@@ -20289,7 +20289,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "With Meter",
@@ -20297,7 +20297,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Exterior Wall",
@@ -20305,7 +20305,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Yard Post",
@@ -20313,7 +20313,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Interior Wall",
@@ -20321,7 +20321,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mechanical Room",
@@ -20329,7 +20329,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Laundry Room",
@@ -20337,7 +20337,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Utility Area",
@@ -20345,7 +20345,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Crawl Space",
@@ -20353,7 +20353,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -20384,7 +20384,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Almuninum",
@@ -20392,7 +20392,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Tin Clad Copper",
@@ -20400,7 +20400,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Copper Clad Aluminum",
@@ -20408,7 +20408,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Non-Metallic Sheathed",
@@ -20416,7 +20416,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "BX Cable",
@@ -20424,7 +20424,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Condiut",
@@ -20432,7 +20432,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cloth-Wrapped",
@@ -20440,7 +20440,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Knob & Tube",
@@ -20448,7 +20448,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -20479,7 +20479,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -20487,7 +20487,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -20495,7 +20495,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -20503,7 +20503,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inadequate Access Clearances",
@@ -20511,7 +20511,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Dangling Wires",
@@ -20519,7 +20519,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Excessive Sheathing in Panel",
@@ -20527,7 +20527,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Double-Tapping",
@@ -20535,7 +20535,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Undersized Wiring",
@@ -20543,7 +20543,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damage",
@@ -20551,7 +20551,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rust",
@@ -20559,7 +20559,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Buried In Insulation",
@@ -20567,7 +20567,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Burned Breakers",
@@ -20575,7 +20575,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Dangerous Panel Type",
@@ -20583,7 +20583,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Improper Splicing",
@@ -20591,7 +20591,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazardous or Unsafe",
@@ -20599,7 +20599,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Professional Evaluation or Repairs",
@@ -20607,7 +20607,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -20629,7 +20629,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 20,
         "values": [],
         "validation": {
@@ -20668,7 +20668,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -20676,7 +20676,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Bulbs",
@@ -20684,7 +20684,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Covers",
@@ -20692,7 +20692,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gaps",
@@ -20700,7 +20700,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -20731,7 +20731,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -20739,7 +20739,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -20747,7 +20747,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inadequate Clearances",
@@ -20755,7 +20755,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damage",
@@ -20763,7 +20763,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazard",
@@ -20771,7 +20771,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -20802,7 +20802,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Some Grounded",
@@ -20810,7 +20810,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Typical Un-Grounded",
@@ -20818,7 +20818,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -20849,7 +20849,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -20857,7 +20857,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -20865,7 +20865,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -20873,7 +20873,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Weak or Loose",
@@ -20881,7 +20881,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Removed",
@@ -20889,7 +20889,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Cover Plates",
@@ -20897,7 +20897,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Dangling or Unmounted",
@@ -20905,7 +20905,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "External Splicing",
@@ -20913,7 +20913,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gaps Into Boxes",
@@ -20921,7 +20921,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Burned",
@@ -20929,7 +20929,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Open Ground",
@@ -20937,7 +20937,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Open Neutral",
@@ -20945,7 +20945,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Reverse Polarity",
@@ -20953,7 +20953,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ungrounded 3-Prong",
@@ -20961,7 +20961,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -20969,7 +20969,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazardous or Unsafe",
@@ -20977,7 +20977,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Repair or Evaluation by Professional Electrician",
@@ -20985,7 +20985,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 17,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -21016,7 +21016,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Recommended",
@@ -21024,7 +21024,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "NOT Tested",
@@ -21032,7 +21032,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -21063,7 +21063,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -21071,7 +21071,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Chirping or Low Batteries",
@@ -21079,7 +21079,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -21087,7 +21087,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -21109,7 +21109,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 6,
         "values": [],
         "validation": {
@@ -21132,7 +21132,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 7,
         "values": [],
         "validation": {
@@ -21169,7 +21169,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 0,
         "values": [],
         "validation": {
@@ -21192,7 +21192,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 1,
         "values": [],
         "validation": {
@@ -21224,7 +21224,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Solid Wood",
@@ -21232,7 +21232,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Metal",
@@ -21240,7 +21240,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fiberglass",
@@ -21248,7 +21248,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Panel",
@@ -21256,7 +21256,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hollow Core",
@@ -21264,7 +21264,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -21295,7 +21295,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rubbing or Binding",
@@ -21303,7 +21303,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -21311,7 +21311,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hardware Issues",
@@ -21319,7 +21319,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Doorbell Inoperable",
@@ -21327,7 +21327,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -21358,7 +21358,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor Seal",
@@ -21366,7 +21366,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ineffective Threshold",
@@ -21374,7 +21374,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -21405,7 +21405,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inaccessible",
@@ -21413,7 +21413,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Difficult To Operate (Needs Adjustment or Lubrication)",
@@ -21421,7 +21421,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Hardware",
@@ -21429,7 +21429,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inadequate Security",
@@ -21437,7 +21437,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Failed Thermal Seals",
@@ -21445,7 +21445,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Broken Panes",
@@ -21453,7 +21453,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stained",
@@ -21461,7 +21461,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Weathered Sills",
@@ -21469,7 +21469,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mold or Mildew",
@@ -21477,7 +21477,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damage",
@@ -21485,7 +21485,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Deterioration",
@@ -21493,7 +21493,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -21524,7 +21524,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -21532,7 +21532,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Satisfactory",
@@ -21540,7 +21540,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -21571,7 +21571,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Inadequate",
@@ -21579,7 +21579,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -21610,7 +21610,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose or Worn",
@@ -21618,7 +21618,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -21626,7 +21626,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -21634,7 +21634,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Cover Plates",
@@ -21642,7 +21642,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ungrounded 3-Prong",
@@ -21650,7 +21650,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable GFCI",
@@ -21658,7 +21658,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing GFCI Protection",
@@ -21666,7 +21666,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Reversed Polarity",
@@ -21674,7 +21674,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "OG or RP Within 6 Feet",
@@ -21682,7 +21682,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Burned",
@@ -21690,7 +21690,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Exposed Wires",
@@ -21698,7 +21698,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazardous or Unsafe",
@@ -21706,7 +21706,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Refer To Electrical Section",
@@ -21714,7 +21714,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Professional Evaluation",
@@ -21722,7 +21722,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -21766,7 +21766,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 10,
         "values": [],
         "validation": {
@@ -21805,7 +21805,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fridge",
@@ -21813,7 +21813,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Dishwasher",
@@ -21821,7 +21821,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Oven",
@@ -21829,7 +21829,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Range",
@@ -21837,7 +21837,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Microwave",
@@ -21845,7 +21845,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Warmer",
@@ -21853,7 +21853,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Trash Compactor",
@@ -21861,7 +21861,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cooler",
@@ -21869,7 +21869,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Water Filter",
@@ -21877,7 +21877,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Instant Hot",
@@ -21885,7 +21885,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -21916,7 +21916,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -21924,7 +21924,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -21932,7 +21932,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -21940,7 +21940,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Worn Finish",
@@ -21948,7 +21948,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose Drawers or Hinges",
@@ -21956,7 +21956,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -21987,7 +21987,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Laminate",
@@ -21995,7 +21995,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Tile",
@@ -22003,7 +22003,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Slab",
@@ -22011,7 +22011,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -22042,7 +22042,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -22050,7 +22050,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -22058,7 +22058,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Worn",
@@ -22066,7 +22066,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -22074,7 +22074,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -22105,7 +22105,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal or Worn",
@@ -22113,7 +22113,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -22121,7 +22121,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -22152,7 +22152,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Worn or Cracked or Gaps",
@@ -22160,7 +22160,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Improve at Sink, Back-Splash, Counters, or Fixtures",
@@ -22168,7 +22168,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -22199,7 +22199,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cracked or Missing",
@@ -22207,7 +22207,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose",
@@ -22215,7 +22215,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Water Damage",
@@ -22223,7 +22223,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Sealing",
@@ -22231,7 +22231,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -22262,7 +22262,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -22270,7 +22270,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -22278,7 +22278,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -22309,7 +22309,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Inadequate",
@@ -22317,7 +22317,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -22348,7 +22348,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose or Worn",
@@ -22356,7 +22356,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -22364,7 +22364,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -22372,7 +22372,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Cover Plates",
@@ -22380,7 +22380,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ungrounded 3-Prong",
@@ -22388,7 +22388,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable GFCI",
@@ -22396,7 +22396,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing GFCI Protection",
@@ -22404,7 +22404,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Reversed Polarity",
@@ -22412,7 +22412,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "OG or RP Within 6 Feet",
@@ -22420,7 +22420,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Burned",
@@ -22428,7 +22428,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Exposed Wires",
@@ -22436,7 +22436,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazardous or Unsafe",
@@ -22444,7 +22444,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Professional Evaluation",
@@ -22452,7 +22452,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -22474,7 +22474,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 10,
         "values": [],
         "validation": {
@@ -22513,7 +22513,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -22521,7 +22521,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Washer",
@@ -22529,7 +22529,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Dryer",
@@ -22537,7 +22537,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "WH",
@@ -22545,7 +22545,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Furnace",
@@ -22553,7 +22553,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Conditioner",
@@ -22561,7 +22561,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -22592,7 +22592,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Gas",
@@ -22600,7 +22600,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable or OFF",
@@ -22608,7 +22608,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cap Needed",
@@ -22616,7 +22616,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazard(s)",
@@ -22624,7 +22624,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Re-Evaluation",
@@ -22632,7 +22632,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -22663,7 +22663,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ceiling",
@@ -22671,7 +22671,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Floor",
@@ -22679,7 +22679,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -22710,7 +22710,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Clogged or Loose or Poor",
@@ -22718,7 +22718,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -22749,7 +22749,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -22757,7 +22757,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -22765,7 +22765,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Weak or Noisy",
@@ -22773,7 +22773,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -22781,7 +22781,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -22789,7 +22789,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -22811,7 +22811,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 5,
         "values": [],
         "validation": {
@@ -22850,7 +22850,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Lath & Plaster",
@@ -22858,7 +22858,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Acoustic Tile",
@@ -22866,7 +22866,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Paneling",
@@ -22874,7 +22874,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Open Beam",
@@ -22882,7 +22882,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -22913,7 +22913,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -22921,7 +22921,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -22929,7 +22929,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stains or Mildew",
@@ -22937,7 +22937,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cracks",
@@ -22945,7 +22945,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Repairs",
@@ -22953,7 +22953,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "PACM",
@@ -22961,7 +22961,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -22992,7 +22992,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sloping",
@@ -23000,7 +23000,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Squeaks",
@@ -23008,7 +23008,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damaged",
@@ -23016,7 +23016,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fungal Rot",
@@ -23024,7 +23024,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -23055,7 +23055,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Improve At Sink, Back-Splash, Tub or Shower Surround or or Floor",
@@ -23063,7 +23063,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -23094,7 +23094,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No",
@@ -23102,7 +23102,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -23110,7 +23110,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -23141,7 +23141,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "No",
@@ -23149,7 +23149,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -23157,7 +23157,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -23188,7 +23188,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose or Worn",
@@ -23196,7 +23196,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -23204,7 +23204,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -23212,7 +23212,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Cover Plates",
@@ -23220,7 +23220,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ungrounded 3-Prong",
@@ -23228,7 +23228,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable GFCI",
@@ -23236,7 +23236,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing GFCI Protection",
@@ -23244,7 +23244,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Reversed Polarity",
@@ -23252,7 +23252,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "OG or RP Within 6 Feet",
@@ -23260,7 +23260,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Burned",
@@ -23268,7 +23268,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Exposed Wires",
@@ -23276,7 +23276,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazardous or Unsafe",
@@ -23284,7 +23284,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Professional Evaluation",
@@ -23292,7 +23292,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -23314,7 +23314,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 7,
         "values": [],
         "validation": {
@@ -23353,7 +23353,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Lath & Plaster",
@@ -23361,7 +23361,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Acoustic Tile",
@@ -23369,7 +23369,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Paneling",
@@ -23377,7 +23377,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Open Beam",
@@ -23385,7 +23385,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -23416,7 +23416,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -23424,7 +23424,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -23432,7 +23432,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stains",
@@ -23440,7 +23440,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Moisture or Mildew",
@@ -23448,7 +23448,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Water Damage",
@@ -23456,7 +23456,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Settling",
@@ -23464,7 +23464,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Truss Uplift",
@@ -23472,7 +23472,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Nail Pops",
@@ -23480,7 +23480,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Holes",
@@ -23488,7 +23488,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cracks",
@@ -23496,7 +23496,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inadequate Repairs or Texture",
@@ -23504,7 +23504,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sooting",
@@ -23512,7 +23512,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "PACM",
@@ -23520,7 +23520,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazardous or Unsafe",
@@ -23528,7 +23528,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Professional Evaluation",
@@ -23536,7 +23536,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -23567,7 +23567,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hardwood or Laminate",
@@ -23575,7 +23575,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Vinyl",
@@ -23583,7 +23583,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Carpet",
@@ -23591,7 +23591,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -23622,7 +23622,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -23630,7 +23630,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -23638,7 +23638,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Excessive Wear",
@@ -23646,7 +23646,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Squeaks",
@@ -23654,7 +23654,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stains",
@@ -23662,7 +23662,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damage",
@@ -23670,7 +23670,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Sloping",
@@ -23678,7 +23678,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Uneven Surfaces",
@@ -23686,7 +23686,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Holes",
@@ -23694,7 +23694,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Wrinkled Carpet",
@@ -23702,7 +23702,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Trip Hazard(s)",
@@ -23710,7 +23710,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Repair(s)",
@@ -23718,7 +23718,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -23749,7 +23749,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Pocket",
@@ -23757,7 +23757,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Double",
@@ -23765,7 +23765,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bi-Fold",
@@ -23773,7 +23773,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bi-Pass",
@@ -23781,7 +23781,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Accordion",
@@ -23789,7 +23789,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -23820,7 +23820,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -23828,7 +23828,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -23836,7 +23836,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inaccessible",
@@ -23844,7 +23844,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -23852,7 +23852,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Removed",
@@ -23860,7 +23860,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Hardware",
@@ -23868,7 +23868,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Settled or Rubbing",
@@ -23876,7 +23876,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Improperly Hung or Sagging",
@@ -23884,7 +23884,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Holes",
@@ -23892,7 +23892,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stains",
@@ -23900,7 +23900,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cracked or Split Jambs",
@@ -23908,7 +23908,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damage",
@@ -23916,7 +23916,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inadequate Repairs",
@@ -23924,7 +23924,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Servicing or Adjusting",
@@ -23932,7 +23932,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -23963,7 +23963,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Fixed",
@@ -23971,7 +23971,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Single Hung",
@@ -23979,7 +23979,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Double Hung",
@@ -23987,7 +23987,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Awning",
@@ -23995,7 +23995,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -24026,7 +24026,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Marginal",
@@ -24034,7 +24034,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Poor",
@@ -24042,7 +24042,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Difficult To Operate",
@@ -24050,7 +24050,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Improve Security",
@@ -24058,7 +24058,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Hardware",
@@ -24066,7 +24066,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Broken Panes",
@@ -24074,7 +24074,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Failed Thermal Seals",
@@ -24082,7 +24082,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify Bedroom Egress",
@@ -24090,7 +24090,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Stained",
@@ -24098,7 +24098,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Weathered Sills",
@@ -24106,7 +24106,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Mold or Mildew",
@@ -24114,7 +24114,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Damage",
@@ -24122,7 +24122,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Deterioration",
@@ -24130,7 +24130,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -24152,7 +24152,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 8,
         "values": [],
         "validation": {
@@ -24184,7 +24184,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Loose or Worn",
@@ -24192,7 +24192,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing",
@@ -24200,7 +24200,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable",
@@ -24208,7 +24208,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Cover Plates",
@@ -24216,7 +24216,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ungrounded 3-Prong",
@@ -24224,7 +24224,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Inoperable GFCI",
@@ -24232,7 +24232,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing GFCI Protection",
@@ -24240,7 +24240,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Reversed Polarity",
@@ -24248,7 +24248,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "OG or RP Within 6 Feet",
@@ -24256,7 +24256,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Burned",
@@ -24264,7 +24264,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Exposed Wires",
@@ -24272,7 +24272,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Hazardous or Unsafe",
@@ -24280,7 +24280,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Recommend Professional Evaluation",
@@ -24288,7 +24288,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -24310,7 +24310,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 10,
         "values": [],
         "validation": {
@@ -24347,7 +24347,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 0,
         "values": [],
         "validation": {
@@ -24370,7 +24370,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "presettext",
+        "type": "textarea",
         "order": 1,
         "values": [],
         "validation": {
@@ -24402,7 +24402,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Unsafe or Uneven Walking Surfaces",
@@ -24410,7 +24410,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Re-Evaluate",
@@ -24418,7 +24418,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Interior",
@@ -24426,7 +24426,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Exterior",
@@ -24434,7 +24434,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Steep Slope or Drop-Off",
@@ -24442,7 +24442,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Retaining Wall",
@@ -24450,7 +24450,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Driveway or Walkway(s)",
@@ -24458,7 +24458,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Landing",
@@ -24466,7 +24466,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Balcony",
@@ -24474,7 +24474,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Patio",
@@ -24482,7 +24482,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Deck",
@@ -24490,7 +24490,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 11,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Steps or Stairs",
@@ -24498,7 +24498,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 12,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing Guard or Handrail(s)",
@@ -24506,7 +24506,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 13,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Low Guard or Handrail(s)",
@@ -24514,7 +24514,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 14,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Root Heaving",
@@ -24522,7 +24522,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 15,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Erosion",
@@ -24530,7 +24530,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 16,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cracks or Gaps or Missing Dividers",
@@ -24538,7 +24538,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 17,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -24569,7 +24569,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "None",
@@ -24577,7 +24577,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Inadequate Firewall",
@@ -24585,7 +24585,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Missing or Inadequate Fire-Door",
@@ -24593,7 +24593,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Excessive Storage",
@@ -24601,7 +24601,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Excessive Heat",
@@ -24609,7 +24609,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Cellulose Debris",
@@ -24617,7 +24617,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Roof Tear-Off Debris",
@@ -24625,7 +24625,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Entrapment or Locks",
@@ -24633,7 +24633,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 8,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Improve Bedroom Egress",
@@ -24641,7 +24641,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 9,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Verify Adequate CO & Fire Alarms",
@@ -24649,7 +24649,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 10,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -24680,7 +24680,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Ponding or Breeding Water",
@@ -24688,7 +24688,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Potential Points of Pest Entry",
@@ -24696,7 +24696,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rat Droppings Toxins",
@@ -24704,7 +24704,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bee or Wasp Nests",
@@ -24712,7 +24712,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Racoon",
@@ -24720,7 +24720,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -24751,7 +24751,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Rodent",
@@ -24759,7 +24759,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -24790,7 +24790,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 0,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Electrical Shock Hazard(s)",
@@ -24798,7 +24798,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 1,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Bio-Growth or Mold or Mildew",
@@ -24806,7 +24806,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 2,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "PACM",
@@ -24814,7 +24814,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 3,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Friable ACM",
@@ -24822,7 +24822,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 4,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Lead",
@@ -24830,7 +24830,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 5,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Airborne or VOCs",
@@ -24838,7 +24838,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 6,
-          "remark": ""
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Potential Hidden Hazard(s)",
@@ -24846,7 +24846,7 @@ var defaultTemplate = {
           "sourceType": "template",
           "inspectionId": null,
           "order": 7,
-          "remark": ""
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -24891,7 +24891,7 @@ var defaultTemplate = {
         "subsectionId": null,
         "inspectionId": null,
         "sectionId": null,
-        "type": "image",
+        "type": "photo",
         "order": 8,
         "values": [],
         "validation": {

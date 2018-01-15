@@ -872,18 +872,22 @@ $scope.questionTypes = [
     }
   })();
 
-  $scope.toggle = function (item, list, ignoreEmpty) {
-    var index = list.indexOf(item);
-    if (index > -1) {
-      list.splice(index, 1);
+  $scope.toggle = function (answer) {
+    if (answer.checked == undefined) {
+      answer.checked = true;
     } else {
-      if (ignoreEmpty) {
-        if (item) {
-          list.push(item);
-        }
-      } else {
-        list.push(item);
-      }
+      answer.checked = !answer.checked;
+    }
+      
+    // Comments Box magickery
+    if($scope.question.comments == undefined) {
+      $scope.question.comments = answer.autoComment;
+    } else if (answer.checked & $scope.question.comments.indexOf(answer.autoComment) < 0) {
+      // Checked box, add 
+      $scope.question.comments += ' ' + answer.autoComment;
+    } else if (!answer.checked & $scope.question.comments.indexOf(answer.autoComment) >= 0) {
+      // Unchecked box, remove string from question comments
+      $scope.question.comments = $scope.question.comments.replace(answer.autoComment, '');
     }
   };
 

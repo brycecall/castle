@@ -66,8 +66,8 @@
                            >
                     <md-icon md-svg-src="cancel"></md-icon>
                 </md-button>
-                <md-checkbox ng-checked="exists(checkBox.key, question.answers)" 
-                             ng-click="toggle(checkBox.key, question.answers)"
+                <md-checkbox ng-checked="checkBox.checked" 
+                             ng-click="toggle(checkBox)"
                              ng-disabled="question.notApplicable"
                              aria-label="checkbox">
                 </md-checkbox>
@@ -280,14 +280,14 @@
         </md-card>
                 <md-card class="flatCard">
             <md-card-content>
-            <div class="headBlock">
+              <div class="headBlock">
                 <div layout="row" layout-align="center start">     
                     <div class="md-title">Comment</div>
                     <span flex=""></span>
                 </div>
                <md-input-container class="md-block">
                   <label>Add a comment here</label>
-                  <textarea ng-model="question.values[0].autoComment"></textarea>
+                  <textarea ng-model="question.comments"></textarea>
                 </md-input-container>
               </div>
             </md-card-content>

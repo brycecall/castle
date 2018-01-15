@@ -15,11 +15,11 @@
         
     <div layout="column" >
       <md-button ng-show="substep > 0" class="outerChip selectedChip"  aria-label="" ng-click="stepDownSubstep('section')">
-         <span>{{selectedChip.section.title}}  &#10004; </span>      
+         <span>{{selectedChip.section.title}} &#10004; </span>      
       </md-button>
 <!--        <md-icon md-svg-src="chevron_right"></md-icon>-->
       <md-button ng-show="substep > 1" class="outerChip selectedChip" aria-label="" ng-click="stepDownSubstep('subsection')">
-         <div>{{selectedChip.subsection.title}} &#10004; </div>
+         <span>{{selectedChip.subsection.title}} &#10004; </span>
       </md-button>
     </div>
         

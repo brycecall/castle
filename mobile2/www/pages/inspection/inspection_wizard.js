@@ -311,12 +311,11 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
     };
 
     $scope.toggle = function (answer) {
-
-        if (answer.checked == undefined) {
-            answer.checked = true;
-        } else {
-            answer.checked = !answer.checked;
-        }
+      if (answer.checked == undefined) {
+        answer.checked = true;
+      } else {
+        answer.checked = !answer.checked;
+      }
 
       if($scope.question.comments == undefined) {
         $scope.question.comments = answer.autoComment;
@@ -330,8 +329,8 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
     };
 
     $scope.toggleRadio = function (answer) {
-        if (answer.autoComment !== null && answer.autoComment !== undefined && $scope.commentBox.indexOf(answer.autoComment) < 0) {
-            $scope.commentBox = answer.autoComment;
+        if (answer.autoComment !== null && answer.autoComment !== undefined && $scope.question.comments.indexOf(answer.autoComment) < 0) {
+            $scope.question.comments = answer.autoComment;
         }
     }
 

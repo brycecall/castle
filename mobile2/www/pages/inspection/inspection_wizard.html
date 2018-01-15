@@ -10,7 +10,7 @@
       <span flex=""></span>
       <div ng-click="stepDownTo(2)" class="step">3</div>
       <span flex=""></span>
-      <div ng-click="stepDownTo(3)" class="step active">&#10004;</div>
+      <div ng-click="stepDownTo(3)" class="step active" >&#10004;</div>
     </div>
     <div ng-show="insParams.photoMode == '0' || insParams.photoMode == null">
     <md-progress-linear  md-mode="determinate" class="md-accent" value="0"></md-progress-linear>
@@ -173,14 +173,10 @@
             </md-input-container>
         </div>
 
-        <div class="blockSpacing" style="position: relative;">
-          <label class="textAreaLabel">Comments</label>
-          <textarea class="blockArea" ng-model="question.comments"></textarea>
-        </div>
-           
         <div>
             <div class="blockSpacing" ng-show="question.photos.length <= 0 && question.type === 'photo'">
-                No Photos Yet!
+                No Photos Yet! 
+                <div class="md-caption">(Use the big circle camera button below to go get some!)</div>
             </div>
 
               <div ng-repeat="photo in question.photos"
@@ -193,6 +189,11 @@
                     <textarea flex placeholder="Photo Description" aria-label="photo description" class="noresizeArea" md-colors="::{background: 'default-primary-50'}">{{photo.title}}</textarea>
                 </div>
         </div>  
+           
+        <div class="blockSpacing" style="position: relative;">
+          <label class="textAreaLabel">Comments</label>
+          <textarea class="blockArea" ng-model="question.comments"></textarea>
+        </div>
         
     </form>
         </md-card-content>

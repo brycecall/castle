@@ -705,6 +705,39 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
       return questionDefer.promise;           
     }
     
+    public.updateInspectionMetadata = function(ins) {
+      var lastMod = new Date();
+      var deferUpdateMetadata = $q.defer();
+
+      db.executeSql('UPDATE Inspection SET insLastModified=?, insLastSubmitted=?, insJobId=?, insSourceType=?, insType=?, insName=?, insUserId=?, insThemeId=?, insTemplateId=?, insTemplateTitle=? WHERE rowid=?', [lastMod, ins.lastSubmitted, ins.insJobId, ins.insSourceType, ins.insType, ins.insName, ins.insUserId, ins.insThemeId, ins.insTemplateId, ins.insTemplateTitle, ins.rowId], function (success) {
+        deferUpdateMetadata.resolve({
+          message: 'Successful inspection metadata update'
+        });
+      }, function(error) {
+        deferUpdateMetadata.reject({
+          message: error.message
+        });
+      });
+
+      return deferUpdateMetadata.promise;
+    }
+
+    public.updateInspectionTitle = function(insId, insTitle) {
+      var deferUpdTitle = $q.defer();
+
+      db.executeSql('UPDATE Inspection SET insName=? WHERE rowid=?', [insTitle, insId], function(success){
+        deferUpdTitle.resolve({
+          message: 'Title updated successfully'
+        });
+      }, function(error){
+        deferUpdTitle.reject({
+          message: error.message
+        });
+      });
+
+      return deferUpdTitle.promise;
+    }
+
     public.insertInspectionPhoto = function(photo, phoQuestion, phoInsSourceType) {
       var insertPhotoDefer = $q.defer();
       db.executeSql('INSERT INTO Photo (phoLink, phoTitle, phoQuestionId, phoAnswerId, phoInspectionId, phoSourceType, phoOrder) VALUES (?,?,?,?,?,?,?)', [photo.link, photo.title, phoQuestion.id, photo.answerId, phoQuestion.inspectionId, phoInsSourceType, photo.order], function(phoRes) {

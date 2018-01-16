@@ -473,6 +473,38 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     return promise;
   };
     
+  public.updateInspectionMetadata = function () {
+    var updInspMetadata = $q.defer();
+    
+    private.updateInsMetadata().then(function(success) {
+      updInspMetadata.resolve({
+        message: success.message  
+      });
+    }, function(error) {
+      updInspMetadata.reject({
+        message: error.message 
+      });
+    });
+      
+    return updInspMetadata.promise;
+  };
+    
+  public.updateTitle = function(id, title) {
+    var deferTitle = $q.defer();
+    
+    private.updateInspectionTitle(id, title).then(function(success){
+      deferTitle.resolve({
+        message: success.message 
+      });
+    }, function(error){
+      deferTitle.resolve({
+        message: error.message
+      });    
+    });
+      
+    return deferTitle.promise;
+  };
+    
   public.updateTemplate = function () {
     var defer = $q.defer();
     var promise = defer.promise;
@@ -533,6 +565,38 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     });
 
     return deferred.promise; 
+  };
+  
+  private.updateInsMetadata = function() {
+    var deferUpdateInsMetadata = $q.defer();
+    
+    database.updateInspectionMetadata(private.inspection).then(function(data) {
+      deferUpdateInsMetadata.resolve({
+        message: data.message
+      });
+    }, function(error){
+      deferUpdateInsMetadata.reject({
+        message: error.message
+      });
+    });
+      
+    return deferUpdateInsMetadata.promise;
+  };
+
+  private.updateInspectionTitle = function(inspectionId, inspectionTitle) {
+    var deferTitle = $q.defer();
+    
+    database.updateInspectionTitle(inspectionId, inspectionTitle).then(function(success){
+      deferTitle.resolve({
+        message: success.message
+      });
+    }, function(error){
+      deferTitle.reject({
+        message: error.message
+      });
+    });
+    
+    return deferTitle.promise;
   };
   
   private.updateDatabase = function() {

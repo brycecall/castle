@@ -114,33 +114,20 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
       });
   };
 
-  $scope.rename = function (insId) {
-    $rootScope.loading = true;
-    var promise = inspection_manager.getInspection(insId);
-    promise.then(
-      function (result) {
-        $rootScope.loading = false;
-        var newName = window.prompt("Please enter a new name.", result.value.insName);
-        if (newName) {
-          result.value.insName = newName;
-        }
-
-        var toast = $mdToast.simple()
-          .textContent('Renaming Inspection - Name will update shortly')
-          .position('bottom')
-          .toastClass('highIndex');
-        $mdToast.show(toast);
-        inspection_manager.updateInspection().then(
-          function () {
-            $timeout(function () {
-              toast.textContent('Rename Complete');
-              $mdToast.show(toast);
-            }, 0);
-          });
-      },
-      function (error) {
-        $rootScope.loading = false;
+  $scope.rename = function (insId, title, index) {
+    var newName = window.prompt("Please enter a new name.", title);
+    if(newName) {
+      var toast = $mdToast.simple()
+        .position('bottom')
+        .toastClass('highIndex');
+      inspection_manager.updateTitle(insId, newName).then(function () {
+        setTimeout(function () {
+          toast.textContent('Rename Complete');
+          $mdToast.show(toast);
+        }, 0);
       });
+      $scope.inspections[index].insName = newName;
+    }
   };
 
   $scope.sort = "";

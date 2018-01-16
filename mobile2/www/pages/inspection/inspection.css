@@ -218,3 +218,6 @@ md-input-container {
     z-index: 500;
     
 }
+#new #newInsForm md-input-container {
+    margin-bottom: 30px;
+}

@@ -39,14 +39,33 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   /*header_manager.setAction("Back", "back", function () {
     $state.go('home');
   });*/
-
+  
+  // Init inspection list
+  inspection_manager.getInspections().then(function (promise) {
+    for (var i = 0; promise.row && i < promise.row.length; i++) {
+      $scope.inspections.push(promise.row.item(i));
+    }
+    $rootScope.loading = false;
+    //Fail
+  }, function (promise) {
+      $rootScope.loading = false;
+      console.log(promise.message);
+    }
+  );
+    
   $scope.newInspection = function () {
     $state.go("inspection_new");
   }
 
   $scope.goToInspection = function (insId) {
-    $state.go('inspection_wizard', {
-      'insId': insId
+    $rootScope.loading = true;
+    inspection_manager.getInspection(insId).then(function(success){
+      $state.go('inspection_wizard', {
+        'insId': insId
+      });
+      $rootScope.loading = false;
+    }, function(error){
+      console.log('Failed to load inspection');
     });
   };
 
@@ -145,24 +164,6 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     "Sent",
     "Archived"
   ];
-
-  var inspections = inspection_manager.getInspections();
-  inspections.then(
-    //Success
-    function (promise) {
-      console.log(promise.message);
-      console.log(promise.row);
-      for (var i = 0; promise.row && i < promise.row.length; i++) {
-        $scope.inspections.push(promise.row.item(i));
-      }
-      $rootScope.loading = false;
-      //Fail
-    },
-    function (promise) {
-      $rootScope.loading = false;
-      console.log(promise.message);
-    }
-  );
 });
 
 
@@ -204,17 +205,13 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
       inspection.insTemplateId = $scope.sTemplate.rowId;
       inspection.insName = $scope.sName;
       inspection.sections = $scope.sTheme.template.concat(inspection.sections);
-
       inspection_manager.saveInspection().then(
         function (savedIns) {
-          console.log('Successful save. Inserted Inspection Id: ' + savedIns.inspectionId);
           // Simulate loading
-          setTimeout(function () {
-            $rootScope.loading = false;
-            $state.go('inspection_wizard', {
-              'insId': savedIns.inspectionId
-            });
-          }, 6000);
+          $rootScope.loading = false;
+          $state.go('inspection_wizard', {
+            'insId': savedIns.insId
+          });
         },
         function (saveError) {
           console.log('Error saving inspection: ' + saveError.message);
@@ -222,7 +219,6 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
       );
     }, function (getErr) {
       $rootScope.loading = false;
-      console.log(getErr.message);
     });
   }
 

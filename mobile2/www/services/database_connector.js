@@ -17,7 +17,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
       var deferInit = $q.defer();
       databaseInit.initTables(db).then(function(success) {
         public.saveInspection(defaultTemplate, 'template').then(function(saveSuccess) {
-          console.log('Success initTables');
           // Successful save of default template
           deferInit.resolve({
             inspectionId: saveSuccess.inspectionId,
@@ -67,14 +66,12 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
             message: 'name found'
           });
         } else {
-          console.log('Username not found in database');
           deferred.resolve({
             validCreds: false,
             message: 'name not found'
           });
         }
       }, function (error) {
-        console.log('Error attempting SELECT to check user credentials');
         deferred.reject({
           validCreds: false,
           message: 'error attempting to execute SQL'
@@ -181,8 +178,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
 
     public.getSections = function (inspectionId) {
       var inspId = parseInt(inspectionId);
-      console.log('db getSections Inspection Id: ' + inspId);
-      console.log(typeof (inspId));
       var deferred = $q.defer();
       db.executeSql('SELECT rowId AS [rowId], secTitle AS [title], secInspectionId FROM Section WHERE secInspectionId = ?', [inspId], function (res) {
         if (res.rows.length > 0) {
@@ -206,7 +201,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
    
 
     public.getSubSections = function (sectionId) {
-      console.log('db getSubSections');
       var deferred = $q.defer();
       db.executeSql('SELECT rowId AS [rowId], susTitle AS [title], susSectionId FROM SubSection WHERE susSectionId = ?', [sectionId], function (res) {
         if (res.rows.length > 0) {
@@ -228,7 +222,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
     }
 
     public.getQuestions = function (subSectionId) {
-      console.log('db getQuestions');
       var deferred = $q.defer();
       db.executeSql('SELECT rowId AS [rowId], queTitle AS [title], queDescription, queSubSectionId, queAnswered, queRequired, queType, queMin, queMax, queNotApplicable, queShowSummaryRemark, queShowDescription, quePrivateNotes, queComments FROM Question WHERE queSubSectionId = ?', [sectionId], function (res) {
         if (res.rows.length > 0) {
@@ -251,7 +244,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
 
     public.getInspectionById = function (inspectionId) {
       var inspId = parseInt(inspectionId); // ensure id is an int
-      console.log('db getInspectionById ID: ' + inspId);
       var deferred = $q.defer();
       db.executeSql(
         'SELECT *, insp.rowid AS [rowId], sec.rowid AS [secRowId], subsec.rowid AS [susRowId], ques.rowid AS [queRowId], ans.rowid AS [ansRowId], qua.rowid AS [quaRowId], pho.rowid AS [phoRowId] FROM Inspection insp LEFT JOIN Section sec on sec.secInspectionId = insp.rowid LEFT JOIN SubSection subsec ON subsec.susSectionId = sec.rowId LEFT JOIN Question ques ON ques.queSubSectionId = subsec.rowid LEFT JOIN Answer ans ON ans.ansQuestionId = ques.rowid LEFT JOIN Photo pho ON pho.phoAnswerId = ans.rowid LEFT JOIN QuestionAnswers qua on qua.quaQuestionId = ques.rowid AND qua.quaAnswerId = ans.rowid WHERE insp.rowid = ? ORDER BY sec.rowid, subsec.rowid, ques.rowid, ans.rowid, pho.rowid', [inspId],
@@ -279,7 +271,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
   public.deleteInspectionById = function (inspectionId) {
     var deferDeleteIns = $q.defer();
     var inspId = parseInt(inspectionId);
-    console.log('db deleteInspectionById: ' + inspId);
       
     // Delete all related rows in db
     // Inspection
@@ -428,7 +419,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
             var inspectionId = insData.rowId;
             private.insertSectionFromTemplate( templateId, inspectionId ).then(function(insSecData)
             {
-                console.log(insSecData);
                 public.getSections(inspectionId).then(function(secData) 
                 {
                     var sectionRows = secData.row;
@@ -436,7 +426,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
                     {
                         private.insertSubsectionFromTemplate( templateId, inspectionId, sectionRows[i].rowId ).then(function(insSubsecData)
                         {
-                            console.log(insSubsecData);
                             public.getSubSections(sectionId).then(function(subsecData)
                             {
                                 var subsectionRows = subsecData.row;
@@ -455,13 +444,12 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
             }, function(secData){
                 secData.row
             });
-            console.log(insData);
 
         }, function(data){deferred.reject(data);});
         return deferred.promise;
     };                            
       
-    // Overwrite the copied template with the actual data of the save
+    // Create inspection fields from template in DB
     public.saveInspection = function (ins, sourceType) {
       var timestamp = new Date();
       var deferSaveInspection = $q.defer();
@@ -474,11 +462,11 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
         });
         // Wait for all sections to resolve before resolving Inspection
         $q.all(promises).then(function() {
-          console.log('All sections saved');
           deferSaveInspection.resolve({
             message: 'Successful inspection save',
             inspectionId: res.insertId
           });
+          console.log('db saveinspection insertid: ' + res.insertId);
         });
       }, function (error) {
         deferSaveInspection.reject({
@@ -511,34 +499,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
       });
       return deferSaveSection.promise;
     };
-    /*public.saveSection = function(sourceType, section, resInsertId ) {
-      console.log('saveSection');
-      var deferSaveSection = $q.defer();
-      
-      var secSourceType = sourceType;
-      db.executeSql('INSERT INTO Section (secTitle, secInspectionId, secSourceType) VALUES (?,?,?)', [section.title, resInsertId, secSourceType], function (secRes) {
-        //if this is successful, attempt to insert subsection data
-        section.subsections.forEach(function (subsection) {
-          public.saveSubsection(secSourceType, subsection, secRes.insertId, res.insertId).then(function(success) {
-            console.log(success.message);
-          }, function(error) {
-            deferSaveSection.reject({
-              message: error.message
-            });
-          });
-        });
-        // Made it to the end, resolve.
-        deferSaveSection.resolve({
-          message: 'Successful section save title: ' + section.title
-        });
-      }, function (secError) {
-        deferSaveSection.reject({
-          message: 'Error with Section save: ' + secError.message
-        });
-      });
-        
-      return deferSaveSection.promise;
-    };*/
 
     public.saveSubsection = function(secSourceType, subsection, secResInsertId, resInsertId) {
       var deferSaveSubsection = $q.defer();
@@ -621,49 +581,73 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
     // Overwrite the copied template with the actual data of the save
     public.updateInspection = function (ins) {
       var timestamp = new Date();
-      console.log('updateInspection start');
-      console.log(ins);
       var deferred = $q.defer();
+      var sectionPromises = [];
+
       // Update Inspection Table Data        
       db.executeSql('UPDATE Inspection SET insLastModified = ?, insJobId = ?, insSourceType = ?, insType = ?, insName = ?, insUserId = ?, insThemeId = ?, insOrganizationId = ?, insTemplateId = ?, insTemplateTitle = ? WHERE rowid = ?', [timestamp, ins.insJobId, ins.insSourceType, ins.insType, ins.insName, ins.insUserId, ins.insThemeId, ins.insOrganizationId, ins.insTemplateId, ins.insTemplateTitle, ins.insId], function (res) {
         //if this is successful, attempt to update section data
-        ins.sections.forEach(function (section) {
-          db.executeSql('UPDATE Section SET secTitle = ?, secInspectionId = ?, secSourceType = ?, secOrder = ? WHERE rowid = ? AND secInspectionId = ?', [section.title, section.inspectionId, section.sourceType, section.order, section.id, section.inspectionId], function (secRes) {
-            //if this is successful, attempt to update subsection data
-            section.subsections.forEach(function (subsection) {
-              db.executeSql('UPDATE SubSection SET susTitle = ?, susSectionId = ?, susInspectionId = ?, susSourceType = ?, susOrder = ? WHERE rowId = ? AND susInspectionId = ?', [subsection.title, subsection.sectionId, subsection.inspectionId, subsection.sourceType, subsection.order, subsection.id, subsection.inspectionId], function (susRes) {
-                //console.log(subsection.title + ' subsection successfully updated.');
-                // If this is successful, attempt to update question data
-                subsection.questions.forEach(function (question) {
-                  public.updateInspectionQuestion(question, ins.insId, ins.insSourceType).then(function(promise){
-                    //console.log('Successful question insert: ' + promise.message);
-                  }, function(error) {
-                    deferred.reject({message: 'Error updating question: ' + error.message}); 
-                  });
-                });
-              }, function (susError) {
-                deferred.reject({
-                  message: 'Error with SubSection update: ' + susError.message
-                });
-              });
-            });
-          }, function (secError) {
-            deferred.reject({
-              message: 'Error with Section update: ' + secError.message
-            });
+        angular.forEach(ins.sections, function(section) {
+          sectionPromises.push(updateInspectionSection(section, ins.insId, ins.insSourceType)); 
+        });
+        $q.all(sectionPromises).then(function() {
+          deferred.resolve({
+            message: 'Successful update for inspection table'
           });
         });
-        deferred.resolve({
-          rowId: res.insertId,
-          message: 'Successful update for inspection table'
-        });
       }, function (error) {
-        //if failure, log the failure
         deferred.reject({
           message: 'Error updating Inspection: ' + error.message
         });
       });
       return deferred.promise;
+    }
+    
+    public.updateInspectionSection = function(section, resInsertId, insSourceType) {
+      var sectionDefer = $q.defer();
+      var subsectionPromises = [];
+      
+      db.executeSql('UPDATE Section SET secTitle=?, secInspectionId=?, secSourceType=? WHERE rowid=? AND secInspectionId=?', [section.title, resInsertId, insSourceType, section.id, resInsertId], function(secRes){
+        angular.forEach(section.subsections, function(subsection) {
+          subsectionPromises.push(updateInspectionSubsection(subsection, resInsertId, section.id, insSourceType));
+        });
+        // Wait for all subsections to be resolved before resolving section
+        $q.all(subsectionPromises).then(function() {
+          sectionDefer.resolve({
+            message: 'Successful section update'  
+          });
+        });
+      }, function(secError){
+        sectionDefer.reject({
+          message: 'Error with section update: ' + secError.message 
+        });
+      });
+        
+      return sectionDefer.promise;
+    }
+    
+    public.updateInspectionSubsection = function(subsection, insId, secResInsertId, insSourceType) {
+      var subsectionDefer = $q.defer();  
+      var questionPromises = [];
+
+      db.executeSql('UPDATE SubSection SET susTitle=?, susSectionId=?, susInspectionId=?, susSourceType=? WHERE rowid=? AND susInspectionId=?', [subsection.title, secResInsertId, insId, insSourceType, subsection.id, insId], function (susRes) {
+        // If this is successful, attempt to insert question data
+        angular.forEach(subsection.questions, function (question) {
+          questionPromises.push(public.updateInspectionQuestion(question, insId, insSourceType));
+        });
+        // Wait for all questions to be resolved before resolving subsection
+        $q.all(questionPromises).then(function() {
+          subsectionDefer.resolve({
+            message: 'Successful subsection update'
+          });
+        });
+      }, function (susError) {
+        deferSaveSubsection.reject({
+          message: 'Error with SubSection update: ' + susError.message
+        });
+      });
+        
+      return subsectionDefer.promise;
     }
     
     public.updateInspectionQuestion = function (question, insId, insSourceType) {
@@ -673,13 +657,9 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
         var tempQuestion = question;
         // Delete all previous photos
         db.executeSql('DELETE FROM Photo WHERE phoQuestionId = ? AND phoInspectionId = ?', [tempQuestion.id, tempQuestion.inspectionId], function(deleteRes) {
-          //console.log('Successful delete of Photos from Question: ' + tempQuestion.title);
         }, function(delError) {
-          console.log('Failure to delete Question: ' + tempQuestion.title);
-          console.log('Error message for delete failure: ' + delError.message);
           questionDefer.reject({message: 'Failure deleting Photos: ' + delError.message});
         });
-        //console.log(tempQuestion.title + ' tempQuestion successfully updated.');
         // If this is successful, attempt to update answer data
         tempQuestion.values.forEach(function(answer) {
           var ansInsId = insId;
@@ -741,10 +721,8 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
     public.insertInspectionPhoto = function(photo, phoQuestion, phoInsSourceType) {
       var insertPhotoDefer = $q.defer();
       db.executeSql('INSERT INTO Photo (phoLink, phoTitle, phoQuestionId, phoAnswerId, phoInspectionId, phoSourceType, phoOrder) VALUES (?,?,?,?,?,?,?)', [photo.link, photo.title, phoQuestion.id, photo.answerId, phoQuestion.inspectionId, phoInsSourceType, photo.order], function(phoRes) {
-        console.log('Successfully inserted Photo: ' + photo.title);
         insertPhotoDefer.resolve({message: 'Successfully inserted Photo: ' + photo.title});
       }, function(phoError) {
-        console.log('Error: ' + phoError.message);
         insertPhotoDefer.reject({
           message: 'Error with Photo update: ' + phoError.message 
         });
@@ -766,12 +744,10 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
     }
     
     public.updateTemplate = function(template) {
-      console.log(template);
       // Update Inspection table info
       var timestamp = new Date();
       var deferred = $q.defer();
       db.executeSql('UPDATE Inspection SET insLastModified = ?, insUserId = ?, insOrganizationId = ?, insTemplateTitle = ? WHERE rowid = ?', [timestamp, template.insUserId, template.insOrganizationId, template.insTemplateTitle, template.rowId], function(res) {
-        console.log('Successful update of Inspection table for Template.');
       }, function(err) {
         deferred.reject({message: 'Error updating Inspection table for Template: ' + err.message});
       });
@@ -838,18 +814,14 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
       template.sections.forEach(function(section) {
         var tempSection = section;
         var susOrder = 1;
-        //console.log(tempSection);
         db.executeSql('INSERT OR REPLACE INTO Section (rowid, secTitle, secInspectionId, secSourceType, secOrder) VALUES (?,?,?,?,?)', [tempSection.id, tempSection.title, tempSection.inspectionId, tempSection.sourceType, secOrder], function(secRes) {
-          //console.log('Successful Upsert to Section. InsertId: ' + res.insertId);
           secOrder++;
           // INSERT / REPLACE ON CONFLICT SubSection loop
           tempSection.subsections.forEach(function(subsection) {
             var tempSubsection = subsection;
             var sectionId = secRes.insertId;
             var queOrder = 1;
-            //console.log(tempSubsection);
             db.executeSql('INSERT OR REPLACE INTO SubSection (rowid, susTitle, susSectionId, susInspectionId, susSourceType, susOrder) VALUES (?,?,?,?,?,?)', [subsection.id, tempSubsection.title, sectionId, tempSubsection.inspectionId, tempSubsection.sourceType, susOrder], function(susRes) {
-              //console.log('Success Upsert to SubSection: ' + res.insertId);
               susOrder++;
               // INSERT / REPLACE ON CONFLICT Question loop
               tempSubsection.questions.forEach(function(question) {
@@ -857,17 +829,13 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
                 var subsectionId = susRes.insertId;
                 var ansOrder = 1;
                 var phoOrder = 1;
-                //console.log(tempQuestion);
                 db.executeSql('INSERT OR REPLACE INTO Question (rowid, queTitle, queDescription, queSubSectionId, queType, queRequired, queMin, queMax, queValidationType, queNotApplicable, queShowSummaryRemark, queShowDescription, queInspectionId, queSourceType, queOrder) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)', [tempQuestion.id, tempQuestion.title, tempQuestion.description, subsectionId, tempQuestion.type, tempQuestion.validation.isRequired, tempQuestion.validation.min, tempQuestion.validation.max, tempQuestion.validation.type, tempQuestion.notApplicable, tempQuestion.showSummaryRemark, tempQuestion.showDescription, tempQuestion.inspectionId, tempQuestion.sourceType, queOrder], function(queRes) {
-                  //console.log('Success upsert to Question: ' + queRes.insertId);
                   queOrder++;
                   // INSERT / REPLACE ON CONFLICT Answer loop
                   tempQuestion.values.forEach(function(answer) {
                     var tempAnswer = answer;
                     var questionId = queRes.insertId;
-                    //console.log(tempAnswer);
                     db.executeSql('INSERT OR REPLACE INTO Answer (rowid, ansQuestionId, ansValue, ansType, ansInspectionId, ansSourceType, ansChecked, ansAutoComment, ansOrder) VALUES (?,?,?,?,?,?,?,?,?)', [tempAnswer.id, questionId, tempAnswer.key, tempAnswer.type, tempAnswer.inspectionId, tempAnswer.sourceType, tempAnswer.checked, tempAnswer.autoComment, ansOrder], function (ansRes) {
-                      //console.log('Success upsert to Answer: ' + ansRes.insertId);
                       ansOrder++;
                     }, function(err) {
                       deferred.reject({message: 'Failure to upsert to Answer: ' + err.message});
@@ -878,7 +846,6 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
                     var phoTempQuestion = tempQuestion;
                     var tempPhoto = photo;
                     db.executeSql('INSERT OR REPLACE INTO Photo (rowid, phoLink, phoTitle, phoQuestionId, phoAnswerId, phoInspectionId, phoSourceType, phoOrder) VALUES(?,?,?,?,?,?,?,?)', [tempPhoto.id, tempPhoto.link, tempPhoto.title, phoTempQuestion.id, tempPhoto.answerId, phoTempQuestion.inspectionId, tempPhoto.sourceType, phoOrder], function(phoRes) {
-                      //console.log('Successfully inserted Photo: ' + phoTempQuestion.photos[i]);
                       phoOrder++;
                     }, function(phoError) {
                       deferred.reject({
@@ -887,17 +854,14 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
                     });
                   });                  
                 }, function(err) {
-                  console.log('Failure upsert to Question');
                   deferred.reject({message: 'Failure to upsert to Question: ' + err.message});
                 });
               });
             }, function(err) {
-              console.log('Failure upsert to SubSection: ' + err.message);
               deferred.reject({message: 'Failure upsert to SubSection: ' + err.message});
             });
           });
         }, function(err) {
-          console.log('Failure upsert to Section: ' + err.message);
           deferred.reject({message: 'Failure upsert to Section: ' + err.message});
         });
       });
@@ -990,19 +954,7 @@ app.factory('database', function ($rootScope, $state, $q, database_mock, databas
       });
       return deferred.promise;    
     }
-    /* SELECT USAGE
-      var select = database.select('SELECT * FROM USER', []);
-      select.then(
-          function(promise) {
-            console.log(promise.message);
-            for(var i=0; i < promise.rows.length; i++) {
-              console.log(promise.rows.item(i));
-            }
-          }, function(promise) {
-            console.log(promise.message);
-          }
-      );
-    */
+
     public.select = function (query, params) {
       var deferred = $q.defer();
       db.executeSql(query, params, function (res) {

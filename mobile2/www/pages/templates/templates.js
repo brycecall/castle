@@ -84,8 +84,14 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
   };
     
   $scope.edit = function (insId) {
-    $state.go('template_section', {
-      'insId': insId
+    $rootScope.loading = true;
+    inspection_manager.getInspection(insId).then(function(success){
+      $state.go('template_section', {
+        'insId': insId
+      });
+      $rootScope.loading = false;
+    }, function(error){
+      console.log('Failed to load inspection');
     });
   };
     
@@ -238,8 +244,14 @@ app.controller('template', function ($rootScope, $scope, $rootScope, $state, hea
   $rootScope.loading = true;
 
   $scope.goToInspection = function (insId) {
-    $state.go('template_section', {
-      'insId': insId
+    $rootScope.loading = true;
+    inspection_manager.getInspection(insId).then(function(success){
+      $state.go('template_section', {
+        'insId': insId
+      });
+      $rootScope.loading = false;
+    }, function(error){
+      console.log('Failed to load inspection');
     });
   };
 

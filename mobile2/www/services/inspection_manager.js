@@ -182,8 +182,10 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
             }
             private.inspection.sections.push(section);
             i = increment + 1;
+            console.log('end of section');
           } while (i <= promise.row.length - 1);
           defer.resolve({ "value":private.inspection });
+          console.log('done looping');
         },
         function (promise) {
           private.inspection = {}; //failure eh?
@@ -633,11 +635,12 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     var deferred = $q.defer();
 
     database.saveInspection(private.inspection, public.mode).then(function (data) {
-      console.log(data.message);
-      deferred.resolve({insId: data.rowId});
+      console.log('success parameter private.saveToDatabase: ');
+      console.log(data);
+      deferred.resolve({insId: data.inspectionId});
     }, function (data) {
       console.log(data.message);
-      deferred.reject(data.message);
+      deferred.reject({message: data.message});
     });
 
     return deferred.promise;

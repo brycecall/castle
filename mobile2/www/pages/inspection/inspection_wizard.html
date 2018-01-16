@@ -19,7 +19,7 @@
           <md-select ng-model="insParams.sectionIndex" 
                      class="md-no-underline" 
                      aria-label="choose section"
-                     md-on-close="navChange('section', insParams.sectionIndex)"
+                     ng-change="navChange('section')"
                      >
             <md-option ng-repeat="sec in inspection.sections track by $index" 
                        ng-value="$index" >
@@ -31,7 +31,7 @@
           <md-select ng-model="insParams.subsectionIndex" 
                      class="md-no-underline" 
                      aria-label="choose subsection"
-                     md-on-close="navChange('subsection', insParams.subsectionIndex)"
+                     ng-change="navChange('subsection')"
                      >
             <md-option ng-repeat="subsec in inspection.sections[insParams.sectionIndex]
                                    .subsections track by $index" 
@@ -44,7 +44,7 @@
           <md-select ng-model="insParams.questionIndex" 
                      class="md-no-underline" 
                      aria-label="choose question"
-                     md-on-close="navChange('question', insParams.questionIndex)"
+                     ng-change="navChange('question')"
                      >
             <md-option ng-repeat="que in inspection.sections[insParams.sectionIndex]
                                    .subsections[insParams.subsectionIndex].questions track by $index" 
@@ -201,9 +201,9 @@
         <md-card class="flatCard">
             <md-card-content>
         <div class="headBlock">
-            <div class="md-title">Summary Remarks</div>
+            <div class="md-title">Summary Classification</div>
             <div class="md-caption" style="margin: 4px 0 4px 0;" >
-                Summary Remarks are appended to the Summary Section
+                This determines if and where this question goes in the auto generated summary.
             </div>
         </div>
             <div layout="row" layout-wrap class="buttonWrapper">

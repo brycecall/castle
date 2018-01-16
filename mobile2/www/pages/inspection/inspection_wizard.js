@@ -128,23 +128,14 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
     };
     $scope.question = {};
     $scope.questionCount = -1;
-    $scope.navChange = function (loc, index) {
+    $scope.navChange = function (loc) {
         switch (loc) {
             case "section":
-                if ($scope.insParams.sectionIndex != index) {
-                    $scope.insParams.subsectionIndex = 0;
-                    $scope.insParams.questionIndex = 0;
-                }
-                $scope.insParams.sectionIndex = index;
+                $scope.insParams.subsectionIndex = 0;
+                $scope.insParams.questionIndex = 0;
                 break;
             case "subsection":
-                if ($scope.insParams.subsectionIndex != index) {
-                    $scope.insParams.questionIndex = 0;
-                }
-                $scope.insParams.subsectionIndex = index;
-                break;
-            case "question":
-                $scope.insParams.questionIndex = index;
+                $scope.insParams.questionIndex = 0;
                 break;
             default:
         }
@@ -175,12 +166,8 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
                     .subsections[$scope.insParams.subsectionIndex]
                     .questions[$scope.insParams.questionIndex];
                 attachPhotos();
-  
-                if ($scope.currentStateName == 'inspection_question_step') {
-                    camera_manager.rapidModePhoto.title = $scope.question.title;
-                }
-                
-                if ($scope.currentStateName == 'inspection_wizard' &&
+                  
+                if ( $scope.currentStateName == 'inspection_wizard' &&
                     !angular.equals({}, $scope.rapidModePhoto) ) {
                     
                     //Add the rapid photo mode photo
@@ -329,9 +316,14 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
     };
 
     $scope.toggleRadio = function (answer) {
+        $scope.question.answer = answer.key;
         if (answer.autoComment !== null && answer.autoComment !== undefined && $scope.question.comments.indexOf(answer.autoComment) < 0) {
             $scope.question.comments = answer.autoComment;
         }
+    }
+    
+    $scope.setAnswer = function(answer) {
+        $scope.question.answer = answer;
     }
 
     $scope.exists = function (value, array) {
@@ -404,6 +396,12 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
     };
 
     $scope.stepUp = function (index) {
+        if ($scope.question.type == 'checkbox') {
+            camera_manager.rapidModePhoto.title = $scope.question.values[index].key;
+        } else {
+            camera_manager.rapidModePhoto.title = $scope.question.answer;
+        }
+        
         $state.go('inspection_wizard', {
             'insId': $scope.insParams.insId,
             'sectionIndex': $scope.insParams.sectionIndex,

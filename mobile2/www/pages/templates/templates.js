@@ -235,6 +235,16 @@ app.service('templateShareService', function ($state, $mdToast, $q) {
     });
     return deferRemove.promise;
   };
+    
+   shareService.getCrumbyClass = function(location){
+    var result = '';
+    var currentState = $state.current.name;
+    if (location == currentState) {
+        result = 'md-accent active';
+    }
+    return result;  
+   }; 
+    
   return shareService;
 });
 
@@ -371,6 +381,7 @@ app.controller('template_section', function ($rootScope, $scope, inspection_mana
   });
   $scope.numDeleted = 0;
   $scope.insId = $stateParams.insId;
+  $scope.getCrumbyClass = templateShareService.getCrumbyClass;
   $scope.navigate = templateShareService.navigate;
   $scope.remove = function(index, list) {
     var adjustNum = templateShareService.remove(index, list);
@@ -446,6 +457,7 @@ app.controller('template_section', function ($rootScope, $scope, inspection_mana
 app.controller('template_subsection', function ($rootScope, $scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
+  $scope.getCrumbyClass = templateShareService.getCrumbyClass;
   $scope.navigate = templateShareService.navigate;
   $scope.numDeleted = 0;
   $scope.remove = function(index, list) {
@@ -535,6 +547,7 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
+  $scope.getCrumbyClass = templateShareService.getCrumbyClass;
   $scope.navigate = templateShareService.navigate;
   $scope.numDeleted = 0;
   $scope.remove = function(index, list) {
@@ -643,7 +656,7 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
   $scope.subsectionIndex = $stateParams.subsectionIndex;
   $scope.questionIndex = $stateParams.questionIndex;
   $scope.mode = $stateParams.mode;
-  
+  $scope.getCrumbyClass = templateShareService.getCrumbyClass;
   header_manager.mode = HEADER_MODES.Action;
     if ($scope.mode == "inspection") {
         header_manager.title = "Edit Question";
@@ -892,14 +905,16 @@ $scope.questionTypes = [
     }
       
     // Comments Box magickery
-    if($scope.question.comments == undefined) {
-      $scope.question.comments = answer.autoComment;
-    } else if (answer.checked & $scope.question.comments.indexOf(answer.autoComment) < 0) {
-      // Checked box, add 
-      $scope.question.comments += ' ' + answer.autoComment;
-    } else if (!answer.checked & $scope.question.comments.indexOf(answer.autoComment) >= 0) {
-      // Unchecked box, remove string from question comments
-      $scope.question.comments = $scope.question.comments.replace(answer.autoComment, '');
+    if (answer.autoComment) {
+        if($scope.question.comments == undefined) {
+          $scope.question.comments = answer.autoComment;
+        } else if (answer.checked && $scope.question.comments.indexOf(answer.autoComment) < 0) {
+          // Checked box, add 
+          $scope.question.comments += ' ' + answer.autoComment;
+        } else if (!answer.checked && $scope.question.comments.indexOf(answer.autoComment) >= 0) {
+          // Unchecked box, remove string from question comments
+          $scope.question.comments = $scope.question.comments.replace(answer.autoComment, '');
+        }
     }
   };
 
@@ -912,8 +927,10 @@ $scope.questionTypes = [
     // remove selected effect
     if(value == $scope.question.severity) {
       $scope.question.severity = "";
+      $scope.question.notApplicable = false; 
     } else {
       $scope.question.severity = value;
+      $scope.question.notApplicable = true;
     }
   };
 
@@ -951,6 +968,8 @@ $scope.questionTypes = [
   };
 
 });
+
+
 
 //app.factory('$', function ($window) {
 //  return $window.jQuery;

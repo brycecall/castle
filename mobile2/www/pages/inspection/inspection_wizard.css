@@ -123,3 +123,8 @@ margin: 0;
     border-color:rgba(0,0,0,0.12); 
     border-width: 1px 0px 1px 1px;
 }
+
+.answerMe {
+    border: 2px solid red;
+    border-radius: 2px;
+}

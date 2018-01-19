@@ -182,10 +182,8 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
             }
             private.inspection.sections.push(section);
             i = increment + 1;
-            console.log('end of section');
           } while (i <= promise.row.length - 1);
           defer.resolve({ "value":private.inspection });
-          console.log('done looping');
         },
         function (promise) {
           private.inspection = {}; //failure eh?

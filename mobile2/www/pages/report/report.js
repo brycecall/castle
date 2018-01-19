@@ -84,28 +84,34 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
 
               // The object is a section
               if (object.subsections) {
+                var secIndex = this.data.sections.findIndex(x=>x.id == object.sectionId);
                 $state.go('inspection_wizard', {
                   'insId': object.inspectionId,
-                  'sectionIndex': object.id
+                  'sectionIndex': secIndex
                 });
               } else
 
                 // The object is a subsection
                 if (object.questions) {
+                  var secIndex = this.data.sections.findIndex(x=>x.id == object.sectionId);
+                  var subsecIndex = this.data.sections[secIndex].subsections.findIndex(x=>x.id == object.subsectionId);
                   $state.go('inspection_wizard', {
                     'insId': object.inspectionId,
-                    'sectionIndex': object.sectionId,
-                    'subsectionIndex': object.id
+                    'sectionIndex': secIndex,
+                    'subsectionIndex': subsecIndex
                   });
                 } else
 
             // The object is a question
             {
+              var secIndex = this.data.sections.findIndex(x=>x.id == object.sectionId);
+              var subsecIndex = this.data.sections[secIndex].subsections.findIndex(x=>x.id == object.subsectionId);
+              var queIndex = this.data.sections[secIndex].subsections[subsecIndex].questions.findIndex(x=>x.id == object.id);
               $state.go('inspection_wizard', {
                 'insId': object.inspectionId,
-                'sectionIndex': object.sectionId,
-                'subsectionIndex': object.subsectionId,
-                'questionIndex': object.id
+                'sectionIndex': secIndex,
+                'subsectionIndex': subsecIndex,
+                'questionIndex': queIndex
               });
             }
           };

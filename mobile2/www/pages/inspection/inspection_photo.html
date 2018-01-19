@@ -26,7 +26,7 @@
           <h2 class="md-subhead insTitle" 
               style="margin-bottom:0px;">{{message}}</h2>
       </div>
-      <div ng-repeat="item in chipList track by $index" layout="column" ng-if="checkNumAnswered()">
+      <div ng-repeat="item in chipList track by $index" layout="column" ng-if="checkNumAnswered(item)">
         <md-button class="outerChip" aria-label="{{item.title}}" ng-click="stepUpSubstep($index)">
            <div>{{item.title}}</div>
         </md-button>

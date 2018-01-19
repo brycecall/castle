@@ -28,6 +28,7 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $transition$, shareService, $timeout, $mdDialog) {
+    $scope.validateSeverityClass = '';
     $scope.rapidModePhoto = camera_manager.rapidModePhoto;
     $scope.insParams = {
         'insId': $transition$.params().insId,
@@ -52,10 +53,14 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
             $rootScope.loading = false;
         }, 'hide');
         header_manager.addAction("Wizard Mode", "shutter_camera", function () {
-            $state.go("inspection_wizard", {
-                'insId': $scope.insParams.insId,
-                'photoMode': null
-            });
+            if ($scope.question.severity != '' && $scope.question.severity !== undefined && $scope.question.severity !== null) {
+              $state.go("inspection_wizard", {
+                  'insId': $scope.insParams.insId,
+                  'photoMode': null
+              });
+            } else {
+              $scope.validateSeverityClass = 'answerMe';
+            }
         }, 'md-raised md-accent');
         
         // Footer Actions
@@ -64,9 +69,14 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
                 $scope.addPhotos(0, 0);
             }, 'md-raised md-accent');
             action_manager.addAction("Done", "check", function () {
-                $state.go("inspection_photo", {
-                    'insId': $scope.insParams.insId
-                });
+                if ($scope.question.severity != '' && $scope.question.severity !== undefined && $scope.question.severity !== null) {
+                    $state.go("inspection_photo", {
+                        'insId': $scope.insParams.insId
+                    });
+                } else {
+                    $scope.validateSeverityClass = 'answerMe';
+                }
+
             }, 'md-raised ');
         }
     } else { //Wizard Mode
@@ -174,33 +184,6 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
                     $scope.question.photos.push($scope.rapidModePhoto);
                     camera_manager.rapidModePhoto = {};
                 }
-                
-                
-                //        $scope.$watch('otherValue.value', function (newVal, oldVal) {
-                //          var list = $scope.question.answers;
-                //          var index = $scope.question.answers.indexOf(oldVal);
-                //          if (index > -1) {
-                //            $scope.question.answers.splice(index, 1);
-                //          }
-                //          if (newVal) {
-                //            $scope.question.answers.push(newVal);
-                //          }
-                //        });
-                //
-                //        $scope.$watch('otherValue.singleSelect', function (newVal, oldVal) {
-                //          if (newVal) {
-                //            $scope.question.answer = newVal;
-                //          }
-                //        });
-                //
-                //        $scope.$watch('question.answer', function (newVal, oldval) {
-                //          if (newVal && ($scope.question.type == 'text' || $scope.question.type == 'textarea')) {
-                //            $scope.question.values[0].key = newVal;
-                //          }
-                //        });
-
-
-
             },
             function (data) {
                 $rootScope.loading = false;
@@ -339,6 +322,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
         $scope.question.severity = "";
       } else {
         $scope.question.severity = value;
+        $scope.validateSeverityClass = '';
       }
     };
 

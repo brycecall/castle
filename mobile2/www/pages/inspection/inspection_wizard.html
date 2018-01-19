@@ -206,7 +206,7 @@
                 This determines if and where this question goes in the auto generated summary.
             </div>
         </div>
-            <div layout="row" layout-wrap class="buttonWrapper">
+            <div layout="row" layout-wrap class="buttonWrapper" ng-class="validateSeverityClass">
                 <div  layout="column" layout-align="center center">
                     <md-button class="md-fab md-mini" 
                                ng-class="question.severity == 'Not Applicable' ? 'md-accent selectedBtn' : 'md-raised'"
@@ -231,7 +231,7 @@
                 </div>
             </div>
             <div ng-show="question.severity == 'Not Applicable'">"Not applicable" questions won't be included in the final report.</div>
-
+            <div style="color: red" ng-show="validateSeverityClass == 'answerMe'">Summary Classification is required!</div>
             </md-card-content>
         </md-card>
         <md-card class="flatCard">

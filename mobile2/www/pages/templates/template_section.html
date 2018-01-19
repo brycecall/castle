@@ -1,9 +1,15 @@
 <link type="text/css" rel="stylesheet" href="pages/templates/templates.css" />
 <div class="page">
-  <div style="width:100%; height: 50px; background-color: white; color: darkgrey;" layout="row" layout-align="start center">
-    <md-button style="min-width:20px; text-transform: none; font-weight:600;" class="md-caption md-accent" ng-click="navigate(insId)">Sec</md-button>
-    <div flex=""></div>
-  </div>
+    <div class="breadCrumbs" layout="row" layout-align="start center">
+            <md-button class="md-caption" ng-class="getCrumbyClass('template_section')" ng-click="navigate(insId)" md-truncate>Section</md-button>
+            <div>/</div>
+            <md-button class="md-caption" ng-class="getCrumbyClass('template_subsection')" ng-click="navigate(insId, sectionIndex)" md-truncate>Subsection</md-button>
+            <div>/</div>
+            <md-button class="md-caption " ng-class="getCrumbyClass('template_question')" ng-click="navigate(insId, sectionIndex, subsectionIndex)" md-truncate >Questions</md-button>
+            <div>/</div>
+            <md-button class="md-caption" ng-class="getCrumbyClass('template_detail')" md-truncate>Question</md-button>
+        <div flex=""></div>
+    </div>
   <md-divider></md-divider>
   <div class="centerPage" id="centerPage">
     <div layout="row" layout-align="start end">

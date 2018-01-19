@@ -139,3 +139,28 @@ md-input-container {
   text-align: center;
   margin-left: 40%;
 }
+
+.breadCrumbs {
+    width:100%; 
+    height: 50px; 
+    background-color: white; 
+    color: darkgrey; 
+}
+
+.breadCrumbs .md-button {
+    min-width:20px; 
+    text-transform: none;
+}
+
+.breadCrumbs div, .breadCrumbs .md-button  {
+   display: block;
+    
+}
+
+.breadCrumbs .active {
+    font-weight: 600;
+}
+
+.breadCrumbs .active~div, .breadCrumbs .active~.md-button {
+    display:none;
+}

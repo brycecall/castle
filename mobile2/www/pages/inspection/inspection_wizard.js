@@ -335,8 +335,10 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
       // remove selected effect
       if(value == $scope.question.severity) {
         $scope.question.severity = "";
+        $scope.question.isAnswered = 0;
       } else {
         $scope.question.severity = value;
+        $scope.question.isAnswered = 1;
       }
     };
 

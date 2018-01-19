@@ -137,9 +137,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                     // Check to see if this answer was a selected answer by inspector
                     if (promise.row.item(l).ansChecked) {
                       // If multi, push onto answers list. Otherwise, store in single answer key.
-                      if (promise.row.item(l).ansType == 'multi') {
-                        question.answers.push(answer.key);
-                      } else {
+                      if (promise.row.item(l).ansType !== 'multi') {
                         question.answer = answer.key;
                       }
                     }

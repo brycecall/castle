@@ -13,25 +13,24 @@
     </div>
     <div class="centerPage" style="margin-bottom:85px;" id="centerPage">
         
-    <div layout="column" >
-      <md-button ng-show="substep > 0" class="outerChip selectedChip"  aria-label="" ng-click="stepDownSubstep('section')">
-         <span>{{selectedChip.section.title}} &#10004; </span>      
-      </md-button>
-<!--        <md-icon md-svg-src="chevron_right"></md-icon>-->
-      <md-button ng-show="substep > 1" class="outerChip selectedChip" aria-label="" ng-click="stepDownSubstep('subsection')">
-         <span>{{selectedChip.subsection.title}} &#10004; </span>
-      </md-button>
-    </div>
-        
-    <div layout="row" layout-align="space-between center">
-        <h2 class="md-subhead insTitle" 
-            style="margin-bottom:0px;">{{message}}</h2>
-    </div>
-     <div ng-repeat="item in chipList track by $index" layout="column" >
-      <md-button class="outerChip" aria-label="{{item.title}}" ng-click="stepUpSubstep($index)">
-         <div>{{item.title}}</div>
-      </md-button>
-     </div>        
+      <div layout="column" >
+        <md-button ng-show="substep > 0" class="outerChip selectedChip"  aria-label="" ng-click="stepDownSubstep('section')">
+           <span>{{selectedChip.section.title}} &#10004; </span>      
+        </md-button>
+        <md-button ng-show="substep > 1" class="outerChip selectedChip" aria-label="" ng-click="stepDownSubstep('subsection')">
+           <span>{{selectedChip.subsection.title}} &#10004; </span>
+        </md-button>
+      </div>
+          
+      <div layout="row" layout-align="space-between center">
+          <h2 class="md-subhead insTitle" 
+              style="margin-bottom:0px;">{{message}}</h2>
+      </div>
+      <div ng-repeat="item in chipList track by $index" layout="column" ng-if="checkNumAnswered()">
+        <md-button class="outerChip" aria-label="{{item.title}}" ng-click="stepUpSubstep($index)">
+           <div>{{item.title}}</div>
+        </md-button>
+      </div>        
         
     </div>
   </md-content>

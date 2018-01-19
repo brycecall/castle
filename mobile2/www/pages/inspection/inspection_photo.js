@@ -154,6 +154,16 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
       camera_manager.changeZoom(zoom);
   };
     
+  $scope.checkNumAnswered = function(item) {
+      var result = true;
+      if ($scope.location === 'question') {
+          result = item.isAnswered;
+      } else if (item.numAnswered != undefined) {
+          result = item.numAnswered < item[$scope.location + 's'].length;
+      }
+      return result;
+  };
+    
   (function init() {
     if ($state.current.name == 'inspection_photo') {
         $rootScope.loading = false;

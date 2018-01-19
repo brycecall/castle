@@ -60,6 +60,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
           private.inspection.rowId = promise.row.item(0).rowId;
           private.inspection.insId = promise.row.item(0).rowId;
           private.inspection.insSourceType = promise.row.item(0).insSourceType;
+          private.inspection.numAnswered = 0;
           private.inspection.sections = [];
           
           var i = 0;
@@ -72,6 +73,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
               sourceType: promise.row.item(i).secSourceType,
               inspectionId: promise.row.item(i).secInspectionId,
               order: promise.row.item(i).secOrder,
+              numAnswered: 0,
               subsections: []
             }
             // Build subsections
@@ -84,6 +86,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                 inspectionId: promise.row.item(j).susInspectionId,
                 sourceType: promise.row.item(j).susSourceType,
                 order: promise.row.item(j).susOrder,
+                numAnswered: 0,
                 questions: []
               }
               // Build questions
@@ -161,6 +164,9 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                         increment = m;
                       }
                     }
+                    if (question.isAnswered) {
+                      subsection.numAnswered++;
+                    }
                     if (increment > l) {
                       l = increment;
                     } else {
@@ -176,7 +182,17 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                 // increment will be tracked in questions loop
                 increment++;
               }
+              // If subsections.numAnswered = subsections.length, 
+              // then all subsections have been answered for that section
+              if (subsection.numAnswered == subsection.questions.length) {
+                section.numAnswered++;
+              }
               section.subsections.push(subsection);
+            }
+            // If inspection.numAnswered = sections.length,
+            // then all sections are complete
+            if (section.numAnswered == section.subsections.length) {
+              inspection.numAnswered++;
             }
             private.inspection.sections.push(section);
             i = increment + 1;

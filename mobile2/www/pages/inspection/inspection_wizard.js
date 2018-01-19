@@ -208,7 +208,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
             }
         );
 
-    var navigateQuestions = function (forward) {
+    var navigateQuestions = function (forward) {0
         if ($scope.questionCount !== -1 && $scope.questionCount > 1) {
             var newQuestionIndex = $scope.insParams.questionIndex;
             var newSubsectionIndex = $scope.insParams.subsectionIndex;
@@ -336,9 +336,33 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
       if(value == $scope.question.severity) {
         $scope.question.severity = "";
         $scope.question.isAnswered = 0;
-      } else {
+        // Decrement answered counts across all layers
+        if ($scope.inspection.sections[$scope.insParams.sectionIndex].subsections[$scope.insParams.subsectionIndex].numAnswered ==
+           $scope.inspection.sections[$scope.insParams.sectionIndex].subsections[$scope.insParams.subsectionIndex].questions.length) {
+          if ($scope.inspection.sections[$scope.insParams.sectionIndex].numAnswered == $scope.inspection.sections[$scope.insParams.sectionIndex].subsections[$scope.insParams.subsectionIndex].length) {
+            if ($scope.inspection.numAnswered == $scope.inspection.sections[$scope.insParams.sectionIndex].length) {
+              $scope.inspection.numAnswered--;
+            }
+            $scope.inspection.sections[$scope.insParams.sectionIndex].numAnswered--;
+          }
+          $scope.inspection.sections[$scope.insParams.sectionIndex].subsections[$scope.insParams.subsectionIndex].numAnswered--;
+        }
+      // First time selecting severity
+      } else if ($scope.question.severity == "" || $scope.question.severity == null) {
         $scope.question.severity = value;
         $scope.question.isAnswered = 1;
+        // Increment answered counts across all layers
+        $scope.inspection.sections[$scope.insParams.sectionIndex].subsections[$scope.insParams.subsectionIndex].numAnswered++;
+        if ($scope.inspection.sections[$scope.insParams.sectionIndex].subsections[$scope.insParams.subsectionIndex].numAnswered ==
+           $scope.inspection.sections[$scope.insParams.sectionIndex].subsections[$scope.insParams.subsectionIndex].questions.length) {
+          $scope.inspection.sections[$scope.insParams.sectionIndex].numAnswered++;
+          if ($scope.inspection.sections[$scope.insParams.sectionIndex].numAnswered == $scope.inspection.sections[$scope.insParams.sectionIndex].subsections[$scope.insParams.subsectionIndex].length) {
+            $scope.inspection.numAnswered++;
+          }
+        }
+      // Changed severity from one option to a different one
+      } else {
+        $scope.question.severity = value;  
       }
     };
 

@@ -905,14 +905,16 @@ $scope.questionTypes = [
     }
       
     // Comments Box magickery
-    if($scope.question.comments == undefined) {
-      $scope.question.comments = answer.autoComment;
-    } else if (answer.checked & $scope.question.comments.indexOf(answer.autoComment) < 0) {
-      // Checked box, add 
-      $scope.question.comments += ' ' + answer.autoComment;
-    } else if (!answer.checked & $scope.question.comments.indexOf(answer.autoComment) >= 0) {
-      // Unchecked box, remove string from question comments
-      $scope.question.comments = $scope.question.comments.replace(answer.autoComment, '');
+    if (answer.autoComment) {
+        if($scope.question.comments == undefined) {
+          $scope.question.comments = answer.autoComment;
+        } else if (answer.checked && $scope.question.comments.indexOf(answer.autoComment) < 0) {
+          // Checked box, add 
+          $scope.question.comments += ' ' + answer.autoComment;
+        } else if (!answer.checked && $scope.question.comments.indexOf(answer.autoComment) >= 0) {
+          // Unchecked box, remove string from question comments
+          $scope.question.comments = $scope.question.comments.replace(answer.autoComment, '');
+        }
     }
   };
 

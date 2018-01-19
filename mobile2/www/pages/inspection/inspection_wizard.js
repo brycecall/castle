@@ -304,15 +304,17 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
         answer.checked = !answer.checked;
       }
 
-      if($scope.question.comments == undefined) {
-        $scope.question.comments = answer.autoComment;
-      } else if (answer.checked & $scope.question.comments.indexOf(answer.autoComment) < 0) {
-        // Checked box, add 
-        $scope.question.comments += ' ' + answer.autoComment;
-      } else if (!answer.checked & $scope.question.comments.indexOf(answer.autoComment) >= 0) {
-        // Unchecked box, remove string from question comments
-        $scope.question.comments = $scope.question.comments.replace(answer.autoComment, '');
-      }
+        if (answer.autoComment) {
+          if($scope.question.comments == undefined) {
+            $scope.question.comments = answer.autoComment;
+          } else if (answer.checked && $scope.question.comments.indexOf(answer.autoComment) < 0) {
+            // Checked box, add 
+            $scope.question.comments += ' ' + answer.autoComment;
+          } else if (!answer.checked && $scope.question.comments.indexOf(answer.autoComment) >= 0) {
+            // Unchecked box, remove string from question comments
+            $scope.question.comments = $scope.question.comments.replace(answer.autoComment, '');
+          }
+        }
     };
 
     $scope.toggleRadio = function (answer) {
@@ -324,7 +326,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
     
     $scope.setAnswer = function(answer) {
         $scope.question.answer = answer;
-    }
+    };
 
     $scope.exists = function (value, array) {
         return $.inArray(value, array) > -1;

@@ -80,7 +80,7 @@
                     </md-button>
                 </div>
             </div>
-            <div layout="row" layout-align="start center">
+<!--            <div layout="row" layout-align="start center">
             <md-checkbox ng-model="newCheckBoxKey" 
                          ng-click="toggle(otherValue.value, question.answers, true)">
                 Other:
@@ -94,7 +94,7 @@
                     <md-button class="md-icon-button" ng-click="addPhotos(otherValue.id, otherValue.value)" ng-show="exists(otherValue.value, question.answers)" >
                         <md-icon md-svg-icon="shutter_camera"></md-icon>
                     </md-button>
-            </div>        
+            </div>   -->     
         </div>
         <div ng-if="question.type === 'radio'">
             <md-radio-group ng-model="question.answer"
@@ -108,7 +108,7 @@
                     </md-radio-button>
                     <span flex=""></span>
                 </div>
-                <div layout="row" layout="start center">
+<!--                <div layout="row" layout="start center">
                 <md-radio-button class="questionIndent" 
                                  ng-value="otherValue.singleSelect">Other
                 </md-radio-button>
@@ -118,7 +118,7 @@
                             class="inlineInput">
                  </div>
                     <span flex=""></span>
-                 </div>
+                 </div>-->
             </md-radio-group>
         </div>
         <div ng-if="question.type === 'dropdown'">

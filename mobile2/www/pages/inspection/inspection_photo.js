@@ -157,9 +157,18 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
   $scope.checkNumAnswered = function(item) {
       var result = true;
       if ($scope.location === 'question' && item.isAnswered != undefined) {
-          result = item.isAnswered;
+          result = !item.isAnswered;
       } else if (item.numAnswered != undefined) {
-          result = item.numAnswered < item[$scope.location + 's'].length;
+          var actualLength = 0;
+          switch($scope.location) {
+              case 'section':
+                actualLength = item.subsections.length;
+                break;
+              case 'subsection':
+                actualLength = item.questions.length;
+                break;
+          }
+          result = item.numAnswered < actualLength;
       }
       return result;
   };

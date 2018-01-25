@@ -324,8 +324,8 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
         // Decrement answered counts across all layers
         if ($scope.inspection.sections[$scope.insParams.sectionIndex].subsections[$scope.insParams.subsectionIndex].numAnswered ==
            $scope.inspection.sections[$scope.insParams.sectionIndex].subsections[$scope.insParams.subsectionIndex].questions.length) {
-          if ($scope.inspection.sections[$scope.insParams.sectionIndex].numAnswered == $scope.inspection.sections[$scope.insParams.sectionIndex].subsections[$scope.insParams.subsectionIndex].length) {
-            if ($scope.inspection.numAnswered == $scope.inspection.sections[$scope.insParams.sectionIndex].length) {
+          if ($scope.inspection.sections[$scope.insParams.sectionIndex].numAnswered == $scope.inspection.sections[$scope.insParams.sectionIndex].subsections.length) {
+            if ($scope.inspection.numAnswered == $scope.inspection.sections.length) {
               $scope.inspection.numAnswered--;
             }
             $scope.inspection.sections[$scope.insParams.sectionIndex].numAnswered--;
@@ -342,7 +342,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
         if ($scope.inspection.sections[$scope.insParams.sectionIndex].subsections[$scope.insParams.subsectionIndex].numAnswered ==
            $scope.inspection.sections[$scope.insParams.sectionIndex].subsections[$scope.insParams.subsectionIndex].questions.length) {
           $scope.inspection.sections[$scope.insParams.sectionIndex].numAnswered++;
-          if ($scope.inspection.sections[$scope.insParams.sectionIndex].numAnswered == $scope.inspection.sections[$scope.insParams.sectionIndex].subsections[$scope.insParams.subsectionIndex].length) {
+          if ($scope.inspection.sections[$scope.insParams.sectionIndex].numAnswered == $scope.inspection.sections[$scope.insParams.sectionIndex].subsections.length) {
             $scope.inspection.numAnswered++;
           }
         }

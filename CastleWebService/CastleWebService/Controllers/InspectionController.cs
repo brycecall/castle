@@ -81,6 +81,29 @@ namespace CastleWebService.Controllers
 
 
 
+        //[HttpGet("api/upsertFullInspection/{userId}")]
+        //public async Task<CastleData> UpsertFullInspection([FromBody]Inspection inspection,  int userId)
+        //{
+        //    var result = new CastleData();
+        //    try
+        //    {
+        //        var query = await Task.Factory.StartNew(() =>
+        //        {
+        //            return
+
+
+        //            _db.Inspection.Select(x => x).Where(x => x.InsUserId == userId).Take(50).ToList();
+
+
+        //        });
+        //    }
+        //    catch (Exception e) {
+
+        //    }
+        //    return result;
+        //}
+
+
 
 
 

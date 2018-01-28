@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
 
 namespace CastleWebService
 {
@@ -23,9 +24,12 @@ namespace CastleWebService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc(
-               // options => options.OutputFormatters.Add(new JsonConfigurationExtensions()
-                );
+            services.AddMvc().AddJsonOptions(o =>
+            {
+                o.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+                o.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+            }
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,4 +43,5 @@ namespace CastleWebService
             app.UseMvc();
         }
     }
+    
 }

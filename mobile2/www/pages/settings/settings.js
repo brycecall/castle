@@ -8,7 +8,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, database, theme_manager, header_manager) {
+app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, database, theme_manager, header_manager, $cordovaFile) {
   header_manager.title = "Settings";
   
   $scope.wipeDatabase = function () {
@@ -17,7 +17,34 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
     if (sure) {
       $rootScope.loading = true;
       theme_manager.clearThemes();
-      database.initTables()
+        
+      // Replace template and inspection folders with empty ones
+      $cordovaFile.createDir(cordova.file.dataDirectory, "templates", true)
+        .then(function(success) {
+        console.log('Templates createDir Success');
+        console.log(success);
+      }, function(error) {
+        console.log('Templates createDir Error: ' + error.message);  
+      });
+      $cordovaFile.createDir(cordova.file.dataDirectory, "inspections", true)
+        .then(function(success) {
+        console.log('Inspections createDir success');
+        console.log(success);
+      }, function(error) {
+        console.log('Inspections createDir Error: ' + error.message);  
+      });
+      // Add default template to template directory
+      $cordovaFile.writeFile(cordova.file.dataDirectory + "templates/", "default_template.js", JSON.stringify(defaultTemplate), true)
+        .then(function(success) {
+        console.log('Write Default Template success');
+        console.log(success);
+      }, function(error) {
+        console.log('Write Default Template error: ' + error.message);  
+      });
+      $rootScope.loading = false;
+
+      // SQLLite init code
+      /*database.initTables()
         .then(function (success) {
           $timeout(function () {
             $scope.reload();
@@ -25,7 +52,7 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
         }, function (error) {
           $rootScope.loading = false;
           alert(error);
-        });
+        });*/
     }
   };
 

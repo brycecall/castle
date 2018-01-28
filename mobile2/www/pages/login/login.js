@@ -39,20 +39,20 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
     if ($scope.new_user.username && $scope.new_user.password && $scope.new_user.email) {
       database.createUser($scope.new_user.username, $scope.new_user.password, $scope.new_user.email);
     } else {
-      var valid = database.validCredentials($scope.user.username, $scope.user.password);
-      valid.then(
+      //var valid = database.validCredentials($scope.user.username, $scope.user.password);
+      //valid.then(
         //success - valid user
-        function (promise) {
-          console.log(promise.message);
+        //function (promise) {
+          //console.log(promise.message);
           $rootScope.authenticated = true;
           $state.go("home");
-        },
+        //},
         //fail - invalid user
-        function (promise) {
-          console.log(promise.message);
+        //function (promise) {
+        //  console.log(promise.message);
         }
-      );
-    }
+      //);
+    //}
 
   });
 

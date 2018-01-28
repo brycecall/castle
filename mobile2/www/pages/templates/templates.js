@@ -170,16 +170,12 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
   templates.then(
     //Success
     function (promise) {
-      console.log(promise.message);
-      console.log(promise.row);
-      for (var i = 0; promise.row && i < promise.row.length; i++) {
-        $scope.templates.push(promise.row.item(i));
-      }
-        $rootScope.loading = false;
+      $scope.templates.push(JSON.parse(promise.value));
+      $rootScope.loading = false;
     },
     function (promise) {
       console.log(promise.message);
-        $rootScope.loading = false;
+      $rootScope.loading = false;
     }
   );
 });

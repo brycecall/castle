@@ -1,4 +1,4 @@
-app.factory('inspection_manager', function (database, $q, theme_manager) {
+app.factory('inspection_manager', function (database, $q, theme_manager, $cordovaFile) {
   var private = {};
   var public = {};
 
@@ -40,7 +40,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     return promise;
   };
     
-
+  
   private.loadFromDatabase = function (id) {
     var defer = $q.defer();
     if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== id) {
@@ -259,7 +259,16 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
 
 
   public.getTemplates = function () {
-    return database.getTemplates();
+    var tempDefer = $q.defer();
+    $cordovaFile.readAsText(cordova.file.dataDirectory + "templates/", "default_template.js")
+      .then(function(success) {
+        tempDefer.resolve({value: success});
+      }, function(error) {
+        tempDefer.reject({value: error});
+    });
+    return tempDefer.promise;
+    // SQLite
+    //return database.getTemplates();
   };
 
   public.initSections = function () {
@@ -436,8 +445,10 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
 
     switch (public.mode) {
       case "inspection":
+        promise = private.saveInspectionToFile();
+        break;
       case "template":
-        promise = private.saveToDatabase();
+        promise = private.saveTemplateToFile();
         break;
       case "theme":
         promise = private.saveToThemeManager();
@@ -657,6 +668,40 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
 
     return deferred.promise;
   };
+    
+  private.saveTemplateToFile = function() {
+    var deferred = $q.defer();
+      
+    $cordovaFile.writeFile(cordova.file.dataDirectory + "templates/", "test.txt", JSON.stringify(private.inspection), true)
+      .then(function(success) {
+        console.log('Successful template save:');
+        console.log(success);
+        deferred.resolve({value: success});
+      }, function(error){
+        console.log('Error saving template:');
+        console.log(error);
+        deferred.reject({value: error});
+    });
+      
+    return deferred.promise;
+  }
+  
+  private.saveInspectionToFile = function() {
+    var deferred = $q.defer();
+      
+    $cordovaFile.writeFile(cordova.file.dataDirectory + "inspections/", "test.txt", JSON.stringify(private.inspection), true)
+      .then(function(success) {
+        console.log('Successful inspection save:');
+        console.log(success);
+        deferred.resolve({value: success});
+      }, function(error){
+        console.log('Error saving inspection:');
+        console.log(error);
+        deferred.reject({value: error});
+    });
+      
+    return deferred.promise;
+  }
 
   private.deleteFromDatabase = function (inspectionId) {
     var deferred = $q.defer();

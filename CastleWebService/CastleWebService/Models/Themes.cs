@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CastleWebService.Models
 {
-    public partial class Theme
+    public partial class Themes
     {
         public int ThemeId { get; set; }
         public int ThemeUserId { get; set; }
@@ -11,7 +11,7 @@ namespace CastleWebService.Models
         public string ThemeTitle { get; set; }
         public string ThemeBlob { get; set; }
 
-        public Organization ThemeOrganization { get; set; }
+        public Organizations ThemeOrganization { get; set; }
         public Users ThemeUser { get; set; }
     }
 }

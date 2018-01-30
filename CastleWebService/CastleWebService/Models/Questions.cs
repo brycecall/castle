@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace CastleWebService.Models
 {
-    public partial class Question
+    public partial class Questions
     {
-        public Question()
+        public Questions()
         {
-            Answer = new HashSet<Answer>();
-            Photo = new HashSet<Photo>();
+            Answers = new HashSet<Answers>();
+            Photos = new HashSet<Photos>();
         }
 
         public int QuestionId { get; set; }
@@ -30,9 +30,9 @@ namespace CastleWebService.Models
         public string QueComments { get; set; }
         public string QuePrivateNotes { get; set; }
 
-        public Inspection QueInspection { get; set; }
-        public Subsection QueSubSection { get; set; }
-        public ICollection<Answer> Answer { get; set; }
-        public ICollection<Photo> Photo { get; set; }
+        public Inspections QueInspection { get; set; }
+        public Subsections QueSubSection { get; set; }
+        public ICollection<Answers> Answers { get; set; }
+        public ICollection<Photos> Photos { get; set; }
     }
 }

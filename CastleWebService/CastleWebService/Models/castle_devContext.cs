@@ -6,15 +6,15 @@ namespace CastleWebService.Models
 {
     public partial class castle_devContext : DbContext
     {
-        public virtual DbSet<Answer> Answer { get; set; }
+        public virtual DbSet<Answers> Answers { get; set; }
         public virtual DbSet<Founders> Founders { get; set; }
-        public virtual DbSet<Inspection> Inspection { get; set; }
-        public virtual DbSet<Organization> Organization { get; set; }
-        public virtual DbSet<Photo> Photo { get; set; }
-        public virtual DbSet<Question> Question { get; set; }
-        public virtual DbSet<Section> Section { get; set; }
-        public virtual DbSet<Subsection> Subsection { get; set; }
-        public virtual DbSet<Theme> Theme { get; set; }
+        public virtual DbSet<Inspections> Inspections { get; set; }
+        public virtual DbSet<Organizations> Organizations { get; set; }
+        public virtual DbSet<Photos> Photos { get; set; }
+        public virtual DbSet<Questions> Questions { get; set; }
+        public virtual DbSet<Sections> Sections { get; set; }
+        public virtual DbSet<Subsections> Subsections { get; set; }
+        public virtual DbSet<Themes> Themes { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -28,8 +28,10 @@ namespace CastleWebService.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Answer>(entity =>
+            modelBuilder.Entity<Answers>(entity =>
             {
+                entity.HasKey(e => e.AnswerId);
+
                 entity.Property(e => e.AnswerId).ValueGeneratedNever();
 
                 entity.Property(e => e.AndInspectionId).HasColumnName("andInspectionId");
@@ -60,13 +62,13 @@ namespace CastleWebService.Models
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.AndInspection)
-                    .WithMany(p => p.Answer)
+                    .WithMany(p => p.Answers)
                     .HasForeignKey(d => d.AndInspectionId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Answer__andInspe__5CD6CB2B");
 
                 entity.HasOne(d => d.AnsQuestion)
-                    .WithMany(p => p.Answer)
+                    .WithMany(p => p.Answers)
                     .HasForeignKey(d => d.AnsQuestionId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Answer__ansQuest__5BE2A6F2");
@@ -88,9 +90,13 @@ namespace CastleWebService.Models
                     .HasConstraintName("FK__Founders__foUser__6A30C649");
             });
 
-            modelBuilder.Entity<Inspection>(entity =>
+            modelBuilder.Entity<Inspections>(entity =>
             {
-                entity.Property(e => e.InspectionId).ValueGeneratedNever();
+                entity.HasKey(e => e.InspectionId);
+
+                entity.Property(e => e.InspectionId)
+                    .HasColumnName("inspectionId")
+                    .ValueGeneratedNever();
 
                 entity.Property(e => e.InsIsDeleted).HasColumnName("insIsDeleted");
 
@@ -105,25 +111,42 @@ namespace CastleWebService.Models
 
                 entity.Property(e => e.InsName)
                     .IsRequired()
+                    .HasColumnName("insName")
                     .HasMaxLength(100)
                     .IsUnicode(false);
+
+                entity.Property(e => e.InsOrganizationId).HasColumnName("insOrganizationId");
 
                 entity.Property(e => e.InsSourceType)
                     .IsRequired()
+                    .HasColumnName("insSourceType")
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
-                entity.Property(e => e.InsTemplateResponseBlob).IsUnicode(false);
+                entity.Property(e => e.InsTemplateId).HasColumnName("insTemplateId");
+
+                entity.Property(e => e.InsTemplateResponseBlob)
+                    .HasColumnName("insTemplateResponseBlob")
+                    .IsUnicode(false);
 
                 entity.Property(e => e.InsTemplateTitle)
+                    .HasColumnName("insTemplateTitle")
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
-                entity.Property(e => e.InsThemeResponseBlob).IsUnicode(false);
+                entity.Property(e => e.InsThemeId).HasColumnName("insThemeId");
+
+                entity.Property(e => e.InsThemeResponseBlob)
+                    .HasColumnName("insThemeResponseBlob")
+                    .IsUnicode(false);
+
+                entity.Property(e => e.InsUserId).HasColumnName("insUserId");
             });
 
-            modelBuilder.Entity<Organization>(entity =>
+            modelBuilder.Entity<Organizations>(entity =>
             {
+                entity.HasKey(e => e.OrganizationId);
+
                 entity.Property(e => e.OrganizationId).ValueGeneratedNever();
 
                 entity.Property(e => e.OrgAddress)
@@ -156,8 +179,10 @@ namespace CastleWebService.Models
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Photo>(entity =>
+            modelBuilder.Entity<Photos>(entity =>
             {
+                entity.HasKey(e => e.PhotoId);
+
                 entity.Property(e => e.PhotoId).ValueGeneratedNever();
 
                 entity.Property(e => e.PhoAnswerId).HasColumnName("phoAnswerId");
@@ -184,26 +209,28 @@ namespace CastleWebService.Models
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.PhoAnswer)
-                    .WithMany(p => p.Photo)
+                    .WithMany(p => p.Photos)
                     .HasForeignKey(d => d.PhoAnswerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Photo__phoAnswer__6383C8BA");
 
                 entity.HasOne(d => d.PhoInspection)
-                    .WithMany(p => p.Photo)
+                    .WithMany(p => p.Photos)
                     .HasForeignKey(d => d.PhoInspectionId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Photo__phoInspec__619B8048");
 
                 entity.HasOne(d => d.PhoQuestion)
-                    .WithMany(p => p.Photo)
+                    .WithMany(p => p.Photos)
                     .HasForeignKey(d => d.PhoQuestionId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Photo__phoQuesti__628FA481");
             });
 
-            modelBuilder.Entity<Question>(entity =>
+            modelBuilder.Entity<Questions>(entity =>
             {
+                entity.HasKey(e => e.QuestionId);
+
                 entity.Property(e => e.QuestionId).ValueGeneratedNever();
 
                 entity.Property(e => e.QueAnswered).HasColumnName("queAnswered");
@@ -259,20 +286,22 @@ namespace CastleWebService.Models
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.QueInspection)
-                    .WithMany(p => p.Question)
+                    .WithMany(p => p.Questions)
                     .HasForeignKey(d => d.QueInspectionId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Question__queIns__59063A47");
 
                 entity.HasOne(d => d.QueSubSection)
-                    .WithMany(p => p.Question)
+                    .WithMany(p => p.Questions)
                     .HasForeignKey(d => d.QueSubSectionId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Question__queSub__5812160E");
             });
 
-            modelBuilder.Entity<Section>(entity =>
+            modelBuilder.Entity<Sections>(entity =>
             {
+                entity.HasKey(e => e.SectionId);
+
                 entity.Property(e => e.SectionId).ValueGeneratedNever();
 
                 entity.Property(e => e.SecInspectionId).HasColumnName("secInspectionId");
@@ -290,14 +319,16 @@ namespace CastleWebService.Models
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.SecInspection)
-                    .WithMany(p => p.Section)
+                    .WithMany(p => p.Sections)
                     .HasForeignKey(d => d.SecInspectionId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Section__secInsp__5165187F");
             });
 
-            modelBuilder.Entity<Subsection>(entity =>
+            modelBuilder.Entity<Subsections>(entity =>
             {
+                entity.HasKey(e => e.SubsectionId);
+
                 entity.Property(e => e.SubsectionId).ValueGeneratedNever();
 
                 entity.Property(e => e.SusInspectionId).HasColumnName("susInspectionId");
@@ -317,20 +348,22 @@ namespace CastleWebService.Models
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.SusInspection)
-                    .WithMany(p => p.Subsection)
+                    .WithMany(p => p.Subsections)
                     .HasForeignKey(d => d.SusInspectionId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Subsectio__susIn__5535A963");
 
                 entity.HasOne(d => d.SusSection)
-                    .WithMany(p => p.Subsection)
+                    .WithMany(p => p.Subsections)
                     .HasForeignKey(d => d.SusSectionId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Subsectio__susSe__5441852A");
             });
 
-            modelBuilder.Entity<Theme>(entity =>
+            modelBuilder.Entity<Themes>(entity =>
             {
+                entity.HasKey(e => e.ThemeId);
+
                 entity.Property(e => e.ThemeId).ValueGeneratedNever();
 
                 entity.Property(e => e.ThemeBlob)
@@ -347,13 +380,13 @@ namespace CastleWebService.Models
                 entity.Property(e => e.ThemeUserId).HasColumnName("themeUserId");
 
                 entity.HasOne(d => d.ThemeOrganization)
-                    .WithMany(p => p.Theme)
+                    .WithMany(p => p.Themes)
                     .HasForeignKey(d => d.ThemeOrganizationId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Theme__themeOrga__6754599E");
 
                 entity.HasOne(d => d.ThemeUser)
-                    .WithMany(p => p.Theme)
+                    .WithMany(p => p.Themes)
                     .HasForeignKey(d => d.ThemeUserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Theme__themeUser__66603565");

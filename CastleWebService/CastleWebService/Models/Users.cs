@@ -8,7 +8,7 @@ namespace CastleWebService.Models
         public Users()
         {
             Founders = new HashSet<Founders>();
-            Theme = new HashSet<Theme>();
+            Themes = new HashSet<Themes>();
         }
 
         public int UserId { get; set; }
@@ -25,6 +25,6 @@ namespace CastleWebService.Models
         public string UsrZip { get; set; }
 
         public ICollection<Founders> Founders { get; set; }
-        public ICollection<Theme> Theme { get; set; }
+        public ICollection<Themes> Themes { get; set; }
     }
 }

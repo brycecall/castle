@@ -3,22 +3,22 @@ using System.Collections.Generic;
 
 namespace CastleWebService.Models
 {
-    public partial class Inspection
+    public partial class Inspections
     {
-        public Inspection()
+        public Inspections()
         {
-            Answer = new HashSet<Answer>();
-            Photo = new HashSet<Photo>();
-            Question = new HashSet<Question>();
-            Section = new HashSet<Section>();
-            Subsection = new HashSet<Subsection>();
+            Answers = new HashSet<Answers>();
+            Photos = new HashSet<Photos>();
+            Questions = new HashSet<Questions>();
+            Sections = new HashSet<Sections>();
+            Subsections = new HashSet<Subsections>();
         }
 
         public int InspectionId { get; set; }
         public int InsUserId { get; set; }
         public string InsName { get; set; }
         public string InsSourceType { get; set; }
-        public DateTime? InsLastModified { get; set; }
+        public DateTime InsLastModified { get; set; }
         public DateTime? InsLastSubmitted { get; set; }
         public int? InsThemeId { get; set; }
         public string InsThemeResponseBlob { get; set; }
@@ -28,10 +28,10 @@ namespace CastleWebService.Models
         public string InsTemplateTitle { get; set; }
         public byte? InsIsDeleted { get; set; }
 
-        public ICollection<Answer> Answer { get; set; }
-        public ICollection<Photo> Photo { get; set; }
-        public ICollection<Question> Question { get; set; }
-        public ICollection<Section> Section { get; set; }
-        public ICollection<Subsection> Subsection { get; set; }
+        public ICollection<Answers> Answers { get; set; }
+        public ICollection<Photos> Photos { get; set; }
+        public ICollection<Questions> Questions { get; set; }
+        public ICollection<Sections> Sections { get; set; }
+        public ICollection<Subsections> Subsections { get; set; }
     }
 }

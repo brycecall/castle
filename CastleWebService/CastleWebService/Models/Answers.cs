@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace CastleWebService.Models
 {
-    public partial class Answer
+    public partial class Answers
     {
-        public Answer()
+        public Answers()
         {
-            Photo = new HashSet<Photo>();
+            Photos = new HashSet<Photos>();
         }
 
         public int AnswerId { get; set; }
@@ -20,8 +20,8 @@ namespace CastleWebService.Models
         public int? AnsOrder { get; set; }
         public string AnsAutoComment { get; set; }
 
-        public Inspection AndInspection { get; set; }
-        public Question AnsQuestion { get; set; }
-        public ICollection<Photo> Photo { get; set; }
+        public Inspections AndInspection { get; set; }
+        public Questions AnsQuestion { get; set; }
+        public ICollection<Photos> Photos { get; set; }
     }
 }

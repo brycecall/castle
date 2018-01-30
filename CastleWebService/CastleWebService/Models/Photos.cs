@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CastleWebService.Models
 {
-    public partial class Photo
+    public partial class Photos
     {
         public int PhotoId { get; set; }
         public int PhoInspectionId { get; set; }
@@ -14,8 +14,8 @@ namespace CastleWebService.Models
         public string PhoSourceType { get; set; }
         public int? PhoOrder { get; set; }
 
-        public Answer PhoAnswer { get; set; }
-        public Inspection PhoInspection { get; set; }
-        public Question PhoQuestion { get; set; }
+        public Answers PhoAnswer { get; set; }
+        public Inspections PhoInspection { get; set; }
+        public Questions PhoQuestion { get; set; }
     }
 }

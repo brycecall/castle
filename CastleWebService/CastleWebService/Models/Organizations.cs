@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace CastleWebService.Models
 {
-    public partial class Organization
+    public partial class Organizations
     {
-        public Organization()
+        public Organizations()
         {
-            Theme = new HashSet<Theme>();
+            Themes = new HashSet<Themes>();
         }
 
         public int OrganizationId { get; set; }
@@ -18,6 +18,6 @@ namespace CastleWebService.Models
         public string OrgZipCode { get; set; }
         public string OrgLogo { get; set; }
 
-        public ICollection<Theme> Theme { get; set; }
+        public ICollection<Themes> Themes { get; set; }
     }
 }

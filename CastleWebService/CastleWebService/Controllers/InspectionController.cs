@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CastleWebService.Models;
+using Newtonsoft.Json;
 
 namespace CastleWebService.Controllers
 {
@@ -16,17 +17,17 @@ namespace CastleWebService.Controllers
         public InspectionController() { }
 
         [HttpGet("api/inspection/{insId}/{userId}")]
-        public Inspection GetInspection(int insId, int userId)
+        public Inspections GetInspection(int insId, int userId)
         {
-            var query = _db.Inspection.Where(x => x.InspectionId == insId && x.InsUserId == userId).FirstOrDefault();
+            var query = _db.Inspections.Where(x => x.InspectionId == insId && x.InsUserId == userId).FirstOrDefault();
             return query;
         }
 
         [HttpGet("api/inspections/{userId}")]
-        public async Task<List<Inspection>> GetInspections(int userId)
+        public async Task<List<Inspections>> GetInspections(int userId)
         {
             var query = await Task.Factory.StartNew(() =>  {
-                return _db.Inspection.Select(x => x).Where(x => x.InsUserId == userId).Take(50).ToList();
+                return _db.Inspections.Select(x => x).Where(x => x.InsUserId == userId).Take(50).ToList();
             });
             return query;
         }
@@ -37,7 +38,7 @@ namespace CastleWebService.Controllers
             var result = new CastleData();
             try
             {
-                var inspection = _db.Inspection.Where(x => x.InspectionId == insId && x.InsUserId == userId).FirstOrDefault();
+                var inspection = _db.Inspections.Where(x => x.InspectionId == insId && x.InsUserId == userId).FirstOrDefault();
                 inspection.InsIsDeleted = 1;
                 _db.SaveChanges();
                 result.data = 0;
@@ -51,12 +52,14 @@ namespace CastleWebService.Controllers
         }
 
         [HttpPost("api/upsertinspection/{userId}")]
-        public CastleData UpsertInspection([FromBody]Inspection inspection, int userId)
+        public CastleData UpsertInspection([FromBody]object iinspection, int userId)
         {
             var result = new CastleData();
             try
             {
-                var existingInspection = _db.Inspection.Where(x => x.InspectionId == inspection.InspectionId && x.InsUserId == userId).FirstOrDefault();
+                var inspection = JsonConvert.DeserializeObject<Inspections>(iinspection.ToString());
+
+                var existingInspection = _db.Inspections.Where(x => x.InspectionId == inspection.InspectionId && x.InsUserId == userId).FirstOrDefault();
 
                 if (existingInspection != null)
                 {
@@ -82,7 +85,7 @@ namespace CastleWebService.Controllers
 
 
         //[HttpGet("api/upsertFullInspection/{userId}")]
-        //public async Task<CastleData> UpsertFullInspection([FromBody]Inspection inspection,  int userId)
+        //public async Task<CastleData> UpsertFullInspection([FromBody]Inspections inspection,  int userId)
         //{
         //    var result = new CastleData();
         //    try
@@ -92,7 +95,7 @@ namespace CastleWebService.Controllers
         //            return
 
 
-        //            _db.Inspection.Select(x => x).Where(x => x.InsUserId == userId).Take(50).ToList();
+        //            _db.Inspections.Select(x => x).Where(x => x.InsUserId == userId).Take(50).ToList();
 
 
         //        });

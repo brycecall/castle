@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace CastleWebService.Models
 {
-    public partial class Section
+    public partial class Sections
     {
-        public Section()
+        public Sections()
         {
-            Subsection = new HashSet<Subsection>();
+            Subsections = new HashSet<Subsections>();
         }
 
         public int SectionId { get; set; }
@@ -16,7 +16,7 @@ namespace CastleWebService.Models
         public string SecSourceType { get; set; }
         public int? SecOrder { get; set; }
 
-        public Inspection SecInspection { get; set; }
-        public ICollection<Subsection> Subsection { get; set; }
+        public Inspections SecInspection { get; set; }
+        public ICollection<Subsections> Subsections { get; set; }
     }
 }

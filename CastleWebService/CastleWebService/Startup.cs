@@ -10,13 +10,17 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using CastleWebService.Models;
 using System.Reflection;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace CastleWebService
 {
+
     public class ModelMetadataTypeAttributeContractResolver : DefaultContractResolver
     {
+        private IMemoryCache _cache = new MemoryCache(new MemoryCacheOptions());
+        IList<JsonProperty> _jsonProperties = new List<JsonProperty>();
+
         public ModelMetadataTypeAttributeContractResolver()
         {
             // Default from https://github.com/aspnet/Mvc/blob/dev/src/Microsoft.AspNetCore.Mvc.Formatters.Json/JsonSerializerSettingsProvider.cs
@@ -28,31 +32,45 @@ namespace CastleWebService
 
         protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
         {
-            var properties = base.CreateProperties(type, memberSerialization);
-
-            var propertyOverrides = GetModelMetadataTypes(type)
-                .SelectMany(t => t.GetProperties())
-                .ToLookup(p => p.Name, p => p);
-
-            foreach (var property in properties)
+            // Look for cache key
+            if (!_cache.TryGetValue(type, out _jsonProperties))
             {
-                var metaProperty = propertyOverrides[property.UnderlyingName].FirstOrDefault();
-                if (metaProperty != null)
-                {
-                    var jsonPropertyAttribute = metaProperty.GetCustomAttributes<JsonPropertyAttribute>().FirstOrDefault();
-                    if (jsonPropertyAttribute != null)
-                    {
-                        property.PropertyName = jsonPropertyAttribute.PropertyName;
-                    }
-                    var jsonIgnoreAttribute = metaProperty.GetCustomAttributes<JsonIgnoreAttribute>().FirstOrDefault();
-                    if (jsonIgnoreAttribute != null) {
 
-                        property.Ignored = true;
+                // Set cache options to never remove
+                var cacheEntryOptions = new MemoryCacheEntryOptions().SetPriority(CacheItemPriority.NeverRemove);
+
+                _jsonProperties = base.CreateProperties(type, memberSerialization);
+
+                var propertyOverrides = GetModelMetadataTypes(type)
+                    .SelectMany(t => t.GetProperties())
+                    .ToLookup(p => p.Name, p => p);
+
+                foreach (var property in _jsonProperties)
+                {
+                    var metaProperty = propertyOverrides[property.UnderlyingName].FirstOrDefault();
+                    if (metaProperty != null)
+                    {
+                        // track property name
+                        var jsonPropertyAttribute = metaProperty.GetCustomAttributes<JsonPropertyAttribute>().FirstOrDefault();
+                        if (jsonPropertyAttribute != null)
+                        {
+                            property.PropertyName = jsonPropertyAttribute.PropertyName;
+                        }
+                        // track ignore attribute
+                        var jsonIgnoreAttribute = metaProperty.GetCustomAttributes<JsonIgnoreAttribute>().FirstOrDefault();
+                        if (jsonIgnoreAttribute != null) {
+
+                            property.Ignored = true;
+                        }
+                        // can track more if needs be
                     }
                 }
+
+                // Save data in cache
+                _cache.Set(type, _jsonProperties, cacheEntryOptions);
             }
 
-            return properties;
+            return _jsonProperties;
         }
 
         static Type GetModelMetadataType(Attribute attribute)
@@ -104,6 +122,7 @@ namespace CastleWebService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMemoryCache();
             services.AddMvc().AddJsonOptions(o =>
             {
                 o.SerializerSettings.ContractResolver = new ModelMetadataTypeAttributeContractResolver();

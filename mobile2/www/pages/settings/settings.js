@@ -8,7 +8,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, database, theme_manager, header_manager, $cordovaFile) {
+app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, database, theme_manager, header_manager, filesystem_manager, $cordovaFile) {
   header_manager.title = "Settings";
   
   $scope.wipeDatabase = function () {
@@ -19,27 +19,12 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
       theme_manager.clearThemes();
         
       // Replace template and inspection folders with empty ones
-      $cordovaFile.createDir(cordova.file.dataDirectory, "templates", true)
-        .then(function(success) {
-        console.log('Templates createDir Success');
+      filesystem_manager.deleteInit().then(function(success){
+        console.log('Folders deleted successfully');
         console.log(success);
       }, function(error) {
-        console.log('Templates createDir Error: ' + error.message);  
-      });
-      $cordovaFile.createDir(cordova.file.dataDirectory, "inspections", true)
-        .then(function(success) {
-        console.log('Inspections createDir success');
-        console.log(success);
-      }, function(error) {
-        console.log('Inspections createDir Error: ' + error.message);  
-      });
-      // Add default template to template directory
-      $cordovaFile.writeFile(cordova.file.dataDirectory + "templates/", "default_template.js", JSON.stringify(defaultTemplate), true)
-        .then(function(success) {
-        console.log('Write Default Template success');
-        console.log(success);
-      }, function(error) {
-        console.log('Write Default Template error: ' + error.message);  
+        console.log('Error deleting folders');
+        console.log(error);
       });
       $rootScope.loading = false;
 

@@ -160,11 +160,34 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $sha) {
       }, function(error) {
         deferred.reject(error);  
       });
-        
+
       return deferred.promise;
     }
     
-    // Deletion
+    // Generate inspection from template file
+    public.copyTemplateToInspection = function(template) {
+      var deferred = $q.defer();
+        
+      // Copy incoming template and Edit unique identifiers
+      var newInspection = angular.copy(template);
+      newInspection.guid = public.generateGuid();
+      newInspection.hash = null;
+      newInspection.insSourceType = "inspection";
+      newInspection.hash = $sha.hash(newInspection.toString());
+      newInspection.lastModified = new Date();
+        
+      // Write to file
+      public.saveInspection(newInspection.guid + ".js", JSON.stringify(newInspection))
+        .then(function(success) {
+        deferred.resolve(success);  
+      }, function(error) {
+        deferred.reject(error);  
+      });
+
+      return deferred.promise;
+    }
+    
+    // Deletion Template
     public.deleteTemplate = function(filename) {
       var deferred = $q.defer();
 
@@ -174,6 +197,77 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $sha) {
         deferred.reject(error);  
       });
         
+      return deferred.promise;
+    }
+    
+    // Deletion Inspection
+    public.deleteInspection = function(filename) {
+      var deferred = $q.defer();
+
+      $cordovaFile.removeFile(public.inspectionPath, filename).then(function(success){
+        deferred.resolve(success);  
+      }, function(error){
+        deferred.reject(error);  
+      });
+        
+      return deferred.promise;
+    }
+    
+    // Delete all template & inspection data
+    public.deleteInit = function() {
+      var deferred = $q.defer();
+      // Promises to track the different events involved with deleteInit
+      var templateDefer = $q.defer();
+      var inspectionDefer = $q.defer();
+      var newTemp = $q.defer();
+      var newInsp = $q.defer();
+      var newFile = $q.defer();
+      var promises = [templateDefer.promise, inspectionDefer.promise, newTemp.promise, newInsp.promise, newFile.promise];    
+        
+      // Delete & Add Temp Dir, then add default template file
+      $cordovaFile.removeRecursively(cordova.file.dataDirectory, "templates").then(function(success){
+        templateDefer.resolve(success);
+        $cordovaFile.createDir(cordova.file.dataDirectory, "templates", true).then(function(success) {
+          newTemp.resolve(success);
+          // Add default template to template directory (done here to ensure the directory is available)
+          $cordovaFile.writeFile(public.templatePath, "default_template.js", JSON.stringify(defaultTemplate), true)
+            .then(function(success) {
+              newFile.resolve(success);
+            }, function(error) {
+              newFile.reject(error);
+              console.log(error);
+            });
+        }, function(error) {
+          newTemp.reject(error);
+          console.log(error);
+        });
+      }, function(error){
+        templateDefer.reject(error);
+        console.log(error);
+      });
+        
+      // Wipe Inspection folder, re-create
+      $cordovaFile.removeRecursively(cordova.file.dataDirectory, "inspections").then(function(success){
+        inspectionDefer.resolve(success);
+        $cordovaFile.createDir(cordova.file.dataDirectory, "inspections", true)
+          .then(function(success) {
+            newInsp.resolve(success);
+          }, function(error) {
+            newInsp.reject(error);
+            console.log(error);
+          });
+      }, function(error){
+        inspectionDefer.reject(error);
+        console.log(error);
+      });
+
+      $q.all(promises).then(function(success){
+        deferred.resolve(success); 
+      }, function(error) {
+        deferred.reject(error);
+      });
+        
+      console.log(promises);
       return deferred.promise;
     }
   });

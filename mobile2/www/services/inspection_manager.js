@@ -25,8 +25,12 @@ app.factory('inspection_manager', function (database, $q, theme_manager, $sha, f
                 mockdefer.resolve({ "value":private.inspection })
                 promise = mockdefer.promise;
             }
+        } else if (typeof(ins) == "object") {
+            private.inspection = ins;
+            defer.resolve();
         } else {
-            promise = private.loadInspectionFromFile(id);
+            promise = private.loadInspectionFromFile(ins.insId);
+            defer.resolve();
         }
         break;
       case "template":
@@ -571,12 +575,37 @@ app.factory('inspection_manager', function (database, $q, theme_manager, $sha, f
     return promise;
   };
     
+  public.startInspection = function(template) {
+    var deferred = $q.defer();
+      
+    private.copyTemplateToInspection(template).then(function(success){
+      deferred.resolve(success);    
+    }, function(error){
+      deferred.reject(error);    
+    });
+      
+    return deferred.promise;
+  }
+  
+  private.copyTemplateToInspection = function (template) {
+    var deferred = $q.defer();
+      
+    filesystem_manager.copyTemplateToInspection(template).then(function(success){
+      deferred.resolve(success);
+    }, function(error){
+      deferred.reject(error);
+    });
+      
+    return deferred.promise;
+  }
+  
   public.deleteInspection = function (filename) {
     var defer = $q.defer();
     var promise = defer.promise;
 
     switch (public.mode) {
       case "inspection":
+        promise = private.deleteInspectionFile(filename);
         break;
       case "template":
         promise = private.deleteTemplateFile(filename);
@@ -590,6 +619,18 @@ app.factory('inspection_manager', function (database, $q, theme_manager, $sha, f
 
     return promise;
   };
+    
+  private.deleteInspectionFile = function(filename) {
+    var deferred = $q.defer();
+      
+    filesystem_manager.deleteInspection(filename).then(function(success) {
+      deferred.resolve(success);
+    }, function(error) {
+      deferred.reject(error);    
+    });
+      
+    return deferred.promise;
+  }
     
   private.deleteTemplateFile = function(filename) {
     var deferred = $q.defer();
@@ -639,10 +680,10 @@ app.factory('inspection_manager', function (database, $q, theme_manager, $sha, f
     return updInspMetadata.promise;
   };
     
-  public.updateTitle = function(id, title) {
+  public.update = function(ins) {
     var deferTitle = $q.defer();
     
-    private.updateInspectionTitle(id, title).then(function(success){
+    private.updateInspectionFile(ins).then(function(success){
       deferTitle.resolve({
         message: success.message 
       });
@@ -733,20 +774,26 @@ app.factory('inspection_manager', function (database, $q, theme_manager, $sha, f
     return deferUpdateInsMetadata.promise;
   };
 
-  private.updateInspectionTitle = function(inspectionId, inspectionTitle) {
-    var deferTitle = $q.defer();
-    
-    database.updateInspectionTitle(inspectionId, inspectionTitle).then(function(success){
-      deferTitle.resolve({
+  // Uses parameter instead of private.inspection
+  // (inspection.html page)
+  private.updateInspectionFile = function(ins) {
+    var deferUpdate = $q.defer();
+    // Update hash
+    ins.hash = null;
+    ins.lastModified = new Date();
+    ins.hash = $sha.hash(ins.toString());
+
+    filesystem_manager.saveInspection(ins.guid + '.js', JSON.stringify(ins)).then(function(success){
+      deferUpdate.resolve({
         message: success.message
       });
     }, function(error){
-      deferTitle.reject({
+      deferUpdate.reject({
         message: error.message
       });
     });
     
-    return deferTitle.promise;
+    return deferUpdate.promise;
   };
   
   private.updateDatabase = function() {
@@ -822,8 +869,9 @@ app.factory('inspection_manager', function (database, $q, theme_manager, $sha, f
     }
     private.inspection.hash = null;
     private.inspection.hash = $sha.hash(private.inspection.toString());
+    
 
-    filesystem_manager.saveInspection(private.inspection + ".js", JSON.stringify(private.inspection))
+    filesystem_manager.saveInspection(private.inspection.guid + ".js", JSON.stringify(private.inspection))
       .then(function(success) {
         deferred.resolve({value: success});
       }, function(error) {

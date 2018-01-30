@@ -7,9 +7,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace CastleWebService.Models
 {
-    [ModelMetadataType(typeof(InspectionsMetaData))]
+
+    [ModelMetadataTypeAttribute(typeof(InspectionsMetaData))]
     public partial class Inspections
     {
     }
@@ -19,8 +21,10 @@ namespace CastleWebService.Models
         //[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         //public int InspectionId { get; set; }
         [JsonIgnore]
+        //[JsonProperty(PropertyName = "LegalEntityId")]
         public DateTime InsLastModified { get; set; }
         [JsonIgnore]
+        //[JsonProperty(PropertyName = "LegalEntityId2")]
         public DateTime? InsLastSubmitted { get; set; }
         
 

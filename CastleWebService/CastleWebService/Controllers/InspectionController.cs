@@ -57,7 +57,13 @@ namespace CastleWebService.Controllers
             var result = new CastleData();
             try
             {
-                var inspection = JsonConvert.DeserializeObject<Inspections>(iinspection.ToString());
+
+                var settings = new JsonSerializerSettings
+                {
+                    ContractResolver = new ModelMetadataTypeAttributeContractResolver(),
+                };
+
+                var inspection = JsonConvert.DeserializeObject<Inspections>(iinspection.ToString(), settings);
 
                 var existingInspection = _db.Inspections.Where(x => x.InspectionId == inspection.InspectionId && x.InsUserId == userId).FirstOrDefault();
 

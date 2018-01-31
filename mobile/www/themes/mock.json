@@ -34,7 +34,12 @@
             "checked": null,
             "autoComment": null,
             "order": null,
-            "photos": []
+            "photos": [
+              {
+                "link": "https://www.petmd.com/sites/default/files/petmd-cat-happy-13.jpg",
+                "title": "This is a picture of a cat"
+              }
+            ]
           }],
           "validation": {
             "type": "",
@@ -49,7 +54,11 @@
           "showSummaryRemark": 1,
           "showDescription": 1,
           "order": 1,
-          "photos": []
+          "photos": [
+            {
+              
+            }
+          ]
         }, {
           "title": "Street Address",
           "description": "",
@@ -1120,7 +1129,12 @@
             "checked": null,
             "autoComment": "Test Inspector AutoComment",
             "order": null,
-            "photos": []
+            "photos": [
+              {
+                "link": "https://www.petmd.com/sites/default/files/petmd-cat-happy-13.jpg",
+                "title": "This is a picture of a cat"
+              }
+            ]
           }, {
             "id": 2120,
             "key": "Buyer",

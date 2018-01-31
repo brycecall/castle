@@ -21,7 +21,7 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q, $sh
   }
 
   private.copyDefaultThemes = function () {
-    $cordovaFile.copyDir(cordova.file.applicationDirectory, "www/themes", cordova.file.dataDirectory, "themes")
+    return $cordovaFile.copyDir(cordova.file.applicationDirectory, "www/themes", cordova.file.dataDirectory, "themes")
       .then(
         function (result) {
           console.log(result);
@@ -31,7 +31,17 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q, $sh
   }
 
   public.clearThemes = function () {
-    $cordovaFile.removeRecursively(cordova.file.dataDirectory, "themes");
+    var defered = $q.defer();
+    
+    // Resolve either way (since we wanted to just delete the directory either way)
+    $cordovaFile.removeRecursively(cordova.file.dataDirectory, "themes").then(
+    function(data) {
+      defered.resolve(data);
+    }, function(data) {
+      defered.resolve(data);
+    })
+    
+    return defered.promise;
   }
 
   public.update = function () {

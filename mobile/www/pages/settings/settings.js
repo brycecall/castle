@@ -8,20 +8,23 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, database, theme_manager, header_manager, filesystem_manager, $cordovaFile) {
+app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, $q, database, theme_manager, header_manager, filesystem_manager, $cordovaFile) {
   header_manager.title = "Settings";
   
   $scope.wipeDatabase = function () {
     var sure = confirm("WARNING!!!\n\nThis will clear all inspection data in the app.\n\nAre you sure you want to do this?");
 
     if (sure) {
+      var promises = [];
       $rootScope.loading = true;
-      theme_manager.clearThemes();
-        
-      // Replace template and inspection folders with empty ones
-      filesystem_manager.deleteInit().then(function(success){
+      promises.push(theme_manager.clearThemes());
+      promises.push(filesystem_manager.deleteInit());
+      
+      $q.all(promises)
+      .then(function(success){
         console.log('Folders deleted successfully');
         console.log(success);
+        $scope.reload();
       }, function(error) {
         console.log('Error deleting folders');
         console.log(error);

@@ -166,7 +166,7 @@
     
     .subsection .questions {
       flex: 1;
-      padding: 20px;
+      padding: 0 20px;
     }
     
     .subsection .data {
@@ -316,9 +316,11 @@ Fidelity Building Inspections, LLC</pre>
         </div>
 
         <div class="photos">
-          <div class="question" ng-repeat="question in subsection.questions">
-            <div ng-show="question.photos" style="text-align: center;">
-              <img style="margin: 10px; height: 375px;" ng-src="{{photo.link}}" ng-repeat="photo in question.photos" />
+          <div class="question" ng-repeat="question in subsection.questions" ng-if="question.photos.length > 0">
+            <div ng-repeat="photo in question.photos">
+              <p>{{photo}}</p>
+              <img style="margin: 10px; height: 375px;" ng-src="{{photo.link}}" />
+              <p>{{photo.title}}</p>
             </div>
           </div>
         </div>

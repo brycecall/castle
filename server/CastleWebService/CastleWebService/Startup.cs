@@ -127,7 +127,7 @@ namespace CastleWebService
             {
                 o.SerializerSettings.ContractResolver = new ModelMetadataTypeAttributeContractResolver();
                 //o.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
-                o.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
+               // o.SerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.Objects;
             }
             );
         }

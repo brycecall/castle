@@ -242,8 +242,27 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $sha) {
           console.log(error);
         });
       }, function(error){
-        templateDefer.reject(error);
-        console.log(error);
+        // File not found error, go ahead and attempt add
+        if(error.code === 1) {
+          $cordovaFile.createDir(cordova.file.dataDirectory, "templates", true).then(function(success) {
+            newTemp.resolve(success);
+            // Add default template to template directory (done here to ensure the directory is available)
+            $cordovaFile.writeFile(public.templatePath, "default_template.js", JSON.stringify(defaultTemplate), true)
+              .then(function(success) {
+                newFile.resolve(success);
+              }, function(error) {
+                newFile.reject(error);
+                console.log(error);
+              });
+          }, function(error) {
+            newTemp.reject(error);
+            templateDefer.reject(error);
+            newFile.reject(error);
+            console.log(error);
+          });
+        } else {
+          templateDefer.reject(error);
+        }
       });
         
       // Wipe Inspection folder, re-create
@@ -257,7 +276,18 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $sha) {
             console.log(error);
           });
       }, function(error){
-        inspectionDefer.reject(error);
+        if (error.code === 1) {
+          $cordovaFile.createDir(cordova.file.dataDirectory, "inspections", true)
+          .then(function(success) {
+            newInsp.resolve(success);
+          }, function(error) {
+            newInsp.reject(error);
+            inspectionDefer.reject(error);
+            console.log(error);
+          });
+        } else {
+          inspectionDefer.reject(error);
+        }
         console.log(error);
       });
 

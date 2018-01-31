@@ -114,24 +114,16 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     });
   }
 
-  $scope.export = function (insId) {
+  $scope.export = function (ins) {
     $rootScope.loading = true;
-    var promise = inspection_manager.getInspection(insId);
-    promise.then(
+    export_manager.export(ins, "inspection").then(
       function (result) {
-        export_manager.export(result.value, "inspection").then(
-          function (result) {
-            $rootScope.loading = false;
-          },
-          function (error) {
-            $rootScope.loading = false;
-            console.error(error);
-          })
+        $rootScope.loading = false;
       },
       function (error) {
         $rootScope.loading = false;
         console.error(error);
-      });
+    });
   };
 
   $scope.rename = function (insId, title, index) {

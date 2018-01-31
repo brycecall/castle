@@ -17,7 +17,6 @@ namespace CastleWebService.Models
         public string SusSourceType { get; set; }
         public int? SusOrder { get; set; }
 
-        public Inspections SusInspection { get; set; }
         public Sections SusSection { get; set; }
         public ICollection<Questions> Questions { get; set; }
     }

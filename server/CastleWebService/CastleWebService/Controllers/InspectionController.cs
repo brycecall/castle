@@ -57,7 +57,6 @@ namespace CastleWebService.Controllers
             var result = new CastleData();
             try
             {
-
                 var settings = new JsonSerializerSettings
                 {
                     ContractResolver = new ModelMetadataTypeAttributeContractResolver(),

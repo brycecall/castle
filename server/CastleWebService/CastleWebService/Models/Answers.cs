@@ -12,7 +12,7 @@ namespace CastleWebService.Models
 
         public int AnswerId { get; set; }
         public int AnsQuestionId { get; set; }
-        public int AndInspectionId { get; set; }
+        public int AnsInspectionId { get; set; }
         public string AnsValue { get; set; }
         public string AnsType { get; set; }
         public string AnsSourceType { get; set; }
@@ -20,7 +20,6 @@ namespace CastleWebService.Models
         public int? AnsOrder { get; set; }
         public string AnsAutoComment { get; set; }
 
-        public Inspections AndInspection { get; set; }
         public Questions AnsQuestion { get; set; }
         public ICollection<Photos> Photos { get; set; }
     }

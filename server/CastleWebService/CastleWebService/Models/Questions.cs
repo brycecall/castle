@@ -30,7 +30,6 @@ namespace CastleWebService.Models
         public string QueComments { get; set; }
         public string QuePrivateNotes { get; set; }
 
-        public Inspections QueInspection { get; set; }
         public Subsections QueSubSection { get; set; }
         public ICollection<Answers> Answers { get; set; }
         public ICollection<Photos> Photos { get; set; }

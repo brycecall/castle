@@ -179,11 +179,16 @@
                 <div class="md-caption">(Use the big circle camera button below to go get some!)</div>
             </div>
 
-              <div ng-repeat="photo in question.photos"
+              <div ng-repeat="photo in question.photos track by $index"
                  layout="row" 
                  layout-align="start center" 
                  class="blockSpacing"
                  >
+				    <md-button class="md-icon-button cancelQuestionPhoto" 
+                       aria-label="delete photo"
+                       ng-click="remove(question.photos, $index)">
+                		<md-icon md-svg-icon="cancel" ></md-icon>
+            		</md-button>
                     <div ng-click="showFullScreen($event, photo)" class="photo trileftBorder"  style="background-image: url( {{photo.link}} );" >
                     </div>
                     <textarea flex placeholder="Photo Description" aria-label="photo description" class="noresizeArea" md-colors="::{background: 'default-primary-50'}">{{photo.title}}</textarea>

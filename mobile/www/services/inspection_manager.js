@@ -581,7 +581,7 @@ app.factory('inspection_manager', function (database, $q, theme_manager, $sha, f
     private.copyTemplateToInspection(template).then(function(success){
       deferred.resolve(success);    
     }, function(error){
-      deferred.reject(error);    
+      deferred.reject(error);
     });
       
     return deferred.promise;

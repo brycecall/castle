@@ -67,7 +67,8 @@ margin: 0;
 }
 
 .blockSpacing {
-    margin: 10px 0px 20px 0px;
+  margin: 10px 0px 20px 0px;
+  position: relative;
 }
 
 .subHeadNav::-webkit-scrollbar { 
@@ -127,4 +128,10 @@ margin: 0;
 .answerMe {
     border: 2px solid red;
     border-radius: 2px;
+}
+
+.cancelQuestionPhoto {
+  position: absolute;
+  left: -25px;
+  top: -19px;
 }

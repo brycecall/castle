@@ -27,7 +27,7 @@ app.config(function ($stateProvider) {
         });
 });
 
-app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $transition$, shareService, $timeout, $mdDialog) {
+app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $transition$, shareService, $timeout, $mdDialog, $mdToast) {
     $scope.validateSeverityClass = '';
     $scope.rapidModePhoto = camera_manager.rapidModePhoto;
     $scope.insParams = {
@@ -196,8 +196,36 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
       $scope.question.photos.push($scope.rapidModePhoto);
       camera_manager.rapidModePhoto = {};
     }
-
-    var navigateQuestions = function (forward) {0
+	
+	$scope.remove = function(photos, index) {
+	  var tempPhoto = angular.copy(photos[index]);
+	  //photos.splice(index, 1);
+	  $scope.question.photos.splice(index, 1);
+	  // Delete photo from question.photos array
+	  if (photos && photos.length > 0) {
+	    var toast = $mdToast.simple()
+        .textContent('')
+        .action('UNDO')
+        .highlightAction(true)
+        .highlightClass('md-accent')
+        .position('bottom')
+        .toastClass('highIndex');
+	
+	    $mdToast.show(toast).then(function (response) {
+          if (response == 'ok') {
+            // Undo deletion, reinsert photo at index
+			//photos.splice(tempPhoto, 0, index);
+			$scope.question.photos.splice(index, 0, tempPhoto);
+          } else {
+			// Do nothing, photo has been deleted
+          }
+        }, function () {
+          console.log("You delete fast don't ya!");
+        });
+	  }
+	}
+	
+    var navigateQuestions = function (forward) {
         if ($scope.questionCount !== -1 && $scope.questionCount > 1) {
             var newQuestionIndex = $scope.insParams.questionIndex;
             var newSubsectionIndex = $scope.insParams.subsectionIndex;

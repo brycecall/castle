@@ -87,9 +87,6 @@ app.config(function ($mdThemingProvider) {
     .accentPalette('pink');
 });
 
-
-
-
 // Save the previous state
 app.run(function ($transitions, $rootScope, $state) {
   $transitions.onStart({}, function (event) {
@@ -142,6 +139,10 @@ app.run(function ($rootScope, database, theme_manager) {
 
   window.reset = function () {
     database.initTables();
+    theme_manager.clearThemes();
+  }
+  
+  window.resetTheme = function() {
     theme_manager.clearThemes();
   }
 });

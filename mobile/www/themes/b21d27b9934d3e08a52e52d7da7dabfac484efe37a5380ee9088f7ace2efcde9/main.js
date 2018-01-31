@@ -1,4 +1,4 @@
-var app = angular.module('fidelity', []);
+var app = angular.module('modern', []);
 
 app.controller('main', function ($scope, $timeout, $) {
   $scope.castle = castle;

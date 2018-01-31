@@ -43,7 +43,7 @@
             <span>
               <md-button class="md-raised md-accent" ng-click="goToInspection(inspection);">Edit</md-button>
               <md-button class="md-raised" ng-click="goToPreview(inspection);">Review</md-button>
-              <md-button class="md-raised hide-xs" ng-click="send(inspection.insId);">Send</md-button>
+              <md-button class="md-raised hide-xs" ng-click="send(inspection);">Send</md-button>
             </span>
 
             <md-menu>
@@ -64,7 +64,7 @@
                   </md-button>
                 </md-menu-item>
                 <md-menu-item class="hide show-xs">
-                  <md-button ng-click="send(inspection.insId)">
+                  <md-button ng-click="send(inspection)">
                     <md-icon md-svg-icon="send" md-menu-align-target></md-icon>
                     Send
                   </md-button>

@@ -80,9 +80,9 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     });
   };
 
-  $scope.send = function (insId) {
+  $scope.send = function (ins) {
     $state.go('report', {
-      'insId': insId,
+      'ins': ins,
       'quickSend': true
     });
   }

@@ -159,8 +159,6 @@
     }
     
     .subsection .photos {
-      background-color: red;
-      width: 100%;
       flex: 1;
     }
     
@@ -175,6 +173,20 @@
     
     .subsection .col2 {
       display: flex;
+    }
+    
+    .subsection .photo {
+      margin: 10px;
+      margin-bottom: 2px;
+      width: calc(100% - 20px);
+      border: solid 5px darkslategray;
+      text-align: center;
+      page-break-inside: avoid;
+    }
+    
+    .subsection .photo_desc {
+      margin: 0 20px;
+      margin-bottom: 25px;
     }
   </style>
 </head>
@@ -318,9 +330,8 @@ Fidelity Building Inspections, LLC</pre>
         <div class="photos">
           <div class="question" ng-repeat="question in subsection.questions" ng-if="question.photos.length > 0">
             <div ng-repeat="photo in question.photos">
-              <p>{{photo}}</p>
-              <img style="margin: 10px; height: 375px;" ng-src="{{photo.link}}" />
-              <p>{{photo.title}}</p>
+              <img class="photo" ng-src="{{photo.link}}" />
+              <p class="photo_desc">{{photo.title}}</p>
             </div>
           </div>
         </div>

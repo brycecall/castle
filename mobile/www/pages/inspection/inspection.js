@@ -74,9 +74,9 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
     $scope.newInspection();
   });
 
-  $scope.goToPreview = function (insId) {
+  $scope.goToPreview = function (ins) {
     $state.go('report', {
-      'insId': insId
+      'ins': ins
     });
   };
 

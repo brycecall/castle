@@ -2,11 +2,12 @@
 app.config(function ($stateProvider) {
   $stateProvider
     .state('report', {
-      url: "/report/{insId}/{quickSend}",
+      url: "/report/{quickSend}",
       templateUrl: "pages/report/report.html",
       controller: "report",
       params: {
-        'quickSend': 'false'
+        'quickSend': 'false',
+        'ins': null
       }
     });
 });
@@ -21,109 +22,11 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
   var end_time = null;
 
   $scope.report = false;
-  $scope.insId = $stateParams.insId;
   $scope.message = null;
 
   $scope.message = "Getting your template of choice ready...";
 
-  var inspection_promise = inspection_manager.getInspection($scope.insId);
-  inspection_promise.then(function (data) {
-    var inspection = data.value;
-
-    // Cache all of the images on the filesystem to avoid MemOut Issues
-    var cache_promise = storeImageCache(inspection);
-    cache_promise.then(function (inspection) {
-
-      var theme_promise = theme_manager.getThemeManifest(inspection.insThemeId);
-      theme_promise.then(function (manifest) {
-
-        var entry_point = manifest.entry_point;
-        if ($rootScope.debug) {
-          entry_point = "http://localhost:8080/" + inspection.insThemeId + "/";
-        }
-
-        render_frame.addEventListener('load', function (event) {
-          end_time = new Date();
-          console.log("Loading previewer took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
-          start_time = new Date();
-
-          var object = {};
-          object.manifest = manifest;
-          object.meta = manifest.template;
-          object.data = inspection;
-          inspection_buffer = inspection;
-
-          object.apply = function () {
-            $scope.message = "Doing some more magic...";
-            if ($rootScope.debug) {
-              return;
-            }
-
-            end_time = new Date();
-            console.log("Theme application took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
-            start_time = new Date();
-
-            $scope.report = true;
-
-            if ($stateParams.quickSend != "false") {
-              sendEmail();
-            }
-
-            action_manager.enable();
-          };
-
-          object.go = function (object) {
-            $rootScope.loading = true;
-
-            // The object is an inspection
-            if (object.sections) {
-              $state.go('inspection_wizard', {
-                'insId': object.insId
-              });
-            } else
-
-              // The object is a section
-              if (object.subsections) {
-                var secIndex = this.data.sections.findIndex(x=>x.id == object.sectionId);
-                $state.go('inspection_wizard', {
-                  'insId': object.inspectionId,
-                  'sectionIndex': secIndex
-                });
-              } else
-
-                // The object is a subsection
-                if (object.questions) {
-                  var secIndex = this.data.sections.findIndex(x=>x.id == object.sectionId);
-                  var subsecIndex = this.data.sections[secIndex].subsections.findIndex(x=>x.id == object.subsectionId);
-                  $state.go('inspection_wizard', {
-                    'insId': object.inspectionId,
-                    'sectionIndex': secIndex,
-                    'subsectionIndex': subsecIndex
-                  });
-                } else
-
-            // The object is a question
-            {
-              var secIndex = this.data.sections.findIndex(x=>x.id == object.sectionId);
-              var subsecIndex = this.data.sections[secIndex].subsections.findIndex(x=>x.id == object.subsectionId);
-              var queIndex = this.data.sections[secIndex].subsections[subsecIndex].questions.findIndex(x=>x.id == object.id);
-              $state.go('inspection_wizard', {
-                'insId': object.inspectionId,
-                'sectionIndex': secIndex,
-                'subsectionIndex': subsecIndex,
-                'questionIndex': queIndex
-              });
-            }
-          };
-
-          // Put the castle object on the iframe
-          render_frame.contentWindow.castle = object;
-        }, true);
-
-        render_frame.src = entry_point;
-      });
-    });
-  });
+  var inspection = $stateParams.ins;
 
   var storeImageCache = function (template) {
     var defered = $q.defer();
@@ -205,6 +108,99 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
   var clearImageCache = function () {
     // TODO
   };
+  
+  var cache_promise = storeImageCache(inspection);
+  cache_promise.then(function (inspection) {
+
+    var theme_promise = theme_manager.getThemeManifest(inspection.insThemeId);
+    theme_promise.then(function (manifest) {
+
+      var entry_point = manifest.entry_point;
+      if ($rootScope.debug) {
+        entry_point = "http://localhost:8080/" + inspection.insThemeId + "/";
+      }
+
+      render_frame.addEventListener('load', function (event) {
+        end_time = new Date();
+        console.log("Loading previewer took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
+        start_time = new Date();
+
+        var object = {};
+        object.manifest = manifest;
+        object.meta = manifest.template;
+        object.data = inspection;
+        inspection_buffer = inspection;
+
+        object.apply = function () {
+          $scope.message = "Doing some more magic...";
+          if ($rootScope.debug) {
+            return;
+          }
+
+          end_time = new Date();
+          console.log("Theme application took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
+          start_time = new Date();
+
+          $scope.report = true;
+
+          if ($stateParams.quickSend != "false") {
+            sendEmail();
+          }
+
+          action_manager.enable();
+        };
+
+        object.go = function (object) {
+          $rootScope.loading = true;
+
+          // The object is an inspection
+          if (object.sections) {
+            $state.go('inspection_wizard', {
+              'insId': object.insId
+            });
+          } else
+
+            // The object is a section
+            if (object.subsections) {
+              var secIndex = this.data.sections.findIndex(x => x.id == object.sectionId);
+              $state.go('inspection_wizard', {
+                'insId': object.inspectionId,
+                'sectionIndex': secIndex
+              });
+            } else
+
+              // The object is a subsection
+              if (object.questions) {
+                var secIndex = this.data.sections.findIndex(x => x.id == object.sectionId);
+                var subsecIndex = this.data.sections[secIndex].subsections.findIndex(x => x.id == object.subsectionId);
+                $state.go('inspection_wizard', {
+                  'insId': object.inspectionId,
+                  'sectionIndex': secIndex,
+                  'subsectionIndex': subsecIndex
+                });
+              } else
+
+          // The object is a question
+          {
+            var secIndex = this.data.sections.findIndex(x => x.id == object.sectionId);
+            var subsecIndex = this.data.sections[secIndex].subsections.findIndex(x => x.id == object.subsectionId);
+            var queIndex = this.data.sections[secIndex].subsections[subsecIndex].questions.findIndex(x => x.id == object.id);
+            $state.go('inspection_wizard', {
+              'insId': object.inspectionId,
+              'sectionIndex': secIndex,
+              'subsectionIndex': subsecIndex,
+              'questionIndex': queIndex
+            });
+          }
+        };
+
+        // Put the castle object on the iframe
+        render_frame.contentWindow.castle = object;
+      }, true);
+
+      render_frame.src = entry_point;
+    });
+  });
 
   var sendEmail = function () {
     if (window['cordova'] !== undefined && $scope.report) {
@@ -219,7 +215,7 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
   var createPDF = function (callback) {
     $rootScope.loading = true;
     var data = render_frame.contentDocument.querySelector('html').outerHTML;
-    
+
     if (window['pdf'] !== undefined) {
       pdf.htmlToPDF({
         data: data,
@@ -231,7 +227,7 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
         end_time = new Date();
         console.log("Generation the report took " + (end_time.getTime() - start_time.getTime()) / 1000 + "sec");
         start_time = new Date();
-        
+
         if (callback) {
           callback();
         }
@@ -242,11 +238,11 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
       });
     }
   };
-  
-  var openPDF = function() {
+
+  var openPDF = function () {
     cordova.plugins.fileOpener2.open(cordova.file.externalDataDirectory + inspection_buffer.insName + ".pdf", 'application/pdf');
   };
-  
+
   header_manager.title = "Report Preview";
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction("Back", "back", function () {
@@ -255,14 +251,14 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
 
   action_manager.disable();
   action_manager.mode = ACTION_MODES.Action;
-  action_manager.addAction("Send", 'send', function() {
+  action_manager.addAction("Send", 'send', function () {
     createPDF(sendEmail);
   }, 'md-accent');
 
   action_manager.addAction("Preview", 'search', function () {
     createPDF(openPDF);
   }, 'md-warn');
-  
+
   action_manager.addAction("Edit", 'mode_edit', function () {
     $state.go('inspection_wizard', {
       'insId': inspection_buffer.insId

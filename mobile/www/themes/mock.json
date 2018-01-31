@@ -56,7 +56,7 @@
           "order": 1,
           "photos": [
             {
-              
+
             }
           ]
         }, {
@@ -1145,7 +1145,12 @@
             "checked": null,
             "autoComment": "Test Buyer AutoComment",
             "order": null,
-            "photos": []
+            "photos": [
+              {
+                "link": "https://www.petmd.com/sites/default/files/petmd-cat-happy-13.jpg",
+                "title": "This is a picture of a cat"
+              }
+            ]
           }, {
             "id": 2121,
             "key": "Resident",
@@ -1156,7 +1161,12 @@
             "checked": null,
             "autoComment": "Test Resident AutoComment",
             "order": null,
-            "photos": []
+            "photos": [
+              {
+                "link": "https://www.petmd.com/sites/default/files/petmd-cat-happy-13.jpg",
+                "title": "This is a picture of a cat"
+              }
+            ]
           }, {
             "id": 2122,
             "key": "Builder or Builders Rep",
@@ -1167,7 +1177,12 @@
             "checked": null,
             "autoComment": "Test Builder AutoComment",
             "order": null,
-            "photos": []
+            "photos": [
+              {
+                "link": "https://www.petmd.com/sites/default/files/petmd-cat-happy-13.jpg",
+                "title": "This is a picture of a cat"
+              }
+            ]
           }, {
             "id": 2123,
             "key": "Owner or Seller",
@@ -1218,7 +1233,12 @@
           "order": null,
           "comments": "",
           "privateNotes": null,
-          "photos": [],
+          "photos": [
+            {
+              "link": "https://www.petmd.com/sites/default/files/petmd-cat-happy-13.jpg",
+              "title": "This is a picture of a cat"
+              }
+          ],
           "$$hashKey": "object:75"
         }, {
           "id": 348,
@@ -1398,7 +1418,20 @@
           "order": null,
           "comments": "",
           "privateNotes": null,
-          "photos": [],
+          "photos": [
+            {
+              "link": "https://www.petmd.com/sites/default/files/petmd-cat-happy-13.jpg",
+              "title": "This is a picture of a cat"
+              },
+            {
+              "link": "https://www.petmd.com/sites/default/files/petmd-cat-happy-13.jpg",
+              "title": "This is a picture of a cat"
+              },
+            {
+              "link": "https://www.petmd.com/sites/default/files/petmd-cat-happy-13.jpg",
+              "title": "This is a picture of a cat"
+              }
+          ],
           "$$hashKey": "object:78"
         }, {
           "id": 351,

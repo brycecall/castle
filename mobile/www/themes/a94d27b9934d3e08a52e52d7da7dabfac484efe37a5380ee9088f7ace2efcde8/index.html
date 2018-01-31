@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <script src="lib/jquery.min.js"></script>
+  <script src="lib/angular.min.js"></script>
+  <script src="main.js"></script>
+  <script src="images.js"></script>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      font-family: sans-serif;
+      font-weight: 300;
+      color: #333;
+    }
+    
+    * {
+      font-family: sans-serif;
+    }
+    
+    .page {
+      page-break-inside: avoid;
+      page-break-before: always;
+      position: static;
+      min-height: 99%;
+      width: 100%;
+    }
+    
+    .main-color {
+      background-color: dodgerblue;
+    }
+    
+    .full-bar {
+      text-align: center;
+      font-size: 20pt;
+      padding: 10px;
+      color: white;
+      width: 100%;
+      margin: 10px 0;
+    }
+    
+    img {
+      max-width: 100%;
+    }
+    
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin: 5px;
+    }
+    
+    pre {
+      font-family: sans-serif;
+      font-size: 11.5pt;
+      margin: 20px;
+      display: block;
+      position: relative;
+      word-wrap: break-word;
+      white-space: pre-wrap;
+      width: calc(100% - 40px);
+    }
+    
+    .page_header h2,
+    .page_header h4 {
+      display: inline-block;
+    }
+    
+    .subsection {
+      margin-left: 25px;
+      margin-right: 50px;
+      padding: 10px;
+      min-height: 100px;
+      position: relative;
+      page-break-after: right;
+    }
+    
+    .subsection_title {
+      font-size: 18pt;
+      font-weight: normal;
+      width: 100%;
+      border-bottom: solid 1px #333;
+    }
+    
+    .inline-image {
+      height: 250px;
+      margin: auto;
+    }
+    
+    @media print {
+      .page_footer {
+        display: block;
+        position: static;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    }
+  </style>
+</head>
+
+<body ng-app="fidelity" ng-controller="main">
+  <div class="page">
+    <div style="text-align: center;">
+      <img ng-src="{{images.fidelity_logo}}" style="margin: 10px; width: 250px;" /><br />
+      <div style="display: flex; width: 65%; margin: auto; margin-bottom: 20px;">
+        <span>www.206inspect.com</span>
+        <span style="flex: 1">(206) INSPECT</span>
+        <span>rod@206inspect.com</span>
+      </div>
+      <img ng-src="{{images.placeholder}}" style="margin: 10px; width: 65%;" />
+      <h1 style="font-size: 40pt; font-weight: 500">11151 Blah Point Rd</h1>
+      <p style="font-size: 20pt;">Kirkland, WA 98034</p>
+      <p style="font-size: 20pt;">Day, Month, Number, Year</p>
+    </div>
+  </div>
+
+
+  <div class="page">
+    <img ng-src="{{images.fidelity_logo}}" style="width: 160px; float: right;" />
+    <pre>
+1/1/2015
+Dear My Good Friend, "The Man",
+re: Report No. L.0161
+11151 White Shoude Rd.
+Kirkland, OH 83749
+    </pre>
+    <pre>Thank you very much for choosing us to perform your property inspection. The purpose of this inspection is to determine the systems and components used, and their apparent condition. To get started, let's be clear on the scope, limitations, and use of this report.
+
+The inspection company, inspectors, and staff have no personal interest, present or prospective, in this property, in the
+parties to the sale or proceeds of the mortgage, and have no identity-of-interest or conflict-of interest with the borrower, seller, lender, realtor, appraiser, plan reviewer, any potential contractors, or subcontractors.
+
+No portion of this property or any specific system or component was inspected for code compliance, or surveyed, appraised, or assessed for boundaries, values, or taxation purposes. The reported portions of this property were inspected ONLY for minimum general acceptability requirements of health and safety in accordance with all applicable state and federal requirements.
+
+The report and the inspection itself comply with the requirements of the Standards of Practice and Code of Ethics of our national association, all applicable state and federal requirements, as well as those of Fidelity Building Inspections, LLC. The “standards” define what is and what is not included in the inspection. We recommend referencing the standards to avoid unrealistic expectations, and to better understand the focus of a property inspection.
+
+The inspection, the report, photographs, and all associated documentation and/or commentary are copyrighted, and may not be used in whole or in part without our express written permission. These have been prepared for the exclusive use of our client. No use by third parties is intended. We will not be responsible to any other parties for the contents of the report.
+
+Visual observations made on a certain day will differ and eventually become obsolete as conditions change. Seasonal variations will also alter the observable conditions of a property. The inspection is a faithful, though limited “snapshot” in time. After immediate repairs have been made, we recommend scheduling regular follow-up home inspections at minimum four-year intervals to discover new indications of potentially progressing concerns in order to keep your investment in top condition.
+
+We are pleased to have been of service to you, and would welcome your referral of friends, associates, or others who could also benefit from our services. Feel free to contact us with any questions, or comments.
+
+Again, thanks for choosing us to perform your inspection. We look forward to working with you in the years ahead.
+
+Sincerely,
+Rod Beacham, ACI
+on behalf of
+Fidelity Building Inspections, LLC</pre>
+  </div>
+
+
+  <div class="page">
+    <div style="height: 35px"></div>
+    <h2>What a Home Inspection <u>IS</u>:</h2>
+    <pre style="font-size: 10.5pt">According to Washington State Home Inspector Licensing Standards of Practice, the purpose of a home inspection is to assess the condition of the residence at the time of the inspection using visual observations, simple tools and normal homeowner operational controls; and to report deficiencies of specific systems and components in compliance with the Standards of Practice, and Ethics set forth by the Washington state department of licensing. This SOP is applicable to buildings with four or fewer dwelling units and their attached garages or carports.</pre>
+    <h2>What a Home Inspection <u>IS NOT</u>:</h2>
+    <pre style="font-size: 10.5pt">
+    A home inspection is not technically exhaustive and does not identify concealed conditions or latent defects. According to Washington State Home Inspector Licensing Standards of Practice, inspectors are NOT required to:
+    (1) Determine the condition of any system or component that is not readily accessible; the remaining service life of any system or component; the strength, adequacy, effectiveness or efficiency of any system or component; causes of any condition or deficiency; methods, materials, or cost of corrections; future conditions including, but not limited to, failure of systems and components.
+    (2) Comment on the suitability of the structure or property for any specialized use, compliance with codes, regulations, laws or ordinances.
+    (3) Report the presence of potentially hazardous plants or animals including, but not limited to, wood destroying insects or diseases harmful to humans; the presence of any environmental hazards including, but not limited to mold, toxins, carcinogens, noise, and contaminants in soil, water or air; the effectiveness of any system installed or methods utilized to control or remove suspected hazardous substances.
+    (4) Determine the operating costs of any systems or components.
+    (5) Determine the acoustical properties of any systems or components.
+    (6) Operate any system or component that is shut down, not connected or is otherwise inoperable.
+    (7) Operate any system or component that does not respond to normal user controls.
+    (8) Operate any circuit breakers, water, gas or oil shutoff valves.
+    (9) Offer or perform any act or service contrary to law.
+    (10) Offer or perform engineering services or work in any trade or professional service other than home inspection.
+    (11) Offer or provide warranties or guarantees of any kind unless clearly explained and agreed to by both parties in a pre-inspection agreement.
+    (12) Determine the existence of or inspect any underground items including, but not limited to, underground storage tanks or sprinkler systems.
+    (13) Inspect decorative items, or systems or components that are in areas not entered in accordance with the SOP.
+    (14) Inspect detached structures, common elements and areas of multi-unit housing such as condominium properties or cooperative housing.
+    (15) Perform any procedure or operation that will, in the opinion of the inspector, likely be dangerous to the inspector or others or damage the property, its systems or components.
+    (16) Move suspended ceiling tiles, personal property, furniture, equipment, plants, soil, snow, ice or debris.
+    (17) Dismantle any system or component, except as explicitly required by the SOP.
+    (18) Enter flooded crawl spaces, attics that are not readily accessible, or any area that will, in the opinion of the inspector, likely be dangerous to the inspector or other persons or damage the property, its systems or components.
+    (19) Inspect or comment on the condition or serviceability of elevators or related equipment.
+    (20) Inspect or comment on the condition or serviceability of swimming pools, hot tubs, saunas, sports courts or other similar equipment or related equipment. 
+    Inspectors are not limited from examining other systems and components or including other inspection services. Likewise, if the inspector is qualified and willing to do so, an inspector may specify the type of repairs to be made. 
+    An inspector may exclude those systems or components that a client specifically requests not to be included in the scope of the inspection or those areas that, in the opinion of the inspector, are inaccessible due to obstructions or conditions dangerous to the inspector. When systems or components designated for inspection under this SOP are excluded, the reason the item was excluded will be reported.
+    
+<span style="font-size: 9pt;">[Statutory Authority: RCW 18.280.050 and 18.280.060(6). 09-08-014, § 308-408C-010-030, filed 3/20/09, effective 4/20/09.]</span>
+    </pre>
+  </div>
+
+  <div class="page" ng-repeat="section in castle.data.sections">
+    <div class="page_header">
+      <div>
+        <h2 ng-show="section.title">{{section.title}}</h2>
+        <h2 style="float: right" ng-show="section.title">Report #{{castle.data.id}}</h2>
+      </div>
+      <div>
+        <h4 ng-show="section.title">address</h4>
+        <h4 style="float: right" ng-show="section.title">Day, Month, Number, Year</h4>
+      </div>
+    </div>
+    <div class="subsection" ng-repeat="subsection in section.subsections">
+      <div class="subsection_title" ng-show="subsection.title">{{subsection.title}}</div>
+      <div class="questions">
+        <div class="question" ng-repeat="question in subsection.questions" ng-click="castle.go(question)">
+          <h4>{{question.title}}</h4>
+          <div ng-show="question.type == 'checkbox'">
+            <span ng-repeat="value in question.values track by $index" style="display: inline-block; width: 45%">
+              <input type="checkbox" ng-checked="exists(value.key, question.answers)"/>
+              {{value.key}}
+            </span>
+          </div>
+
+          <div ng-show="question.type == 'radio'">
+            <span ng-repeat="value in question.values track by $index" style="display: inline-block; width: 45%">
+              <input type="radio" ng-checked="exists(value.key, question.answers)"/>
+              {{value.key}}
+            </span>
+          </div>
+
+          <div ng-show="question.type == 'photo'">
+            <!-- DO NOTHING: this will be done below -->
+          </div>
+
+          <div ng-show="question.type == 'text'">
+            <p>{{question.answer}}</p>
+          </div>
+
+          <div ng-show="question.type == 'textarea'">
+            <p>{{question.answer}}</p>
+          </div>
+
+          <div ng-show="question.photos" style="text-align: center;">
+            <img style="margin: 10px; height: 375px;" ng-src="{{photo.link}}" ng-repeat="photo in question.photos" />
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

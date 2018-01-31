@@ -1,0 +1,31 @@
+<link type="text/css" rel="stylesheet" href="pages/history/history.css" />
+<div class="page">
+  <div class="filter-bar" layout="row" layout-align="space-around center">
+    <md-input-container>
+      <label>Search</label>
+      <input ng-model="search">
+    </md-input-container>
+    <md-input-container>
+      <md-select ng-model="sort" placeholder="Sort">
+        <md-option ng-value="">None</md-option>
+        <md-option ng-value="filter" ng-repeat="filter in sort_filters">{{ filter }}</md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container>
+      <md-select ng-model="status" placeholder="Status">
+        <md-option ng-value="">None</md-option>
+        <md-option ng-value="state" ng-repeat="state in status_filters">{{ state }}</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+  <div class="history-container" layout-fill>
+    <h3 ng-if="message">{{message}}</h3>
+    <div class="report md-whiteframe-1dp" ng-hide="angular.equals([], reports)" ng-repeat="report in reports" layout="row">
+      <h3 flex>
+        {{report.name}}
+      </h3>
+      <md-button class="md-raised" ng-click="send(report.nativeURL)">Send</md-button>
+      <md-button class="md-raised" ng-click="preview(report.nativeURL)">Preview</md-button>
+    </div>
+  </div>
+</div>

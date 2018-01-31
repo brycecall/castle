@@ -1,0 +1,59 @@
+#view {
+    height:100%; 
+    width:100%; 
+    overflow: hidden;
+}
+
+.pagePadding {
+    padding: 8px;
+}
+
+.photo {
+    display: block;
+    height:200px;
+    width: 200px;
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+/*    background-color: black;*/
+}
+
+.cancelPhoto {
+    position: absolute;
+    top: -19px;
+    right: -25px;
+    
+}
+.cancelPhoto md-icon {
+    opacity: 1 !important;
+    color: rgba(0,0,0,.8);
+    background-color: white;
+    border-radius: 50%;
+}
+
+.photoWrapper {
+    position: relative;
+    height:200px;
+    width:200px;
+    margin: 10px;
+
+}
+
+.fullScreen {
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    padding: 10px;
+}
+
+.placeholderPhoto {
+    display: block;
+    background-color:rgba(0,0,0,0.05);
+    vertical-align: middle;
+    text-align: center;
+}

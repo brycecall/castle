@@ -1,0 +1,74 @@
+<link type="text/css" rel="stylesheet" href="pages/templates/templates.css" />
+<div flex="" layout="column" class="page">
+   <md-content class="centerScroll">
+    <div class="centerPage" style="margin-bottom:85px;" id="centerPage">
+    <div class="breadCrumbs" layout="row" layout-align="start center">
+            <md-button class="md-caption" ng-class="getCrumbyClass('template_section')" ng-click="navigate(insId)" md-truncate>Section</md-button>
+            <div>/</div>
+            <md-button class="md-caption" ng-class="getCrumbyClass('template_subsection')" ng-click="navigate(insId, sectionIndex)" md-truncate>Subsection</md-button>
+            <div>/</div>
+            <md-button class="md-caption " ng-class="getCrumbyClass('template_question')" ng-click="navigate(insId, sectionIndex, subsectionIndex)" md-truncate >Questions</md-button>
+            <div>/</div>
+            <md-button class="md-caption" ng-class="getCrumbyClass('template_detail')" md-truncate>Question</md-button>
+        <div flex=""></div>
+    </div>
+<md-divider></md-divider>    
+        
+    <div layout="row" layout-align="space-between center">
+        <h2 class="md-subhead insTitle" 
+            style="margin-bottom:0px;">Subsections</h2>
+    </div>
+              
+    <md-card id="secParent" 
+             layout="column"  
+             ui-sortable="{'ui-floating': false, 'handle': '.handle', 
+                           'containment': '#secParent'}"  
+             ng-model="subsections">
+        <div ng-repeat="subsection in subsections track by $index" 
+             layout="column" 
+             layout-align="center stretch" 
+             style="text-align-left;"
+             ng-init="clicked = false"
+             ng-hide="section.deleted === true">       
+               <div  style="padding:0px 0px 0px 0px; margin:0;
+                         vertical-align:middle; border-radius:0; 
+                         text-transform:none; background-color:#FFF;  height:52px;" 
+                       class="md-no-style" 
+                       aria-label="{{subsection.title}}"
+                       layout="row" 
+                       layout-align="start center"
+                       ng-click="">
+                <md-button class="md-icon-button" 
+                           aria-label="delete section"
+                           ng-click="remove($index, subsections)"
+                           ng-disabled="subsection.insSourceType == 'theme'">
+                    <md-icon md-svg-src="cancel"></md-icon>
+                </md-button>
+                    <input type="text" 
+                           ng-disabled="subsection.insSourceType == 'theme'" 
+                           ng-model="subsection.title"
+                           class="editInput"
+                           style="background-color:inherit;" />
+                    <span flex=""></span>
+                   <! TODO: Add boolean to below Checkmark icon (should only show when the subsection is 'done'-->
+                    <md-icon md-svg-icon="check" 
+                             class="md-primary" style="min-width:24px;"></md-icon>
+                    <md-button
+                       aria-label="toggle pages menu"
+                       class="md-icon-button"
+                       ng-click="questionDrill($index)">
+                        <md-icon md-svg-icon="keyboard_arrow_right"></md-icon>
+                    </md-button>
+              </div>
+                        <md-divider ng-if="!$last"></md-divider>
+        </div>
+    </md-card>
+  <div style="padding: 8px 0 8px 16px;" ng-show="subsections.length <= 0 || subsections.length <= numDeleted">
+      <div class="md-title">No subsections yet!</div>
+  </div>
+    <md-button ng-disabled="subsections[0].insSourceType == 'theme'" ng-click="addSubsection()" class="md-raised" aria-label="Add Section">
+      Add Subsection
+    </md-button>
+    </div>
+  </md-content>
+</div>

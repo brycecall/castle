@@ -1,0 +1,25 @@
+<link type="text/css" rel="stylesheet" href="pages/themes/themes.css" />
+<div class="page">
+  <div class="filter-bar" layout="row" layout-align="space-around center">
+    <md-input-container>
+      <label>Search</label>
+      <input ng-model="search">
+    </md-input-container>
+    <md-input-container>
+      <md-select ng-model="sort" placeholder="Sort">
+        <md-option ng-value="">None</md-option>
+        <md-option ng-value="filter" ng-repeat="filter in sort_filters">{{ filter }}</md-option>
+      </md-select>
+    </md-input-container>
+  </div>
+  <div class="theme-container" layout-fill>
+    <h2 ng-hide="themes" ng-cloak>No Themes Installed</h2>
+    <div class="theme md-whiteframe-1dp" ng-show="themes" ng-repeat="theme in themes" style="background-image: url({{theme.thumbnail}})" ng-cloak>
+      <div class="title">{{theme.title}}</div>
+      <div class="buttons" layout="row" layout-align="space-between">
+        <md-button class="md-raised" ng-click="edit(theme)">Edit</md-button>
+        <md-button class="md-raised" ng-click="preview(theme)">Preview</md-button>
+      </div>
+    </div>
+  </div>
+</div>

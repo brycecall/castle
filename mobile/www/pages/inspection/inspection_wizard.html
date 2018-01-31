@@ -1,0 +1,251 @@
+<link type="text/css" rel="stylesheet" href="./pages/inspection/inspection.css" />
+<link type="text/css" rel="stylesheet" href="./dialogs/camera/camera_preview.css" />
+<link type="text/css" rel="stylesheet" href="./pages/inspection/inspection_wizard.css" />
+<div class="page">
+
+    <div ng-show="insParams.photoMode === '1'" class="progressBar" layout="row" layout-align="start center">
+      <div ng-click="stepDownTo(0)" class="step previewCircle" ng-class="step < 1 ? 'active' : ''" style="background-image: url( {{rapidModePhoto.link || ''}}  );">1</div>
+      <span flex=""></span>
+      <div ng-click="stepDownTo(1)" class="step">2</div>
+      <span flex=""></span>
+      <div ng-click="stepDownTo(2)" class="step">3</div>
+      <span flex=""></span>
+      <div ng-click="stepDownTo(3)" class="step active" >&#10004;</div>
+    </div>
+    <div ng-show="insParams.photoMode == '0' || insParams.photoMode == null">
+    <md-progress-linear  md-mode="determinate" class="md-accent" value="0"></md-progress-linear>
+    <div class="subHeadNav" layout="row" layout-align="space-between center" flex="">
+       <md-input-container flex>
+          <md-select ng-model="insParams.sectionIndex" 
+                     class="md-no-underline" 
+                     aria-label="choose section"
+                     ng-change="navChange('section')"
+                     >
+            <md-option ng-repeat="sec in inspection.sections track by $index" 
+                       ng-value="$index" >
+              {{sec.title}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+       <md-input-container flex>
+          <md-select ng-model="insParams.subsectionIndex" 
+                     class="md-no-underline" 
+                     aria-label="choose subsection"
+                     ng-change="navChange('subsection')"
+                     >
+            <md-option ng-repeat="subsec in inspection.sections[insParams.sectionIndex]
+                                   .subsections track by $index" 
+                       ng-value="$index" >
+              {{subsec.title}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+       <md-input-container flex>
+          <md-select ng-model="insParams.questionIndex" 
+                     class="md-no-underline" 
+                     aria-label="choose question"
+                     ng-change="navChange('question')"
+                     >
+            <md-option ng-repeat="que in inspection.sections[insParams.sectionIndex]
+                                   .subsections[insParams.subsectionIndex].questions track by $index" 
+                       ng-value="$index" >
+              {{que.title}}
+            </md-option>
+          </md-select>
+        </md-input-container>
+  </div>
+            <md-divider></md-divider>
+    </div>
+
+    <div class="pagePadding">
+        <md-card class="flatCard">
+            <md-card-content>            
+        <div layout="row" layout-align="center start"  class="headBlock" >     
+            <div class="md-title">{{question.title ? question.title : 'Untitled Question'}}</div>
+            <span flex=""></span>
+        </div>
+        <div class="md-caption description">{{question.description ? question.description : '' }}</div>
+    
+       <form name="questionForm" style="padding-left: 0px;"  ng-class="question.notApplicable ? 'disabled' : ''">
+        <div ng-if="question.type === 'checkbox'">
+            <div class="questionIndent" ng-repeat="checkBox in question.values track by $index">
+                <div  layout="row">
+                <md-checkbox ng-checked="checkBox.checked" ng-click="toggle(checkBox);"
+                             ng-disabled="question.notApplicable">
+                    {{checkBox.key}}
+                </md-checkbox>
+                    <span flex=""></span>
+                    <md-button class="md-icon-button" ng-click="addPhotos(checkBox.id, checkBox.key)" ng-show="checkBox.checked" >
+                        <md-icon md-svg-icon="shutter_camera"></md-icon>
+                    </md-button>
+                </div>
+            </div>
+<!--            <div layout="row" layout-align="start center">
+            <md-checkbox ng-model="newCheckBoxKey" 
+                         ng-click="toggle(otherValue.value, question.answers, true)">
+                Other:
+            </md-checkbox>
+            <input  ng-show="newCheckBoxKey"
+                    ng-model="otherValue.value" 
+                    type="text" 
+                    class="inlineInput"
+                   >
+                    <span flex=""></span>
+                    <md-button class="md-icon-button" ng-click="addPhotos(otherValue.id, otherValue.value)" ng-show="exists(otherValue.value, question.answers)" >
+                        <md-icon md-svg-icon="shutter_camera"></md-icon>
+                    </md-button>
+            </div>   -->     
+        </div>
+        <div ng-if="question.type === 'radio'">
+            <md-radio-group ng-model="question.answer"
+                            ng-required="question.validation.isRequired"
+                            ng-disabled="question.notApplicable">
+                <div layout="row" layout-align="start center" ng-repeat="radioButton in question.values track by $index" >
+                    <md-radio-button 
+                                     class="questionIndent" 
+                                     ng-value="radioButton.key"
+                                     ng-click="toggleRadio(radioButton)">{{radioButton.key}}
+                    </md-radio-button>
+                    <span flex=""></span>
+                </div>
+<!--                <div layout="row" layout="start center">
+                <md-radio-button class="questionIndent" 
+                                 ng-value="otherValue.singleSelect">Other
+                </md-radio-button>
+                 <div style="margin-left: 8px;">
+                    <input  ng-model="otherValue.singleSelect" 
+                            type="text" 
+                            class="inlineInput">
+                 </div>
+                    <span flex=""></span>
+                 </div>-->
+            </md-radio-group>
+        </div>
+        <div ng-if="question.type === 'dropdown'">
+           <md-input-container class="md-block">
+            <md-select ng-model="question.answer" 
+                       placeholder="Choose one" 
+                       ng-required="question.validation.isRequired"
+                       ng-disabled="question.notApplicable">
+                <md-option ng-repeat="selectOption in question.values" ng-value="selectOption.key">{{selectOption.key}}
+                </md-option>
+            </md-select>
+           </md-input-container>
+        </div>
+        <div ng-if="question.type === 'text'">
+            <md-input-container class="md-block">
+                <label>Your Answer</label>
+                <input ng-model="question.answer" 
+                       type="{{question.validation ? question.validation.type : 'text'}}"
+                       md-min="{{question.validation.type == 'number' ? question.validation.min : null}}"
+                       md-max="{{question.validation.type == 'number' ? question.validation.max : null}}"
+                       md-minlength="{{question.validation.type == 'text' ? question.validation.min : null}}"
+                       md-maxlength="{{question.validation.type == 'text' ? question.validation.max : null}}"
+                       md-select-on-focus
+                       ng-required="question.validation.isRequired"
+                       ng-disabled="question.notApplicable"
+                       name="shortText"
+                       >
+                <div ng-messages="questionForm.shortText.$error" 
+                     ng-show="questionForm.shortText.$dirty">
+                  <div ng-message="required">This is required!</div>
+                  <div ng-message="md-minlength">That's too short!</div>
+                  <div ng-message="md-maxlength">That's too long!</div>
+                </div>
+            </md-input-container>
+        </div>
+        <div ng-if="question.type === 'textarea'">
+            <md-input-container class="md-block" >
+                <label>Your Answer</label>
+                <textarea ng-model="question.answer" 
+                          md-minlength="question.validation.min" 
+                          md-maxlength="question.validation.max" 
+                          md-select-on-focus
+                          ng-required="question.validation.isRequired"
+                          ng-disabled="question.notApplicable"
+                          name="testArea"></textarea>
+                <div ng-messages="questionForm.testArea.$error" 
+                     ng-show="questionForm.testArea.$dirty">
+                  <div ng-message="required">This is required!</div>
+                  <div ng-message="md-minlength">That's too short!</div>
+                  <div ng-message="md-maxlength">That's too long!</div>
+                </div>
+            </md-input-container>
+        </div>
+
+        <div>
+            <div class="blockSpacing" ng-show="question.photos.length <= 0 && question.type === 'photo'">
+                No Photos Yet! 
+                <div class="md-caption">(Use the big circle camera button below to go get some!)</div>
+            </div>
+
+              <div ng-repeat="photo in question.photos"
+                 layout="row" 
+                 layout-align="start center" 
+                 class="blockSpacing"
+                 >
+                    <div ng-click="showFullScreen($event, photo)" class="photo trileftBorder"  style="background-image: url( {{photo.link}} );" >
+                    </div>
+                    <textarea flex placeholder="Photo Description" aria-label="photo description" class="noresizeArea" md-colors="::{background: 'default-primary-50'}">{{photo.title}}</textarea>
+                </div>
+        </div>  
+           
+        <div class="blockSpacing" style="position: relative;">
+          <label class="textAreaLabel">Comments</label>
+          <textarea class="blockArea" ng-model="question.comments"></textarea>
+        </div>
+        
+    </form>
+        </md-card-content>
+    </md-card>
+        <md-card class="flatCard">
+            <md-card-content>
+        <div class="headBlock">
+            <div class="md-title">Summary Classification</div>
+            <div class="md-caption" style="margin: 4px 0 4px 0;" >
+                This determines if and where this question goes in the auto generated summary.
+            </div>
+        </div>
+            <div layout="row" layout-wrap class="buttonWrapper" ng-class="validateSeverityClass">
+                <div  layout="column" layout-align="center center">
+                    <md-button class="md-fab md-mini" 
+                               ng-class="question.severity == 'Not Applicable' ? 'md-accent selectedBtn' : 'md-raised'"
+                               aria-label="Not Applicable"
+                               ng-click="setSeverity('Not Applicable')"
+                               ng-disabled="question.notApplicable">
+                        <md-icon md-svg-icon="remove_circle"></md-icon>
+                    </md-button>
+                    <div class="label">Not Applicable</div>
+                </div>
+                <div ng-repeat="fabButton in severityList" 
+                     
+                     layout="column" layout-align="center center">
+                    <md-button class="md-fab md-mini" 
+                               ng-class="question.severity == fabButton.title ? 'md-accent selectedBtn' : 'md-raised'"
+                               aria-label="fabButton.title"
+                               ng-click="setSeverity(fabButton.title)"
+                               ng-disabled="question.notApplicable">
+                        <md-icon md-svg-icon="{{fabButton.icon}}"></md-icon>
+                    </md-button>
+                    <div class="label">{{fabButton.title}}</div>
+                </div>
+            </div>
+            <div ng-show="question.severity == 'Not Applicable'">"Not applicable" questions won't be included in the final report.</div>
+            <div style="color: red" ng-show="validateSeverityClass == 'answerMe'">Summary Classification is required!</div>
+            </md-card-content>
+        </md-card>
+        <md-card class="flatCard">
+            <md-card-content>
+            <div style="margin: 8px 0px 0px 0px;">
+                <div class="md-title">Private Notes</div>
+               <md-input-container class="md-block">
+                  <label>Add a comment here</label>
+                  <textarea ng-model="question.privateNotes" ></textarea>
+                </md-input-container>
+              </div>
+            </md-card-content>
+        </md-card>
+     </div>   
+</div>
+
+

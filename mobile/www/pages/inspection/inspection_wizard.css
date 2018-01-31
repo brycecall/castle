@@ -1,0 +1,130 @@
+#view {
+    height:100%; 
+    width:100%; 
+    overflow: auto;
+}
+
+.page {
+  height: auto;
+  padding-bottom: 60px;
+}
+
+.pagePadding {
+    padding: 8px;
+    overflow-x: scroll;
+}
+.questionIndent {
+/*    margin-left: 8px;*/
+}
+
+.disabled, .disabled md-input-container label,
+.disabled md-input-container .md-input-message-animation {
+    color:rgba(0,0,0,0.38) !important;
+}
+
+.description {
+    margin: 4px 0 8px 0;
+    
+}
+
+.label {
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.buttonWrapper {
+    padding: 4px 4px 4px 4px;
+}
+.buttonWrapper>div {
+    margin-right: 8px;
+}
+
+.selectedBtn {
+
+}
+
+.inlineInput {
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.12);
+    border-width: 0 0 1px 0;
+    margin: 0 0 16px 4px;
+    background-color: inherit;
+}
+
+.flatCard {
+    box-shadow: none;
+}
+
+.text-photo-button {
+    position: absolute;
+}
+
+.headBlock {
+    margin: 8px 0px 0px 0px;
+}
+.headBlock md-switch {
+margin: 0;
+}
+
+.blockSpacing {
+    margin: 10px 0px 20px 0px;
+}
+
+.subHeadNav::-webkit-scrollbar { 
+    display: none; 
+} 
+.subHeadNav {
+  width: 100%;
+  height: 50px; 
+  background-color: white;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling:touch;
+  text-align: center;
+}
+
+.subHeadNav md-input-container {
+    border-width:  0 1px 0 0;
+    border-color: rgba(0,0,0,0.12);
+    border-style: solid;
+
+}
+
+.textAreaLabel {
+    display: block;
+    position: absolute;
+    top: -10px;
+    background-color: white;
+    margin-left:10px;
+}
+
+.blockArea {
+    width: 100%;
+    height: 50px;
+    resize: vertical;
+    border-color: rgba(0,0,0,0.12);
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.noresizeArea {
+    display:block;
+    height: 200px; 
+    resize:none; 
+    border-color:rgba(0,0,0,0.12); 
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.trileftBorder {
+    border-style: solid;
+    border-color:rgba(0,0,0,0.12); 
+    border-width: 1px 0px 1px 1px;
+}
+
+.answerMe {
+    border: 2px solid red;
+    border-radius: 2px;
+}

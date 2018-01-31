@@ -1,0 +1,60 @@
+#view {
+    height:100%; 
+    width:100%; 
+    overflow: hidden;
+}
+
+.pagePadding {
+    padding: 8px;
+}
+
+.fixedFooter {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    opacity: .8;
+    background-color: black;
+}
+
+ html, body, md-content {
+    background-color: transparent !important;
+ }
+
+.previewCircle {
+    display: inline-block;
+    z-index: 20;
+    line-height: 56px;
+    width: 56px;
+    height: 56px;
+    min-height: 36px;
+    min-width: 0;
+    vertical-align: middle;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    margin: 6px 8px;
+    background-color:darkgray;
+    background-size:cover;
+    background-repeat: no-repeat;
+/*    background-image: url(../../assets/Castle-Logo-Main-White.png);*/
+    background-position: center;
+    background-origin: content-box;
+}
+
+#takePictureButton {
+    height: 70px;
+    width: 70px;
+}
+
+
+
+
+
+
+
+.lightIcon {
+    color: #EFEFEF;
+}

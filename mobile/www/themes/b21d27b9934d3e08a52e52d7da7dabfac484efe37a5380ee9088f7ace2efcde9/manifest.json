@@ -1,0 +1,339 @@
+{
+  "title": "Modern",
+  "unique": "b21d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9",
+  "hash": "c94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde3",
+  "version": 0.1,
+  "api_version": 0.1,
+  "date_created": "11/13/2017 11:30:25 PM",
+  "last_modified": "11/13/2017 11:30:25 PM",
+  "author": "Invenio",
+  "entry_point": "index.html",
+  "preview": "preview.pdf",
+  "thumbnail": "thumbnail.png",
+  "template": [{
+      "title": "Theme",
+      "sourceType": "template",
+      "order": 1,
+      "subsections": [{
+        "title": "Property Information",
+        "sourceType": "template",
+        "order": 1,
+        "questions": [{
+          "title": "Front Page Photo",
+          "description": "",
+          "comments": "",
+          "type": "photo",
+          "values": [{
+            "id": null,
+            "key": null,
+            "questionId": null,
+            "sourceType": null,
+            "inspectionId": null,
+            "type": null,
+            "checked": null,
+            "autoComment": null,
+            "order": null,
+            "photos": []
+        }],
+          "validation": {
+            "type": "",
+            "min": null,
+            "max": null,
+            "isRequired": 1
+          },
+          "answer": null,
+          "answers": [],
+          "notApplicable": 0,
+          "severity": null,
+          "showSummaryRemark": 1,
+          "showDescription": 1,
+          "order": 1,
+          "photos": []
+      }, {
+          "title": "Street Address",
+          "description": "",
+          "comments": "",
+          "type": "text",
+          "values": [{
+            "id": null,
+            "key": null,
+            "questionId": null,
+            "sourceType": null,
+            "inspectionId": null,
+            "type": null,
+            "checked": null,
+            "autoComment": null,
+            "order": null,
+            "photos": []
+        }],
+          "validation": {
+            "type": "",
+            "min": null,
+            "max": null,
+            "isRequired": "true"
+          },
+          "answer": null,
+          "answers": [],
+          "notApplicable": 0,
+          "severity": null,
+          "showSummaryRemark": 1,
+          "showDescription": 1,
+          "order": 1,
+          "photos": []
+      }, {
+          "title": "City",
+          "description": "",
+          "comments": "",
+          "type": "text",
+          "values": [{
+            "id": null,
+            "key": null,
+            "questionId": null,
+            "sourceType": null,
+            "inspectionId": null,
+            "type": null,
+            "checked": null,
+            "autoComment": null,
+            "order": null,
+            "photos": []
+        }],
+          "validation": {
+            "type": "",
+            "min": null,
+            "max": null,
+            "isRequired": "true"
+          },
+          "answer": null,
+          "answers": [],
+          "notApplicable": 0,
+          "severity": null,
+          "showSummaryRemark": 1,
+          "showDescription": 1,
+          "order": 1,
+          "photos": []
+      }, {
+          "title": "State",
+          "description": "",
+          "comments": "",
+          "type": "text",
+          "values": [{
+            "id": null,
+            "key": null,
+            "questionId": null,
+            "sourceType": null,
+            "inspectionId": null,
+            "type": null,
+            "checked": null,
+            "autoComment": null,
+            "order": null,
+            "photos": []
+        }],
+          "validation": {
+            "type": "",
+            "min": null,
+            "max": null,
+            "isRequired": "true"
+          },
+          "answer": null,
+          "answers": [],
+          "notApplicable": 0,
+          "severity": null,
+          "showSummaryRemark": 1,
+          "showDescription": 1,
+          "order": 1,
+          "photos": []
+      }, {
+          "title": "Zip Code",
+          "description": "",
+          "comments": "",
+          "type": "text",
+          "values": [{
+            "id": null,
+            "key": null,
+            "questionId": null,
+            "sourceType": null,
+            "inspectionId": null,
+            "type": null,
+            "checked": null,
+            "autoComment": null,
+            "order": null,
+            "photos": []
+        }],
+          "validation": {
+            "type": "number",
+            "min": null,
+            "max": null,
+            "isRequired": "true"
+          },
+          "answer": null,
+          "answers": [],
+          "notApplicable": 0,
+          "severity": null,
+          "showSummaryRemark": 1,
+          "showDescription": 1,
+          "order": 1,
+          "photos": []
+      }]
+    }, {
+        "title": "Client Information",
+        "sourceType": "template",
+        "order": 1,
+        "questions": [{
+          "title": "Prepared For",
+          "description": "",
+          "comments": "",
+          "type": "text",
+          "values": [{
+            "id": null,
+            "key": null,
+            "questionId": null,
+            "sourceType": null,
+            "inspectionId": null,
+            "type": null,
+            "checked": null,
+            "autoComment": null,
+            "order": null,
+            "photos": []
+        }],
+          "validation": {
+            "type": "",
+            "min": null,
+            "max": null,
+            "isRequired": "true"
+          },
+          "answer": null,
+          "answers": [],
+          "notApplicable": 0,
+          "severity": null,
+          "showSummaryRemark": 1,
+          "showDescription": 1,
+          "order": 1,
+          "photos": []
+      }, {
+          "title": "Inspection Date",
+          "description": "",
+          "comments": "",
+          "type": "text",
+          "values": [{
+            "id": null,
+            "key": null,
+            "questionId": null,
+            "sourceType": null,
+            "inspectionId": null,
+            "type": null,
+            "checked": null,
+            "autoComment": null,
+            "order": null,
+            "photos": []
+        }],
+          "validation": {
+            "type": "date",
+            "min": null,
+            "max": null,
+            "isRequired": "true"
+          },
+          "answer": null,
+          "answers": [],
+          "notApplicable": 0,
+          "severity": null,
+          "showSummaryRemark": 1,
+          "showDescription": 1,
+          "order": 1,
+          "photos": []
+      }, {
+          "title": "Prepared By",
+          "description": "",
+          "comments": "",
+          "type": "text",
+          "values": [{
+            "id": null,
+            "key": null,
+            "questionId": null,
+            "sourceType": null,
+            "inspectionId": null,
+            "type": null,
+            "checked": null,
+            "autoComment": null,
+            "order": null,
+            "photos": []
+        }],
+          "validation": {
+            "type": "",
+            "min": null,
+            "max": null,
+            "isRequired": "true"
+          },
+          "answer": null,
+          "answers": [],
+          "notApplicable": 0,
+          "severity": null,
+          "showSummaryRemark": 1,
+          "showDescription": 1,
+          "order": 1,
+          "photos": []
+      }, {
+          "title": "Inspection Number",
+          "description": "",
+          "comments": "",
+          "type": "text",
+          "values": [{
+            "id": null,
+            "key": null,
+            "questionId": null,
+            "sourceType": null,
+            "inspectionId": null,
+            "type": null,
+            "checked": null,
+            "autoComment": null,
+            "order": null,
+            "photos": []
+        }],
+          "validation": {
+            "type": "",
+            "min": null,
+            "max": null,
+            "isRequired": "true"
+          },
+          "answer": null,
+          "answers": [],
+          "notApplicable": 0,
+          "severity": null,
+          "showSummaryRemark": 1,
+          "showDescription": 1,
+          "order": 1,
+          "photos": []
+      }, {
+          "title": "Notes",
+          "description": "",
+          "comments": "",
+          "type": "textarea",
+          "values": [{
+            "id": null,
+            "key": null,
+            "questionId": null,
+            "sourceType": null,
+            "inspectionId": null,
+            "type": null,
+            "checked": null,
+            "autoComment": null,
+            "order": null,
+            "photos": []
+        }],
+          "validation": {
+            "type": "",
+            "min": null,
+            "max": null,
+            "isRequired": 0
+          },
+          "answer": null,
+          "answers": [],
+          "notApplicable": 0,
+          "severity": null,
+          "showSummaryRemark": 1,
+          "showDescription": 1,
+          "order": 1,
+          "photos": []
+      }]
+    }]
+  }]
+}

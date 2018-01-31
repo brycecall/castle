@@ -1,0 +1,22 @@
+<link type="text/css" rel="stylesheet" href="dialogs/camera/camera_preview.css" />
+<div class="page pagePadding">
+    <div layout="row" layout-wrap >
+        <div ng-repeat="photo in photos"
+             class="photoWrapper" ng-if="photo.deleted !== true">
+            <md-button class="md-icon-button cancelPhoto" 
+                       aria-label="delete photo"
+                       ng-click="remove(photos, $index)">
+                <md-icon md-svg-icon="cancel" ></md-icon>
+            </md-button>
+            <div class="photo md-whiteframe-1dp" 
+                 style="background-image: url( {{photo.link}} );" 
+                 ng-click="showFullScreen($event, photo)"></div>
+        </div>
+        <div ng-show="photos.length <= 0">
+            No Photos Yet!
+        </div>
+    </div>
+     <div>
+    
+     </div>
+</div>

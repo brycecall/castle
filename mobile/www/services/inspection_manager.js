@@ -868,8 +868,8 @@ app.factory('inspection_manager', function (database, $q, theme_manager, $sha, f
       private.inspection.guid = filesystem_manager.generateGuid();   
     }
     private.inspection.hash = null;
+	private.inspection.lastModified = new Date();
     private.inspection.hash = $sha.hash(private.inspection.toString());
-    
 
     filesystem_manager.saveInspection(private.inspection.guid + ".js", JSON.stringify(private.inspection))
       .then(function(success) {

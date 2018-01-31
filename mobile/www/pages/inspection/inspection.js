@@ -160,7 +160,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
 });
 
 
-app.controller('inspection_new', function ($rootScope, $scope, $state, inspection_manager, theme_manager, action_manager, header_manager) {
+app.controller('inspection_new', function ($rootScope, $scope, $state, inspection_manager, theme_manager, action_manager, header_manager, filesystem_manager, $sha) {
   $scope.themes = [];
   $scope.templates = [];
   inspection_manager.mode = "inspection";
@@ -181,11 +181,20 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
     // Generate new inspection from template
     // - Local mods before sending object to filesystem_manager
     $rootScope.loading = true;
-    var inspection = $scope.sTemplate;
+    var inspection = angular.copy($scope.sTemplate);
     inspection.insThemeId = $scope.sTheme.unique;
     inspection.insTemplateId = $scope.sTemplate.rowId;
     inspection.insName = $scope.sName;
     inspection.sections = $scope.sTheme.template.concat(inspection.sections);
+    inspection.insSourceType = "inspection";
+    // If no guid is already associated, add one
+    if (!inspection.guid) {
+      inspection.guid = filesystem_manager.generateGuid();   
+    }
+    inspection.hash = null;
+	inspection.lastModified = new Date();
+    inspection.hash = $sha.hash(inspection.toString());
+	  
     inspection_manager.startInspection(inspection).then(function(success) {
       // Navigate to inspection wizard
       inspection_manager.getInspection(inspection).then(function(success){

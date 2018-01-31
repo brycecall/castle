@@ -164,20 +164,12 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $sha) {
       return deferred.promise;
     }
     
-    // Generate inspection from template file
+    // Generate inspection from template file 
     public.copyTemplateToInspection = function(template) {
       var deferred = $q.defer();
-        
-      // Copy incoming template and Edit unique identifiers
-      var newInspection = angular.copy(template);
-      newInspection.guid = public.generateGuid();
-      newInspection.hash = null;
-      newInspection.insSourceType = "inspection";
-      newInspection.hash = $sha.hash(newInspection.toString());
-      newInspection.lastModified = new Date();
-        
+
       // Write to file
-      public.saveInspection(newInspection.guid + ".js", JSON.stringify(newInspection))
+      public.saveInspection(template.guid + ".js", JSON.stringify(template))
         .then(function(success) {
         deferred.resolve(success);  
       }, function(error) {

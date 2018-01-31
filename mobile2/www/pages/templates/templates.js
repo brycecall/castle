@@ -52,13 +52,27 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('templates', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, $mdToast) {
-  $scope.templates = [];
-  $scope.numDeleted = 0;
-  $rootScope.loading = true;
-
+app.controller('templates', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, $mdToast, $cordovaFile, filesystem_manager) {
   // Switch the inspection_manager mode (this is global)
   inspection_manager.mode = "template";
+  $rootScope.loading = true;
+  var templates = inspection_manager.getTemplates();
+  templates.then(
+    //Success
+    function (promise) {
+      $scope.templates = [];
+      for(var i = 0; i < promise.length; i++) {
+        $scope.templates.push(JSON.parse(promise[i]));
+      }
+      $rootScope.loading = false;
+    },
+    function (promise) {
+      $scope.templates = [];
+      console.log(promise.message);
+      $rootScope.loading = false;
+    }
+  );
+  $scope.numDeleted = 0;
 
   $scope.delete = function(index, list) {
     var toast = $mdToast.simple()
@@ -76,47 +90,35 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
         $scope.templates[index].deleted = false;
         $scope.numDeleted--;
       } else {
-        inspection_manager.deleteInspection(list[index].rowId);
+        inspection_manager.deleteInspection(list[index].guid + ".js");
       }
     }, function () {
       console.log("You delete fast don't ya!");
     });
   };
     
-  $scope.edit = function (insId) {
-    $rootScope.loading = true;
-    inspection_manager.getInspection(insId).then(function(success){
+  $scope.edit = function (index) {
+    inspection_manager.getInspection($scope.templates[index]).then(function(success){
       $state.go('template_section', {
-        'insId': insId
+        'insId': $scope.insId 
       });
-      $rootScope.loading = false;
     }, function(error){
       console.log('Failed to load inspection');
     });
   };
     
-  $scope.copy = function (insId) {
+  $scope.copy = function (ins) {
     // Spinny spins
     $rootScope.loading = true;
-    // First, get the inspection object
-    inspection_manager.getInspection(insId).then(function(){
-      // The local inspection object should be loaded with 
-      // the selected template. Save it to copy to new rows.
-      console.log('copy getInspection .then');
-      inspection_manager.saveInspection().then(function(){
-        console.log('copy saveInspection .then');
-        // Call getTemplates again
-        // TODO: change to get single inspection row from
-        // inspection table and push the row into scope.templates[]
-        inspection_manager.getTemplates().then(function(promise){
-          $scope.templates = [];
-          for (var i = 0; promise.row && i < promise.row.length; i++) {
-            $scope.templates.push(promise.row.item(i));
-          };
-          $rootScope.loading = false;
-        });
-      });
+
+    inspection_manager.copy(ins).then(function(success){
+      $scope.templates.push(success.template);
+    }, function(error){
+      console.log('Error: ');
+      console.log(error);
     });
+
+    $rootScope.loading = false;
   };
 
   $scope.sort = "";
@@ -165,23 +167,6 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
 //      $scope.templates.push(template);
       
   });
-
-  var templates = inspection_manager.getTemplates();
-  templates.then(
-    //Success
-    function (promise) {
-      console.log(promise.message);
-      console.log(promise.row);
-      for (var i = 0; promise.row && i < promise.row.length; i++) {
-        $scope.templates.push(promise.row.item(i));
-      }
-        $rootScope.loading = false;
-    },
-    function (promise) {
-      console.log(promise.message);
-        $rootScope.loading = false;
-    }
-  );
 });
 
 app.service('templateShareService', function ($state, $mdToast, $q) {
@@ -248,71 +233,6 @@ app.service('templateShareService', function ($state, $mdToast, $q) {
   return shareService;
 });
 
-// Define the page controller
-app.controller('template', function ($rootScope, $scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager) {
-  $scope.templates = [];
-  $rootScope.loading = true;
-
-  $scope.goToInspection = function (insId) {
-    $rootScope.loading = true;
-    inspection_manager.getInspection(insId).then(function(success){
-      $state.go('template_section', {
-        'insId': insId
-      });
-      $rootScope.loading = false;
-    }, function(error){
-      console.log('Failed to load inspection');
-    });
-  };
-
-  $scope.reports = [];
-  $scope.sort = "";
-  $scope.sort_filters = [
-    "Name",
-    "Type",
-    "Date"
-  ];
-
-  $scope.state = "";
-  $scope.state_filters = [
-    "New",
-    "Started",
-    "Complete",
-    "Sent",
-    "Archived"
-  ];
-
-  header_manager.title = "Templates";
-  header_manager.mode = HEADER_MODES.Action;
-  header_manager.setAction("Back", "back", function () {
-    $state.go('home');
-  });
-
-  $scope.camera_manager = camera_manager;
-  action_manager.addAction('New Template', 'add', function () {
-    $state.go("template_new");
-    //  
-  });
-
-  var templates = inspection_manager.getTemplates();
-  templates.then(
-    //Success
-    function (promise) {
-      console.log(promise.message);
-      console.log(promise.row);
-      for (var i = 0; promise.row && i < promise.row.length; i++) {
-        $scope.templates.push(promise.row.item(i));
-      }
-      $rootScope.loading = false;
-      //Fail
-    },
-    function (promise) {
-      console.log(promise.message);
-      $rootScope.loading = false;
-    }
-  );
-});
-
 app.controller('template_new', function ($rootScope, $scope, $state, $rootScope, inspection_manager, theme_manager, header_manager) {
   header_manager.title = "New Template";
   
@@ -361,7 +281,10 @@ app.controller('template_new', function ($rootScope, $scope, $state, $rootScope,
 
 });
 
-app.controller('template_section', function ($rootScope, $scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
+app.controller('template_section', function ($rootScope, $scope, inspection_manager, header_manager, $state, templateShareService, action_manager) {
+  $scope.template = inspection_manager.getPrivateInspection();
+  $scope.sections = $scope.template.sections || [];
+  $rootScope.loading = false;
   header_manager.title = "Edit " + inspection_manager.mode.charAt(0).toUpperCase() + inspection_manager.mode.substr(1);
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
@@ -380,7 +303,6 @@ app.controller('template_section', function ($rootScope, $scope, inspection_mana
     }
   });
   $scope.numDeleted = 0;
-  $scope.insId = $stateParams.insId;
   $scope.getCrumbyClass = templateShareService.getCrumbyClass;
   $scope.navigate = templateShareService.navigate;
   $scope.remove = function(index, list) {
@@ -397,7 +319,7 @@ app.controller('template_section', function ($rootScope, $scope, inspection_mana
 
   action_manager.addAction('Save', 'save', function () {
     $rootScope.loading = true;
-    inspection_manager.updateTemplate().then(function() {
+    inspection_manager.saveInspection().then(function() {
       $rootScope.loading = false;
       action_manager.showSuccessMessageToast('Save Success');
     }, function(){
@@ -415,9 +337,6 @@ app.controller('template_section', function ($rootScope, $scope, inspection_mana
         break;
     }
   });
-
-  // All the sections for a specific inspection/report
-  $scope.sections = [];
 
   $scope.goToSubsection = function (sectionIndex) {
     $state.go('template_subsection', {
@@ -439,24 +358,14 @@ app.controller('template_section', function ($rootScope, $scope, inspection_mana
       $('.ng-empty').focus();
     });
   };
-  
-  inspection_manager.getInspection($scope.insId).then(
-    function(data) {
-        $scope.template = data.value;
-        $scope.sections = $scope.template.sections;
-        $rootScope.loading = false;
-    },
-    function(data) {
-        console.log("Error... no sections exist in the database");
-        $rootScope.loading = false;
-    }
-  );
-
 });
 
 app.controller('template_subsection', function ($rootScope, $scope, inspection_manager, header_manager, $state, $stateParams, templateShareService, action_manager) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
+  $scope.template = inspection_manager.getPrivateInspection();
+  $scope.subsections = $scope.template.sections[$scope.sectionIndex].subsections || [];
+  header_manager.title = "Edit " + $scope.template.sections[$scope.sectionIndex].title + " Section";
   $scope.getCrumbyClass = templateShareService.getCrumbyClass;
   $scope.navigate = templateShareService.navigate;
   $scope.numDeleted = 0;
@@ -471,9 +380,7 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
       $scope.numDeleted += error.value;    
     });
   };
-  // All the sections for a specific inspection/report
-  $scope.subsections = [];
-  
+
   header_manager.title = "Edit Section";
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
@@ -484,12 +391,12 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
   
   action_manager.addAction('Save', 'save', function () {
     $rootScope.loading = true;
-    inspection_manager.updateTemplate().then(function() {
+    inspection_manager.saveInspection().then(function() {
       $rootScope.loading = false;
       action_manager.showSuccessMessageToast('Save Success');
     }, function(){
-        $rootScope.loading = false;
-        action_manager.showFailureMessageToast('Save Failure');
+      $rootScope.loading = false;
+      action_manager.showFailureMessageToast('Save Failure');
     });
     switch (inspection_manager.mode) {
       case "theme":
@@ -516,24 +423,7 @@ app.controller('template_subsection', function ($rootScope, $scope, inspection_m
       $('.ng-empty').focus();
     });
   };
-  
-  inspection_manager.getSubsections($scope.insId, $scope.sectionIndex).then(
-    function (data) {
-      $scope.subsections = data.value || [];
-      $rootScope.loading = false;
-    },
-    function (data) {
-      console.log("Error... no subsections exist in the database");
-      $rootScope.loading = false;
-    }
-  );
-  
-  inspection_manager.getSection($scope.insId, $scope.sectionIndex).then(
-    function (data) {
-      header_manager.title = "Edit " + data.value.title + " Section";
-    }
-  );
-  
+
   $scope.questionDrill = function (subsectionIndex) {
     $state.go('template_question', {
       'insId': $scope.insId,
@@ -547,6 +437,9 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
+  //$scope.template = inspection_manager.getPrivateInspection();
+  $scope.questions = inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex);//$scope.template.sections[$scope.sectionIndex].subsections[$scope.subsectionIndex].questions || [];
+  header_manager.title = "Edit Test Subsection";
   $scope.getCrumbyClass = templateShareService.getCrumbyClass;
   $scope.navigate = templateShareService.navigate;
   $scope.numDeleted = 0;
@@ -561,21 +454,18 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
       $scope.numDeleted += error.value;    
     });
   };
-  // All the sections for a specific inspection/report
-  $scope.questions = [];
   
   header_manager.title = "Edit Subsection";
   header_manager.mode = HEADER_MODES.Action;
   header_manager.setAction('Back', 'back', function () {
     $state.go('template_subsection', {
       'insId': $scope.insId,
-      'sectionIndex': $scope.sectionIndex,
-      'subsectionIndex': $scope.subsectionIndex
+      'sectionIndex': $scope.sectionIndex
     });
   });
   action_manager.addAction('Save', 'save', function () {
     $rootScope.loading = true;
-    inspection_manager.updateTemplate().then(function() {
+    inspection_manager.saveInspection().then(function() {
       $rootScope.loading = false;
       action_manager.showSuccessMessageToast('Save Success');
     }, function() {
@@ -621,24 +511,7 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
       $('.ng-empty').focus();
     });
   };
-
-  inspection_manager.getSubSection($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
-    function (data) {
-      header_manager.title = "Edit " + data.value.title + " Subsection";
-    }
-  );
-  
-  inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
-    function (data) {
-      $scope.questions = data.value;
-      $rootScope.loading = false;
-    },
-    function (data) {
-      console.log("Error... no questions exist in the database");
-      $rootScope.loading = false;
-    }
-  );
-
+    
   $scope.questionDrill = function (questionIndex) {
     $state.go('template_detail', {
       'insId': $scope.insId,
@@ -655,6 +528,9 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
   $scope.questionIndex = $stateParams.questionIndex;
+  //$scope.template = inspection_manager.getPrivateInspection();
+  $scope.question = inspection_manager.getQuestion($scope.insId, $scope.sectionIndex, $scope.subsectionIndex, $scope.questionIndex);//$scope.template.sections[$scope.sectionIndex].subsections[$scope.subsectionIndex].questions[$scope.questionIndex] || [];
+  $scope.questionCount = inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).length;//$scope.template.sections[$scope.sectionIndex].subsections[$scope.subsectionIndex].questions.length || -1;
   $scope.mode = $stateParams.mode;
   $scope.getCrumbyClass = templateShareService.getCrumbyClass;
   header_manager.mode = HEADER_MODES.Action;
@@ -732,29 +608,31 @@ $scope.questionTypes = [
     'value':null
   };
     
-    $scope.sortOptions = {
-        'ui-floating': false, 
-        'handle': '.handle', 
-        'containment': '#sortParent'
-    };
-    
-  $scope.question = {};
-  $scope.questionCount = -1;
-  inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).then(
-    function (data) { 
-        $rootScope.loading = false;
-        $scope.questionCount = data.value.length;
-        $scope.question = data.value[$scope.questionIndex];
-        console.log($scope.question);
-        attachPhotos();
-        //console.log($scope.question.type);
+  $scope.sortOptions = {
+    'ui-floating': false, 
+    'handle': '.handle', 
+    'containment': '#sortParent'
+  };
 
-    },
-    function (data) {
-      console.log("Error... no question exists in the database");
-      $rootScope.loading = false;
+  var attachPhotos = function () {
+    if (camera_manager.photos.length > 0 ) {
+        if (!$scope.question.photos) {
+            $scope.question.photos = [];
+        }
+        
+        for (var photoIndex in camera_manager.photos) {
+          var photo = camera_manager.photos[photoIndex];
+          if (!photo.deleted) {
+              photo.answerId = camera_manager.answerID;
+              photo.title = camera_manager.title;
+             $scope.question.photos.push(photo);
+          }
+        }
     }
-  );
+    camera_manager.photos = [];
+  };
+
+  attachPhotos();
 
   $scope.newRadioVal = {'value':null};
   $scope.addRadio = function() {
@@ -833,7 +711,7 @@ $scope.questionTypes = [
         navigateQuestions(false);
       }, 'md-raised');
       action_manager.addAction('Save', 'save', function () {
-        inspection_manager.updateTemplate().then(function() {
+        inspection_manager.saveInspection().then(function() {
             $rootScope.loading = false;
             action_manager.showSuccessMessageToast('Save Success');
         }, function() {
@@ -864,24 +742,6 @@ $scope.questionTypes = [
         camera_manager.title += ": " + value;
       }
     $state.go('camera');
-  };
-    
-  var attachPhotos = function () {
-    if (camera_manager.photos.length > 0 ) {
-        if (!$scope.question.photos) {
-            $scope.question.photos = [];
-        }
-        
-        for (var photoIndex in camera_manager.photos) {
-          var photo = camera_manager.photos[photoIndex];
-          if (!photo.deleted) {
-              photo.answerId = camera_manager.answerID;
-              photo.title = camera_manager.title;
-             $scope.question.photos.push(photo);
-          }
-        }
-    }
-    camera_manager.photos = [];
   };
 
   (function () {

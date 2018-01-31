@@ -162,7 +162,7 @@ app.run(function ($rootScope) {
 
 // Initialize the database if it hasn't been yet
 app.run(function (database, $timeout, $interval, $rootScope) {
-  var database_ready = (localStorage.getItem("database_ready") == "true" ? true : false);
+  var database_ready = true;//(localStorage.getItem("database_ready") == "true" ? true : false);
   if (database_ready) {
     console.log("Database has already been initialized, skipping...");
   } else {

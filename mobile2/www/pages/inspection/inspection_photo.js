@@ -180,20 +180,9 @@ app.controller('inspection_photo', function ($rootScope, $scope, $, $state,
         $scope.step = 0;
     } else {
       $scope.step = 1;
-      inspection_manager.getInspection($scope.insId)
-        .then(
-          function (data) {
-            $rootScope.loading = false;
-            $scope.inspection = data.value;
-            $scope.chipList = $scope.inspection.sections;
-          },
-          function (data) {
-            $rootScope.loading = false;
-            console.log("Error... no question exists in the database");
-          }
-        );
+      $scope.inspection = inspection_manager.getPrivateInspection()
+      $scope.chipList = $scope.inspection.sections;
     }
-      
   })();
     
 });

@@ -1,23 +1,43 @@
-app.factory('inspection_manager', function (database, $q, theme_manager) {
+app.factory('inspection_manager', function (database, $q, theme_manager, $sha, filesystem_manager) {
   var private = {};
   var public = {};
-
+  private.inspections = {};
   private.inspection = {};
   public.mode = "inspection";
   public.returnLocation = {'name':'inspection', params:{}}
-
-  public.getInspection = function (id) {
+  public.getPrivateInspection = function() {
+    return private.inspection;
+  }
+  public.getInspection = function (ins) {
     var defer = $q.defer();
     var promise = defer.promise;
-    id = id.toString();
     
     switch (public.mode) {
       case "inspection":
-      case "template":
-        console.log('Inspection Manager - Get Inspection ID: ' + id);
+        console.log('Inspection Manager - Get Inspection');
         if (window['sqlitePlugin'] === undefined) {
             var mockdefer = $q.defer();
-            if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== id) {
+            if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== ins.insId) {
+                private.inspection = defaultTemplate;
+                mockdefer.resolve({ "value":defaultTemplate })
+                promise = mockdefer.promise;
+            } else {
+                mockdefer.resolve({ "value":private.inspection })
+                promise = mockdefer.promise;
+            }
+        } else if (typeof(ins) == "object") {
+            private.inspection = ins;
+            defer.resolve();
+        } else {
+            promise = private.loadInspectionFromFile(ins.insId);
+            defer.resolve();
+        }
+        break;
+      case "template":
+        console.log('Inspection Manager - Get Template');
+        if (window['sqlitePlugin'] === undefined) {
+            var mockdefer = $q.defer();
+            if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== ins.insId) {
                 private.inspection = defaultTemplate;
                 mockdefer.resolve({ "value":defaultTemplate })
                 promise = mockdefer.promise;
@@ -26,12 +46,16 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
                 promise = mockdefer.promise;
             }
         } else {
-            promise = private.loadFromDatabase(id);
+          if (angular.equals(private.inspection, {})) {
+            private.inspection = ins;   
+          }
+          defer.resolve();
+          //promise = private.loadTemplateFromFile(id);
         }
         break;
       case "theme":
-        console.log('Inspection Manager - Get Theme ID: ' + id);
-        promise = private.loadFromThemeManager(id);
+        console.log('Inspection Manager - Get Theme ID: ' + ins.insId);
+        promise = private.loadFromThemeManager(ins.insId);
         break;
       default:
         defer.reject(public.mode + " is not a valid type.");
@@ -40,7 +64,87 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     return promise;
   };
     
+  public.copy = function(ins) {
+    var deferred = $q.defer();
+      
+    switch (public.mode) {
+      case "inspection":
+        private.copyInspection(ins);
+        break;
+      case "template":
+        private.copyTemplate(ins).then(function(success){
+          deferred.resolve(success);    
+        }, function(error){
+          deferred.reject(error);    
+        });
+        break;
+      default:
+        deferred.reject(public.mode + " is not a valid type.");
+    }
+      
+    return deferred.promise;
+  }
+    
+  private.copyInspection = function(ins) {
+    var deferred = $q.defer();
+      
+    filesystem_manager.copyInspection(ins).then(function(success){
+      deferred.resolve(success);    
+    }, function(error) {
+      deferred.reject(error);    
+    });
+      
+    return deferred.promise;
+  }
+  
+  private.copyTemplate = function(ins) {
+    var deferred = $q.defer();
+      
+    filesystem_manager.copyTemplate(ins).then(function(success){
+      console.log(success);
+      deferred.resolve(success);    
+    }, function(error) {
+      console.log(error);
+      deferred.reject(error);    
+    });
+      
+    return deferred.promise;
+  }
+  
+  private.loadTemplateFromFile = function(filename) {
+    var deferred = $q.defer();
+    
+    if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== id) {
+      filesystem_manager.getTemplate(filename).then(function(success) {
+        private.inspection = JSON.parse(success);
+        deferred.resolve({value: success});
+      }, function(error) {
+        deferred.reject({value: error});
+      });
+    } else {
+      deferred.resolve({value: private.inspection});
+    }
 
+    return deferred.promise;
+  }
+  
+  private.loadInspectionFromFile = function(filename) {
+    var deferred = $q.defer();
+      
+    if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== id) {
+      filesystem_manager.getInspection(filename).then(function(success) {
+        private.inspection = JSON.parse(success);
+        deferred.resolve({value: success});
+      }, function(error) {
+        deferred.reject({value: error});
+      });
+    } else {
+      deferred.resolve({value: private.inspection});
+    }
+
+    return deferred.promise;
+  }
+  
   private.loadFromDatabase = function (id) {
     var defer = $q.defer();
     if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== id) {
@@ -254,12 +358,32 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
   };
 
   public.getInspections = function () {
-    return database.getInspections();
+    var tempDefer = $q.defer();
+
+    filesystem_manager.getInspections()
+      .then(function(success) {
+        tempDefer.resolve(success);
+      }, function(error) {
+        tempDefer.reject(error);
+    });
+    return tempDefer.promise;
+    // SQLite
+    //return database.getInspections();
   };
 
 
   public.getTemplates = function () {
-    return database.getTemplates();
+    var tempDefer = $q.defer();
+
+    filesystem_manager.getTemplates()
+      .then(function(success) {
+        tempDefer.resolve(success);
+      }, function(error) {
+        tempDefer.reject(error);
+    });
+    return tempDefer.promise;
+    // SQLite
+    //return database.getTemplates();
   };
 
   public.initSections = function () {
@@ -368,9 +492,9 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
 
 
   public.getQuestions = function (insId, sectionIndex, subsectionIndex) {
-    var defer = $q.defer();
-    var questions = [];
-    public.getInspection(insId).then(function (data) {
+    //var defer = $q.defer();
+    //var questions = [];
+    /*public.getInspection(insId).then(function (data) {
       try {
         questions = data.value.sections[sectionIndex]
           .subsections[subsectionIndex].questions;
@@ -384,12 +508,12 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
       }
     }, function () {
       defer.reject(questions);
-    });
-    return defer.promise;
+    });*/
+    return private.inspection.sections[sectionIndex].subsections[subsectionIndex].questions;//defer.promise;
   };
 
   public.getQuestion = function (insId, sectionIndex, subsectionIndex, questionIndex) {
-    var defer = $q.defer();
+    /*var defer = $q.defer();
     var question = {};
     public.getInspection(insId).then(function (data) {
       try {
@@ -406,8 +530,8 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
       }
     }, function () {
       defer.reject(question);
-    });
-    return defer.promise;
+    });*/
+    return private.inspection.sections[sectionIndex].subsections[subsectionIndex].questions[questionIndex];//defer.promise;
   };
 
   public.updateQuestion = function (insParams) {
@@ -436,8 +560,10 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
 
     switch (public.mode) {
       case "inspection":
+        promise = private.saveInspectionToFile();
+        break;
       case "template":
-        promise = private.saveToDatabase();
+        promise = private.saveTemplateToFile();
         break;
       case "theme":
         promise = private.saveToThemeManager();
@@ -449,14 +575,40 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     return promise;
   };
     
-  public.deleteInspection = function (inspectionId) {
+  public.startInspection = function(template) {
+    var deferred = $q.defer();
+      
+    private.copyTemplateToInspection(template).then(function(success){
+      deferred.resolve(success);    
+    }, function(error){
+      deferred.reject(error);    
+    });
+      
+    return deferred.promise;
+  }
+  
+  private.copyTemplateToInspection = function (template) {
+    var deferred = $q.defer();
+      
+    filesystem_manager.copyTemplateToInspection(template).then(function(success){
+      deferred.resolve(success);
+    }, function(error){
+      deferred.reject(error);
+    });
+      
+    return deferred.promise;
+  }
+  
+  public.deleteInspection = function (filename) {
     var defer = $q.defer();
     var promise = defer.promise;
 
     switch (public.mode) {
       case "inspection":
+        promise = private.deleteInspectionFile(filename);
+        break;
       case "template":
-        promise = private.deleteFromDatabase(inspectionId);
+        promise = private.deleteTemplateFile(filename);
         break;
       case "theme":
         //TODO, theme delete?
@@ -467,6 +619,31 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
 
     return promise;
   };
+    
+  private.deleteInspectionFile = function(filename) {
+    var deferred = $q.defer();
+      
+    filesystem_manager.deleteInspection(filename).then(function(success) {
+      deferred.resolve(success);
+    }, function(error) {
+      deferred.reject(error);    
+    });
+      
+    return deferred.promise;
+  }
+    
+  private.deleteTemplateFile = function(filename) {
+    var deferred = $q.defer();
+      
+    // Call filesystem function for deletion
+    filesystem_manager.deleteTemplate(filename).then(function(success){
+      deferred.resolve(success);    
+    }, function(error) {
+      deferred.reject(error);    
+    })
+      
+    return deferred.promise;
+  }
 
   public.updateInspection = function () {
     var defer = $q.defer();
@@ -503,10 +680,10 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     return updInspMetadata.promise;
   };
     
-  public.updateTitle = function(id, title) {
+  public.update = function(ins) {
     var deferTitle = $q.defer();
     
-    private.updateInspectionTitle(id, title).then(function(success){
+    private.updateInspectionFile(ins).then(function(success){
       deferTitle.resolve({
         message: success.message 
       });
@@ -597,20 +774,26 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
     return deferUpdateInsMetadata.promise;
   };
 
-  private.updateInspectionTitle = function(inspectionId, inspectionTitle) {
-    var deferTitle = $q.defer();
-    
-    database.updateInspectionTitle(inspectionId, inspectionTitle).then(function(success){
-      deferTitle.resolve({
+  // Uses parameter instead of private.inspection
+  // (inspection.html page)
+  private.updateInspectionFile = function(ins) {
+    var deferUpdate = $q.defer();
+    // Update hash
+    ins.hash = null;
+    ins.lastModified = new Date();
+    ins.hash = $sha.hash(ins.toString());
+
+    filesystem_manager.saveInspection(ins.guid + '.js', JSON.stringify(ins)).then(function(success){
+      deferUpdate.resolve({
         message: success.message
       });
     }, function(error){
-      deferTitle.reject({
+      deferUpdate.reject({
         message: error.message
       });
     });
     
-    return deferTitle.promise;
+    return deferUpdate.promise;
   };
   
   private.updateDatabase = function() {
@@ -657,6 +840,47 @@ app.factory('inspection_manager', function (database, $q, theme_manager) {
 
     return deferred.promise;
   };
+    
+  private.saveTemplateToFile = function() {
+    var deferred = $q.defer();
+    // If no guid is already associated, add one
+    if (!private.inspection.guid) {
+      private.inspection.guid = filesystem_manager.generateGuid();   
+    }
+    private.inspection.hash = null;
+    private.inspection.hash = $sha.hash(private.inspection.toString());
+
+    filesystem_manager.saveTemplate(private.inspection + ".js", JSON.stringify(private.inspection))
+      .then(function(success) {
+        deferred.resolve({value: success});
+      }, function(error) {
+        deferred.reject({value: reject});
+      }
+    );
+      
+    return deferred.promise;
+  }
+  
+  private.saveInspectionToFile = function() {
+    var deferred = $q.defer();
+    // If no guid is already associated, add one
+    if (!private.inspection.guid) {
+      private.inspection.guid = filesystem_manager.generateGuid();   
+    }
+    private.inspection.hash = null;
+    private.inspection.hash = $sha.hash(private.inspection.toString());
+    
+
+    filesystem_manager.saveInspection(private.inspection.guid + ".js", JSON.stringify(private.inspection))
+      .then(function(success) {
+        deferred.resolve({value: success});
+      }, function(error) {
+        deferred.reject({value: reject});
+      }
+    );
+      
+    return deferred.promise;
+  }
 
   private.deleteFromDatabase = function (inspectionId) {
     var deferred = $q.defer();

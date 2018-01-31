@@ -8,7 +8,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, database, theme_manager, header_manager) {
+app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, database, theme_manager, header_manager, filesystem_manager, $cordovaFile) {
   header_manager.title = "Settings";
   
   $scope.wipeDatabase = function () {
@@ -17,7 +17,19 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
     if (sure) {
       $rootScope.loading = true;
       theme_manager.clearThemes();
-      database.initTables()
+        
+      // Replace template and inspection folders with empty ones
+      filesystem_manager.deleteInit().then(function(success){
+        console.log('Folders deleted successfully');
+        console.log(success);
+      }, function(error) {
+        console.log('Error deleting folders');
+        console.log(error);
+      });
+      $rootScope.loading = false;
+
+      // SQLLite init code
+      /*database.initTables()
         .then(function (success) {
           $timeout(function () {
             $scope.reload();
@@ -25,7 +37,7 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
         }, function (error) {
           $rootScope.loading = false;
           alert(error);
-        });
+        });*/
     }
   };
 

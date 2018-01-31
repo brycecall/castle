@@ -29,10 +29,9 @@ app.service('shareService', function ($state) {
 
 // Define the page controller
 app.controller('inspection', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, export_manager, $mdToast) {
-  $scope.inspections = [];
+  $rootScope.loading = true;
   $scope.camera_manager = camera_manager;
   $scope.numDeleted = 0;
-  $rootScope.loading = true;
   inspection_manager.mode = "inspection"; // Switch the inspection_manager mode (this is global)
 
   header_manager.title = "Inspections";
@@ -41,15 +40,17 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   });*/
   
   // Init inspection list
-  inspection_manager.getInspections().then(function (promise) {
-    for (var i = 0; promise.row && i < promise.row.length; i++) {
-      $scope.inspections.push(promise.row.item(i));
+  inspection_manager.getInspections().then(function (insArray) {
+    $scope.inspections = [];
+    for (var i = 0; insArray && i < insArray.length; i++) {
+      $scope.inspections.push(JSON.parse(insArray[i]));
     }
     $rootScope.loading = false;
     //Fail
   }, function (promise) {
-      $rootScope.loading = false;
+      $scope.inspections = [];
       console.log(promise.message);
+      $rootScope.loading = false;
     }
   );
     
@@ -106,7 +107,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
         $scope.inspections[index].deleted = false;
         $scope.numDeleted--;
       } else {
-        inspection_manager.deleteInspection($scope.inspections[index].insId);
+        inspection_manager.deleteInspection($scope.inspections[index].guid + ".js");
       }
     }, function () {
       console.log("You delete fast don't ya!");
@@ -139,13 +140,13 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
       var toast = $mdToast.simple()
         .position('bottom')
         .toastClass('highIndex');
-      inspection_manager.updateTitle(insId, newName).then(function () {
+      $scope.inspections[index].insName = newName;
+      inspection_manager.update($scope.inspections[index]).then(function () {
         setTimeout(function () {
           toast.textContent('Rename Complete');
           $mdToast.show(toast);
         }, 0);
       });
-      $scope.inspections[index].insName = newName;
     }
   };
 
@@ -184,42 +185,26 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
     $state.go('inspection');
   });
 
-  /*   $scope.startInspection = function() {
-         inspection_manager.insertInspectionFromTemplate($scope.sTemplate.rowId).then(function(data) {
-            setTimeout(function() {
-              $rootScope.loading = false;
-              $state.go('inspection_wizard', {
-                'insId': data.inspectionId
-              });}, 6000);
-         }, function(){
-            console.log('Error saving inspection: ' + data.message);    
-         });
-     };    */
-
   $scope.startInspection = function () {
-    var promise = inspection_manager.getInspection($scope.sTemplate.rowId);
-    promise.then(function (data) {
-      $rootScope.loading = true;
-      var inspection = data.value;
-      inspection.insThemeId = $scope.sTheme.unique;
-      inspection.insTemplateId = $scope.sTemplate.rowId;
-      inspection.insName = $scope.sName;
-      inspection.sections = $scope.sTheme.template.concat(inspection.sections);
-      inspection_manager.saveInspection().then(
-        function (savedIns) {
-          // Simulate loading
-          $rootScope.loading = false;
-          $state.go('inspection_wizard', {
-            'insId': savedIns.insId
-          });
-        },
-        function (saveError) {
-          console.log('Error saving inspection: ' + saveError.message);
-        }
-      );
-    }, function (getErr) {
-      $rootScope.loading = false;
+    // Generate new inspection from template
+    // - Local mods before sending object to filesystem_manager
+    $rootScope.loading = true;
+    var inspection = $scope.sTemplate;
+    inspection.insThemeId = $scope.sTheme.unique;
+    inspection.insTemplateId = $scope.sTemplate.rowId;
+    inspection.insName = $scope.sName;
+    inspection.sections = $scope.sTheme.template.concat(inspection.sections);
+    inspection_manager.startInspection(inspection).then(function(success) {
+      // Navigate to inspection wizard
+      inspection_manager.getInspection(inspection).then(function(success){
+        $state.go('inspection_wizard');
+        $rootScope.loading = false;
+      });
+    }, function(error){
+        console.log('Error saving inspection to filesystem: ' + error.message);
     });
+    // Make sure loading is set to false
+    $rootScope.loading = false;
   }
 
   // Get themes & templates
@@ -244,14 +229,17 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
   templateGetter.then(
     //Success
     function (promise) {
-      console.log(promise.message);
-      for (var i = 0; promise.row && i < promise.row.length; i++) {
-        $scope.templates.push(promise.row.item(i));
+      $scope.templates = [];
+      for(var i = 0; i < promise.length; i++) {
+        $scope.templates.push(JSON.parse(promise[i]));
       }
-      //Fail
+      console.log($scope.templates);
+      $rootScope.loading = false;
     },
     function (promise) {
+      $scope.templates = [];
       console.log(promise.message);
+      $rootScope.loading = false;
     }
   );
 

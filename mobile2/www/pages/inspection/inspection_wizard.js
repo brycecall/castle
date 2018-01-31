@@ -161,35 +161,41 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
             'value': null
         };
     };
+    var attachPhotos = function () {
+      if (camera_manager.photos.length > 0) {
+        if (!$scope.question.photos) {
+          $scope.question.photos = [];
+        }
+
+        for (var photoIndex in camera_manager.photos) {
+          var photo = camera_manager.photos[photoIndex];
+          if (!photo.deleted) {
+            photo.answerId = camera_manager.answerID;
+            photo.title = camera_manager.title;
+            $scope.question.photos.push(photo);
+          }
+        }
+      }
+      camera_manager.photos = [];
+    };
 
     $scope.commentBox = "";
 
-    inspection_manager.getInspection($scope.insParams.insId)
-        .then(
-            function (data) {
-                $rootScope.loading = false;
-                $scope.inspection = data.value;
-                $scope.questionCount = $scope.inspection.sections[$scope.insParams.sectionIndex]
+    $scope.inspection = inspection_manager.getPrivateInspection();
+    $scope.questionCount = $scope.inspection.sections[$scope.insParams.sectionIndex]
                     .subsections[$scope.insParams.subsectionIndex]
                     .questions.length;
-                $scope.question = $scope.inspection.sections[$scope.insParams.sectionIndex]
+    $scope.question = $scope.inspection.sections[$scope.insParams.sectionIndex]
                     .subsections[$scope.insParams.subsectionIndex]
                     .questions[$scope.insParams.questionIndex];
-                attachPhotos();
+    attachPhotos();
                   
-                if ( $scope.currentStateName == 'inspection_wizard' &&
-                    !angular.equals({}, $scope.rapidModePhoto) ) {
-                    
-                    //Add the rapid photo mode photo
-                    $scope.question.photos.push($scope.rapidModePhoto);
-                    camera_manager.rapidModePhoto = {};
-                }
-            },
-            function (data) {
-                $rootScope.loading = false;
-                console.log("Error... no question exists in the database");
-            }
-        );
+    if ( $scope.currentStateName == 'inspection_wizard' &&
+         !angular.equals({}, $scope.rapidModePhoto) ) {
+      //Add the rapid photo mode photo
+      $scope.question.photos.push($scope.rapidModePhoto);
+      camera_manager.rapidModePhoto = {};
+    }
 
     var navigateQuestions = function (forward) {0
         if ($scope.questionCount !== -1 && $scope.questionCount > 1) {
@@ -247,7 +253,7 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
             $scope.questionCount = $scope.inspection.sections[newSectionIndex].subsections[newSubsectionIndex].questions.length;
             $scope.question = $scope.inspection.sections[newSectionIndex].subsections[newSubsectionIndex].questions[newQuestionIndex];
             // Save individual question when navigating
-            var update = inspection_manager.updateQuestion($scope.insParams);
+            var update = inspection_manager.saveInspection();
             update.then(function(success) {
               // Successful save, store timestamp for easy access to 'last saved'
               console.log('success update question');
@@ -258,26 +264,6 @@ app.controller('inspection_wizard', function ($rootScope, $scope, $, $state, hea
               action_manager.showFailureMessageToast('Failure to save question');
             });
         }
-    };
-
-
-
-    var attachPhotos = function () {
-        if (camera_manager.photos.length > 0) {
-            if (!$scope.question.photos) {
-                $scope.question.photos = [];
-            }
-
-            for (var photoIndex in camera_manager.photos) {
-                var photo = camera_manager.photos[photoIndex];
-                if (!photo.deleted) {
-                    photo.answerId = camera_manager.answerID;
-                    photo.title = camera_manager.title;
-                    $scope.question.photos.push(photo);
-                }
-            }
-        }
-        camera_manager.photos = [];
     };
 
     $scope.toggle = function (answer) {

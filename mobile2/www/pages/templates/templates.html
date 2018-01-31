@@ -30,8 +30,8 @@
           <div><b>Last Modified:</b> {{template.insLastModified}}</div>
         </div>
         <div layout-fill layout="row" layout-align="end center">
-          <md-button class="md-raised" ng-click="edit(template.rowId)">Edit</md-button>
-          <md-button class="md-raised" ng-click="copy(template.rowId)">Copy</md-button>
+          <md-button class="md-raised" ng-click="edit($index)">Edit</md-button>
+          <md-button class="md-raised" ng-click="copy(template)">Copy</md-button>
         </div>
       </div>
     </md-card-content>

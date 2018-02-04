@@ -26,7 +26,7 @@ app.run(function ($state, $transitions, $rootScope) {
       if (!$rootScope.debug) {
         return trans.router.stateService.target('login');
       } else {
-		$state.go("login");
+		return trans.router.stateService.target('login');//$state.go("login");
 	  }
     } else if ($rootScope.authenticated == true && trans.$to().name == 'login') {
 	  navigator.app.exitApp();
@@ -76,7 +76,7 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
 		// TODO: Show visible error on login page
 		console.log(error);
 	  });      
-    } else {
+    } else if ($scope.user.username && $scope.user.password) {
 	  // Check if credentials are valid
 	  var validLogin = httpService.submitRemote({
 	    method: 'POST',

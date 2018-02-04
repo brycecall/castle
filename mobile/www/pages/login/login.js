@@ -17,8 +17,6 @@ app.run(function ($state, $transitions, $rootScope) {
   }
   var first = true;
   $transitions.onStart({}, function (trans) {
-	console.log(trans.$to());
-	console.log(trans.$from());
 	if (first === true && $rootScope.authenticated === true && $rootScope.userId) {
 	  first = false;
 	  $state.go("home"); 	  
@@ -27,7 +25,9 @@ app.run(function ($state, $transitions, $rootScope) {
       // User isn't authenticated. Redirect to a new Target State
       if (!$rootScope.debug) {
         return trans.router.stateService.target('login');
-      }
+      } else {
+		$state.go("login");
+	  }
     } else if ($rootScope.authenticated == true && trans.$to().name == 'login') {
 	  navigator.app.exitApp();
     }
@@ -52,7 +52,7 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
     if ($scope.new_user.username && $scope.new_user.password && $scope.new_user.email && $scope.new_user.founders_access_code) {
 	  var validCreate = httpService.submitRemote({
 	    method: 'POST',
-		url: 'api/adduser/' + $scope.new_user.founders_access_code,
+		url: 'api/v1/adduser/' + $scope.new_user.founders_access_code,
 		data: {
 		  UsrUsername: $scope.new_user.username,
 		  UsrPassword: $scope.new_user.password,
@@ -80,7 +80,7 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
 	  // Check if credentials are valid
 	  var validLogin = httpService.submitRemote({
 	    method: 'POST',
-		url: 'api/validateuser/',
+		url: 'api/v1/validateuser/',
 		data: {
 		  UsrUsername: $scope.user.username,
 		  UsrPassword: $scope.user.password

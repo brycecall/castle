@@ -19,7 +19,7 @@ namespace CastleWebService.Controllers
         //    _db = db;
         //}
 
-        [HttpPost("api/adduser/{founderKey}")]
+        [HttpPost("api/v1/adduser/{founderKey}")]
         public object InsertUsers([FromBody]Users user, string founderKey)
         {
             var result = new CastleData();
@@ -55,7 +55,7 @@ namespace CastleWebService.Controllers
         }
 
 
-        [HttpGet("api/users/{orgId}")]
+        [HttpGet("api/v1/users/{orgId}")]
         public IEnumerable<Users> GetUsers(int orgId)
         {
             var query = _db.Users.Where(x => x.UsrOrganizationId == orgId).ToList();
@@ -63,7 +63,7 @@ namespace CastleWebService.Controllers
         }
 
 
-        [HttpGet("api/deleteuser/{userId}")]
+        [HttpGet("api/v1/deleteuser/{userId}")]
         public CastleData DeleteUser(int userId)
         {
             var result = new CastleData();
@@ -83,7 +83,7 @@ namespace CastleWebService.Controllers
             return result;
         }
 		
-		[HttpPost("api/validateuser/")]
+		[HttpPost("api/v1/validateuser/")]
         public CastleData ValidateUser([FromBody]Users user)
         {
             var result = new CastleData();
@@ -111,7 +111,7 @@ namespace CastleWebService.Controllers
             return result;
         }
 
-        [HttpPost("api/updateuser/")]
+        [HttpPost("api/v1/updateuser/")]
         public CastleData UpdateUser([FromBody]Users user)
         {
             var result = new CastleData();

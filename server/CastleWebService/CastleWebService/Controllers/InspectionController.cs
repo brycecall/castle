@@ -16,14 +16,14 @@ namespace CastleWebService.Controllers
         castle_devContext _db = new castle_devContext();
         public InspectionController() { }
 
-        [HttpGet("api/inspection/{insId}/{userId}")]
+        [HttpGet("api/v1/inspection/{insId}/{userId}")]
         public Inspections GetInspection(int insId, int userId)
         {
             var query = _db.Inspections.Where(x => x.InspectionId == insId && x.InsUserId == userId).FirstOrDefault();
             return query;
         }
 
-        [HttpGet("api/inspections/{userId}")]
+        [HttpGet("api/v1/inspections/{userId}")]
         public async Task<List<Inspections>> GetInspections(int userId)
         {
             var query = await Task.Factory.StartNew(() =>  {
@@ -32,7 +32,7 @@ namespace CastleWebService.Controllers
             return query;
         }
 
-        [HttpGet("api/deleteinspection/{insId}/{userId}")]
+        [HttpGet("api/v1/deleteinspection/{insId}/{userId}")]
         public CastleData DeleteInspection(int insId, int userId)
         {
             var result = new CastleData();
@@ -51,7 +51,7 @@ namespace CastleWebService.Controllers
             return result;
         }
 
-        [HttpPost("api/upsertinspection/{userId}")]
+        [HttpPost("api/v1/upsertinspection/{userId}")]
         public CastleData UpsertInspection([FromBody]object iinspection, int userId)
         {
             var result = new CastleData();
@@ -89,7 +89,7 @@ namespace CastleWebService.Controllers
 
 
 
-        //[HttpGet("api/upsertFullInspection/{userId}")]
+        //[HttpGet("api/v1/upsertFullInspection/{userId}")]
         //public async Task<CastleData> UpsertFullInspection([FromBody]Inspections inspection,  int userId)
         //{
         //    var result = new CastleData();

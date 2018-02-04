@@ -1,3 +1,7 @@
+// Server connection
+//app.constant('BASE_URL', 'http://localhost:55587/');
+app.constant('BASE_URL', 'http://api.castle.invenio.xyz/');
+
 app.factory('pendingRequests', function() {
     var private = {};
     var public = {};
@@ -29,36 +33,40 @@ app.factory('pendingRequests', function() {
 
 
 // This service wraps $http to make sure pending requests are tracked 
-app.factory('httpService', ['$http', '$q', 'pendingRequests', function($http, $q, pendingRequests) {
+app.factory('httpService', ['$http', '$q', 'pendingRequests', 'BASE_URL', function($http, $q, pendingRequests, BASE_URL) {
     var private = {};
     var public = {};
-    
-    public.submitRemote = function(method, url, params, data, cancellable) {
+	
+    public.submitRemote = function(incRequest, cancellable) {
         var canceller = $q.defer();
+		
+		if(incRequest.useBaseUrl) {
+		  incRequest.url = BASE_URL + incRequest.url;
+		}
 
         if (cancellable) {
             pendingRequests.add({
-              url: url,
+              url: incRequest.url,
               canceller: canceller
             });
         }
 
         var request = {
-            method: method, //GET, POST, PUT, DELETE, OPTIONS
-            url: url, // absolute url to submit the request to
+            method: incRequest.method, //GET, POST, PUT, DELETE, OPTIONS
+            url: incRequest.url, // absolute url to submit the request to
             cache: false, // enable or disable client side caching
-            data: data, // Request message Data
-            params: params, // GET Parameters
+            data: incRequest.data, // Request message Data
+            params: incRequest.params, // GET Parameters
             timeout: canceller.promise // Will cancel the query if the promise is resolved
         }
 
         //Request gets cancelled if the timeout-promise is resolved
-        var requestPromise = $http(url, { timeout: canceller.promise });
+        var requestPromise = $http(request);
 
         //Once a request has failed or succeeded, remove it from the pending list
         requestPromise.finally(function() {
             if (cancellable) {
-                pendingRequests.remove(url);
+                pendingRequests.remove(incRequest.url);
             }
         });
         

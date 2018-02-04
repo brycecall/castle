@@ -8,7 +8,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, $q, database, theme_manager, header_manager, filesystem_manager, $cordovaFile) {
+app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, $q, database, theme_manager, header_manager, filesystem_manager, $state) {
   header_manager.title = "Settings";
   
   $scope.wipeDatabase = function () {
@@ -43,6 +43,12 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
         });*/
     }
   };
+  $scope.logout = function () {
+    $rootScope.authenticated = false;
+	$rootScope.userId = null;
+	localStorage.setItem("userId", "");
+	$state.go("login");
+  }
 
   $scope.reload = function () {
     window.location.reload();

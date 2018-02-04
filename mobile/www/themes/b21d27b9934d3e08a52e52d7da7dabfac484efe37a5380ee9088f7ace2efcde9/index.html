@@ -30,6 +30,10 @@
       width: 100%;
     }
     
+    .with_number {
+      display: table;
+    }
+    
     .main-color {
       background-color: dodgerblue;
     }
@@ -63,6 +67,17 @@
         left: 0;
         right: 0;
       }
+    }
+    
+    @page {
+      margin: 5%;
+      @bottom-center {
+        content: "Page " counter(page);
+      }
+    }
+    
+    @page :after {
+      content: "TEST";
     }
     
     .vertical_rule {
@@ -336,7 +351,6 @@ Fidelity Building Inspections, LLC</pre>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 

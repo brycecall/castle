@@ -48,6 +48,9 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
   }, "md-accent");
 
   action_manager.addAction("Login", "check", function () {
+//      $("#login").$setSubmitted();
+//      $("#register").$setSubmitted();
+      $("#loginSubmit").click();
 	// Register new user
     if ($scope.new_user.username && $scope.new_user.password && $scope.new_user.email && $scope.new_user.founders_access_code) {
 	  var validCreate = httpService.submitRemote({

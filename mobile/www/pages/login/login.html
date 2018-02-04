@@ -2,52 +2,64 @@
 <div class="page login" layout-fill ng-cloak>
   <div class="content">
     <img class="logo" src="assets/Castle-Logo-Main.png" />
-
     <md-tabs md-dynamic-height md-center-tabs="true" class="tabs">
       <md-tab>
         <md-tab-label>Login</md-tab-label>
         <md-tab-body>
+          <form name="loginForm" id="login">
           <md-input-container class="md-icon-float md-block">
             <!-- Use floating label instead of placeholder -->
             <label>Username</label>
             <md-icon md-svg-icon="account_circle"></md-icon>
-            <input ng-model="user.username" type="text">
+            <input name="username" ng-model="user.username" required type="text">
+            <div ng-messages="loginForm.username.$error" 
+                     ng-show="loginForm.username.$dirty">
+                  <div ng-message="required">This is required!</div>
+            </div>
           </md-input-container>
           <md-input-container class="md-icon-float md-block">
             <!-- Use floating label instead of placeholder -->
             <label>Password</label>
             <md-icon md-svg-icon="password"></md-icon>
-            <input ng-model="user.password" type="password">
+            <input name="password" ng-model="user.password" required type="password">
+            <div ng-messages="loginForm.password.$error" 
+                     ng-show="loginForm.password.$dirty">
+                  <div ng-message="required">This is required!</div>
+            </div>
           </md-input-container>
+              <button type="submit" id="loginSubmit" style="visibility: hidden;"></button>
+          </form>
         </md-tab-body>
       </md-tab>
       <md-tab>
         <md-tab-label>Register</md-tab-label>
         <md-tab-body>
+            <form name="register" id="register">
           <md-input-container class="md-icon-float md-block">
             <!-- Use floating label instead of placeholder -->
             <label>Username</label>
             <md-icon md-svg-icon="account_circle"></md-icon>
-            <input ng-model="new_user.username" type="text">
+            <input name="username" ng-model="new_user.username" required type="text">
           </md-input-container>
           <md-input-container class="md-icon-float md-block">
             <!-- Use floating label instead of placeholder -->
             <label>Password</label>
             <md-icon md-svg-icon="password"></md-icon>
-            <input ng-model="new_user.password" type="text">
+            <input name="password" ng-model="new_user.password" required type="text">
           </md-input-container>
           <md-input-container class="md-icon-float md-block">
             <!-- Use floating label instead of placeholder -->
             <label>Email</label>
             <md-icon md-svg-icon="email"></md-icon>
-            <input ng-model="new_user.email" type="email">
+            <input name="email" ng-model="new_user.email" required type="email">
           </md-input-container>
           <md-input-container class="md-icon-float md-block">
             <!-- Use floating label instead of placeholder -->
             <label>Founder's Access Code</label>
             <md-icon md-svg-icon="lock"></md-icon>
-            <input ng-model="new_user.founders_access_code" type="number">
+            <input name="founders_key" ng-model="new_user.founders_access_code" required type="number">
           </md-input-container>
+          </form>
         </md-tab-body>
       </md-tab>
     </md-tabs>

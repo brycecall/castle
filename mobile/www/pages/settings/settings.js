@@ -46,7 +46,7 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
   $scope.logout = function () {
     $rootScope.authenticated = false;
 	$rootScope.userId = null;
-	localStorage.setItem("userId", "");
+	localStorage.setItem("userId", null);
 	$state.go("login");
   }
 

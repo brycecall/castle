@@ -11,12 +11,14 @@ app.config(function ($stateProvider) {
 app.run(function ($state, $transitions, $rootScope) {
 	
   var userId = localStorage.getItem("userId");
-  if(userId.length > 0) {
+  if(userId && parseInt(userId) > 0) {
     $rootScope.userId = userId;
 	$rootScope.authenticated = true;  
   }
   var first = true;
   $transitions.onStart({}, function (trans) {
+	console.log(trans.$to());
+	console.log(trans.$from());
 	if (first === true && $rootScope.authenticated === true && $rootScope.userId) {
 	  first = false;
 	  $state.go("home"); 	  
@@ -87,11 +89,15 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
 		useBaseUrl: true
 	  });
 	  validLogin.then(function(success) {
-		// Credentials found
-	    $rootScope.authenticated = true;
-		$rootScope.userId = success.data;
-		localStorage.setItem("userId", success.data);
-        $state.go("home");
+		if (success.data >= 0) {
+		  // Credentials found
+	      $rootScope.authenticated = true;
+		  $rootScope.userId = success.data;
+		  localStorage.setItem("userId", success.data);
+          $state.go("home");
+		} else {
+		  console.log(success.message);
+		}
 	  }, function(error) {
 		// TODO: Show visible error on login page
 		console.log(error);

@@ -40,6 +40,11 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
 
   $scope.user = {};
   $scope.new_user = {};
+    
+  var selectedTab = 0;    
+  $scope.selectTab = function(input) {
+      selectedTab = input;
+  } 
 
   action_manager.addAction("Exit", "close", function () {
     $scope.user = {};
@@ -48,9 +53,9 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
   }, "md-accent");
 
   action_manager.addAction("Login", "check", function () {
-//      $("#login").$setSubmitted();
-//      $("#register").$setSubmitted();
-      $("#loginSubmit").click();
+    // submit the forms
+    (selectedTab == 1) ? $("#registerSubmit").click() : $("#loginSubmit").click();
+      
 	// Register new user
     if ($scope.new_user.username && $scope.new_user.password && $scope.new_user.email && $scope.new_user.founders_access_code) {
 	  var validCreate = httpService.submitRemote({

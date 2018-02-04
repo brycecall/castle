@@ -3,7 +3,7 @@
   <div class="content">
     <img class="logo" src="assets/Castle-Logo-Main.png" />
     <md-tabs md-dynamic-height md-center-tabs="true" class="tabs">
-      <md-tab>
+      <md-tab md-on-select="selectTab(0)">
         <md-tab-label>Login</md-tab-label>
         <md-tab-body>
           <form name="loginForm" id="login">
@@ -31,34 +31,51 @@
           </form>
         </md-tab-body>
       </md-tab>
-      <md-tab>
+      <md-tab md-on-select="selectTab(1)">
         <md-tab-label>Register</md-tab-label>
         <md-tab-body>
-            <form name="register" id="register">
+            <form name="registerForm" id="register">
           <md-input-container class="md-icon-float md-block">
             <!-- Use floating label instead of placeholder -->
             <label>Username</label>
             <md-icon md-svg-icon="account_circle"></md-icon>
             <input name="username" ng-model="new_user.username" required type="text">
+            <div ng-messages="registerForm.username.$error" 
+                     ng-show="registerForm.username.$dirty">
+                  <div ng-message="required">This is required!</div>
+            </div>
           </md-input-container>
           <md-input-container class="md-icon-float md-block">
             <!-- Use floating label instead of placeholder -->
             <label>Password</label>
             <md-icon md-svg-icon="password"></md-icon>
             <input name="password" ng-model="new_user.password" required type="text">
+            <div ng-messages="registerForm.password.$error" 
+                     ng-show="registerForm.password.$dirty">
+                  <div ng-message="required">This is required!</div>
+            </div>
           </md-input-container>
           <md-input-container class="md-icon-float md-block">
             <!-- Use floating label instead of placeholder -->
             <label>Email</label>
             <md-icon md-svg-icon="email"></md-icon>
             <input name="email" ng-model="new_user.email" required type="email">
+            <div ng-messages="registerForm.email.$error" 
+                     ng-show="registerForm.email.$dirty">
+                  <div ng-message="required">This is required!</div>
+            </div>
           </md-input-container>
           <md-input-container class="md-icon-float md-block">
             <!-- Use floating label instead of placeholder -->
             <label>Founder's Access Code</label>
             <md-icon md-svg-icon="lock"></md-icon>
             <input name="founders_key" ng-model="new_user.founders_access_code" required type="number">
+            <div ng-messages="registerForm.founders_key.$error" 
+                     ng-show="registerForm.founders_key.$dirty">
+                  <div ng-message="required">This is required!</div>
+            </div>
           </md-input-container>
+          <button type="submit" id="registerSubmit" style="visibility: hidden;"></button>
           </form>
         </md-tab-body>
       </md-tab>

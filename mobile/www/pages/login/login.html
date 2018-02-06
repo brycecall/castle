@@ -6,63 +6,64 @@
       <md-tab md-on-select="selectTab(0)">
         <md-tab-label>Login</md-tab-label>
         <md-tab-body>
-          <form name="loginForm" id="login">
-          <md-input-container class="md-icon-float md-block">
-            <!-- Use floating label instead of placeholder -->
-            <label>Username</label>
-            <md-icon md-svg-icon="account_circle"></md-icon>
-            <input name="username" ng-model="user.username" required type="text">
-            <div ng-messages="loginForm.username.$error" 
-                     ng-show="loginForm.username.$dirty">
-                  <div ng-message="required">This is required!</div>
-            </div>
-          </md-input-container>
-          <md-input-container class="md-icon-float md-block">
-            <!-- Use floating label instead of placeholder -->
-            <label>Password</label>
-            <md-icon md-svg-icon="password"></md-icon>
-            <input name="password" ng-model="user.password" required type="password">
-            <div ng-messages="loginForm.password.$error" 
-                     ng-show="loginForm.password.$dirty">
-                  <div ng-message="required">This is required!</div>
-            </div>
-          </md-input-container>
-              <button type="submit" id="loginSubmit" style="visibility: hidden;"></button>
+          <form name="loginForm" id="login" ng-submit="login()" >
+             <md-input-container class="md-icon-float md-block">
+               <label>Username</label>
+               <md-icon md-svg-icon="account_circle"></md-icon>
+               <input name="username" ng-model="user.username" required type="text">
+               <div ng-messages="loginForm.username.$error" 
+                        ng-show="loginForm.username.$dirty">
+                     <div ng-message="required">This is required!</div>
+               </div>
+             </md-input-container>
+             <md-input-container class="md-icon-float md-block">
+               <label>Password</label>
+               <md-icon md-svg-icon="password"></md-icon>
+               <input name="password" ng-model="user.password" required type="password">
+               <div ng-messages="loginForm.password.$error" 
+                        ng-show="loginForm.password.$dirty">
+                     <div ng-message="required">This is required!</div>
+               </div>
+              </md-input-container>
           </form>
         </md-tab-body>
       </md-tab>
       <md-tab md-on-select="selectTab(1)">
         <md-tab-label>Register</md-tab-label>
         <md-tab-body>
-            <form name="registerForm" id="register">
+            <form id="register" ng-submit="register()">
           <md-input-container class="md-icon-float md-block">
-            <!-- Use floating label instead of placeholder -->
             <label>Username</label>
             <md-icon md-svg-icon="account_circle"></md-icon>
-            <input name="username" ng-model="new_user.username" required type="text">
+            <input name="username" ng-model="new_user.username" required 
+                   md-minlength="6" md-maxlength="50" type="text">
             <div ng-messages="registerForm.username.$error" 
-                     ng-show="registerForm.username.$dirty">
+                     ng-show="registerForm.username.$dirty" role="alert" multiple>
                   <div ng-message="required">This is required!</div>
-            </div>
+                  <div ng-message="md-minlength">This username is too short</div>
+                  <div ng-message="md-maxlength">This username is too long</div>
+                  <div ng-message="usernameTaken">This username is unavailable</div>
+             </div>
           </md-input-container>
           <md-input-container class="md-icon-float md-block">
-            <!-- Use floating label instead of placeholder -->
             <label>Password</label>
             <md-icon md-svg-icon="password"></md-icon>
-            <input name="password" ng-model="new_user.password" required type="text">
-            <div ng-messages="registerForm.password.$error" 
-                     ng-show="registerForm.password.$dirty">
+            <input name="password" ng-model="new_user.password" required 
+                   md-minlength="8" md-maxlength="50" type="password">
+            <div ng-messages="registerForm.password.$error" role="alert" multiple >
                   <div ng-message="required">This is required!</div>
+                  <div ng-message="md-minlength">This password is too short</div>
+                  <div ng-message="md-maxlength">This password is too long</div>
             </div>
           </md-input-container>
           <md-input-container class="md-icon-float md-block">
-            <!-- Use floating label instead of placeholder -->
             <label>Email</label>
             <md-icon md-svg-icon="email"></md-icon>
-            <input name="email" ng-model="new_user.email" required type="email">
+            <input name="email" ng-model="new_user.email" required md-maxlength="100" type="email">
             <div ng-messages="registerForm.email.$error" 
-                     ng-show="registerForm.email.$dirty">
+                     ng-show="registerForm.email.$dirty" role="alert" multiple>
                   <div ng-message="required">This is required!</div>
+                  <div ng-message="md-maxlength">This email is too long</div>
             </div>
           </md-input-container>
           <md-input-container class="md-icon-float md-block">
@@ -71,11 +72,11 @@
             <md-icon md-svg-icon="lock"></md-icon>
             <input name="founders_key" ng-model="new_user.founders_access_code" required type="number">
             <div ng-messages="registerForm.founders_key.$error" 
-                     ng-show="registerForm.founders_key.$dirty">
+                     ng-show="registerForm.founders_key.$dirty" role="alert" multiple>
                   <div ng-message="required">This is required!</div>
+                  <div ng-message="fKeyInvalid">This key is invalid or already in use</div>
             </div>
           </md-input-container>
-          <button type="submit" id="registerSubmit" style="visibility: hidden;"></button>
           </form>
         </md-tab-body>
       </md-tab>

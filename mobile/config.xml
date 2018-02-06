@@ -32,9 +32,6 @@
         <allow-intent href="itms-apps:*" />
         <allow-navigation href="*" />
     </platform>
-    <engine name="android" spec="^6.4.0" />
-    <engine name="browser" spec="^5.0.3" />
-    <engine name="ios" spec="^4.4.0" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-camera-preview" spec="git+https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview.git" />
     <plugin name="cordova-sqlite-storage" spec="^2.0.4" />
@@ -49,4 +46,7 @@
     </plugin>
     <plugin name="com.jjdltc.cordova.plugin.zip" spec="~0.0.4" />
     <plugin name="cordova-plugin-file-opener2" spec="^2.0.19" />
+    <engine name="android" spec="^6.4.0" />
+    <engine name="browser" spec="^5.0.3" />
+    <engine name="ios" spec="^4.4.0" />
 </widget>

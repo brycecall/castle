@@ -25,9 +25,7 @@ app.run(function ($state, $transitions, $rootScope) {
       // User isn't authenticated. Redirect to a new Target State
       if (!$rootScope.debug) {
         return trans.router.stateService.target('login');
-      } else {
-		$state.go("login");
-	  }
+      }
     } else if ($rootScope.authenticated == true && trans.$to().name == 'login') {
 	  navigator.app.exitApp();
     }
@@ -35,7 +33,7 @@ app.run(function ($state, $transitions, $rootScope) {
 });
 
 // Define the page controller
-app.controller('login', function ($scope, $rootScope, $state, action_manager, header_manager, database, httpService) {
+app.controller('login', function ($scope, $rootScope, $state, action_manager, header_manager, httpService) {
   header_manager.disable();
 
   $scope.user = {};
@@ -52,12 +50,15 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
     document.activeElement.blur();
   }, "md-accent");
 
-  action_manager.addAction("Login", "check", function () {
-    // submit the forms
-    (selectedTab == 1) ? $("#registerSubmit").click() : $("#loginSubmit").click();
-      
-	// Register new user
-    if ($scope.new_user.username && $scope.new_user.password && $scope.new_user.email && $scope.new_user.founders_access_code) {
+$scope.register = function() {
+       var isValid = $("#register")[0].reportValidity();
+       console.log("Register called");
+       console.log("Form isValid = " + isValid);
+    // Register new user
+    if (isValid && $scope.new_user.username 
+        && $scope.new_user.password 
+        && $scope.new_user.email 
+        && $scope.new_user.founders_access_code) {
 	  var validCreate = httpService.submitRemote({
 	    method: 'POST',
 		url: 'api/v1/adduser/' + $scope.new_user.founders_access_code,
@@ -84,7 +85,14 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
 		// TODO: Show visible error on login page
 		console.log(error);
 	  });      
-    } else {
+    }
+}
+    
+ $scope.login = function(event) {
+       var isValid = $("#login")[0].reportValidity();
+       console.log("Login called");
+       console.log("Form isValid = " + isValid);
+    if (isValid && $scope.user.username && $scope.user.password) {
 	  // Check if credentials are valid
 	  var validLogin = httpService.submitRemote({
 	    method: 'POST',
@@ -111,7 +119,18 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
 		console.log(error);
 	  });
     }
+  };
+    
+  action_manager.addAction("Login", "check", function () {
+    // submit the forms
+    if (selectedTab == 1) {
+        $scope.register();
+    } else {
+        $scope.login();
+    } 
   });
-
   action_manager.mode = ACTION_MODES.Action;
+    
 });
+
+

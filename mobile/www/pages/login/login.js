@@ -25,9 +25,7 @@ app.run(function ($state, $transitions, $rootScope) {
       // User isn't authenticated. Redirect to a new Target State
       if (!$rootScope.debug) {
         return trans.router.stateService.target('login');
-      } else {
-		return trans.router.stateService.target('login');//$state.go("login");
-	  }
+      }
     } else if ($rootScope.authenticated == true && trans.$to().name == 'login') {
 	  navigator.app.exitApp();
     }
@@ -35,7 +33,7 @@ app.run(function ($state, $transitions, $rootScope) {
 });
 
 // Define the page controller
-app.controller('login', function ($scope, $rootScope, $state, action_manager, header_manager, database, httpService) {
+app.controller('login', function ($scope, $rootScope, $state, action_manager, header_manager, httpService) {
   header_manager.disable();
 
   $scope.user = {};
@@ -87,8 +85,8 @@ $scope.register = function() {
 		// TODO: Show visible error on login page
 		console.log(error);
 	  });      
-    
-  };
+    }
+}
     
  $scope.login = function(event) {
        var isValid = $("#login")[0].reportValidity();

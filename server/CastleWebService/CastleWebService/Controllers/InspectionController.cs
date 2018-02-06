@@ -59,7 +59,7 @@ namespace CastleWebService.Controllers
             {
                 var settings = new JsonSerializerSettings
                 {
-                    ContractResolver = new ModelMetadataTypeAttributeContractResolver(),
+                    ContractResolver = new ModelMetadataTypeAttributeContractResolver()
                 };
 
                 var inspection = JsonConvert.DeserializeObject<Inspections>(iinspection.ToString(), settings);

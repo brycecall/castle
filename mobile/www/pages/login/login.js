@@ -87,7 +87,7 @@ $scope.register = function() {
 		// TODO: Show visible error on login page
 		console.log(error);
 	  });      
-    
+    }
   };
     
  $scope.login = function(event) {

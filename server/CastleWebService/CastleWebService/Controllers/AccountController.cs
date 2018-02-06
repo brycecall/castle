@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using CastleWebService.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace CastleWebService.Controllers
 {
@@ -20,11 +21,18 @@ namespace CastleWebService.Controllers
         //}
 
         [HttpPost("api/v1/adduser/{founderKey}")]
-        public object InsertUsers([FromBody]Users user, string founderKey)
+        public object InsertUsers([FromBody]object userObj, string founderKey)
         {
             var result = new CastleData();
             try
             {
+                var settings = new JsonSerializerSettings
+                {
+                    ContractResolver = new ModelMetadataTypeAttributeContractResolver()
+                };
+
+                var user = JsonConvert.DeserializeObject<Users>(userObj.ToString(), settings);
+
                 // Check if founderKey is available.
                 var keyQuery = _db.Founders.Where(x => (x.FoKey == founderKey) && (x.FoUsersId == null)).FirstOrDefault();
                 // Is available, do insert and update
@@ -84,12 +92,19 @@ namespace CastleWebService.Controllers
         }
 		
 		[HttpPost("api/v1/validateuser/")]
-        public CastleData ValidateUser([FromBody]Users user)
+        public CastleData ValidateUser([FromBody]object userObj)
         {
             var result = new CastleData();
             try
             {
+                var settings = new JsonSerializerSettings
+                {
+                    ContractResolver = new ModelMetadataTypeAttributeContractResolver()
+                };
+                var user = JsonConvert.DeserializeObject<Users>(userObj.ToString(), settings);
+
                 var getUser = _db.Users.Where(x => (x.UsrUsername == user.UsrUsername) && (x.UsrPassword == user.UsrPassword)).FirstOrDefault();
+
                 //user.UsrIsDeleted = 1;
                 //_db.SaveChanges();
                 if (getUser != null)
@@ -112,11 +127,17 @@ namespace CastleWebService.Controllers
         }
 
         [HttpPost("api/v1/updateuser/")]
-        public CastleData UpdateUser([FromBody]Users user)
+        public CastleData UpdateUser([FromBody]object userObj)
         {
             var result = new CastleData();
             try
             {
+                var settings = new JsonSerializerSettings
+                {
+                    ContractResolver = new ModelMetadataTypeAttributeContractResolver()
+                };
+                var user = JsonConvert.DeserializeObject<Users>(userObj.ToString(), settings);
+
                 var existingUser = _db.Users.Where(x => x.UserId == user.UserId).FirstOrDefault();
 
                     user.UserId = existingUser.UserId; // Make sure ID doesn't change

@@ -71,6 +71,7 @@ $scope.register = function() {
 		useBaseUrl: true
 	  });
 	  validCreate.then(function(success) {
+          success = success.data;
 		// Credentials found
 		if (success.data !== -1) {
 	      $rootScope.authenticated = true;
@@ -105,6 +106,7 @@ $scope.register = function() {
 		useBaseUrl: true
 	  });
 	  validLogin.then(function(success) {
+          success = success.data;
 		if (success.data >= 0) {
 		  // Credentials found
 	      $rootScope.authenticated = true;

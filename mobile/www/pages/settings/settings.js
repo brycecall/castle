@@ -8,7 +8,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, $q, database, theme_manager, header_manager, filesystem_manager, $state) {
+app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, $q, theme_manager, header_manager, filesystem_manager, $state) {
   header_manager.title = "Settings";
   
   $scope.wipeDatabase = function () {
@@ -30,17 +30,6 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
         console.log(error);
       });
       $rootScope.loading = false;
-
-      // SQLLite init code
-      /*database.initTables()
-        .then(function (success) {
-          $timeout(function () {
-            $scope.reload();
-          }, 1000);
-        }, function (error) {
-          $rootScope.loading = false;
-          alert(error);
-        });*/
     }
   };
   $scope.logout = function () {

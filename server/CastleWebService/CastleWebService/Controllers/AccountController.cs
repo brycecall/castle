@@ -109,7 +109,7 @@ namespace CastleWebService.Controllers
                 //_db.SaveChanges();
                 if (getUser != null)
                 {
-                    result.data = user.UserId;
+                    result.data = getUser.UserId;
                     result.message = "Success";
                 }
                 else

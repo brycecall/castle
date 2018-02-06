@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="PublishSettings\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

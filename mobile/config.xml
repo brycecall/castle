@@ -48,7 +48,7 @@
         <variable name="PHOTOLIBRARY_ADD_USAGE_DESCRIPTION" value="This app needs write-access to photo library" />
         <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="This app needs read/write-access photo library access" />
     </plugin>
-    <engine name="android" spec="^6.2.3" />
+    <engine name="android" spec="^6.4.0" />
     <engine name="browser" spec="^5.0.3" />
     <engine name="ios" spec="^4.4.0" />
 </widget>

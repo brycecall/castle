@@ -86,7 +86,7 @@ $scope.register = function() {
 		console.log(error);
 	  });      
     }
-}
+  };
     
  $scope.login = function(event) {
        var isValid = $("#login")[0].reportValidity();

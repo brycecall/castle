@@ -1,8 +1,9 @@
 app.factory('filesystem_manager', function ($q, $cordovaFile, $sha) {
-  var public = {};
-  var private = {};
+
     
-  document.addEventListener('deviceready', function() {
+    var public = {};
+    var private = {};
+
     // Static variables to be used for directory traversal
     public.inspectionPath = cordova.file.dataDirectory + "inspections/";
     public.templatePath = cordova.file.dataDirectory + "templates/";
@@ -286,6 +287,5 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $sha) {
       console.log(promises);
       return deferred.promise;
     }
-  });
   return public;
 });

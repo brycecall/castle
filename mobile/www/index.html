@@ -12,7 +12,7 @@
   <link rel="stylesheet" type="text/css" href="./node_modules/angular-material/angular-material.min.css" />
 </head>
 
-<body ng-app="castle" ng-class="{'enlarge': enlarge}">
+<body ng-class="{'enlarge': enlarge}">
 
   <!-- PRE-RELEASE MARKER -->
   <div class="pre_release_tag">
@@ -182,6 +182,7 @@
 
   <script src="mocks/camera_mock.js"></script>
   <script src="mocks/database_mock.js"></script>
+  <script src="mocks/filesystem_mock.js"></script>
 
   <script src="services/rest_connector.js"></script>
   <script src="mocks/default_template.js"></script>  
@@ -211,6 +212,21 @@
   <script src="pages/templates/templates.js"></script>
   <script src="pages/themes/themes.js"></script>
   <script src="pages/support/support.js"></script>
+    
+    <script>
+      angular.element(document).ready(function () {
+        if (window.cordova) {
+          console.log("Cordova detected");
+          document.addEventListener('deviceready', function () {
+            console.log("Device ready... bootstrapping");
+            angular.bootstrap(document.body, ['castle']);
+          }, false);
+        } else {
+          console.log("Ready... bootstrapping");
+          angular.bootstrap(document.body, ['castle']);
+        }
+      });
+    </script>
 </body>
 
 </html>

@@ -1,6 +1,12 @@
-app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_manager) {
+app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_manager, filesystem_mock) {
   var private = {};
   var public = {};
+    
+  if (!window.cordova) {
+      console.log("Loading filesystem mock");
+      filesystem_manager = filesystem_mock;
+  }
+      
   private.inspections = {};
   private.inspection = {};
   public.mode = "inspection";
@@ -192,7 +198,6 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
 
   public.getTemplates = function () {
     var tempDefer = $q.defer();
-
     filesystem_manager.getTemplates()
       .then(function(success) {
         tempDefer.resolve(success);

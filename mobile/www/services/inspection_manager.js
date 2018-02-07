@@ -15,42 +15,32 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
     switch (public.mode) {
       case "inspection":
         console.log('Inspection Manager - Get Inspection');
-        if (window['sqlitePlugin'] === undefined) {
-            var mockdefer = $q.defer();
-            if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== ins.insId) {
-                private.inspection = defaultTemplate;
-                mockdefer.resolve({ "value":defaultTemplate })
-                promise = mockdefer.promise;
-            } else {
-                mockdefer.resolve({ "value":private.inspection })
-                promise = mockdefer.promise;
-            }
+        if ((angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== ins.insId)
+		  && ins === undefined) {
+		  var mockdefer = $q.defer();
+          private.inspection = defaultTemplate;
+          mockdefer.resolve({ "value":defaultTemplate });
+          promise = mockdefer.promise;
         } else if (typeof(ins) == "object") {
-            private.inspection = ins;
-            defer.resolve();
+          private.inspection = ins;
+          defer.resolve();
         } else {
-            promise = private.loadInspectionFromFile(ins.insId);
-            defer.resolve();
+          defer.reject();
         }
         break;
       case "template":
         console.log('Inspection Manager - Get Template');
-        if (window['sqlitePlugin'] === undefined) {
-            var mockdefer = $q.defer();
-            if (angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== ins.insId) {
-                private.inspection = defaultTemplate;
-                mockdefer.resolve({ "value":defaultTemplate })
-                promise = mockdefer.promise;
-            } else {
-                mockdefer.resolve({ "value":private.inspection })
-                promise = mockdefer.promise;
-            }
-        } else {
-          if (angular.equals(private.inspection, {})) {
-            private.inspection = ins;   
-          }
+        if ((angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== ins.insId)
+		  && ins === undefined) {
+		  var mockdefer = $q.defer();
+          private.inspection = defaultTemplate;
+          mockdefer.resolve({ "value":defaultTemplate })
+          promise = mockdefer.promise;
+        } else if (typeof(ins) == "object") {
+          private.inspection = ins;
           defer.resolve();
-          //promise = private.loadTemplateFromFile(id);
+        } else {
+          defer.reject();
         }
         break;
       case "theme":
@@ -372,13 +362,13 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
     
   public.startInspection = function(template) {
     var deferred = $q.defer();
-      
+
     private.copyTemplateToInspection(template).then(function(success){
-      deferred.resolve(success);    
+      deferred.resolve(success);
     }, function(error){
       deferred.reject(error);
     });
-      
+
     return deferred.promise;
   }
   

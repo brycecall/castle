@@ -147,12 +147,6 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $sha) {
     public.copyTemplate = function(template) {
       var deferred = $q.defer();
         
-      // Copy incoming template and Edit unique identifiers
-      var newTemplate = angular.copy(template);
-      newTemplate.guid = public.generateGuid();
-      newTemplate.hash = null;
-      newTemplate.hash = $sha.hash(newTemplate.toString());
-
       // Write to file
       public.saveTemplate(newTemplate.guid + ".js", JSON.stringify(newTemplate))
         .then(function(success) {

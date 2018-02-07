@@ -35,9 +35,9 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
   inspection_manager.mode = "inspection"; // Switch the inspection_manager mode (this is global)
 
   header_manager.title = "Inspections";
-  /*header_manager.setAction("Back", "back", function () {
+  header_manager.setAction("Back", "back", function () {
     $state.go('home');
-  });*/
+  });
   
   // Init inspection list
   inspection_manager.getInspections().then(function (insArray) {
@@ -187,15 +187,13 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
     inspection.insName = $scope.sName;
     inspection.sections = $scope.sTheme.template.concat(inspection.sections);
     inspection.insSourceType = "inspection";
-    // If no guid is already associated, add one
-    if (!inspection.guid) {
-      inspection.guid = filesystem_manager.generateGuid();   
-    }
+    inspection.guid = filesystem_manager.generateGuid();
     inspection.hash = null;
-	inspection.lastModified = new Date();
+	inspection.lastModified = new Date().toString();
     inspection.hash = $sha.hash(inspection.toString());
-	  
-    inspection_manager.startInspection(inspection).then(function(success) {
+
+    var start = inspection_manager.startInspection(inspection);
+	start.then(function(success) {
       // Navigate to inspection wizard
       inspection_manager.getInspection(inspection).then(function(success){
         $state.go('inspection_wizard');

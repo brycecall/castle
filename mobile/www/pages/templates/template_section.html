@@ -32,7 +32,7 @@
           <input type="text" ng-disabled="template.insSourceType === 'theme'" ng-model="section.title" class="editInput" style="background-color:inherit;" />
           <span flex=""></span>
           <!--          <md-icon md-svg-icon="check" class="md-primary" style="min-width:24px;"></md-icon>-->
-          <md-button aria-label="toggle pages menu" class="md-icon-button" ng-click="goToSubsection($index)">
+          <md-button aria-label="toggle pages menu" class="md-icon-button" ng-click="goToSubsection($index)" ng-show="section.title">
             <md-icon md-svg-icon="keyboard_arrow_right"></md-icon>
           </md-button>
 

@@ -10,9 +10,9 @@ namespace CastleWebService.Models
             Subsections = new HashSet<Subsections>();
         }
 
-        public int? SectionId { get; set; }
+        public int SectionId { get; set; }
         public string SecTitle { get; set; }
-        public int? SecInspectionId { get; set; }
+        public int SecInspectionId { get; set; }
         public int? SecOrder { get; set; }
 
         public Inspections SecInspection { get; set; }

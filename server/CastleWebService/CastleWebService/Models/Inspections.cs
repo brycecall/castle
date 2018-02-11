@@ -11,7 +11,7 @@ namespace CastleWebService.Models
             Sections = new HashSet<Sections>();
         }
 
-        public int? InspectionId { get; set; }
+        public int InspectionId { get; set; }
         public int InsUserId { get; set; }
         public string InsName { get; set; }
         public string InsSourceType { get; set; }

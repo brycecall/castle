@@ -23,7 +23,6 @@ namespace CastleWebService.Models
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer(@"Server=tcp:castle-dev.database.windows.net,1433;Initial Catalog=castle-dev;Persist Security Info=False;User ID=king;Password=b00yeah123!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
-                optionsBuilder.EnableSensitiveDataLogging(true);
             }
         }
 
@@ -241,11 +240,6 @@ namespace CastleWebService.Models
                 entity.Property(e => e.QueShowDescription).HasColumnName("queShowDescription");
 
                 entity.Property(e => e.QueShowSummaryRemark).HasColumnName("queShowSummaryRemark");
-
-                entity.Property(e => e.QueSourceType)
-                    .HasColumnName("queSourceType")
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
 
                 entity.Property(e => e.QueSubSectionId).HasColumnName("queSubSectionId");
 

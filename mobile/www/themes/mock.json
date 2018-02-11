@@ -345,7 +345,33 @@
           "photos": []
         }]
       }]
-    }]
+    }],
+    "classifications": [
+      {
+        "icon": "cancel",
+        "title": "Non-Issue"
+    },
+      {
+        "icon": "info_outline",
+        "title": "Informational"
+    },
+      {
+        "icon": "schedule",
+        "title": "Deferred Cost"
+    },
+      {
+        "icon": "remove",
+        "title": "Not Operating"
+    },
+      {
+        "icon": "warning",
+        "title": "Potential Hazard"
+    },
+      {
+        "icon": "error",
+        "title": "Major Concerns"
+    }
+  ]
   },
   "meta": [{
     "title": "Theme",
@@ -770,11 +796,11 @@
           "answers": [],
           "isAnswered": null,
           "notApplicable": 0,
-          "severity": null,
+          "severity": "Major Concerns",
           "showSummaryRemark": 1,
           "showDescription": 1,
           "order": null,
-          "comments": "",
+          "comments": "Here is a comment...",
           "privateNotes": null,
           "photos": [],
           "$$hashKey": "object:34"
@@ -846,11 +872,11 @@
           "answers": [],
           "isAnswered": null,
           "notApplicable": 0,
-          "severity": null,
+          "severity": "Potential Hazard",
           "showSummaryRemark": 1,
           "showDescription": 1,
           "order": null,
-          "comments": "",
+          "comments": "Here is another one",
           "privateNotes": null,
           "photos": [],
           "$$hashKey": "object:36"
@@ -970,11 +996,11 @@
           "answers": [],
           "isAnswered": null,
           "notApplicable": 0,
-          "severity": null,
+          "severity": "Major Concerns",
           "showSummaryRemark": 1,
           "showDescription": 1,
           "order": null,
-          "comments": "",
+          "comments": "Here is yet another",
           "privateNotes": null,
           "photos": [],
           "$$hashKey": "object:54"

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
   <script src="lib/jquery.min.js"></script>
   <script src="lib/angular.min.js"></script>
   <script src="main.js"></script>
@@ -203,6 +204,29 @@
       margin: 0 20px;
       margin-bottom: 25px;
     }
+    /* SUMMARY */
+    
+    .summary {
+      margin: 10px;
+      width: calc(100% - 20px);
+    }
+    
+    .summary .header {
+      background-color: #293349;
+      padding: 20px 60px;
+      color: white;
+      font-weight: bold;
+      font-size: 18pt;
+      margin-top: 40px;
+      text-transform: uppercase;
+    }
+    
+    .summary .description {
+      margin-left: 5px;
+      margin-top: 3px;
+      font-style: italic;
+      font-size: 10pt;
+    }
   </style>
 </head>
 
@@ -354,54 +378,27 @@ Fidelity Building Inspections, LLC</pre>
     </div>
   </div>
 
-  <!-- <div class="page" ng-repeat="section in castle.data.sections" ng-if="$index != 0">
-    <div class="page_header">
-      <div>
-        <h2 ng-show="section.title">{{section.title}}</h2>
-        <h2 style="float: right" ng-show="section.title">Report #{{castle.meta[0].subsections[1].questions[3].answer}}</h2>
-      </div>
-      <div>
-        <h4 ng-show="section.title">{{castle.meta[0].subsections[0].questions[1].answer}}, {{castle.meta[0].subsections[0].questions[2].answer}}, {{castle.meta[0].subsections[0].questions[3].answer}}</h4>
-        <h4 style="float: right" ng-show="section.title">{{castle.meta[0].subsections[1].questions[1].answer}}</h4>
-      </div>
-    </div>
-    <div class="subsection" ng-repeat="subsection in section.subsections">
-      <div class="subsection_title" ng-show="subsection.title">{{subsection.title}}</div>
-      <div class="questions">
-        <div class="question" ng-repeat="question in subsection.questions" ng-click="castle.go(question)">
-          <h4>{{question.title}}</h4>
-          <div ng-show="question.type == 'checkbox'">
-            <span ng-repeat="value in question.values track by $index" style="display: inline-block; width: 45%">
-              <input type="checkbox" ng-checked="exists(value.key, question.answers)"/>
-              {{value.key}}
-            </span>
+  <div class="page summary">
+    <div class="header">Summary</div>
+    <div ng-repeat="class in castle.manifest.classifications | orderBy: reverse:true" ng-if="class.title != 'Non-Issue'">
+      <h3 style="font-weight: bold;" ng-if="class.title != 'Potential Hazard' && class.title != 'Not Operating' && class.title != 'Deferred Cost'">{{class.title}}</h3>
+      <h3 style="font-weight: bold;" ng-if="class.title == 'Potential Hazard'">Potential Safety Hazard</h3>
+      <h3 style="font-weight: bold;" ng-if="class.title == 'Not Operating'">Items Not Operating</h3>
+      <h3 style="font-weight: bold;" ng-if="class.title == 'Deferred Cost'">Deferred Cost Items</h3>
+      <p class="description" ng-if="class.title == 'Major Concerns'">Items that have failed or have potential of failing soon.</p>
+      <p class="description" ng-if="class.title == 'Potential Hazard'">Items that pose a potential safety hazard.</p>
+      <p class="description" ng-if="class.title == 'Not Operating'">Items that are not in an operating condition or not operating in a satisfactory manner.</p>
+      <p class="description" ng-if="class.title == 'Deferred Cost'">Items that have reached or are reaching their normal life expectancy or show indications that
+they may require repair or replacement anytime during the next five (5) years.</p>
+      <div ng-repeat="section in castle.data.sections">
+        <div ng-repeat="subsection in section.subsections">
+          <div ng-repeat="question in subsection.questions" ng-if="question.severity == class.title && question.comments != ''">
+            <p style="margin-left: 20px;">{{summary_counter(question.comments)}}.  {{question.comments}}</p>
           </div>
-
-          <div ng-show="question.type == 'radio'">
-            <span ng-repeat="value in question.values track by $index" style="display: inline-block; width: 45%">
-              <input type="radio" ng-checked="exists(value.key, question.answers)"/>
-              {{value.key}}
-            </span>
-          </div>
-
-          <div ng-show="question.type == 'photo'">
-          </div>
-
-          <div ng-show="question.type == 'text'">
-            <p>{{question.answer}}</p>
-          </div>
-
-          <div ng-show="question.type == 'textarea'">
-            <p>{{question.answer}}</p>
-          </div>
-
-          <div ng-show="question.photos" style="text-align: center;">
-            <img style="margin: 10px; height: 375px;" ng-src="{{photo.link}}" ng-repeat="photo in question.photos" />
-          </div>
-
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 </body>
+
 </html>

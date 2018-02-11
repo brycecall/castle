@@ -245,17 +245,17 @@ namespace CastleWebService.Models
 
                 entity.Property(e => e.QueTitle)
                     .HasColumnName("queTitle")
-                    .HasMaxLength(50)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.Property(e => e.QueType)
                     .HasColumnName("queType")
-                    .HasMaxLength(20)
+                    .HasMaxLength(40)
                     .IsUnicode(false);
 
                 entity.Property(e => e.QueValidationType)
                     .HasColumnName("queValidationType")
-                    .HasMaxLength(20)
+                    .HasMaxLength(40)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.QueSubSection)
@@ -275,7 +275,7 @@ namespace CastleWebService.Models
 
                 entity.Property(e => e.SecTitle)
                     .HasColumnName("secTitle")
-                    .HasMaxLength(100)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.SecInspection)
@@ -297,7 +297,7 @@ namespace CastleWebService.Models
 
                 entity.Property(e => e.SusTitle)
                     .HasColumnName("susTitle")
-                    .HasMaxLength(50)
+                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.SusSection)

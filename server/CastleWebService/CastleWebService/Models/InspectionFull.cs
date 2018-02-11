@@ -36,8 +36,8 @@ namespace CastleWebService.Models
         [JsonIgnore]
         [NotMapped]
         public ICollection<Subsections> Subsections { get; set; }
-        [JsonProperty(PropertyName = "insId")]
-        public int? InspectionId {get; set;}
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "insId")]
+        public int InspectionId {get; set;}
         // extra fields
         //[JsonExtensionData]
         //private IDictionary<string, JToken> _catchAll;
@@ -50,11 +50,11 @@ namespace CastleWebService.Models
 
     public class SectionsMetaData
     {
-        [JsonProperty(PropertyName = "id")]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "id")]
         public int? SectionId { get; set; }
         [JsonProperty(PropertyName = "title")]
         public string SecTitle { get; set; }
-        [JsonProperty(PropertyName = "inspectionId")]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "inspectionId")]
         public int? SecInspectionId { get; set; }
         [JsonProperty(PropertyName = "order")]
         public int? SecOrder { get; set; }
@@ -71,13 +71,13 @@ namespace CastleWebService.Models
 
     public class SubsectionsMetaData
     {
-        [JsonProperty(PropertyName = "id")]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "id")]
         public int? SubsectionId { get; set; }
         [JsonProperty(PropertyName = "title")]
         public string SusTitle { get; set; }
-        [JsonProperty(PropertyName = "sectionId")]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "sectionId")]
         public int? SusSectionId { get; set; }
-        [JsonProperty(PropertyName = "inspectionId")]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "inspectionId")]
         public int? SusInspectionId { get; set; }
         [JsonProperty(PropertyName = "order")]
         public int? SusOrder { get; set; }
@@ -99,13 +99,13 @@ namespace CastleWebService.Models
 
     public class QuestionsMetaData
     {
-        [JsonProperty(PropertyName = "id")]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "id")]
         public int? QuestionId { get; set; }
         [JsonProperty(PropertyName = "title")]
         public string QueTitle { get; set; }
         [JsonProperty(PropertyName = "description")]
         public string QueDescription { get; set; }
-        [JsonProperty(PropertyName = "subsectionId")]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "subsectionId")]
         public int? QueSubSectionId { get; set; }
         [JsonProperty(PropertyName = "isAnswered")]
         public int? QueAnswered { get; set; }
@@ -121,7 +121,7 @@ namespace CastleWebService.Models
         public int? QueShowSummaryRemark { get; set; }
         [JsonProperty(PropertyName = "showDescription")]
         public int? QueShowDescription { get; set; }
-        [JsonProperty(PropertyName ="inspectionId")]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "inspectionId")]
         public int? QueInspectionId { get; set; }
         [JsonProperty(PropertyName = "order")]
         public int? QueOrder { get; set; }
@@ -135,6 +135,9 @@ namespace CastleWebService.Models
         public Subsections QueSubSection { get; set; }
         public ICollection<Answers> Answers { get; set; }
         public ICollection<Photos> Photos { get; set; }
+        [ForeignKey("QueInspectionId")]
+        [NotMapped]
+        public ICollection<Inspections> Inspections { get; set; }
     }
 
     [ModelMetadataTypeAttribute(typeof(PhotosMetaData))]
@@ -144,9 +147,13 @@ namespace CastleWebService.Models
 
     public class PhotosMetaData
     {
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "id")]
         public int PhotoId { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "inspectionId")]
         public int PhoInspectionId { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "questionId")]
         public int PhoQuestionId { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "answerId")]
         public int PhoAnswerId { get; set; }
         public string PhoLink { get; set; }
         public string PhoTitle { get; set; }
@@ -169,8 +176,11 @@ namespace CastleWebService.Models
 
     public class AnswersMetaData
     {
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "id")]
         public int AnswerId { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "questionId")]
         public int AnsQuestionId { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "inspectionId")]
         public int AnsInspectionId { get; set; }
         public string AnsValue { get; set; }
         public string AnsType { get; set; }
@@ -183,6 +193,9 @@ namespace CastleWebService.Models
         [NotMapped]
         public Questions AnsQuestion { get; set; }
         public ICollection<Photos> Photos { get; set; }
+        [ForeignKey("AnsInspectionId")]
+        [NotMapped]
+        public ICollection<Inspections> Inspections { get; set; }
     }
 
 

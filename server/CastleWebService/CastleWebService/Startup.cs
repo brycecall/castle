@@ -55,6 +55,7 @@ namespace CastleWebService
                         if (jsonPropertyAttribute != null)
                         {
                             property.PropertyName = jsonPropertyAttribute.PropertyName;
+                            property.NullValueHandling = jsonPropertyAttribute.NullValueHandling;
                         }
                         // track ignore attribute
                         var jsonIgnoreAttribute = metaProperty.GetCustomAttributes<JsonIgnoreAttribute>().FirstOrDefault();

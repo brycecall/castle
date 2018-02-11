@@ -10,14 +10,14 @@ namespace CastleWebService.Models
             Questions = new HashSet<Questions>();
         }
 
-        public int SubsectionId { get; set; }
+        public int? SubsectionId { get; set; }
         public string SusTitle { get; set; }
-        public int SusSectionId { get; set; }
-        public int SusInspectionId { get; set; }
-        public string SusSourceType { get; set; }
+        public int? SusSectionId { get; set; }
+        public int? SusInspectionId { get; set; }
         public int? SusOrder { get; set; }
 
         public Sections SusSection { get; set; }
         public ICollection<Questions> Questions { get; set; }
+        public ICollection<Inspections> Inspections { get; set; }
     }
 }

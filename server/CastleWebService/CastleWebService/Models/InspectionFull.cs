@@ -36,7 +36,8 @@ namespace CastleWebService.Models
         [JsonIgnore]
         [NotMapped]
         public ICollection<Subsections> Subsections { get; set; }
-
+        [JsonProperty(PropertyName = "insId")]
+        public int? InspectionId {get; set;}
         // extra fields
         //[JsonExtensionData]
         //private IDictionary<string, JToken> _catchAll;
@@ -49,12 +50,13 @@ namespace CastleWebService.Models
 
     public class SectionsMetaData
     {
-
-        public int SectionId { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public int? SectionId { get; set; }
+        [JsonProperty(PropertyName = "title")]
         public string SecTitle { get; set; }
-
-        public int SecInspectionId { get; set; }
-        public string SecSourceType { get; set; }
+        [JsonProperty(PropertyName = "inspectionId")]
+        public int? SecInspectionId { get; set; }
+        [JsonProperty(PropertyName = "order")]
         public int? SecOrder { get; set; }
         [ForeignKey("SecInspectionId")]
         [NotMapped]
@@ -69,18 +71,24 @@ namespace CastleWebService.Models
 
     public class SubsectionsMetaData
     {
-
-        public int SubsectionId { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public int? SubsectionId { get; set; }
+        [JsonProperty(PropertyName = "title")]
         public string SusTitle { get; set; }
-        public int SusSectionId { get; set; }
-        public int SusInspectionId { get; set; }
-        public string SusSourceType { get; set; }
+        [JsonProperty(PropertyName = "sectionId")]
+        public int? SusSectionId { get; set; }
+        [JsonProperty(PropertyName = "inspectionId")]
+        public int? SusInspectionId { get; set; }
+        [JsonProperty(PropertyName = "order")]
         public int? SusOrder { get; set; }
 
         [ForeignKey("SusSectionId")]
         [NotMapped]
         public Sections SusSection { get; set; }
         public ICollection<Questions> Questions { get; set; }
+        [ForeignKey("SusInspectionId")]
+        [NotMapped]
+        public ICollection<Inspections> Inspections { get; set; }
 
     }
 
@@ -91,24 +99,35 @@ namespace CastleWebService.Models
 
     public class QuestionsMetaData
     {
-
-        public int QuestionId { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public int? QuestionId { get; set; }
+        [JsonProperty(PropertyName = "title")]
         public string QueTitle { get; set; }
+        [JsonProperty(PropertyName = "description")]
         public string QueDescription { get; set; }
-        public int QueSubSectionId { get; set; }
+        [JsonProperty(PropertyName = "subsectionId")]
+        public int? QueSubSectionId { get; set; }
+        [JsonProperty(PropertyName = "isAnswered")]
         public int? QueAnswered { get; set; }
+        [JsonProperty(PropertyName = "type")]
         public string QueType { get; set; }
         public int? QueRequired { get; set; }
         public int? QueMin { get; set; }
         public int? QueMax { get; set; }
         public string QueValidationType { get; set; }
+        [JsonProperty(PropertyName = "notApplicable")]
         public int? QueNotApplicable { get; set; }
+        [JsonProperty(PropertyName = "showSummaryRemark")]
         public int? QueShowSummaryRemark { get; set; }
+        [JsonProperty(PropertyName = "showDescription")]
         public int? QueShowDescription { get; set; }
-        public int QueInspectionId { get; set; }
-        public string QueSourceType { get; set; }
+        [JsonProperty(PropertyName ="inspectionId")]
+        public int? QueInspectionId { get; set; }
+        [JsonProperty(PropertyName = "order")]
         public int? QueOrder { get; set; }
+        [JsonProperty(PropertyName = "comments")]
         public string QueComments { get; set; }
+        [JsonProperty(PropertyName = "privateNotes")]
         public string QuePrivateNotes { get; set; }
 
         [ForeignKey("QueSubSectionId")]

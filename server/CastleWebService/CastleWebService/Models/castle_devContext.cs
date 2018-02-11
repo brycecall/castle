@@ -279,11 +279,6 @@ namespace CastleWebService.Models
 
                 entity.Property(e => e.SecOrder).HasColumnName("secOrder");
 
-                entity.Property(e => e.SecSourceType)
-                    .HasColumnName("secSourceType")
-                    .HasMaxLength(30)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.SecTitle)
                     .HasColumnName("secTitle")
                     .HasMaxLength(100)
@@ -305,11 +300,6 @@ namespace CastleWebService.Models
                 entity.Property(e => e.SusOrder).HasColumnName("susOrder");
 
                 entity.Property(e => e.SusSectionId).HasColumnName("susSectionId");
-
-                entity.Property(e => e.SusSourceType)
-                    .HasColumnName("susSourceType")
-                    .HasMaxLength(30)
-                    .IsUnicode(false);
 
                 entity.Property(e => e.SusTitle)
                     .HasColumnName("susTitle")

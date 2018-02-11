@@ -11,10 +11,10 @@ namespace CastleWebService.Models
             Photos = new HashSet<Photos>();
         }
 
-        public int QuestionId { get; set; }
+        public int? QuestionId { get; set; }
         public string QueTitle { get; set; }
         public string QueDescription { get; set; }
-        public int QueSubSectionId { get; set; }
+        public int? QueSubSectionId { get; set; }
         public int? QueAnswered { get; set; }
         public string QueType { get; set; }
         public int? QueRequired { get; set; }
@@ -24,7 +24,7 @@ namespace CastleWebService.Models
         public int? QueNotApplicable { get; set; }
         public int? QueShowSummaryRemark { get; set; }
         public int? QueShowDescription { get; set; }
-        public int QueInspectionId { get; set; }
+        public int? QueInspectionId { get; set; }
         public string QueSourceType { get; set; }
         public int? QueOrder { get; set; }
         public string QueComments { get; set; }

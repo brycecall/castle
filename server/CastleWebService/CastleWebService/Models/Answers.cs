@@ -20,6 +20,7 @@ namespace CastleWebService.Models
         public int? AnsOrder { get; set; }
         public string AnsAutoComment { get; set; }
 
+        public Inspections AnsInspection { get; set; }
         public Questions AnsQuestion { get; set; }
         public ICollection<Photos> Photos { get; set; }
     }

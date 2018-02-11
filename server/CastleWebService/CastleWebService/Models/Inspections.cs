@@ -7,8 +7,11 @@ namespace CastleWebService.Models
     {
         public Inspections()
         {
+            Answers = new HashSet<Answers>();
             Photos = new HashSet<Photos>();
+            Questions = new HashSet<Questions>();
             Sections = new HashSet<Sections>();
+            Subsections = new HashSet<Subsections>();
         }
 
         public int InspectionId { get; set; }
@@ -25,7 +28,11 @@ namespace CastleWebService.Models
         public string InsTemplateTitle { get; set; }
         public byte? InsIsDeleted { get; set; }
 
+        public Users InsUser { get; set; }
+        public ICollection<Answers> Answers { get; set; }
         public ICollection<Photos> Photos { get; set; }
+        public ICollection<Questions> Questions { get; set; }
         public ICollection<Sections> Sections { get; set; }
+        public ICollection<Subsections> Subsections { get; set; }
     }
 }

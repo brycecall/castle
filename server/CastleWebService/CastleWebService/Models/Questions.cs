@@ -24,12 +24,11 @@ namespace CastleWebService.Models
         public int? QueNotApplicable { get; set; }
         public int? QueShowSummaryRemark { get; set; }
         public int? QueShowDescription { get; set; }
-        public int QueInspectionId { get; set; }
+        public int? QueInspectionId { get; set; }
         public int? QueOrder { get; set; }
         public string QueComments { get; set; }
         public string QuePrivateNotes { get; set; }
 
-        public Inspections QueInspection { get; set; }
         public Subsections QueSubSection { get; set; }
         public ICollection<Answers> Answers { get; set; }
         public ICollection<Photos> Photos { get; set; }

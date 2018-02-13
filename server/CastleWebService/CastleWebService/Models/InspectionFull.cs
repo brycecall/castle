@@ -88,7 +88,7 @@ namespace CastleWebService.Models
         public ICollection<Questions> Questions { get; set; }
         [ForeignKey("SusInspectionId")]
         [NotMapped]
-        public ICollection<Inspections> SusInspection { get; set; }
+        public Inspections SusInspection { get; set; }
 
     }
 
@@ -133,11 +133,12 @@ namespace CastleWebService.Models
         [ForeignKey("QueSubSectionId")]
         [NotMapped]
         public Subsections QueSubSection { get; set; }
+        [JsonProperty(PropertyName = "values")]
         public ICollection<Answers> Answers { get; set; }
         public ICollection<Photos> Photos { get; set; }
         [ForeignKey("QueInspectionId")]
         [NotMapped]
-        public ICollection<Inspections> QueInspection { get; set; }
+        public Inspections QueInspection { get; set; }
     }
 
     [ModelMetadataTypeAttribute(typeof(PhotosMetaData))]
@@ -182,11 +183,15 @@ namespace CastleWebService.Models
         public int AnsQuestionId { get; set; }
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "inspectionId")]
         public int AnsInspectionId { get; set; }
+        [JsonProperty(PropertyName = "key")]
         public string AnsValue { get; set; }
+        [JsonProperty(PropertyName = "type")]
         public string AnsType { get; set; }
-        public string AnsSourceType { get; set; }
+        [JsonProperty(PropertyName = "checked")]
         public int? AnsChecked { get; set; }
+        [JsonProperty(PropertyName = "order")]
         public int? AnsOrder { get; set; }
+        [JsonProperty(PropertyName = "autoComment")]
         public string AnsAutoComment { get; set; }
 
         [ForeignKey("AnsQuestionId")]
@@ -195,7 +200,7 @@ namespace CastleWebService.Models
         public ICollection<Photos> Photos { get; set; }
         [ForeignKey("AnsInspectionId")]
         [NotMapped]
-        public ICollection<Inspections> AnsInspection { get; set; }
+        public Inspections AnsInspection { get; set; }
     }
 
 

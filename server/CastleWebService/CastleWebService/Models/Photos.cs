@@ -11,7 +11,6 @@ namespace CastleWebService.Models
         public int PhoAnswerId { get; set; }
         public string PhoLink { get; set; }
         public string PhoTitle { get; set; }
-        public string PhoSourceType { get; set; }
         public int? PhoOrder { get; set; }
 
         public Answers PhoAnswer { get; set; }

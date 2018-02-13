@@ -44,12 +44,6 @@ namespace CastleWebService.Models
 
                 entity.Property(e => e.AnsQuestionId).HasColumnName("ansQuestionId");
 
-                entity.Property(e => e.AnsSourceType)
-                    .IsRequired()
-                    .HasColumnName("ansSourceType")
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.AnsType)
                     .HasColumnName("ansType")
                     .HasMaxLength(20)
@@ -58,12 +52,6 @@ namespace CastleWebService.Models
                 entity.Property(e => e.AnsValue)
                     .HasColumnName("ansValue")
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.AnsInspection)
-                    .WithMany(p => p.Answers)
-                    .HasForeignKey(d => d.AnsInspectionId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Answers_Inspections");
 
                 entity.HasOne(d => d.AnsQuestion)
                     .WithMany(p => p.Answers)
@@ -189,12 +177,6 @@ namespace CastleWebService.Models
 
                 entity.Property(e => e.PhoQuestionId).HasColumnName("phoQuestionId");
 
-                entity.Property(e => e.PhoSourceType)
-                    .IsRequired()
-                    .HasColumnName("phoSourceType")
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.PhoTitle)
                     .HasColumnName("phoTitle")
                     .HasMaxLength(100)
@@ -270,12 +252,6 @@ namespace CastleWebService.Models
                     .HasMaxLength(40)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.QueInspection)
-                    .WithMany(p => p.Questions)
-                    .HasForeignKey(d => d.QueInspectionId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Questions_Inspections");
-
                 entity.HasOne(d => d.QueSubSection)
                     .WithMany(p => p.Questions)
                     .HasForeignKey(d => d.QueSubSectionId)
@@ -317,12 +293,6 @@ namespace CastleWebService.Models
                     .HasColumnName("susTitle")
                     .HasMaxLength(100)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.SusInspection)
-                    .WithMany(p => p.Subsections)
-                    .HasForeignKey(d => d.SusInspectionId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Subsections_Inspections");
 
                 entity.HasOne(d => d.SusSection)
                     .WithMany(p => p.Subsections)

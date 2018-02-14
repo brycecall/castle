@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using CastleWebService.Models;
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
+using System.IO;
+using System.Text;
 
 namespace CastleWebService.Controllers
 {
@@ -13,23 +16,74 @@ namespace CastleWebService.Controllers
     [Produces("application/json")]
     public class InspectionController : Controller
     {
+        public const string TEMPLATE = "Template";
+        public const string INSPECTION = "Inspection";
+        public const string ALL = "ALL";
+
+
         castle_devContext _db = new castle_devContext();
         public InspectionController() { }
 
-        [HttpGet("api/v1/inspection/{insId}/{userId}")]
-        public Inspections GetInspection(int insId, int userId)
-        {
-            var query = _db.Inspections.Where(x => x.InspectionId == insId && x.InsUserId == userId).FirstOrDefault();
+
+        public IQueryable<Inspections> GetFullInspection() {
+            var query = _db.Inspections.Where(x => (x.InsIsDeleted == 0 || x.InsIsDeleted == null))
+                                       .Include(x => x.Sections)
+                                           .ThenInclude(x => x.Subsections)
+                                           .ThenInclude(x => x.Questions)
+                                           .ThenInclude(x => x.Answers)
+                                       .Include(x => x.Sections)
+                                           .ThenInclude(x => x.Subsections)
+                                           .ThenInclude(x => x.Questions)
+                                           .ThenInclude(x => x.Photos)
+                                       ;
             return query;
         }
 
-        [HttpGet("api/v1/inspections/{userId}")]
-        public async Task<List<Inspections>> GetInspections(int userId)
+        public Stream DeserializeJSON(string jsonString) {
+            var settings = new JsonSerializerSettings
+            {
+                ContractResolver = new ModelMetadataTypeAttributeContractResolver(),
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            };
+            Response.ContentType = "application/json; charset=utf-8";
+            return new MemoryStream(Encoding.UTF8.GetBytes(jsonString));
+        }
+
+        [HttpGet("api/v1/inspection/{insId}/{userId}")]
+        public Stream GetInspection(int insId, int userId)
         {
-            var query = await Task.Factory.StartNew(() =>  {
-                return _db.Inspections.Select(x => x).Where(x => x.InsUserId == userId).Take(50).ToList();
+            var query = GetFullInspection().Where(x => x.InspectionId == insId
+                                                   && x.InsUserId == userId)
+                                           .FirstOrDefault();
+
+            var settings = new JsonSerializerSettings
+            {
+                ContractResolver = new ModelMetadataTypeAttributeContractResolver(),
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            };
+
+            var Jsonquery = JsonConvert.SerializeObject(query, settings);
+            return DeserializeJSON(Jsonquery);
+        }
+
+        [HttpGet("api/v1/inspections/{userId}/{sourceType?}")]
+        public async Task<Stream> GetInspections(int userId, string sourceType = ALL)
+        {
+            var result = await Task.Factory.StartNew(() =>
+            {
+                var query = GetFullInspection().Where(x => x.InsUserId == userId
+                                            && (sourceType == ALL || x.InsSourceType == sourceType))
+                                          .ToList();
+                var settings = new JsonSerializerSettings
+                {
+                    ContractResolver = new ModelMetadataTypeAttributeContractResolver(),
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                };
+
+                var Jsonquery = JsonConvert.SerializeObject(query, settings);
+                return DeserializeJSON(Jsonquery);
             });
-            return query;
+            return result;
         }
 
         [HttpGet("api/v1/deleteinspection/{insId}/{userId}")]

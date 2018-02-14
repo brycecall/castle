@@ -24,6 +24,10 @@ namespace CastleWebService.Models
         public DateTime InsLastModified { get; set; }
         [JsonIgnore]
         public DateTime? InsLastSubmitted { get; set; }
+        [JsonProperty(PropertyName = "guid")]
+        public string InsGuid { get; set; }
+        [JsonProperty(PropertyName = "hash")]
+        public string InsHash { get; set; }
         [JsonIgnore]
         [NotMapped]
         public ICollection<Answers> Answers { get; set; }

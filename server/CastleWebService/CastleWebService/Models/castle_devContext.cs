@@ -80,6 +80,14 @@ namespace CastleWebService.Models
 
                 entity.Property(e => e.InspectionId).HasColumnName("inspectionId");
 
+                entity.Property(e => e.InsGuid)
+                    .HasColumnName("insGUID")
+                    .IsUnicode(false);
+
+                entity.Property(e => e.InsHash)
+                    .HasColumnName("insHash")
+                    .IsUnicode(false);
+
                 entity.Property(e => e.InsIsDeleted).HasColumnName("insIsDeleted");
 
                 entity.Property(e => e.InsLastModified)

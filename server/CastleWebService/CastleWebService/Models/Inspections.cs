@@ -24,6 +24,8 @@ namespace CastleWebService.Models
         public int? InsTemplateId { get; set; }
         public string InsTemplateTitle { get; set; }
         public byte? InsIsDeleted { get; set; }
+        public string InsGuid { get; set; }
+        public string InsHash { get; set; }
 
         public Users InsUser { get; set; }
         public ICollection<Photos> Photos { get; set; }

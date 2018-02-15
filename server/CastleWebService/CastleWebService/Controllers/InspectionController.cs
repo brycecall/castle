@@ -141,33 +141,22 @@ namespace CastleWebService.Controllers
             return result;
         }
 
+        [HttpGet("api/v1/themes/{userId}")]
+        public List<Themes> GetThemes(int userId)
+        {
+            var query = _db.Themes.Where(x => x.ThemeUserId == userId)
+                                 .ToList();
+            return query;  
+        }
 
+        [HttpGet("api/v1/theme/{themeId}/{userId}")]
+        public Themes GetTheme(int themeId, int userId)
+        {
+            var query = _db.Themes.Where(x => x.ThemeUserId == userId
+                                         && x.ThemeId == themeId)
+                                 .FirstOrDefault();
+            return query;
+        }
 
-        //[HttpGet("api/v1/upsertFullInspection/{userId}")]
-        //public async Task<CastleData> UpsertFullInspection([FromBody]Inspections inspection,  int userId)
-        //{
-        //    var result = new CastleData();
-        //    try
-        //    {
-        //        var query = await Task.Factory.StartNew(() =>
-        //        {
-        //            return
-
-
-        //            _db.Inspections.Select(x => x).Where(x => x.InsUserId == userId).Take(50).ToList();
-
-
-        //        });
-        //    }
-        //    catch (Exception e) {
-
-        //    }
-        //    return result;
-        //}
-
-
-
-
-
-    }
-}
+    } // end class
+} // end namespace

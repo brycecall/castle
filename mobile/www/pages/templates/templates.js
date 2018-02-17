@@ -52,22 +52,132 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('templates', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, $mdToast, $cordovaFile, filesystem_manager) {
+app.controller('templates', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, $mdToast, $cordovaFile, filesystem_manager, httpService) {
   // Switch the inspection_manager mode (this is global)
   inspection_manager.mode = "template";
   $rootScope.loading = true;
-  var templates = inspection_manager.getTemplates();
-  templates.then(
+    
+  $scope.lastSynced = localStorage.getItem("templateLastSynced");
+  $scope.templates = [];
+  
+
+    
+  var saveInspectionToCloud = function(inspection) {
+      httpService.submitRemote({
+        method: 'POST',
+        url: 'api/v1/upsertinspection/0',
+        data: inspection,
+        params: null,
+        useBaseUrl: true
+      }).then(
+            //Success
+            function (promise) {
+               inspection.syncIcon = "cloud_done";
+            },
+            //failure
+            function (promise.data) {
+                console.log(promise);
+                inspection.syncIcon = "";
+            }
+    );
+  };
+  
+  var getInspectionFromCloud = function(inspectionID) {
+     return httpService.submitRemote({
+        method: 'GET',
+        url: 'api/v1/inspection/' + inspectionID + '/0',
+        params: null,
+        useBaseUrl: true
+      });
+  }
+  
+  $scope.downloadTemplate = function(template) {
+      if (template.syncIcon == "cloud_download") {
+       getInspectionFromCloud(template.id).then(
+         function(result) {
+             for (var i = 0; i < $scope.templates.length; i++) {
+                 if ($scope.templates[i].guid == template.guid) {
+                     $scope.templates[i] = result.data;
+                     break;
+                 }
+             }
+         },
+         function(result){
+             console.log(result.data);
+             template.syncIcon = "";
+         }
+      
+        );
+     }
+  };
+    
+  $scope.syncCloud = function() {
+     httpService.submitRemote({
+        method: 'GET',
+        url: 'api/v1/inspectionsMeta/0/Template',
+        params: null,
+        useBaseUrl: true
+      }).then(
+         var loadedDateTime = new Date();
+            //Success
+            function (promise) {
+              var cloudGuidDictionary = promise.data; // get dictionary of guid, inspection meta data objects
+              // 
+              for(var i = 0; i < templates.data.length; i++) { 
+                 var template = $scope.templates[i];
+                 var cloudTemplate = cloudGuidDictionary[template.guid];
+                 if (cloudTemplate) {
+                    if (cloudTemplate.hash != template.hash) {
+                        if (new Date(cloudTemplate.last_modified) < new Date(template.last_modified)) {
+                            saveInspectionToCloud(template);
+                        } else {
+                            getInspectionFromCloud(template.id).then(
+                                function(result){
+                                    $scope.templates[i] = result.data;
+                                    $scope.templates[i].syncIcon = "cloud_done";
+                                },
+                                function(result){
+                                    console.log(result.data);
+                                    template.syncIcon = "";
+                                }
+                            );
+                        }
+                    } else {
+                        template.syncIcon = "cloud_done";
+                    }
+                    cloudTemplate.existsLocally = true;
+                 } else {
+                     template.syncIcon = "sync";
+                     saveInspectionToCloud(template);
+                 }
+              }
+                // Add the cloud only templates to the view
+                for (var guid in cloudGuidDictionary) {
+                    var cloudOnlyTemplate = cloudGuidDictionary[guid];
+                    if (cloudGuidDictionary.hasOwnProperty(guid) && !cloudOnlyTemplate.existsLocally ) {
+                        cloudOnlyTemplate.syncIcon = "cloud_download";
+                        $scope.template.push(cloudOnlyTemplate);
+                    }
+                }
+                $scope.lastSynced = localStorage.setItem("templateLastSynced", loadedDateTime);
+            },
+            //failure
+            function (promise.data) {
+                console.log(promise);
+            }
+    );
+  };
+
+  inspection_manager.getTemplates().then(
     //Success
     function (promise) {
-      $scope.templates = [];
       for(var i = 0; i < promise.length; i++) {
         $scope.templates.push(JSON.parse(promise[i]));
       }
+      $scope.syncCloud();
       $rootScope.loading = false;
     },
     function (promise) {
-      $scope.templates = [];
       console.log(promise.message);
       $rootScope.loading = false;
     }

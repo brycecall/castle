@@ -40,11 +40,6 @@ namespace CastleWebService.Controllers
         }
 
         public Stream DeserializeJSON(string jsonString) {
-            var settings = new JsonSerializerSettings
-            {
-                ContractResolver = new ModelMetadataTypeAttributeContractResolver(),
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            };
             Response.ContentType = "application/json; charset=utf-8";
             return new MemoryStream(Encoding.UTF8.GetBytes(jsonString));
         }
@@ -67,12 +62,12 @@ namespace CastleWebService.Controllers
         }
 
         [HttpGet("api/v1/inspections/{userId}/{sourceType?}")]
-        public async Task<Stream> GetInspections(int userId, string sourceType = ALL)
+        public async Task<Stream> GetInspections(int userId, string sourceType = INSPECTION)
         {
             var result = await Task.Factory.StartNew(() =>
             {
                 var query = GetFullInspection().Where(x => x.InsUserId == userId
-                                            && (sourceType == ALL || x.InsSourceType == sourceType))
+                                            && x.InsSourceType == sourceType)
                                           .ToList();
                 var settings = new JsonSerializerSettings
                 {
@@ -94,6 +89,7 @@ namespace CastleWebService.Controllers
             {
                 var inspection = _db.Inspections.Where(x => x.InspectionId == insId && x.InsUserId == userId).FirstOrDefault();
                 inspection.InsIsDeleted = 1;
+                inspection.InsLastModified = DateTime.UtcNow;
                 _db.SaveChanges();
                 result.data = 0;
                 result.message = "Success";
@@ -106,7 +102,7 @@ namespace CastleWebService.Controllers
         }
 
         [HttpPost("api/v1/upsertinspection/{userId}")]
-        public CastleData UpsertInspection([FromBody]object iinspection, int userId)
+        public CastleData UpsertInspection([FromBody]object iInspection, int userId)
         {
             var result = new CastleData();
             try
@@ -116,13 +112,14 @@ namespace CastleWebService.Controllers
                     ContractResolver = new ModelMetadataTypeAttributeContractResolver()
                 };
 
-                var inspection = JsonConvert.DeserializeObject<Inspections>(iinspection.ToString(), settings);
+                var inspection = JsonConvert.DeserializeObject<Inspections>(iInspection.ToString(), settings);
 
                 var existingInspection = _db.Inspections.Where(x => x.InspectionId == inspection.InspectionId && x.InsUserId == userId).FirstOrDefault();
 
                 if (existingInspection != null)
                 {
                     inspection.InspectionId = existingInspection.InspectionId; // Make sure ID doesn't change
+                    inspection.InsLastModified = DateTime.UtcNow;
                     _db.Entry(existingInspection).CurrentValues.SetValues(inspection); // Update values from one to another
                 }
                 else {
@@ -141,22 +138,18 @@ namespace CastleWebService.Controllers
             return result;
         }
 
-        [HttpGet("api/v1/themes/{userId}")]
-        public List<Themes> GetThemes(int userId)
+        [HttpPost("api/v1/inspectionsMeta/{userId}/{sourceType}")]
+        public Dictionary<string, Inspections> CheckInspections(int userId, string sourceType = TEMPLATE)
         {
-            var query = _db.Themes.Where(x => x.ThemeUserId == userId)
-                                 .ToList();
-            return query;  
-        }
-
-        [HttpGet("api/v1/theme/{themeId}/{userId}")]
-        public Themes GetTheme(int themeId, int userId)
-        {
-            var query = _db.Themes.Where(x => x.ThemeUserId == userId
-                                         && x.ThemeId == themeId)
-                                 .FirstOrDefault();
+            var query = _db.Inspections.Where(x => x.InsIsDeleted == 0 
+                                              && x.InsUserId == userId
+                                              && x.InsSourceType == sourceType)
+                                       .ToDictionary(x => x.InsGuid, x => x);
             return query;
         }
+
+
+
 
     } // end class
 } // end namespace

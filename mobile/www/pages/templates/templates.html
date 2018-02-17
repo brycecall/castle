@@ -25,7 +25,8 @@
             <div layout="row">
                 <div><b>Title:</b> {{template.insTemplateTitle}}</div>
                 <span flex=""></span>
-                <md-icon md-svg-src="delete" ng-click="delete($index, templates)"></md-icon>
+                <md-icon ng-show="template.insTemplateTitle != 'Default Template'" md-svg-src="delete" ng-click="delete($index, templates)"></md-icon>
+                <md-icon md-svg-src="{{ getCloudStatusIcon() }}" ng-click="syncCloud()"></md-icon>
             </div>
           <div><b>Last Modified:</b> {{template.insLastModified}}</div>
         </div>

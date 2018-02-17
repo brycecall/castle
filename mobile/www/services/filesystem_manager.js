@@ -3,11 +3,11 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $sha) {
     
     var public = {};
     var private = {};
-
+ if (window.cordova) {
     // Static variables to be used for directory traversal
     public.inspectionPath = cordova.file.dataDirectory + "inspections/";
     public.templatePath = cordova.file.dataDirectory + "templates/";
-  
+ }
     // Generates unique id to be used for inspection/template files
     public.generateGuid = function() {
       // TODO: Use username instead of static string

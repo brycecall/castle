@@ -81,5 +81,9 @@ app.config(function ($mdIconProvider) {
     .icon('flare', icon_root + '/ic_flare_24px.svg')
     .icon('help_outline', icon_root + "/help-circle-outline.svg")
     .icon('drag_handle', icon_root + "/ic_drag_handle_24px.svg")
+    .icon('cloud_download', icon_root + "/ic_cloud_download_24px.svg")
+    .icon('cloud_done', icon_root + "/ic_cloud_done_24px.svg")
+    .icon('cloud_off', icon_root + "/ic_cloud_off_24px.svg")
+    .icon('cloud_queue', icon_root + "/ic_cloud_queue_24px.svg")
     .icon('export', icon_root + "/ic_open_in_new_24px.svg");
 });

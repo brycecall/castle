@@ -1,19 +1,21 @@
 app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_manager, filesystem_mock) {
   var private = {};
   var public = {};
-    
+
   if (!window.cordova) {
       console.log("Loading filesystem mock");
       filesystem_manager = filesystem_mock;
   }
-      
+
   private.inspections = {};
   private.inspection = {};
   public.mode = "inspection";
-  public.returnLocation = {'name':'inspection', params:{}}
+  public.returnLocation = { 'name':'inspection', params:{} }
+    
   public.getPrivateInspection = function() {
     return private.inspection;
   }
+  
   public.getInspection = function (ins) {
     var defer = $q.defer();
     var promise = defer.promise;
@@ -195,7 +197,6 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
     // SQLite
   };
 
-
   public.getTemplates = function () {
     var tempDefer = $q.defer();
     filesystem_manager.getTemplates()
@@ -284,47 +285,11 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
     return defer.promise;
   };
 
-
   public.getQuestions = function (insId, sectionIndex, subsectionIndex) {
-    //var defer = $q.defer();
-    //var questions = [];
-    /*public.getInspection(insId).then(function (data) {
-      try {
-        questions = data.value.sections[sectionIndex]
-          .subsections[subsectionIndex].questions;
-        defer.resolve({
-          'value': questions
-        });
-      } catch (e) {
-        console.log('Exception: ');
-        console.log(e);
-        defer.reject(questions);
-      }
-    }, function () {
-      defer.reject(questions);
-    });*/
     return private.inspection.sections[sectionIndex].subsections[subsectionIndex].questions;//defer.promise;
   };
 
   public.getQuestion = function (insId, sectionIndex, subsectionIndex, questionIndex) {
-    /*var defer = $q.defer();
-    var question = {};
-    public.getInspection(insId).then(function (data) {
-      try {
-        question = data.value.sections[sectionIndex]
-          .subsections[subsectionIndex]
-          .questions[questionIndex];
-        defer.resolve({
-          'value': question
-        });
-      } catch (e) {
-        console.log('Exception: ');
-        console.log(e);
-        defer.reject(question);
-      }
-    }, function () {
-      defer.reject(question);
-    });*/
     return private.inspection.sections[sectionIndex].subsections[subsectionIndex].questions[questionIndex];//defer.promise;
   };
 

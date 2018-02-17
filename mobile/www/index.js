@@ -99,7 +99,7 @@ app.run(function ($transitions, $rootScope, $state) {
 app.run(function ($transitions, $rootScope) {
   $transitions.onStart({}, function (event) {
     $rootScope.loading = true;
-  })
+  });
 
   $transitions.onSuccess({}, function (event) {
     $rootScope.loading = false;

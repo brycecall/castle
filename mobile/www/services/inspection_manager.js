@@ -309,16 +309,24 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
     return deferPubUpdQuestion.promise;
   };
   
-  public.saveInspection = function () {
+  public.saveInspection = function (ins) {
     var defer = $q.defer();
     var promise = defer.promise;
 
     switch (public.mode) {
       case "inspection":
-        promise = private.saveInspectionToFile();
+		if (ins === undefined || ins === null) {
+          promise = private.saveInspectionToFile();
+		} else  if (typeof(ins) == 'object') {
+		  promise = private.saveInspectionObjectToFile(ins);
+		}
         break;
       case "template":
-        promise = private.saveTemplateToFile();
+		if (ins === undefined || ins === null) {
+		  promise = private.saveTemplateToFile();	
+		} else {
+		  promise = private.saveTemplateObjectToFile(ins);	
+		}
         break;
       case "theme":
         promise = private.saveToThemeManager();
@@ -541,6 +549,27 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
     return deferred.promise;
   }
   
+  private.saveTemplateObjectToFile = function (template) {
+    var deferred = $q.defer();
+    // If no guid is already associated, add one
+    if (!template.guid) {
+      template.guid = filesystem_manager.generateGuid();   
+    }
+    template.hash = null;
+	template.lastModified = new Date();
+    template.hash = $sha.hash(template.toString());
+
+    filesystem_manager.saveTemplate(template.guid + ".js", JSON.stringify(template))
+      .then(function(success) {
+        deferred.resolve({value: success});
+      }, function(error) {
+        deferred.reject({value: reject});
+      }
+    );
+      
+    return deferred.promise;	  
+  }
+  
   private.saveInspectionToFile = function() {
     var deferred = $q.defer();
     // If no guid is already associated, add one
@@ -552,6 +581,27 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
     private.inspection.hash = $sha.hash(private.inspection.toString());
 
     filesystem_manager.saveInspection(private.inspection.guid + ".js", JSON.stringify(private.inspection))
+      .then(function(success) {
+        deferred.resolve({value: success});
+      }, function(error) {
+        deferred.reject({value: reject});
+      }
+    );
+      
+    return deferred.promise;
+  }
+  
+  private.saveInspectionObjectToFile = function(ins) {
+    var deferred = $q.defer();
+    // If no guid is already associated, add one
+    if (ins.guid) {
+      ins.guid = filesystem_manager.generateGuid();   
+    }
+    ins.hash = null;
+	ins.lastModified = new Date();
+    ins.hash = $sha.hash(ins.toString());
+
+    filesystem_manager.saveInspection(ins.guid + ".js", JSON.stringify(ins))
       .then(function(success) {
         deferred.resolve({value: success});
       }, function(error) {

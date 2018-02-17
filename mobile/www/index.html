@@ -3,229 +3,231 @@
 <html>
 
 <head>
-  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: * 'unsafe-eval' 'unsafe-inline'; style-src * 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
-  <meta name="format-detection" content="telephone=no">
-  <meta name="msapplication-tap-highlight" content="no">
-  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-  <title>Castle</title>
-  <link rel="stylesheet" type="text/css" href="./index.css">
-  <link rel="stylesheet" type="text/css" href="./node_modules/angular-material/angular-material.min.css" />
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: * 'unsafe-eval' 'unsafe-inline'; style-src * 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <title>Castle</title>
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <link rel="stylesheet" type="text/css" href="./node_modules/angular-material/angular-material.min.css" />
 </head>
 
 <body ng-class="{'enlarge': enlarge}">
 
-  <!-- PRE-RELEASE MARKER -->
-  <div class="pre_release_tag">
-    <div style="color: #333; opacity: .5">ALPHA3 - <b>NDA REQUIRED</b> - Not for General Distribution</div>
-    <div style="color: #333; opacity: .5; font-size: 10px;">&copy; 2018 Invenio Limited Liability Company</div>
-  </div>
-  
-  <div layout="column" layout-fill>
-    <md-toolbar md-scroll-shrink="false" ng-class="service.classname"  ng-controller="header" md-whiteframe="1" ng-show="service.enabled" ng-cloak md-theme="{{ service.theme }}" md-theme-watch>
-      <div class="md-toolbar-tools" ng-show="service.mode == 1" md-theme="{{ service.theme }}" md-theme-watch>
-        <!-- service mode 1 is Default (Home Icon only) -->
-        <span flex>
-          <h2>{{service.title}}</h2>
-        </span>
-        <md-button class="md-icon-button" aria-label="home" href="#!home">
-          <md-icon md-svg-icon="home_white"></md-icon>
-        </md-button>
-        <md-button class="md-icon-button" aria-label="support" href="#!support">
-          <md-icon md-svg-icon="help_outline"></md-icon>
-        </md-button>
-      </div>
-
-      <div class="md-toolbar-tools" ng-show="service.mode == 2" md-theme="{{ service.theme }}" md-theme-watch>
-        <!-- service mode 2 is Action -->
-        <md-button class="md-icon-button" aria-label="{{service.action.name}}" ng-click="run(service.action.method)" ng-class="service.action.classname" ng-show="service.action">
-          <md-icon md-svg-icon="{{service.action.icon}}"></md-icon>
-        </md-button>
-        <span flex>
-          <h2>{{service.title}}</h2>
-        </span>
-        <md-button class="md-icon-button" aria-label="home" href="#!home">
-          <md-icon md-svg-icon="home_white"></md-icon>
-        </md-button>
-
-        <md-menu md-offset="0 60" ng-show="service.actions.length > 0">
-          <md-button ng-click="$mdMenu.open($event)" class="md-icon-button">
-            <md-icon md-svg-icon="more_vert"></md-icon>
-          </md-button>
-          <md-menu-content style="min-width: 200px;">
-            
-            <md-menu-item ng-repeat="action in service.actions">
-              <md-button aria-label="{{action.name}}" ng-click="run(action.method)">
-                <md-icon md-svg-icon="{{action.icon}}"></md-icon>
-                {{action.name}}
-              </md-button>
-            </md-menu-item>
-            
-            <md-menu-item>
-              <md-button aria-label="support" href="#!support" ng-click="$mdMenu.close($event)">
-                <md-icon md-svg-icon="help_outline"></md-icon>
-                Help
-              </md-button>
-            </md-menu-item>
-          </md-menu-content>
-        </md-menu>
-
-        <md-button class="md-icon-button" ng-hide="service.actions.length > 0" aria-label="support" href="#!support">
-          <md-icon md-svg-icon="help_outline"></md-icon>
-        </md-button>
-      </div>
-
-      <div class="md-toolbar-tools" ng-show="service.mode == 3" md-theme="{{ service.theme }}" md-theme-watch>
-        <!-- service mode 3 is Title -->
-        <span flex>
-          <h2>{{service.title}}</h2>
-        </span>
-        <md-button class="md-icon-button" aria-label="support" href="#!support">
-          <md-icon md-svg-icon="help_outline"></md-icon>
-        </md-button>
-      </div>
-        
-      <div class="" ng-show="service.mode == 4" md-theme="{{ service.theme }}" md-theme-watch layout="row" layout-align="center center" >
-        <!-- service mode 3 is Title -->
-        <div flex></div>
-        <div class="castleBanner"></div>
-        <div flex></div>
-        <md-button class="md-icon-button" aria-label="support" href="#!support">
-          <md-icon md-svg-icon="help_outline"></md-icon>
-        </md-button>
-
-      </div>
-        
-        
-    </md-toolbar>
-    <md-content id="view" ui-view></md-content>
-
-  </div>
-
-  <div class="action" ng-controller="action" ng-show="service.enabled">
-    <div class="button" ng-cloak ng-show="service.mode == 1" layout="row" layout-align="end">
-      <!-- service mode 1 is Default -->
-      <md-button ng-cloak class="md-fab md-primary" ng-class="service.actions[0].classname" aria-label="action" ng-show="(service.actions.length == 1)" ng-click="run(service.actions[0].method)">
-        <md-icon md-svg-icon="{{service.actions[0].icon}}"></md-icon>
-      </md-button>
-      <md-fab-speed-dial md-open="open" md-direction="up" class="md-scale" ng-cloak ng-show="(service.actions.length > 1)">
-        <md-fab-trigger>
-          <md-button ng-cloak class="md-fab md-primary button" aria-label="Action Menu">
-            <md-icon md-svg-icon="more_vert"></md-icon>
-          </md-button>
-        </md-fab-trigger>
-
-        <md-fab-actions ng-cloak>
-          <div ng-repeat="action in service.actions">
-            <md-button ng-cloak class="md-fab md-mini md-accent"  aria-label="{{action.name}}" ng-click="run(action.method)">
-              <md-tooltip ng-cloak md-direction="left" md-visible="open">{{action.name}}</md-tooltip>
-              <md-icon ng-cloak md-svg-icon="{{action.icon}}"></md-icon>
-            </md-button>
-          </div>
-        </md-fab-actions>
-      </md-fab-speed-dial>
+    <!-- PRE-RELEASE MARKER -->
+    <div class="pre_release_tag">
+        <div style="color: #333; opacity: .5">ALPHA3 - <b>NDA REQUIRED</b> - Not for General Distribution</div>
+        <div style="color: #333; opacity: .5; font-size: 10px;">&copy; 2018 Invenio Limited Liability Company</div>
     </div>
 
-    <div ng-cloak ng-show="service.mode == 2" layout="row" layout-align="space-between">
-      <!-- service mode 2 is Action -->
-      <div ng-repeat="action in service.actions">
-        <md-button ng-cloak class="md-fab md-primary" ng-click="run(action.method)" aria-label="{{action.name}}" ng-class="action.classname">
-          <md-icon md-svg-icon="{{action.icon}}"></md-icon>
-        </md-button>
-      </div>
-    </div>
+    <div layout="column" layout-fill>
+        <md-toolbar md-scroll-shrink="false" ng-class="service.classname" ng-controller="header" md-whiteframe="1" ng-show="service.enabled" ng-cloak md-theme="{{ service.theme }}" md-theme-watch>
+            <div class="md-toolbar-tools" ng-show="service.mode == 1" md-theme="{{ service.theme }}" md-theme-watch>
+                <!-- service mode 1 is Default (Home Icon only) -->
+                <span flex>
+          <h2>{{service.title}}</h2>
+        </span>
+                <md-button class="md-icon-button" aria-label="home" href="#!home">
+                    <md-icon md-svg-icon="home_white"></md-icon>
+                </md-button>
+                <md-button class="md-icon-button" aria-label="support" href="#!support">
+                    <md-icon md-svg-icon="help_outline"></md-icon>
+                </md-button>
+            </div>
 
-    <div class="button" ng-cloak ng-show="service.mode == 3">
-      <!-- service mode 3 is Toolbar -->
-      <md-fab-toolbar md-direction="left">
-        <md-fab-trigger>
-          <md-button ng-cloak class="md-fab md-primary" aria-label="Action Menu" ng-class="action.classname">
-            <md-icon md-svg-icon="more_vert"></md-icon>
-          </md-button>
-        </md-fab-trigger>
+            <div class="md-toolbar-tools" ng-show="service.mode == 2" md-theme="{{ service.theme }}" md-theme-watch>
+                <!-- service mode 2 is Action -->
+                <md-button class="md-icon-button" aria-label="{{service.action.name}}" ng-click="run(service.action.method)" ng-class="service.action.classname" ng-show="service.action">
+                    <md-icon md-svg-icon="{{service.action.icon}}"></md-icon>
+                </md-button>
+                <span flex>
+          <h2>{{service.title}}</h2>
+        </span>
+                <md-button class="md-icon-button" aria-label="home" href="#!home">
+                    <md-icon md-svg-icon="home_white"></md-icon>
+                </md-button>
 
-        <md-toolbar class="md-toolbar-tools" layout-align="center center">
-          <md-fab-actions>
-            <md-button ng-cloak class="md-fab md-mini md-accent" aria-label="{{action.name}}" ng-click="run(action.method)" ng-repeat="action in service.actions" style="margin-left: 10px;">
-              <md-icon ng-cloak md-svg-icon="{{action.icon}}"></md-icon>
-            </md-button>
-          </md-fab-actions>
+                <md-menu md-offset="0 60" ng-show="service.actions.length > 0">
+                    <md-button ng-click="$mdMenu.open($event)" class="md-icon-button">
+                        <md-icon md-svg-icon="more_vert"></md-icon>
+                    </md-button>
+                    <md-menu-content style="min-width: 200px;">
+
+                        <md-menu-item ng-repeat="action in service.actions">
+                            <md-button aria-label="{{action.name}}" ng-click="run(action.method)">
+                                <md-icon md-svg-icon="{{action.icon}}"></md-icon>
+                                {{action.name}}
+                            </md-button>
+                        </md-menu-item>
+
+                        <md-menu-item>
+                            <md-button aria-label="support" href="#!support" ng-click="$mdMenu.close($event)">
+                                <md-icon md-svg-icon="help_outline"></md-icon>
+                                Help
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+
+                <md-button class="md-icon-button" ng-hide="service.actions.length > 0" aria-label="support" href="#!support">
+                    <md-icon md-svg-icon="help_outline"></md-icon>
+                </md-button>
+            </div>
+
+            <div class="md-toolbar-tools" ng-show="service.mode == 3" md-theme="{{ service.theme }}" md-theme-watch>
+                <!-- service mode 3 is Title -->
+                <span flex>
+          <h2>{{service.title}}</h2>
+        </span>
+                <md-button class="md-icon-button" aria-label="support" href="#!support">
+                    <md-icon md-svg-icon="help_outline"></md-icon>
+                </md-button>
+            </div>
+
+            <div class="" ng-show="service.mode == 4" md-theme="{{ service.theme }}" md-theme-watch layout="row" layout-align="center center">
+                <!-- service mode 3 is Title -->
+                <div flex></div>
+                <div class="castleBanner"></div>
+                <div flex></div>
+                <md-button class="md-icon-button" aria-label="support" href="#!support">
+                    <md-icon md-svg-icon="help_outline"></md-icon>
+                </md-button>
+
+            </div>
+
+
         </md-toolbar>
-      </md-fab-toolbar>
+        <md-content id="view" ui-view></md-content>
+
     </div>
 
-  </div>
+    <div class="action" ng-controller="action" ng-show="service.enabled">
+        <div class="button" ng-cloak ng-show="service.mode == 1" layout="row" layout-align="end">
+            <!-- service mode 1 is Default -->
+            <md-button ng-cloak class="md-fab md-primary" ng-class="service.actions[0].classname" aria-label="action" ng-show="(service.actions.length == 1)" ng-click="run(service.actions[0].method)">
+                <md-icon md-svg-icon="{{service.actions[0].icon}}"></md-icon>
+            </md-button>
+            <md-fab-speed-dial md-open="open" md-direction="up" class="md-scale" ng-cloak ng-show="(service.actions.length > 1)">
+                <md-fab-trigger>
+                    <md-button ng-cloak class="md-fab md-primary button" aria-label="Action Menu">
+                        <md-icon md-svg-icon="more_vert"></md-icon>
+                    </md-button>
+                </md-fab-trigger>
 
-  <div ng-cloak class="loading" layout="row" layout-align="center center" ng-show="$root.loading">
-    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
-  </div>
+                <md-fab-actions ng-cloak>
+                    <div ng-repeat="action in service.actions">
+                        <md-button ng-cloak class="md-fab md-mini md-accent" aria-label="{{action.name}}" ng-click="run(action.method)">
+                            <md-tooltip ng-cloak md-direction="left" md-visible="open">{{action.name}}</md-tooltip>
+                            <md-icon ng-cloak md-svg-icon="{{action.icon}}"></md-icon>
+                        </md-button>
+                    </div>
+                </md-fab-actions>
+            </md-fab-speed-dial>
+        </div>
 
-  <!--  External Libraries -->
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="libs/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-  <script src="node_modules/angular/angular.min.js"></script>
-  <script src="node_modules/ng-cordova/dist/ng-cordova.js"></script>
-  <script src="node_modules/angular-animate/angular-animate.min.js"></script>
-  <script src="node_modules/angular-aria/angular-aria.min.js"></script>
-  <script src="node_modules/angular-material/angular-material.min.js"></script>
-  <script src="node_modules/angular-messages/angular-messages.min.js"></script>
-  <script src="node_modules/jssha/src/sha256.js"></script>
-  <script src="node_modules/angular-sha/src/angular-sha.js"></script>
-  <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
-  <script src="node_modules/angular-ui-sortable/src/sortable.js"></script>
+        <div ng-cloak ng-show="service.mode == 2" layout="row" layout-align="space-between">
+            <!-- service mode 2 is Action -->
+            <div ng-repeat="action in service.actions">
+                <md-button ng-cloak class="md-fab md-primary" ng-click="run(action.method)" aria-label="{{action.name}}" ng-class="action.classname">
+                    <md-icon md-svg-icon="{{action.icon}}"></md-icon>
+                </md-button>
+            </div>
+        </div>
 
-  <script type="text/javascript" src="cordova.js"></script>
-  <!-- <script type="text/javascript" src="CameraPreview.js"></script> -->
+        <div class="button" ng-cloak ng-show="service.mode == 3">
+            <!-- service mode 3 is Toolbar -->
+            <md-fab-toolbar md-direction="left">
+                <md-fab-trigger>
+                    <md-button ng-cloak class="md-fab md-primary" aria-label="Action Menu" ng-class="action.classname">
+                        <md-icon md-svg-icon="more_vert"></md-icon>
+                    </md-button>
+                </md-fab-trigger>
 
-  <!--  Internal Libraries-->
-  <script src="index.js"></script>
+                <md-toolbar class="md-toolbar-tools" layout-align="center center">
+                    <md-fab-actions>
+                        <md-button ng-cloak class="md-fab md-mini md-accent" aria-label="{{action.name}}" ng-click="run(action.method)" ng-repeat="action in service.actions" style="margin-left: 10px;">
+                            <md-icon ng-cloak md-svg-icon="{{action.icon}}"></md-icon>
+                        </md-button>
+                    </md-fab-actions>
+                </md-toolbar>
+            </md-fab-toolbar>
+        </div>
+
+    </div>
+
+    <div ng-cloak class="loading" layout="row" layout-align="center center" ng-show="$root.loading">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+
+    <!--  External Libraries -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="libs/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/ng-cordova/dist/ng-cordova.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script src="node_modules/angular-material/angular-material.min.js"></script>
+    <script src="node_modules/angular-messages/angular-messages.min.js"></script>
+    <script src="node_modules/jssha/src/sha256.js"></script>
+    <script src="node_modules/angular-sha/src/angular-sha.js"></script>
+    <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+    <script src="node_modules/angular-ui-sortable/src/sortable.js"></script>
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <!-- <script type="text/javascript" src="CameraPreview.js"></script> -->
+
+    <!--  Internal Libraries-->
+    <script src="index.js"></script>
 
 
-  <script src="mocks/camera_mock.js"></script>
-  <script src="mocks/database_mock.js"></script>
-  <script src="mocks/filesystem_mock.js"></script>
+    <script src="mocks/camera_mock.js"></script>
+    <script src="mocks/database_mock.js"></script>
+    <script src="mocks/filesystem_mock.js"></script>
 
-  <script src="services/rest_connector.js"></script>
-  <script src="mocks/default_template.js"></script>  
-  <script src="services/inspection_manager.js"></script>
-  <script src="services/camera_manager.js"></script>
-  <script src="dialogs/camera/camera.js"></script>
-  <script src="dialogs/loading/loading.js"></script>
-  <script src="services/action_manager.js"></script>
-  <script src="services/header_manager.js"></script>
-  <script src="services/icons.js"></script>
-  <script src="services/template_manager.js"></script>
-  <script src="services/theme_manager.js"></script>
-  <script src="services/export_manager.js"></script>
-  <script src="services/filesystem_manager.js"></script>
+    <script src="services/rest_connector.js"></script>
+    <script src="mocks/default_template.js"></script>
+    <script src="services/inspection_manager.js"></script>
+    <script src="services/camera_manager.js"></script>
+    <script src="dialogs/camera/camera.js"></script>
+    <script src="dialogs/loading/loading.js"></script>
+    <script src="services/action_manager.js"></script>
+    <script src="services/header_manager.js"></script>
+    <script src="services/icons.js"></script>
+    <script src="services/template_manager.js"></script>
+    <script src="services/theme_manager.js"></script>
+    <script src="services/export_manager.js"></script>
+    <script src="services/filesystem_manager.js"></script>
+    <script src="services/cloud_connector.js"></script>
 
-  <script src="dialogs/error/error.js"></script>
+    <script src="dialogs/error/error.js"></script>
 
-  <script src="pages/home/home.js"></script>
-  <script src="pages/login/login.js"></script>
-  <script src="pages/history/history.js"></script>
-  <script src="pages/remarks/remarks.js"></script>
-  <script src="pages/inspection/inspection.js"></script>
-  <script src="pages/inspection/inspection_wizard.js"></script>
-  <script src="pages/inspection/inspection_photo.js"></script>
-  <script src="pages/report/report.js"></script>
-  <script src="pages/settings/settings.js"></script>
-  <script src="pages/templates/templates.js"></script>
-  <script src="pages/themes/themes.js"></script>
-  <script src="pages/support/support.js"></script>
-    
+    <script src="pages/home/home.js"></script>
+    <script src="pages/login/login.js"></script>
+    <script src="pages/history/history.js"></script>
+    <script src="pages/remarks/remarks.js"></script>
+    <script src="pages/inspection/inspection.js"></script>
+    <script src="pages/inspection/inspection_wizard.js"></script>
+    <script src="pages/inspection/inspection_photo.js"></script>
+    <script src="pages/report/report.js"></script>
+    <script src="pages/settings/settings.js"></script>
+    <script src="pages/templates/templates.js"></script>
+    <script src="pages/themes/themes.js"></script>
+    <script src="pages/support/support.js"></script>
+
     <script>
-      angular.element(document).ready(function () {
-        if (window.cordova) {
-          console.log("Cordova detected");
-          document.addEventListener('deviceready', function () {
-            console.log("Device ready... bootstrapping");
-            angular.bootstrap(document.body, ['castle']);
-          }, false);
-        } else {
-          console.log("Ready... bootstrapping");
-          angular.bootstrap(document.body, ['castle']);
-        }
-      });
+        angular.element(document).ready(function() {
+            if (window.cordova) {
+                console.log("Cordova detected");
+                document.addEventListener('deviceready', function() {
+                    console.log("Device ready... bootstrapping");
+                    angular.bootstrap(document.body, ['castle']);
+                }, false);
+            } else {
+                console.log("Ready... bootstrapping");
+                angular.bootstrap(document.body, ['castle']);
+            }
+        });
+
     </script>
 </body>
 

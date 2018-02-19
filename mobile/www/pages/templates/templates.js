@@ -75,8 +75,8 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
                inspection.syncIcon = "cloud_done";
             },
             //failure
-            function (promise.data) {
-                console.log(promise);
+            function (promise) {
+                console.log(promise.data);
                 inspection.syncIcon = "";
             }
     );
@@ -114,16 +114,16 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
   $scope.syncCloud = function() {
      httpService.submitRemote({
         method: 'GET',
-        url: 'api/v1/inspectionsMeta/0/Template',
+        url: 'api/v1/inspectionsMeta/0/Template', 
         params: null,
         useBaseUrl: true
       }).then(
-         var loadedDateTime = new Date();
             //Success
             function (promise) {
+             var loadedDateTime = new Date();
               var cloudGuidDictionary = promise.data; // get dictionary of guid, inspection meta data objects
               // 
-              for(var i = 0; i < templates.data.length; i++) { 
+              for(var i = 0; i < $scope.templates.length; i++) { 
                  var template = $scope.templates[i];
                  var cloudTemplate = cloudGuidDictionary[template.guid];
                  if (cloudTemplate) {
@@ -162,8 +162,8 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
                 $scope.lastSynced = localStorage.setItem("templateLastSynced", loadedDateTime);
             },
             //failure
-            function (promise.data) {
-                console.log(promise);
+            function (promise) {
+                console.log(promise.data);
             }
     );
   };

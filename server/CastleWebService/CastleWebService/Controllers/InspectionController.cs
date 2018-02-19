@@ -138,7 +138,7 @@ namespace CastleWebService.Controllers
             return result;
         }
 
-        [HttpPost("api/v1/inspectionsMeta/{userId}/{sourceType}")]
+        [HttpGet("api/v1/inspectionsMeta/{userId}/{sourceType}")]
         public Dictionary<string, Inspections> CheckInspections(int userId, string sourceType = TEMPLATE)
         {
             var query = _db.Inspections.Where(x => x.InsIsDeleted == 0 

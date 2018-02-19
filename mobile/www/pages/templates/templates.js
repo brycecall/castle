@@ -65,7 +65,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
   var saveInspectionToCloud = function(inspection) {
       httpService.submitRemote({
         method: 'POST',
-        url: 'api/v1/upsertinspection/0',
+        url: 'api/v1/upsertinspection/1',
         data: inspection,
         params: null,
         useBaseUrl: true
@@ -114,7 +114,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
   $scope.syncCloud = function() {
      httpService.submitRemote({
         method: 'GET',
-        url: 'api/v1/inspectionsMeta/0/Template', 
+        url: 'api/v1/inspectionsMeta/1/' + inspection_manager.mode, 
         params: null,
         useBaseUrl: true
       }).then(
@@ -163,7 +163,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
             },
             //failure
             function (promise) {
-                console.log(promise.data);
+                console.log(promise);
             }
     );
   };

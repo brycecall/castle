@@ -141,7 +141,7 @@ namespace CastleWebService.Controllers
         [HttpGet("api/v1/inspectionsMeta/{userId}/{sourceType}")]
         public Dictionary<string, Inspections> CheckInspections(int userId, string sourceType = TEMPLATE)
         {
-            var query = _db.Inspections.Where(x => x.InsIsDeleted == 0 
+            var query = _db.Inspections.Where(x => (x.InsIsDeleted == 0 || x.InsIsDeleted == null)
                                               && x.InsUserId == userId
                                               && x.InsSourceType == sourceType)
                                        .ToDictionary(x => x.InsGuid, x => x);
@@ -149,7 +149,7 @@ namespace CastleWebService.Controllers
         }
 
 
-
+        
 
     } // end class
 } // end namespace

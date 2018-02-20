@@ -1118,6 +1118,57 @@
           "privateNotes": null,
           "photos": [],
           "$$hashKey": "object:57"
+        }, {
+          "id": 347,
+          "title": "Contract Photos",
+          "description": "",
+          "subsectionId": 35,
+          "sectionId": 13,
+          "inspectionId": 2,
+          "type": "photo",
+          "values": [{
+            "id": 2119,
+            "key": null,
+            "questionId": 347,
+            "sourceType": "inspection",
+            "inspectionId": 2,
+            "type": null,
+            "checked": null,
+            "autoComment": null,
+            "order": null,
+            "photos": []
+          }],
+          "validation": {
+            "type": "",
+            "min": null,
+            "max": null,
+            "isRequired": 0
+          },
+          "answer": null,
+          "answers": [],
+          "isAnswered": null,
+          "notApplicable": 0,
+          "severity": null,
+          "showSummaryRemark": 1,
+          "showDescription": 1,
+          "order": null,
+          "comments": "",
+          "privateNotes": null,
+          "photos": [
+              {
+                "link": "https://www.petmd.com/sites/default/files/petmd-cat-happy-13.jpg",
+                "title": "Contract Photos question kitties1"
+              },
+              {
+                "link": "https://www.petmd.com/sites/default/files/petmd-cat-happy-13.jpg",
+                "title": "Contract Photos question kitties2"
+              },
+              {
+                "link": "https://www.petmd.com/sites/default/files/petmd-cat-happy-13.jpg",
+                "title": "Contract Photos question kitties3"
+              }
+          ],
+          "$$hashKey": "object:58"
         }],
         "$$hashKey": "object:30"
       }],

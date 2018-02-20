@@ -199,6 +199,14 @@
       text-align: center;
       page-break-inside: avoid;
     }
+      
+    .contract.photo {
+      margin: 10px;
+      margin-bottom: 2px;
+      width: calc(100% - 20px);
+      border: solid 5px #293349;
+      text-align: center;
+    }
     
     .subsection .photo_desc {
       margin: 0 20px;
@@ -325,6 +333,10 @@ Fidelity Building Inspections, LLC</pre>
     
 <span style="font-size: 8pt;">[Statutory Authority: RCW 18.280.050 and 18.280.060(6). 09-08-014, § 308-408C-010-030, filed 3/20/09, effective 4/20/09.]</span>
     </pre>
+  </div>
+    
+  <div class="page" id="contract-photo" ng-repeat="photo in castle.data.sections[0].subsections[1].questions[5].photos">
+    <img class="contract photo" ng-src="{{photo.link}}" />
   </div>
 
   <div ng-repeat="section in castle.data.sections" ng-if="$index != 0">

@@ -333,6 +333,37 @@
         "showDescription": 1,
         "order": 1,
         "photos": []
+      }, {
+        "title": "Contract Photos",
+        "description": "",
+        "comments": "",
+        "type": "photo",
+        "values": [{
+          "id": null,
+          "key": null,
+          "questionId": null,
+          "sourceType": null,
+          "inspectionId": null,
+          "type": null,
+          "checked": null,
+          "autoComment": null,
+          "order": null,
+          "photos": []
+        }],
+        "validation": {
+          "type": "",
+          "min": null,
+          "max": null,
+          "isRequired": 0
+        },
+        "answer": null,
+        "answers": [],
+        "notApplicable": 0,
+        "severity": null,
+        "showSummaryRemark": 1,
+        "showDescription": 1,
+        "order": 2,
+        "photos": []
       }]
     }]
   }],

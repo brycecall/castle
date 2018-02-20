@@ -52,47 +52,17 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('templates', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, $mdToast, $cordovaFile, filesystem_manager, httpService) {
+app.controller('templates', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, $mdToast, $cordovaFile, filesystem_manager, cloud_connector) {
   // Switch the inspection_manager mode (this is global)
   inspection_manager.mode = "template";
   $rootScope.loading = true;
     
   $scope.lastSynced = localStorage.getItem("templateLastSynced");
   $scope.templates = [];
-
-    
-  var saveInspectionToCloud = function(inspection) {
-      httpService.submitRemote({
-        method: 'POST',
-        url: 'api/v1/upsertinspection/' + $rootScope.userId,
-        data: inspection,
-        params: null,
-        useBaseUrl: true
-      }).then(
-            //Success
-            function (promise) {
-               inspection.syncIcon = "cloud_done";
-            },
-            //failure
-            function (promise) {
-                console.log(promise.data);
-                inspection.syncIcon = "";
-            }
-    );
-  };
-  
-  var getInspectionFromCloud = function(inspectionID) {
-     return httpService.submitRemote({
-        method: 'GET',
-        url: 'api/v1/inspection/' + inspectionID + '/' + $rootScope.userId,
-        params: null,
-        useBaseUrl: true
-      });
-  }
   
   $scope.downloadTemplate = function(template) {
       if (template.syncIcon == "cloud_download") {
-       getInspectionFromCloud(template.insId).then(
+       cloud_connector.getInspectionFromCloud(template.insId).then(
          function(result) {
              for (var i = 0; i < $scope.templates.length; i++) {
                  if ($scope.templates[i].guid == template.guid) {
@@ -121,12 +91,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
   };
     
   $scope.syncCloud = function() {
-     httpService.submitRemote({
-        method: 'GET',
-        url: 'api/v1/inspectionsMeta/'+ $rootScope.userId + '/' + inspection_manager.mode, 
-        params: null,
-        useBaseUrl: true
-      }).then(
+     cloud_connector.getInspectionsMetadata(inspection_manager.mode).then(
             //Success
             function (promise) {
              var loadedDateTime = new Date();
@@ -138,9 +103,9 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
                  if (cloudTemplate) {
                     if (cloudTemplate.hash != template.hash) {
                         if (new Date(cloudTemplate.last_modified) < new Date(template.last_modified)) {
-                            saveInspectionToCloud(template);
+                            cloud_connector.saveInspectionToCloud(template);
                         } else {
-                            getInspectionFromCloud(template.insId).then(
+                            cloud_connector.getInspectionFromCloud(template.insId).then(
                                 function(result){
                                     $scope.templates[i] = result.data;
                                     $scope.templates[i].syncIcon = "cloud_done";
@@ -157,7 +122,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
                     cloudTemplate.existsLocally = true;
                  } else {
                      template.syncIcon = "sync";
-                     saveInspectionToCloud(template);
+                     cloud_connector.saveInspectionToCloud(template);
                  }
               }
                 // Add the cloud only templates to the view

@@ -145,13 +145,13 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $sha) {
     }
     
     // Copy template
-    public.copyTemplate = function(template) {
+    public.copyTemplate = function(newTemplate) {
       var deferred = $q.defer();
         
       // Write to file
       public.saveTemplate(newTemplate.guid + ".js", JSON.stringify(newTemplate))
         .then(function(success) {
-        deferred.resolve({template: newTemplate});  
+        deferred.resolve({'template': newTemplate});  
       }, function(error) {
         deferred.reject(error);  
       });

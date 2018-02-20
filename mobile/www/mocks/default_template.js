@@ -6,7 +6,8 @@ var defaultTemplate = {
   "insUserId": 1,
   "insId": null,
   "insSourceType": "template",
-  "insGuid": 1,
+  "guid": 1,
+  "hash": 1,
   "insHash" : 1,
   "sections": [{
     "id": null,

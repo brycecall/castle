@@ -98,11 +98,12 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
                  if ($scope.templates[i].guid == template.guid) {
                      $scope.templates[i] = result.data;
                      filesystem_manager.saveTemplate($scope.templates[i].guid, $scope.templates[i]).then(
-                         function(){
+                         function(promise){
                             $scope.templates[i].syncIcon = "cloud_done";
                          },
-                         function(){
+                         function(promise){
                              $scope.templates[i].syncIcon = "";
+                             console.log(promise.message);
                          }
                      );
                      
@@ -139,7 +140,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
                         if (new Date(cloudTemplate.last_modified) < new Date(template.last_modified)) {
                             saveInspectionToCloud(template);
                         } else {
-                            getInspectionFromCloud(template.id).then(
+                            getInspectionFromCloud(template.insId).then(
                                 function(result){
                                     $scope.templates[i] = result.data;
                                     $scope.templates[i].syncIcon = "cloud_done";

@@ -17,6 +17,8 @@ namespace CastleWebService.Models
         public string OrgAddress { get; set; }
         public string OrgZipCode { get; set; }
         public string OrgLogo { get; set; }
+        public DateTime OrgLastModifed { get; set; }
+        public byte? OrgIsDeleted { get; set; }
 
         public ICollection<Themes> Themes { get; set; }
     }

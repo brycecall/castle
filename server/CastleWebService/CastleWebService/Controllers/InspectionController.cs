@@ -16,8 +16,9 @@ namespace CastleWebService.Controllers
     [Produces("application/json")]
     public class InspectionController : Controller
     {
-        public const string TEMPLATE = "Template";
-        public const string INSPECTION = "Inspection";
+        public const string TEMPLATE = "template";
+        public const string INSPECTION = "inspection";
+        public const string THEME = "theme";
         public const string ALL = "ALL";
 
 

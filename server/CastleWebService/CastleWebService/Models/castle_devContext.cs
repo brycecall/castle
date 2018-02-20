@@ -150,6 +150,12 @@ namespace CastleWebService.Models
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
+                entity.Property(e => e.OrgIsDeleted).HasColumnName("orgIsDeleted");
+
+                entity.Property(e => e.OrgLastModifed)
+                    .HasColumnName("orgLastModifed")
+                    .HasDefaultValueSql("(getutcdate())");
+
                 entity.Property(e => e.OrgLogo)
                     .HasColumnName("orgLogo")
                     .IsUnicode(false);
@@ -318,6 +324,22 @@ namespace CastleWebService.Models
                     .HasColumnName("themeBlob")
                     .IsUnicode(false);
 
+                entity.Property(e => e.ThemeCreatedDate).HasColumnName("themeCreatedDate");
+
+                entity.Property(e => e.ThemeHash)
+                    .IsRequired()
+                    .HasColumnName("themeHash")
+                    .HasMaxLength(256)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ThemeIsDeleted).HasColumnName("themeIsDeleted");
+
+                entity.Property(e => e.ThemeLastClientModified).HasColumnName("themeLastClientModified");
+
+                entity.Property(e => e.ThemeLastModified)
+                    .HasColumnName("themeLastModified")
+                    .HasDefaultValueSql("(getutcdate())");
+
                 entity.Property(e => e.ThemeOrganizationId).HasColumnName("themeOrganizationId");
 
                 entity.Property(e => e.ThemeTitle)
@@ -325,7 +347,18 @@ namespace CastleWebService.Models
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
+                entity.Property(e => e.ThemeUnique)
+                    .IsRequired()
+                    .HasColumnName("themeUnique")
+                    .HasMaxLength(256)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.ThemeUserId).HasColumnName("themeUserId");
+
+                entity.Property(e => e.ThemeVersion)
+                    .HasColumnName("themeVersion")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.HasOne(d => d.ThemeOrganization)
                     .WithMany(p => p.Themes)
@@ -363,6 +396,12 @@ namespace CastleWebService.Models
                     .HasColumnName("usrFirstName")
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.UsrIsDeleted).HasColumnName("usrIsDeleted");
+
+                entity.Property(e => e.UsrLastModified)
+                    .HasColumnName("usrLastModified")
+                    .HasDefaultValueSql("(getutcdate())");
 
                 entity.Property(e => e.UsrLastName)
                     .HasColumnName("usrLastName")

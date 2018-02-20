@@ -24,6 +24,8 @@ namespace CastleWebService.Models
         public string UsrCity { get; set; }
         public string UsrState { get; set; }
         public string UsrZip { get; set; }
+        public byte? UsrIsDeleted { get; set; }
+        public DateTime UsrLastModified { get; set; }
 
         public ICollection<Founders> Founders { get; set; }
         public ICollection<Inspections> Inspections { get; set; }

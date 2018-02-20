@@ -97,7 +97,15 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
              for (var i = 0; i < $scope.templates.length; i++) {
                  if ($scope.templates[i].guid == template.guid) {
                      $scope.templates[i] = result.data;
-                     $scope.templates[i].syncIcon = "cloud_done"
+                     filesystem_manager.saveTemplate($scope.templates[i].guid, $scope.templates[i]).then(
+                         function(){
+                            $scope.templates[i].syncIcon = "cloud_done";
+                         },
+                         function(){
+                             $scope.templates[i].syncIcon = "";
+                         }
+                     );
+                     
                      break;
                  }
              }

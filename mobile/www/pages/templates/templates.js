@@ -59,13 +59,12 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
     
   $scope.lastSynced = localStorage.getItem("templateLastSynced");
   $scope.templates = [];
-  
 
     
   var saveInspectionToCloud = function(inspection) {
       httpService.submitRemote({
         method: 'POST',
-        url: 'api/v1/upsertinspection/1',
+        url: 'api/v1/upsertinspection/' + $rootScope.userId,
         data: inspection,
         params: null,
         useBaseUrl: true
@@ -85,7 +84,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
   var getInspectionFromCloud = function(inspectionID) {
      return httpService.submitRemote({
         method: 'GET',
-        url: 'api/v1/inspection/' + inspectionID + '/0',
+        url: 'api/v1/inspection/' + inspectionID + '/' + $rootScope.userId,
         params: null,
         useBaseUrl: true
       });
@@ -93,11 +92,12 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
   
   $scope.downloadTemplate = function(template) {
       if (template.syncIcon == "cloud_download") {
-       getInspectionFromCloud(template.id).then(
+       getInspectionFromCloud(template.insId).then(
          function(result) {
              for (var i = 0; i < $scope.templates.length; i++) {
                  if ($scope.templates[i].guid == template.guid) {
                      $scope.templates[i] = result.data;
+                     $scope.templates[i].syncIcon = "cloud_done"
                      break;
                  }
              }
@@ -114,7 +114,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
   $scope.syncCloud = function() {
      httpService.submitRemote({
         method: 'GET',
-        url: 'api/v1/inspectionsMeta/1/' + inspection_manager.mode, 
+        url: 'api/v1/inspectionsMeta/'+ $rootScope.userId + '/' + inspection_manager.mode, 
         params: null,
         useBaseUrl: true
       }).then(
@@ -156,7 +156,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
                     var cloudOnlyTemplate = cloudGuidDictionary[guid];
                     if (cloudGuidDictionary.hasOwnProperty(guid) && !cloudOnlyTemplate.existsLocally ) {
                         cloudOnlyTemplate.syncIcon = "cloud_download";
-                        $scope.template.push(cloudOnlyTemplate);
+                        $scope.templates.push(cloudOnlyTemplate);
                     }
                 }
                 $scope.lastSynced = localStorage.setItem("templateLastSynced", loadedDateTime);

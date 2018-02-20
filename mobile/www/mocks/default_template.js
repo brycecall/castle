@@ -6,10 +6,11 @@ var defaultTemplate = {
   "insUserId": 1,
   "insId": null,
   "insSourceType": "template",
+  "insGuid": 1,
+  "insHash" : 1,
   "sections": [{
     "id": null,
     "title": "Field Notes",
-    
     "inspectionId": null,
     "order": 0,
     "subsections": [{
@@ -17,7 +18,6 @@ var defaultTemplate = {
       "title": "Observations",
       "sectionId": null,
       "inspectionId": null,
-      
       "order": 0,
       "questions": [{
         "id": null,

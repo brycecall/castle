@@ -81,6 +81,7 @@ namespace CastleWebService.Models
                 entity.Property(e => e.InspectionId).HasColumnName("inspectionId");
 
                 entity.Property(e => e.InsGuid)
+                    .IsRequired()
                     .HasColumnName("insGUID")
                     .IsUnicode(false);
 

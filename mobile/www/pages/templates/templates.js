@@ -90,6 +90,11 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
      }
   };
     
+  $scope.openMenu = function ($mdMenu, ev) {
+    $mdMenu.open(ev);
+  };
+
+    
   $scope.syncCloud = function() {
      cloud_connector.getInspectionsMetadata(inspection_manager.mode).then(
             //Success

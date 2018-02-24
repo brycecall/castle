@@ -50,8 +50,10 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $sha) {
       
       $cordovaFile.writeFile(public.templatePath, filename, data, true)
         .then(function(success) {
+          console.log(success);
           deferred.resolve(success);
         }, function(error){
+          console.log(error);
           deferred.reject(error);
       });
       
@@ -208,14 +210,15 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $sha) {
       var inspectionDefer = $q.defer();
       var newTemp = $q.defer();
       var newInsp = $q.defer();
-      var newFile = $q.defer();
-      var promises = [templateDefer.promise, inspectionDefer.promise, newTemp.promise, newInsp.promise, newFile.promise];    
+      //var newFile = $q.defer();
+      var promises = [templateDefer.promise, inspectionDefer.promise, newTemp.promise, newInsp.promise/*, newFile.promise*/];    
         
-      // Delete & Add Temp Dir, then add default template file
+      // Delete & Add Temp Dir
       $cordovaFile.removeRecursively(cordova.file.dataDirectory, "templates").then(function(success){
         templateDefer.resolve(success);
         $cordovaFile.createDir(cordova.file.dataDirectory, "templates", true).then(function(success) {
           newTemp.resolve(success);
+/*        Commented out for now, writes default template   
           // Add default template to template directory (done here to ensure the directory is available)
           $cordovaFile.writeFile(public.templatePath, "default_template.js", JSON.stringify(defaultTemplate), true)
             .then(function(success) {
@@ -223,7 +226,7 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $sha) {
             }, function(error) {
               newFile.reject(error);
               console.log(error);
-            });
+            });*/
         }, function(error) {
           newTemp.reject(error);
           console.log(error);
@@ -234,17 +237,18 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $sha) {
           $cordovaFile.createDir(cordova.file.dataDirectory, "templates", true).then(function(success) {
             newTemp.resolve(success);
             // Add default template to template directory (done here to ensure the directory is available)
-            $cordovaFile.writeFile(public.templatePath, "default_template.js", JSON.stringify(defaultTemplate), true)
+            // Commented out for now, creates local file from default template object
+/*            $cordovaFile.writeFile(public.templatePath, "default_template.js", JSON.stringify(defaultTemplate), true)
               .then(function(success) {
                 newFile.resolve(success);
               }, function(error) {
                 newFile.reject(error);
                 console.log(error);
-              });
+              });*/
           }, function(error) {
             newTemp.reject(error);
             templateDefer.reject(error);
-            newFile.reject(error);
+            //newFile.reject(error);  *commented out, adds local copy of default template*
             console.log(error);
           });
         } else {

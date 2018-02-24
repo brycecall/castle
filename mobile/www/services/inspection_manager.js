@@ -451,7 +451,7 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
         message: success.message 
       });
     }, function(error){
-      deferTitle.resolve({
+      deferTitle.reject({
         message: error.message
       });    
     });
@@ -459,22 +459,21 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
     return deferTitle.promise;
   };
     
-  public.updateTemplate = function () {
+  public.updateTemplate = function (template) {
     var defer = $q.defer();
     var promise = defer.promise;
       
-    switch (public.mode) {
-        case "inspection":
-        case "template":
-          promise = private.updateDBTemplate();
-          break;
-        case "theme":
-          promise = private.saveToThemeManager();
-          break;
-        default:
-          defer.reject(public.mode + " is not a valid type.");
-    }
-      
+    promise = private.saveTemplateObjectToFile(template);
+    promise.then(function(success) {
+      defer.resolve({
+        message: success.message
+      });
+    }, function(error){
+      defer.reject({
+        message: error.message 
+      });
+    });
+
     return promise;
   };
   

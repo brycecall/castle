@@ -32,13 +32,13 @@
                   </md-button>
                   <md-menu-content width="4">
                     <md-menu-item>
-                      <md-button>
+                      <md-button ng-click="rename(template, inspection.insTemplateTitle, $index)">
                         <md-icon md-svg-icon="mode_edit" md-menu-align-target></md-icon>
                         Rename
                       </md-button>
                     </md-menu-item>
                   <md-menu-item>
-                    <md-button>
+                    <md-button ng-click="export(template);">
                       <md-icon md-svg-icon="export" md-menu-align-target></md-icon>
                       Export
                     </md-button>

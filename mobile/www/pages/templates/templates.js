@@ -52,7 +52,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('templates', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, $mdToast, $cordovaFile, filesystem_manager, cloud_connector) {
+app.controller('templates', function ($scope, $rootScope, $state, header_manager, camera_manager, action_manager, inspection_manager, $mdToast, $cordovaFile, filesystem_manager, cloud_connector, export_manager) {
   // Switch the inspection_manager mode (this is global)
   inspection_manager.mode = "template";
   $rootScope.loading = true;
@@ -94,7 +94,37 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
     $mdMenu.open(ev);
   };
 
+  $scope.rename = function (insId, title, index) {
+    var newName = window.prompt("Please enter a new name.", title);
+    if(newName) {
+      var toast = $mdToast.simple()
+        .position('bottom')
+        .toastClass('highIndex');
+      $scope.templates[index].insTemplateTitle = newName;
+      inspection_manager.updateTemplate($scope.templates[index]).then(function (success) {
+        console.log(success.message);
+        setTimeout(function () {
+          toast.textContent('Rename Complete');
+          $mdToast.show(toast);
+        }, 0);
+      }, function(error) {
+        console.log(error.message);  
+      });
+    }
+  }
     
+  $scope.export = function (template) {
+    $rootScope.loading = true;
+    export_manager.export(template, "template").then(
+      function (result) {
+        $rootScope.loading = false;
+      },
+      function (error) {
+        $rootScope.loading = false;
+        console.error(error);
+    });
+  }
+        
   $scope.syncCloud = function() {
      cloud_connector.getInspectionsMetadata(inspection_manager.mode).then(
             //Success
@@ -154,6 +184,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
         $scope.templates.push(JSON.parse(promise[i]));
       }
       $scope.syncCloud();
+      console.log($scope.templates);
       $rootScope.loading = false;
     },
     function (promise) {

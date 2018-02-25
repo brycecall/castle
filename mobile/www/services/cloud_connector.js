@@ -3,52 +3,52 @@
 app.constant('BASE_URL', 'https://api.castle.invenio.xyz/');
 //app.constant('BASE_URL', 'http://localhost:62326/');
 
-app.factory('pendingRequests', function() {
+app.factory('pendingRequests', function () {
     var private = {};
     var public = {};
-    
+
     private.pending = [];
-    public.get = function() {
-      return private.pending;
+    public.get = function () {
+        return private.pending;
     };
-      
-    public.add = function(request) {
-      private.pending.push(request);
+
+    public.add = function (request) {
+        private.pending.push(request);
     };
-      
-    public.remove = function(url) {
-      private.pending = private.pending.filter(function(p) {
-          return p.url !== url;
-      });
+
+    public.remove = function (url) {
+        private.pending = private.pending.filter(function (p) {
+            return p.url !== url;
+        });
     };
-      
-    public.cancelAll = function() {
-      angular.forEach(private.pending, function(p) {
-        p.canceller.resolve();
-      });
-      private.pending.length = 0;
+
+    public.cancelAll = function () {
+        angular.forEach(private.pending, function (p) {
+            p.canceller.resolve();
+        });
+        private.pending.length = 0;
     };
-    
+
     return public;
 });
 
 
 // This service wraps $http to make sure pending requests are tracked 
-app.factory('httpService', ['$http', '$q', 'pendingRequests', 'BASE_URL', function($http, $q, pendingRequests, BASE_URL) {
+app.factory('httpService', ['$http', '$q', 'pendingRequests', 'BASE_URL', function ($http, $q, pendingRequests, BASE_URL) {
     var private = {};
     var public = {};
-	
-    public.submitRemote = function(incRequest, cancellable) {
+
+    public.submitRemote = function (incRequest, cancellable) {
         var canceller = $q.defer();
-		
-		if(incRequest.useBaseUrl) {
-		  incRequest.url = BASE_URL + incRequest.url;
-		}
+
+        if (incRequest.useBaseUrl) {
+            incRequest.url = BASE_URL + incRequest.url;
+        }
 
         if (cancellable) {
             pendingRequests.add({
-              url: incRequest.url,
-              canceller: canceller
+                url: incRequest.url,
+                canceller: canceller
             });
         }
 
@@ -65,20 +65,20 @@ app.factory('httpService', ['$http', '$q', 'pendingRequests', 'BASE_URL', functi
         var requestPromise = $http(request);
 
         //Once a request has failed or succeeded, remove it from the pending list
-        requestPromise.finally(function() {
+        requestPromise.finally(function () {
             if (cancellable) {
                 pendingRequests.remove(incRequest.url);
             }
         });
-        
+
         return requestPromise;
     }
-    
-      return public;
+
+    return public;
 }]);
 
 
-app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, httpService, theme_manager) {
+app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, httpService) {
     var public = {};
     var private = {};
 
@@ -86,67 +86,71 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
     public.sync = function () {
         public.syncThemes();
     };
-    
-    public.validateUser = function(username, password) {
+
+    public.validateUser = function (username, password) {
         return httpService.submitRemote({
             method: 'POST',
             url: 'api/v1/validateuser/',
             data: {
-              UsrUsername: username,
-              UsrPassword: password
+                UsrUsername: username,
+                UsrPassword: password
             },
             params: null,
             useBaseUrl: true
-	  });
+        });
     };
 
-	public.addUser = function(username, password, email, foundersKey) { 
+    public.addUser = function (username, password, email, foundersKey) {
         return httpService.submitRemote({
             method: 'POST',
             url: 'api/v1/adduser/' + foundersKey,
             data: {
-              UsrUsername: username,
-              UsrPassword: password,
-              UsrEmail: email
+                UsrUsername: username,
+                UsrPassword: password,
+                UsrEmail: email
             },
             params: null,
             useBaseUrl: true
-	  });
+        });
     };
-    
+
     /*** THEMES ***/
     public.syncThemes = function () {
-        var promises = [];
+        var defered = $q.defer();
 
-        promises.push(httpService.submitRemote({
+        httpService.submitRemote({
             method: "GET",
-            url: "/themes",
+            url: "api/v1/themeMeta/" + $rootScope.userId,
             useBaseUrl: true,
             params: {
                 user: $rootScope.userId,
                 token: null
             }
-        }));
-
-        promises.push(theme_manager.getThemes());
-
-        $q.all(promises).then(
-            function (data) {
-                /*var user_themes = data.themes;
-                for (var i = 0; i < themes.length; i++) {
-                  
-                  private.downloadTheme(themes[i].id);
-                }*/
+        }).then(
+            function (response) {
+                for (var key in response.data) {
+                    var metadata = response.data[key];
+                    // TODO: Check that the hash is different from the one stored on the device for that theme
+                    
+                    private.downloadTheme(metadata['Id'])
+                        .then(function (data) {
+                            console.log(data);
+                            defered.resolve();
+                        });
+                }
             },
             function (error) {
-                console.warn(error);
-            })
+                defered.reject(error);
+            });
+        return defered.promise;
     };
 
     private.downloadTheme = function (themeId) {
+        var defered = $q.defer();
+
         httpService.submitRemote({
             method: "GET",
-            url: "/themes/download",
+            url: "api/v1/theme/" + themeId + "/" + $rootScope.userId,
             useBaseUrl: true,
             params: {
                 user: $rootScope.userId,
@@ -154,13 +158,15 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
                 token: null
             }
         }).then(
-            function (data) {
+            function (response) {
                 //TODO: unzip the binary file recieved into the active themes folder
-                console.log(data);
+                defered.resolve(response.data);
             },
             function (error) {
-                console.warn(error);
-            })
+                defered.reject(error);
+            });
+
+        return defered.promise;
     };
 
     private.uploadTheme = function (themeId) {
@@ -173,34 +179,34 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
         // Confirm that the server received the theme
     }
 
-    public.saveInspectionToCloud = function(inspection) {
+    public.saveInspectionToCloud = function (inspection) {
         return httpService.submitRemote({
-          method: 'POST',
-          url: 'api/v1/upsertinspection/' + $rootScope.userId,
-          data: inspection,
-          params: null,
-          useBaseUrl: true
+            method: 'POST',
+            url: 'api/v1/upsertinspection/' + $rootScope.userId,
+            data: inspection,
+            params: null,
+            useBaseUrl: true
         });
     };
-  
-   public.getInspectionFromCloud = function(inspectionID) {
-     return httpService.submitRemote({
-        method: 'GET',
-        url: 'api/v1/inspection/' + inspectionID + '/' + $rootScope.userId,
-        params: null,
-        useBaseUrl: true
-      });
-   };
-  
-    
+
+    public.getInspectionFromCloud = function (inspectionID) {
+        return httpService.submitRemote({
+            method: 'GET',
+            url: 'api/v1/inspection/' + inspectionID + '/' + $rootScope.userId,
+            params: null,
+            useBaseUrl: true
+        });
+    };
+
+
     /*** TEMPLATES / INSPECTIONS ***/
     public.getInspectionsMetadata = function (type) {
-      return httpService.submitRemote({
-        method: 'GET',
-        url: 'api/v1/inspectionsMeta/'+ $rootScope.userId + '/' + type, 
-        params: null,
-        useBaseUrl: true
-      });
+        return httpService.submitRemote({
+            method: 'GET',
+            url: 'api/v1/inspectionsMeta/' + $rootScope.userId + '/' + type,
+            params: null,
+            useBaseUrl: true
+        });
     };
 
     return public;

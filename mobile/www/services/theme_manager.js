@@ -1,4 +1,4 @@
-app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q, $sha, $cordovaFile) {
+app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q, $sha, $cordovaFile, cloud_connector) {
   var public = {};
   var private = {};
 
@@ -47,6 +47,8 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q, $sh
   public.update = function () {
     var defered = $q.defer();
 
+    cloud_connector.syncThemes();
+      
     if (window['cordova'] == undefined) {
       // Desktop Browser Implementation
       private.themes = ["a94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde8"]

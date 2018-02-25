@@ -7,6 +7,7 @@ namespace CastleWebService.Models
     public partial class castle_devContext : DbContext
     {
         public virtual DbSet<Answers> Answers { get; set; }
+        public virtual DbSet<AutoComment> AutoComment { get; set; }
         public virtual DbSet<Founders> Founders { get; set; }
         public virtual DbSet<Inspections> Inspections { get; set; }
         public virtual DbSet<Organizations> Organizations { get; set; }
@@ -58,6 +59,28 @@ namespace CastleWebService.Models
                     .HasForeignKey(d => d.AnsQuestionId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__Answer__ansQuest__5BE2A6F2");
+            });
+
+            modelBuilder.Entity<AutoComment>(entity =>
+            {
+                entity.Property(e => e.AutoCommentId).ValueGeneratedNever();
+
+                entity.Property(e => e.AcAutoComment)
+                    .HasColumnName("acAutoComment")
+                    .IsUnicode(false);
+
+                entity.Property(e => e.AcKey)
+                    .HasColumnName("acKey")
+                    .HasMaxLength(25)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.AcUserId).HasColumnName("acUserId");
+
+                entity.HasOne(d => d.AcUser)
+                    .WithMany(p => p.AutoComment)
+                    .HasForeignKey(d => d.AcUserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_AutoComment_Users");
             });
 
             modelBuilder.Entity<Founders>(entity =>
@@ -320,9 +343,7 @@ namespace CastleWebService.Models
             {
                 entity.HasKey(e => e.ThemeId);
 
-                entity.Property(e => e.ThemeBlob)
-                    .HasColumnName("themeBlob")
-                    .IsUnicode(false);
+                entity.Property(e => e.ThemeBlob).HasColumnName("themeBlob");
 
                 entity.Property(e => e.ThemeCreatedDate).HasColumnName("themeCreatedDate");
 

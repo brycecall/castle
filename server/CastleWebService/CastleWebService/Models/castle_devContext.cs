@@ -343,9 +343,7 @@ namespace CastleWebService.Models
             {
                 entity.HasKey(e => e.ThemeId);
 
-                entity.Property(e => e.ThemeBlob)
-                    .HasColumnName("themeBlob")
-                    .IsUnicode(false);
+                entity.Property(e => e.ThemeBlob).HasColumnName("themeBlob");
 
                 entity.Property(e => e.ThemeCreatedDate).HasColumnName("themeCreatedDate");
 

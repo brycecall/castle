@@ -125,6 +125,7 @@ namespace CastleWebService
         {
             services.AddMemoryCache();
             services.AddCors();
+            services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
             services.AddMvc().AddJsonOptions(o =>
             {
                 o.SerializerSettings.ContractResolver = new ModelMetadataTypeAttributeContractResolver();

@@ -66,7 +66,7 @@ namespace CastleWebService.Controllers
         public async Task<CastleData> UploadFile(IFormFile file)
         {
 
-           // _db.Database.Context.CommandTimeout = 180;
+            _db.Database.SetCommandTimeout(60);
             var result = new CastleData();
             try
             {
@@ -113,7 +113,7 @@ namespace CastleWebService.Controllers
                         var existingTheme = _db.Themes.Where(x => x.ThemeUnique == theme.ThemeUnique
                                                              && x.ThemeUserId == userId)
                                                       .FirstOrDefault();
-
+                        theme.ThemeUserId = userId;
                         if (existingTheme != null)
                         {
                             theme.ThemeId = existingTheme.ThemeId; // Make sure ID doesn't change
@@ -125,10 +125,12 @@ namespace CastleWebService.Controllers
                             _db.Add(theme);
                         }
 
-                        _db.SaveChanges();
-                        result.data = 0;
-                        result.message = "Success";
-
+                        await Task.Factory.StartNew(() =>
+                        {
+                            _db.SaveChanges();
+                            result.data = 0;
+                            result.message = "Success";
+                        });
                     }
 
                  }

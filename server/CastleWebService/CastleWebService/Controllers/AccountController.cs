@@ -155,7 +155,31 @@ namespace CastleWebService.Controllers
             return result;
         }
 
+        [HttpPost("api/v1/insertAutoComment/{userId}")]
+        public object InsertAutoComment([FromBody]object autoCommentObj, int userId)
+        {
+            var result = new CastleData();
+            try
+            {
+                // Deserialize autoComment
+                var autoComment = JsonConvert.DeserializeObject<AutoComment>(autoCommentObj.ToString());
+                autoComment.AcUserId = userId;
 
+                // Create AutoComment row
+                _db.AutoComment.Add(autoComment);
+                _db.SaveChanges();
+
+                result.data = autoComment.AutoCommentId;
+                result.message = "Success";
+
+            }
+            catch (Exception e)
+            {
+                result = new CastleData { message = e.Message, data = -1 };
+            }
+
+            return result;
+        }
 
 
     }

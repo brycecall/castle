@@ -63,15 +63,13 @@ namespace CastleWebService.Models
 
             modelBuilder.Entity<AutoComment>(entity =>
             {
-                entity.Property(e => e.AutoCommentId).ValueGeneratedNever();
-
                 entity.Property(e => e.AcAutoComment)
                     .HasColumnName("acAutoComment")
                     .IsUnicode(false);
 
                 entity.Property(e => e.AcKey)
                     .HasColumnName("acKey")
-                    .HasMaxLength(25)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.AcUserId).HasColumnName("acUserId");

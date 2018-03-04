@@ -34,8 +34,10 @@ app.run(function ($state, $transitions, $rootScope) {
 
 // Define the page controller
 app.controller('login', function ($scope, $rootScope, $state, action_manager, header_manager, httpService) {
+  // TODO: Should localStorage failData be saved to a scope variable?
   header_manager.disable();
 
+  $scope.locked = localStorage.getItem("deviceLocked");
   $scope.user = {};
   $scope.new_user = {};
     
@@ -74,6 +76,7 @@ $scope.register = function() {
           success = success.data;
 		// Credentials found
 		if (success.data !== -1) {
+          checkSuccessLogin();
 	      $rootScope.authenticated = true;
 		  $rootScope.userId = success.data;
 		  localStorage.setItem("userId", success.data);
@@ -81,10 +84,14 @@ $scope.register = function() {
 		} else {
 		  // TODO: Show visible error on page
 		  console.log(success.message);
+          checkFailLogin();
 		}
 	  }, function(error) {
 		// TODO: Show visible error on login page
 		console.log(error);
+        // Is this needed here?
+        // (if a failure happens at this level, is it login related?)
+        checkFailLogin();
 	  });      
     }
   };
@@ -108,21 +115,67 @@ $scope.register = function() {
 	  validLogin.then(function(success) {
           success = success.data;
 		if (success.data >= 0) {
+          checkSuccessLogin();
 		  // Credentials found
 	      $rootScope.authenticated = true;
 		  $rootScope.userId = success.data;
 		  localStorage.setItem("userId", success.data);
+          localStorage.setItem("failCount", "0");
+          localStorage.setItem("failDateTime", "");
           $state.go("home");
 		} else {
+          checkFailLogin();
 		  console.log(success.message);
 		}
 	  }, function(error) {
 		// TODO: Show visible error on login page
 		console.log(error);
+        checkFailLogin();
 	  });
     }
   };
-    
+
+  // Placeholder for when device is locked for too many failed logins
+  $scope.doNothing = function() {
+    console.log("It's pretty tough doing nothing.");
+  }
+  
+  var checkFailLogin = function () {
+    // 86400000 = number of milliseconds in 24 hours.
+    var timeToLock = 86400000;
+    // Track failed attempts to prevent DDOS-esqueness
+    var failDateTime = Date.parse(localStorage.getItem("failDateTime"));
+    var failCount = parseInt(localStorage.getItem("failCount"));
+    var numLocks = parseInt(localStorage.getItem("numTimesLocked"));
+    // Reset fail data if it's been longer than 24 hours, or it hasn't been set
+    if ((failDateTime && ((new Date() - failDateTime) > timeToLock)) || !failDateTime) {
+      failDateTime = new Date();
+      failCount = 1;
+      localStorage.setItem("failCount", failCount);
+      localStorage.setItem("failDateTime", failDateTime.toString());
+      // Device should not be locked if we're passed the allotted timeframe
+      // or if no failDateTime is set
+      localStorage.removeItem("deviceLocked");
+      $scope.locked = false;
+    // Otherwise, just increment the failCount
+    } else {
+      failCount++;
+      localStorage.setItem("failCount", failCount);
+    }  
+    // Block device from making requests if 5 fail attempts within 24 hours
+    if (failCount >= 5 && ((new Date() - failDateTime) <= timeToLock)) {
+      $scope.locked = true;
+      localStorage.setItem("deviceLocked", "true");
+      localStorage.setItem("numTimesLocked", numLocks ? ++numLocks : 1);
+    }
+  }
+  
+  var checkSuccessLogin = function() {
+    // Successful Login - Remove fail data
+    localStorage.removeItem("failCount");
+    localStorage.removeItem("failDateTime");
+  }
+  
   action_manager.addAction("Login", "check", function () {
     // submit the forms
     if (selectedTab == 1) {

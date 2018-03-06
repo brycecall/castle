@@ -33,7 +33,7 @@ app.run(function ($state, $transitions, $rootScope) {
 });
 
 // Define the page controller
-app.controller('login', function ($scope, $rootScope, $state, action_manager, header_manager, httpService) {
+app.controller('login', function ($scope, $rootScope, $state, action_manager, header_manager, httpService, $sha) {
   // TODO: Should localStorage failData be saved to a scope variable?
   header_manager.disable();
 
@@ -66,7 +66,7 @@ $scope.register = function() {
 		url: 'api/v1/adduser/' + $scope.new_user.founders_access_code,
 		data: {
 		  UsrUsername: $scope.new_user.username,
-		  UsrPassword: $scope.new_user.password,
+		  UsrPassword: $sha.hash($scope.new_user.password),
 		  UsrEmail: $scope.new_user.email
 		},
 		params: null,
@@ -107,7 +107,7 @@ $scope.register = function() {
 		url: 'api/v1/validateuser/',
 		data: {
 		  UsrUsername: $scope.user.username,
-		  UsrPassword: $scope.user.password
+		  UsrPassword: $sha.hash($scope.user.password)
 		},
 		params: null,
 		useBaseUrl: true

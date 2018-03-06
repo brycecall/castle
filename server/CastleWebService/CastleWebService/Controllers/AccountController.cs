@@ -20,8 +20,8 @@ namespace CastleWebService.Controllers
         //    _db = db;
         //}
 
-        [HttpPost("api/v1/adduser/{founderKey}")]
-        public object InsertUsers([FromBody]object userObj, string founderKey)
+        [HttpPost("api/v1/adduser")]
+        public object InsertUsers([FromBody]object userObj)
         {
             var result = new CastleData();
             try
@@ -33,26 +33,12 @@ namespace CastleWebService.Controllers
 
                 var user = JsonConvert.DeserializeObject<Users>(userObj.ToString(), settings);
 
-                // Check if founderKey is available.
-                var keyQuery = _db.Founders.Where(x => (x.FoKey == founderKey) && (x.FoUsersId == null)).FirstOrDefault();
-                // Is available, do insert and update
-                if (keyQuery != null)
-                {
-                    // Create user row
-                    _db.Users.Add(user);
-                    _db.SaveChanges();
-                    // Update Founders
-                    keyQuery.FoUsersId = user.UserId;
-                    _db.Founders.Update(keyQuery);
-                    _db.SaveChanges();
-                    result.data = user.UserId;
-                    result.message = "Success";
-                }
-                else
-                {
-                    result.message = "Invalid Founder's Key.";
-                    result.data = -1;
-                }
+                // Create user row
+                _db.Users.Add(user);
+                _db.SaveChanges();
+
+                result.data = user.UserId;
+                result.message = "Success";
             }
             catch (Exception e)
             {

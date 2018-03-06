@@ -66,17 +66,6 @@
                   <div ng-message="md-maxlength">This email is too long</div>
             </div>
           </md-input-container>
-          <md-input-container class="md-icon-float md-block">
-            <!-- Use floating label instead of placeholder -->
-            <label>Founder's Access Code</label>
-            <md-icon md-svg-icon="lock"></md-icon>
-            <input name="founders_key" ng-model="new_user.founders_access_code" required type="number">
-            <div ng-messages="registerForm.founders_key.$error" 
-                     ng-show="registerForm.founders_key.$dirty" role="alert" multiple>
-                  <div ng-message="required">This is required!</div>
-                  <div ng-message="fKeyInvalid">This key is invalid or already in use</div>
-            </div>
-          </md-input-container>
           </form>
         </md-tab-body>
       </md-tab>

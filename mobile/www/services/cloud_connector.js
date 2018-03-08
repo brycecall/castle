@@ -129,23 +129,19 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
         }).then(
             function (response) {
                 for (var key in response.data) {
-                    var metadata = response.data[key];
-
-                    theme_manager.getThemeManifest(metadata['Id'])
-                        .then(
-                            function (result) {
-                                (function (metadata, key) {
+                    (function (metadata, key) {
+                        theme_manager.getThemeManifest(metadata['Id'])
+                            .then(
+                                function (result) {
                                     if (result.hash != metadata.hash) {
                                         downloadThemeBlob(key);
                                     }
-                                }(metadata, key))
-                            },
-                            function (error) {
-                                (function (key) {
+                                },
+                                function (error) {
                                     downloadThemeBlob(key);
-                                }(key))
-                            }
-                        );
+                                }
+                            );
+                    }(response.data[key], key))
                 }
 
                 function downloadThemeBlob(key) {
@@ -226,17 +222,17 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
         });
     };
 
-    
+
     /*** AUTO COMMENTS ***/
-    public.insertAutoComment = function(autoComment) {
-      return httpService.submitRemote({
-        method: 'POST',
-        url: 'api/v1/insertAutoComment/' + $rootScope.userId,
-        data: autoComment,
-        params: null,
-        useBaseUrl: true
-      });
+    public.insertAutoComment = function (autoComment) {
+        return httpService.submitRemote({
+            method: 'POST',
+            url: 'api/v1/insertAutoComment/' + $rootScope.userId,
+            data: autoComment,
+            params: null,
+            useBaseUrl: true
+        });
     }
-    
+
     return public;
 });

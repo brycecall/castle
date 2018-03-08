@@ -37,7 +37,7 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
   // TODO: Should localStorage failData be saved to a scope variable?
   header_manager.disable();
 
-  $scope.accountLocked = "";
+  $scope.accountLocked;
   $scope.locked = localStorage.getItem("deviceLocked");
   $scope.user = {};
   $scope.new_user = {};
@@ -96,7 +96,7 @@ $scope.register = function() {
     }
   };
     
- $scope.login = function(event) {
+ $scope.login = function() {
        var isValid = $("#login")[0].reportValidity();
        console.log("Login called");
        console.log("Form isValid = " + isValid);
@@ -123,10 +123,12 @@ $scope.register = function() {
           localStorage.setItem("failCount", "0");
           localStorage.setItem("failDateTime", "");
           $state.go("home");
+          $scope.accountLocked = false;
         // Service returns -1 if account is locked
 		} else if (success.data == -1) {
           $scope.accountLocked = true;
         } else {
+          $scope.accountLocked = false;
           checkFailLogin();
 		  console.log(success.message);
 		}

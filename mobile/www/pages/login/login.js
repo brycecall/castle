@@ -62,7 +62,7 @@ $scope.register = function() {
         && $scope.new_user.email) {
 	  var validCreate = httpService.submitRemote({
 	    method: 'POST',
-		url: 'api/v1/adduser'
+		url: 'api/v1/adduser',
 		data: {
 		  UsrUsername: $scope.new_user.username,
 		  UsrPassword: $sha.hash($scope.new_user.password),

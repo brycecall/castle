@@ -25,7 +25,7 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
     // Generates unique id to be used for inspection/template files
     public.generateGuid = function () {
         // TODO: Use username instead of static string
-        return $rootScope.hash(new Date().getTime().toString() + "todo:addusernamehere");
+        return $rootScope.hash(new Date().getTime().toString() + $rootScope.userId);
     };
 
     // Saves inspection to file

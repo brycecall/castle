@@ -111,7 +111,7 @@ namespace CastleWebService.Controllers
             }
             catch (Exception e)
             {
-                result = new CastleData { message = e.Message, data = -1 };
+                result = new CastleData { message = e.Message, data = -100 };
             }
 
             return result;

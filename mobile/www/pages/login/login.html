@@ -28,6 +28,9 @@
               <div style="color:red" ng-show="accountLocked">
                   Account locked! We are processing payment and will unlock your account shortly. If you haven't paid yet, visit our page at http://invenio.xyz and/or contact support.
               </div>
+              <div style="color:red" ng-show="locked">
+                  Too many login attempts! Try again later.
+              </div>
           </form>
         </md-tab-body>
       </md-tab>

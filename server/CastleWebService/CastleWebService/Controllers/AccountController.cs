@@ -93,7 +93,12 @@ namespace CastleWebService.Controllers
 
                 //user.UsrIsDeleted = 1;
                 //_db.SaveChanges();
-                if (getUser != null)
+                if (getUser.UsrAccountLocked == 1)
+                {
+                    result.data = -1;
+                    result.message = "User Account Locked";
+
+                } else if (getUser != null)
                 {
                     result.data = getUser.UserId;
                     result.message = "Success";

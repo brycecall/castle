@@ -12,6 +12,5 @@ app.config(function ($stateProvider) {
 app.controller('home', function ($scope, $rootScope, header_manager, cloud_connector) {
   header_manager.mode = HEADER_MODES.Banner;
   header_manager.classname = "md-tall";
-  cloud_connector.sync();
   console.log('Welcome Home');
 })

@@ -78,7 +78,7 @@ app.factory('httpService', ['$http', '$q', 'pendingRequests', 'BASE_URL', functi
 }]);
 
 
-app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, httpService) {
+app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, httpService, filesystem_manager, theme_manager) {
     var public = {};
     var private = {};
 
@@ -130,14 +130,32 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
             function (response) {
                 for (var key in response.data) {
                     var metadata = response.data[key];
-                    // TODO: Check that the hash is different from the one stored on the device for that theme
-                    
-                    private.downloadTheme(metadata['Id'])
-                        .then(function (data) {
-                            console.log(data);
-                            defered.resolve();
-                        });
+
+                    theme_manager.getThemeManifest(metadata['Id'])
+                        .then(
+                            function (result) {
+                                (function (metadata, key) {
+                                    if (result.hash != metadata.hash) {
+                                        downloadThemeBlob(key);
+                                    }
+                                }(metadata, key))
+                            },
+                            function (error) {
+                                (function (key) {
+                                    downloadThemeBlob(key);
+                                }(key))
+                            }
+                        );
                 }
+
+                function downloadThemeBlob(key) {
+                    private.downloadTheme(response.data[key]["Id"])
+                        .then(function (data) {
+                            filesystem_manager.saveThemeBlob(data).then(function () {
+                                defered.resolve();
+                            });
+                        });
+                };
             },
             function (error) {
                 defered.reject(error);
@@ -159,7 +177,6 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
             }
         }).then(
             function (response) {
-                //TODO: unzip the binary file recieved into the active themes folder
                 defered.resolve(response.data);
             },
             function (error) {

@@ -7,7 +7,7 @@ namespace CastleWebService.Models
     public partial class castle_devContext : DbContext
     {
         public virtual DbSet<Answers> Answers { get; set; }
-        public virtual DbSet<Founders> Founders { get; set; }
+        public virtual DbSet<AutoComment> AutoComment { get; set; }
         public virtual DbSet<Inspections> Inspections { get; set; }
         public virtual DbSet<Organizations> Organizations { get; set; }
         public virtual DbSet<Photos> Photos { get; set; }
@@ -60,18 +60,24 @@ namespace CastleWebService.Models
                     .HasConstraintName("FK__Answer__ansQuest__5BE2A6F2");
             });
 
-            modelBuilder.Entity<Founders>(entity =>
+            modelBuilder.Entity<AutoComment>(entity =>
             {
-                entity.Property(e => e.FoKey)
-                    .HasColumnName("foKey")
+                entity.Property(e => e.AcAutoComment)
+                    .HasColumnName("acAutoComment")
                     .IsUnicode(false);
 
-                entity.Property(e => e.FoUsersId).HasColumnName("foUsersId");
+                entity.Property(e => e.AcKey)
+                    .HasColumnName("acKey")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
-                entity.HasOne(d => d.FoUsers)
-                    .WithMany(p => p.Founders)
-                    .HasForeignKey(d => d.FoUsersId)
-                    .HasConstraintName("FK__Founders__foUser__6A30C649");
+                entity.Property(e => e.AcUserId).HasColumnName("acUserId");
+
+                entity.HasOne(d => d.AcUser)
+                    .WithMany(p => p.AutoComment)
+                    .HasForeignKey(d => d.AcUserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_AutoComment_Users");
             });
 
             modelBuilder.Entity<Inspections>(entity =>
@@ -320,9 +326,7 @@ namespace CastleWebService.Models
             {
                 entity.HasKey(e => e.ThemeId);
 
-                entity.Property(e => e.ThemeBlob)
-                    .HasColumnName("themeBlob")
-                    .IsUnicode(false);
+                entity.Property(e => e.ThemeBlob).HasColumnName("themeBlob");
 
                 entity.Property(e => e.ThemeCreatedDate).HasColumnName("themeCreatedDate");
 
@@ -377,6 +381,10 @@ namespace CastleWebService.Models
             {
                 entity.HasKey(e => e.UserId);
 
+                entity.Property(e => e.UsrAccountLocked)
+                    .HasColumnName("usrAccountLocked")
+                    .HasDefaultValueSql("((1))");
+
                 entity.Property(e => e.UsrAddress)
                     .HasColumnName("usrAddress")
                     .HasMaxLength(100)
@@ -413,7 +421,7 @@ namespace CastleWebService.Models
                 entity.Property(e => e.UsrPassword)
                     .IsRequired()
                     .HasColumnName("usrPassword")
-                    .HasMaxLength(50)
+                    .HasMaxLength(64)
                     .IsUnicode(false);
 
                 entity.Property(e => e.UsrPhone)

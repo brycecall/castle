@@ -7,7 +7,7 @@ namespace CastleWebService.Models
     {
         public Users()
         {
-            Founders = new HashSet<Founders>();
+            AutoComment = new HashSet<AutoComment>();
             Inspections = new HashSet<Inspections>();
             Themes = new HashSet<Themes>();
         }
@@ -26,8 +26,9 @@ namespace CastleWebService.Models
         public string UsrZip { get; set; }
         public byte? UsrIsDeleted { get; set; }
         public DateTime UsrLastModified { get; set; }
+        public byte UsrAccountLocked { get; set; }
 
-        public ICollection<Founders> Founders { get; set; }
+        public ICollection<AutoComment> AutoComment { get; set; }
         public ICollection<Inspections> Inspections { get; set; }
         public ICollection<Themes> Themes { get; set; }
     }

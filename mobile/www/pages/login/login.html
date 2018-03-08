@@ -6,7 +6,7 @@
       <md-tab md-on-select="selectTab(0)">
         <md-tab-label>Login</md-tab-label>
         <md-tab-body>
-          <form name="loginForm" id="login" ng-submit="login()" >
+          <form name="loginForm" id="login" ng-submit="locked ? doNothing() : login()" >
              <md-input-container class="md-icon-float md-block">
                <label>Username</label>
                <md-icon md-svg-icon="account_circle"></md-icon>
@@ -31,7 +31,7 @@
       <md-tab md-on-select="selectTab(1)">
         <md-tab-label>Register</md-tab-label>
         <md-tab-body>
-            <form id="register" ng-submit="register()">
+            <form id="register" ng-submit="locked ? doNothing() : register()">
           <md-input-container class="md-icon-float md-block">
             <label>Username</label>
             <md-icon md-svg-icon="account_circle"></md-icon>
@@ -64,17 +64,6 @@
                      ng-show="registerForm.email.$dirty" role="alert" multiple>
                   <div ng-message="required">This is required!</div>
                   <div ng-message="md-maxlength">This email is too long</div>
-            </div>
-          </md-input-container>
-          <md-input-container class="md-icon-float md-block">
-            <!-- Use floating label instead of placeholder -->
-            <label>Founder's Access Code</label>
-            <md-icon md-svg-icon="lock"></md-icon>
-            <input name="founders_key" ng-model="new_user.founders_access_code" required type="number">
-            <div ng-messages="registerForm.founders_key.$error" 
-                     ng-show="registerForm.founders_key.$dirty" role="alert" multiple>
-                  <div ng-message="required">This is required!</div>
-                  <div ng-message="fKeyInvalid">This key is invalid or already in use</div>
             </div>
           </md-input-container>
           </form>

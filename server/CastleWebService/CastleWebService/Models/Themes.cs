@@ -9,7 +9,7 @@ namespace CastleWebService.Models
         public int ThemeUserId { get; set; }
         public int ThemeOrganizationId { get; set; }
         public string ThemeTitle { get; set; }
-        public string ThemeBlob { get; set; }
+        public byte[] ThemeBlob { get; set; }
         public byte? ThemeIsDeleted { get; set; }
         public DateTime ThemeLastModified { get; set; }
         public string ThemeUnique { get; set; }

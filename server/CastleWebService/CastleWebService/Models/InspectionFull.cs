@@ -207,6 +207,60 @@ namespace CastleWebService.Models
         public Inspections AnsInspection { get; set; }
     }
 
+    [ModelMetadataTypeAttribute(typeof(ThemesMetaData))]
+    public partial class Themes
+    {
+    }
 
+    public class ThemesMetaData
+    {
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "Id")]
+        public int ThemeId { get; set; }
+
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "UserId")]
+        public int ThemeUserId { get; set; }
+
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "OrganizationId")]
+        public int ThemeOrganizationId { get; set; }
+
+        [JsonProperty(PropertyName = "title")]
+        public string ThemeTitle { get; set; }
+
+        [JsonProperty(PropertyName = "blob")]
+        [NotMapped]
+        [JsonIgnore]
+        public string ThemeBlob { get; set; }
+
+        [JsonProperty(PropertyName = "isDeleted")]
+        public byte? ThemeIsDeleted { get; set; }
+
+        [JsonProperty(PropertyName = "db_last_modified")]
+        public DateTime ThemeLastModified { get; set; }
+
+        [JsonProperty(PropertyName = "unique")]
+        public string ThemeUnique { get; set; }
+
+        [JsonProperty(PropertyName = "hash")]
+        public string ThemeHash { get; set; }
+
+        [JsonProperty(PropertyName = "version")]
+        public string ThemeVersion { get; set; }
+
+        [JsonProperty(PropertyName = "date_created")]
+        public DateTime? ThemeCreatedDate { get; set; }
+
+        [JsonProperty(PropertyName = "last_modified")]
+        public DateTime? ThemeLastClientModified { get; set; }
+
+        [ForeignKey("ThemeOrganizationId")]
+        [NotMapped]
+        [JsonIgnore]
+        public Organizations ThemeOrganization { get; set; }
+
+        [ForeignKey("ThemeUserId")]
+        [NotMapped]
+        [JsonIgnore]
+        public Users ThemeUser { get; set; }
+    }
 
 } // End Namespace

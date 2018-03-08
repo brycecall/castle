@@ -8,8 +8,35 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, $q, theme_manager, header_manager, filesystem_manager, $state) {
+app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, $q, theme_manager, header_manager, filesystem_manager, $state, cloud_connector, $mdToast) {
   header_manager.title = "Settings";
+    
+  $scope.acTitle = "";
+  $scope.acText = "";
+    
+  $scope.addAutoComment = function() {
+    var autoComment = {
+      acKey: $scope.acTitle, 
+      acAutoComment: $scope.acText
+    };
+    var toast = $mdToast.simple()
+      .position('bottom')
+      .toastClass('highIndex');
+    // Call cloud_connector to insert new auto comment
+    cloud_connector.insertAutoComment(autoComment).then(function(success) {
+      setTimeout(function () {
+        toast.textContent('Successfully Added!');
+        $mdToast.show(toast);
+      });
+    }, function(error) {
+      setTimeout(function () {
+        toast.textContent('Failure Adding Auto Comment!');
+        $mdToast.show(toast);
+      });
+    });
+    $scope.acTitle = "";
+    $scope.acText = "";
+  }
   
   $scope.wipeDatabase = function () {
     var sure = confirm("WARNING!!!\n\nThis will clear all inspection data in the app.\n\nAre you sure you want to do this?");

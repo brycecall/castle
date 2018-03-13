@@ -160,6 +160,6 @@ app.run(function ($sha, $rootScope) {
     $sha.setConfig();
 
     $rootScope.hash = function (object) {
-        return $sha.hash(JSON.stringify(theme));
+        return $sha.hash(JSON.stringify(object));
     }
 });

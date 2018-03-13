@@ -91,22 +91,22 @@ namespace CastleWebService.Controllers
 
                 var getUser = _db.Users.Where(x => (x.UsrUsername == user.UsrUsername) && (x.UsrPassword == user.UsrPassword)).FirstOrDefault();
 
-                //user.UsrIsDeleted = 1;
-                //_db.SaveChanges();
-                if (getUser.UsrAccountLocked == 1)
+                if (getUser == null)
+                {
+                    result.data = -2;
+                    result.message = "Incorrect Username or Password.";
+                }
+                else if (getUser.UsrAccountLocked == 1)
                 {
                     result.data = -1;
-                    result.message = "User Account Locked";
+                    result.message = "Account locked! We are processing payment and will unlock your account shortly. " +
+                                     "If you haven't paid yet, visit our page at http://invenio.xyz and/or contact support.";
 
-                } else if (getUser != null)
+                }
+                else if (getUser != null)
                 {
                     result.data = getUser.UserId;
                     result.message = "Success";
-                }
-                else
-                {
-                    result.data = 0;
-                    result.message = "user not found";
                 }
             }
             catch (Exception e)

@@ -26,6 +26,7 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
         switch (public.mode) {
             case "inspection":
                 console.log('Inspection Manager - Get Inspection');
+                // TODO: allow guids to be passed in and do a lookup
                 if (typeof (ins) == "number") {
                     inspection_manager.getInspections().then(
                         function (inspections) {
@@ -55,6 +56,7 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
                 break;
             case "template":
                 console.log('Inspection Manager - Get Template');
+                // TODO: allow guids to be passed in and do a lookup
                 if ((angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== ins.insId) &&
                     ins === undefined) {
                     var mockdefer = $q.defer();
@@ -72,6 +74,7 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
                 break;
             case "theme":
                 console.log('Inspection Manager - Get Theme ID: ' + ins.insId);
+                // TODO: allow guids to be passed in and do a lookup
                 promise = private.loadFromThemeManager(ins.insId);
                 break;
             default:
@@ -183,7 +186,7 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
                     theme_manager.current = result;
 
                     private.inspection.insThemeId = id;
-                    private.inspection.insTemplateId = null;
+                    private.inspection.insTemplateGuid = null;
                     private.inspection.insTemplateTitle = result.title;
                     private.inspection.insSourceType = "theme";
                     private.inspection.insLastModified = result.last_modified;

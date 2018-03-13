@@ -182,8 +182,8 @@ app.controller('inspection_new', function ($rootScope, $scope, $state, inspectio
     // - Local mods before sending object to filesystem_manager
     $rootScope.loading = true;
     var inspection = angular.copy($scope.sTemplate);
-    inspection.insThemeId = $scope.sTheme.unique;
-    inspection.insTemplateId = $scope.sTemplate.rowId;
+    inspection.insThemeUnique = $scope.sTheme.unique;
+    inspection.insTemplateGuid = $scope.sTemplate.guid;
     inspection.insName = $scope.sName;
     inspection.sections = $scope.sTheme.template.concat(inspection.sections);
     inspection.insSourceType = "inspection";

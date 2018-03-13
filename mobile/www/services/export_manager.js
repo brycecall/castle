@@ -99,7 +99,7 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
         inspection_promise.then(
             function (data) {
                 var inspection = data;
-                templateId = inspection.insTemplateId;
+                templateId = inspection.insTemplateGuid;
                 themeId = inspection.insThemeId;
 
                 // Make sure the DB is in sync with the exporting inspection
@@ -108,7 +108,7 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
                 $cordovaFile.writeFile(private.session_path + "/", "inspection.json", JSON.stringify(inspection), true)
                     .then(
                         function (result) {
-                            private.saveTemplate(templateId)
+                            private.saveTemplate(templateGuid)
                                 .then(
                                     function (result) {
                                         private.saveTheme(themeId)
@@ -131,10 +131,10 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
         return defered.promise;
     };
 
-    private.saveTemplate = function (insId) {
+    private.saveTemplate = function (guid) {
         var defered = $q.defer();
 
-        var template_promise = inspection_manager.getInspection(insId);
+        var template_promise = inspection_manager.getInspection(guid);
         template_promise.then(
             function (data) {
                 var template = data.value;

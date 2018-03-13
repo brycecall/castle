@@ -701,7 +701,7 @@
   }],
   "data": {
     "insThemeId": "a94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde8",
-    "insTemplateId": 1,
+    "insTemplateGuid": 1,
     "insTemplateTitle": "Default Template",
     "insLastModified": "Sat Jan 27 2018 00:54:53 GMT-0500 (EST)",
     "insLastSubmitted": null,

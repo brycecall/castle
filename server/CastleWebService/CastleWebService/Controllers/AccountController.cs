@@ -16,9 +16,6 @@ namespace CastleWebService.Controllers
 
         private castle_devContext _db = new castle_devContext();
         public AccountController() {}
-        //public AccountController(castle_devContext db) {
-        //    _db = db;
-        //}
 
         [HttpPost("api/v1/adduser")]
         public object InsertUsers([FromBody]object userObj)
@@ -49,7 +46,7 @@ namespace CastleWebService.Controllers
         }
 
 
-        [HttpGet("api/v1/users/{orgId}")]
+        [HttpGet("api/v1/users/")]
         public IEnumerable<Users> GetUsers(int orgId)
         {
             var query = _db.Users.Where(x => x.UsrOrganizationId == orgId).ToList();
@@ -57,7 +54,7 @@ namespace CastleWebService.Controllers
         }
 
 
-        [HttpGet("api/v1/deleteuser/{userId}")]
+        [HttpGet("api/v1/deleteuser/")]
         public CastleData DeleteUser(int userId)
         {
             var result = new CastleData();
@@ -91,22 +88,27 @@ namespace CastleWebService.Controllers
 
                 var getUser = _db.Users.Where(x => (x.UsrUsername == user.UsrUsername) && (x.UsrPassword == user.UsrPassword)).FirstOrDefault();
 
-                //user.UsrIsDeleted = 1;
-                //_db.SaveChanges();
-                if (getUser != null)
+                if (getUser == null)
+                {
+                    result.data = -2;
+                    result.message = "Incorrect Username or Password.";
+                }
+                else if (getUser.UsrAccountLocked == 1)
+                {
+                    result.data = -1;
+                    result.message = "Account locked! We are processing payment and will unlock your account shortly. " +
+                                     "If you haven't paid yet, visit our page at http://invenio.xyz and/or contact support.";
+
+                }
+                else if (getUser != null)
                 {
                     result.data = getUser.UserId;
                     result.message = "Success";
                 }
-                else
-                {
-                    result.data = 0;
-                    result.message = "user not found";
-                }
             }
             catch (Exception e)
             {
-                result = new CastleData { message = e.Message, data = -1 };
+                result = new CastleData { message = e.Message, data = -100 };
             }
 
             return result;
@@ -141,7 +143,7 @@ namespace CastleWebService.Controllers
             return result;
         }
 
-        [HttpPost("api/v1/insertAutoComment/{userId}")]
+        [HttpPost("api/v1/insertAutoComment/")]
         public object InsertAutoComment([FromBody]object autoCommentObj, int userId)
         {
             var result = new CastleData();

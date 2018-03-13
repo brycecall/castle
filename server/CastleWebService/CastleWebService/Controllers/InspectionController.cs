@@ -12,7 +12,6 @@ using System.Text;
 
 namespace CastleWebService.Controllers
 {
-
     [Produces("application/json")]
     public class InspectionController : Controller
     {
@@ -21,34 +20,36 @@ namespace CastleWebService.Controllers
         public const string THEME = "theme";
         public const string ALL = "ALL";
 
-
         castle_devContext _db = new castle_devContext();
         public InspectionController() { }
-
-
-        public IQueryable<Inspections> GetFullInspection() {
-            var query = _db.Inspections.Where(x => (x.InsIsDeleted == 0 || x.InsIsDeleted == null))
-                                       .Include(x => x.Sections)
-                                           .ThenInclude(x => x.Subsections)
-                                           .ThenInclude(x => x.Questions)
-                                           .ThenInclude(x => x.Answers)
-                                       .Include(x => x.Sections)
-                                           .ThenInclude(x => x.Subsections)
-                                           .ThenInclude(x => x.Questions)
-                                           .ThenInclude(x => x.Photos)
-                                       ;
-            return query;
-        }
 
         public Stream DeserializeJSON(string jsonString) {
             Response.ContentType = "application/json; charset=utf-8";
             return new MemoryStream(Encoding.UTF8.GetBytes(jsonString));
         }
 
-        [HttpGet("api/v1/inspection/{insId}/{userId}")]
-        public Stream GetInspection(int insId, int userId)
+        #region READ Inspection
+
+        public IQueryable<Inspections> GetFullInspection()
         {
-            var query = GetFullInspection().Where(x => x.InspectionId == insId
+            var query = _db.Inspections
+                           .Where(x => (x.InsIsDeleted == 0 || x.InsIsDeleted == null))
+                           .Include(x => x.Sections)
+                               .ThenInclude(x => x.Subsections)
+                               .ThenInclude(x => x.Questions)
+                               .ThenInclude(x => x.Answers)
+                           .Include(x => x.Sections)
+                               .ThenInclude(x => x.Subsections)
+                               .ThenInclude(x => x.Questions)
+                               .ThenInclude(x => x.Photos)
+                           ;
+            return query;
+        }
+
+        [HttpGet("api/v1/inspection/")]
+        public Stream GetInspection(string guid, int userId)
+        {
+            var query = GetFullInspection().Where(x => x.InsGuid == guid
                                                    && x.InsUserId == userId)
                                            .FirstOrDefault();
 
@@ -62,7 +63,7 @@ namespace CastleWebService.Controllers
             return DeserializeJSON(Jsonquery);
         }
 
-        [HttpGet("api/v1/inspections/{userId}/{sourceType?}")]
+        [HttpGet("api/v1/inspections/")]
         public async Task<Stream> GetInspections(int userId, string sourceType = INSPECTION)
         {
             var result = await Task.Factory.StartNew(() =>
@@ -82,27 +83,19 @@ namespace CastleWebService.Controllers
             return result;
         }
 
-        [HttpGet("api/v1/deleteinspection/{insId}/{userId}")]
-        public CastleData DeleteInspection(int insId, int userId)
+        [HttpGet("api/v1/inspectionsMeta/")]
+        public Dictionary<string, Inspections> CheckInspections(int userId, string sourceType = TEMPLATE)
         {
-            var result = new CastleData();
-            try
-            {
-                var inspection = _db.Inspections.Where(x => x.InspectionId == insId && x.InsUserId == userId).FirstOrDefault();
-                inspection.InsIsDeleted = 1;
-                inspection.InsLastModified = DateTime.UtcNow;
-                _db.SaveChanges();
-                result.data = 0;
-                result.message = "Success";
-            }
-            catch (Exception e) {
-                result = new CastleData { message = e.Message, data = -1 };
-            }
-
-            return result;
+            var query = _db.Inspections.Where(x => (x.InsIsDeleted == 0 || x.InsIsDeleted == null)
+                                              && x.InsUserId == userId
+                                              && x.InsSourceType == sourceType)
+                                       .ToDictionary(x => x.InsGuid, x => x);
+            return query;
         }
+        #endregion
 
-        [HttpPost("api/v1/upsertinspection/{userId}")]
+        #region UPDATE/UPSERT Inspection
+        [HttpPost("api/v1/upsertinspection/")]
         public CastleData UpsertInspection([FromBody]object iInspection, int userId)
         {
             var result = new CastleData();
@@ -115,15 +108,17 @@ namespace CastleWebService.Controllers
 
                 var inspection = JsonConvert.DeserializeObject<Inspections>(iInspection.ToString(), settings);
 
-                var existingInspection = _db.Inspections.Where(x => x.InspectionId == inspection.InspectionId && x.InsUserId == userId).FirstOrDefault();
+                var existingInspection = _db.Inspections.Where(x => x.InsGuid == inspection.InsGuid && x.InsUserId == userId).FirstOrDefault();
 
                 if (existingInspection != null)
                 {
                     inspection.InspectionId = existingInspection.InspectionId; // Make sure ID doesn't change
+                    inspection.InsGuid = existingInspection.InsGuid;
                     inspection.InsLastModified = DateTime.UtcNow;
                     _db.Entry(existingInspection).CurrentValues.SetValues(inspection); // Update values from one to another
                 }
-                else {
+                else
+                {
                     _db.Add(inspection);
                 }
 
@@ -138,19 +133,32 @@ namespace CastleWebService.Controllers
 
             return result;
         }
+        #endregion
 
-        [HttpGet("api/v1/inspectionsMeta/{userId}/{sourceType}")]
-        public Dictionary<string, Inspections> CheckInspections(int userId, string sourceType = TEMPLATE)
+        #region DELETE Inspection
+
+        [HttpGet("api/v1/deleteinspection/")]
+        public CastleData DeleteInspection(string guid, int userId)
         {
-            var query = _db.Inspections.Where(x => (x.InsIsDeleted == 0 || x.InsIsDeleted == null)
-                                              && x.InsUserId == userId
-                                              && x.InsSourceType == sourceType)
-                                       .ToDictionary(x => x.InsGuid, x => x);
-            return query;
+            var result = new CastleData();
+            try
+            {
+                var inspection = _db.Inspections.Where(x => x.InsGuid == guid && x.InsUserId == userId).FirstOrDefault();
+                inspection.InsIsDeleted = 1;
+                inspection.InsLastModified = DateTime.UtcNow;
+                _db.SaveChanges();
+                result.data = 0;
+                result.message = "Success";
+            }
+            catch (Exception e) {
+                result = new CastleData { message = e.Message, data = -1 };
+            }
+
+            return result;
         }
+        #endregion
 
 
-        
 
     } // end class
 } // end namespace

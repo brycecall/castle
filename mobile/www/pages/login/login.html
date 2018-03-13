@@ -25,6 +25,12 @@
                      <div ng-message="required">This is required!</div>
                </div>
               </md-input-container>
+              <div style="color:red" ng-show="serverErrorMessage">
+                {{serverErrorMessage}}
+              </div>
+              <div style="color:red" ng-show="locked">
+                Too many login attempts! Try again later.
+              </div>
           </form>
         </md-tab-body>
       </md-tab>

@@ -17,11 +17,11 @@ namespace CastleWebService.Models
         public string InsSourceType { get; set; }
         public DateTime InsLastModified { get; set; }
         public DateTime? InsLastSubmitted { get; set; }
-        public int? InsThemeId { get; set; }
+        public string InsThemeGuid { get; set; }
         public string InsThemeResponseBlob { get; set; }
         public string InsTemplateResponseBlob { get; set; }
-        public int? InsOrganizationId { get; set; }
-        public int? InsTemplateId { get; set; }
+        public string InsOrganizationGuid { get; set; }
+        public string InsTemplateGuid { get; set; }
         public string InsTemplateTitle { get; set; }
         public byte? InsIsDeleted { get; set; }
         public string InsGuid { get; set; }

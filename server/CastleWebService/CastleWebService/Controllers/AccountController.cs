@@ -16,9 +16,6 @@ namespace CastleWebService.Controllers
 
         private castle_devContext _db = new castle_devContext();
         public AccountController() {}
-        //public AccountController(castle_devContext db) {
-        //    _db = db;
-        //}
 
         [HttpPost("api/v1/adduser")]
         public object InsertUsers([FromBody]object userObj)
@@ -49,7 +46,7 @@ namespace CastleWebService.Controllers
         }
 
 
-        [HttpGet("api/v1/users/{orgId}")]
+        [HttpGet("api/v1/users/")]
         public IEnumerable<Users> GetUsers(int orgId)
         {
             var query = _db.Users.Where(x => x.UsrOrganizationId == orgId).ToList();
@@ -57,7 +54,7 @@ namespace CastleWebService.Controllers
         }
 
 
-        [HttpGet("api/v1/deleteuser/{userId}")]
+        [HttpGet("api/v1/deleteuser/")]
         public CastleData DeleteUser(int userId)
         {
             var result = new CastleData();
@@ -146,7 +143,7 @@ namespace CastleWebService.Controllers
             return result;
         }
 
-        [HttpPost("api/v1/insertAutoComment/{userId}")]
+        [HttpPost("api/v1/insertAutoComment/")]
         public object InsertAutoComment([FromBody]object autoCommentObj, int userId)
         {
             var result = new CastleData();

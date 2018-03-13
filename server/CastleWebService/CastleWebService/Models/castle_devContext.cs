@@ -84,15 +84,22 @@ namespace CastleWebService.Models
             {
                 entity.HasKey(e => e.InspectionId);
 
+                entity.HasIndex(e => e.InsGuid)
+                    .HasName("uniqueGuids")
+                    .IsUnique();
+
                 entity.Property(e => e.InspectionId).HasColumnName("inspectionId");
 
                 entity.Property(e => e.InsGuid)
                     .IsRequired()
                     .HasColumnName("insGUID")
+                    .HasMaxLength(257)
                     .IsUnicode(false);
 
                 entity.Property(e => e.InsHash)
+                    .IsRequired()
                     .HasColumnName("insHash")
+                    .HasMaxLength(257)
                     .IsUnicode(false);
 
                 entity.Property(e => e.InsIsDeleted).HasColumnName("insIsDeleted");
@@ -108,7 +115,10 @@ namespace CastleWebService.Models
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
-                entity.Property(e => e.InsOrganizationId).HasColumnName("insOrganizationId");
+                entity.Property(e => e.InsOrganizationGuid)
+                    .HasColumnName("insOrganizationGUID")
+                    .HasMaxLength(257)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.InsSourceType)
                     .IsRequired()
@@ -116,7 +126,10 @@ namespace CastleWebService.Models
                     .HasMaxLength(30)
                     .IsUnicode(false);
 
-                entity.Property(e => e.InsTemplateId).HasColumnName("insTemplateId");
+                entity.Property(e => e.InsTemplateGuid)
+                    .HasColumnName("insTemplateGUID")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.InsTemplateResponseBlob)
                     .HasColumnName("insTemplateResponseBlob")
@@ -127,7 +140,10 @@ namespace CastleWebService.Models
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
-                entity.Property(e => e.InsThemeId).HasColumnName("insThemeId");
+                entity.Property(e => e.InsThemeGuid)
+                    .HasColumnName("insThemeGUID")
+                    .HasMaxLength(257)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.InsThemeResponseBlob)
                     .HasColumnName("insThemeResponseBlob")

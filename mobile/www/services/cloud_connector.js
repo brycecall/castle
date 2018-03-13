@@ -100,10 +100,10 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
         });
     };
 
-    public.addUser = function (username, password, email, foundersKey) {
+    public.addUser = function (username, password, email) {
         return httpService.submitRemote({
             method: 'POST',
-            url: 'api/v1/adduser/' + foundersKey,
+            url: 'api/v1/adduser/',
             data: {
                 UsrUsername: username,
                 UsrPassword: password,
@@ -120,7 +120,7 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
 
         httpService.submitRemote({
             method: "GET",
-            url: "api/v1/themeMeta/" + $rootScope.userId,
+            url: "api/v1/themeMeta/",
             useBaseUrl: true,
             params: {
                 user: $rootScope.userId,
@@ -164,11 +164,11 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
 
         httpService.submitRemote({
             method: "GET",
-            url: "api/v1/theme/" + themeId + "/" + $rootScope.userId,
+            url: "api/v1/theme/",
             useBaseUrl: true,
             params: {
-                user: $rootScope.userId,
-                theme: themeId,
+                userId: $rootScope.userId,
+                themeId: themeId,
                 token: null
             }
         }).then(
@@ -195,41 +195,49 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
     public.saveInspectionToCloud = function (inspection) {
         return httpService.submitRemote({
             method: 'POST',
-            url: 'api/v1/upsertinspection/' + $rootScope.userId,
+            url: 'api/v1/upsertinspection/',
             data: inspection,
-            params: null,
+            params: {
+                userId: $rootScope.userId
+            },
             useBaseUrl: true
         });
     };
 
-    public.getInspectionFromCloud = function (inspectionID) {
+    public.getInspectionFromCloud = function (guid) {
         return httpService.submitRemote({
             method: 'GET',
-            url: 'api/v1/inspection/' + inspectionID + '/' + $rootScope.userId,
-            params: null,
+            url: 'api/v1/inspection/',
+            params: {
+                userId: $rootScope.userId,
+                guid: guid
+            },
             useBaseUrl: true
         });
     };
-
 
     /*** TEMPLATES / INSPECTIONS ***/
     public.getInspectionsMetadata = function (type) {
         return httpService.submitRemote({
             method: 'GET',
-            url: 'api/v1/inspectionsMeta/' + $rootScope.userId + '/' + type,
-            params: null,
+            url: 'api/v1/inspectionsMeta/',
+            params: {
+                userId: $rootScope.userId,
+                sourceType: type
+            },
             useBaseUrl: true
         });
     };
-
 
     /*** AUTO COMMENTS ***/
     public.insertAutoComment = function (autoComment) {
         return httpService.submitRemote({
             method: 'POST',
-            url: 'api/v1/insertAutoComment/' + $rootScope.userId,
+            url: 'api/v1/insertAutoComment/',
             data: autoComment,
-            params: null,
+            params: {
+                userId: $rootScope.userId
+            },
             useBaseUrl: true
         });
     }

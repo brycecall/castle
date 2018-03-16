@@ -26,20 +26,16 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
         switch (public.mode) {
             case "inspection":
                 console.log('Inspection Manager - Get Inspection');
-                // TODO: allow guids to be passed in and do a lookup
-                if (typeof (ins) == "number") {
-                    inspection_manager.getInspections().then(
-                        function (inspections) {
-                            for (var i = 0; i < inspections.length; i++) {
-                                if (inspections[i].insId == ins) {
-                                    private.inspection = inspections[i];
-                                    defer.resolve(private.inspection);
-                                }
-                            }
-                            defer.reject("Inspection not found");
+                if (typeof (ins) == "string") {
+                    filesystem_manager.getInspection(ins + '.js').then(
+                        function (inspection) {
+                            private.inspection = inspection;
+                            defer.resolve(private.inspection);
+                        }, function (error) {
+                            defer.reject({message:"Inspection not found"});
                         }
-                    )
-                } else if ((angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== ins.insId) &&
+                    );
+                } else if ((angular.equals(private.inspection, {}) || (private.inspection.guid + '') !== ins.guid) &&
                     ins === undefined) {
                     var mockdefer = $q.defer();
                     private.inspection = defaultTemplate;
@@ -51,13 +47,12 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
                     private.inspection = ins;
                     defer.resolve(private.inspection);
                 } else {
-                    defer.reject();
+                    defer.reject({message: "what the eefffff?!"});
                 }
                 break;
             case "template":
                 console.log('Inspection Manager - Get Template');
-                // TODO: allow guids to be passed in and do a lookup
-                if ((angular.equals(private.inspection, {}) || (private.inspection.rowId + '') !== ins.insId) &&
+                if ((angular.equals(private.inspection, {}) || (private.inspection.guid + '') !== ins.guid) &&
                     ins === undefined) {
                     var mockdefer = $q.defer();
                     private.inspection = defaultTemplate;
@@ -68,6 +63,15 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
                 } else if (typeof (ins) == "object") {
                     private.inspection = ins;
                     defer.resolve(private.inspection);
+                } else if (typeof(ins) == "string") {
+                    filesystem_manager.getTemplate(ins + '.js').then(
+                        function (inspection) {
+                            private.inspection = inspection;
+                            defer.resolve(private.inspection);
+                        }, function (error) {
+                            defer.reject({message:"Template not found"});
+                        }
+                    );
                 } else {
                     defer.reject();
                 }
@@ -75,6 +79,7 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
             case "theme":
                 console.log('Inspection Manager - Get Theme ID: ' + ins.insId);
                 // TODO: allow guids to be passed in and do a lookup
+                // TODO: Do it yoself..ya diiick.
                 promise = private.loadFromThemeManager(ins.insId);
                 break;
             default:

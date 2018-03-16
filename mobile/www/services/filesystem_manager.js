@@ -131,7 +131,7 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
         return deferred.promise;
     };
 
-    // Load all templates in directory
+    // Load all inspections in directory
     public.getInspections = function () {
         var deferred = $q.defer();
         var promises = [];

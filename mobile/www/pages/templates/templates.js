@@ -62,7 +62,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
   
   $scope.downloadTemplate = function(template) {
       if (template.syncIcon == "cloud_download") {
-       cloud_connector.getInspectionFromCloud(template.insId).then(
+       cloud_connector.getInspectionFromCloud(template.guid).then(
          function(result) {
              for (var i = 0; i < $scope.templates.length; i++) {
                  if ($scope.templates[i].guid == template.guid) {
@@ -140,7 +140,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
                         if (new Date(cloudTemplate.last_modified) < new Date(template.last_modified)) {
                             cloud_connector.saveInspectionToCloud(template);
                         } else {
-                            cloud_connector.getInspectionFromCloud(template.insId).then(
+                            cloud_connector.getInspectionFromCloud(template.guid).then(
                                 function(result){
                                     $scope.templates[i] = result.data;
                                     $scope.templates[i].syncIcon = "cloud_done";

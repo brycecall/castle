@@ -17,6 +17,34 @@ namespace CastleWebService.Controllers
         private castle_devContext _db = new castle_devContext();
         public AccountController() {}
 
+        #region CREATE Users
+
+        [HttpPost("api/v1/insertAutoComment/")]
+        public object InsertAutoComment([FromBody]object autoCommentObj, int userId)
+        {
+            var result = new CastleData();
+            try
+            {
+                // Deserialize autoComment
+                var autoComment = JsonConvert.DeserializeObject<AutoComment>(autoCommentObj.ToString());
+                autoComment.AcUserId = userId;
+
+                // Create AutoComment row
+                _db.AutoComment.Add(autoComment);
+                _db.SaveChanges();
+
+                result.data = autoComment.AutoCommentId;
+                result.message = "Success";
+
+            }
+            catch (Exception e)
+            {
+                result = new CastleData { message = e.Message, data = -1 };
+            }
+
+            return result;
+        }
+
         [HttpPost("api/v1/adduser")]
         public object InsertUsers([FromBody]object userObj)
         {
@@ -44,16 +72,49 @@ namespace CastleWebService.Controllers
 
             return result;
         }
+        #endregion
 
-
+        #region READ Users
         [HttpGet("api/v1/users/")]
         public IEnumerable<Users> GetUsers(int orgId)
         {
             var query = _db.Users.Where(x => x.UsrOrganizationId == orgId).ToList();
             return query;
         }
+        #endregion
 
+        #region UPDATE users
+        [HttpPost("api/v1/updateuser/")]
+        public CastleData UpdateUser([FromBody]object userObj)
+        {
+            var result = new CastleData();
+            try
+            {
+                var settings = new JsonSerializerSettings
+                {
+                    ContractResolver = new ModelMetadataTypeAttributeContractResolver()
+                };
+                var user = JsonConvert.DeserializeObject<Users>(userObj.ToString(), settings);
 
+                var existingUser = _db.Users.Where(x => x.UserId == user.UserId).FirstOrDefault();
+
+                user.UserId = existingUser.UserId; // Make sure ID doesn't change
+                _db.Entry(existingUser).CurrentValues.SetValues(user); // Update values from one to another
+
+                _db.SaveChanges();
+                result.data = 0;
+                result.message = "Success";
+            }
+            catch (Exception e)
+            {
+                result = new CastleData { message = e.Message, data = -1 };
+            }
+
+            return result;
+        }
+        #endregion
+
+        #region DELETE Users
         [HttpGet("api/v1/deleteuser/")]
         public CastleData DeleteUser(int userId)
         {
@@ -73,8 +134,10 @@ namespace CastleWebService.Controllers
 
             return result;
         }
-		
-		[HttpPost("api/v1/validateuser/")]
+        #endregion
+
+        #region Validate Users
+        [HttpPost("api/v1/validateuser/")]
         public CastleData ValidateUser([FromBody]object userObj)
         {
             var result = new CastleData();
@@ -113,62 +176,7 @@ namespace CastleWebService.Controllers
 
             return result;
         }
+        #endregion
 
-        [HttpPost("api/v1/updateuser/")]
-        public CastleData UpdateUser([FromBody]object userObj)
-        {
-            var result = new CastleData();
-            try
-            {
-                var settings = new JsonSerializerSettings
-                {
-                    ContractResolver = new ModelMetadataTypeAttributeContractResolver()
-                };
-                var user = JsonConvert.DeserializeObject<Users>(userObj.ToString(), settings);
-
-                var existingUser = _db.Users.Where(x => x.UserId == user.UserId).FirstOrDefault();
-
-                    user.UserId = existingUser.UserId; // Make sure ID doesn't change
-                    _db.Entry(existingUser).CurrentValues.SetValues(user); // Update values from one to another
-
-                _db.SaveChanges();
-                result.data = 0;
-                result.message = "Success";
-            }
-            catch (Exception e)
-            {
-                result = new CastleData { message = e.Message, data = -1 };
-            }
-
-            return result;
-        }
-
-        [HttpPost("api/v1/insertAutoComment/")]
-        public object InsertAutoComment([FromBody]object autoCommentObj, int userId)
-        {
-            var result = new CastleData();
-            try
-            {
-                // Deserialize autoComment
-                var autoComment = JsonConvert.DeserializeObject<AutoComment>(autoCommentObj.ToString());
-                autoComment.AcUserId = userId;
-
-                // Create AutoComment row
-                _db.AutoComment.Add(autoComment);
-                _db.SaveChanges();
-
-                result.data = autoComment.AutoCommentId;
-                result.message = "Success";
-
-            }
-            catch (Exception e)
-            {
-                result = new CastleData { message = e.Message, data = -1 };
-            }
-
-            return result;
-        }
-
-
-    }
-}
+    } //END Class
+} //END Namespace

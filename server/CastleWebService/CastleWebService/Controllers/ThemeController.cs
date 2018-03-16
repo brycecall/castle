@@ -29,6 +29,7 @@ namespace CastleWebService.Controllers
 
         castle_devContext _db = new castle_devContext();
 
+        #region READ Themes
         [HttpGet("api/v1/themes/")]
         public IEnumerable<string> GetThemes(int userId)
         {
@@ -61,7 +62,9 @@ namespace CastleWebService.Controllers
                                        .ToDictionary(x => x.ThemeUnique, x => x);
             return query;
         }
+        #endregion
 
+        #region UPDATE/UPSERT
         [HttpPost("api/v1/UpsertTheme/")]
         public async Task<CastleData> UploadFile(IFormFile file, int userId)
         {
@@ -151,73 +154,9 @@ namespace CastleWebService.Controllers
 
             return result;
         }
+        #endregion
 
     } // end class
-
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
-    public class DisableFormValueModelBindingAttribute : Attribute, IResourceFilter
-    {
-        public void OnResourceExecuting(ResourceExecutingContext context)
-        {
-            var formValueProviderFactory = context.ValueProviderFactories
-                    .OfType<FormValueProviderFactory>()
-                    .FirstOrDefault();
-            if (formValueProviderFactory != null)
-            {
-                context.ValueProviderFactories.Remove(formValueProviderFactory);
-            }
-
-            var jqueryFormValueProviderFactory = context.ValueProviderFactories
-                .OfType<JQueryFormValueProviderFactory>()
-                .FirstOrDefault();
-            if (jqueryFormValueProviderFactory != null)
-            {
-                context.ValueProviderFactories.Remove(jqueryFormValueProviderFactory);
-            }
-        }
-
-        public void OnResourceExecuted(ResourceExecutedContext context)
-        {
-        }
-    }
-
-
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
-    public class RequestSizeLimitAttribute : Attribute, IAuthorizationFilter, IOrderedFilter
-    {
-        private readonly FormOptions _formOptions;
-
-        public RequestSizeLimitAttribute(int valueCountLimit)
-        {
-            _formOptions = new FormOptions()
-            {
-                // tip: you can use different arguments to set each properties instead of single argument
-                KeyLengthLimit = valueCountLimit,
-                ValueCountLimit = valueCountLimit,
-                ValueLengthLimit = valueCountLimit
-
-                // uncomment this line below if you want to set multipart body limit too
-                // MultipartBodyLengthLimit = valueCountLimit
-            };
-        }
-
-        public int Order { get; set; }
-
-        // taken from /a/38396065
-        public void OnAuthorization(AuthorizationFilterContext context)
-        {
-            var contextFeatures = context.HttpContext.Features;
-            var formFeature = contextFeatures.Get<IFormFeature>();
-
-            if (formFeature == null || formFeature.Form == null)
-            {
-                // Setting length limit when the form request is not yet being read
-                contextFeatures.Set<IFormFeature>(new FormFeature(context.HttpContext.Request, _formOptions));
-            }
-        }
-    }
-
-
 
 
 

@@ -555,7 +555,7 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
         ins.lastModified = new Date();
         ins.hash = $sha.hash(ins.toString());
 
-        filesystem_manager.saveInspection(ins.guid + '.js', JSON.stringify(ins)).then(function (success) {
+        filesystem_manager.saveInspection(ins.guid, JSON.stringify(ins)).then(function (success) {
             deferUpdate.resolve({
                 message: success.message
             });
@@ -577,7 +577,7 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
         private.inspection.hash = null;
         private.inspection.hash = $sha.hash(private.inspection.toString());
 
-        filesystem_manager.saveTemplate(private.inspection + ".js", JSON.stringify(private.inspection))
+        filesystem_manager.saveTemplate(private.inspection, JSON.stringify(private.inspection))
             .then(function (success) {
                 deferred.resolve({
                     value: success
@@ -601,7 +601,7 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
         template.lastModified = new Date();
         template.hash = $sha.hash(template.toString());
 
-        filesystem_manager.saveTemplate(template.guid + ".js", JSON.stringify(template))
+        filesystem_manager.saveTemplate(template.guid, JSON.stringify(template))
             .then(function (success) {
                 deferred.resolve({
                     value: success
@@ -625,7 +625,7 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
         private.inspection.lastModified = new Date();
         private.inspection.hash = $sha.hash(private.inspection.toString());
 
-        filesystem_manager.saveInspection(private.inspection.guid + ".js", JSON.stringify(private.inspection))
+        filesystem_manager.saveInspection(private.inspection.guid, JSON.stringify(private.inspection))
             .then(function (success) {
                 deferred.resolve({
                     value: success
@@ -649,7 +649,7 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
         ins.lastModified = new Date();
         ins.hash = $sha.hash(ins.toString());
 
-        filesystem_manager.saveInspection(ins.guid + ".js", JSON.stringify(ins))
+        filesystem_manager.saveInspection(ins.guid, JSON.stringify(ins))
             .then(function (success) {
                 deferred.resolve({
                     value: success

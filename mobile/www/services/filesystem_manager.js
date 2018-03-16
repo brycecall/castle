@@ -41,9 +41,9 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
     // Saves inspection to file
     public.saveInspection = function (filename, data) {
         var deferred = $q.defer();
-        // Ensure filename has .js
-        if (filename.indexOf('.js') < 0) {
-            filename += ".js";
+        // Ensure filename has .json
+        if (filename.indexOf('.json') < 0) {
+            filename += ".json";
         }
         // Ensure data is string
         if (typeof (data) !== "string") {
@@ -246,9 +246,9 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
                 //newTemp.resolve(success);
                 private.copyDefaultTemplates()
                     .then(function (success) {
-                        newFile.resolve(success);
+                        newTemp.resolve(success);
                     }, function (error) {
-                        newFile.reject(error);
+                        newTemp.reject(error);
                         console.log(error);
                     });
             }, function (error) {
@@ -261,9 +261,9 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
                 $cordovaFile.createDir(cordova.file.dataDirectory, "templates", true).then(function (success) {
                     private.copyDefaultTemplates()
                         .then(function (success) {
-                            newFile.resolve(success);
+                            newTemp.resolve(success);
                         }, function (error) {
-                            newFile.reject(error);
+                            newTemp.reject(error);
                             console.log(error);
                         });
                 }, function (error) {

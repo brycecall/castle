@@ -105,12 +105,7 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
 
         var file_system = resolveLocalFileSystemURL;
         var path = private.templatePath;
-
-        var result = file_system(path, function (fileSystem) {
-            var reader = fileSystem.createReader();
-            reader.readEntries(success, error);
-        }, error);
-
+        
         var success = function (files) {
             for (var index in files) {
                 promises.push(public.getTemplate(files[index].name));
@@ -123,6 +118,11 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
         var error = function (err) {
             deferred.reject(err);
         }
+        
+        var result = file_system(path, function (fileSystem) {
+            var reader = fileSystem.createReader();
+            reader.readEntries(success, error);
+        }, error);
 
         return deferred.promise;
     };
@@ -149,11 +149,6 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
         var file_system = resolveLocalFileSystemURL;
         var path = private.inspectionPath;
 
-        var result = file_system(path, function (fileSystem) {
-            var reader = fileSystem.createReader();
-            reader.readEntries(success, error);
-        }, error);
-
         var success = function (files) {
             for (var index in files) {
                 promises.push(public.getInspection(files[index].name));
@@ -166,6 +161,11 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
         var error = function (err) {
             deferred.reject(err);
         }
+        
+        var result = file_system(path, function (fileSystem) {
+            var reader = fileSystem.createReader();
+            reader.readEntries(success, error);
+        }, error);
 
         return deferred.promise;
     };

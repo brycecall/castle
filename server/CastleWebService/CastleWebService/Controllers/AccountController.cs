@@ -58,16 +58,24 @@ namespace CastleWebService.Controllers
 
                 var user = JsonConvert.DeserializeObject<Users>(userObj.ToString(), settings);
 
-                // Create user row
-                _db.Users.Add(user);
-                _db.SaveChanges();
+                var userExists = _db.Users.Where(x => x.UserId == user.UserId).Count() > 0;
+                if (userExists)
+                {
+                    result.data = -2;
+                    result.message = "Username already exists!";
+                }
+                else {
+                    // Create user row
+                    _db.Users.Add(user);
+                    _db.SaveChanges();
 
-                result.data = user.UserId;
-                result.message = "Success";
+                    result.data = user.UserId;
+                    result.message = "Success";
+                }
             }
             catch (Exception e)
             {
-                result = new CastleData { message = e.Message, data = -1 };
+                result = new CastleData { message = e.Message, data = -100 };
             }
 
             return result;
@@ -159,8 +167,7 @@ namespace CastleWebService.Controllers
                 else if (getUser.UsrAccountLocked == 1)
                 {
                     result.data = -1;
-                    result.message = "Account locked! We are processing payment and will unlock your account shortly. " +
-                                     "If you haven't paid yet, visit our page at http://invenio.xyz and/or contact support.";
+                    result.message = "Account locked!";
 
                 }
                 else if (getUser != null)

@@ -128,6 +128,10 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
             }
         }).then(
             function (response) {
+                if (Object.keys(response.data).length == 0) {
+                    defered.resolve();
+                }
+                
                 for (var key in response.data) {
                     (function (metadata, key) {
                         theme_manager.getThemeManifest(metadata['Id'])
@@ -156,6 +160,7 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
             function (error) {
                 defered.reject(error);
             });
+        
         return defered.promise;
     };
 

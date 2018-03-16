@@ -7,10 +7,6 @@ app.factory('theme_manager', function ($rootScope, $http, $window, $sce, $q, fil
 
     public.current = null;
 
-    public.clearThemes = function () {
-        return filesystem_manager.resetThemes();
-    };
-
     public.update = function () {
         var defered = $q.defer();
         

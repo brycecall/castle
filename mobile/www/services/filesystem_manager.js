@@ -7,21 +7,31 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
         private.templatePath = cordova.file.dataDirectory + "templates/";
         private.themePath = cordova.file.dataDirectory + "themes/";
     }
-    
+
     // General Init Method
-    public.init = function() {
+    public.init = function (force) {
         // Check if the themes folder has been created in the data directory, if not, copy the defaults from www
         $cordovaFile.checkDir(cordova.file.dataDirectory, "themes")
             .then(
                 function (result) {
-                    console.log("Themes have already been loaded, skipping...");
+                    if (!force) {
+                        console.log("Themes have already been loaded, skipping...");
+                    } else {
+                        init();
+                    }
                 },
                 function (error) {
-                    console.log("Loading default themes...");
-                    private.copyDefaultThemes();
+                    console.warn(error);
+                    init();
                 })
+
+        function init() {
+            console.log("INITIALIZING ALL DATA!!!");
+            private.copyDefaultThemes();
+            private.deleteInit();
+        }
     };
-    
+
     // Generates unique id to be used for inspection/template files
     public.generateGuid = function () {
         // TODO: Use username instead of static string
@@ -53,9 +63,9 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
     // Saves template to file
     public.saveTemplate = function (filename, data) {
         var deferred = $q.defer();
-        // Ensure filename has .js
-        if (filename.indexOf('.js') < 0) {
-            filename += ".js";
+        // Ensure filename has .json
+        if (filename.indexOf('.json') < 0) {
+            filename += ".json";
         }
         // Ensure data is string
         if (typeof (data) !== "string") {
@@ -219,7 +229,7 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
     };
 
     // Delete all template & inspection data
-    public.deleteInit = function () {
+    private.deleteInit = function () {
         var deferred = $q.defer();
         // Promises to track the different events involved with deleteInit
         var templateDefer = $q.defer();
@@ -233,16 +243,14 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
         $cordovaFile.removeRecursively(cordova.file.dataDirectory, "templates").then(function (success) {
             templateDefer.resolve(success);
             $cordovaFile.createDir(cordova.file.dataDirectory, "templates", true).then(function (success) {
-                newTemp.resolve(success);
-                /*        Commented out for now, writes default template   
-                          // Add default template to template directory (done here to ensure the directory is available)
-                          $cordovaFile.writeFile(private.templatePath, "default_template.js", JSON.stringify(defaultTemplate), true)
-                            .then(function(success) {
-                              newFile.resolve(success);
-                            }, function(error) {
-                              newFile.reject(error);
-                              console.log(error);
-                            });*/
+                //newTemp.resolve(success);
+                private.copyDefaultTemplates()
+                    .then(function (success) {
+                        newFile.resolve(success);
+                    }, function (error) {
+                        newFile.reject(error);
+                        console.log(error);
+                    });
             }, function (error) {
                 newTemp.reject(error);
                 console.log(error);
@@ -251,16 +259,13 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
             // File not found error, go ahead and attempt add
             if (error.code === 1) {
                 $cordovaFile.createDir(cordova.file.dataDirectory, "templates", true).then(function (success) {
-                    newTemp.resolve(success);
-                    // Add default template to template directory (done here to ensure the directory is available)
-                    // Commented out for now, creates local file from default template object
-                    /*            $cordovaFile.writeFile(private.templatePath, "default_template.js", JSON.stringify(defaultTemplate), true)
-                                  .then(function(success) {
-                                    newFile.resolve(success);
-                                  }, function(error) {
-                                    newFile.reject(error);
-                                    console.log(error);
-                                  });*/
+                    private.copyDefaultTemplates()
+                        .then(function (success) {
+                            newFile.resolve(success);
+                        }, function (error) {
+                            newFile.reject(error);
+                            console.log(error);
+                        });
                 }, function (error) {
                     newTemp.reject(error);
                     templateDefer.reject(error);
@@ -395,10 +400,10 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
     // Saves base64 encoded zip file of the theme
     public.saveThemeBlob = function (blob) {
         var defered = $q.defer();
-        
+
         console.log("Blob Data: " + blob);
         defered.resolve();
-        
+
         return defered.promise;
     };
 
@@ -431,6 +436,17 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
                     public.getThemes();
                 });
     };
+
+    private.copyDefaultTemplates = function () {
+        return $cordovaFile.copyDir(cordova.file.applicationDirectory, "www/templates", cordova.file.dataDirectory, "templates")
+            .then(
+                function (result) {
+                    console.log(result);
+                    private.templatePath = result.nativeURL;
+                    public.getTemplates();
+                }
+            );
+    }
 
     // Copy a theme
     public.copyTheme = function (themeId) {

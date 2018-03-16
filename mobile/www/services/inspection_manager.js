@@ -64,7 +64,7 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
                     private.inspection = ins;
                     defer.resolve(private.inspection);
                 } else if (typeof(ins) == "string") {
-                    filesystem_manager.getTemplate(ins + '.js').then(
+                    filesystem_manager.getTemplate(ins + '.json').then(
                         function (inspection) {
                             private.inspection = inspection;
                             defer.resolve(private.inspection);

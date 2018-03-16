@@ -577,7 +577,7 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
         private.inspection.hash = null;
         private.inspection.hash = $sha.hash(private.inspection.toString());
 
-        filesystem_manager.saveTemplate(private.inspection, JSON.stringify(private.inspection))
+        filesystem_manager.saveTemplate(private.inspection.guid, JSON.stringify(private.inspection))
             .then(function (success) {
                 deferred.resolve({
                     value: success

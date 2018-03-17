@@ -4,9 +4,9 @@
     "displayName": "Castle",
     "cordova": {
         "platforms": [
-            "android",
             "browser",
-            "ios"
+            "ios",
+            "android"
         ],
         "plugins": {
             "cordova-plugin-whitelist": {},
@@ -26,7 +26,7 @@
     },
     "dependencies": {
         "com.jjdltc.cordova.plugin.zip": "~0.0.4",
-        "cordova-android": "^6.4.0",
+        "cordova-android": "^6.2.3",
         "cordova-browser": "^5.0.3",
         "cordova-ios": "^4.4.0",
         "cordova-pdf-generator": "^1.5.4",

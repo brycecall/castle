@@ -76,10 +76,8 @@ $scope.register = function() {
 		// Credentials found
 		if (success.data > -1) {
           checkSuccessLogin();
-	      //$rootScope.authenticated = true;
-		  //$rootScope.userId = success.data;
-		  //localStorage.setItem("userId", success.data);
-          //$state.go("home");
+          $scope.new_user.email = "";
+          $scope.new_user.password = "";
           $scope.serverRegisterErrorMessage = "Email sent to provided account. Please confirm account to continue."
 		} else {
           $scope.serverRegisterErrorMessage = success.data;

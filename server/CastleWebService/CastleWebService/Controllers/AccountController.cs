@@ -74,13 +74,15 @@ namespace CastleWebService.Controllers
                     // Send email to user account
                     SmtpClient client = new SmtpClient("smtp.office365.com");
                     client.UseDefaultCredentials = false;
-                    client.Credentials = new NetworkCredential("jordanballs@invenio.xyz", "Highelves1");
+                    client.Port = 587;
+                    client.EnableSsl = true;
+                    client.Credentials = new NetworkCredential("jordanballs@invenio.xyz", "MoneyBalls101");
 
                     MailMessage mailMessage = new MailMessage();
-                    mailMessage.From = new MailAddress("castle-no-reply@invenio.xyz");
+                    mailMessage.From = new MailAddress("castle-donotreply@invenio.xyz");
                     mailMessage.To.Add(user.UsrUsername);
-                    mailMessage.Body = user.UsrEmailToken;
-                    mailMessage.Subject = "Test123";
+                    mailMessage.Body = "Click here to confirm your account: " + "https://api.castle.invenio.xyz/api/v1/verifyemail/" + user.UsrEmailToken;
+                    mailMessage.Subject = "Account Confirmation";
                     client.Send(mailMessage);
 
                     // Create user row

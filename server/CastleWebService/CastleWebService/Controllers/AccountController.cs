@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using CastleWebService.Models;
 using Microsoft.AspNetCore.Http;
@@ -15,7 +17,7 @@ namespace CastleWebService.Controllers
     {
 
         private castle_devContext _db = new castle_devContext();
-        public AccountController() {}
+        public AccountController() { }
 
         #region CREATE Users
 
@@ -65,6 +67,22 @@ namespace CastleWebService.Controllers
                     result.message = "Username already exists!";
                 }
                 else {
+                    // Add random key to send for email validation
+                    Random random = new System.Random();
+                    user.UsrEmailToken = random.Next(1000000, 999999999).ToString();
+
+                    // Send email to user account
+                    SmtpClient client = new SmtpClient("smtp.office365.com");
+                    client.UseDefaultCredentials = false;
+                    client.Credentials = new NetworkCredential("jordanballs@invenio.xyz", "Highelves1");
+
+                    MailMessage mailMessage = new MailMessage();
+                    mailMessage.From = new MailAddress("castle-no-reply@invenio.xyz");
+                    mailMessage.To.Add(user.UsrUsername);
+                    mailMessage.Body = user.UsrEmailToken;
+                    mailMessage.Subject = "Test123";
+                    client.Send(mailMessage);
+
                     // Create user row
                     _db.Users.Add(user);
                     _db.SaveChanges();
@@ -174,6 +192,41 @@ namespace CastleWebService.Controllers
                 {
                     result.data = getUser.UserId;
                     result.message = "Success";
+                }
+            }
+            catch (Exception e)
+            {
+                result = new CastleData { message = e.Message, data = -100 };
+            }
+
+            return result;
+        }
+
+        [HttpGet("api/v1/verifyemail/{token}")]
+        public object ValidateRegistration(string token)
+        {
+            var result = new CastleData();
+
+            try
+            {
+                // Get user that matches the token
+                var getUser = _db.Users.Where(x => x.UsrEmailToken == token).FirstOrDefault();
+                if (getUser == null)
+                {
+                    result.data = -2;
+                    result.message = "Account already confirmed.";
+                }
+                else
+                {
+                    // Null the token to allow user login
+                    getUser.UsrEmailToken = null;
+
+                    // Save changes
+                    _db.Entry(getUser).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                    _db.SaveChanges();
+
+                    result.data = 0;
+                    result.message = "User Account Confirmed!";
                 }
             }
             catch (Exception e)

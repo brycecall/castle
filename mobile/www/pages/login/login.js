@@ -59,16 +59,14 @@ $scope.register = function() {
        console.log("Register called");
        console.log("Form isValid = " + isValid);
     // Register new user
-    if (isValid && $scope.new_user.username 
-        && $scope.new_user.password 
+    if (isValid && $scope.new_user.password 
         && $scope.new_user.email) {
 	  var validCreate = httpService.submitRemote({
 	    method: 'POST',
 		url: 'api/v1/adduser',
 		data: {
-		  UsrUsername: $scope.new_user.username,
-		  UsrPassword: $sha.hash($scope.new_user.password),
-		  UsrEmail: $scope.new_user.email
+		  UsrUsername: $scope.new_user.email,
+		  UsrPassword: $sha.hash($scope.new_user.password)
 		},
 		params: null,
 		useBaseUrl: true
@@ -78,10 +76,11 @@ $scope.register = function() {
 		// Credentials found
 		if (success.data > -1) {
           checkSuccessLogin();
-	      $rootScope.authenticated = true;
-		  $rootScope.userId = success.data;
-		  localStorage.setItem("userId", success.data);
-          $state.go("home");
+	      //$rootScope.authenticated = true;
+		  //$rootScope.userId = success.data;
+		  //localStorage.setItem("userId", success.data);
+          //$state.go("home");
+          $scope.serverRegisterErrorMessage = "Email sent to provided account. Please confirm account to continue."
 		} else {
           $scope.serverRegisterErrorMessage = success.data;
 		  console.log(success.message);
@@ -106,13 +105,13 @@ $scope.register = function() {
        var isValid = $("#login")[0].reportValidity();
        console.log("Login called");
        console.log("Form isValid = " + isValid);
-    if (isValid && $scope.user.username && $scope.user.password) {
+    if (isValid && $scope.user.email && $scope.user.password) {
 	  // Check if credentials are valid
 	  var validLogin = httpService.submitRemote({
 	    method: 'POST',
 		url: 'api/v1/validateuser/',
 		data: {
-		  UsrUsername: $scope.user.username,
+		  UsrUsername: $scope.user.email,
 		  UsrPassword: $sha.hash($scope.user.password)
 		},
 		params: null,

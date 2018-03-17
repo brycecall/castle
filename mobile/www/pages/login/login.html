@@ -7,15 +7,15 @@
         <md-tab-label>Login</md-tab-label>
         <md-tab-body>
           <form name="loginForm" id="login" ng-submit="locked ? doNothing() : login()" >
-             <md-input-container class="md-icon-float md-block">
-               <label>Username</label>
-               <md-icon md-svg-icon="account_circle"></md-icon>
-               <input name="username" ng-model="user.username" required type="text">
-               <div ng-messages="loginForm.username.$error" 
-                        ng-show="loginForm.username.$dirty">
-                     <div ng-message="required">This is required!</div>
-               </div>
-             </md-input-container>
+            <md-input-container class="md-icon-float md-block">
+              <label>Email</label>
+              <md-icon md-svg-icon="email"></md-icon>
+              <input name="email" ng-model="user.email" required type="email">
+              <div ng-messages="registerForm.email.$error" 
+                     ng-show="registerForm.email.$dirty" role="alert" multiple>
+                  <div ng-message="required">This is required!</div>
+              </div>
+            </md-input-container>
              <md-input-container class="md-icon-float md-block">
                <label>Password</label>
                <md-icon md-svg-icon="password"></md-icon>
@@ -39,17 +39,14 @@
         <md-tab-body>
             <form id="register" ng-submit="locked ? doNothing() : register()">
           <md-input-container class="md-icon-float md-block">
-            <label>Username</label>
-            <md-icon md-svg-icon="account_circle"></md-icon>
-            <input name="username" ng-model="new_user.username" required 
-                   md-minlength="6" md-maxlength="50" type="text">
-            <div ng-messages="registerForm.username.$error" 
-                     ng-show="registerForm.username.$dirty" role="alert" multiple>
+            <label>Email</label>
+            <md-icon md-svg-icon="email"></md-icon>
+            <input name="email" ng-model="new_user.email" required md-maxlength="100" type="email">
+            <div ng-messages="registerForm.email.$error" 
+                     ng-show="registerForm.email.$dirty" role="alert" multiple>
                   <div ng-message="required">This is required!</div>
-                  <div ng-message="md-minlength">This username is too short</div>
-                  <div ng-message="md-maxlength">This username is too long</div>
-                  <div ng-message="usernameTaken">This username is unavailable</div>
-             </div>
+                  <div ng-message="md-maxlength">This email is too long</div>
+            </div>
           </md-input-container>
           <md-input-container class="md-icon-float md-block">
             <label>Password</label>
@@ -60,16 +57,6 @@
                   <div ng-message="required">This is required!</div>
                   <div ng-message="md-minlength">This password is too short</div>
                   <div ng-message="md-maxlength">This password is too long</div>
-            </div>
-          </md-input-container>
-          <md-input-container class="md-icon-float md-block">
-            <label>Email</label>
-            <md-icon md-svg-icon="email"></md-icon>
-            <input name="email" ng-model="new_user.email" required md-maxlength="100" type="email">
-            <div ng-messages="registerForm.email.$error" 
-                     ng-show="registerForm.email.$dirty" role="alert" multiple>
-                  <div ng-message="required">This is required!</div>
-                  <div ng-message="md-maxlength">This email is too long</div>
             </div>
           </md-input-container>
            <div style="color:red" ng-show="serverRegisterErrorMessage">

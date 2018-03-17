@@ -342,6 +342,10 @@ namespace CastleWebService.Models
             {
                 entity.HasKey(e => e.ThemeId);
 
+                entity.HasIndex(e => e.ThemeUnique)
+                    .HasName("uniqueThemeGuid")
+                    .IsUnique();
+
                 entity.Property(e => e.ThemeBlob).HasColumnName("themeBlob");
 
                 entity.Property(e => e.ThemeCreatedDate).HasColumnName("themeCreatedDate");
@@ -414,6 +418,11 @@ namespace CastleWebService.Models
                 entity.Property(e => e.UsrEmail)
                     .HasColumnName("usrEmail")
                     .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.UsrEmailToken)
+                    .HasColumnName("usrEmailToken")
+                    .HasMaxLength(64)
                     .IsUnicode(false);
 
                 entity.Property(e => e.UsrFirstName)

@@ -60,7 +60,7 @@ namespace CastleWebService.Controllers
 
                 var user = JsonConvert.DeserializeObject<Users>(userObj.ToString(), settings);
 
-                var userExists = _db.Users.Where(x => x.UserId == user.UserId).Count() > 0;
+                var userExists = _db.Users.Where(x => x.UserId == user.UserId || x.UsrUsername == user.UsrUsername).Count() > 0;
                 if (userExists)
                 {
                     result.data = -2;
@@ -79,10 +79,11 @@ namespace CastleWebService.Controllers
                     client.Credentials = new NetworkCredential("jordanballs@invenio.xyz", "MoneyBalls101");
 
                     MailMessage mailMessage = new MailMessage();
+                    mailMessage.IsBodyHtml = true;
                     mailMessage.From = new MailAddress("castle-donotreply@invenio.xyz");
                     mailMessage.To.Add(user.UsrUsername);
-                    mailMessage.Body = "Click here to confirm your account: " + "https://api.castle.invenio.xyz/api/v1/verifyemail/" + user.UsrEmailToken;
-                    mailMessage.Subject = "Account Confirmation";
+                    mailMessage.Body = "<a href='https://api.castle.invenio.xyz/api/v1/verifyemail/" + user.UsrEmailToken + "' target='_blank'>Click to confirm Castle Account Registration.</a>";
+                    mailMessage.Subject = "Castle Account Confirmation";
                     client.Send(mailMessage);
 
                     // Create user row
@@ -188,7 +189,6 @@ namespace CastleWebService.Controllers
                 {
                     result.data = -1;
                     result.message = "Account locked!";
-
                 }
                 else if (getUser != null)
                 {
@@ -205,7 +205,7 @@ namespace CastleWebService.Controllers
         }
 
         [HttpGet("api/v1/verifyemail/{token}")]
-        public object ValidateRegistration(string token)
+        public ActionResult ValidateRegistration(string token)
         {
             var result = new CastleData();
 
@@ -216,7 +216,7 @@ namespace CastleWebService.Controllers
                 if (getUser == null)
                 {
                     result.data = -2;
-                    result.message = "Account already confirmed.";
+                    result.message = "<html><body><a style='font-weight: bold;'>Account Already Confirmed!</a></body></html>";
                 }
                 else
                 {
@@ -228,7 +228,7 @@ namespace CastleWebService.Controllers
                     _db.SaveChanges();
 
                     result.data = 0;
-                    result.message = "User Account Confirmed!";
+                    result.message = "<html><body><a style='font-weight: bold;'>User Account Confirmed!</a></body></html>";
                 }
             }
             catch (Exception e)
@@ -236,7 +236,7 @@ namespace CastleWebService.Controllers
                 result = new CastleData { message = e.Message, data = -100 };
             }
 
-            return result;
+            return Content(result.message, "text/html");
         }
         #endregion
 

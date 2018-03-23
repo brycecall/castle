@@ -59,16 +59,14 @@ $scope.register = function() {
        console.log("Register called");
        console.log("Form isValid = " + isValid);
     // Register new user
-    if (isValid && $scope.new_user.username 
-        && $scope.new_user.password 
+    if (isValid && $scope.new_user.password 
         && $scope.new_user.email) {
 	  var validCreate = httpService.submitRemote({
 	    method: 'POST',
 		url: 'api/v1/adduser',
 		data: {
-		  UsrUsername: $scope.new_user.username,
-		  UsrPassword: $sha.hash($scope.new_user.password),
-		  UsrEmail: $scope.new_user.email
+		  UsrUsername: $scope.new_user.email,
+		  UsrPassword: $sha.hash($scope.new_user.password)
 		},
 		params: null,
 		useBaseUrl: true
@@ -76,23 +74,27 @@ $scope.register = function() {
 	  validCreate.then(function(success) {
           success = success.data;
 		// Credentials found
-		if (success.data !== -1) {
+		if (success.data > -1) {
           checkSuccessLogin();
-	      $rootScope.authenticated = true;
-		  $rootScope.userId = success.data;
-		  localStorage.setItem("userId", success.data);
-          $state.go("home");
+          $scope.new_user.email = "";
+          $scope.new_user.password = "";
+          $scope.serverRegisterErrorMessage = "Email sent to provided account. Please confirm account to continue."
 		} else {
-		  // TODO: Show visible error on page
+          $scope.serverRegisterErrorMessage = success.data;
 		  console.log(success.message);
-          checkFailLogin();
+          //TODO: protect against too many accounts being created on one device
+          //checkFailLoginAttempts();
 		}
 	  }, function(error) {
-		// TODO: Show visible error on login page
 		console.log(error);
-        // Is this needed here?
-        // (if a failure happens at this level, is it login related?)
-        checkFailLogin();
+          error = error.data;
+        if (error) {
+            $scope.serverRegisterErrorMessage = error.message;
+        } else {
+            $scope.serverRegisterErrorMessage = "Failed to connect. Are you connected to the internet?";
+        }
+          //TODO: protect against too many accounts being created on one device
+          //checkFailLoginAttempts();
 	  });      
     }
   };
@@ -101,13 +103,13 @@ $scope.register = function() {
        var isValid = $("#login")[0].reportValidity();
        console.log("Login called");
        console.log("Form isValid = " + isValid);
-    if (isValid && $scope.user.username && $scope.user.password) {
+    if (isValid && $scope.user.email && $scope.user.password) {
 	  // Check if credentials are valid
 	  var validLogin = httpService.submitRemote({
 	    method: 'POST',
 		url: 'api/v1/validateuser/',
 		data: {
-		  UsrUsername: $scope.user.username,
+		  UsrUsername: $scope.user.email,
 		  UsrPassword: $sha.hash($scope.user.password)
 		},
 		params: null,
@@ -132,13 +134,24 @@ $scope.register = function() {
         } else {
           $scope.accountLocked = false;
           $scope.serverErrorMessage = success.message;
-          checkFailLogin();
+          // Service returns -1 if username/password don't match
+          if (success.data == -2) {
+                checkFailLoginAttempts();
+          }
 		  console.log(success.message);
 		}
 	  }, function(error) {
-		// TODO: Show visible error on login page
+          error = error.data;
 		console.log(error);
-        checkFailLogin();
+        if (error.data) {
+            if (error.data == -1 || error.data == -2) {
+                checkFailLoginAttempts();
+            }
+            $scope.serverErrorMessage = error.message;
+        } else {
+            $scope.serverErrorMessage = "Failed to connect. Are you connected to the internet?";          
+        }
+        
 	  });
     }
   };
@@ -148,7 +161,7 @@ $scope.register = function() {
     console.log("It's pretty tough doing nothing.");
   }
   
-  var checkFailLogin = function () {
+  var checkFailLoginAttempts = function() {
     // 86400000 = number of milliseconds in 24 hours.
     var timeToLock = 86400000;
     // Track failed attempts to prevent DDOS-esqueness

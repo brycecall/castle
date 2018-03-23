@@ -123,7 +123,7 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
             url: "api/v1/themeMeta/",
             useBaseUrl: true,
             params: {
-                user: $rootScope.userId,
+                userId: $rootScope.userId,
                 token: null
             }
         }).then(
@@ -134,7 +134,7 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
                 
                 for (var key in response.data) {
                     (function (metadata, key) {
-                        theme_manager.getThemeManifest(metadata['Id'])
+                        theme_manager.getThemeManifest(metadata['unique'])
                             .then(
                                 function (result) {
                                     if (result.hash != metadata.hash) {
@@ -149,7 +149,7 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
                 }
 
                 function downloadThemeBlob(key) {
-                    private.downloadTheme(response.data[key]["Id"])
+                    private.downloadTheme(response.data[key]["unique"])
                         .then(function (data) {
                             filesystem_manager.saveThemeBlob(data).then(function () {
                                 defered.resolve();
@@ -164,7 +164,7 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
         return defered.promise;
     };
 
-    private.downloadTheme = function (themeId) {
+    private.downloadTheme = function (guid) {
         var defered = $q.defer();
 
         httpService.submitRemote({
@@ -173,7 +173,7 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
             useBaseUrl: true,
             params: {
                 userId: $rootScope.userId,
-                themeId: themeId,
+                guid: guid,
                 token: null
             }
         }).then(

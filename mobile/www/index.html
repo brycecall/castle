@@ -97,7 +97,22 @@
 
         </md-toolbar>
         <md-content id="view" ui-view></md-content>
+    </div>
 
+    <div ng-cloak id="messages" ng-show="messages.length > 0" ng-controller="message">
+        <md-button ng-cloak class="md-fab md-accent button" aria-label="Back" class="button" ng-hide="current == 0" ng-click="previous()">
+            <md-icon md-svg-icon="keyboard_arrow_left"></md-icon>
+        </md-button>
+        <div class="message">
+            <img ng-src="{{messages[current].image}}" />
+            <h2 style="margin-top: 8%">{{messages[current].text}}</h2>
+        </div>
+        <md-button ng-cloak class="md-fab md-accent button" aria-label="Next" class="button" style="right: 0;" ng-hide="current == (messages.length - 1)" ng-click="next()">
+            <md-icon md-svg-icon="keyboard_arrow_right"></md-icon>
+        </md-button>
+        <md-button ng-cloak class="md-fab md-warn button" aria-label="Next" class="button" style="right: 0;" ng-show="current == (messages.length - 1)" ng-click="clear()">
+            <md-icon md-svg-icon="check"></md-icon>
+        </md-button>
     </div>
 
     <div class="action" ng-controller="action" ng-show="service.enabled">
@@ -154,6 +169,7 @@
 
     </div>
 
+    <!-- TODO: merge the loading and messages functionality into the overlay functionality above -->
     <div ng-cloak class="loading" layout="row" layout-align="center center" ng-show="$root.loading">
         <md-progress-circular md-mode="indeterminate"></md-progress-circular>
     </div>
@@ -189,6 +205,7 @@
     <script src="services/camera_manager.js"></script>
     <script src="dialogs/camera/camera.js"></script>
     <script src="dialogs/loading/loading.js"></script>
+    <script src="services/message_manager.js"></script>
     <script src="services/action_manager.js"></script>
     <script src="services/header_manager.js"></script>
     <script src="services/icons.js"></script>
@@ -225,7 +242,6 @@
                 angular.bootstrap(document.body, ['castle']);
             }
         });
-
     </script>
 </body>
 

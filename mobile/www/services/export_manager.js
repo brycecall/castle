@@ -7,7 +7,7 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
 
     public.export = function (resource, type) {
         var defered = $q.defer();
-        private.session_id = $sha.hash(resource.toString()).substr(0, 12);
+        private.session_id = $sha.hash(JSON.stringify(resource)).substr(0, 12);
         private.session_path = cordova.file.cacheDirectory + private.session_id;
         var promise = null;
 
@@ -52,6 +52,9 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
                                                             defered.resolve(result);
                                                         }
                                                     );
+                                                    
+                                                    var fileReader = new FileReader();
+                                                    
                                                 }
                                             }
                                         );
@@ -90,51 +93,42 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
         private.session_path = null;
     }
 
-    private.saveInspection = function (insId) {
+    private.saveInspection = function (inspection) {
         var defered = $q.defer();
-        var templateId = null;
-        var themeId = null;
 
-        var inspection_promise = inspection_manager.getInspection(insId);
-        inspection_promise.then(
-            function (data) {
-                var inspection = data;
-                templateId = inspection.insTemplateGuid;
-                themeId = inspection.insThemeId;
 
-                // Make sure the DB is in sync with the exporting inspection
-                // TODO: inspection_manager.updateInspection();
+        // Make sure the DB is in sync with the exporting inspection
+        // TODO: inspection_manager.updateInspection();
 
-                $cordovaFile.writeFile(private.session_path + "/", "inspection.json", JSON.stringify(inspection), true)
-                    .then(
-                        function (result) {
-                            private.saveTemplate(templateGuid)
-                                .then(
-                                    function (result) {
-                                        private.saveTheme(themeId)
-                                            .then(
-                                                function (result) {
-                                                    defered.resolve(result);
-                                                }
-                                            )
-                                    }
-                                )
-                        },
-                        function (error) {
-                            defered.reject(error);
-                        })
-            },
-            function (error) {
-                defered.reject(error);
-            })
-
+        $cordovaFile.writeFile(private.session_path + "/", "inspection.json", JSON.stringify(inspection), true)
+            .then(
+                function (result) {
+                    private.saveTemplate(inspection.insTemplateGuid)
+                        .then(
+                            function (result) {
+                                private.saveTheme(inspection.insThemeUnique)
+                                    .then(
+                                        function (result) {
+                                            defered.resolve(result);
+                                        }
+                                    )
+                            }
+                        )
+                },
+                function (error) {
+                    defered.reject(error);
+                });
         return defered.promise;
     };
 
     private.saveTemplate = function (guid) {
         var defered = $q.defer();
 
+        var buffer = inspection_manager.mode;
+        inspection_manager.mode = "template";
         var template_promise = inspection_manager.getInspection(guid);
+        inspection_manager.mode = buffer;
+        
         template_promise.then(
             function (data) {
                 var template = data.value;

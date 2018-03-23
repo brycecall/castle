@@ -14,10 +14,10 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
         $cordovaFile.checkDir(cordova.file.dataDirectory, "themes")
             .then(
                 function (result) {
-                    if (!force) {
-                        console.log("Themes have already been loaded, skipping...");
-                    } else {
+                    if (force === true) {
                         init();
+                    } else {
+                        console.log("Data has already been initialized, skipping...");
                     }
                 },
                 function (error) {

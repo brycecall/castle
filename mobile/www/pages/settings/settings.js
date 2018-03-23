@@ -8,7 +8,7 @@ app.config(function ($stateProvider) {
         });
 });
 
-app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, $q, theme_manager, header_manager, filesystem_manager, $state, cloud_connector, $mdToast) {
+app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeout, $q, theme_manager, header_manager, filesystem_manager, $state, cloud_connector, $mdToast, message_manager) {
     header_manager.title = "Settings";
 
     $scope.acTitle = "";
@@ -43,8 +43,9 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
 
         if (sure) {
             $rootScope.loading = true;
+            message_manager.register("assets/login_background.jpg", "Goober");
             theme_manager.clearThemes().then(function () {
-                filesystem_manager.init().then(function (success) {
+                filesystem_manager.init(true).then(function (success) {
                     console.log('Folders deleted successfully');
                     console.log(success);
                     $rootScope.loading = false;

@@ -131,10 +131,6 @@ namespace CastleWebService.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.InsTemplateResponseBlob)
-                    .HasColumnName("insTemplateResponseBlob")
-                    .IsUnicode(false);
-
                 entity.Property(e => e.InsTemplateTitle)
                     .HasColumnName("insTemplateTitle")
                     .HasMaxLength(100)
@@ -143,10 +139,6 @@ namespace CastleWebService.Models
                 entity.Property(e => e.InsThemeGuid)
                     .HasColumnName("insThemeGUID")
                     .HasMaxLength(257)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.InsThemeResponseBlob)
-                    .HasColumnName("insThemeResponseBlob")
                     .IsUnicode(false);
 
                 entity.Property(e => e.InsUserId).HasColumnName("insUserId");
@@ -346,7 +338,7 @@ namespace CastleWebService.Models
                     .HasName("uniqueThemeGuid")
                     .IsUnique();
 
-                entity.Property(e => e.ThemeBlob).HasColumnName("themeBlob");
+                entity.Property(e => e.ThemeBlobStoreDate).HasColumnName("themeBlobStoreDate");
 
                 entity.Property(e => e.ThemeCreatedDate).HasColumnName("themeCreatedDate");
 
@@ -383,18 +375,6 @@ namespace CastleWebService.Models
                     .HasColumnName("themeVersion")
                     .HasMaxLength(50)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.ThemeOrganization)
-                    .WithMany(p => p.Themes)
-                    .HasForeignKey(d => d.ThemeOrganizationId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Theme__themeOrga__6754599E");
-
-                entity.HasOne(d => d.ThemeUser)
-                    .WithMany(p => p.Themes)
-                    .HasForeignKey(d => d.ThemeUserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Theme__themeUser__66603565");
             });
 
             modelBuilder.Entity<Users>(entity =>

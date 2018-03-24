@@ -5,11 +5,6 @@ namespace CastleWebService.Models
 {
     public partial class Organizations
     {
-        public Organizations()
-        {
-            Themes = new HashSet<Themes>();
-        }
-
         public int OrganizationId { get; set; }
         public string OrgName { get; set; }
         public string OrgState { get; set; }
@@ -19,7 +14,5 @@ namespace CastleWebService.Models
         public string OrgLogo { get; set; }
         public DateTime OrgLastModifed { get; set; }
         public byte? OrgIsDeleted { get; set; }
-
-        public ICollection<Themes> Themes { get; set; }
     }
 }

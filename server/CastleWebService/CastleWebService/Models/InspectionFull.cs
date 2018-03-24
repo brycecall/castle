@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -42,6 +43,7 @@ namespace CastleWebService.Models
         public ICollection<Subsections> Subsections { get; set; }
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "insId")]
         public int InspectionId {get; set;}
+
         // extra fields
         //[JsonExtensionData]
         //private IDictionary<string, JToken> _catchAll;
@@ -210,6 +212,9 @@ namespace CastleWebService.Models
     [ModelMetadataTypeAttribute(typeof(ThemesMetaData))]
     public partial class Themes
     {
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "blob")]
+        [NotMapped]
+        public string blobStream { get; set; }
     }
 
     public class ThemesMetaData
@@ -226,10 +231,9 @@ namespace CastleWebService.Models
         [JsonProperty(PropertyName = "title")]
         public string ThemeTitle { get; set; }
 
-        [JsonProperty(PropertyName = "blob")]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "blob")]
         [NotMapped]
-        [JsonIgnore]
-        public string ThemeBlob { get; set; }
+        public string blobStream { get; set; }
 
         [JsonProperty(PropertyName = "isDeleted")]
         public byte? ThemeIsDeleted { get; set; }

@@ -267,4 +267,47 @@ namespace CastleWebService.Models
         public Users ThemeUser { get; set; }
     }
 
+
+    [ModelMetadataTypeAttribute(typeof(ReportsMetaData))]
+    public partial class Reports
+    {
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "blob")]
+        [NotMapped]
+        public string blobStream { get; set; }
+    }
+
+    public class ReportsMetaData
+    {
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "Id")]
+        public int ReportId { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "UserId")]
+        public int ReportUserId { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "OrganizationId")]
+        public int ReportOrganizationId { get; set; }
+        [JsonProperty(PropertyName = "title")]
+        public string ReportTitle { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "blob")]
+        [NotMapped]
+        public string blobStream { get; set; }
+        [JsonProperty(PropertyName = "unique")]
+        public string ReportUnique { get; set; }
+        public byte ReportSubmitted { get; set; }
+        [JsonProperty(PropertyName = "date_created")]
+        public DateTime ReportCreatedDate { get; set; }
+        [JsonProperty(PropertyName = "db_last_modified")]
+        public DateTime ReportLastModified { get; set; }
+        [JsonProperty(PropertyName = "isDeleted")]
+        public byte? ReportIsDeleted { get; set; }
+
+        [ForeignKey("ReportOrganizationId")]
+        [NotMapped]
+        [JsonIgnore]
+        public Organizations ReportOrganization { get; set; }
+
+        [ForeignKey("ThemeUserId")]
+        [NotMapped]
+        [JsonIgnore]
+        public Users ReportUser { get; set; }
+    }
+
 } // End Namespace

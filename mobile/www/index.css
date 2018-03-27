@@ -151,6 +151,6 @@ md-fab-toolbar {
 #messages .button {
     z-index: 2064;
     position: fixed;
-    bottom: 40px;
+    bottom: 0;
     margin: 40px;
 }

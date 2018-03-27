@@ -43,8 +43,11 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
 
         if (sure) {
             $rootScope.loading = true;
-            message_manager.register("assets/login_background.jpg", "Goober");
-            theme_manager.clearThemes().then(function () {
+            //message_manager.register("assets/login_background.jpg", "Goober");
+            //message_manager.register("assets/login_background.jpg", "Goober doober");
+            //message_manager.register("assets/login_background.jpg", "Goober dinglober");
+            
+            filesystem_manager.resetThemes().then(function () {
                 filesystem_manager.init(true).then(function (success) {
                     console.log('Folders deleted successfully');
                     console.log(success);

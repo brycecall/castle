@@ -12,6 +12,7 @@ namespace CastleWebService.Models
         public virtual DbSet<Organizations> Organizations { get; set; }
         public virtual DbSet<Photos> Photos { get; set; }
         public virtual DbSet<Questions> Questions { get; set; }
+        public virtual DbSet<Reports> Reports { get; set; }
         public virtual DbSet<Sections> Sections { get; set; }
         public virtual DbSet<Subsections> Subsections { get; set; }
         public virtual DbSet<Themes> Themes { get; set; }
@@ -84,7 +85,7 @@ namespace CastleWebService.Models
             {
                 entity.HasKey(e => e.InspectionId);
 
-                entity.HasIndex(e => e.InsGuid)
+                entity.HasIndex(e => new { e.InsGuid, e.InsUserId })
                     .HasName("uniqueGuids")
                     .IsUnique();
 
@@ -131,10 +132,6 @@ namespace CastleWebService.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.InsTemplateResponseBlob)
-                    .HasColumnName("insTemplateResponseBlob")
-                    .IsUnicode(false);
-
                 entity.Property(e => e.InsTemplateTitle)
                     .HasColumnName("insTemplateTitle")
                     .HasMaxLength(100)
@@ -143,10 +140,6 @@ namespace CastleWebService.Models
                 entity.Property(e => e.InsThemeGuid)
                     .HasColumnName("insThemeGUID")
                     .HasMaxLength(257)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.InsThemeResponseBlob)
-                    .HasColumnName("insThemeResponseBlob")
                     .IsUnicode(false);
 
                 entity.Property(e => e.InsUserId).HasColumnName("insUserId");
@@ -296,6 +289,52 @@ namespace CastleWebService.Models
                     .HasConstraintName("FK_Questions_Subsections");
             });
 
+            modelBuilder.Entity<Reports>(entity =>
+            {
+                entity.HasKey(e => e.ReportId);
+
+                entity.Property(e => e.ReportCreatedDate)
+                    .HasColumnName("reportCreatedDate")
+                    .HasDefaultValueSql("(getutcdate())");
+
+                entity.Property(e => e.ReportIsDeleted).HasColumnName("reportIsDeleted");
+
+                entity.Property(e => e.ReportLastModified)
+                    .HasColumnName("reportLastModified")
+                    .HasDefaultValueSql("(getutcdate())");
+
+                entity.Property(e => e.ReportOrganizationId).HasColumnName("reportOrganizationId");
+
+                entity.Property(e => e.ReportSubmitted)
+                    .HasColumnName("reportSubmitted")
+                    .HasDefaultValueSql("((0))");
+
+                entity.Property(e => e.ReportTitle)
+                    .HasColumnName("reportTitle")
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ReportUnique)
+                    .IsRequired()
+                    .HasColumnName("reportUnique")
+                    .HasMaxLength(256)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.ReportUserId).HasColumnName("reportUserId");
+
+                entity.HasOne(d => d.ReportOrganization)
+                    .WithMany(p => p.Reports)
+                    .HasForeignKey(d => d.ReportOrganizationId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Reports_Organizations");
+
+                entity.HasOne(d => d.ReportUser)
+                    .WithMany(p => p.Reports)
+                    .HasForeignKey(d => d.ReportUserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Reports_Users");
+            });
+
             modelBuilder.Entity<Sections>(entity =>
             {
                 entity.HasKey(e => e.SectionId);
@@ -342,11 +381,11 @@ namespace CastleWebService.Models
             {
                 entity.HasKey(e => e.ThemeId);
 
-                entity.HasIndex(e => e.ThemeUnique)
-                    .HasName("uniqueThemeGuid")
+                entity.HasIndex(e => new { e.ThemeUnique, e.ThemeUserId })
+                    .HasName("uniqueThemeGuidAndUserID")
                     .IsUnique();
 
-                entity.Property(e => e.ThemeBlob).HasColumnName("themeBlob");
+                entity.Property(e => e.ThemeBlobStoreDate).HasColumnName("themeBlobStoreDate");
 
                 entity.Property(e => e.ThemeCreatedDate).HasColumnName("themeCreatedDate");
 
@@ -383,18 +422,6 @@ namespace CastleWebService.Models
                     .HasColumnName("themeVersion")
                     .HasMaxLength(50)
                     .IsUnicode(false);
-
-                entity.HasOne(d => d.ThemeOrganization)
-                    .WithMany(p => p.Themes)
-                    .HasForeignKey(d => d.ThemeOrganizationId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Theme__themeOrga__6754599E");
-
-                entity.HasOne(d => d.ThemeUser)
-                    .WithMany(p => p.Themes)
-                    .HasForeignKey(d => d.ThemeUserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Theme__themeUser__66603565");
             });
 
             modelBuilder.Entity<Users>(entity =>

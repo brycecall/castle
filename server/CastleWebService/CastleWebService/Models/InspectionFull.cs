@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -42,6 +43,7 @@ namespace CastleWebService.Models
         public ICollection<Subsections> Subsections { get; set; }
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "insId")]
         public int InspectionId {get; set;}
+
         // extra fields
         //[JsonExtensionData]
         //private IDictionary<string, JToken> _catchAll;
@@ -210,6 +212,9 @@ namespace CastleWebService.Models
     [ModelMetadataTypeAttribute(typeof(ThemesMetaData))]
     public partial class Themes
     {
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "blob")]
+        [NotMapped]
+        public string blobStream { get; set; }
     }
 
     public class ThemesMetaData
@@ -226,10 +231,9 @@ namespace CastleWebService.Models
         [JsonProperty(PropertyName = "title")]
         public string ThemeTitle { get; set; }
 
-        [JsonProperty(PropertyName = "blob")]
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "blob")]
         [NotMapped]
-        [JsonIgnore]
-        public string ThemeBlob { get; set; }
+        public string blobStream { get; set; }
 
         [JsonProperty(PropertyName = "isDeleted")]
         public byte? ThemeIsDeleted { get; set; }
@@ -261,6 +265,49 @@ namespace CastleWebService.Models
         [NotMapped]
         [JsonIgnore]
         public Users ThemeUser { get; set; }
+    }
+
+
+    [ModelMetadataTypeAttribute(typeof(ReportsMetaData))]
+    public partial class Reports
+    {
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "blob")]
+        [NotMapped]
+        public string blobStream { get; set; }
+    }
+
+    public class ReportsMetaData
+    {
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "Id")]
+        public int ReportId { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "UserId")]
+        public int ReportUserId { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "OrganizationId")]
+        public int ReportOrganizationId { get; set; }
+        [JsonProperty(PropertyName = "title")]
+        public string ReportTitle { get; set; }
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore, PropertyName = "blob")]
+        [NotMapped]
+        public string blobStream { get; set; }
+        [JsonProperty(PropertyName = "unique")]
+        public string ReportUnique { get; set; }
+        public byte ReportSubmitted { get; set; }
+        [JsonProperty(PropertyName = "date_created")]
+        public DateTime ReportCreatedDate { get; set; }
+        [JsonProperty(PropertyName = "db_last_modified")]
+        public DateTime ReportLastModified { get; set; }
+        [JsonProperty(PropertyName = "isDeleted")]
+        public byte? ReportIsDeleted { get; set; }
+
+        [ForeignKey("ReportOrganizationId")]
+        [NotMapped]
+        [JsonIgnore]
+        public Organizations ReportOrganization { get; set; }
+
+        [ForeignKey("ThemeUserId")]
+        [NotMapped]
+        [JsonIgnore]
+        public Users ReportUser { get; set; }
     }
 
 } // End Namespace

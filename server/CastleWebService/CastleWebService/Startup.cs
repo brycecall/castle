@@ -12,6 +12,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Reflection;
 using Microsoft.Extensions.Caching.Memory;
+using Microsoft.AspNetCore.Http.Features;
 
 namespace CastleWebService
 {
@@ -123,6 +124,12 @@ namespace CastleWebService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<FormOptions>(x =>
+            {
+                x.ValueLengthLimit = int.MaxValue;
+                x.MultipartBodyLengthLimit = int.MaxValue;
+                x.MultipartHeadersLengthLimit = int.MaxValue;
+            });
             services.AddMemoryCache();
             services.AddCors();
             services.AddAntiforgery(options => options.HeaderName = "X-XSRF-TOKEN");
@@ -142,6 +149,7 @@ namespace CastleWebService
             {
                 app.UseDeveloperExceptionPage();
             }
+            
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             app.UseMvc();
         }

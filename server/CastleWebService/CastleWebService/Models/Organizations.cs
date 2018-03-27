@@ -7,7 +7,7 @@ namespace CastleWebService.Models
     {
         public Organizations()
         {
-            Themes = new HashSet<Themes>();
+            Reports = new HashSet<Reports>();
         }
 
         public int OrganizationId { get; set; }
@@ -20,6 +20,6 @@ namespace CastleWebService.Models
         public DateTime OrgLastModifed { get; set; }
         public byte? OrgIsDeleted { get; set; }
 
-        public ICollection<Themes> Themes { get; set; }
+        public ICollection<Reports> Reports { get; set; }
     }
 }

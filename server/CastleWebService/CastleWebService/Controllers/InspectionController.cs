@@ -18,6 +18,7 @@ namespace CastleWebService.Controllers
         public const string TEMPLATE = "template";
         public const string INSPECTION = "inspection";
         public const string THEME = "theme";
+        public const string REPORT = "report";
         public const string ALL = "ALL";
 
         castle_devContext _db = new castle_devContext();

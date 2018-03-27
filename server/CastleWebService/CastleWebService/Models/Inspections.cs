@@ -18,8 +18,6 @@ namespace CastleWebService.Models
         public DateTime InsLastModified { get; set; }
         public DateTime? InsLastSubmitted { get; set; }
         public string InsThemeGuid { get; set; }
-        public string InsThemeResponseBlob { get; set; }
-        public string InsTemplateResponseBlob { get; set; }
         public string InsOrganizationGuid { get; set; }
         public string InsTemplateGuid { get; set; }
         public string InsTemplateTitle { get; set; }

@@ -9,7 +9,7 @@ namespace CastleWebService.Models
         {
             AutoComment = new HashSet<AutoComment>();
             Inspections = new HashSet<Inspections>();
-            Themes = new HashSet<Themes>();
+            Reports = new HashSet<Reports>();
         }
 
         public int UserId { get; set; }
@@ -31,6 +31,6 @@ namespace CastleWebService.Models
 
         public ICollection<AutoComment> AutoComment { get; set; }
         public ICollection<Inspections> Inspections { get; set; }
-        public ICollection<Themes> Themes { get; set; }
+        public ICollection<Reports> Reports { get; set; }
     }
 }

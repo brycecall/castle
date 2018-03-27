@@ -468,6 +468,10 @@ namespace CastleWebService.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
+                entity.Property(e => e.UsrNeedsEula)
+                    .HasColumnName("usrNeedsEULA")
+                    .HasDefaultValueSql("((1))");
+
                 entity.Property(e => e.UsrOrganizationId).HasColumnName("usrOrganizationId");
 
                 entity.Property(e => e.UsrPassword)

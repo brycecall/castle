@@ -193,7 +193,15 @@ namespace CastleWebService.Controllers
                 else if (getUser != null)
                 {
                     result.data = getUser.UserId;
-                    result.message = "Success";
+                    // Check if EULA has been accepted
+                    if (getUser.UsrNeedsEula != null)
+                    {
+                        result.message = "EULA";
+                    }
+                    else
+                    {
+                        result.message = "Success";
+                    }
                 }
             }
             catch (Exception e)

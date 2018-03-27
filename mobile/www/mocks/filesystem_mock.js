@@ -90,5 +90,14 @@ app.factory('filesystem_mock', function ($q, $cordovaFile, $sha) {
     public.deleteInit = function() {
         return private.createSuccessPromise();
     }
+    
+    // Get reports from a public directory
+    public.getReports = function() {
+      var result = { "message":"", "data":[] }
+      var deferred = $q.defer();
+      deferred.resolve(result);
+      return deferred.promise;
+    }
+    
   return public;
 });

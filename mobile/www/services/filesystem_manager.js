@@ -1,4 +1,4 @@
-app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, $http) {
+app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, $http, filesystem_mock) {
     var public = {};
     var private = {};
     if (window.cordova) {
@@ -6,8 +6,12 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
         private.inspectionPath = cordova.file.dataDirectory + "inspections/";
         private.templatePath = cordova.file.dataDirectory + "templates/";
         private.themePath = cordova.file.dataDirectory + "themes/";
+        
+    } else {
+        return filesystem_mock;
     }
-
+        
+    
     // General Init Method
     public.init = function (force) {
         // Check if the themes folder has been created in the data directory, if not, copy the defaults from www
@@ -30,6 +34,39 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
             private.copyDefaultThemes();
             private.deleteInit();
         }
+    };
+    
+    // Load reports from public file location
+    public.getReports = function () {
+        var deferred = $q.defer();
+        var result = {
+            "message":"ERROR: Could not access filesystem to load history.", 
+            "data":[]
+        };
+        
+        var file_promise = $cordovaFile.checkDir(cordova.file.externalDataDirectory, ".");
+        file_promise.then(function (resultData) {
+          resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function (fileSystem) {
+              var reader = fileSystem.createReader();
+              reader.readEntries(function(success){
+                  result.message = "";
+                  result.data = success;
+                  deferred.resolve(result);
+              }, function(error){
+                  result.message = "No Reports Found";
+                  result.data = error;
+                  deferred.reject(result);
+              });
+            }, function(error){
+                result.data = error;
+                deferred.reject(result);
+          });
+        }, function(error) {
+            result.data = error;
+            deferred.reject(result);
+        });
+        
+        return deferred.promise;
     };
 
     // Generates unique id to be used for inspection/template files

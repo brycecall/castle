@@ -13,21 +13,21 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('history', function ($scope, $rootScope, $state, $cordovaFile, header_manager) {
+app.controller('history', function ($scope, $rootScope, $state, filesystem_manager, header_manager) {
   header_manager.title = "Report History";
   
   $scope.reports = [];
   $scope.message = 'Gathering your reports...';
   $rootScope.loading = true;
-  
-  var file_promise = $cordovaFile.checkDir(cordova.file.externalDataDirectory, ".");
-  file_promise.then(function (result) {
-    resolveLocalFileSystemURL(cordova.file.externalDataDirectory, function (fileSystem) {
-        var reader = fileSystem.createReader();
-        reader.readEntries(success, error);
-      }, error);
+
     
-    var success = function (entries) {
+  var error = function (error) {
+      $scope.message = error.message;
+      $rootScope.loading = false;
+    };
+  
+    var success = function (result) {
+      var entries = result.data;
       if (entries.length == 0) {
         $scope.message = "No Reports Found";
       } else {
@@ -41,16 +41,11 @@ app.controller('history', function ($scope, $rootScope, $state, $cordovaFile, he
       }
       $rootScope.loading = false;
     };
-      
-    var error = function (error) {
-      $scope.message = "No Reports Found";
-      $rootScope.loading = false;
-    }
-  }, function(error) {
-    $scope.message = "ERROR: Could not access filesystem to load history.";
-    $rootScope.loading = false;
-  });
-  
+    
+    
+  filesystem_manager.getReports().then(success, error);
+    
+
   $scope.send = function(reportURL) {
     if (window['cordova'] !== undefined ) {
       cordova.plugins.email.open({
@@ -77,4 +72,4 @@ app.controller('history_preview', function($scope, $rootScope) {
       $rootScope.buffer = null;
     }, 500);
   })
-})
+});

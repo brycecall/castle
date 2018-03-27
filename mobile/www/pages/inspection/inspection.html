@@ -1,6 +1,6 @@
 <link type="text/css" rel="stylesheet" href="pages/inspection/inspection.css" />
 <div class="page" ng-cloak>
-  <div class="filter-bar" layout="row" layout-align="space-around center">
+<!--  <div class="filter-bar" layout="row" layout-align="space-around center">
     <md-input-container>
       <label>Search</label>
       <input ng-model="search">
@@ -17,7 +17,7 @@
         <md-option ng-value="state" ng-repeat="state in state_filters">{{ state }}</md-option>
       </md-select>
     </md-input-container>
-  </div>
+  </div>-->
 
   <div ng-cloak ng-show="inspections.length == 0 || inspections.length <= numDeleted" style="padding-left: 16px;">
     No inspections yet!

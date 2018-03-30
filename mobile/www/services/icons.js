@@ -86,5 +86,6 @@ app.config(function ($mdIconProvider) {
     .icon('cloud_off', icon_root + "/ic_cloud_off_24px.svg")
     .icon('cloud_queue', icon_root + "/ic_cloud_queue_24px.svg")
     .icon('sync', icon_root + "/ic_sync_24px.svg")
+    .icon('delete_forever', icon_root + "/ic_delete_forever_24px.svg")
     .icon('export', icon_root + "/ic_open_in_new_24px.svg");
 });

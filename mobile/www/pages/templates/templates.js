@@ -204,13 +204,15 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
       .toastClass('highIndex');
     
     $scope.templates[index].deleted = true;
+    $scope.templates[index].existsLocally = false;
     $scope.numDeleted++;
     $mdToast.show(toast).then(function (response) {
       if (response == 'ok') {
         $scope.templates[index].deleted = false;
+        $scope.templates[index].existsLocally = true;
         $scope.numDeleted--;
       } else {
-        inspection_manager.deleteInspection(list[index].guid + ".js")
+        inspection_manager.deleteInspection(list[index].guid + ".json")
                           .then(function(success){}, 
                                 function(error){
             $scope.templates[index].deleted = false;
@@ -239,7 +241,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
         $scope.templates[index].deleted = false;
         $scope.numDeleted--;
       } else {
-        inspection_manager.deleteInspection(list[index].guid + ".js")
+        inspection_manager.deleteInspection(list[index].guid + ".json")
                           .then(function(success){}, 
                                 function(error){
             $scope.templates[index].deleted = false;

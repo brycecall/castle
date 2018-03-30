@@ -10,7 +10,8 @@
             <md-input-container class="md-icon-float md-block">
               <label>Email</label>
               <md-icon md-svg-icon="email"></md-icon>
-              <input name="email" ng-model="user.email" required type="email">
+              <input name="email" ng-model="user.email" required 
+                     type="email" ng-change="clearMessages()">
               <div ng-messages="registerForm.email.$error" 
                      ng-show="registerForm.email.$dirty" role="alert" multiple>
                   <div ng-message="required">This is required!</div>
@@ -19,7 +20,8 @@
              <md-input-container class="md-icon-float md-block">
                <label>Password</label>
                <md-icon md-svg-icon="password"></md-icon>
-               <input name="password" ng-model="user.password" required type="password">
+               <input name="password" ng-model="user.password" ng-change="clearMessages()" 
+                      required type="password">
                <div ng-messages="loginForm.password.$error" 
                         ng-show="loginForm.password.$dirty">
                      <div ng-message="required">This is required!</div>
@@ -41,7 +43,7 @@
           <md-input-container class="md-icon-float md-block">
             <label>Email</label>
             <md-icon md-svg-icon="email"></md-icon>
-            <input name="email" ng-model="new_user.email" required md-maxlength="100" type="email">
+            <input name="email" ng-model="new_user.email" ng-change="clearMessages('register')" required md-maxlength="100" type="email">
             <div ng-messages="registerForm.email.$error" 
                      ng-show="registerForm.email.$dirty" role="alert" multiple>
                   <div ng-message="required">This is required!</div>
@@ -51,8 +53,8 @@
           <md-input-container class="md-icon-float md-block">
             <label>Password</label>
             <md-icon md-svg-icon="password"></md-icon>
-            <input name="password" ng-model="new_user.password" required 
-                   md-minlength="8" md-maxlength="50" type="password">
+            <input name="password" ng-model="new_user.password" ng-change="clearMessages('register')" 
+                  required md-minlength="8" md-maxlength="50" type="password">
             <div ng-messages="registerForm.password.$error" role="alert" multiple >
                   <div ng-message="required">This is required!</div>
                   <div ng-message="md-minlength">This password is too short</div>

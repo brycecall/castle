@@ -54,7 +54,15 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
     document.activeElement.blur();
   }, "md-accent");
 
-$scope.register = function() {
+    $scope.clearMessages = function(menu) {
+        if (menu === 'register') {
+            $scope.serverRegisterErrorMessage = "";
+        } else {
+            $scope.serverErrorMessage = "";
+        }
+    }
+    
+    $scope.register = function() {
        var isValid = $("#register")[0].reportValidity();
        console.log("Register called");
        console.log("Form isValid = " + isValid);
@@ -82,6 +90,7 @@ $scope.register = function() {
 		} else {
           $scope.serverRegisterErrorMessage = success.data;
 		  console.log(success.message);
+          $scope.new_user.password = "";
           //TODO: protect against too many accounts being created on one device
           //checkFailLoginAttempts();
 		}
@@ -90,6 +99,7 @@ $scope.register = function() {
           error = error.data;
         if (error) {
             $scope.serverRegisterErrorMessage = error.message;
+            $scope.new_user.password = "";
         } else {
             $scope.serverRegisterErrorMessage = "Failed to connect. Are you connected to the internet?";
         }
@@ -99,7 +109,7 @@ $scope.register = function() {
     }
   };
     
- $scope.login = function() {
+    $scope.login = function() {
        var isValid = $("#login")[0].reportValidity();
        console.log("Login called");
        console.log("Form isValid = " + isValid);
@@ -131,6 +141,7 @@ $scope.register = function() {
 		} else if (success.data == -1) {
           $scope.accountLocked = true;
           $scope.serverErrorMessage = success.message;
+          $scope.user.password = "";
         } else {
           $scope.accountLocked = false;
           $scope.serverErrorMessage = success.message;
@@ -138,6 +149,7 @@ $scope.register = function() {
           if (success.data == -2) {
                 checkFailLoginAttempts();
           }
+          $scope.user.password = "";    
 		  console.log(success.message);
 		}
 	  }, function(error) {
@@ -148,6 +160,7 @@ $scope.register = function() {
                 checkFailLoginAttempts();
             }
             $scope.serverErrorMessage = error.message;
+            $scope.user.password = "";
         } else {
             $scope.serverErrorMessage = "Failed to connect. Are you connected to the internet?";          
         }

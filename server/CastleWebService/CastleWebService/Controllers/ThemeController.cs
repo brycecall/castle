@@ -89,8 +89,8 @@ namespace CastleWebService.Controllers
 
         #region UPDATE/UPSERT
 
-        [HttpPost("api/v1/upsertblob/")]
-        public async Task<CastleData> UpsertBlob(IFormFile file, int userId)
+        [HttpPost("api/v1/UpsertTheme/")]
+        public async Task<CastleData> UpsertTheme(IFormFile file, int userId)
         {
             _db.Database.SetCommandTimeout(60);
             string containerName = InspectionController.THEME;
@@ -168,7 +168,7 @@ namespace CastleWebService.Controllers
 
         
 
-        [HttpPost("api/v1/UpsertTheme/")]
+        [HttpPost("api/v1/UpsertThemeOld/")]
         public async Task<CastleData> UploadFile(IFormFile file, int userId)
         {
             _db.Database.SetCommandTimeout(60);

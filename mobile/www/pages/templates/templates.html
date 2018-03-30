@@ -1,5 +1,6 @@
 <link type="text/css" rel="stylesheet" href="pages/templates/templates.css" />
 <div class="page">
+<!--
   <div class="filter-bar" layout="row" layout-align="space-around center">
     <md-input-container>
       <label>Search</label>
@@ -18,12 +19,14 @@
       </md-select>
     </md-input-container>
   </div>
-  <md-card class="template" ng-hide="angular.equals([], templates) || template.deleted === true" ng-repeat="template in templates track by $index">
+-->
+  <md-card class="template" ng-hide="angular.equals([], templates) || template.deleted === true" 
+           ng-repeat="template in templates track by $index">
     <md-card-content layout="row" layout-align="start center">
       <div layout-fill>
         <div>
             <div layout="row">
-                <div><b>Title:</b> {{template.insTemplateTitle}}</div>
+                <div>{{template.insTemplateTitle}}</div>
                 <span flex=""></span>
                 <md-icon md-svg-src="{{ template.syncIcon }}" ng-click="downloadTemplate(template)"></md-icon>
                 <md-menu>
@@ -37,22 +40,22 @@
                         Rename
                       </md-button>
                     </md-menu-item>
-                  <md-menu-item>
+                  <md-menu-item ng-show="template.syncIcon != 'cloud_download'">
                     <md-button ng-click="export(template);">
                       <md-icon md-svg-icon="export" md-menu-align-target></md-icon>
                       Export
                     </md-button>
                   </md-menu-item>
-                  <md-menu-item class="hide show-xs">
-                    <md-button>
-                      <md-icon md-svg-icon="send" md-menu-align-target></md-icon>
-                      Send
-                      </md-button>
-                  </md-menu-item>
-                  <md-menu-item>
+                  <md-menu-item ng-show="template.syncIcon != 'cloud_download'">
                     <md-button ng-click="delete($index, templates)">
                       <md-icon md-svg-icon="delete" md-menu-align-target ></md-icon>
                       Delete
+                    </md-button>
+                  </md-menu-item>
+                  <md-menu-item ng-show="template.syncIcon == 'cloud_download'">
+                    <md-button ng-click="deleteFromCloud($index, templates)">
+                      <md-icon md-svg-icon="delete_forever" md-menu-align-target ></md-icon>
+                      Delete from Cloud
                     </md-button>
                   </md-menu-item>
                 </md-menu-content>
@@ -61,8 +64,9 @@
           <div><b>Last Modified:</b> {{template.insLastModified}}</div>
         </div>
         <div layout-fill layout="row" layout-align="end center">
-          <md-button class="md-raised" ng-click="edit($index)">Edit</md-button>
-          <md-button class="md-raised" ng-click="copy(template)">Copy</md-button>
+          <md-button ng-show="template.syncIcon == 'cloud_download'" class="md-raised md-accent" ng-click="downloadTemplate(template)" >Download</md-button>
+          <md-button ng-show="template.syncIcon != 'cloud_download'" class="md-raised" ng-click="edit($index)">Edit</md-button>
+          <md-button ng-show="template.syncIcon != 'cloud_download'" class="md-raised" ng-click="copy(template)">Copy</md-button>
         </div>
       </div>
     </md-card-content>

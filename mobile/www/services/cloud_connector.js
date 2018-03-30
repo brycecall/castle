@@ -161,8 +161,7 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, $md
                 }
 
                 function downloadThemeBlob(url, metadata) {
-                    queue.push(filesystem_manager.saveThemeBlob(url, metadata));
-                    $timeout(proxyPromise.resolve, 500);
+                    filesystem_manager.saveThemeBlob(url, metadata).then(proxyPromise.resolve, proxyPromise.reject);
                 };
                 
                 $q.all(queue).then(function (data) {

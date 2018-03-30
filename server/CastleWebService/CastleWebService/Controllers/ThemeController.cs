@@ -72,7 +72,8 @@ namespace CastleWebService.Controllers
             var blobStream = new MemoryStream();
             await blob.DownloadToStreamAsync(blobStream);
             byte[] byteBlob = blobStream.ToArray();
-            query.blobStream = Encoding.UTF8.GetString(byteBlob);
+            query.blobStream = Convert.ToBase64String(byteBlob);
+            //query.blobStream = Encoding.UTF8.GetString(byteBlob);
             return query;
         }
 

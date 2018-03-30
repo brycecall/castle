@@ -18,6 +18,7 @@ app.controller('themes', function ($scope, $rootScope, $state, theme_manager, he
 
     // check with the cloud, but update either way
     cloud_connector.syncThemes().then(updateThemes, updateThemes);
+
     function updateThemes() {
         theme_manager.update()
             .then(function (themes) {

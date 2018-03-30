@@ -21,7 +21,8 @@
                 "PHOTOLIBRARY_USAGE_DESCRIPTION": "This app needs read/write-access photo library access"
             },
             "com.jjdltc.cordova.plugin.zip": {},
-            "cordova-plugin-file-opener2": {}
+            "cordova-plugin-file-opener2": {},
+            "cordova-plugin-file-transfer": {}
         }
     },
     "dependencies": {
@@ -36,6 +37,7 @@
         "cordova-plugin-email": "^1.2.6",
         "cordova-plugin-file": "^4.3.3",
         "cordova-plugin-file-opener2": "^2.0.19",
+        "cordova-plugin-file-transfer": "^1.7.1",
         "cordova-plugin-ios-camera-permissions": "^1.2.0",
         "cordova-plugin-whitelist": "1",
         "cordova-zip-plugin": "0.0.4",

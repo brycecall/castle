@@ -7,6 +7,14 @@
     "files": {}
   },
   "installed_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.castle.inspect"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.castle.inspect"
+    }
+  },
+  "dependent_plugins": {
     "com.jjdltc.cordova.plugin.zip": {
       "PACKAGE_NAME": "com.castle.inspect"
     },
@@ -16,10 +24,10 @@
     "cordova-plugin-camera-preview": {
       "PACKAGE_NAME": "com.castle.inspect"
     },
-    "cordova-plugin-email": {
+    "cordova-plugin-compat": {
       "PACKAGE_NAME": "com.castle.inspect"
     },
-    "cordova-plugin-file": {
+    "cordova-plugin-email": {
       "PACKAGE_NAME": "com.castle.inspect"
     },
     "cordova-plugin-file-opener2": {
@@ -29,11 +37,6 @@
       "PACKAGE_NAME": "com.castle.inspect"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.castle.inspect"
-    }
-  },
-  "dependent_plugins": {
-    "cordova-plugin-compat": {
       "PACKAGE_NAME": "com.castle.inspect"
     }
   }

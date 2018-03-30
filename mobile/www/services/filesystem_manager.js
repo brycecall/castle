@@ -1,4 +1,4 @@
-app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, $http) {
+app.factory('filesystem_manager', function ($q, $cordovaFile, $cordovaFileTransfer, $rootScope, $sce, $http) {
     var public = {};
     var private = {};
     if (window.cordova) {
@@ -105,7 +105,7 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
 
         var file_system = resolveLocalFileSystemURL;
         var path = private.templatePath;
-        
+
         var success = function (files) {
             for (var index in files) {
                 promises.push(public.getTemplate(files[index].name));
@@ -118,7 +118,7 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
         var error = function (err) {
             deferred.reject(err);
         }
-        
+
         var result = file_system(path, function (fileSystem) {
             var reader = fileSystem.createReader();
             reader.readEntries(success, error);
@@ -161,7 +161,7 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
         var error = function (err) {
             deferred.reject(err);
         }
-        
+
         var result = file_system(path, function (fileSystem) {
             var reader = fileSystem.createReader();
             reader.readEntries(success, error);
@@ -398,11 +398,43 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $rootScope, $sce, 
     };
 
     // Saves base64 encoded zip file of the theme
-    public.saveThemeBlob = function (blob) {
+    public.saveThemeBlob = function (url, metadata) {
         var defered = $q.defer();
 
-        console.log("Blob Data: " + blob);
-        defered.resolve();
+        var polling_handle = setInterval(function () {
+            console.info(progress_buffer + "MB downloaded");
+        }, 1000);
+        var progress_buffer = 0;
+
+        $cordovaFileTransfer.download(url, cordova.file.cacheDirectory + "/" + metadata.unique + ".castle", null, false)
+            .then(
+                // Success Function
+                function (file) {
+                    JJzip.unzip(file.nativeURL, {
+                            "target": cordova.file.dataDirectory + "/themes/" + metadata.unique + "/"
+                        },
+                        function (result) {
+                            $cordovaFile.removeFile(cordova.file.cacheDirectory, metadata.unique + ".castle");
+                            $cordovaFile.moveDir(cordova.file.dataDirectory + "/themes/" + metadata.unique + "/", "theme",  cordova.file.dataDirectory + "/themes/", metadata.unique + "/");
+                            clearInterval(polling_handle);
+                            defered.resolve(result);
+                        },
+                        function (error) {
+                            clearInterval(polling_handle);
+                            defered.reject(error);
+                        }
+                    );
+                },
+                // Error Function
+                function (error) {
+                    clearInterval(polling_handle);
+                    defered.reject(error);
+                },
+                // Progress Function
+                function (progress) {
+                    progress_buffer = (progress.loaded / 1000000).toFixed(3);
+                }
+            );
 
         return defered.promise;
     };

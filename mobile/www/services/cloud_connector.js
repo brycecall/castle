@@ -1,7 +1,7 @@
 // Server connection
 //app.constant('BASE_URL', 'http://localhost:53326/');
 app.constant('BASE_URL', 'https://api.castle.invenio.xyz/');
-//app.constant('BASE_URL', 'http://localhost:62326/');
+//app.constant('BASE_URL', 'http://localhost:5000/');
 
 app.factory('pendingRequests', function () {
     var private = {};
@@ -78,9 +78,14 @@ app.factory('httpService', ['$http', '$q', 'pendingRequests', 'BASE_URL', functi
 }]);
 
 
-app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, httpService, filesystem_manager, theme_manager) {
+app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, $mdToast, $timeout, httpService, filesystem_manager, theme_manager, BASE_URL) {
     var public = {};
     var private = {};
+
+    var toast = $mdToast.simple()
+        .position('bottom')
+        .toastClass('highIndex');
+    toast.hideDelay = 0;
 
     /*** GLOBAL ***/
     public.sync = function () {
@@ -117,6 +122,13 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
     /*** THEMES ***/
     public.syncThemes = function () {
         var defered = $q.defer();
+        // The proxyPromise allows $q.all to be called outside of the first future returning
+        var proxyPromise = $q.defer();
+        var queue = [];
+        queue.push(proxyPromise);
+
+        toast.textContent('Checking for themes from cloud...');
+        $mdToast.show(toast);
 
         httpService.submitRemote({
             method: "GET",
@@ -131,61 +143,69 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, htt
                 if (Object.keys(response.data).length == 0) {
                     defered.resolve();
                 }
-                
+
                 for (var key in response.data) {
                     (function (metadata, key) {
-                        theme_manager.getThemeManifest(metadata['unique'])
+                        queue.push(theme_manager.getThemeManifest(metadata['unique'])
                             .then(
                                 function (result) {
                                     if (result.hash != metadata.hash) {
-                                        downloadThemeBlob(key);
+                                        downloadThemeBlob(BASE_URL + "api/v1/theme?guid=" + metadata.unique + "&userId=" + $rootScope.userId, metadata);
                                     }
                                 },
                                 function (error) {
-                                    downloadThemeBlob(key);
+                                    downloadThemeBlob(BASE_URL + "api/v1/theme?guid=" + metadata.unique + "&userId=" + $rootScope.userId, metadata);
                                 }
-                            );
-                    }(response.data[key], key))
+                            ));
+                    }(response.data[key], key));
                 }
 
-                function downloadThemeBlob(key) {
-                    private.downloadTheme(response.data[key]["unique"])
-                        .then(function (data) {
-                            filesystem_manager.saveThemeBlob(data).then(function () {
-                                defered.resolve();
-                            });
-                        });
+                function downloadThemeBlob(url, metadata) {
+                    queue.push(filesystem_manager.saveThemeBlob(url, metadata));
+                    $timeout(proxyPromise.resolve, 500);
                 };
+                
+                $q.all(queue).then(function (data) {
+                    theme_manager.update();
+                    toast.textContent('Themes are now ready');
+                    $mdToast.show(toast);
+                    defered.resolve(data);
+                }, function (error) {
+                    toast.textContent('Theme download failure');
+                    $mdToast.show(toast);
+                    defered.reject(error);
+                });
             },
             function (error) {
                 defered.reject(error);
             });
         
+        
         return defered.promise;
     };
 
-    private.downloadTheme = function (guid) {
-        var defered = $q.defer();
-
-        httpService.submitRemote({
-            method: "GET",
-            url: "api/v1/theme/",
-            useBaseUrl: true,
-            params: {
-                userId: $rootScope.userId,
-                guid: guid,
-                token: null
-            }
-        }).then(
-            function (response) {
-                defered.resolve(response.data);
-            },
-            function (error) {
-                defered.reject(error);
-            });
-
-        return defered.promise;
-    };
+    //    private.downloadTheme = function (guid) {
+    //        var defered = $q.defer();
+    //
+    //        httpService.submitRemote({
+    //            method: "GET",
+    //            url: "api/v1/theme/",
+    //            useBaseUrl: true,
+    //            params: {
+    //                userId: $rootScope.userId,
+    //                guid: guid,
+    //                token: null
+    //            }
+    //        }).then(
+    //            function (response) {
+    //                defered.resolve(response.data);
+    //            },
+    //            function (error) {
+    //                defered.reject(error);
+    //            });
+    //
+    //        return defered.promise;
+    //    };
 
     private.uploadTheme = function (themeId) {
         //TODO: get the theme from the local active themes folder

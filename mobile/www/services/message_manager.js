@@ -4,6 +4,7 @@ app.factory('message_manager', function ($rootScope) {
 
     public.register = function (image, text) {
         var messages = JSON.parse(localStorage.getItem("messages"));
+        messages = (messages ? messages : []);
         messages.push({
             "image": image,
             "text": text

@@ -77,8 +77,8 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
                 }
                 break;
             case "theme":
-                console.log('Inspection Manager - Get Theme ID: ' + ins.insId);
-                promise = private.loadFromThemeManager(ins.insId);
+                console.log('Inspection Manager - Get Theme ID: ' + ins.unique);
+                promise = private.loadFromThemeManager(ins.unique);
                 break;
             default:
                 defer.reject(public.mode + " is not a valid type.");

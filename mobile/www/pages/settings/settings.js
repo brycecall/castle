@@ -50,13 +50,13 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
             filesystem_manager.resetThemes().then(function () {
                 filesystem_manager.init(true).then(function (success) {
                     console.log('Folders deleted successfully');
-                    console.log(success);
+                    //console.log(success);
                     $rootScope.loading = false;
                     $scope.reload();
                 }, function (error) {
                     console.log('Error deleting folders');
                     console.log(error);
-                    $rootScope.loading = false;
+                    $scope.reload();
                 });
             });
         }

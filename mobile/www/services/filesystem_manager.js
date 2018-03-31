@@ -14,6 +14,8 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $cordovaFileTransf
     
     // General Init Method
     public.init = function (force) {
+        var defered = $q.defer();
+        
         // Check if the themes folder has been created in the data directory, if not, copy the defaults from www
         $cordovaFile.checkDir(cordova.file.dataDirectory, "themes")
             .then(
@@ -30,10 +32,14 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $cordovaFileTransf
                 })
 
         function init() {
+            var queue = [];
             console.log("INITIALIZING ALL DATA!!!");
-            private.copyDefaultThemes();
-            private.deleteInit();
+            queue.push(private.copyDefaultThemes());
+            queue.push(private.deleteInit());
+            $q.all(queue).then(defered.resolve, defered.reject);
         }
+        
+        return defered.promise;
     };
     
     // Load reports from public file location
@@ -212,7 +218,7 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $cordovaFileTransf
         var deferred = $q.defer();
 
         // Write to file
-        public.saveTemplate(newTemplate.guid + ".js", JSON.stringify(newTemplate))
+        public.saveTemplate(newTemplate.guid + ".json", JSON.stringify(newTemplate))
             .then(function (success) {
                 deferred.resolve({
                     'template': newTemplate
@@ -229,7 +235,7 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $cordovaFileTransf
         var deferred = $q.defer();
 
         // Write to file
-        public.saveInspection(template.guid + ".js", JSON.stringify(template))
+        public.saveInspection(template.guid + ".json", JSON.stringify(template))
             .then(function (success) {
                 deferred.resolve(success);
             }, function (error) {

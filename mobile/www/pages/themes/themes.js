@@ -52,9 +52,11 @@ app.controller('themes', function ($scope, $rootScope, $state, theme_manager, he
         inspection_manager.mode = "theme";
         console.log(theme);
         theme_manager.current = theme;
-        $state.go('template_section', {
-            'insId': theme.unique,
-            'type': "theme"
+        inspection_manager.getInspection(theme).then(function () {
+            $state.go('template_section', {
+                'insId': theme.unique,
+                'type': "theme"
+            });
         });
     };
 

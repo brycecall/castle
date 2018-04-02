@@ -124,7 +124,7 @@ $scope.register = function() {
 		  $rootScope.userId = success.data;
           // Check message to see if EULA needs to be accepted
           if (success.message.indexOf("EULA") > -1) {
-            $rootScope.needsEula = true; 
+            $rootScope.needsEula = true;
           }
 		  localStorage.setItem("userId", success.data);
           localStorage.setItem("failCount", "0");

@@ -92,6 +92,7 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, $md
         public.syncThemes();
     };
 
+    /*** USER ***/
     public.validateUser = function (username, password) {
         return httpService.submitRemote({
             method: 'POST',
@@ -119,6 +120,18 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, $md
         });
     };
 
+    public.acceptEula = function(userId) {
+        return httpService.submitRemote({
+            method: 'POST',
+            url: 'api/v1/acceptUserEula/',
+            data: {
+                userId: userId
+            },
+            params: null,
+            useBaseUrl: true
+        });
+    };
+    
     /*** THEMES ***/
     public.syncThemes = function () {
         var defered = $q.defer();

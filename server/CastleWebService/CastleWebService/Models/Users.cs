@@ -28,6 +28,7 @@ namespace CastleWebService.Models
         public DateTime UsrLastModified { get; set; }
         public byte UsrAccountLocked { get; set; }
         public string UsrEmailToken { get; set; }
+        public byte? UsrNeedsEula { get; set; }
 
         public ICollection<AutoComment> AutoComment { get; set; }
         public ICollection<Inspections> Inspections { get; set; }

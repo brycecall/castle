@@ -193,7 +193,15 @@ namespace CastleWebService.Controllers
                 else if (getUser != null)
                 {
                     result.data = getUser.UserId;
-                    result.message = "Success";
+                    // Check if EULA has been accepted
+                    if (getUser.UsrNeedsEula != null)
+                    {
+                        result.message = "EULA";
+                    }
+                    else
+                    {
+                        result.message = "Success";
+                    }
                 }
             }
             catch (Exception e)
@@ -237,6 +245,36 @@ namespace CastleWebService.Controllers
             }
 
             return Content(result.message, "text/html");
+        }
+
+        [HttpPost("api/v1/acceptUserEula/")]
+        public CastleData AcceptEula([FromBody]object userObj)
+        {
+            var result = new CastleData();
+            try
+            {
+                var settings = new JsonSerializerSettings
+                {
+                    ContractResolver = new ModelMetadataTypeAttributeContractResolver()
+                };
+                var user = JsonConvert.DeserializeObject<Users>(userObj.ToString(), settings);
+                var existingUser = _db.Users.Where(x => x.UserId == user.UserId).FirstOrDefault();
+
+                // Nullify needsEula column
+                var userChange = existingUser;
+                userChange.UsrNeedsEula = null;
+
+                _db.Entry(existingUser).CurrentValues.SetValues(userChange);
+                _db.SaveChanges();
+                result.data = 0;
+                result.message = "Success";
+            }
+            catch (Exception e)
+            {
+                result = new CastleData { message = e.Message, data = -1 };
+            }
+
+            return result;
         }
         #endregion
 

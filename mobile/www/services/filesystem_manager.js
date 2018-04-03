@@ -289,6 +289,7 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $cordovaFileTransf
                 //newTemp.resolve(success);
                 private.copyDefaultTemplates()
                     .then(function (success) {
+                        success.insUserId = $rootScope.userId;
                         newTemp.resolve(success);
                     }, function (error) {
                         newTemp.reject(error);

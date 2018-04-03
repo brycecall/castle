@@ -1,4 +1,4 @@
-app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_manager, filesystem_mock) {
+app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_manager, filesystem_mock, $rootScope) {
     var private = {};
     var public = {};
 
@@ -89,13 +89,15 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
 
     public.copy = function (ins) {
         var deferred = $q.defer();
-
+        var newInspection = angular.copy(ins);
+        newInspection.guid = filesystem_manager.generateGuid();
+        newInspection.syncIcon = ""
         switch (public.mode) {
             case "inspection":
-                private.copyInspection(ins);
+                private.copyInspection(newInspection);
                 break;
             case "template":
-                private.copyTemplate(ins).then(function (success) {
+                private.copyTemplate(newInspection).then(function (success) {
                     deferred.resolve(success);
                 }, function (error) {
                     deferred.reject(error);
@@ -110,7 +112,7 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
 
     private.copyInspection = function (ins) {
         var deferred = $q.defer();
-
+        
         filesystem_manager.copyInspection(ins).then(function (success) {
             deferred.resolve(success);
         }, function (error) {
@@ -122,7 +124,6 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
 
     private.copyTemplate = function (ins) {
         var deferred = $q.defer();
-
         filesystem_manager.copyTemplate(ins).then(function (success) {
             console.log(success);
             deferred.resolve(success);
@@ -615,10 +616,16 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
 
     private.saveInspectionToFile = function () {
         var deferred = $q.defer();
+        
         // If no guid is already associated, add one
         if (!private.inspection.guid) {
             private.inspection.guid = filesystem_manager.generateGuid();
         }
+        
+        if (private.inspection.insUserId == null) {
+            private.inspection.insUserId  = $rootScope.userId;
+        }
+        
         private.inspection.hash = null;
         private.inspection.lastModified = new Date();
         private.inspection.hash = $sha.hash(private.inspection.toString());

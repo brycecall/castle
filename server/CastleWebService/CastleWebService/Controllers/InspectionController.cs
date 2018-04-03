@@ -108,7 +108,7 @@ namespace CastleWebService.Controllers
                 };
 
                 var inspection = JsonConvert.DeserializeObject<Inspections>(iInspection.ToString(), settings);
-
+                inspection.InsUserId = userId;
                 var existingInspection = _db.Inspections.Where(x => x.InsGuid == inspection.InsGuid && x.InsUserId == userId).FirstOrDefault();
 
                 if (existingInspection != null)

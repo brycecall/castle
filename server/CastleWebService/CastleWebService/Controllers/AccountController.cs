@@ -76,7 +76,7 @@ namespace CastleWebService.Controllers
                     client.UseDefaultCredentials = false;
                     client.Port = 587;
                     client.EnableSsl = true;
-                    client.Credentials = new NetworkCredential("jordanballs@invenio.xyz", "MoneyBalls101");
+                    client.Credentials = new NetworkCredential("service@invenio.xyz", "AlphaBeta_");
 
                     MailMessage mailMessage = new MailMessage();
                     mailMessage.IsBodyHtml = true;

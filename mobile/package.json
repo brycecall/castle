@@ -1,6 +1,6 @@
 {
-    "name": "com.castle.inspect",
-    "version": "1.0.1",
+    "name": "xyz.invenio.castle",
+    "version": "0.0.1",
     "displayName": "Castle",
     "cordova": {
         "platforms": [

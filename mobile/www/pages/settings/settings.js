@@ -49,6 +49,7 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
             
             filesystem_manager.resetThemes().then(function () {
                 filesystem_manager.init(true).then(function (success) {
+                    localStorage.clear();
                     console.log('Data reset successfully');
                     //console.log(success);
                     $rootScope.loading = false;

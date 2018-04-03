@@ -112,12 +112,12 @@ app.controller('report', function ($scope, $rootScope, $sha, $timeout, $interval
   var cache_promise = storeImageCache(inspection);
   cache_promise.then(function (inspection) {
 
-    var theme_promise = theme_manager.getThemeManifest(inspection.insThemeId);
+    var theme_promise = theme_manager.getThemeManifest(inspection.insThemeUnique);
     theme_promise.then(function (manifest) {
 
       var entry_point = manifest.entry_point;
       if ($rootScope.debug) {
-        entry_point = "http://localhost:8080/" + inspection.insThemeId + "/";
+        entry_point = "http://localhost:8080/" + inspection.insThemeUnique + "/";
       }
 
       render_frame.addEventListener('load', function (event) {

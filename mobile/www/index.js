@@ -123,7 +123,7 @@ app.run(function ($rootScope, $timeout, header_manager) {
             }, (15 * 1000));
         }
     })
-})
+});
 
 // Control to set application in DEBUG mode
 app.run(function ($rootScope, theme_manager) {
@@ -153,7 +153,7 @@ app.run(function ($rootScope) {
     if (window.innerWidth < 652 && window.innerWidth > 425) {
       $rootScope.enlarge = true;
     }*/
-})
+});
 
 // Setup the hashing functions
 app.run(function ($sha, $rootScope) {
@@ -167,8 +167,8 @@ app.run(function ($sha, $rootScope) {
 // Get App Version
 app.run(function ($rootScope) {
     $rootScope.version = "";
-    if (cordova) {
-        cordova.getAppVersion.getVersionNumber().then(
+    if (window.cordova) {
+        window.cordova.getAppVersion.getVersionNumber().then(
             function(data) { 
                 console.log("This is version " + data + " of Castle.");
                 $rootScope.version = data;

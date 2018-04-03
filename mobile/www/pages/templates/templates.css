@@ -164,3 +164,7 @@ md-input-container {
 .breadCrumbs .active~div, .breadCrumbs .active~.md-button {
     display:none;
 }
+
+.smallTitle {
+    font-size: 18px;
+}

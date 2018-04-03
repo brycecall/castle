@@ -65,9 +65,9 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
        cloud_connector.getInspectionFromCloud(template.guid).then(
          function(result) {
              for (var i = 0; i < $scope.templates.length; i++) {
-                 (function(index) {
-                     if ($scope.templates[index].guid == template.guid) {
-                         $scope.templates[index] = result.data;
+                 if ($scope.templates[i].guid == template.guid) {
+                     $scope.templates[i] = result.data;
+                      (function(index) {
                          filesystem_manager.saveTemplate($scope.templates[index].guid, $scope.templates[index]).then(
                              function(promise){
                                 $scope.templates[index].syncIcon = "cloud_done";
@@ -77,10 +77,10 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
                                  console.log(promise.message);
                              }
                          );
+                     })(i)
 
-                         break;
-                     }
-                 })(i)
+                     break;
+                 }
              }
          },
          function(result){
@@ -131,7 +131,7 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
      cloud_connector.getInspectionsMetadata(inspection_manager.mode).then(
             //Success
             function (promise) {
-             var loadedDateTime = new Date();
+              var loadedDateTime = new Date();
               var cloudGuidDictionary = promise.data; // get dictionary of guid, inspection meta data objects
               // 
               for(var i = 0; i < $scope.templates.length; i++) { 
@@ -145,10 +145,16 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
                             
                             cloud_connector.saveInspectionToCloud(template).then(
                                 function(success){
-                                    template.syncIcon = "cloud_done";
+                                    if (success.data.data == -1 ) {
+                                        template.syncIcon = "cloud_off";
+                                        console.log(success.data.message);
+                                    } else {
+                                        template.syncIcon = "cloud_done";
+                                    }
                                 },
                                 function(failure) {
                                     template.syncIcon = "cloud_off";
+                                    console.log(failure.data);
                                 }
                             );
                             
@@ -174,10 +180,16 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
                      template.syncIcon = "sync";
                      cloud_connector.saveInspectionToCloud(template).then(
                                 function(success){
+                                    if (success.data.data == -1 ) {
+                                        template.syncIcon = "cloud_off";
+                                        console.log(success.data.message);
+                                    } else {
                                     template.syncIcon = "cloud_done";
+                                    }
                                 },
                                 function(failure) {
                                     template.syncIcon = "cloud_off";
+                                    console.log(failure.data);
                                 }
                             );
                  }

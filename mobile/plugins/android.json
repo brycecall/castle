@@ -15,6 +15,9 @@
     },
     "cordova-plugin-app-version": {
       "PACKAGE_NAME": "xyz.invenio.castle"
+    },
+    "cordova-plugin-email": {
+      "PACKAGE_NAME": "com.castle.inspect"
     }
   },
   "dependent_plugins": {
@@ -28,9 +31,6 @@
       "PACKAGE_NAME": "com.castle.inspect"
     },
     "cordova-plugin-compat": {
-      "PACKAGE_NAME": "com.castle.inspect"
-    },
-    "cordova-plugin-email": {
       "PACKAGE_NAME": "com.castle.inspect"
     },
     "cordova-plugin-file-opener2": {

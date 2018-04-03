@@ -526,11 +526,9 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
         };
         public.mode = "template";
 
-        private.saveToDatabase().then(
+        private.saveTemplateToFile().then(
             function (data) {
                 console.log(data.message);
-                private.inspection.insId = data.insId;
-                private.inspection.rowId = data.insId;
                 deferred.resolve(private.inspection);
             },
             function (data) {

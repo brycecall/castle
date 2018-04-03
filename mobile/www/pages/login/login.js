@@ -136,7 +136,6 @@ app.controller('login', function ($scope, $rootScope, $state, action_manager, he
           if (success.message.indexOf("EULA") > -1) {
             $rootScope.needsEula = true;
           }
-		  localStorage.setItem("userId", success.data);
           localStorage.setItem("failCount", "0");
           localStorage.setItem("failDateTime", "");
           $state.go("home");

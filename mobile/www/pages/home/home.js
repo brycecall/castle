@@ -26,6 +26,7 @@ app.controller('home', function ($scope, $rootScope, header_manager, cloud_conne
       // Update eula variables upon success
       $rootScope.needsEula = false;
       $scope.showEula = false;
+      localStorage.setItem("userId", $rootScope.userId);
     }, function(error) {
       console.log('Error updating EULA Agreement.');
     });

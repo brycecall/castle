@@ -65,20 +65,22 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
        cloud_connector.getInspectionFromCloud(template.guid).then(
          function(result) {
              for (var i = 0; i < $scope.templates.length; i++) {
-                 if ($scope.templates[i].guid == template.guid) {
-                     $scope.templates[i] = result.data;
-                     filesystem_manager.saveTemplate($scope.templates[i].guid, $scope.templates[i]).then(
-                         function(promise){
-                            $scope.templates[i].syncIcon = "cloud_done";
-                         },
-                         function(promise){
-                             $scope.templates[i].syncIcon = "";
-                             console.log(promise.message);
-                         }
-                     );
-                     
-                     break;
-                 }
+                 (function(index) {
+                     if ($scope.templates[index].guid == template.guid) {
+                         $scope.templates[index] = result.data;
+                         filesystem_manager.saveTemplate($scope.templates[index].guid, $scope.templates[index]).then(
+                             function(promise){
+                                $scope.templates[index].syncIcon = "cloud_done";
+                             },
+                             function(promise){
+                                 $scope.templates[index].syncIcon = "";
+                                 console.log(promise.message);
+                             }
+                         );
+
+                         break;
+                     }
+                 })(i)
              }
          },
          function(result){
@@ -138,18 +140,31 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
                  if (cloudTemplate) {
                     if (cloudTemplate.hash != template.hash) {
                         if (new Date(cloudTemplate.last_modified) < new Date(template.last_modified)) {
-                            cloud_connector.saveInspectionToCloud(template);
+                            
+                            template.syncIcon = "sync";
+                            
+                            cloud_connector.saveInspectionToCloud(template).then(
+                                function(success){
+                                    template.syncIcon = "cloud_done";
+                                },
+                                function(failure) {
+                                    template.syncIcon = "cloud_off";
+                                }
+                            );
+                            
                         } else {
-                            cloud_connector.getInspectionFromCloud(template.guid).then(
+                            (function(index){
+                                cloud_connector.getInspectionFromCloud(template.guid).then(
                                 function(result){
-                                    $scope.templates[i] = result.data;
-                                    $scope.templates[i].syncIcon = "cloud_done";
+                                    $scope.templates[index] = result.data;
+                                    $scope.templates[index].syncIcon = "cloud_done";
                                 },
                                 function(result){
                                     console.log(result.data);
-                                    template.syncIcon = "";
+                                    template.syncIcon = "cloud_off";
                                 }
                             );
+                            })(i)
                         }
                     } else {
                         template.syncIcon = "cloud_done";
@@ -157,7 +172,14 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
                     cloudTemplate.existsLocally = true;
                  } else {
                      template.syncIcon = "sync";
-                     cloud_connector.saveInspectionToCloud(template);
+                     cloud_connector.saveInspectionToCloud(template).then(
+                                function(success){
+                                    template.syncIcon = "cloud_done";
+                                },
+                                function(failure) {
+                                    template.syncIcon = "cloud_off";
+                                }
+                            );
                  }
               }
                 // Add the cloud only templates to the view
@@ -184,7 +206,6 @@ app.controller('templates', function ($scope, $rootScope, $state, header_manager
         $scope.templates.push(JSON.parse(promise[i]));
       }
       $scope.syncCloud();
-      console.log($scope.templates);
       $rootScope.loading = false;
     },
     function (promise) {

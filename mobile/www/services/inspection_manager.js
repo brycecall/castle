@@ -27,7 +27,7 @@ app.factory('inspection_manager', function ($q, theme_manager, $sha, filesystem_
             case "inspection":
                 console.log('Inspection Manager - Get Inspection');
                 if (typeof (ins) == "string") {
-                    filesystem_manager.getInspection(ins + '.js').then(
+                    filesystem_manager.getInspection(ins + '.json').then(
                         function (inspection) {
                             private.inspection = inspection;
                             defer.resolve(private.inspection);

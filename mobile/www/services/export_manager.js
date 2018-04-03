@@ -131,7 +131,7 @@ app.factory('export_manager', function ($rootScope, $cordovaFile, $sha, $q, them
         
         template_promise.then(
             function (data) {
-                var template = data.value;
+                var template = data;
                 $cordovaFile.writeFile(private.session_path + "/", "template.json", JSON.stringify(template), true)
                     .then(
                         function (result) {

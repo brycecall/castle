@@ -107,7 +107,7 @@ app.controller('inspection', function ($scope, $rootScope, $state, header_manage
         $scope.inspections[index].deleted = false;
         $scope.numDeleted--;
       } else {
-        inspection_manager.deleteInspection($scope.inspections[index].guid + ".js");
+        inspection_manager.deleteInspection($scope.inspections[index].guid + ".json");
       }
     }, function () {
       console.log("You delete fast don't ya!");

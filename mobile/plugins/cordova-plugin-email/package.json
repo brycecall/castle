@@ -1,57 +1,35 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "cordova-plugin-email",
-        "scope": null,
-        "escapedName": "cordova-plugin-email",
-        "name": "cordova-plugin-email",
-        "rawSpec": "",
-        "spec": "latest",
-        "type": "tag"
-      },
-      "/Users/brycecall/Code/castle/mobile2/node_modules"
-    ]
-  ],
-  "_from": "cordova-plugin-email@latest",
-  "_id": "cordova-plugin-email@1.2.6",
-  "_inCache": true,
+  "_from": "cordova-plugin-email@^1.2.6",
+  "_id": "cordova-plugin-email@1.2.7",
+  "_inBundle": false,
+  "_integrity": "sha1-QZVfIGfxBLu6c2Fi5HbtfUFnBng=",
   "_location": "/cordova-plugin-email",
-  "_nodeVersion": "4.4.7",
-  "_npmOperationalInternal": {
-    "host": "packages-18-east.internal.npmjs.com",
-    "tmp": "tmp/cordova-plugin-email-1.2.6.tgz_1483438026830_0.6129095109645277"
-  },
-  "_npmUser": {
-    "name": "hypery2k",
-    "email": "contact@martinreinhardt-online.de"
-  },
-  "_npmVersion": "4.0.3",
   "_phantomChildren": {},
   "_requested": {
-    "raw": "cordova-plugin-email",
-    "scope": null,
-    "escapedName": "cordova-plugin-email",
+    "type": "range",
+    "registry": true,
+    "raw": "cordova-plugin-email@^1.2.6",
     "name": "cordova-plugin-email",
-    "rawSpec": "",
-    "spec": "latest",
-    "type": "tag"
+    "escapedName": "cordova-plugin-email",
+    "rawSpec": "^1.2.6",
+    "saveSpec": null,
+    "fetchSpec": "^1.2.6"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-email/-/cordova-plugin-email-1.2.6.tgz",
-  "_shasum": "fb533a4aaec29d571102cc9282194d32d9c21642",
-  "_shrinkwrap": null,
-  "_spec": "cordova-plugin-email",
-  "_where": "/Users/brycecall/Code/castle/mobile2/node_modules",
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-email/-/cordova-plugin-email-1.2.7.tgz",
+  "_shasum": "41955f2067f104bbba736162e476ed7d41670678",
+  "_spec": "cordova-plugin-email@^1.2.6",
+  "_where": "/Users/brycecall/Code/castle/mobile",
   "author": {
     "name": "Martin Reinhardt"
   },
   "bugs": {
     "url": "https://github.com/hypery2k/cordova-email-plugin/issues"
   },
+  "bundleDependencies": false,
   "cordova": {
     "id": "cordova-plugin-email",
     "platforms": [
@@ -62,24 +40,18 @@
       "wp8"
     ]
   },
-  "dependencies": {},
+  "deprecated": false,
   "description": "Cordova Email Plugin",
   "devDependencies": {
-    "conventional-changelog-cli": "1.2.0",
-    "fs": "0.0.1-security",
-    "ink-docstrap": "1.3.0",
-    "jsdoc": "3.4.0",
-    "jsdoc-to-markdown": "1.3.9",
-    "karma": "0.12.16",
-    "karma-cordova-launcher": "0.0.9",
-    "xml2js": "0.4.17"
+    "conventional-changelog-cli": "1.3.5",
+    "fs": "0.0.2",
+    "ink-docstrap": "1.3.2",
+    "jsdoc": "3.5.5",
+    "jsdoc-to-markdown": "3.0.3",
+    "karma": "2.0.0",
+    "karma-cordova-launcher": "0.0.10",
+    "xml2js": "0.4.19"
   },
-  "directories": {},
-  "dist": {
-    "shasum": "fb533a4aaec29d571102cc9282194d32d9c21642",
-    "tarball": "https://registry.npmjs.org/cordova-plugin-email/-/cordova-plugin-email-1.2.6.tgz"
-  },
-  "gitHead": "5011f9bb682920ee05f820a03675fd095efc3793",
   "homepage": "https://github.com/hypery2k/cordova-email-plugin#readme",
   "keywords": [
     "cordova",
@@ -92,15 +64,7 @@
     "cordova-windows"
   ],
   "license": "MIT",
-  "maintainers": [
-    {
-      "name": "hypery2k",
-      "email": "npm@martinreinhardt-online.de"
-    }
-  ],
   "name": "cordova-plugin-email",
-  "optionalDependencies": {},
-  "readme": "ERROR: No README data found!",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hypery2k/cordova-email-plugin.git"
@@ -123,5 +87,5 @@
     "setupDemoApp": "cd tmp && git clone https://github.com/apache/cordova-app-hello-world.git && mkdir test-app && cp -rp cordova-app-hello-world/template_src/* test-app && cd test-app && cordova plugin add cordova-plugin-device && cordova plugin add cordova-plugin-compat",
     "test": "cd tmp/test-app && node ../../etc/prepare_test_app.js config.xml && cordova platform add ${PLATFORM} && cordova plugin add http://git-wip-us.apache.org/repos/asf/cordova-plugin-test-framework.git && cordova plugin add ../../tests && cordova build ${PLATFORM}"
   },
-  "version": "1.2.6"
+  "version": "1.2.7"
 }

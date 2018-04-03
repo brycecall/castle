@@ -1,10 +1,15 @@
+<a name="1.2.7"></a>
+## [1.2.7](https://github.com/hypery2k/cordova-email-plugin/compare/v1.2.6...v1.2.7) (2018-02-16)
+
+
+
 <a name="1.2.6"></a>
 ## [1.2.6](https://github.com/hypery2k/cordova-email-plugin/compare/v1.2.5...v1.2.6) (2017-01-03)
 
 
 ### Bug Fixes
 
-* **isAvailable-error:** fix callback error on newer android ([171b99b](https://github.com/hypery2k/cordova-email-plugin/commit/171b99b))
+* **isAvailable-error:** fix callback error on newer android ([171b99b](https://github.com/hypery2k/cordova-email-plugin/commit/171b99b)), closes [#39](https://github.com/hypery2k/cordova-email-plugin/issues/39)
 
 
 

@@ -12,6 +12,9 @@
     },
     "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "com.castle.inspect"
+    },
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "xyz.invenio.castle"
     }
   },
   "dependent_plugins": {

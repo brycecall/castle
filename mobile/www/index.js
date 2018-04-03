@@ -163,3 +163,15 @@ app.run(function ($sha, $rootScope) {
         return $sha.hash(JSON.stringify(object));
     }
 });
+
+// Get App Version
+app.run(function ($rootScope) {
+    $rootScope.version = "";
+    if (cordova) {
+        cordova.getAppVersion.getVersionNumber().then(
+            function(data) { 
+                console.log("This is version " + data + " of Castle.");
+                $rootScope.version = data;
+            });
+    }
+});

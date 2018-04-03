@@ -34,7 +34,7 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $cordovaFileTransf
         function init() {
             var queue = [];
             console.log("INITIALIZING ALL DATA!!!");
-            queue.push(private.copyDefaultThemes());
+            queue.push(public.resetThemes());
             queue.push(private.deleteInit());
             $q.all(queue).then(defered.resolve, defered.reject);
         }
@@ -352,7 +352,6 @@ app.factory('filesystem_manager', function ($q, $cordovaFile, $cordovaFileTransf
             deferred.reject(error);
         });
 
-        console.log(promises);
         return deferred.promise;
     };
 

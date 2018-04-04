@@ -1,4 +1,4 @@
-var app = angular.module("castle", ['ngCordova', 'ui.router', 'ngMaterial', 'ngMessages', 'ngSha', 'ui.sortable']);
+var app = angular.module("castle", ['ngCordova', 'ngSanitize', 'ui.router', 'ngMaterial', 'ngMessages', 'ngSha', 'ui.sortable']);
 
 app.config(function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/error");
@@ -175,3 +175,7 @@ app.run(function ($rootScope) {
             });
     }
 });
+
+app.config(['$sceProvider', function($sceProvider) {
+    $sceProvider.enabled(false);
+}]);

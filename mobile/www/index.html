@@ -105,7 +105,7 @@
         </md-button>
         <div class="message">
             <img ng-src="{{messages[current].image}}" />
-            <h2 style="margin-top: 8%">{{messages[current].text}}</h2>
+            <h2 style="margin-top: 8%"><span ng-bind-html="messages[current].text"></span></h2>
         </div>
         <md-button ng-cloak class="md-fab md-accent button" aria-label="Next" class="button" style="right: 0;" ng-hide="current == (messages.length - 1)" ng-click="next()">
             <md-icon md-svg-icon="keyboard_arrow_right"></md-icon>
@@ -187,6 +187,7 @@
     <script src="node_modules/angular-sha/src/angular-sha.js"></script>
     <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
     <script src="node_modules/angular-ui-sortable/src/sortable.js"></script>
+    <script src="node_modules/angular-sanitize/angular-sanitize.js"></script>
     <script src="libs/morpheus/lib.js"></script>
 
     <script type="text/javascript" src="cordova.js"></script>

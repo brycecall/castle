@@ -1,8 +1,9 @@
-app.factory('message_manager', function ($rootScope) {
+app.factory('message_manager', function ($rootScope, $sce) {
     var public = {};
     var private = {};
 
     public.register = function (image, text) {
+        var trust = $sce.trustAsHtml(text);
         var messages = JSON.parse(localStorage.getItem("messages"));
         messages = (messages ? messages : []);
         messages.push({

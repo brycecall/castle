@@ -1,4 +1,4 @@
-app.factory('filesystem_manager', function ($q, $cordovaFile, $cordovaFileTransfer, $rootScope, $sce, $http, filesystem_mock) {
+app.factory('filesystem_manager', function ($q, $cordovaFile, $cordovaFileTransfer, $rootScope, $sce, $http, filesystem_mock, message_manager) {
     var public = {};
     var private = {};
     if (window.cordova) {

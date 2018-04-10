@@ -47,6 +47,26 @@ namespace CastleWebService.Controllers
             return result;
         }
 
+        [HttpGet("api/v1/getAutoComments/{userId}")]
+        public object getAutoComments(int userId)
+        {
+            var result = new CastleData();
+            try
+            {
+                // Get auto comments for this user
+                var getComments = _db.AutoComment.Where(x => x.AcUserId == userId).ToList();
+
+                result.data = getComments.Count;
+                result.message = "Success";
+            }
+            catch (Exception e)
+            {
+                result = new CastleData { message = e.Message, data = -1 };
+            }
+
+            return result;
+        }
+
         [HttpPost("api/v1/adduser")]
         public object InsertUsers([FromBody]object userObj)
         {

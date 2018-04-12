@@ -267,6 +267,17 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, $md
     };
 
     /*** AUTO COMMENTS ***/
+    public.getAutoComments = function (userId) {
+        return httpService.submitRemote({
+            method: 'GET',
+            params: {
+                userId: userId  
+            },
+            url: 'api/v1/getAutoComments/',
+            useBaseUrl: true
+        });
+    }
+    
     public.insertAutoComment = function (autoComment) {
         return httpService.submitRemote({
             method: 'POST',

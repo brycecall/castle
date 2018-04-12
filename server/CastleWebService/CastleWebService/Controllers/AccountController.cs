@@ -47,7 +47,7 @@ namespace CastleWebService.Controllers
             return result;
         }
 
-        [HttpGet("api/v1/getAutoComments/{userId}")]
+        [HttpGet("api/v1/getAutoComments/")]
         public object getAutoComments(int userId)
         {
             var result = new CastleData();

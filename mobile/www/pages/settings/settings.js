@@ -13,7 +13,16 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
 
     $scope.acTitle = "";
     $scope.acText = "";
-
+    $scope.autoComments = [];
+    cloud_connector.getAutoComments($rootScope.userId).then(function (success) {
+        // TODO: stuff goes here to test getautocomment connector
+    }, function (error) {
+        setTimeout(function () {
+            toast.textContent('Failure Adding Auto Comment!');
+            $mdToast.show(toast);
+        });
+    });
+    
     $scope.addAutoComment = function () {
         var autoComment = {
             acKey: $scope.acTitle,

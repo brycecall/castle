@@ -1,6 +1,6 @@
 // Server connection
-//app.constant('BASE_URL', 'http://localhost:53326/');
-app.constant('BASE_URL', 'https://api.castle.invenio.xyz/');
+app.constant('BASE_URL', 'http://localhost:53326/');
+//app.constant('BASE_URL', 'https://api.castle.invenio.xyz/');
 //app.constant('BASE_URL', 'http://localhost:5000/');
 
 app.factory('pendingRequests', function () {

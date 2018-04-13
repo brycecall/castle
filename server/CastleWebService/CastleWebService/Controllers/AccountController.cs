@@ -48,20 +48,20 @@ namespace CastleWebService.Controllers
         }
 
         [HttpGet("api/v1/getAutoComments/")]
-        public object getAutoComments(int userId)
+        public List<AutoComment> getAutoComments(int userId)
         {
-            var result = new CastleData();
+            var result = new List<AutoComment>();
             try
             {
                 // Get auto comments for this user
                 var getComments = _db.AutoComment.Where(x => x.AcUserId == userId).ToList();
 
-                result.data = getComments.Count;
-                result.message = "Success";
+                result = getComments;
             }
             catch (Exception e)
             {
-                result = new CastleData { message = e.Message, data = -1 };
+                // Add voodoo to display error in list
+                // result =
             }
 
             return result;

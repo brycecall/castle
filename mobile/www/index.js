@@ -168,7 +168,7 @@ app.run(function ($sha, $rootScope) {
 app.run(function ($rootScope) {
     $rootScope.version = "";
     if (window.cordova) {
-        window.cordova.getAppVersion.getVersionNumber().then(
+        $rootScope.version_promise = window.cordova.getAppVersion.getVersionNumber().then(
             function(data) { 
                 console.log("This is version " + data + " of Castle.");
                 $rootScope.version = data;

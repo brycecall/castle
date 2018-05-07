@@ -1,5 +1,5 @@
 <link type="text/css" rel="stylesheet" href="pages/settings/settings.css" />
-<div class="page" style="padding: 30px; text-align: center">
+<div class="page-setings" style="padding: 30px; text-align: center">
   <h3>In the future, you will be able to use this page to control high level app settings.</h3>
   <h2>But... not yet.</h2>
   
@@ -14,7 +14,7 @@
   <md-button class="md-accent md-raised" ng-click="logout()">Logout</md-button>
   <hr />
     
-  <h3>Auto Comments</h3>
+  <h3>Insert Auto Comments</h3>
     
     <md-card style="width: 80%; margin: auto;">
       <md-input-container class="md-block" style="width: 50%; margin-left: 25%;">
@@ -26,5 +26,20 @@
         <textarea ng-model="acText" required name="text"></textarea>
       </md-input-container>
       <md-button style="width:50%; margin-left: 25%" class="md-accent md-raised" ng-click="addAutoComment()">Add Auto Comment</md-button>
+    </md-card>
+    
+  <h3>Edit/View Auto Comments</h3>
+    <md-card class="autocomment-card" style="width: 80%; margin: auto;">
+      <md-input-container class="md-block" style="width: 50%; margin-left: 25%;">
+        <md-select ng-model="selectedAutoComment" placeholder="Select a title">
+            <md-option ng-value="ac" ng-repeat="ac in autoComments">
+                {{ac.acKey}}
+            </md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container style="width: 50%; margin-left: 25%;">
+        <textarea ng-model="selectedAutoComment.acAutoComment" id="acTextContainer" name="text" style="resize: none">{{selectedAutoComment.acAutoComment}}</textarea>
+      </md-input-container>
+      <md-button style="width:50%; margin-left: 25%" class="md-accent md-raised" ng-click="editAutoComment()">Save Changes</md-button>
     </md-card>
 </div>

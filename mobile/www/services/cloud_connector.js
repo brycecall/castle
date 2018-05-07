@@ -289,6 +289,17 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, $md
             useBaseUrl: true
         });
     }
+    
+    public.editAutoComment = function(autoComment) {
+        console.log(autoComment);
+        return httpService.submitRemote({
+            method: 'POST',
+            url: 'api/v1/editAutoComment/',
+            data: autoComment,
+            params: null,
+            useBaseUrl: true
+        });
+    }
 
     return public;
 });

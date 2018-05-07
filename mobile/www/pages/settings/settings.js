@@ -13,6 +13,8 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
 
     $scope.acTitle = "";
     $scope.acText = "";
+    $scope.selectedAutoComment = {};
+    
     $scope.autoComments = [];
     cloud_connector.getAutoComments($rootScope.userId).then(function (success) {
         // TODO: stuff goes here to test getautocomment connector
@@ -39,6 +41,7 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
                 toast.textContent('Successfully Added!');
                 $mdToast.show(toast);
             });
+            $scope.autoComments.push(autoComment);
         }, function (error) {
             setTimeout(function () {
                 toast.textContent('Failure Adding Auto Comment!');
@@ -47,6 +50,16 @@ app.controller('settings', function ($scope, $rootScope, $cordovaCapture, $timeo
         });
         $scope.acTitle = "";
         $scope.acText = "";
+    }
+    
+    $scope.editAutoComment = function () {
+        console.log(this.selectedAutoComment);
+        cloud_connector.editAutoComment(this.selectedAutoComment).then(function(success) {
+           console.log('success'); 
+        }, function(error){
+           console.log(error);
+        });
+        
     }
 
     $scope.wipeDatabase = function () {

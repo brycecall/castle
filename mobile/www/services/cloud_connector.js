@@ -267,6 +267,17 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, $md
     };
 
     /*** AUTO COMMENTS ***/
+    public.getAutoComments = function (userId) {
+        return httpService.submitRemote({
+            method: 'GET',
+            params: {
+                userId: userId  
+            },
+            url: 'api/v1/getAutoComments/',
+            useBaseUrl: true
+        });
+    }
+    
     public.insertAutoComment = function (autoComment) {
         return httpService.submitRemote({
             method: 'POST',
@@ -275,6 +286,17 @@ app.factory('cloud_connector', function ($rootScope, $q, $sha, $cordovaFile, $md
             params: {
                 userId: $rootScope.userId
             },
+            useBaseUrl: true
+        });
+    }
+    
+    public.editAutoComment = function(autoComment) {
+        console.log(autoComment);
+        return httpService.submitRemote({
+            method: 'POST',
+            url: 'api/v1/editAutoComment/',
+            data: autoComment,
+            params: null,
             useBaseUrl: true
         });
     }

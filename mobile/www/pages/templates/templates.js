@@ -713,7 +713,7 @@ app.controller('template_question', function ($rootScope, $scope, inspection_man
 
 });
 
-app.controller('template_detail', function ($scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $stateParams, templateShareService, $rootScope) {
+app.controller('template_detail', function ($scope, $, $state, header_manager, camera_manager, action_manager, inspection_manager, $stateParams, templateShareService, $rootScope, cloud_connector) {
   $scope.insId = $stateParams.insId;
   $scope.sectionIndex = $stateParams.sectionIndex;
   $scope.subsectionIndex = $stateParams.subsectionIndex;
@@ -723,6 +723,32 @@ app.controller('template_detail', function ($scope, $, $state, header_manager, c
   $scope.questionCount = inspection_manager.getQuestions($scope.insId, $scope.sectionIndex, $scope.subsectionIndex).length;//$scope.template.sections[$scope.sectionIndex].subsections[$scope.subsectionIndex].questions.length || -1;
   $scope.mode = $stateParams.mode;
   $scope.getCrumbyClass = templateShareService.getCrumbyClass;
+  $scope.autoComments = [];
+  $scope.acSearchText = "";
+  $scope.selectedAutoComment = {};
+  // Populate autoComments
+  cloud_connector.getAutoComments($rootScope.userId).then(function (success) {
+    for (var i = 0; i < success.data.length; i++) {
+      $scope.autoComments.push(success.data[i]);
+    }
+  }, function (error) {
+    console.log('Failure loading autocomments');
+    console.log(error);
+  });
+    
+  $scope.filterAutoComments = function (text) {
+    return $scope.autoComments.filter( function(autoComment) {
+      return autoComment.acKey.indexOf(text)>-1 || autoComment.acAutoComment.indexOf(text)>-1;    
+    });
+  }
+  
+  $scope.selectAutoComment = function(answer, autoCommentText) {
+    if(autoCommentText !== undefined && autoCommentText !== null)
+    {
+      answer.autoComment = autoCommentText;
+    }
+  }
+  
   header_manager.mode = HEADER_MODES.Action;
     if ($scope.mode == "inspection") {
         header_manager.title = "Edit Question";
@@ -957,8 +983,8 @@ $scope.questionTypes = [
     // Comments Box magickery
     if (answer.autoComment) {
         if($scope.question.comments == undefined) {
-          $scope.question.comments = answer.autoComment;
-        } else if (answer.checked && $scope.question.comments.indexOf(answer.autoComment) < 0) {
+          $scope.question.comments = JSON.stringify(answer.autoComment);
+        } else if (answer.checked && $scope.question.comments.indexOf(JSON.stringify(answer.autoComment)) < 0) {
           // Checked box, add 
           $scope.question.comments += ' ' + answer.autoComment;
         } else if (!answer.checked && $scope.question.comments.indexOf(answer.autoComment) >= 0) {
@@ -966,8 +992,9 @@ $scope.questionTypes = [
           $scope.question.comments = $scope.question.comments.replace(answer.autoComment, '');
         }
     }
+    console.log($scope.question);
   };
-
+    
   $scope.exists = function (value, array) {
     return $.inArray(value, array) > -1;
   };

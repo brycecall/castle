@@ -34,10 +34,9 @@ var defaultTemplate = {
           "id": null,
           "key": "Inspector",
           "questionId": null,
-          
           "inspectionId": null,
           "order": 0,
-          "autoComment": "Test Inspector AutoComment"
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Buyer",
@@ -45,7 +44,7 @@ var defaultTemplate = {
           
           "inspectionId": null,
           "order": 1,
-          "autoComment": "Test Buyer AutoComment"
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Resident",
@@ -53,7 +52,7 @@ var defaultTemplate = {
           
           "inspectionId": null,
           "order": 2,
-          "autoComment": "Test Resident AutoComment"
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Builder or Builders Rep",
@@ -61,7 +60,7 @@ var defaultTemplate = {
           
           "inspectionId": null,
           "order": 3,
-          "autoComment": "Test Builder AutoComment"
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Owner or Seller",
@@ -69,7 +68,7 @@ var defaultTemplate = {
           
           "inspectionId": null,
           "order": 4,
-          "autoComment": "Test Owner or Seller AutoComment"
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Agent",
@@ -77,7 +76,7 @@ var defaultTemplate = {
           
           "inspectionId": null,
           "order": 5,
-          "autoComment": "Test Agent AutoComment"
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Friends or Other",
@@ -85,7 +84,7 @@ var defaultTemplate = {
           
           "inspectionId": null,
           "order": 6,
-          "autoComment": "Test Friends or Other AutoComment"
+          "autoComment": ""
         }],
         "validation": {
           "type": null,
@@ -117,7 +116,7 @@ var defaultTemplate = {
           
           "inspectionId": null,
           "order": 0,
-          "autoComment": "Test Inspector AutoComment"
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Buyer",
@@ -125,7 +124,7 @@ var defaultTemplate = {
           
           "inspectionId": null,
           "order": 1,
-          "autoComment": "Test Buyer AutoComment"
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Resident",
@@ -133,7 +132,7 @@ var defaultTemplate = {
           
           "inspectionId": null,
           "order": 2,
-          "autoComment": "Test Resident AutoComment"
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Builder or Builders Rep",
@@ -141,7 +140,7 @@ var defaultTemplate = {
           
           "inspectionId": null,
           "order": 3,
-          "autoComment": "Test Builder or Builders Rep AutoComment"
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Owner or Seller",
@@ -149,7 +148,7 @@ var defaultTemplate = {
           
           "inspectionId": null,
           "order": 4,
-          "autoComment": "Test Owner or Seller AutoComment"
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Agent",
@@ -157,7 +156,7 @@ var defaultTemplate = {
           
           "inspectionId": null,
           "order": 5,
-          "autoComment": "Test Agent AutoComment"
+          "autoComment": ""
         }, {
           "id": null,
           "key": "Friends or Other",
@@ -165,7 +164,7 @@ var defaultTemplate = {
           
           "inspectionId": null,
           "order": 6,
-          "autoComment": "Test Friends or Other AutoComment"
+          "autoComment": ""
         }],
         "validation": {
           "type": null,

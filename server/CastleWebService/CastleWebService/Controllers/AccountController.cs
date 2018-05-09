@@ -47,6 +47,54 @@ namespace CastleWebService.Controllers
             return result;
         }
 
+        [HttpPost("api/v1/editAutoComment/")]
+        public object EditAutoComment([FromBody]object autoCommentObj)
+        {
+            var result = new CastleData();
+            try
+            {
+                // Deserialize autoComment
+                var autoComment = JsonConvert.DeserializeObject<AutoComment>(autoCommentObj.ToString());
+
+                // Get existing autocomment
+                var existingAutoComment = _db.AutoComment.Where(x => x.AutoCommentId == autoComment.AutoCommentId).FirstOrDefault();
+
+                _db.Entry(existingAutoComment).CurrentValues.SetValues(autoComment); // Update values from one to another
+
+                _db.SaveChanges();
+
+                result.data = autoComment.AutoCommentId;
+                result.message = "Successful edit!";
+
+            }
+            catch (Exception e)
+            {
+                result = new CastleData { message = e.Message, data = -1 };
+            }
+
+            return result;
+        }
+
+        [HttpGet("api/v1/getAutoComments/")]
+        public List<AutoComment> getAutoComments(int userId)
+        {
+            var result = new List<AutoComment>();
+            try
+            {
+                // Get auto comments for this user
+                var getComments = _db.AutoComment.Where(x => x.AcUserId == userId).ToList();
+
+                result = getComments;
+            }
+            catch (Exception e)
+            {
+                // Add voodoo to display error in list
+                // result =
+            }
+
+            return result;
+        }
+
         [HttpPost("api/v1/adduser")]
         public object InsertUsers([FromBody]object userObj)
         {

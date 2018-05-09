@@ -78,10 +78,15 @@
                 </md-button>
                 </div>
                 <div class="auto-comment-container">
-                    <span class="auto-comment-header">
-                      Auto Comment
-                    </span>
-                    <textarea ng-model="checkBox.autoComment" style="width:100%; height: 40px"></textarea>
+                    <md-autocomplete md-selected-item="checkBox.autoComment" style="width:100%; height: 40px" md-search-text="acSearchText" md-selected-item-change="selectAutoComment(checkBox, autoComment.acAutoComment)" md-search-text-change="filterAutoComments(acSearchText)" md-items="autoComment in autoComments | filter:acSearchText" md-item-text="autoComment.acAutoComment">
+                      <md-item-template>
+                        <span md-highlight-text="acSearchText" md-highlight-flags="^ig">{{autoComment.acKey}} - {{autoComment.acAutoComment}}</span>
+                      </md-item-template>
+                      <md-not-found>
+                        No matches found.
+                      </md-not-found>
+                    </md-autocomplete>
+                    <!--<textarea ng-model="checkBox.autoComment" style="width:100%; height: 40px"></textarea>-->
                 </div>
             </div>
 
@@ -125,7 +130,8 @@
                 <md-radio-button style="margin: 0"
                                  class="questionIndent" 
                                  aria-label="radio option"
-                                 ng-value="radioButton.key">{{radioButton.key}}
+                                 ng-value="radioButton.key"
+                                 ng-click="toggle(radioButton)">{{radioButton.key}}
                 </md-radio-button>
                 <span flex=""></span>
                 <md-button class="md-icon-button" ng-click="addPhotos(radioButton.id, radioButton.key)" ng-show="radioButton.key == question.answer" >
@@ -133,10 +139,14 @@
                 </md-button>
                 </div>
                 <div class="auto-comment-container">
-                    <span class="auto-comment-header">
-                      Auto Comment
-                    </span>
-                    <textarea ng-model="radioButton.autoComment" style="width:100%; height: 40px"></textarea>
+                      <md-autocomplete md-selected-item="radioButton.autoComment" style="width:100%; height: 40px; top:10px" md-search-text="acSearchText" md-selected-item-change="selectAutoComment(radioButton, autoComment.acAutoComment)" md-search-text-change="filterAutoComments(acSearchText)" md-items="autoComment in autoComments | filter:acSearchText" md-item-text="autoComment.acAutoComment">
+                      <md-item-template>
+                        <span md-highlight-text="acSearchText" md-highlight-flags="^ig">{{autoComment.acKey}} - {{autoComment.acAutoComment}}</span>
+                      </md-item-template>
+                      <md-not-found>
+                        No matches found.
+                      </md-not-found>
+                    </md-autocomplete>
                 </div>
                 </div>
                </div>
@@ -270,7 +280,7 @@
     </form>
             </md-card-content>
         </md-card>
-                <md-card class="flatCard">
+        <md-card class="flatCard">
             <md-card-content>
               <div class="headBlock">
                 <div layout="row" layout-align="center start">     

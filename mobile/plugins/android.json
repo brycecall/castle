@@ -18,6 +18,9 @@
     },
     "cordova-plugin-email": {
       "PACKAGE_NAME": "com.castle.inspect"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "xyz.invenio.castle"
     }
   },
   "dependent_plugins": {

@@ -35,6 +35,10 @@ app.factory('camera_mock', function () {
     MockCameraPreview.stopCamera = function(onSuccess, onError) {
         console.log("Camera Stopped!");
     };
+    
+    MockCameraPreview.openGallery = function () {
+        console.log("OPENING GALLERY!");
+    };
 
     MockCameraPreview.switchCamera = function(onSuccess, onError) {
         console.log("Camera switched!");

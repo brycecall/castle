@@ -23,7 +23,8 @@
             "com.jjdltc.cordova.plugin.zip": {},
             "cordova-plugin-file-opener2": {},
             "cordova-plugin-file-transfer": {},
-            "cordova-plugin-app-version": {}
+            "cordova-plugin-app-version": {},
+            "cordova-plugin-camera": {}
         }
     },
     "dependencies": {
@@ -34,6 +35,7 @@
         "cordova-osx": "^4.0.1",
         "cordova-pdf-generator": "^1.5.4",
         "cordova-plugin-app-version": "^0.1.9",
+        "cordova-plugin-camera": "^2.3.0",
         "cordova-plugin-camera-preview": "git+https://github.com/cordova-plugin-camera-preview/cordova-plugin-camera-preview.git",
         "cordova-plugin-compat": "^1.0.0",
         "cordova-plugin-email": "^1.2.7",

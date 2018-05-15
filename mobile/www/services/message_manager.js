@@ -69,14 +69,16 @@ app.controller('message', function ($scope, $rootScope, $timeout, $window, messa
         };
         $scope.service._visible = false;
     });
-    
-    $rootScope.version_promise.then(function () {
-        var app_version = localStorage.getItem("version");
-        if (app_version != $rootScope.version) {
-            $scope.service.init();
-            $scope.service.show();
-        }
 
-        localStorage.setItem("version", $rootScope.version);
-    });
+    if ($rootScope.version_promise) {
+        $rootScope.version_promise.then(function () {
+            var app_version = localStorage.getItem("version");
+            if (app_version != $rootScope.version) {
+                $scope.service.init();
+                $scope.service.show();
+            }
+
+            localStorage.setItem("version", $rootScope.version);
+        });
+    }
 });
